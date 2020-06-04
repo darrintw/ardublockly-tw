@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"author": "darrin",
+		"lastupdated": "2019-02-22 00:22:30.757000",
+		"locale": "zh-hant",
+		"messagedocumentation" : "zh-hant_ardublockly"
+	},
+	"ARD_TYPE_CHAR": "字元",
+	"ARD_TYPE_TEXT": "字串",
+	"ARD_TYPE_BOOL": "布林",
+	"ARD_TYPE_SHORT": "短整數",
+	"ARD_TYPE_NUMBER": "整數",
+	"ARD_TYPE_LONG": "長整數",
+	"ARD_TYPE_DECIMAL": "浮點數",
+	"ARD_TYPE_ARRAY": "陣列",
+	"ARD_TYPE_NULL": "空值",
+	"ARD_TYPE_UNDEF": "沒有定義",
+	"ARD_TYPE_CHILDBLOCKMISSING": "子積木遺失",
+	"ARD_FUN_RUN_SETUP": "設定程序: ",
+	"ARD_FUN_RUN_LOOP": "迴圈程序: ",
+	"ARD_FUN_RUN_TIP": "定義 Arduino 草稿碼的 setup() 和 loop() 程序"
+}

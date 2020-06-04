@@ -1,0 +1,21 @@
+{
+  "categoryName": "Text",
+  "description": "Text.",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "Text",
+  "toolbox": [
+    "<category>",
+    "  <block type=\"char\"></block>",
+    "  <block type=\"text\"></block>",
+    "  <block type=\"text_join\"></block>",
+    "  <block type=\"text_append\"></block>",
+    "  <block type=\"text_length\"></block>",
+    "  <block type=\"text_isEmpty\"></block>",
+    "  <block type=\"text_indexOf\"></block>",
+    "  <block type=\"text_getSubstring\"></block>",
+    "</category>"
+  ]
+}
