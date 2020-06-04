@@ -4,5 +4,5 @@ CH341SER
 ardublockly.log
 test.py
 appdata
-node_modules
+node_modules/*
 notepad++
