@@ -1,8 +1,8 @@
 .idea
-arduino/*
+arduino/*.*
 CH341SER/*
 ardublockly.log
 test.py
-appdata/*
-node_modules/*
-notepad++/*
+appdata/*.*
+node_modules/*.*
+notepad++/*.*
