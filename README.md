@@ -24,7 +24,7 @@ Currently tested under Windows with Python 2.7 and 3.4 and in Linux and MacOS X 
 Please note that there are submodules in the repository that need initialisation. So, to correctly clone the Ardublockly repository:
 
 ```
-git clone https://github.com/carlosperate/ardublockly.git
+git clone https://github.com/darrintw/ardublockly.git
 cd ardublockly
 git submodule update --init --recursive
 ```
@@ -34,14 +34,6 @@ git submodule update --init --recursive
 The desktop application is available for Windows/Mac/Linux and runs as a stand-alone executable that can be downloaded from the [Ardublockly repository releases page][4].
 
 You will also need the [Arduino IDE version 1.6.x or higher][2].
-
-#### Development builds
-You can also test __UNSTABLE__ development builds automatically generated every time an update is added to the GitHub repository:
-
-| Linux build         | Windows build       | Mac OS X build       |
-|:-------------------:|:-------------------:|:--------------------:|
-| [![Linux Build Status](https://circleci.com/gh/carlosperate/ardublockly/tree/master.svg?style=svg)](https://circleci.com/gh/carlosperate/ardublockly/tree/master) | [![Windows Build status](https://ci.appveyor.com/api/projects/status/t877g920hdiifc2i?svg=true)](https://ci.appveyor.com/project/carlosperate/ardublockly) | [![Mac Build Status](https://travis-ci.org/carlosperate/ardublockly.svg?branch=master)](https://travis-ci.org/carlosperate/ardublockly) |
-| [Download Link][12] | [Download Link][13] | [Download Link][14]  |
 
 #### "Core version" (Python server only)
 If you prefer, the core software can be used by running only the Python server, which loads the web interface on your local browser (Chrome recommended).
@@ -70,9 +62,6 @@ A demo of the latest release of Ardublockly main interface can be found in the f
 #### [Ardublockly][10]
 ![WebApp screenshot responsive design][web_screenshot_responsive]
 
-#### [Ardublockly classic][11]
-![WebApp screenshot][web_screenshot_classic]
-
 
 ## Documentation
 The documentation, including installation instructions, configuration instructions, and developer information can be found in the [Ardublockly GitHub repository Wiki][7].
@@ -80,18 +69,18 @@ The documentation, including installation instructions, configuration instructio
 To download the documentation you can git clone the wiki data:
 
 ```
-git clone https://github.com/carlosperate/ardublockly.wiki.git
+git clone https://github.com/darrintw/ardublockly.wiki.git
 ```
 
 
 ## Credit
-This project has been inspired by [BlocklyDuino][16].
+This project has been inspired by [Ardublockly][12].
 
-Blockly original source is Copyright of Google Inc. [https://developers.google.com/blockly/][1]. A list of changes to the Blockly fork can be found in the [Blockly subdirectory README][17] file.
+Blockly original source is Copyright of Google Inc. [https://developers.google.com/blockly/][1]. A list of changes to the Blockly fork can be found in the [Blockly subdirectory README][13] file.
 
 
 ## License
-Copyright (c) 2016 carlosperate https://github.com/carlosperate/
+Copyright (c) 2020 darrin https://github.com/darrintw/
 
 Unless stated otherwise, the source code of this projects is
 licensed under the Apache License, Version 2.0 (the "License");
@@ -111,19 +100,15 @@ limitations under the License.
 [2]: http://www.arduino.cc/en/main/software/
 [3]: TODO.md
 [4]: https://github.com/carlosperate/ardublockly/releases/
-[5]: https://github.com/carlosperate/ardublockly/wiki/Installing-Ardublockly
-[6]: https://github.com/carlosperate/ardublockly/wiki/Configure-Ardublockly
-[7]: https://github.com/carlosperate/ardublockly/wiki
-[8]: https://github.com/carlosperate/ardublockly/compare/blockly-original...master
-[9]: https://github.com/carlosperate/ardublockly/blob/master/LICENSE
-[10]: http://ardublockly.embeddedlog.com/demo/index.html
-[11]: http://ardublockly.embeddedlog.com/demo/classic/index.html
-[12]: http://ardublockly-builds.s3-website-us-west-2.amazonaws.com/index.html?prefix=linux/
-[13]: http://ardublockly-builds.s3-website-us-west-2.amazonaws.com/index.html?prefix=windows/
-[14]: http://ardublockly-builds.s3-website-us-west-2.amazonaws.com/index.html?prefix=mac/
-[15]: http://www.arduino.cc
-[16]: https://github.com/BlocklyDuino/BlocklyDuino
-[17]: blockly/README.md
+[5]: https://github.com/darrintw/ardublockly/wiki/Installing-Ardublockly
+[6]: https://github.com/darrintw/ardublockly/wiki/Configure-Ardublockly
+[7]: https://github.com/darrintw/ardublockly/wiki
+[8]: https://github.com/darrintw/ardublockly/compare/blockly-original...master
+[9]: https://github.com/darrintw/ardublockly/blob/master/LICENSE
+[10]: https://ardublockly.ymtech.education/
+[11]: http://www.arduino.cc
+[12]: https://github.com/carlosperate/ardublockly/
+[13]: blockly/README.md
 
 [desktop_screeshot]: http://carlosperate.github.io/ardublockly/images/screenshot_desktop_1.png
 [web_screenshot_responsive]: http://carlosperate.github.io/ardublockly/images/screenshot_material_all_small.jpg
