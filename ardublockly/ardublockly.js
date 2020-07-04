@@ -370,10 +370,10 @@ Ardublockly.openAbout = function () {
  */
 Ardublockly.openSettings = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
-        ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
+        /*ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
             Ardublockly.setArduinoSimpleBoardsHtml(
                 ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
-        });
+        });*/
     } else {
         ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
             Ardublockly.setArduinoBoardsHtml(
