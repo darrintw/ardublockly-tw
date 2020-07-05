@@ -1,5 +1,6 @@
 .idea
 arduino
+!arduino/procedures.js
 CH341SER
 ardublockly.log
 test.py
