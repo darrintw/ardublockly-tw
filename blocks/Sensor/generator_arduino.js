@@ -27,7 +27,6 @@ goog.require('Blockly.Arduino');
 Blockly.Arduino['ultrasonic_distance'] = function (block) {
     var trigPin = block.getFieldValue('TRIG_PIN');
     var echoPin = block.getFieldValue('ECHO_PIN');
-    var udName = 'ultrasonic_distance_' + trigPin + '_' + echoPin;
     var dUnit = block.getFieldValue('DISTANCE_UNIT');
     var comm = '';
 
@@ -36,25 +35,26 @@ Blockly.Arduino['ultrasonic_distance'] = function (block) {
     } else if (dUnit === 'inch') {
         comm = '(sonic_duration / 2.0) / 74.0';
     }
+    var udName = 'ultrasonic_distance_' + dUnit;
 
-    Blockly.Arduino.addSetup(udName + ' _ setup_trig', 'pinMode(' + trigPin + ', OUTPUT);', true);
-    Blockly.Arduino.addSetup(udName + ' _ setup_echo', 'pinMode(' + echoPin + ', INPUT);', true);
+    Blockly.Arduino.addSetup(udName + '_' + trigPin + '_setup_trig', 'pinMode(' + trigPin + ', OUTPUT);', true);
+    Blockly.Arduino.addSetup(udName + '_' + echoPin + '_setup_echo', 'pinMode(' + echoPin + ', INPUT);', true);
 
-    var fCode = 'float ' + udName + '(){\n' +
-        '  digitalWrite(' + trigPin + ', LOW);\n' +
-        '  digitalWrite(' + echoPin + ', LOW);\n' +
+    var fCode = 'float ' + udName + '(int trigPin, int echoPin){\n' +
+        '  digitalWrite(trigPin, LOW);\n' +
+        '  digitalWrite(echoPin, LOW);\n' +
         '  delayMicroseconds(5);\n' +
-        '  digitalWrite(' + trigPin + ', HIGH);\n' +
+        '  digitalWrite(trigPin, HIGH);\n' +
         '  delayMicroseconds(10);\n' +
-        '  digitalWrite(' + echoPin + ', LOW);\n' +
-        '  unsigned long sonic_duration = pulseIn(' + echoPin + ', HIGH);\n' +
-        '  float distance_' + dUnit + ' = ' + comm + ';\n' +
+        '  digitalWrite(trigPin, LOW);\n' +
+        '  unsigned long sonic_duration = pulseIn(echoPin, HIGH);\n' +
+        '  float distance_' + dUnit + ' = ' + comm + ';\n\n' +
         '  return distance_' + dUnit + ';\n' +
         '}';
 
     Blockly.Arduino.addFunction(udName + '_func', fCode);
 
-    var code = udName + '()';
+    var code = udName + '(' + trigPin + ', ' + echoPin + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
