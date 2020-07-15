@@ -28,6 +28,22 @@ Blockly.Arduino['time_delay'] = function (block) {
 };
 
 /**
+ * Generator for the repeat while block using a While statement.
+ * Arduino code: loop { while (X) { Y } }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['time_loop'] = function(block) {
+  var time = Blockly.Arduino.valueToCode(block, 'LOOP_SEC') || '10';
+  var code = 'unsigned long duration_time_diff = millis();\n';
+  var argument0 = '!(millis() - duration_time_diff >= ' + time * 1000 + ')';
+  var branch = Blockly.Arduino.statementToCode(block, 'DO');
+  branch = Blockly.Arduino.addLoopTrap(branch, block.id);
+
+  return code + 'while (' + argument0 + ') {\n' + branch + '}\n';
+};
+
+/**
  * Code generator for the delayMicroseconds block.
  * Arduino code: loop { delayMicroseconds(X); }
  * @param {!Blockly.Block} block Block to generate the code from.

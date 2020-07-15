@@ -8,6 +8,8 @@ Blockly.Msg.BLOCKS_CATEGORY_TIME = 'Time';
 
 /// Ardublockly name
 Blockly.Msg.ARD_TIME_DELAY = "wait";
+Blockly.Msg.ARD_TIME_REPEAT = "repeat";
+Blockly.Msg.ARD_TIME_S = "seconds";
 Blockly.Msg.ARD_TIME_DELAY_MICROS = "microseconds";
 Blockly.Msg.ARD_TIME_DELAY_MICRO_TIP = "Wait specific time in microseconds";
 Blockly.Msg.ARD_TIME_DELAY_TIP = "Wait specific time in milliseconds";
