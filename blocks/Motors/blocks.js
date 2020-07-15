@@ -196,6 +196,28 @@ Blockly.Blocks['afmotor'] = {
     }
 };
 
+/* afmotor */
+Blockly.Blocks['afmotor_var'] = {
+    init: function () {
+        this.appendValueInput("afmotor_speed")
+            .appendField(Blockly.Msg.AFMOROT)
+            .appendField(Blockly.Msg.AFMOROT_CHANNEL)
+            .appendField(new Blockly.FieldDropdown(afmotor_options), "afmotor_channel")
+            .appendField(Blockly.Msg.AFMOROT_CONTROL)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.AFMOROT_FORWARD, "FORWARD"],
+                    [Blockly.Msg.AFMOROT_BACKWARD, "BACKWARD"],
+                    [Blockly.Msg.AFMOROT_RELEASE, "RELEASE"]]),
+                "afmotor_control")
+            .appendField(Blockly.Msg.AFMOTOR_SPEED);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("https://learn.adafruit.com/adafruit-arduino-lesson-15-dc-motor-reversing/lm293d");
+    }
+};
+
 /**
  Blockly.Blocks['servo_setup'] = {
   init: function() {

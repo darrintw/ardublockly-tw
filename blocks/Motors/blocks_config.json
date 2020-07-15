@@ -31,6 +31,15 @@
     "    <field name=\"afmotor_control\">FORWARD</field>",
     "    <field name=\"afmotor_speed\">255</field>",
     "  </block>",
+    "  <block type=\"afmotor_var\">",
+    "    <field name=\"afmotor_channel\">1</field>",
+    "    <field name=\"afmotor_control\">FORWARD</field>",
+    "    <value name=\"afmotor_speed\">",
+    "        <shadow type=\"math_number\">",
+    "          <field name=\"NUM\">255</field>",
+    "        </shadow>",
+    "    </value>",
+    "  </block>",
     "</category>"
   ]
 }

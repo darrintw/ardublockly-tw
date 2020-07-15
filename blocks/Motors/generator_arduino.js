@@ -156,3 +156,32 @@ Blockly.Arduino['afmotor'] = function (block) {
         motorName + '.run(' + afmotor_control + ');\n';
     return code;
 };
+
+/** afmotor*/
+Blockly.Arduino['afmotor_var'] = function (block) {
+    var afmotor_control = block.getFieldValue('afmotor_control');
+    var afmotor_channel = block.getFieldValue('afmotor_channel');
+    var motorName = 'motor_dc_' + afmotor_channel;
+    var feqName = '';
+    switch (parseInt(afmotor_channel)) {
+        case 1:
+        case 2:
+            feqName = 'MOTOR12_64KHZ';
+            break;
+        case 3:
+        case 4:
+            feqName = 'MOTOR34_64KHZ';
+            break;
+        default:
+            feqName = '';
+    }
+    var afmotor_speed = Blockly.Arduino.valueToCode(
+        block, 'afmotor_speed') || 255;
+
+    Blockly.Arduino.addInclude('AF_DCMotor', '#include <AFMotor.h>');
+    Blockly.Arduino.addDeclaration('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
+
+    var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
+        motorName + '.run(' + afmotor_control + ');\n';
+    return code;
+};
