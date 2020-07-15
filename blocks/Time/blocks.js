@@ -39,6 +39,24 @@ Blockly.Blocks['time_delay'] = {
   }
 };
 
+Blockly.Blocks['time_loop'] = {
+  init: function() {
+    this.appendValueInput("LOOP_SEC")
+        .setCheck(null)
+        .appendField(Blockly.Msg.ARD_TIME_REPEAT);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.ARD_TIME_S);
+    this.appendStatementInput("DO")
+        .setCheck(null);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.time.HUE);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['time_delaymicros'] = {
   /**
    * delayMicroseconds block definition
@@ -115,4 +133,3 @@ Blockly.Blocks['infinite_loop'] = {
     this.setTooltip(Blockly.Msg.ARD_TIME_INF_TIP);
   }
 };
-
