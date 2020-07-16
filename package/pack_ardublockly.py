@@ -335,7 +335,7 @@ def zip_ardublockly_copy(name_append):
             symlink attribute magic...
     """
     # zip_file_dir = os.path.join(project_root_dir, "releases")
-    zip_file_dir = copied_project_up_dir
+    zip_file_dir = os.path.join(os.path.dirname(project_root_dir), "ardublockly_releases")
     zip_file_location = os.path.join(
         zip_file_dir, "ardublockly_%s.zip" % name_append)
 
@@ -343,7 +343,8 @@ def zip_ardublockly_copy(name_append):
     if not os.path.exists(zip_file_dir):
         os.makedirs(zip_file_dir)
 
-    app_folder = copied_project_dir
+    # app_folder = copied_project_dir
+    app_folder = copied_project_up_dir
     # In OS X copied_project_dir is ardublockly_tag/Ardublockly.app/Contents/
     # and we need to zip the .app folder
     if platform.system() == "Darwin":
@@ -358,8 +359,10 @@ def zip_ardublockly_copy(name_append):
 
     if platform.system() == "Darwin":
         # There are issues with zipfile and symlinks, so use zip command line
+        # pack_dir_name = copy_dir_name
+        pack_dir_name = "ardublockly_%s" % tag
         zip_process = subprocess.Popen(
-            ["zip", "--symlinks", "-r", zip_file_location, copy_dir_name],
+            ["zip", "--symlinks", "-r", zip_file_location, pack_dir_name],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         std_op, std_err_op = zip_process.communicate()
         if std_err_op:
@@ -367,7 +370,9 @@ def zip_ardublockly_copy(name_append):
     else:
         zip_file = zipfile.ZipFile(zip_file_location, "w",
                                    zipfile.ZIP_DEFLATED)
-        for root_dir, sub_dirs, files in os.walk(copy_dir_name):
+        # for root_dir, sub_dirs, files in os.walk(copy_dir_name):
+        pack_dir_name = "ardublockly_%s" % tag
+        for root_dir, sub_dirs, files in os.walk(pack_dir_name):
             # print('Zipping dir', root_dir)
             zip_file.write(root_dir)
             for filename in files:

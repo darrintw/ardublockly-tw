@@ -79,7 +79,14 @@ Blockly.Arduino.Boards.duplicateBoardProfile =
     };
 
 /** Object to contain all Arduino board profiles. */
-Blockly.Arduino.Boards.profiles = {};
+Blockly.Arduino.Boards.profiles = {
+    /*
+    'Uno': 'arduino:avr:uno',
+    'Nano 328': 'arduino:avr:nano:cpu=atmega328',
+    'Nano 168': 'arduino:avr:nano:cpu=atmega168',
+    'Mega': 'arduino:avr:mega',
+    'LinkIt 7697': 'linkit7697:linkit7697:generic'*/
+};
 
 /** Arduino Uno board profile. */
 Blockly.Arduino.Boards.profiles.uno = {
