@@ -49,6 +49,7 @@ project_root_dir = \
 # This script copies the ardublockly folder with a different name on the same 
 # directory level to easily filter what to included in the packed version
 copy_dir_name = None
+release_dir_name = None
 copied_project_dir = None
 copied_project_up_dir = None
 exec_folder_name = "arduexec"
@@ -64,9 +65,11 @@ def set_tag(tag):
     """
     print(script_tag + "Setting the Ardublockly package tag to '%s'" % tag)
     global copy_dir_name
+    global release_dir_name
     global copied_project_dir
     global copied_project_up_dir
-    copy_dir_name = "ardublockly_releases\\ardublockly_%s" % tag
+    release_dir_name = "ardublockly_releases"
+    copy_dir_name = "%s\\ardublockly_%s" % (release_dir_name, tag)
     # In OSX everything goes into the folder path Ardublockly.app/Contents/
     if platform.system() == "Darwin":
         copy_dir_name = os.path.join(
@@ -189,7 +192,7 @@ def tag_from_ci_env_vars(ci_name, pull_request_var, branch_var, commit_var):
 def remove_directory(dir_to_remove):
     """ Removes the a given directory. """
     if os.path.exists(dir_to_remove):
-        print(script_tab + "Removing directory %s" % dir_to_remove)
+        # print(script_tab + "Removing directory %s" % dir_to_remove)
         shutil.rmtree(dir_to_remove)
     else:
         print(script_tab + "Directory %s was not found." % dir_to_remove)
@@ -306,7 +309,7 @@ def remove_file_type_from(file_extension, scan_path):
         for file_ in files:
             if file_.endswith("." + file_extension):
                 file_path = os.path.join(root, file_)
-                print(script_tab + "Deleting file: %s" % file_path)
+                # print(script_tab + "Deleting file: %s" % file_path)
                 os.remove(file_path)
 
 
@@ -351,16 +354,17 @@ def zip_ardublockly_copy(name_append):
         app_folder = os.path.dirname(os.path.dirname(app_folder))
 
     old_cwd = os.getcwd()
-    os.chdir(os.path.dirname(project_root_dir))
+    os.chdir(zip_file_dir)
+    new_cwd = os.getcwd()
     print(script_tab + "Changing cwd from %s" % old_cwd)
-    print(script_tab + "               to %s" % os.getcwd())
+    print(script_tab + "               to %s" % new_cwd)
     print(script_tab + "Zipping %s" % app_folder)
     print(script_tab + "   into %s" % zip_file_location)
 
     if platform.system() == "Darwin":
         # There are issues with zipfile and symlinks, so use zip command line
         # pack_dir_name = copy_dir_name
-        pack_dir_name = "ardublockly_%s" % tag
+        pack_dir_name = "ardublockly_%s" % name_append
         zip_process = subprocess.Popen(
             ["zip", "--symlinks", "-r", zip_file_location, pack_dir_name],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -368,10 +372,9 @@ def zip_ardublockly_copy(name_append):
         if std_err_op:
             print(script_tab + "Error using zip command:\n%s" % std_err_op)
     else:
+        pack_dir_name = "ardublockly_%s" % name_append
         zip_file = zipfile.ZipFile(zip_file_location, "w",
                                    zipfile.ZIP_DEFLATED)
-        # for root_dir, sub_dirs, files in os.walk(copy_dir_name):
-        pack_dir_name = "ardublockly_%s" % tag
         for root_dir, sub_dirs, files in os.walk(pack_dir_name):
             # print('Zipping dir', root_dir)
             zip_file.write(root_dir)
