@@ -51,8 +51,6 @@ class ServerCompilerSettings(object):
     __arduino_types = {'Uno': 'arduino:avr:uno',
                        'Nano 328': 'arduino:avr:nano:cpu=atmega328',
                        'Nano 168': 'arduino:avr:nano:cpu=atmega168',
-                       'Leonardo': 'arduino:avr:leonardo',
-                       'Yun': 'arduino:avr:leonardo',
                        'Mega': 'arduino:avr:mega',
                        'LinkIt 7697': 'linkit7697:linkit7697:generic'}
 
