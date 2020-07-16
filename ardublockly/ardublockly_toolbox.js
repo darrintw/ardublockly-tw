@@ -33,6 +33,13 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="controls_whileUntil"></block>' +
+    '    <block type="time_loop">' +
+    '       <value name="LOOP_SEC">' +
+    '        <block type="math_number">' +
+    '          <field name="NUM">10</field>' +
+    '        </block>' +
+    '      </value>' +
+    '    </block>' +
     '    <block type="controls_for">' +
     '      <value name="FROM">' +
     '        <block type="math_number">' +

@@ -122,6 +122,28 @@ Blockly.Blocks['controls_whileUntil'] = {
     }
 };
 
+Blockly.Blocks['controls_time_loop'] = {
+    /**
+     * Block for 'time' loop.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendValueInput("LOOP_SEC")
+            .setCheck(null)
+            .appendField(Blockly.Msg.CONTROLS_TIME_LOOP);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.CONTROLS_TIME_SEC);
+        this.appendStatementInput("DO")
+            .setCheck(null);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['controls_for'] = {
     /**
      * Block for 'for' loop.

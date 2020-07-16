@@ -306,7 +306,7 @@ class Gen_compressed(threading.Thread):
                         file_lookup(error["file"]), error["lineno"]))
                     print(error["line"])
                     print((" " * error["charno"]) + "^")
-                sys.exit(1)
+                # sys.exit(1)
         else:
             if json_data.has_key("warnings"):
                 warnings = json_data["warnings"]
@@ -322,7 +322,7 @@ class Gen_compressed(threading.Thread):
 
             if not json_data.has_key("compiledCode"):
                 print("FATAL ERROR: Compiler did not return compiledCode.")
-                sys.exit(1)
+                # sys.exit(1)
 
             code = HEADER + "\n" + json_data["compiledCode"]
             for code_statement in remove:
