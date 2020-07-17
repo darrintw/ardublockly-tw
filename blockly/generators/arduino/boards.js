@@ -79,14 +79,7 @@ Blockly.Arduino.Boards.duplicateBoardProfile =
     };
 
 /** Object to contain all Arduino board profiles. */
-Blockly.Arduino.Boards.profiles = {
-    /*
-    'Uno': 'arduino:avr:uno',
-    'Nano 328': 'arduino:avr:nano:cpu=atmega328',
-    'Nano 168': 'arduino:avr:nano:cpu=atmega168',
-    'Mega': 'arduino:avr:mega',
-    'LinkIt 7697': 'linkit7697:linkit7697:generic'*/
-};
+Blockly.Arduino.Boards.profiles = {};
 
 /** Arduino Uno board profile. */
 Blockly.Arduino.Boards.profiles.uno = {
@@ -117,7 +110,7 @@ Blockly.Arduino.Boards.profiles.uno = {
     i2c: [['I2C', 'Wire']],
     i2cPins: {Wire: [['SDA', 'A4'], ['SCL', 'A5']]},
     i2cSpeed: [['100kHz', '100000L'], ['400kHz', '400000L']],
-    builtinLed: [['BUILTIN_1', '13']],
+    builtinLed: [['BUILTIN_LED', '13']],
     interrupt: [['interrupt0', '2'], ['interrupt1', '3']]
 };
 
@@ -151,6 +144,7 @@ Blockly.Arduino.Boards.profiles.nano_168 =
         'arduino:avr:nano:cpu=atmega168');
 
 /** Arduino Duemilanove boards profile (ATmega168p, ATmega328p). */
+/*
 Blockly.Arduino.Boards.profiles.duemilanove_168p = {
     name: 'Arduino Nano 168p',
     description: 'Arduino Duemilanove with ATmega168p compatible board',
@@ -177,6 +171,7 @@ Blockly.Arduino.Boards.profiles.duemilanove_328p =
         'Arduino Duemilanove 328p',
         'Arduino Duemilanove with ATmega328p compatible board',
         'arduino:avr:diecimila');
+*/
 
 /** Arduino Mega board profile. */
 Blockly.Arduino.Boards.profiles.mega = {
@@ -211,6 +206,7 @@ Blockly.Arduino.Boards.profiles.mega = {
 };
 
 /** Arduino Leonardo board profile. */
+/*
 Blockly.Arduino.Boards.profiles.leonardo = {
     name: 'Arduino Leonardo',
     description: 'Arduino Leonardo-compatible board',
@@ -226,7 +222,6 @@ Blockly.Arduino.Boards.profiles.leonardo = {
     serialSpeed: Blockly.Arduino.Boards.profiles.uno.serialSpeed,
     spi: [['SPI', 'SPI']],
     spiPins: {SPI: [['MOSI', 'ICSP-4'], ['MISO', 'ICSP-1'], ['SCK', 'ICSP-3']]},
-    //TODO: confirm the clock divides are the same for the Leonardo and UNO
     spiClockDivide: Blockly.Arduino.Boards.profiles.uno.spiClockDivide,
     i2c: [['I2C', 'Wire']],
     i2cPins: {Wire: [['SDA', '2'], ['SCL', '3']]},
@@ -235,15 +230,19 @@ Blockly.Arduino.Boards.profiles.leonardo = {
     interrupt: [['interrupt0', '3'], ['interrupt1', '2'], ['interrupt2', '0'],
         ['interrupt3', '1'], ['interrupt4', '17']]
 };
+*/
 
 /** Arduino Yun board processor and profile is identical to Leonardo. */
+/*
 Blockly.Arduino.Boards.profiles.yun =
     Blockly.Arduino.Boards.duplicateBoardProfile(
         Blockly.Arduino.Boards.profiles.leonardo,
         'Arduino Yun',
         'Arduino Yun compatible board');
+*/
 
 /** Atmel Xplained mini boards profile (atmega328p, atmega328pb, atmega168pb).*/
+/*
 Blockly.Arduino.Boards.profiles.atmel_atmega328p_xplained_mini = {
     name: 'Atmel atmega328p Xplained mini',
     description: 'Atmel Xplained mini board with atmega328p (Uno compatible)',
@@ -279,8 +278,10 @@ Blockly.Arduino.Boards.profiles.atmel_atmega168pb_xplained_mini =
         'Atmel atmega168pb Xplained mini',
         'Atmel Xplained mini board with atmega168pb (Arduino Uno compatible)',
         'atmel:avr:atmega168pb_xplained_mini');
+*/
 
 /** ESP8266 for the Adafruit Huzzah. */
+/*
 Blockly.Arduino.Boards.profiles.esp8266_huzzah = {
     name: 'Adafruit Feather HUZZAH',
     description: 'Adafruit HUZZAH ESP8266 compatible board',
@@ -298,9 +299,10 @@ Blockly.Arduino.Boards.profiles.esp8266_huzzah = {
     i2c: [['I2C', 'Wire']],
     i2cPins: {Wire: [['SDA', '4'], ['SCL', '5']]},
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
-    builtinLed: [['BUILTIN_1', '0']],
+    builtinLed: [['BUILTIN_LED', '0']],
     interrupt: [['interrupt0', '2'], ['interrupt1', '3']]
 };
+*/
 
 /** ESP8266 for the Wemos D1 R2. */
 Blockly.Arduino.Boards.profiles.esp8266_wemos_d1 = {
@@ -321,12 +323,13 @@ Blockly.Arduino.Boards.profiles.esp8266_wemos_d1 = {
     i2c: [['I2C', 'Wire']],
     i2cPins: {Wire: [['SDA', 'D2'], ['SCL', 'D1']]},
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
-    builtinLed: [['BUILTIN_1', 'D4']],
+    builtinLed: [['BUILTIN_LED', 'D4']],
     interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
         ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']]
 };
 
 /** ESP8266. */
+/*
 Blockly.Arduino.Boards.profiles.esp8266 = {
     name: 'ESP8266',
     description: 'ESP8266',
@@ -345,33 +348,40 @@ Blockly.Arduino.Boards.profiles.esp8266 = {
     i2c: [['I2C', 'Wire']],
     i2cPins: {Wire: [['SDA', 'D2'], ['SCL', 'D1']]},
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
-    builtinLed: [['BUILTIN_1', 'D4']],
+    builtinLed: [['BUILTIN_LED', 'D4']],
     interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
         ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']]
 };
+*/
 
 /** LinkIt 7697. */
 Blockly.Arduino.Boards.profiles.linkit_7697 = {
     name: 'LinkIt 7697',
     description: 'LinkIt 7697',
-    compilerFlag: 'linkit7697:linkit7697:generic',
-    analogPins: [['A0', 'A0']],
-    digitalPins: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
-        ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']],
-    pwmPins: [['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'], ['D4', 'D4'],
-        ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']],
+    compilerFlag: ' LinkIt:linkit_rtos:linkit_7697',
+    analogPins: [['A0', 'A0'], ['A1', 'A1'], ['A2', 'A2'], ['A3', 'A3'], ['A4', 'A4'],
+        ['A5', 'A5'], ['A6', 'A6'], ['A7', 'A7']],
+    digitalPins: [['P0 - UART0_RX', '0'], ['P1 - UART0_TX', '1'], ['P2', '2'], ['P3', '3'],
+        ['P4 - IR_RX', '4'], ['P5 - IR_TX', '5'], ['P6 - UART1_TX', '6'], ['P7 - UART1_RX', '7'],
+        ['P8 - I2C_CLK', '8'], ['P9 - I2C_DATA', '9'], ['P10 - SPI_CS0', '10'], ['P11 - SPI_MOSI', '11'],
+        ['P12 - SPI_MISO', '12'], ['P13 - SPI_SCK', '13'], ['P14', '14'], ['P15', '15'],
+        ['P16', '16'], ['P17', '17']],
+    pwmPins: [['P0', '0'], ['P1', '1'], ['P2', '2'], ['P3', '3'],
+        ['P4', '4'], ['P5', '5'], ['P6', '6'], ['P7', '7'],
+        ['P8', '8'], ['P9', '9'], ['P10', '10'], ['P11', '11'],
+        ['P12', '12'], ['P13', '13'], ['P14', '14'], ['P15', '15'],
+        ['P16', '16'], ['P17', '17']],
     serial: [['serial1', 'Serial1'], ['serial2', 'Serial2']],
     serialPins: {Serial: [['RX', 'RX'], ['TX', 'TX']]},
     serialSpeed: Blockly.Arduino.Boards.profiles.uno.serialSpeed,
     spi: [['SPI', 'SPI']],
-    spiPins: {SPI: [['MOSI', 'D7'], ['MISO', 'D6'], ['SCK', 'D5']]},
+    spiPins: {SPI: [['CS0', '10'], ['MOSI', '11'], ['MISO', '12'], ['SCK', '13']]},
     spiClockDivide: Blockly.Arduino.Boards.profiles.uno.spiClockDivide,
-    i2c: [['I2C', 'Wire']],
-    i2cPins: {Wire: [['SDA', 'D2'], ['SCL', 'D1']]},
+    i2c: [['I2C', 'I2C']],
+    i2cPins: {Wire: [['SDA', '9'], ['SCL', '8']]},
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
-    builtinLed: [['BUILTIN_1', 'D4']],
-    interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
-        ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']]
+    builtinLed: [['BUILTIN_LED', '7']],
+    builtinButton: [['BUILTIN_BUTTON', '6']]
 };
 
 /** Set default profile to Arduino standard-compatible board */

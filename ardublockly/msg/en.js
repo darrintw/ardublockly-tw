@@ -31,6 +31,7 @@ Ardublockly.LOCALISED_TEXT = {
     arduinoBoardDefault: "Arduino Board unknown",
     comPort: "COM Port",
     comPortDefault: "COM Port unknown",
+    baudrate: "Baud Rate",
     defaultIdeButton: "Default IDE Button",
     defaultIdeButtonDefault: "IDE options unknown",
     language: "Language",
