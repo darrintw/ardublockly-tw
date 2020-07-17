@@ -32,6 +32,7 @@ Ardublockly.LOCALISED_TEXT = {
     arduinoBoardDefault: "Arduino開發板未知",
     comPort: "序列埠",
     comPortDefault: "序列埠未知",
+    baudrate: "鮑率",
     defaultIdeButton: "預設IDE按鈕",
     defaultIdeButtonDefault: "IDE選項設定未知",
     language: "語言",

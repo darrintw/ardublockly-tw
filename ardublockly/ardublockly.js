@@ -23,26 +23,28 @@ Ardublockly.init = function () {
 
     Ardublockly.designJsInit();
 
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
-        Ardublockly.initialiseIdeButtons();
-    }
-
     Ardublockly.bindDesignEventListeners();
     Ardublockly.bindActionFunctions();
     Ardublockly.bindBlocklyEventListeners();
 
     // Hackish way to check if not running locally
-    if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+        Ardublockly.initialiseIdeButtons();
+        ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
+            Ardublockly.changeBlocklyArduinoBoard(
+                jsonObj['selected'].toLowerCase().replace(/ /g, '_'));
+        });
+    } else {
         var elId = document.getElementById('ide_buttons_wrapper');
         elId.hidden = true;
         elId = document.getElementById('button_serial_monitor');
         elId.hidden = true;
         elId = document.getElementById('button_examples');
         elId.hidden = true;
-        elId = document.getElementById('button_serial_monitor');
-        elId.hidden = true;
+        /*
         elId = document.getElementById('menu_settings');
         elId.hidden = true;
+         */
         elId = document.getElementById('ide_output');
         elId.hidden = true;
     }
@@ -368,10 +370,9 @@ Ardublockly.openAbout = function () {
  */
 Ardublockly.openSettings = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
-        ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
-            Ardublockly.setArduinoSimpleBoardsHtml(
-                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
-        });
+        jsonObj = Blockly.Arduino.Boards.profiles;
+        Ardublockly.setArduinoSimpleBoardsHtml(
+            ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
     } else {
         ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
             Ardublockly.setArduinoBoardsHtml(
@@ -468,10 +469,6 @@ Ardublockly.setArduinoSimpleBoardsHtml = function (newEl) {
 Ardublockly.setSimpleBoard = function () {
     var el = document.getElementById('simple_board');
     var boardValue = el.options[el.selectedIndex].value;
-    ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {
-        var newEl = ArdublocklyServer.jsonToHtmlDropdown(jsonObj);
-        Ardublockly.setArduinoSimpleBoardsHtml(newEl);
-    });
     Ardublockly.changeBlocklyArduinoBoard(
         boardValue.toLowerCase().replace(/ /g, '_'));
 };
@@ -488,6 +485,7 @@ Ardublockly.setArduinoBoardsHtml = function (newEl) {
     var boardDropdown = document.getElementById('board');
     if (boardDropdown !== null) {
         // Restarting the select elements built by materialize
+        var boardValue = boardDropdown.options[boardDropdown.selectedIndex].value;
         $('select').material_select('destroy');
         newEl.name = 'settings_board';
         newEl.id = 'board';
