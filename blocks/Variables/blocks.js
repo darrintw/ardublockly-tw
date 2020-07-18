@@ -188,15 +188,15 @@ Blockly.Blocks['io_highlow'] = {
         this.setColour(Blockly.Blocks.pin.HUE);
         this.appendDummyInput()
             .appendField(
-                new Blockly.FieldDropdown([[Blockly.Msg.ARD_HIGH, 1], [Blockly.Msg.ARD_LOW, 0]]),
+                new Blockly.FieldDropdown([[Blockly.Msg.ARD_HIGH, 'HIGH'], [Blockly.Msg.ARD_LOW, 'LOW']]),
                 'STATE');
         var thisBlock = this;
-        this.setOutput(true, Blockly.Types.NUMBER.output);
+        this.setOutput(true, [Blockly.Types.NUMBER.output, Blockly.Types.BOOLEAN.output]);
         this.setTooltip(Blockly.Msg.ARD_HIGHLOW_TIP);
     },
-    /** @return {!string} The type of return value for the block, an integer. */
+    /** @return {*[]} The type of return value for the block, an integer. */
     getBlockType: function () {
-        return Blockly.Types.NUMBER;
+        return [Blockly.Types.NUMBER, Blockly.Types.BOOLEAN];
     }
 };
 

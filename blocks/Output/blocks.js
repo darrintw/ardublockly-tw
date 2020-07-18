@@ -147,27 +147,6 @@ Blockly.Blocks['io_analogwrite_var'] = {
     }
 };
 
-Blockly.Blocks['io_highlow'] = {
-    /**
-     * Block for creating a Pin state.
-     * @this Blockly.Block
-     */
-    init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/Constants');
-        this.setColour(Blockly.Blocks.io.HUE);
-        this.appendDummyInput()
-            .appendField(
-                new Blockly.FieldDropdown([[Blockly.Msg.ARD_HIGH, 'HIGH'], [Blockly.Msg.ARD_LOW, 'LOW']]),
-                'STATE');
-        this.setOutput(true, Blockly.Types.BOOLEAN.output);
-        this.setTooltip(Blockly.Msg.ARD_HIGHLOW_TIP);
-    },
-    /** @return {!string} The type of return value for the block, an integer. */
-    getBlockType: function () {
-        return Blockly.Types.BOOLEAN;
-    }
-};
-
 Blockly.Blocks['base_map'] = {
     /**
      * Block for creating a the map function.
