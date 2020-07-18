@@ -190,7 +190,7 @@ Blockly.Blocks['io_highlow'] = {
             .appendField(
                 new Blockly.FieldDropdown([[Blockly.Msg.ARD_HIGH, 'HIGH'], [Blockly.Msg.ARD_LOW, 'LOW']]),
                 'STATE');
-        this.setOutput(true, Blockly.Types.BOOLEAN.output);
+        this.setOutput(true, null);
         this.setTooltip(Blockly.Msg.ARD_HIGHLOW_TIP);
     },
     /** @return {!string} The type of return value for the block, an integer. */
