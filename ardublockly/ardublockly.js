@@ -91,7 +91,7 @@ Ardublockly.bindActionFunctions = function () {
         Ardublockly.ideButtonMiddleAction();
     });
     Ardublockly.bindClick_('button_load_xml', Ardublockly.XmlTextareaToBlocks);
-    //Ardublockly.bindClick_('button_toggle_toolbox', Ardublockly.toggleToolbox);
+    Ardublockly.bindClick_('button_toggle_toolbox', Ardublockly.toggleToolbox);
 
     // Settings modal input field listeners only if they can be edited
     var settingsPathInputListeners = function (elId, setValFunc, setHtmlCallback) {

@@ -68,16 +68,46 @@ Blockly.Arduino['variables_set_type'] = function (block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+/**
+ * Value for defining a digital Pin state.
+ * Arduino code: loop { HIGH / LOW }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Arduino['io_highlow'] = function (block) {
+    var code = block.getFieldValue('STATE');
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+
+/**
+ * Value for defining all Pins.
+ * Arduino code: pin number
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
 Blockly.Arduino['io_allpins'] = function (block) {
     var code = block.getFieldValue('PIN');
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+/**
+ * Value for defining PWM Pins.
+ * Arduino code: pin number
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
 Blockly.Arduino['io_pwmpins'] = function (block) {
     var code = block.getFieldValue('PIN');
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+/**
+ * Value for defining Analog Pins.
+ * Arduino code: pin number
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
 Blockly.Arduino['io_analogpins'] = function (block) {
     var code = block.getFieldValue('PIN');
     return [code, Blockly.Arduino.ORDER_ATOMIC];
