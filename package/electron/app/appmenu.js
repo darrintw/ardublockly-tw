@@ -102,7 +102,7 @@ var getFileMenuData = function () {
                             'Ardublockly.restoreDefault()', true);
                 }
             }, {
-                label: '開啟舊檔',
+                label: '開啟積木檔',
                 accelerator: 'CmdOrCtrl+O',
                 click: function () {
                     BrowserWindow.getFocusedWindow().webContents

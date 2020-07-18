@@ -6,6 +6,9 @@ Ardublockly.LOCALISED_TEXT = {
     /* Menu */
     open: "Open",
     save: "Save",
+    open_block: "Open block file",
+    save_block: "Save block file",
+    save_sketch: "Save Arduino file",
     redo: "Redo",
     undo: "Undo",
     deleteAll: "Delete All",
