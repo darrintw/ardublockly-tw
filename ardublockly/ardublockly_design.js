@@ -17,7 +17,7 @@ var Ardublockly = Ardublockly || {
 /** Initialises all the design related JavaScript. */
 Ardublockly.designJsInit = function () {
     Ardublockly.materializeJsInit();
-    //Ardublockly.resizeToggleToolboxButton();
+    Ardublockly.resizeToggleToolboxButton();
     Ardublockly.sketchNameSizeEffect();
     Ardublockly.sketchNameSet();
 };

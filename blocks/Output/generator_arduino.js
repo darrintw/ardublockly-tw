@@ -222,17 +222,6 @@ Blockly.Arduino['io_analogread_var'] = function (block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-/**
- * Value for defining a digital Pin state.
- * Arduino code: loop { HIGH / LOW }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code with order of operation.
- */
-Blockly.Arduino['io_highlow'] = function (block) {
-    var code = block.getFieldValue('STATE');
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
 Blockly.Arduino['io_pulsein'] = function (block) {
     var pin = block.getFieldValue("PULSEPIN");
     var type = Blockly.Arduino.valueToCode(block, "PULSETYPE", Blockly.Arduino.ORDER_ATOMIC);
