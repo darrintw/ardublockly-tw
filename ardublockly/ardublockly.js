@@ -392,13 +392,10 @@ Ardublockly.openSettings = function () {
             selected: Ardublockly.selectedboard,
             settings_type: 'board'
         }
-        console.log(jsonObj);
         Ardublockly.setArduinoSimpleBoardsHtml(
             ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
     } else {
         ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
-            console.log(Blockly.Arduino.Boards.profiles);
-            console.log(jsonObj);
             Ardublockly.setArduinoBoardsHtml(
                 ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
