@@ -17,7 +17,7 @@ var Ardublockly = Ardublockly || {
 /** Initialises all the design related JavaScript. */
 Ardublockly.designJsInit = function () {
     Ardublockly.materializeJsInit();
-    Ardublockly.resizeToggleToolboxButton();
+    //Ardublockly.resizeToggleToolboxButton();
     Ardublockly.sketchNameSizeEffect();
     Ardublockly.sketchNameSet();
 };
@@ -225,7 +225,7 @@ Ardublockly.displayToolbox = function (show) {
  * The toolbox width does not change with workspace width, so safe to do once.
  */
 Ardublockly.resizeToggleToolboxButton = function () {
-    /*window.dispatchEvent(new Event('resize'));
+    window.dispatchEvent(new Event('resize'));
     var button = $('#button_toggle_toolbox');
     // Sets the toolbox toggle button width to that of the toolbox
     if (Ardublockly.isToolboxVisible() && Ardublockly.blocklyToolboxWidth()) {
@@ -233,7 +233,6 @@ Ardublockly.resizeToggleToolboxButton = function () {
         button.width(Ardublockly.blocklyToolboxWidth());
         button[0].style.display = '';
     }
-    */
 };
 
 /** Resize the container for the Blockly workspace. */
