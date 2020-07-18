@@ -77,6 +77,25 @@ Blockly.Arduino.Boards.duplicateBoardProfile =
             interrupt: originalBoard.interrupt
         }
     };
+Blockly.Arduino.Boards.boardJson = function () {
+    var boardProfiles = JSON.parse(JSON.stringify(Blockly.Arduino.Boards.profiles));
+    var boardlist = [];
+    for (var o in boardProfiles) {
+        var obj = {
+            display_text: boardProfiles[o].name,
+            board_flag: boardProfiles[o].compilerFlag,
+            value: o
+        }
+        boardlist.push(obj);
+    }
+
+    var jsonBoard = {
+        options: boardlist,
+        selected: Ardublockly.selectedboard,
+        settings_type: 'board'
+    }
+    return jsonBoard;
+}
 
 /** Object to contain all Arduino board profiles. */
 Blockly.Arduino.Boards.profiles = {};

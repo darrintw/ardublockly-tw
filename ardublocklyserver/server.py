@@ -173,9 +173,10 @@ def handler_settings_get_all():
             'selected': actions.get_examples_path()
         }, {
             'settings_type': 'board',
-            'options': [{'value': board, 'display_text': board}
-                        for board in actions.get_arduino_boards()],
             'selected': actions.get_arduino_board_selected()
+        }, {
+            'settings_type': 'boardflag',
+            'selected': actions.get_arduino_board_flag_selected()
         }, {
             'settings_type': 'serial',
             'options': [{'value': k, 'display_text': v}
@@ -222,9 +223,10 @@ def handler_settings_get_individual(name):
             'selected': actions.get_examples_path()})
     elif name == 'board':
         response_dict.update({
-            'options': [{'value': board, 'display_text': board}
-                        for board in actions.get_arduino_boards()],
             'selected': actions.get_arduino_board_selected()})
+    elif name == 'boardflag':
+        response_dict.update({
+            'selected': actions.get_arduino_board_flag_selected()})
     elif name == 'serial':
         response_dict.update({
             'options': [{'value': k, 'display_text': v}
@@ -332,8 +334,8 @@ def handler_settings_update_individual(name):
                 set_value = actions.set_examples_path(new_value)
             elif name == 'board':
                 set_value = actions.set_arduino_board(new_value)
-                options = [{'value': board, 'display_text': board}
-                           for board in actions.get_arduino_boards()]
+            elif name == 'boardflag':
+                set_value = actions.set_arduino_board_flag(new_value)
             elif name == 'serial':
                 set_value = actions.set_serial_port(new_value)
                 options = [{'value': k, 'display_text': v}

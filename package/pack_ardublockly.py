@@ -252,6 +252,7 @@ def copy_ardublockly_folder():
         shell_text = "[Arduino_IDE]\n" + \
                      "arduino_exec_path = arduino\\arduino_debug.exe\n" + \
                      "arduino_board = Uno\n" + \
+                     "arduino_board_flag = arduino:avr:uno\n" + \
                      "arduino_serial_port = none\n" + \
                      "\n" + \
                      "[Arduino_Sketch]\n" + \
