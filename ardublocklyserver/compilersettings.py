@@ -45,15 +45,13 @@ class ServerCompilerSettings(object):
     __settings_filename = 'ServerCompilerSettings.ini'
 
     # Class dictionary to define Arduino board types, static content
-    # TODO: This content will be moved from here and integrated completely
-    #       into 'blockly\generators\arduino\boards.js', which should then
-    #       send the selected flag to be saved as a single value
+    '''
     __arduino_types = {'Uno': 'arduino:avr:uno',
                        'Nano 328': 'arduino:avr:nano:cpu=atmega328',
                        'Nano 168': 'arduino:avr:nano:cpu=atmega168',
                        'Mega': 'arduino:avr:mega',
                        'LinkIt 7697': 'LinkIt:linkit_rtos:linkit_7697'}
-
+    '''
     # Class dictionary to contain the computer COM ports, dynamic content
     __serial_ports = {'port0': 'COM1'}
 
@@ -315,53 +313,40 @@ class ServerCompilerSettings(object):
     def get_arduino_board(self):
         return self.__arduino_board_key
 
-    def set_arduino_board(self, new_board):
-        if new_board in self.__arduino_types:
-            self.__arduino_board_value = self.__arduino_types[new_board]
-            self.__arduino_board_key = new_board
-            print('Arduino Board set to:\n\t%s' % self.__arduino_board_key)
-            self.save_settings()
-        else:
-            print('Provided Arduino Board does not exist: !!!'
-                  '\n\t%s' % new_board)
-            if self.__arduino_board_key and self.__arduino_board_value:
-                print('Previous Arduino board type maintained:\n\t%s' %
-                      self.__arduino_board_key)
-            else:
-                self.set_arduino_board_default()
-                print('Default Arduino board type set:\n\t%s' %
-                      self.__arduino_board_key)
-                self.save_settings()
-
-    arduino_board = property(get_arduino_board, set_arduino_board)
-
-    def set_arduino_board_default(self):
-        '''
-        self.__arduino_board_key = sorted(self.__arduino_types.keys())[0]
-        self.__arduino_board_value = \
-            self.__arduino_types[self.__arduino_board_key]
-        '''
-
-        self.__arduino_board_key = 'Uno'
-        self.__arduino_board_value = \
-            self.__arduino_types[self.__arduino_board_key]
-
-    def set_arduino_board_from_file(self, new_board):
-        if new_board in self.__arduino_types:
-            self.__arduino_board_value = self.__arduino_types[new_board]
-            self.__arduino_board_key = new_board
-        else:
-            print('Settings file Arduino Board does not exist:\n\t%s'
-                  % new_board)
-            self.set_arduino_board_default()
-            print('Default Arduino board type set:\n\t%s' %
-                  self.__arduino_board_key)
-
     def get_arduino_board_flag(self):
         return self.__arduino_board_value
 
+    def set_arduino_board(self, new_value):
+        self.__arduino_board_key = new_value
+        print('Arduino Board set to:\n\t%s' % self.__arduino_board_key)
+        self.save_settings()
+
+    def set_arduino_board_flag(self, new_value):
+        self.__arduino_board_value = new_value
+        print('Arduino Value set to:\n\t%s' % self.__arduino_board_value)
+        self.save_settings()
+
+    arduino_board = property(get_arduino_board, set_arduino_board)
+    arduino_board_flag = property(get_arduino_board_flag, set_arduino_board_flag)
+
+    def set_arduino_board_default(self):
+        self.__arduino_board_key = 'Arduino Uno'
+
+    def set_arduino_board_flag_default(self):
+        self.__arduino_board_value = 'arduino:avr:uno'
+
+    def set_arduino_board_from_file(self, new_value):
+        self.__arduino_board_key = new_value
+
+    def set_arduino_board_flag_from_file(self, new_value):
+        self.__arduino_board_value = new_value
+
+    '''
+
     def get_arduino_board_types(self):
         return [key for key in self.__arduino_types]
+
+    '''
 
     #
     # Serial Port and lists accessors
@@ -601,7 +586,6 @@ class ServerCompilerSettings(object):
     def get_baud_rate_options(self):
         return self.__baud_rate_options
 
-
     #
     # Sets all the settings to default values
     #
@@ -613,6 +597,7 @@ class ServerCompilerSettings(object):
         self.set_examples_dir_default()
         self.set_serial_port_default()
         self.set_arduino_board_default()
+        self.set_arduino_board_flag_default()
         self.set_baud_rate_default()
 
     #
@@ -627,6 +612,8 @@ class ServerCompilerSettings(object):
             'Arduino_IDE', 'arduino_exec_path', '%s' % self.compiler_dir)
         settings_parser.set(
             'Arduino_IDE', 'arduino_board', '%s' % self.arduino_board)
+        settings_parser.set(
+            'Arduino_IDE', 'arduino_board_flag', '%s' % self.arduino_board_flag)
         settings_parser.set(
             'Arduino_IDE',
             'arduino_serial_port',
@@ -663,6 +650,7 @@ class ServerCompilerSettings(object):
         if settings_dict:
             self.set_compiler_dir_from_file(settings_dict['arduino_exec_path'])
             self.set_arduino_board_from_file(settings_dict['arduino_board'])
+            self.set_arduino_board_flag_from_file(settings_dict['arduino_board_flag'])
             self.set_serial_port_from_file(settings_dict['arduino_serial_port'])
             self.set_sketch_name_from_file(settings_dict['sketch_name'])
             self.set_sketch_dir_from_file(settings_dict['sketch_directory'])
@@ -678,7 +666,7 @@ class ServerCompilerSettings(object):
         print('\tCompiler directory: %s' % self.__compiler_dir)
         print('\tExamples directory: %s' % self.__examples_dir)
         print('\tArduino Board Key: %s' % self.__arduino_board_key)
-        print('\tArduino Board Value: %s' % self.__arduino_board_value)
+        print('\tArduino Board Flag: %s' % self.__arduino_board_value)
         print('\tSerial Port Value: %s' % self.__serial_port_value)
         print('\tSketch Name: %s' % self.__sketch_name)
         print('\tSketch Directory: %s' % self.__sketch_dir)
@@ -704,6 +692,8 @@ class ServerCompilerSettings(object):
                 settings_parser.get('Arduino_IDE', 'arduino_exec_path')
             settings_dict['arduino_board'] = \
                 settings_parser.get('Arduino_IDE', 'arduino_board')
+            settings_dict['arduino_board_flag'] = \
+                settings_parser.get('Arduino_IDE', 'arduino_board_flag')
             settings_dict['arduino_serial_port'] = \
                 settings_parser.get('Arduino_IDE', 'arduino_serial_port')
             settings_dict['sketch_name'] = \

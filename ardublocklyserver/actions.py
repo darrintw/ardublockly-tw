@@ -258,12 +258,23 @@ def get_arduino_board_selected():
     return ServerCompilerSettings().arduino_board
 
 
-def get_arduino_boards():
-    """Get a list of the available Arduino boards.
+def set_arduino_board_flag(new_value):
+    """Set new Arduino board value in the Settings.
 
-    :return: List of Arduino board types.
+    :param new_value: New Arduino board flag, must be the board flag, not the
+            name (so 'arduino:avr:uno', not 'Uno').
+    :return: Same as the get_arduino_board_flag_selected() function.
     """
-    return ServerCompilerSettings().get_arduino_board_types()
+    ServerCompilerSettings().arduino_board_flag = new_value
+    return get_arduino_board_flag_selected()
+
+
+def get_arduino_board_flag_selected():
+    """Get the selected board from the Settings.
+
+    :return: The currently selected Arduino board flag from the Settings.
+    """
+    return ServerCompilerSettings().arduino_board_flag
 
 
 #

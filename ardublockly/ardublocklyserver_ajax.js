@@ -292,7 +292,7 @@ ArdublocklyServer.setExamplesLocation = function (new_path, callback) {
  * @param {!function} callback Callback function for the server request, must
  *     have one argument to receive the JSON response.
  */
-ArdublocklyServer.requestArduinoBoards = function (callback) {
+ArdublocklyServer.requestArduinoBoard = function (callback) {
     ArdublocklyServer.getJson('/settings/board', callback);
 };
 
@@ -307,6 +307,31 @@ ArdublocklyServer.requestArduinoBoards = function (callback) {
 ArdublocklyServer.setArduinoBoard = function (new_board, callback) {
     ArdublocklyServer.putJson(
         '/settings/board', {"new_value": new_board}, callback);
+};
+
+/**
+ * Request to the Ardublockly Server to return JSON data containing all
+ * available target Arduino Boards, and the selected one in the settings.
+ * The data is then processed into an HTML element and sent to the callback
+ * function as an argument.
+ * @param {!function} callback Callback function for the server request, must
+ *     have one argument to receive the JSON response.
+ */
+ArdublocklyServer.requestArduinoBoardFlag = function (callback) {
+    ArdublocklyServer.getJson('/settings/boardflag', callback);
+};
+
+/**
+ * Sends the inputted Arduino Board type to the Ardublockly Server Settings.
+ * The new settings menu for the Board type is then processed into an HTML
+ * element and sent to the callback function as an argument.
+ * @param {!string} new_flag Indicates which board has been selected.
+ * @param {!function} callback Callback function for the server request, must
+ *     have one argument to receive the JSON response.
+ */
+ArdublocklyServer.setArduinoBoardFlag = function (new_flag, callback) {
+    ArdublocklyServer.putJson(
+        '/settings/boardflag', {"new_value": new_flag}, callback);
 };
 
 /**

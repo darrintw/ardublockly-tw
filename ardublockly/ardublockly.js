@@ -32,7 +32,8 @@ Ardublockly.init = function () {
     // Hackish way to check if not running locally
     if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
         Ardublockly.initialiseIdeButtons();
-        ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
+        ArdublocklyServer.requestArduinoBoard(function (jsonObj) {
+            Ardublockly.selectedboard = jsonObj['selected'];
             Ardublockly.changeBlocklyArduinoBoard(
                 jsonObj['selected'].toLowerCase().replace(/ /g, '_'));
         });
@@ -375,30 +376,14 @@ Ardublockly.openAbout = function () {
  * and opens the Settings modal dialog.
  */
 Ardublockly.openSettings = function () {
+    var jsonBoard = Blockly.Arduino.Boards.boardJson();
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
-        var boardProfiles = JSON.parse(JSON.stringify(Blockly.Arduino.Boards.profiles));
-        var boardlist = [];
-        for (var o in boardProfiles) {
-            var obj = {
-                display_text: boardProfiles[o].name,
-                value: o
-            }
-            console.log(obj);
-            boardlist.push(obj);
-        }
-
-        var jsonObj = {
-            options: boardlist,
-            selected: Ardublockly.selectedboard,
-            settings_type: 'board'
-        }
         Ardublockly.setArduinoSimpleBoardsHtml(
-            ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
     } else {
-        ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
-            Ardublockly.setArduinoBoardsHtml(
-                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
-        });
+        Ardublockly.setArduinoBoardsHtml(
+            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
+
         ArdublocklyServer.requestCompilerLocation(function (jsonObj) {
             Ardublockly.setCompilerLocationHtml(
                 ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
@@ -406,10 +391,6 @@ Ardublockly.openSettings = function () {
         ArdublocklyServer.requestSketchLocation(function (jsonObj) {
             Ardublockly.setSketchLocationHtml(
                 ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
-        });
-        ArdublocklyServer.requestArduinoBoards(function (jsonObj) {
-            Ardublockly.setArduinoBoardsHtml(
-                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
         ArdublocklyServer.requestSerialPorts(function (jsonObj) {
             Ardublockly.setSerialPortsHtml(
@@ -525,10 +506,16 @@ Ardublockly.setBoard = function () {
     var el = document.getElementById('board');
     var boardValue = el.options[el.selectedIndex].value;
     Ardublockly.selectedboard = boardValue;
-    ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {
-        var newEl = ArdublocklyServer.jsonToHtmlDropdown(jsonObj);
-        Ardublockly.setArduinoBoardsHtml(newEl);
-    });
+    var jsonBoard = Blockly.Arduino.Boards.boardJson();
+    var boardFlag;
+    for (var i = 0; i < jsonBoard.options.length; i++) {
+        if (jsonBoard.options[i].value == boardValue) {
+            boardFlag = jsonBoard.options[i].board_flag;
+            break;
+        }
+    }
+    ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {});
+    ArdublocklyServer.setArduinoBoardFlag(boardFlag, function (jsonObj) {});
     Ardublockly.changeBlocklyArduinoBoard(
         boardValue.toLowerCase().replace(/ /g, '_'));
 };
