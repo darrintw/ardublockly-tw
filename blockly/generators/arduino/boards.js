@@ -305,7 +305,7 @@ Blockly.Arduino.Boards.profiles.esp8266_huzzah = {
 */
 
 /** ESP8266 for the Wemos D1 R2. */
-Blockly.Arduino.Boards.profiles.esp8266_wemos_d1 = {
+Blockly.Arduino.Boards.profiles.wemos_d1 = {
     name: 'Wemos D1',
     description: 'Wemos D1 R2 compatible board',
     compilerFlag: 'esp8266:esp8266:generic',
