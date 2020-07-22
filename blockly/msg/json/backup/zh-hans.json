@@ -166,7 +166,7 @@
 	"MATH_MODULO_HELPURL": "https://zh.wikipedia.org/wiki/模除",
 	"MATH_MODULO_TITLE": "取余数自 %1 ÷ %2",
 	"MATH_MODULO_TOOLTIP": "返回这两个数字相除后的余数。",
-	"MATH_CONSTRAIN_TITLE": "限制数字 %1 介于 (低) %2 到 (高) %3",
+	"MATH_CONSTRAIN_TITLE": "限制数字 %1 介于 %2 到 %3",
 	"MATH_CONSTRAIN_TOOLTIP": "限制数字介于两个指定的数字之间",
 	"MATH_RANDOM_INT_HELPURL": "https://zh.wikipedia.org/wiki/随机数生成器",
 	"MATH_RANDOM_INT_TITLE": "从 %1 到 %2 之间的随机整数",
