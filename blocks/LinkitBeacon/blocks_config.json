@@ -1,0 +1,15 @@
+{
+  "categoryName": "LinkitBeacon",
+  "description": "Support LinkitBeacon",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "LinkitBeacon",
+  "toolbox": [
+    "<category>",
+    "  <block type=\"linkit_ble_ibeacon\"></block>",
+    "  <block type=\"linkit_ble_eddy\"></block>",
+    "</category>"
+  ]
+}
