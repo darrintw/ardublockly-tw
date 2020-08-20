@@ -137,4 +137,10 @@ Ardublockly.LOCALISED_TEXT = {
     catSensor: "Sensor",
     catI2CLCD: "I2C LCD Display",
     catPixetto: "Pixetto Sensor",
+    catLinkit: "LinkIt",
+    catLinkitWiFi: "LinkIt Wi-Fi",
+    catLinkitMCS: "LinkIt MCS",
+    catLinkitIR: "LinkIt IR",
+    catLinkitBLE: "LinkIt BLE",
+    catLinkitBeacon: "LinkIt BLE Beacon",
 };

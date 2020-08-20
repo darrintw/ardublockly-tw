@@ -1,0 +1,21 @@
+{
+  "categoryName": "LinkitMCS",
+  "description": "Support Linkit MCS",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "LinkitMCS",
+  "toolbox": [
+    "<category>",
+    "  <block type=\"mcs\"></block>",
+    "  <block type=\"mcslite\"></block>",
+    "  <block type=\"mcs_set_control_channel\"></block>",
+    "  <block type=\"mcs_set_display_channel\"></block>",
+    "  <block type=\"mcs_process\"></block>",
+    "  <block type=\"mcs_channel_value\"></block>",
+    "  <block type=\"mcs_channel2_value\"></block>",
+    "  <block type=\"mcs_channel_updated\"></block>",
+    "</category>"
+  ]
+}

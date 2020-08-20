@@ -33,11 +33,11 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="controls_whileUntil"></block>' +
-    '    <block type="time_loop">' +
+    '    <block type="controls_time_loop">' +
     '       <value name="LOOP_SEC">' +
-    '        <block type="math_number">' +
-    '          <field name="NUM">10</field>' +
-    '        </block>' +
+    '         <block type="math_number">' +
+    '           <field name="NUM">10</field>' +
+    '         </block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="controls_for">' +
@@ -101,6 +101,94 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="math_random_float"></block>' +
+    '  </category>' +
+    '  <sep></sep>' +
+    '  <category id="catVariables" name="Variables">' +
+    '      <block type="variables_get"></block>' +
+    '      <block type="variables_set">' +
+    '        <value name="VALUE">' +
+    '          <block type="math_number"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_set">' +
+    '        <value name="VALUE">' +
+    '          <block type="io_highlow"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_set">' +
+    '        <value name="VALUE">' +
+    '          <block type="io_allpins"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_set">' +
+    '        <value name="VALUE">' +
+    '          <block type="io_pwmpins"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_set">' +
+    '        <value name="VALUE">' +
+    '          <block type="io_analogpins"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_set">' +
+    '        <value name="VALUE">' +
+    '          <block type="variables_set_type"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_init">' +
+    '        <value name="VALUE">' +
+    '          <block type="variables_set_type"></block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="variables_set_type"></block>' +
+    '      <block type="io_highlow"></block>' +
+    '      <block type="io_allpins"></block>' +
+    '      <block type="io_pwmpins"></block>' +
+    '      <block type="io_analogpins"></block>' +
+    '  </category>' +
+    '  <sep></sep>' +
+    '  <category id="catText" name="Text">' +
+    '    <block type="char"></block>' +
+    '    <block type="text"></block>' +
+    '    <block type="text_join"></block>' +
+    '    <block type="text_append"></block>' +
+    '    <block type="text_length"></block>' +
+    '    <block type="text_isEmpty"></block>' +
+    '    <block type="text_indexOf"></block>' +
+    '    <block type="text_getSubstring"></block>' +
+    '  </category>' +
+    '  <sep></sep>' +
+    '  <category id="catTime" name="Time">' +
+    '    <block type="time_delay">' +
+    '      <value name="DELAY_TIME_MILI">' +
+    '        <block type="math_number">' +
+    '          <field name="NUM">1000</field>' +
+    '        </block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="time_delaymicros">' +
+    '      <value name="DELAY_TIME_MICRO">' +
+    '        <block type="math_number">' +
+    '          <field name="NUM">100</field>' +
+    '        </block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="time_millis"></block>' +
+    '    <block type="time_micros"></block>' +
+    '    <block type="infinite_loop"></block>' +
+    '  </category>' +
+    '  <sep></sep>' +
+    '  <category  id="catArray" name="Array">' +
+    '    <block type="array_declare"></block>' +
+    '    <block type="array_modify"></block>' +
+    '    <block type="array_create_with"></block>' +
+    '    <block type="array_getIndex">' +
+    '        <value name="AT">' +
+    '            <shadow type="math_number">' +
+    '                <field name="NUM">1</field>' +
+    '            </shadow>' +
+    '        </value>' +
+    '    </block>' +
     '  </category>' +
     '  <sep></sep>' +
     '</xml>';
