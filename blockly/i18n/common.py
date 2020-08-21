@@ -22,6 +22,7 @@ import json
 import os
 from datetime import datetime
 
+
 class InputError(Exception):
     """Exception raised for errors in the input.
 
@@ -38,7 +39,7 @@ class InputError(Exception):
 
 
 def read_json_file(filename):
-  """Read a JSON file as UTF-8 into a dictionary, discarding @metadata.
+    """Read a JSON file as UTF-8 into a dictionary, discarding @metadata.
 
   Args:
     filename: The filename, which must end ".json".
@@ -50,18 +51,18 @@ def read_json_file(filename):
     InputError: The filename did not end with ".json" or an error occurred
         while opening or reading the file.
   """
-  if not filename.endswith('.json'):
-    raise InputError(filename, 'filenames must end with ".json"')
-  try:
-    # Read in file.
-    with codecs.open(filename, 'r', 'utf-8') as infile:
-      defs = json.load(infile)
-    if '@metadata' in defs:
-      del defs['@metadata']
-    return defs
-  except ValueError, e:
-    print('Error reading ' + filename)
-    raise InputError(filename, str(e))
+    if not filename.endswith('.json'):
+        raise InputError(filename, 'filenames must end with ".json"')
+    try:
+        # Read in file.
+        with codecs.open(filename, 'r', 'utf-8') as infile:
+            defs = json.load(infile)
+        if '@metadata' in defs:
+            del defs['@metadata']
+        return defs
+    except ValueError, e:
+        print('Error reading ' + filename)
+        raise InputError(filename, str(e))
 
 
 def _create_qqq_file(output_dir, ardublockly=False):
@@ -210,22 +211,23 @@ def write_files(author, lang, output_dir, units, write_key_file):
         IOError: An error occurs opening, writing to, or closing a file.
         KeyError: An expected key is missing from units.
     """
+    key_file = ''
     lang_file = _create_lang_file(author, lang, output_dir)
     qqq_file = _create_qqq_file(output_dir)
     if write_key_file:
-      key_file = _create_key_file(output_dir)
+        key_file = _create_key_file(output_dir)
     first_entry = True
     for unit in units:
         if not first_entry:
             lang_file.write(',\n')
             if write_key_file:
-              key_file.write(',\n')
+                key_file.write(',\n')
             qqq_file.write(',\n')
         lang_file.write(u'\t"{0}": "{1}"'.format(
             unit['meaning'],
             unit['source'].replace('"', "'")))
         if write_key_file:
-          key_file.write('"{0}": "{1}"'.format(unit['meaning'], unit['key']))
+            key_file.write('"{0}": "{1}"'.format(unit['meaning'], unit['key']))
         qqq_file.write(u'\t"{0}": "{1}"'.format(
             unit['meaning'],
             unit['description'].replace('"', "'").replace(
@@ -233,7 +235,7 @@ def write_files(author, lang, output_dir, units, write_key_file):
         first_entry = False
     _close_lang_file(lang_file)
     if write_key_file:
-      _close_key_file(key_file)
+        _close_key_file(key_file)
     _close_qqq_file(qqq_file)
 
 

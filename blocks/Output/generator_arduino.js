@@ -9,7 +9,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Arduino.IO');
+//goog.provide('Blockly.Arduino.IO');
 
 goog.require('Blockly.Arduino');
 

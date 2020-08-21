@@ -1,6 +1,6 @@
 'use strict';
 
-goog.provide('Blockly.Msg.zh.hant');
+goog.require('Blockly.Msg.zh.hant');
 
 goog.require('Blockly.Msg');
 

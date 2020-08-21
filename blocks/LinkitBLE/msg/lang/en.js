@@ -40,9 +40,3 @@ Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_URL = "URL（includes protocol, non-protoco
 Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_EDDY_URL_INVALID = "Invalid Eddy Stone URL. Correct form should be either http://domain.com or https://domain.com.";
 Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_HTTP = "http://";
 Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_HTTPS = "https://";
-
-Blockly.Msg.VARIABLES_TYPE_ONOFF = "Switch (boolean)";
-Blockly.Msg.VARIABLES_TYPE_CATEGORY = "Category (String)";
-Blockly.Msg.VARIABLES_TYPE_NUMBER = "int";
-Blockly.Msg.VARIABLES_TYPE_STRING = "String";
-Blockly.Msg.VARIABLES_TYPE_FLOAT = "float";

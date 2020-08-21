@@ -8,22 +8,22 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.linkit');
+goog.provide('Blockly.Blocks.linkitbeacon');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Blocks.linkit.HUE = 35;
+Blockly.Blocks.linkitbeacon.HUE = 35;
 
-Blockly.Blocks.linkit.image = 'img/linkit_7697.png';
+Blockly.Blocks.linkitbeacon.image = 'img/linkit_7697.png';
 
 Blockly.Blocks['linkit_ble_ibeacon'] = {
     init: function () {
         this.setHelpUrl(Blockly.Msg.LINKIT_SET_IBEACON_HELPURL);
-        this.setColour(Blockly.Blocks.linkit.HUE);
+        this.setColour(Blockly.Blocks.linkitbeacon.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.LINKIT_SET_IBEACON_TITLE)
             .setAlign(Blockly.ALIGN_RIGHT);
-        //.appendField(new Blockly.FieldImage(Blockly.Blocks.linkit.image, 64, 43));
+        //.appendField(new Blockly.FieldImage(Blockly.Blocks.linkitbeacon.image, 64, 43));
         this.appendValueInput("UUID")
             .setCheck("String")
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -49,7 +49,7 @@ Blockly.Blocks['linkit_ble_ibeacon'] = {
 Blockly.Blocks['linkit_ble_eddy'] = {
     init: function () {
         this.setHelpUrl(Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_HELPURL);
-        this.setColour(Blockly.Blocks.linkit.HUE);
+        this.setColour(Blockly.Blocks.linkitbeacon.HUE);
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_EDDY);

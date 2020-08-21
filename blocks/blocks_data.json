@@ -1,7 +1,5 @@
 {
   "categories": {
-    "Input": "Input/blocks_config.json",
-    "Output": "Output/blocks_config.json",
     "Comms": "Comms/blocks_config.json",
     "Motors": "Motors/blocks_config.json",
     "Sensor": "Sensor/blocks_config.json",

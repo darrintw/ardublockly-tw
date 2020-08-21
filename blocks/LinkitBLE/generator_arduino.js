@@ -8,17 +8,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.linkit');
-
-goog.require('Blockly.Arduino');
-
-/**
- * @fileoverview Generating Arduino for list blocks.
- * @author hi@vox.vg (Zhi-Wei Cai)
- */
-'use strict';
-
-goog.provide('Blockly.Arduino.linkit');
+goog.provide('Blockly.Arduino.linkitble');
 
 goog.require('Blockly.Arduino');
 

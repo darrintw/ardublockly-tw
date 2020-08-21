@@ -53,10 +53,11 @@ goog.require('Blockly.inject');
 goog.require('Blockly.utils');
 goog.require('goog.color');
 goog.require('goog.userAgent');
-
+goog.require('goog.debug.ErrorHandler');
+goog.require('goog.events.EventWrapper');
 
 // Turn off debugging when compiled.
-var CLOSURE_DEFINES = {'goog.DEBUG': false};
+var CLOSURE_DEFINES = {'goog.DEBUG': true};
 
 /**
  * The main workspace most recently used.
@@ -145,7 +146,7 @@ Blockly.svgSize = function(svg) {
 /**
  * Schedule a call to the resize handler.  Groups of simultaneous events (e.g.
  * a tree of blocks being deleted) are merged into one call.
- * @param {Blockly.WorkspaceSvg} workspace Any workspace in the SVG.
+ * @param {!Blockly.Workspace} workspace Any workspace in the SVG.
  */
 Blockly.asyncSvgResize = function(workspace) {
   if (Blockly.svgResizePending_) {
@@ -550,7 +551,7 @@ Blockly.setMainWorkspaceMetrics_ = function(xyRatio) {
 /**
  * When something in Blockly's workspace changes, call a function.
  * @param {!Function} func Function to call.
- * @return {!Array.<!Array>} Opaque data that can be passed to
+ * @return {!Function} Opaque data that can be passed to
  *     removeChangeListener.
  * @deprecated April 2015
  */
