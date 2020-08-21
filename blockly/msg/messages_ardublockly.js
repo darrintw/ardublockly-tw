@@ -38,6 +38,8 @@ goog.require('Blockly.Msg');
 Blockly.Msg.ARD_TYPE_CHAR = 'Character';
 /// Arduino Types - Text C type String
 Blockly.Msg.ARD_TYPE_TEXT = 'Text';
+/// Arduino Types - Text C type String
+Blockly.Msg.ARD_TYPE_STRING = 'String';
 /// Arduino Types - Boolean type
 Blockly.Msg.ARD_TYPE_BOOL = 'Boolean';
 /// Arduino Types - Short number C type char

@@ -7,6 +7,7 @@
   },
   "ARD_TYPE_CHAR": "字元",
   "ARD_TYPE_TEXT": "字串",
+  "ARD_TYPE_STRING": "字串",
   "ARD_TYPE_BOOL": "布林",
   "ARD_TYPE_SHORT": "短整數",
   "ARD_TYPE_NUMBER": "整數",

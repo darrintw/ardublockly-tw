@@ -8,6 +8,7 @@ Blockly.Msg.BLOCKS_CATEGORY_LINKITWIFI = "LinkIt Wi-Fi";
 // Wi-Fi
 Blockly.Msg.CATEGORY_LINKIT_WIFI = "Wi-Fi";
 Blockly.Msg.CATEGORY_LINKIT_WIFI_DISCONNECT = "Disconnect Wi-Fi";
+Blockly.Msg.CATEGORY_LINKIT_WIFI_GETIP = "Get Wi-Fi IP Address";
 Blockly.Msg.CATEGORY_LINKIT_WIFI_ADVANCED = "Wi-Fi (Advanced)";
 Blockly.Msg.LINKIT_SET_WIFI_HELPURL = "";
 Blockly.Msg.LINKIT_SET_WIFI_TITLE = "Wi-Fi Setup";

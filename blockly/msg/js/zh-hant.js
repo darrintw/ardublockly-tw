@@ -471,6 +471,7 @@ Blockly.Msg.ARD_TYPE_LONG = "長整數";
 Blockly.Msg.ARD_TYPE_NULL = "空值";
 Blockly.Msg.ARD_TYPE_NUMBER = "整數";
 Blockly.Msg.ARD_TYPE_SHORT = "短整數";
+Blockly.Msg.ARD_TYPE_STRING = "字串";
 Blockly.Msg.ARD_TYPE_TEXT = "字串";
 Blockly.Msg.ARD_TYPE_UNDEF = "沒有定義";
 Blockly.Msg.ARD_VAR_AS = "型態";
