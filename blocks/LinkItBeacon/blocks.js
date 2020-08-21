@@ -25,19 +25,19 @@ Blockly.Blocks['linkit_ble_ibeacon'] = {
             .setAlign(Blockly.ALIGN_RIGHT);
         //.appendField(new Blockly.FieldImage(Blockly.Blocks.linkitbeacon.image, 64, 43));
         this.appendValueInput("UUID")
-            .setCheck("String")
+            .setCheck(Blockly.Types.TEXT.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_IBEACON_UUID);
         this.appendValueInput("MAJOR")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_IBEACON_MAJOR);
         this.appendValueInput("MINOR")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_IBEACON_MINOR);
         this.appendValueInput("RSSI")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_IBEACON_RSSI);
         this.setPreviousStatement(true);
@@ -60,7 +60,7 @@ Blockly.Blocks['linkit_ble_eddy'] = {
         //     [Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_HTTPS,"https"]
         //   ]), "TYPE");
         this.appendValueInput("URL")
-            .setCheck("String")
+            .setCheck(Blockly.Types.TEXT.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_URL);
         this.setPreviousStatement(true);

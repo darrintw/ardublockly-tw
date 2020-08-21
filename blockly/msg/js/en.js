@@ -471,6 +471,7 @@ Blockly.Msg.ARD_TYPE_LONG = "Large Number";
 Blockly.Msg.ARD_TYPE_NULL = "Null";
 Blockly.Msg.ARD_TYPE_NUMBER = "Number";
 Blockly.Msg.ARD_TYPE_SHORT = "Short Number";
+Blockly.Msg.ARD_TYPE_STRING = "String";
 Blockly.Msg.ARD_TYPE_TEXT = "Text";
 Blockly.Msg.ARD_TYPE_UNDEF = "Undefined";
 Blockly.Msg.ARD_VAR_AS = "as";

@@ -23,11 +23,11 @@ Blockly.Blocks['mcs'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.LINKIT_SET_MCS_WIFI)
         this.appendValueInput("DEVICEID")
-            .setCheck("String")
+            .setCheck(Blockly.Types.TEXT.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_MCS_DEVICEID);
         this.appendValueInput("DEVICEKEY")
-            .setCheck("String")
+            .setCheck(Blockly.Types.TEXT.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.LINKIT_SET_MCS_DEVICEKEY);
         this.appendStatementInput("CONTENT");
@@ -35,6 +35,35 @@ Blockly.Blocks['mcs'] = {
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
     }
+};
+
+Blockly.Blocks['mcslite'] = {
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCSLITE_HELPURL);
+    this.setColour(Blockly.Blocks.linkitmcs.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_WIFI)
+    this.appendValueInput("DEVICEIDL")
+      .setCheck(Blockly.Types.TEXT.output)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEID);
+    this.appendValueInput("DEVICEKEYL")
+      .setCheck(Blockly.Types.TEXT.output)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEKEY);
+    this.appendValueInput("SERV")
+      .setCheck(Blockly.Types.TEXT.output)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_SERV);
+    this.appendValueInput("PORT")
+      .setCheck(Blockly.Types.NUMBER.output)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_PORT);
+    this.appendStatementInput("CONTENT");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
+  }
 };
 
 Blockly.Blocks['mcs_set_control_channel'] = {
@@ -52,7 +81,7 @@ Blockly.Blocks['mcs_set_control_channel'] = {
             ]), "TYPE")
             .appendField(Blockly.Msg.LINKIT_SET_MCS_CHANNEL1_TAIL);
         this.appendValueInput("CONTROL_CHANNEL")
-            .setCheck("String");
+            .setCheck(Blockly.Types.TEXT.output);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -75,108 +104,11 @@ Blockly.Blocks['mcs_set_display_channel'] = {
             ]), "TYPE")
             .appendField(Blockly.Msg.LINKIT_SET_MCS_CHANNEL2_TAIL);
         this.appendValueInput("DISPLAY_CHANNEL")
-            .setCheck("String");
+            .setCheck(Blockly.Types.TEXT.output);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_add_channel'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendValueInput("ADD_CHANNEL")
-            .setCheck("String")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_ADD_MCS_CHANNEL_TITLE);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_connected'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_CONNECTED_TITLE);
-        this.setOutput(true, 'Boolean');
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_reconnect'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_RECONNECT_TITLE);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_wait_until_connected'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.LINKIT_MCS_WAIT_UNTIL_CONNECTED_TITLE);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_channel_valid'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendValueInput("CHANNEL_VALID")
-            .setCheck("String")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_LED_VALID_TITLE);
-        this.setInputsInline(true);
-        this.setOutput(true, 'Boolean');
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_channel_value'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendValueInput("CHANNEL_VALUE")
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_LED_VALUE_TITLE)
-            .setCheck("String");
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_LED_VALUE_TAIL);
-        this.setInputsInline(true);
-        this.setOutput(true);
-        this.setTooltip(Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcs_channel2_value'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendValueInput("CHANNEL2_VALUE")
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_REMOTE_VALUE_TITLE)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck("String");
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_REMOTE_VALUE_TAIL);
-        this.appendValueInput("SET_VALUE");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP);
     }
 };
 
@@ -192,18 +124,36 @@ Blockly.Blocks['mcs_process'] = {
     }
 };
 
-Blockly.Blocks['mcs_channel_wait_until_read_value'] = {
+Blockly.Blocks['mcs_channel_value'] = {
     init: function () {
         this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
         this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendValueInput("CHANNEL")
-            .setCheck("String")
+        this.appendValueInput("CHANNEL_VALUE")
+            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_LED_VALUE_TITLE)
+            .setCheck(Blockly.Types.TEXT.output);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_LED_VALUE_TAIL);
+        this.setInputsInline(true);
+        this.setOutput(true);
+        this.setTooltip(Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP);
+    }
+};
+
+Blockly.Blocks['mcs_channel2_value'] = {
+    init: function () {
+        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
+        this.setColour(Blockly.Blocks.linkitmcs.HUE);
+        this.appendValueInput("CHANNEL2_VALUE")
+            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_REMOTE_VALUE_TITLE)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_MCS_LED_WAIT_UNTIL_READ_VALUE_TITLE);
+            .setCheck(Blockly.Types.TEXT.output);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.LINKIT_CHECK_MCS_REMOTE_VALUE_TAIL);
+        this.appendValueInput("SET_VALUE");
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
+        this.setTooltip(Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP);
     }
 };
 
@@ -212,42 +162,13 @@ Blockly.Blocks['mcs_channel_updated'] = {
         this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCS_HELPURL);
         this.setColour(Blockly.Blocks.linkitmcs.HUE);
         this.appendValueInput("CHANNEL_UPDATED")
-            .setCheck("String")
+            .setCheck(Blockly.Types.TEXT.output)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.CATEGORY_LINKIT_MCS);
         this.appendDummyInput()
             .appendField(Blockly.Msg.LINKIT_MCS_LED_UPDATED);
         this.setInputsInline(true);
         this.setOutput(true, 'Boolean');
-        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-    }
-};
-
-Blockly.Blocks['mcslite'] = {
-    init: function () {
-        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCSLITE_HELPURL);
-        this.setColour(Blockly.Blocks.linkitmcs.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_WIFI)
-        this.appendValueInput("DEVICEIDL")
-            .setCheck("String")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEID);
-        this.appendValueInput("DEVICEKEYL")
-            .setCheck("String")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEKEY);
-        this.appendValueInput("SERV")
-            .setCheck("String")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_SERV);
-        this.appendValueInput("PORT")
-            .setCheck("Number")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_PORT);
-        this.appendStatementInput("CONTENT");
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
     }
 };

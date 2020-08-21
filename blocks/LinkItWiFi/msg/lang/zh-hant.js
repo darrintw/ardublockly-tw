@@ -10,6 +10,7 @@ Blockly.Msg.CATEGORY_LINKIT_WIFI_ADVANCED = "Wi-Fi (進階)";
 Blockly.Msg.LINKIT_SET_WIFI_HELPURL = "";
 Blockly.Msg.LINKIT_SET_WIFI_TITLE = "Wi-Fi 設定";
 Blockly.Msg.CATEGORY_LINKIT_WIFI_DISCONNECT = "中斷 Wi-Fi 連線";
+Blockly.Msg.CATEGORY_LINKIT_WIFI_GETIP = "取得 Wi-Fi IP 位址";
 Blockly.Msg.LINKIT_SET_WIFI_SSID = "Wi-Fi ID";
 Blockly.Msg.LINKIT_SET_WIFI_PASSWORD = "Wi-Fi 密碼";
 Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP = "";

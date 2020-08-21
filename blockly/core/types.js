@@ -27,6 +27,13 @@ Blockly.Types.TEXT = new Blockly.Type({
   compatibleTypes: [Blockly.Types.CHARACTER]
 });
 
+/** Text string. */
+Blockly.Types.STRING = new Blockly.Type({
+  typeId: 'String',
+  typeMsgName: 'ARD_TYPE_STRING',
+  compatibleTypes: [Blockly.Types.CHARACTER, Blockly.Types.TEXT]
+});
+
 /** Boolean. */
 Blockly.Types.BOOLEAN = new Blockly.Type({
   typeId: 'Boolean',

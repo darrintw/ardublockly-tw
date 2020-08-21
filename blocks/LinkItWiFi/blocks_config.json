@@ -10,11 +10,14 @@
     "<category>",
     "  <block type=\"linkit_wifi_wait_until_ready\">",
     "      <value name=\"SSID\">",
+    "        <block type=\"text\"></block>",
     "      </value>",
     "      <value name=\"PASSWORD\">",
+    "        <block type=\"text\"></block>",
     "      </value>",
     "  </block>",
     "  <block type=\"linkit_wifi_disconnect\"></block>",
+    "  <block type=\"linkit_wifi_getip\"></block>",
     "</category>"
   ]
 }

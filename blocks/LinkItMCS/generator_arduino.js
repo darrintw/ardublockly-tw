@@ -14,7 +14,7 @@ goog.require('Blockly.Arduino');
 
 var controlch;
 
-Blockly.Arduino.mcs = function () {
+Blockly.Arduino["mcs"] = function () {
     var deviceid = Blockly.Arduino.valueToCode(this, 'DEVICEID', Blockly.Arduino.ORDER_ATOMIC) || ''
     var devicekey = Blockly.Arduino.valueToCode(this, 'DEVICEKEY', Blockly.Arduino.ORDER_ATOMIC) || ''
 
@@ -32,133 +32,7 @@ Blockly.Arduino.mcs = function () {
     return code;
 };
 
-Blockly.Arduino.mcs_set_control_channel = function () {
-    var control_channel_id = Blockly.Arduino.valueToCode(this, 'CONTROL_CHANNEL', Blockly.Arduino.ORDER_ATOMIC) || ''
-    control_channel_id = control_channel_id.replace(/\"/g, "");
-    var type = this.getFieldValue('TYPE');
-    Blockly.Arduino.setups_['mcs_add_channel' + control_channel_id] = 'mcs.addChannel(' + control_channel_id + ');';
-    if (type == "boolean") {
-        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerOnOff ' + control_channel_id + '("' + control_channel_id + '");';
-    } else if (type == "category") {
-        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerCategory ' + control_channel_id + '("' + control_channel_id + '");';
-    } else if (type == "float") {
-        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerFloat ' + control_channel_id + '("' + control_channel_id + '");';
-    } else if (type == "String") {
-        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerString ' + control_channel_id + '("' + control_channel_id + '");';
-    } else {
-        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerInteger ' + control_channel_id + '("' + control_channel_id + '");';
-    }
-    var code = '';
-    return code;
-};
-
-Blockly.Arduino.mcs_set_display_channel = function () {
-    var display_channel_id = Blockly.Arduino.valueToCode(this, 'DISPLAY_CHANNEL', Blockly.Arduino.ORDER_ATOMIC) || ''
-    display_channel_id = display_channel_id.replace(/\"/g, "");
-    Blockly.Arduino.setups_['mcs_add_channel' + display_channel_id] = 'mcs.addChannel(' + display_channel_id + ');';
-    var type = this.getFieldValue('TYPE');
-
-    if (type == "boolean") {
-        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayOnOff ' + display_channel_id + '("' + display_channel_id + '");';
-    } else if (type == "category") {
-        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayCategory ' + display_channel_id + '("' + display_channel_id + '");';
-    } else if (type == "float") {
-        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayFloat ' + display_channel_id + '("' + display_channel_id + '");';
-    } else if (type == "String") {
-        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayString ' + display_channel_id + '("' + display_channel_id + '");';
-    } else {
-        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayInteger ' + display_channel_id + '("' + display_channel_id + '");';
-    }
-    var code = '';
-    return code;
-};
-
-Blockly.Arduino.mcs_add_channel = function () {
-    var add_channel = Blockly.Arduino.valueToCode(this, 'ADD_CHANNEL', Blockly.Arduino.ORDER_ATOMIC) || ''
-    add_channel = add_channel.replace(/\"/g, "");
-    Blockly.Arduino.setups_['mcs_add_channel' + add_channel] = 'mcs.addChannel(' + add_channel + ');\n';
-    var code = '';
-    return code;
-};
-
-Blockly.Arduino.mcs_connected = function () {
-    var code = "mcs.connected()";
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-Blockly.Arduino.mcs_reconnect = function () {
-    var code = "mcs.connect();\n";
-    return code;
-};
-
-Blockly.Arduino.mcs_wait_until_connected = function () {
-    Blockly.Arduino.setups_['mcs_wait_until_connected'] = "while(!mcs.connected()) { mcs.connect(); }\n";
-    var code = '';
-    return code;
-};
-
-Blockly.Arduino.mcs_channel_valid = function () {
-    var channel_valid = Blockly.Arduino.valueToCode(this, 'CHANNEL_VALID', Blockly.Arduino.ORDER_ATOMIC) || ''
-    channel_valid = channel_valid.replace(/\"/g, "");
-    var code = channel_valid + ".valid()";
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.mcs_channel_value = function () {
-    var channel_value = Blockly.Arduino.valueToCode(this, 'CHANNEL_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
-    channel_value = channel_value.replace(/\"/g, "");
-
-    controlch = channel_value;
-
-    var code = channel_value + ".value()";
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.mcs_channel2_value = function () {
-    var channel_value = Blockly.Arduino.valueToCode(this, 'CHANNEL2_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
-    channel_value = channel_value.replace(/\"/g, "");
-
-    var channel2_value = Blockly.Arduino.valueToCode(this, 'SET_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
-    channel2_value = channel2_value.replace(/\"/g, "");
-
-    /*var n = Blockly.Arduino.valueToCode(Blockly.Arduino.mcs_channel_value, 'CHANNEL_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
-    n = n.replace(/\"/g, "");*/
-    var code = channel_value + '.set(' + channel2_value + ');\n';
-    return code;
-};
-
-Blockly.Arduino.mcs_process = function () {
-    Blockly.Arduino.setups_['add_serialport'] = 'Serial.begin(9600);';
-
-    var code = 'while (!mcs.connected()) {\n';
-    code = code + '  mcs.connect();\n';
-    code = code + '  if (mcs.connected()) { Serial.println("MCS Reconnected."); }\n';
-    code = code + '}\n';
-    code = code + 'mcs.process(100);\n';
-    return code;
-};
-Blockly.Arduino.mcs_channel_wait_until_read_value = function () {
-    var channel = Blockly.Arduino.valueToCode(this, 'CHANNEL', Blockly.Arduino.ORDER_ATOMIC) || ''
-    channel = channel.replace(/\"/g, "");
-    Blockly.Arduino.setups_['mcs_channel_wait_until_read_value' + channel] = "while(!" + channel + ".valid()) { " + channel + ".value(); }\n";
-    var code = '';
-    return code;
-};
-
-Blockly.Arduino.mcs_channel_updated = function () {
-    var channel_updated = Blockly.Arduino.valueToCode(this, 'CHANNEL_UPDATED', Blockly.Arduino.ORDER_ATOMIC) || ''
-    channel_updated = channel_updated.replace(/\"/g, "");
-    var code = channel_updated + ".updated()";
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-//----------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------- MCS Lite -----------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------------------------
-//
-
-Blockly.Arduino.mcslite = function () {
+Blockly.Arduino["mcslite"] = function () {
     var deviceid = Blockly.Arduino.valueToCode(this, 'DEVICEIDL', Blockly.Arduino.ORDER_ATOMIC) || ''
     var devicekey = Blockly.Arduino.valueToCode(this, 'DEVICEKEYL', Blockly.Arduino.ORDER_ATOMIC) || ''
     var serv = Blockly.Arduino.valueToCode(this, 'SERV', Blockly.Arduino.ORDER_ATOMIC) || ''
@@ -190,9 +64,84 @@ Blockly.Arduino.mcslite = function () {
     code += 'request += "\\r\\nOrigin: null\\r\\n\\r\\n";\n'*/
 };
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------- End of MCSLite ---------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------------
+Blockly.Arduino["mcs_set_control_channel"] = function () {
+    var control_channel_id = Blockly.Arduino.valueToCode(this, 'CONTROL_CHANNEL', Blockly.Arduino.ORDER_ATOMIC) || ''
+    control_channel_id = control_channel_id.replace(/\"/g, "");
+    var type = this.getFieldValue('TYPE');
+    Blockly.Arduino.setups_['mcs_add_channel' + control_channel_id] = 'mcs.addChannel(' + control_channel_id + ');';
+    if (type == "boolean") {
+        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerOnOff ' + control_channel_id + '("' + control_channel_id + '");';
+    } else if (type == "category") {
+        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerCategory ' + control_channel_id + '("' + control_channel_id + '");';
+    } else if (type == "float") {
+        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerFloat ' + control_channel_id + '("' + control_channel_id + '");';
+    } else if (type == "String") {
+        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerString ' + control_channel_id + '("' + control_channel_id + '");';
+    } else {
+        Blockly.Arduino.definitions_['set_MCS_control' + control_channel_id] = 'MCSControllerInteger ' + control_channel_id + '("' + control_channel_id + '");';
+    }
+    var code = '';
+    return code;
+};
+
+Blockly.Arduino["mcs_set_display_channel"] = function () {
+    var display_channel_id = Blockly.Arduino.valueToCode(this, 'DISPLAY_CHANNEL', Blockly.Arduino.ORDER_ATOMIC) || ''
+    display_channel_id = display_channel_id.replace(/\"/g, "");
+    Blockly.Arduino.setups_['mcs_add_channel' + display_channel_id] = 'mcs.addChannel(' + display_channel_id + ');';
+    var type = this.getFieldValue('TYPE');
+
+    if (type == "boolean") {
+        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayOnOff ' + display_channel_id + '("' + display_channel_id + '");';
+    } else if (type == "category") {
+        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayCategory ' + display_channel_id + '("' + display_channel_id + '");';
+    } else if (type == "float") {
+        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayFloat ' + display_channel_id + '("' + display_channel_id + '");';
+    } else if (type == "String") {
+        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayString ' + display_channel_id + '("' + display_channel_id + '");';
+    } else {
+        Blockly.Arduino.definitions_['set_MCS_display' + display_channel_id] = 'MCSDisplayInteger ' + display_channel_id + '("' + display_channel_id + '");';
+    }
+    var code = '';
+    return code;
+};
+
+Blockly.Arduino["mcs_process"] = function () {
+    Blockly.Arduino.setups_['add_serialport'] = 'Serial.begin(9600);';
+
+    var code = 'while (!mcs.connected()) {\n';
+    code = code + '  mcs.connect();\n';
+    code = code + '  if (mcs.connected()) { Serial.println("MCS Reconnected."); }\n';
+    code = code + '}\n';
+    code = code + 'mcs.process(100);\n';
+    return code;
+};
+
+Blockly.Arduino["mcs_channel_value"] = function () {
+    var channel_value = Blockly.Arduino.valueToCode(this, 'CHANNEL_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
+    channel_value = channel_value.replace(/\"/g, "");
+
+    controlch = channel_value;
+
+    var code = channel_value + ".value()";
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino["mcs_channel2_value"] = function () {
+    var channel_value = Blockly.Arduino.valueToCode(this, 'CHANNEL2_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
+    channel_value = channel_value.replace(/\"/g, "");
+
+    var channel2_value = Blockly.Arduino.valueToCode(this, 'SET_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
+    channel2_value = channel2_value.replace(/\"/g, "");
+
+    /*var n = Blockly.Arduino.valueToCode(Blockly.Arduino.mcs_channel_value, 'CHANNEL_VALUE', Blockly.Arduino.ORDER_ATOMIC) || ''
+    n = n.replace(/\"/g, "");*/
+    var code = channel_value + '.set(' + channel2_value + ');\n';
+    return code;
+};
+
+Blockly.Arduino["mcs_channel_updated"] = function () {
+    var channel_updated = Blockly.Arduino.valueToCode(this, 'CHANNEL_UPDATED', Blockly.Arduino.ORDER_ATOMIC) || ''
+    channel_updated = channel_updated.replace(/\"/g, "");
+    var code = channel_updated + ".updated()";
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
