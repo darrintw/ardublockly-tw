@@ -1,11 +1,11 @@
 {
-  "categoryName": "LinkitWiFi",
+  "categoryName": "LinkItWiFi",
   "description": "Support Linkit",
   "languages": [
     "en",
     "zh-hant"
   ],
-  "toolboxName": "LinkitWiFi",
+  "toolboxName": "LinkItWiFi",
   "toolbox": [
     "<category>",
     "  <block type=\"linkit_wifi_wait_until_ready\">",

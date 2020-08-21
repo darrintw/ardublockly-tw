@@ -1,11 +1,11 @@
 {
-  "categoryName": "LinkitBLE",
+  "categoryName": "LinkItBLE",
   "description": "Support Linkit BLE",
   "languages": [
     "en",
     "zh-hant"
   ],
-  "toolboxName": "LinkitBLE",
+  "toolboxName": "LinkItBLE",
   "toolbox": [
     "<category>",
     "  <block type=\"linkit_ble_periphral\">",
