@@ -178,7 +178,7 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="infinite_loop"></block>' +
     '  </category>' +
     '  <sep></sep>' +
-    '  <category  id="catArray" name="Array">' +
+    '  <category id="catArray" name="Array">' +
     '    <block type="array_declare"></block>' +
     '    <block type="array_modify"></block>' +
     '    <block type="array_create_with"></block>' +
@@ -189,6 +189,97 @@ Ardublockly.TOOLBOX_XML =
     '            </shadow>' +
     '        </value>' +
     '    </block>' +
+    '  </category>' +
+    '  <sep></sep>' +
+    '  <category id="catInput" name="Input">' +
+    '    <block type="io_digitalread"></block>' +
+    '    <block type="io_digitalread_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_analogread"></block>' +
+    '    <block type="io_analogread_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_input_pullup">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_pulsein">' +
+    '      <value name="PULSETYPE">' +
+    '        <shadow type="io_highlow"></shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_pulsetimeout">' +
+    '      <value name="PULSETYPE">' +
+    '        <shadow type="io_highlow"></shadow>' +
+    '      </value>' +
+    '      <value name="TIMEOUT">' +
+    '        <shadow type="math_number">' +
+    '          <field name="NUM">100</field>' +
+    '        </shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_pulsetimeout_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get">' +
+    '        </block>' +
+    '      </value>' +
+    '      <value name="PULSETYPE">' +
+    '        <shadow type="io_highlow"></shadow>' +
+    '      </value>' +
+    '      <value name="TIMEOUT">' +
+    '        <shadow type="math_number">' +
+    '          <field name="NUM">1000</field>' +
+    '        </shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '  </category>' +
+    '  <sep></sep>' +
+    '  <category id="catOutput" name="Output">' +
+    '    <block type="io_digitalwrite">' +
+    '      <value name="STATE">' +
+    '        <shadow type="io_highlow"></shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_digitalwrite_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '      <value name="STATE">' +
+    '        <shadow type="io_highlow"></shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_analogwrite">' +
+    '      <value name="NUM">' +
+    '        <shadow type="math_number">' +
+    '          <field name="NUM">100</field>' +
+    '        </shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_analogwrite_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '      <value name="NUM">' +
+    '        <shadow type="math_number">' +
+    '          <field name="NUM">100</field>' +
+    '        </shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_tone">' +
+    '      <field name="TONEPIN">0</field>' +
+    '      <value name="FREQUENCY">' +
+    '        <shadow type="math_number">' +
+    '          <field name="NUM">220</field>' +
+    '        </shadow>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_notone"></block>' +
     '  </category>' +
     '  <sep></sep>' +
     '</xml>';

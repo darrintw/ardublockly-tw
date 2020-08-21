@@ -93,9 +93,9 @@ Blockly.Arduino['controls_whileUntil'] = function (block) {
  * @return {string} Completed code.
  */
 Blockly.Arduino['controls_time_loop'] = function (block) {
-    var time = Blockly.Arduino.valueToCode(block, 'LOOP_SEC') || '10';
+    var time = Blockly.Arduino.valueToCode(block, 'LOOP_SEC', Blockly.Arduino.ORDER_ATOMIC) || '10';
     var dec = 'unsigned long duration_time_diff;';
-    Blockly.Arduino.addVariable('var_dtd', dec, true);
+    Blockly.Arduino.addVariable('var_ctloop', dec, true);
     var argument0 = '!(millis() - duration_time_diff >= ' + time * 1000 + ')';
     var branch = Blockly.Arduino.statementToCode(block, 'DO');
     branch = Blockly.Arduino.addLoopTrap(branch, block.id);

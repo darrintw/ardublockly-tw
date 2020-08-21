@@ -15,11 +15,6 @@
     "  <block type=\"linkit_ble_periphral_is_written\"></block>",
     "  <block type=\"linkit_ble_periphral_get_value\"></block>",
     "  <block type=\"linkit_ble_periphral_write\"></block>",
-    "  <block type=\"linkit_ble_central_get_peripheral_with_index\"></block>",
-    "  <block type=\"linkit_ble_central_scan_count\"></block>",
-    "  <block type=\"linkit_ble_central_scan\"></block>",
-    "  <block type=\"linkit_ble_wait_until_ready\"></block>",
-    "  <block type=\"linkit_ble_ready\"></block>",
     "</category>"
   ]
 }

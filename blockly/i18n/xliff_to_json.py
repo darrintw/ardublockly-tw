@@ -106,7 +106,7 @@ def _process_file(filename):
     """
     try:
         results = []  # list of dictionaries (return value)
-        names = []    # list of names of encountered keys (local variable)
+        names = []  # list of names of encountered keys (local variable)
         try:
             parsed_xml = minidom.parse(filename)
         except IOError:
@@ -120,30 +120,30 @@ def _process_file(filename):
         for trans_unit in parsed_xml.getElementsByTagName('trans-unit'):
             unit = _parse_trans_unit(trans_unit)
             for key in ['description', 'meaning', 'source']:
-                if not key in unit or not unit[key]:
+                if key not in unit or not unit[key]:
                     raise InputError(filename + ':' + unit['key'],
                                      key + ' not found')
             if unit['description'].lower() == 'ibid':
-              if unit['meaning'] not in names:
-                # If the term has not already been described, the use of 'ibid'
-                # is an error.
-                raise InputError(
-                    filename,
-                    'First encountered definition of: ' + unit['meaning']
-                    + ' has definition: ' + unit['description']
-                    + '.  This error can occur if the definition was not'
-                    + ' provided on the first appearance of the message'
-                    + ' or if the source (English-language) messages differ.')
-              else:
-                # If term has already been described, 'ibid' was used correctly,
-                # and we output nothing.
-                pass
+                if unit['meaning'] not in names:
+                    # If the term has not already been described, the use of 'ibid'
+                    # is an error.
+                    raise InputError(
+                        filename,
+                        'First encountered definition of: ' + unit['meaning']
+                        + ' has definition: ' + unit['description']
+                        + '.  This error can occur if the definition was not'
+                        + ' provided on the first appearance of the message'
+                        + ' or if the source (English-language) messages differ.')
+                else:
+                    # If term has already been described, 'ibid' was used correctly,
+                    # and we output nothing.
+                    pass
             else:
-              if unit['meaning'] in names:
-                raise InputError(filename,
-                                 'Second definition of: ' + unit['meaning'])
-              names.append(unit['meaning'])
-              results.append(unit)
+                if unit['meaning'] in names:
+                    raise InputError(filename,
+                                     'Second definition of: ' + unit['meaning'])
+                names.append(unit['meaning'])
+                results.append(unit)
 
         return results
     except IOError, e:
@@ -168,6 +168,7 @@ def sort_units(units, templates):
         InputError: If a meaning definition cannot be found in the
             templates.
     """
+
     def key_function(unit):
         match = re.search(
             '\\smeaning\\s*=\\s*"{0}"\\s'.format(unit['meaning']),
@@ -178,6 +179,7 @@ def sort_units(units, templates):
             raise InputError(args.templates,
                              'msg definition for meaning not found: ' +
                              unit['meaning'])
+
     return sorted(units, key=key_function)
 
 
@@ -201,23 +203,23 @@ def main():
     parser.add_argument('--xlf', help='file containing xlf definitions')
     parser.add_argument('--templates', default=['template.soy'], nargs='+',
                         help='relative path to Soy templates, comma or space '
-                        'separated (used for ordering messages)')
+                             'separated (used for ordering messages)')
     global args
     args = parser.parse_args()
 
     # Make sure output_dir ends with slash.
-    if (not args.output_dir.endswith(os.path.sep)):
-      args.output_dir += os.path.sep
+    if not args.output_dir.endswith(os.path.sep):
+        args.output_dir += os.path.sep
 
     # Process the input file, and sort the entries.
     units = _process_file(args.xlf)
     files = []
     for arg in args.templates:
-      for filename in arg.split(','):
-        filename = filename.strip();
-        if filename:
-          with open(filename) as myfile:
-            files.append(' '.join(line.strip() for line in myfile))
+        for filename in arg.split(','):
+            filename = filename.strip()
+            if filename:
+                with open(filename) as myfile:
+                    files.append(' '.join(line.strip() for line in myfile))
     sorted_units = sort_units(units, ' '.join(files))
 
     # Write the output files.

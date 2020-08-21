@@ -8,19 +8,10 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.linkit');
+goog.provide('Blockly.Arduino.linkitwifi');
 
 goog.require('Blockly.Arduino');
 
-/**
- * @fileoverview Generating Arduino for list blocks.
- * @author hi@vox.vg (Zhi-Wei Cai)
- */
-'use strict';
-
-goog.provide('Blockly.Arduino.linkit');
-
-goog.require('Blockly.Arduino');
 
 var controlch;
 

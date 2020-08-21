@@ -7,18 +7,16 @@
  * @fileOverview Blocks for Arduino Digital and Analogue input and output
  *     functions. The Arduino function syntax can be found at
  *     http://arduino.cc/en/Reference/HomePage
- *
- * TODO: maybe change this to a "PIN" BlocklyType
  */
 'use strict';
 
-//goog.provide('Blockly.Blocks.io');
+goog.provide('Blockly.Blocks.output');
 
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
 
 /** Common HSV hue for all blocks in this category. */
-Blockly.Blocks.io.HUE = 250;
+Blockly.Blocks.output.HUE = 250;
 
 Blockly.Blocks['io_digitalwrite'] = {
     /**
@@ -27,7 +25,7 @@ Blockly.Blocks['io_digitalwrite'] = {
      */
     init: function () {
         this.setHelpUrl('http://arduino.cc/en/Reference/DigitalWrite');
-        this.setColour(Blockly.Blocks.io.HUE);
+        this.setColour(Blockly.Blocks.output.HUE);
         this.appendValueInput('STATE')
             .appendField(Blockly.Msg.ARD_DIGITALWRITE)
             .appendField(new Blockly.FieldDropdown(
@@ -72,7 +70,7 @@ Blockly.Blocks['io_digitalwrite_var'] = {
             "inputsInline": true,
             "previousStatement": true,
             "nextStatement": true,
-            "colour": Blockly.Blocks.io.HUE,
+            "colour": Blockly.Blocks.output.HUE,
             "tooltip": Blockly.Msg.ARD_DIGITALWRITE_TIP,
             "helpUrl": 'http://arduino.cc/en/Reference/DigitalWrite'
         });
@@ -86,7 +84,7 @@ Blockly.Blocks['io_analogwrite'] = {
      */
     init: function () {
         this.setHelpUrl('http://arduino.cc/en/Reference/AnalogWrite');
-        this.setColour(Blockly.Blocks.io.HUE);
+        this.setColour(Blockly.Blocks.output.HUE);
         this.appendValueInput('NUM')
             .appendField(Blockly.Msg.ARD_ANALOGWRITE)
             .appendField(new Blockly.FieldDropdown(
@@ -136,7 +134,7 @@ Blockly.Blocks['io_analogwrite_var'] = {
             "inputsInline": true,
             "previousStatement": true,
             "nextStatement": true,
-            "colour": Blockly.Blocks.io.HUE,
+            "colour": Blockly.Blocks.output.HUE,
             "tooltip": Blockly.Msg.ARD_ANALOGWRITE_TIP,
             "helpUrl": 'http://arduino.cc/en/Reference/AnalogWrite'
         });
@@ -154,7 +152,7 @@ Blockly.Blocks['base_map'] = {
      */
     init: function () {
         this.setHelpUrl('http://arduino.cc/en/Reference/map');
-        this.setColour(Blockly.Blocks.io.HUE);
+        this.setColour(Blockly.Blocks.output.HUE);
         this.appendValueInput('NUM')
             .appendField(Blockly.Msg.ARD_MAP)
             .setCheck(Blockly.Types.NUMBER.checkList);
@@ -185,7 +183,7 @@ Blockly.Blocks['io_tone'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setColour(Blockly.Blocks.io.HUE);
+        this.setColour(Blockly.Blocks.output.HUE);
         this.setTooltip(Blockly.Msg.ARD_TONE_TIP);
         this.setHelpUrl('https://www.arduino.cc/en/Reference/tone');
     },
@@ -221,7 +219,7 @@ Blockly.Blocks['io_notone'] = {
                 Blockly.Arduino.Boards.selected.digitalPins), "TONEPIN");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setColour(Blockly.Blocks.io.HUE);
+        this.setColour(Blockly.Blocks.output.HUE);
         this.setTooltip(Blockly.Msg.ARD_NOTONE_TIP);
         this.setHelpUrl('https://www.arduino.cc/en/Reference/noTone');
     },

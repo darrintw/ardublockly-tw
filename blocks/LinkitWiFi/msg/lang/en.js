@@ -24,7 +24,3 @@ Blockly.Msg.LINKIT_SET_WIFI_STATUS_CONNECTION_LOST = "Connection Lost";
 Blockly.Msg.LINKIT_SET_WIFI_STATUS_DISCONNECTED = "Disconnected";
 Blockly.Msg.LINKIT_SET_WIFI_READY_TITLE = "Wi-Fi Connected";
 Blockly.Msg.LINKIT_SET_WIFI_UNTIL_READY_TITLE = "Connect to Wi-Fi AP";
-
-Blockly.Msg.VARIABLES_TYPE_NUMBER = "int";
-Blockly.Msg.VARIABLES_TYPE_STRING = "String";
-Blockly.Msg.VARIABLES_TYPE_FLOAT = "float";
