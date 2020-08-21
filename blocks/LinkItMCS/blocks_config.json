@@ -1,11 +1,11 @@
 {
-  "categoryName": "LinkitMCS",
+  "categoryName": "LinkItMCS",
   "description": "Support Linkit MCS",
   "languages": [
     "en",
     "zh-hant"
   ],
-  "toolboxName": "LinkitMCS",
+  "toolboxName": "LinkItMCS",
   "toolbox": [
     "<category>",
     "  <block type=\"mcs\"></block>",
