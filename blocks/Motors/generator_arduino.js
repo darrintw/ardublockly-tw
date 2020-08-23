@@ -70,7 +70,7 @@ Blockly.Arduino['servo_read'] = function (block) {
 Blockly.Arduino['servo_write'] = function (block) {
     var servoName = block.getFieldValue('SERVO_NAME');
     var servoAngle = Blockly.Arduino.valueToCode(
-        block, 'SERVO_ANGLE') || 5;
+        block, 'SERVO_ANGLE', Blockly.Arduino.ORDER_ATOMIC) || 5;
     var servoId = Blockly.Arduino.variableDB_.getName(
         servoName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
@@ -176,7 +176,7 @@ Blockly.Arduino['afmotor_var'] = function (block) {
             feqName = '';
     }
     var afmotor_speed = Blockly.Arduino.valueToCode(
-        block, 'afmotor_speed') || 255;
+        block, 'afmotor_speed', Blockly.Arduino.ORDER_ATOMIC) || 255;
 
     Blockly.Arduino.addInclude('AF_DCMotor', '#include <AFMotor.h>');
     Blockly.Arduino.addDeclaration('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
