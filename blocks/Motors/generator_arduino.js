@@ -70,7 +70,7 @@ Blockly.Arduino['servo_read'] = function (block) {
 Blockly.Arduino['servo_write'] = function (block) {
     var servoName = block.getFieldValue('SERVO_NAME');
     var servoAngle = Blockly.Arduino.valueToCode(
-        block, 'SERVO_ANGLE', Blockly.Arduino.ORDER_ATOMIC) || 5;
+        block, 'SERVO_ANGLE', Blockly.Arduino.ORDER_ATOMIC);
     var servoId = Blockly.Arduino.variableDB_.getName(
         servoName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
@@ -79,7 +79,7 @@ Blockly.Arduino['servo_write'] = function (block) {
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
     var code = servoId + '.write(' + servoAngle + ');\n';
-    return [code, Blockly.Arduino.ORDER_NONE];
+    return code;
 };
 
 /**
