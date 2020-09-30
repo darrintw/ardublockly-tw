@@ -79,7 +79,7 @@ Blockly.Arduino['servo_write'] = function (block) {
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
     var code = servoId + '.write(' + servoAngle + ');\n';
-    return code;
+    return [code, Blockly.Arduino.ORDER_NONE];
 };
 
 /**
