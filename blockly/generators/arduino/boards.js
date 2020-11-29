@@ -162,35 +162,12 @@ Blockly.Arduino.Boards.profiles.nano_168 =
         'Arduino Nano with ATmega168 compatible board',
         'arduino:avr:nano:cpu=atmega168');
 
-/** Arduino Duemilanove boards profile (ATmega168p, ATmega328p). */
-/*
-Blockly.Arduino.Boards.profiles.duemilanove_168p = {
-    name: 'Arduino Nano 168p',
-    description: 'Arduino Duemilanove with ATmega168p compatible board',
-    compilerFlag: 'arduino:avr:diecimila:cpu=atmega168',
-    analogPins: Blockly.Arduino.Boards.profiles.uno.analogPins,
-    digitalPins: Blockly.Arduino.Boards.profiles.uno.digitalPins,
-    pwmPins: Blockly.Arduino.Boards.profiles.uno.pwmPins,
-    serial: Blockly.Arduino.Boards.profiles.uno.serial,
-    serialPins: Blockly.Arduino.Boards.profiles.uno.serialPins,
-    serialSpeed: Blockly.Arduino.Boards.profiles.uno.serialSpeed,
-    spi: Blockly.Arduino.Boards.profiles.uno.spi,
-    spiPins: Blockly.Arduino.Boards.profiles.uno.spiPins,
-    spiClockDivide: Blockly.Arduino.Boards.profiles.uno.spiClockDivide,
-    i2c: Blockly.Arduino.Boards.profiles.uno.i2c,
-    i2cPins: Blockly.Arduino.Boards.profiles.uno.i2cPins,
-    i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
-    builtinLed: Blockly.Arduino.Boards.profiles.uno.builtinLed,
-    interrupt: Blockly.Arduino.Boards.profiles.uno.interrupt
-};
-
-Blockly.Arduino.Boards.profiles.duemilanove_328p =
+Blockly.Arduino.Boards.profiles.nano_328old =
     Blockly.Arduino.Boards.duplicateBoardProfile(
-        Blockly.Arduino.Boards.profiles.duemilanove_168p,
-        'Arduino Duemilanove 328p',
-        'Arduino Duemilanove with ATmega328p compatible board',
-        'arduino:avr:diecimila');
-*/
+        Blockly.Arduino.Boards.profiles.nano_328,
+        'Arduino Nano 328 old bootloader',
+        'Arduino Nano with ATmega328 and old bootloader board',
+        'arduino:avr:nano:cpu=atmega328old');
 
 /** Arduino Mega board profile. */
 Blockly.Arduino.Boards.profiles.mega = {
@@ -258,45 +235,6 @@ Blockly.Arduino.Boards.profiles.yun =
         Blockly.Arduino.Boards.profiles.leonardo,
         'Arduino Yun',
         'Arduino Yun compatible board');
-*/
-
-/** Atmel Xplained mini boards profile (atmega328p, atmega328pb, atmega168pb).*/
-/*
-Blockly.Arduino.Boards.profiles.atmel_atmega328p_xplained_mini = {
-    name: 'Atmel atmega328p Xplained mini',
-    description: 'Atmel Xplained mini board with atmega328p (Uno compatible)',
-    compilerFlag: 'atmel:avr:atmega328p_xplained_mini',
-    analogPins: Blockly.Arduino.Boards.profiles.uno.analogPins,
-    digitalPins: Blockly.Arduino.Boards.profiles.uno.digitalPins.concat(
-        [['20', '20']]),
-    pwmPins: Blockly.Arduino.Boards.profiles.uno.pwmPins,
-    serial: Blockly.Arduino.Boards.profiles.uno.serial,
-    serialPins: Blockly.Arduino.Boards.profiles.uno.serialPins,
-    serialSpeed: Blockly.Arduino.Boards.profiles.uno.serialSpeed,
-    spi: Blockly.Arduino.Boards.profiles.uno.spi,
-    spiPins: Blockly.Arduino.Boards.profiles.uno.spiPins,
-    spiClockDivide: Blockly.Arduino.Boards.profiles.uno.spiClockDivide,
-    i2c: Blockly.Arduino.Boards.profiles.uno.i2c,
-    i2cPins: Blockly.Arduino.Boards.profiles.uno.i2cPins,
-    i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
-    builtinLed: [['BUILTIN_LED', '13']],
-    interrupt: Blockly.Arduino.Boards.profiles.uno.interrupt,
-    builtinButton: [['BUILTIN_BUTTON', '20']]
-};
-
-Blockly.Arduino.Boards.profiles.atmel_atmega328pb_xplained_mini =
-    Blockly.Arduino.Boards.duplicateBoardProfile(
-        Blockly.Arduino.Boards.profiles.atmel_atmega328p_xplained_mini,
-        'Atmel atmega328pb Xplained mini',
-        'Atmel Xplained mini board with atmega328pb (Arduino Uno compatible)',
-        'atmel:avr:atmega328pb_xplained_mini');
-
-Blockly.Arduino.Boards.profiles.atmel_atmega168pb_xplained_mini =
-    Blockly.Arduino.Boards.duplicateBoardProfile(
-        Blockly.Arduino.Boards.profiles.atmel_atmega328p_xplained_mini,
-        'Atmel atmega168pb Xplained mini',
-        'Atmel Xplained mini board with atmega168pb (Arduino Uno compatible)',
-        'atmel:avr:atmega168pb_xplained_mini');
 */
 
 /** ESP8266 for the Adafruit Huzzah. */
