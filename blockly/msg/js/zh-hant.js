@@ -409,6 +409,7 @@ Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST = Blockly.Msg.LISTS_INLIST;
 Blockly.Msg.PROCEDURES_DEFRETURN_COMMENT = Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT;
 
 // Ardublockly strings
+Blockly.Msg.ARD_ANALOGREAD = "類比輸入 腳位#";
 Blockly.Msg.ARD_ANALOGREAD_MSG = "類比輸入 腳位#%1";
 Blockly.Msg.ARD_ANALOGREAD_TIP = "傳回選擇的類比腳位 0 到 1024 之間的值";
 Blockly.Msg.ARD_ANALOGWRITE = "類比輸出 PWM 腳位#";

@@ -409,6 +409,7 @@ Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST = Blockly.Msg.LISTS_INLIST;
 Blockly.Msg.PROCEDURES_DEFRETURN_COMMENT = Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT;
 
 // Ardublockly strings
+Blockly.Msg.ARD_ANALOGREAD = "read analog %1";
 Blockly.Msg.ARD_ANALOGREAD_MSG = "read analog %1";
 Blockly.Msg.ARD_ANALOGREAD_TIP = "Return value between 0 and 1024";
 Blockly.Msg.ARD_ANALOGWRITE = "set analog Pin#";

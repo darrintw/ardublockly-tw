@@ -61,6 +61,7 @@
 	"ARD_ANALOGREAD_MSG": "Arduino",
 	"ARD_INPUT_PULLUP_MSG": "Arduino",
 	"ARD_INPUT_PULLUP_TIP": "Arduino",
+	"ARD_ANALOGREAD": "Arduino",
 	"ARD_ANALOGREAD_TIP": "Arduino",
 	"ARD_DIGITALREAD": "Arduino",
 	"ARD_DIGITALREAD_TIP": "Arduino",

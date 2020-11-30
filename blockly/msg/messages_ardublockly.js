@@ -175,6 +175,8 @@ Blockly.Msg.ARD_INPUT_PULLUP_MSG = 'enable internal pullup resister at Pin %1';
 /// Arduino
 Blockly.Msg.ARD_INPUT_PULLUP_TIP = 'enable internal pullup resister at specified Pin';
 /// Arduino
+Blockly.Msg.ARD_ANALOGREAD = 'read analog %1';
+/// Arduino
 Blockly.Msg.ARD_ANALOGREAD_TIP = 'Return value between 0 and 1024';
 /// Arduino
 Blockly.Msg.ARD_DIGITALREAD = 'read digital Pin#';

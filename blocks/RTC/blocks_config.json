@@ -1,0 +1,21 @@
+{
+    "categoryName": "RTC",
+    "description": "RTC timer.",
+    "languages": ["en", "zh-hant"],
+    "toolboxName": "RTC",
+    "toolbox": [
+        "<category>",
+        "  <block type=\"rtc_ds1302_setup\">",
+        "    <value name=\"DATA_PIN\">",
+        "      <block type=\"io_allpins\"></block>",
+        "    </value>",
+        "    <value name=\"CLK_PIN\">",
+        "      <block type=\"io_allpins\"></block>",
+        "    </value>",
+        "    <value name=\"RST_PIN\">",
+        "      <block type=\"io_allpins\"></block>",
+        "    </value>",
+        "  </block>",
+        "</category>"
+    ]
+}
