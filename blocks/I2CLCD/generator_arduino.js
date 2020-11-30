@@ -11,12 +11,11 @@ goog.require('Blockly.Arduino');
 
 function initI2CLCD(block, i2cAddr, replace, row, col) {
     var i2cLCDDeclareCode =
-        'LiquidCrystal_I2C I2CLCD( ' +
-        i2cAddr +
-        ', 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);';
-    var i2cLCDSetupCode = 'I2CLCD.begin(' + col + ',' + row + ');';
+        'LiquidCrystal_I2C I2CLCD(' + i2cAddr + ', ' + col + ', ' + row + ');';
+    var i2cLCDSetupCode = 'I2CLCD.begin();';
 
-    Blockly.Arduino.addInclude('I2CLCD_tag', '#include <Wire.h>\n#include <LiquidCrystal_I2C.h>');
+    Blockly.Arduino.addInclude('Wire_tag', '#include <Wire.h>');
+    Blockly.Arduino.addInclude('I2CLCD_tag', '#include <LiquidCrystal_I2C.h>');
 
     if (replace === true && Blockly.Arduino.definitions_['I2CLCD_tag'] !== undefined) {
         Blockly.Arduino.definitions_['I2CLCD_tag'] = i2cLCDDeclareCode;
@@ -36,34 +35,63 @@ function initI2CLCD(block, i2cAddr, replace, row, col) {
  * Code generator for block for setting the serial com speed.
  * Arduino code: setup{ Serial.begin(X); }
  * @param {!Blockly.Block} block Block to generate the code from.
- * @return {null} Completed code.
+ * @return {string} Completed code.
  */
 Blockly.Arduino['I2CLCD_scan'] = function (block) {
     Blockly.Arduino.addInclude("I2CSCAN", "#include <Wire.h>")
-    var code = '  Serial.begin(9600);\n' +
-        '    while (!Serial) { } \n' +
-        '    Serial.println (); \n' +
-        '    Serial.println ("I2C scanner. Scanning ..."); \n' +
-        '    byte count = 0; \n' +
-        '    Wire.begin(); \n' +
-        '    for (byte i = 8; i < 120; i++) { \n' +
-        '        Wire.beginTransmission (i); \n' +
-        '        if (Wire.endTransmission () == 0) { \n' +
-        '          Serial.print ("Found address: "); \n' +
-        '          Serial.print (i, DEC); \n' +
-        '          Serial.print (" (0x"); \n' +
-        '          Serial.print (i, HEX); \n' +
-        '          Serial.println (")"); \n' +
-        '          count++; \n' +
-        '          delay (1); // maybe unneeded? \n' +
-        '        } // end of good response \n' +
-        '    } // end of for loop \n' +
-        '    Serial.println ("Done."); \n' +
-        '    Serial.print ("Found "); \n' +
-        '    Serial.print (count, DEC); \n' +
-        '    Serial.println (" device(s).");';
-    Blockly.Arduino.addSetup("I2CSCAN", code, true);
-    return null;
+    var setup = 'Wire.begin();\n' +
+        '  Serial.begin(9600);\n' +
+        '  while (!Serial);\n' +
+        '  Serial.println("\\nI2C 掃描器");\n' +
+        '  Serial.print("SDA腳位: ");\n' +
+        '  Serial.println(SDA);\n' +
+        '  Serial.print("SCL腳位: ");\n' +
+        '  Serial.println(SCL);';
+    Blockly.Arduino.addSetup("I2CSCAN", setup, true);
+    var code = '  byte error, address;\n' +
+        '  int nDevices;\n' +
+        '\n' +
+        '  Serial.println("掃描中...");\n' +
+        '\n' +
+        '  nDevices = 0;\n' +
+        '  for (address = 1; address < 127; address++ )\n' +
+        '  {\n' +
+        '    /*\n' +
+        '      使用 Wire.endTransmission(addreee)確認在該位址是否有資料\n' +
+        '    */\n' +
+        '    Wire.beginTransmission(address);\n' +
+        '    error = Wire.endTransmission();\n' +
+        '\n' +
+        '    if (error == 0)\n' +
+        '    {\n' +
+        '      Serial.print("在 0x");\n' +
+        '      if (address < 16)\n' +
+        '        Serial.print("0");\n' +
+        '      Serial.print(address, HEX);\n' +
+        '      Serial.println(" 找到I2C設備！");\n' +
+        '\n' +
+        '      nDevices++;\n' +
+        '    }\n' +
+        '    else if (error == 4)\n' +
+        '    {\n' +
+        '      Serial.print("0x");\n' +
+        '      if (address < 16)\n' +
+        '        Serial.print("0");\n' +
+        '      Serial.print(address, HEX);\n' +
+        '      Serial.println(" 發生未知錯誤");\n' +
+        '    }\n' +
+        '  }\n' +
+        '  if (nDevices == 0)\n' +
+        '  {\n' +
+        '    Serial.println("未找到任何I2C設備\\n");\n' +
+        '  }\n' +
+        '  else\n' +
+        '  {\n' +
+        '    Serial.println("完成\\n");\n' +
+        '  }\n' +
+        '\n' +
+        '  delay(5000); // 每5秒掃描一次';
+    return code;
 };
 
 /**
@@ -87,29 +115,6 @@ Blockly.Arduino['I2CLCD_setup'] = function (block) {
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {string} Completed code.
  */
-/*
-Blockly.Arduino['I2CLCD_printLine'] = function (block) {
-    var content = Blockly.Arduino.valueToCode(
-        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
-    var row = block.getFieldValue('ROW');
-
-    var func = [];
-    func.push('String ' + Blockly.Arduino.DEF_FUNC_NAME + '(String content, int width) {');
-    func.push('  int len = content.length();');
-    func.push('  for(int i = 0;i < (width - len);i++)');
-    func.push('    content += " ";');
-    func.push('  return content;');
-    func.push('}');
-    var funcName = Blockly.Arduino.addFunction(
-        '__rightPaddingStr', func.join('\n'));
-
-    var code =
-        'I2CLCD.setCursor(0, ' + row + ');\n' +
-        'I2CLCD.print(__rightPaddingStr(String(' + content + '), 16));\n';
-    //initI2CLCD(block, 0x3F, false);
-    return code;
-};
-*/
 
 Blockly.Arduino['I2CLCD_move'] = function (block) {
     var x = Blockly.Arduino.valueToCode(
@@ -118,14 +123,12 @@ Blockly.Arduino['I2CLCD_move'] = function (block) {
         block, 'Y', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     var code = 'I2CLCD.setCursor(' + x + ', ' + y + ');\n'
-    //initI2CLCD(block, 0x3F, false);
     return code;
 };
 
 Blockly.Arduino['I2CLCD_clear'] = function (block) {
 
     var code = 'I2CLCD.clear();\n'
-    //initI2CLCD(block, 0x3F, false);
     return code;
 };
 
@@ -134,18 +137,15 @@ Blockly.Arduino['I2CLCD_print'] = function (block) {
         block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     var code = 'I2CLCD.print(' + content + ');\n'
-    //initI2CLCD(block, 0x3F, false);
     return code;
 };
 
 Blockly.Arduino['I2CLCD_backlightOn'] = function (block) {
     var code = 'I2CLCD.backlight();\n';
-    //initI2CLCD(block, 0x3F, false);
     return code;
 };
 
 Blockly.Arduino['I2CLCD_backlightOff'] = function (block) {
     var code = 'I2CLCD.noBacklight();\n';
-    //initI2CLCD(block, 0x3F, false);
     return code;
 };

@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "carlosperate",
-		"lastupdated": "2020-08-21 14:31:35.001000",
+		"lastupdated": "2020-11-30 14:23:28.458000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -67,6 +67,7 @@
 	"ARD_ANALOGREAD_MSG": "read analog %1",
 	"ARD_INPUT_PULLUP_MSG": "enable internal pullup resister at Pin %1",
 	"ARD_INPUT_PULLUP_TIP": "enable internal pullup resister at specified Pin",
+	"ARD_ANALOGREAD": "read analog %1",
 	"ARD_ANALOGREAD_TIP": "Return value between 0 and 1024",
 	"ARD_DIGITALREAD": "read digital Pin#",
 	"ARD_DIGITALREAD_TIP": "Read digital value on a Pin: HIGH or LOW",
