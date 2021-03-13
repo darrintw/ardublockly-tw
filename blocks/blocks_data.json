@@ -4,7 +4,7 @@
     "Motors": "Motors/blocks_config.json",
     "Sensor": "Sensor/blocks_config.json",
     "I2CLCD": "I2CLCD/blocks_config.json",
-    "WS2812LEDS": "WS2812Leds/blocks_config.json",
+    "WS2812Leds": "WS2812Leds/blocks_config.json",
     "LinkItWiFi": "LinkItWiFi/blocks_config.json",
     "LinkItMCS": "LinkItMCS/blocks_config.json",
     "LinkItBLE": "LinkItBLE/blocks_config.json",
