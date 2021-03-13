@@ -50,7 +50,8 @@ class ServerCompilerSettings(object):
                        'Nano 328': 'arduino:avr:nano:cpu=atmega328',
                        'Nano 168': 'arduino:avr:nano:cpu=atmega168',
                        'Mega': 'arduino:avr:mega',
-                       'LinkIt 7697': 'LinkIt:linkit_rtos:linkit_7697'}
+                       'LinkIt 7697': 'LinkIt:linkit_rtos:linkit_7697',
+                       'digistump:avr:digispark-tiny'}
     '''
     # Class dictionary to contain the computer COM ports, dynamic content
     __serial_ports = {'port0': 'COM1'}
@@ -491,7 +492,7 @@ class ServerCompilerSettings(object):
     def populate_serial_port_list(self):
         """Populate the serial ports dictionary with the available ports."""
         port_list = ardublocklyserver.serialport.get_port_list()
-        self.__serial_ports = {}
+        self.__serial_ports = {'USB':'USB'}
         if port_list:
             port_id = 0
             for item in port_list:

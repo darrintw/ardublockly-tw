@@ -74,7 +74,8 @@ Blockly.Arduino.Boards.duplicateBoardProfile =
             i2cPins: originalBoard.i2cPins,
             i2cSpeed: originalBoard.i2cSpeed,
             builtinLed: originalBoard.builtinLed,
-            interrupt: originalBoard.interrupt
+            interrupt: originalBoard.interrupt,
+            usb: originalBoard.usb
         }
     };
 Blockly.Arduino.Boards.boardJson = function () {
@@ -343,6 +344,23 @@ Blockly.Arduino.Boards.profiles.linkit_7697 = {
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
     builtinLed: [['BUILTIN_LED', '7']],
     builtinButton: [['BUILTIN_BUTTON', '6']]
+};
+
+/** Digispark Attiny85 **/
+Blockly.Arduino.Boards.profiles.Attiny85 = {
+    name: 'Digispark Attiny85 (Default - 16.5mhz)',
+    description: 'Digispark Attiny85 (Default - 16.5mhz)',
+    compilerFlag: 'digistump:avr:digispark-tiny',
+    analogPins: [['P2', 'P2'], ['P3', 'P3'], ['P4', 'P4'], ['P5', 'P5']],
+    digitalPins: [['P0', 'P0'], ['P1', 'P1'], ['P2', 'P2'], ['P3', 'P3'],
+        ['P4', 'P4'], ['P5', 'P5']],
+    pwmPins: [['P0', 'P0'], ['P1', 'P1'], ['P4', 'P4']],
+    i2c: [['I2C', 'Wire']],
+    i2cPins: {Wire: [['SDA', 'P0'], ['SCK', 'P2']]},
+    i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
+    interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
+        ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']],
+    usb: [['USB+', 'P3'], ['USB-', 'P4']]
 };
 
 /** Set default profile to Arduino standard-compatible board */

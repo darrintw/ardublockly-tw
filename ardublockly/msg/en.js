@@ -136,6 +136,7 @@ Ardublockly.LOCALISED_TEXT = {
     catRTC: "Clock",
     catComms: "Comms",
     catSensor: "Sensor",
+    catWS2812Leds: "WS2812 LED Strip",
     catI2CLCD: "I2C LCD Display",
     catPixetto: "Pixetto Sensor",
     catLinkIt: "LinkIt",

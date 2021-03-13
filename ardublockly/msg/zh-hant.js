@@ -156,6 +156,7 @@ Ardublockly.LOCALISED_TEXT = {
     catRTC: "時鐘",
     catComms: "序列埠",
     catSensor: "感測器",
+    catWS2812Leds: "WS2812 LED 燈條",
     catI2CLCD: "I2C LCD 顯示器",
     catPixetto: "Pixetto感測器",
     catLinkIt: "LinkIt",
