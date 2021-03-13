@@ -99,12 +99,18 @@ def load_arduino_cli(sketch_path):
         # Concatenates the CLI command and execute if the flags are valid
         cli_command = [settings.compiler_dir, "%s" % sketch_path]
         if settings.load_ide_option == 'upload':
-            print('\nUploading sketch to Arduino...')
-            cli_command.append('--upload')
-            cli_command.append('--port')
-            cli_command.append(settings.get_serial_port_flag())
-            cli_command.append('--board')
-            cli_command.append(settings.get_arduino_board_flag())
+            if (settings.get_serial_port_flag() == 'USB'):
+                print('\nUploading sketch to Board from USB...')
+                cli_command.append('--upload')
+                cli_command.append('--board')
+                cli_command.append(settings.get_arduino_board_flag())
+            else:
+                print('\nUploading sketch to Board...')
+                cli_command.append('--upload')
+                cli_command.append('--port')
+                cli_command.append(settings.get_serial_port_flag())
+                cli_command.append('--board')
+                cli_command.append(settings.get_arduino_board_flag())
         elif settings.load_ide_option == 'verify':
             print('\nVerifying the sketch...')
             cli_command.append('--board')

@@ -1,14 +1,29 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <Adafruit_NeoPixel.h>
 
-LiquidCrystal_I2C I2CLCD( 0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
+int i;
+
+Adafruit_NeoPixel strip_1 = Adafruit_NeoPixel(22, 0, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-  I2CLCD.begin(16,2);
+
+  strip_1.begin();
+  strip_1.clear();
+  strip_1.show();
+
 }
 
 void loop() {
-  I2CLCD.setCursor(0, 0);
-  I2CLCD.print("Hello World");
+  for (i = 0; i <= 21; i++) {
+    strip_1.setPixelColor(i, strip_1.Color(255, 255, 255));
+    strip_1.show();
+    delay(1000);
+  }
+  delay(1000);
+  for (i = 0; i <= 21; i++) {
+    strip_1.setPixelColor(i, strip_1.Color(0, 0, 0));
+    strip_1.show();
+    delay(1000);
+  }
+  delay(1000);
 
 }
