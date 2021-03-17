@@ -17,8 +17,8 @@ Blockly.Arduino['pixetto_setup'] = function (block) {
         "ss",
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    Blockly.Arduino.addInclude('pixetto', '#include <SmartSensor.h>');
-    Blockly.Arduino.addVariable("ss", 'SmartSensor ' + pixettoId + '(' + rxPin + ', ' + txPin + ');', true);
+    Blockly.Arduino.addInclude('pixetto', '#include <Pixetto.h>');
+    Blockly.Arduino.addVariable("ss", 'Pixetto ' + pixettoId + '(' + rxPin + ', ' + txPin + ');', true);
 
     var code = pixettoId + '.begin();\n';
 

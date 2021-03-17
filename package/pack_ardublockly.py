@@ -234,9 +234,15 @@ def copy_ardublockly_folder():
         print(script_tab + "              into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\CH341SER", copied_project_up_dir)
 
+        print(script_tab + "Moving DigisparkWindowsDriver of %s\\DigisparkWindowsDriver" % copied_project_dir)
+        print(script_tab + "              into %s" % copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\DigisparkWindowsDriver", copied_project_up_dir)
+
+        '''
         print(script_tab + "Moving notepad++ of %s\\notepad++" % copied_project_dir)
         print(script_tab + "               into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\notepad++", copied_project_up_dir)
+        '''
 
         print(script_tab + "Reset Arduino preferences %s\\Arduino\\portable\\preferences.txt" % copied_project_dir)
         shutil.copyfile(copied_project_dir + "\\Arduino\\portable\\preferences.bak",
