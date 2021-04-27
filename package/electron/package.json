@@ -29,5 +29,6 @@
   },
   "bugs": {
     "url": "https://github.com/darrintw/ardublockly/issues"
-  }
+  },
+  "dependencies": {}
 }
