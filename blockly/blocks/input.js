@@ -278,7 +278,7 @@ Blockly.Blocks['io_input_pullup'] = {
             "inputsInline": true,
             "previousStatement": null,
             "nextStatement": null,
-            "tooltip": Blockly.Msg.ARD_INPUT_PUTTUP_TIP,
+            "tooltip": Blockly.Msg.ARD_INPUT_PULLUP_TIP,
             "colour": Blockly.Blocks.input.HUE
         });
     },
@@ -292,5 +292,61 @@ Blockly.Blocks['io_input_pullup'] = {
     updateFields: function () {
         Blockly.Arduino.Boards.refreshBlockFieldDropdown(
             this, 'PIN', 'digitalPins');
+    }
+};
+
+Blockly.Blocks['io_i2cPins'] = {
+    /**
+     * Block for creating a 'read Pin'.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl('');
+        this.setColour(Blockly.Blocks.input.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2CREAD)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.i2cPins.Wire), 'PIN');
+        this.setOutput(true, Blockly.Types.BOOLEAN.output);
+        this.setTooltip(Blockly.Msg.ARD_I2CREAD_TIP);
+    },
+    /** @return {!string} The type of return value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
+    },
+    /**
+     * Updates the content of the the Pin related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'PIN', 'i2cPins.Wire');
+    }
+};
+
+Blockly.Blocks['io_i2cPins_var'] = {
+    /**
+     * Block for creating a 'read Pin'.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_I2CREAD_MSG,
+            "args0": [
+                {
+                    "type": "input_value",
+                    "name": "PIN",
+                    "options": Blockly.Arduino.Boards.selected.i2cPins.Wire
+                }
+            ],
+            "output": Blockly.Types.BOOLEAN.output,
+            "colour": Blockly.Blocks.input.HUE,
+            "tooltip": Blockly.Msg.ARD_I2CREAD_TIP,
+            "helpUrl": ''
+        });
+    },
+    /** @return {!string} The type of return value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
     }
 };

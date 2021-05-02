@@ -145,6 +145,12 @@ Blockly.Msg.ARD_DIGITALWRITE = 'set digital Pin#';
 /// Arduino
 Blockly.Msg.ARD_DIGITALWRITE_TIP = 'Write digital value HIGH or LOW to a specific Port';
 /// Arduino
+Blockly.Msg.ARD_I2CREAD = "I2C Pin#";
+/// Arduino
+Blockly.Msg.ARD_I2CREAD_MSG = "SDA or SLC pin of I2C";
+/// Arduino
+Blockly.Msg.ARD_I2CREAD_TIP = "Select SDA or SLC pin of I2C";
+/// Arduino
 Blockly.Msg.ARD_SETTONE = 'Set tone on Pin #';
 /// Arduino
 Blockly.Msg.ARD_NOTONE = 'Turn off tone on Pin #';

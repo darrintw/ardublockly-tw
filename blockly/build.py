@@ -188,10 +188,14 @@ def do_compile(params, target_filename, filenames, remove):
     json_data = json.loads(json_str)
 
     def file_lookup(name):
-        if not name.startswith("Input_"):
+        if not name.startswith("Input_") and not name.endswith(".js"):
             return "???"
-        n = int(name[6:]) - 1
-        return filenames[n]
+        n = name.split("/")
+        if len(n) <= 1:
+            return "???"
+        # n = int(name[6:]) - 1
+        # return filenames[n]
+        return n[len(n) - 1]
 
     if json_data.has_key("serverErrors"):
         errors = json_data["serverErrors"]

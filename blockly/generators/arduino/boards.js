@@ -347,7 +347,7 @@ Blockly.Arduino.Boards.profiles.linkit_7697 = {
 };
 
 /** Digispark Attiny85 **/
-Blockly.Arduino.Boards.profiles.Attiny85 = {
+Blockly.Arduino.Boards.profiles.attiny85 = {
     name: 'Digispark Attiny85 (Default - 16.5mhz)',
     description: 'Digispark Attiny85 (Default - 16.5mhz)',
     compilerFlag: 'digistump:avr:digispark-tiny',
@@ -355,8 +355,11 @@ Blockly.Arduino.Boards.profiles.Attiny85 = {
     digitalPins: [['P0', 'P0'], ['P1', 'P1'], ['P2', 'P2'], ['P3', 'P3'],
         ['P4', 'P4'], ['P5', 'P5']],
     pwmPins: [['P0', 'P0'], ['P1', 'P1'], ['P4', 'P4']],
+    serial: [['serial1', 'Serial1']],
+    serialPins: {Serial: [['RX', 'RX'], ['TX', 'TX']]},
+    serialSpeed: Blockly.Arduino.Boards.profiles.uno.serialSpeed,
     i2c: [['I2C', 'Wire']],
-    i2cPins: {Wire: [['SDA', 'P0'], ['SCK', 'P2']]},
+    i2cPins: {Wire: [['SDA', 'P0'], ['SCL', 'P2']]},
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
     interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
         ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']],

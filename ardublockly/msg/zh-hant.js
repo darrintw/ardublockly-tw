@@ -156,13 +156,15 @@ Ardublockly.LOCALISED_TEXT = {
     catRTC: "時鐘",
     catComms: "序列埠",
     catSensor: "感測器",
+    catRTC: "時鐘",
     catWS2812Leds: "WS2812 LED 燈條",
     catI2CLCD: "I2C LCD 顯示器",
+    catLEDMatrix: "LED 點矩陣",
     catPixetto: "Pixetto感測器",
     catLinkIt: "LinkIt",
-    catLinkItWiFi: "LinkIt Wi-Fi",
+    /*catLinkItWiFi: "LinkIt Wi-Fi",
     catLinkItMCS: "LinkIt MCS",
     catLinkItIR: "LinkIt 遙控器",
     catLinkItBLE: "LinkIt BLE周邊",
-    catLinkItBeacon: "LinkIt BLE Beacon",
+    catLinkItBeacon: "LinkIt BLE Beacon",*/
 };

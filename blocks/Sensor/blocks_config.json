@@ -53,6 +53,14 @@
     "        <block type=\"variables_get\"></block>",
     "    </value>",
     "  </block>",
+    "  <block type=\"lm35_read\">",
+    "    <field name=\"DATAPIN\">A2</field>",
+    "  </block>",
+    "  <block type=\"lm35_read_var\">",
+    "    <value name=\"DATAPIN\">",
+    "        <block type=\"variables_get\"></block>",
+    "    </value>",
+    "  </block>",
     "</category>"
   ]
 }

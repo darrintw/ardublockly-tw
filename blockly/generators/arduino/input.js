@@ -161,7 +161,8 @@ Blockly.Arduino['io_pulsetimeout_var'] = function (block) {
  */
 Blockly.Arduino['base_map'] = function (block) {
     var valueNum = Blockly.Arduino.valueToCode(
-        block, 'NUM', Blockly.Arduino.ORDER_NONE) || '0', valueDmax = Blockly.Arduino.valueToCode(
+        block, 'NUM', Blockly.Arduino.ORDER_NONE) || '0',
+        valueDmax = Blockly.Arduino.valueToCode(
         block, 'DMAX', Blockly.Arduino.ORDER_ATOMIC) || '0',
         code = 'map(' + valueNum + ', 0, 1024, 0, ' + valueDmax + ')';
     return [code, Blockly.Arduino.ORDER_NONE];
@@ -203,4 +204,21 @@ Blockly.Arduino['io_set_name'] = function (block) {
         'int ' + pinName + ' = ' + pin + ';', true);
     var code = '';
     return code;
+};
+
+/**
+ * Function for reading a digital Pin (X).
+ * Arduino code: setup { pinMode(X, INPUT); }
+ *               loop  { digitalRead(X)     }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {null} Completed code with order of operation.
+ */
+Blockly.Arduino['io_i2cPins'] = function (block) {
+    var code = block.getFieldValue('PIN');
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['io_i2cPins_var'] = function (block) {
+    var code = block.getFieldValue('PIN');
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

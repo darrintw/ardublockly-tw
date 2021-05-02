@@ -145,6 +145,7 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="io_allpins"></block>' +
     '      <block type="io_pwmpins"></block>' +
     '      <block type="io_analogpins"></block>' +
+    '      <block type="io_i2cPins"></block>' +
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catText" name="Text">' +
