@@ -1,8 +1,8 @@
-
 'use strict';
 
 goog.require('Blockly.Msg.en');
 
+goog.require('Blockly.Msg');
 // LinkIt
 Blockly.Msg.BLOCKS_CATEGORY_LINKIT = "LinkIt";
 /// Wi-Fi

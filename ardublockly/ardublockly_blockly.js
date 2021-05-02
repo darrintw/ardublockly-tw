@@ -186,7 +186,7 @@ Ardublockly.discardAllBlocks = function () {
         // 載入預設積木
         // 立刻 loadServerXmlFile 的話, 有時候會直接顯示英文語系
         setTimeout(function () {
-            //Ardublockly.replaceBlocksfromXml(defaultProjectXML);
+            Ardublockly.replaceBlocksfromXml(defaultProjectXML);
             Ardublockly.renderContent();
         }, 500)
     } else if (blockCount > 1) {
@@ -199,6 +199,7 @@ Ardublockly.discardAllBlocks = function () {
                 // 載入預設積木
                 // 立刻 loadServerXmlFile 的話, 有時候會直接顯示英文語系
                 setTimeout(function () {
+                    Ardublockly.replaceBlocksfromXml(defaultProjectXML);
                     Ardublockly.renderContent();
                 }, 500)
             });

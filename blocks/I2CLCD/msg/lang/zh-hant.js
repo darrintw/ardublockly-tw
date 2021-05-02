@@ -2,6 +2,7 @@
 
 goog.require('Blockly.Msg.zh.hant');
 
+goog.require('Blockly.Msg');
 /// Toolbox category name
 Blockly.Msg.BLOCKS_CATEGORY_I2CLCD = 'I2C LCD 顯示器';
 

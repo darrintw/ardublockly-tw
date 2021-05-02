@@ -20,4 +20,4 @@ goog.require('Blockly.Msg.en');
 Blockly.Msg.BLOCKS_CATEGORY_USER = 'User Define Block';
 
 /// Ardublockly name
-Blockly.Msg.ADR_USER_ＭSG = 'Custom your block.';
+Blockly.Msg.ADR_USER_MSG = 'Custom your block.';

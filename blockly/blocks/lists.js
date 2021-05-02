@@ -249,7 +249,7 @@ Blockly.Blocks['lists_length'] = {
                 {
                     "type": "input_value",
                     "name": "VALUE",
-                    "check": Blockly.Types.TEXT.checkList.concat('Array')
+                    "check": Blockly.Types.STRING.checkList.concat('Array')
                 }
             ],
             "output": Blockly.Types.NUMBER.output,
@@ -272,7 +272,7 @@ Blockly.Blocks['lists_isEmpty'] = {
                 {
                     "type": "input_value",
                     "name": "VALUE",
-                    "check": Blockly.Types.TEXT.checkList.concat('Array')
+                    "check": Blockly.Types.STRING.checkList.concat('Array')
                 }
             ],
             "output": Blockly.Types.BOOLEAN.output,
@@ -701,10 +701,10 @@ Blockly.Blocks['lists_split'] = {
         this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
         this.setColour(Blockly.Blocks.lists.HUE);
         this.appendValueInput('INPUT')
-            .setCheck(Blockly.Types.TEXT.checkList)
+            .setCheck(Blockly.Types.STRING.checkList)
             .appendField(dropdown, 'MODE');
         this.appendValueInput('DELIM')
-            .setCheck(Blockly.Types.TEXT.checkList)
+            .setCheck(Blockly.Types.STRING.checkList)
             .appendField(Blockly.Msg.LISTS_SPLIT_WITH_DELIMITER);
         this.setInputsInline(true);
         this.setOutput(true, 'Array');
@@ -727,9 +727,9 @@ Blockly.Blocks['lists_split'] = {
     updateType_: function (newMode) {
         if (newMode == 'SPLIT') {
             this.outputConnection.setCheck('Array');
-            this.getInput('INPUT').setCheck(Blockly.Types.TEXT.checkList);
+            this.getInput('INPUT').setCheck(Blockly.Types.STRING.checkList);
         } else {
-            this.outputConnection.setCheck(Blockly.Types.TEXT.checkList);
+            this.outputConnection.setCheck(Blockly.Types.STRING.checkList);
             this.getInput('INPUT').setCheck('Array');
         }
     },
