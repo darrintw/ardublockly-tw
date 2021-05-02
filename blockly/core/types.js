@@ -21,17 +21,18 @@ Blockly.Types.CHARACTER = new Blockly.Type({
 });
 
 /** Text. */
+/*
 Blockly.Types.TEXT = new Blockly.Type({
   typeId: 'Text',
   typeMsgName: 'ARD_TYPE_TEXT',
   compatibleTypes: [Blockly.Types.CHARACTER]
-});
+});*/
 
 /** String. */
 Blockly.Types.STRING = new Blockly.Type({
   typeId: 'String',
   typeMsgName: 'ARD_TYPE_STRING',
-  compatibleTypes: [Blockly.Types.CHARACTER, Blockly.Types.TEXT]
+  compatibleTypes: [Blockly.Types.CHARACTER/*, Blockly.Types.TEXT*/]
 });
 
 /** Boolean. */
@@ -153,7 +154,7 @@ Blockly.Types.getValidTypeArray = function() {
   var typesArray = [];
   for (var typeKey in Blockly.Types) {
     if ((typeKey !== 'UNDEF') && (typeKey !== 'CHILD_BLOCK_MISSING') &&
-        (typeKey !== 'NULL') && (typeKey !== 'ARRAY') && (typeKey !== 'TEXT') &&
+        (typeKey !== 'NULL') && (typeKey !== 'ARRAY') &&
         (typeof Blockly.Types[typeKey] !== 'function') &&
         !(Blockly.Types[typeKey] instanceof RegExp)) {
       typesArray.push([Blockly.Types[typeKey].typeName, typeKey]);
