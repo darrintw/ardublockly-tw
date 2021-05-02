@@ -428,7 +428,7 @@ Blockly.Arduino.scrub_ = function (block, code) {
 Blockly.Arduino.getArduinoType_ = function (typeBlockly) {
     switch (typeBlockly.typeId) {
         case Blockly.Types.SHORT_NUMBER.typeId:
-            return 'char';
+            return 'short';
         case Blockly.Types.NUMBER.typeId:
             return 'int';
         case Blockly.Types.LARGE_NUMBER.typeId:
