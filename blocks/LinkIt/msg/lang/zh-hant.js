@@ -3,7 +3,7 @@
 goog.require('Blockly.Msg.zh.hant');
 
 // LinkIt
-Blockly.Msg.BLOCKS_CATEGORY_LINKITBEACON = "LinkIt";
+Blockly.Msg.BLOCKS_CATEGORY_LINKIT = "LinkIt";
 // WiFi
 Blockly.Msg.CATEGORY_LINKIT_WIFI = "Wi-Fi";
 Blockly.Msg.CATEGORY_LINKIT_WIFI_ADVANCED = "Wi-Fi (進階)";
