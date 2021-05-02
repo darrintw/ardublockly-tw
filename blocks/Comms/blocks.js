@@ -182,7 +182,7 @@ Blockly.Blocks['serial_read_string'] = {
                     "options": Blockly.Arduino.Boards.selected.serial
                 }
             ],
-            "output": Blockly.Types.TEXT.output,
+            "output": Blockly.Types.STRING.output,
             "colour": Blockly.Blocks.serial.HUE,
             "tooltip": Blockly.Msg.ARD_SERIAL_READ_STRING_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
@@ -191,7 +191,7 @@ Blockly.Blocks['serial_read_string'] = {
     /** @return {!string} Type of the block, text length always an integer. */
     getBlockType:
         function () {
-            return Blockly.Types.TEXT;
+            return Blockly.Types.STRING;
         },
     updateFields: function () {
         Blockly.Arduino.Boards.refreshBlockFieldDropdown(
@@ -215,7 +215,7 @@ Blockly.Blocks['serial_read_char'] = {
                     "options": Blockly.Arduino.Boards.selected.serial
                 }
             ],
-            "output": Blockly.Types.TEXT.output,
+            "output": Blockly.Types.STRING.output,
             "colour": Blockly.Blocks.serial.HUE,
             "tooltip": Blockly.Msg.ARD_SERIAL_READ_CHAR_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
@@ -454,7 +454,7 @@ Blockly.Blocks['softwareserial_read'] = {
                     "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
                 }
             ],
-            "output": Blockly.Types.TEXT.output,
+            "output": Blockly.Types.STRING.output,
             "colour": Blockly.Blocks.serial.HUE,
             "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_READ_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
@@ -462,6 +462,6 @@ Blockly.Blocks['softwareserial_read'] = {
     },
     /** @return {!string} Type of the block, text length always an integer. */
     getBlockType: function () {
-        return Blockly.Types.TEXT;
+        return Blockly.Types.STRING;
     }
 };

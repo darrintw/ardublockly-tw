@@ -3,6 +3,7 @@
 
 goog.require('Blockly.Msg.en');
 
+goog.require('Blockly.Msg');
 /// Toolbox category name
 Blockly.Msg.BLOCKS_CATEGORY_RTC = 'RTC Clock';
 

@@ -2,6 +2,7 @@
 
 goog.require('Blockly.Msg.zh.hant');
 
+goog.require('Blockly.Msg');
 // LinkIt
 Blockly.Msg.BLOCKS_CATEGORY_LINKIT = "LinkIt";
 // WiFi

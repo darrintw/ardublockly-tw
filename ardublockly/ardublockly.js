@@ -225,7 +225,10 @@ Ardublockly.loadServerXmlFile = function (xmlFile, filename) {
 
 Ardublockly.restoreDefault = function () {
     Ardublockly.discardAllBlocks();
-    Ardublockly.replaceBlocksfromXml(defaultProjectXML);
+    setTimeout(function () {
+        Ardublockly.replaceBlocksfromXml(defaultProjectXML);
+        Ardublockly.renderContent();
+    }, 500)
     Ardublockly.workspace.clearUndo();
 };
 
@@ -513,8 +516,10 @@ Ardublockly.setBoard = function () {
             break;
         }
     }
-    ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {});
-    ArdublocklyServer.setArduinoBoardFlag(boardFlag, function (jsonObj) {});
+    ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {
+    });
+    ArdublocklyServer.setArduinoBoardFlag(boardFlag, function (jsonObj) {
+    });
     Ardublockly.changeBlocklyArduinoBoard(
         boardValue.toLowerCase().replace(/ /g, '_'));
 };
