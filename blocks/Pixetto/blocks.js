@@ -14,6 +14,10 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.pixetto.HUE = 120;
 
+var funclist;
+var colorlist;
+var shaphelist;
+var signlist;
 /*
 var funclist = [
     [Blockly.Msg.PIXETTO_FCD, 'FUNC_COLOR_DETECTION'],
@@ -165,7 +169,7 @@ var signImglist = [
         'alt': Blockly.Msg.PIXETTO_SIGN_GREENL
     }, 'SIGN_GREEN_LIGHT']];
 */
-
+/*
 var funclist = [
     ['COLOR_DETECTION', 'FUNC_COLOR_DETECTION'],
     ['COLOR_CODE_DETECTION', 'FUNC_COLOR_CODE_DETECTION'],
@@ -211,6 +215,7 @@ var signlist = [
     ['YIELD_TO_PEDESTRIAN', 'SIGN_YIELD_TO_PEDESTRIAN'],
     ['RED_LIGHT', 'SIGN_RED_LIGHT'],
     ['GREEN_LIGHT', 'SIGN_GREEN_LIGHT']];
+*/
 
 var numlist = [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'],
     ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9']];
@@ -322,9 +327,22 @@ Blockly.Blocks['pixetto_getheigth'] = {
 
 Blockly.Blocks['pixetto_function'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.PIXETTO_FUNC)
-            .appendField(new Blockly.FieldDropdown(funclist), "PIXETTO_FUNC_SELECTOR");
+        funclist = [
+            [Blockly.Msg.PIXETTO_FCD, 'FUNC_COLOR_DETECTION'],
+            [Blockly.Msg.PIXETTO_FCCD, 'FUNC_COLOR_CODE_DETECTION'],
+            [Blockly.Msg.PIXETTO_FSD, 'FUNC_SHAPE_DETECTION'],
+            [Blockly.Msg.PIXETTO_FSPD, 'FUNC_SPHERE_DETECTION'],
+            [Blockly.Msg.PIXETTO_FTM, 'FUNC_TEMPLATE_MATCHING'],
+            [Blockly.Msg.PIXETTO_FK, 'FUNC_KEYPOINTS'],
+            [Blockly.Msg.PIXETTO_FNN, 'FUNC_NEURAL_NETWORK'],
+            [Blockly.Msg.PIXETTO_FFD, 'FUNC_FACE_DETECTION'],
+            [Blockly.Msg.PIXETTO_FTSD, 'FUNC_TRAFFIC_SIGN_DETECTION'],
+            [Blockly.Msg.PIXETTO_FHDD, 'FUNC_HANDWRITTEN_DIGITS_DETECTION'],
+            [Blockly.Msg.PIXETTO_FHLD, 'FUNC_HANDWRITTEN_LETTERS_DETECTION']
+        ],
+            this.appendDummyInput()
+                .appendField(Blockly.Msg.PIXETTO_FUNC)
+                .appendField(new Blockly.FieldDropdown(funclist), "PIXETTO_FUNC_SELECTOR");
         this.setOutput(true, null);
         this.setColour(Blockly.Blocks.pixetto.HUE);
         this.setTooltip("");
@@ -334,9 +352,17 @@ Blockly.Blocks['pixetto_function'] = {
 
 Blockly.Blocks['pixetto_color'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.PIXETTO_COLOR)
-            .appendField(new Blockly.FieldDropdown(colorlist), "PIXETTO_COLOR_SELECTOR");
+        colorlist = [
+            [Blockly.Msg.PIXETTO_CRED, 'COLOR_RED'],
+            [Blockly.Msg.PIXETTO_CYELLOW, 'COLOR_YELLOW'],
+            [Blockly.Msg.PIXETTO_CGREEN, 'COLOR_GREEN'],
+            [Blockly.Msg.PIXETTO_CBLUE, 'COLOR_BLUE'],
+            [Blockly.Msg.PIXETTO_CPURPLE, 'COLOR_PURPLE'],
+            [Blockly.Msg.PIXETTO_CBLACK, 'COLOR_BLACK']
+        ],
+            this.appendDummyInput()
+                .appendField(Blockly.Msg.PIXETTO_COLOR)
+                .appendField(new Blockly.FieldDropdown(colorlist), "PIXETTO_COLOR_SELECTOR");
         this.setOutput(true, null);
         this.setColour(Blockly.Blocks.pixetto.HUE);
         this.setTooltip("");
@@ -346,9 +372,15 @@ Blockly.Blocks['pixetto_color'] = {
 
 Blockly.Blocks['pixetto_shape'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.PIXETTO_SHAPE)
-            .appendField(new Blockly.FieldDropdown(shaphelist), "PIXETTO_SHAPE_SELECTOR");
+        shaphelist = [
+            [Blockly.Msg.PIXETTO_SHAPE_ROUND, 'SHAPE_ROUND'],
+            [Blockly.Msg.PIXETTO_SHAPE_RECTANGLE, 'SHAPE_RECTANGLE'],
+            [Blockly.Msg.PIXETTO_SHAPE_TRIANGLE, 'SHAPE_TRIANGLE'],
+            [Blockly.Msg.PIXETTO_SHAPE_PENTAGON, 'SHAPE_PENTAGON']
+        ],
+            this.appendDummyInput()
+                .appendField(Blockly.Msg.PIXETTO_SHAPE)
+                .appendField(new Blockly.FieldDropdown(shaphelist), "PIXETTO_SHAPE_SELECTOR");
         this.setOutput(true, null);
         this.setColour(Blockly.Blocks.pixetto.HUE);
         this.setTooltip("");
@@ -358,9 +390,28 @@ Blockly.Blocks['pixetto_shape'] = {
 
 Blockly.Blocks['pixetto_sign'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.PIXETTO_SIGN)
-            .appendField(new Blockly.FieldDropdown(signlist), "PIXETTO_SIGN_SELECTOR");
+        signlist = [
+            [Blockly.Msg.PIXETTO_SIGN_NE, 'SIGN_NO_ENTRE'],
+            [Blockly.Msg.PIXETTO_SIGN_NLT, 'SIGN_NO_LEFT_TURN'],
+            [Blockly.Msg.PIXETTO_SIGN_NRT, 'SIGN_NO_RIGHT_TURN'],
+            [Blockly.Msg.PIXETTO_SIGN_WW, 'SIGN_WRONG_WAY'],
+            [Blockly.Msg.PIXETTO_SIGN_NUT, 'SIGN_NO_U_TURN'],
+            [Blockly.Msg.PIXETTO_SIGN_MAXS, 'SIGN_MAX_SPEED'],
+            [Blockly.Msg.PIXETTO_SIGN_OWT, 'SIGN_ONEWAY_TRAFFIC'],
+            [Blockly.Msg.PIXETTO_SIGN_LT, 'SIGN_LEFT_TURN'],
+            [Blockly.Msg.PIXETTO_SIGN_RT, 'SIGN_RIGHT_TURN'],
+            [Blockly.Msg.PIXETTO_SIGN_MINS, 'SIGN_MIN_SPEED'],
+            [Blockly.Msg.PIXETTO_SIGN_UT, 'SIGN_U_TURN'],
+            [Blockly.Msg.PIXETTO_SIGN_TA, 'SIGN_TUNNEL_AHEAD'],
+            [Blockly.Msg.PIXETTO_SIGN_BOC, 'SIGN_BEWARE_OF_CHILDREN'],
+            [Blockly.Msg.PIXETTO_SIGN_RA, 'SIGN_ROUNDABOUT'],
+            [Blockly.Msg.PIXETTO_SIGN_YTP, 'SIGN_YIELD_TO_PEDESTRIAN'],
+            [Blockly.Msg.PIXETTO_SIGN_REDL, 'SIGN_RED_LIGHT'],
+            [Blockly.Msg.PIXETTO_SIGN_GREENL, 'SIGN_GREEN_LIGHT']
+        ],
+            this.appendDummyInput()
+                .appendField(Blockly.Msg.PIXETTO_SIGN)
+                .appendField(new Blockly.FieldDropdown(signlist), "PIXETTO_SIGN_SELECTOR");
         this.setOutput(true, null);
         this.setColour(Blockly.Blocks.pixetto.HUE);
         this.setTooltip("");

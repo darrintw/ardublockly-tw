@@ -204,3 +204,37 @@ Blockly.Blocks['photocells_read_var'] = {
         this.setHelpUrl("https://learn.adafruit.com/photocells/arduino-code");
     }
 };
+
+Blockly.Blocks['lm35_read'] = {
+    /**
+     * Block for LM35 read from analog pin.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_LM35_READTEMP_FROM)
+            .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "DATAPIN")
+            .appendField(Blockly.Msg.ARD_LM35_READTEMP_MSG);
+        this.setOutput(true, Blockly.Types.DECIMAL.output);
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setTooltip(Blockly.Msg.ARD_LM35_READTEMP_TIP);
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['lm35_read_var'] = {
+    /**
+     * Block for setting the speed of the serial connection.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendValueInput("DATAPIN")
+            .appendField(Blockly.Msg.ARD_LM35_READTEMP_FROM);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_LM35_READTEMP_MSG);
+        this.setOutput(true, Blockly.Types.DECIMAL.output);
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setTooltip(Blockly.Msg.ARD_LM35_READTEMP_TIP);
+        this.setHelpUrl("");
+    }
+};

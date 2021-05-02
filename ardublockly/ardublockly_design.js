@@ -164,8 +164,6 @@ Ardublockly.largeIdeButtonSpinner = function (active) {
  * @param {!boolean} show Indicates if the toolbox should be set visible.
  */
 Ardublockly.displayToolbox = function (show) {
-    setTimeout(function () {
-    }, 5000);
     var toolbox = $('.blocklyToolboxDiv');
     var toolboxTree = $('.blocklyTreeRoot');
     var button = document.getElementById('button_toggle_toolbox');

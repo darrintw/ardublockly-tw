@@ -26,21 +26,19 @@ var paths = {
 // -------------------------------------
 // Tasks
 // -------------------------------------
-
 gulp.task('clean', function () {
-    return destDir.dirAsync('.', { empty: true });
+    return destDir.dirAsync('.', {empty: true});
 });
-
 
 var copyTask = function () {
     return projectDir.copyAsync('app', destDir.path(), {
-            overwrite: true,
-            matching: paths.copyFromAppDir
-        });
+        overwrite: true,
+        matching: paths.copyFromAppDir
+    });
 };
-gulp.task('copy', ['clean'], copyTask);
+//gulp.task('copy', ['clean'], copyTask);
+gulp.task('copy', gulp.series('clean',), copyTask);
 gulp.task('copy-watch', copyTask);
-
 
 var bundleApplication = function () {
     return Q.all([
@@ -48,14 +46,15 @@ var bundleApplication = function () {
     ]);
 };
 
-
 var bundleTask = function () {
     return bundleApplication();
 };
-gulp.task('bundle', ['clean'], bundleTask);
+//gulp.task('bundle', ['clean'], bundleTask);
+gulp.task('bundle', gulp.series('clean',), bundleTask);
 gulp.task('bundle-watch', bundleTask);
 
-gulp.task('finalize', ['clean'], function () {
+//gulp.task('finalize', ['clean'], function () {
+gulp.task('finalize', gulp.series('clean',), function () {
     var manifest = srcDir.read('package.json', 'json');
 
     // Add "dev" or "test" suffix to name, so Electron will write all data
@@ -83,10 +82,10 @@ gulp.task('watch', function () {
     watch('app/**/*.js', batch(function (events, done) {
         gulp.start('bundle-watch', done);
     }));
-    watch(paths.copyFromAppDir, { cwd: 'app' }, batch(function (events, done) {
+    watch(paths.copyFromAppDir, {cwd: 'app'}, batch(function (events, done) {
         gulp.start('copy-watch', done);
     }));
 });
 
-
-gulp.task('build', ['bundle', 'copy', 'finalize']);
+//gulp.task('build', ['bundle', 'copy', 'finalize']);
+gulp.task('build', gulp.series('bundle', 'copy', 'finalize',));

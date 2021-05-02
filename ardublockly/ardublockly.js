@@ -16,7 +16,6 @@ Ardublockly.selectedboard = '';
 Ardublockly.init = function () {
     // Lang init must run first for the rest of the page to pick the right msgs
     Ardublockly.initLanguage();
-
     // Inject Blockly into content_blocks and fetch additional blocks
     Ardublockly.injectBlockly(document.getElementById('content_blocks'),
         Ardublockly.TOOLBOX_XML, '../blockly/');
@@ -846,14 +845,14 @@ Ardublockly.importExtraBlocks = function () {
         if (jsonDataObj.categories !== undefined) {
             var head = document.getElementsByTagName('head')[0];
             for (var catDir in jsonDataObj.categories) {
-                var blocksJsLoad = document.createElement('script');
-                blocksJsLoad.src = '../blocks/' + catDir + '/blocks.js';
-                head.appendChild(blocksJsLoad);
-
                 var blocksLangJsLoad = document.createElement('script');
                 blocksLangJsLoad.src = '../blocks/' + catDir + '/msg/' + //'messages.js';
                     'lang/' + Ardublockly.LANG + '.js';
                 head.appendChild(blocksLangJsLoad);
+
+                var blocksJsLoad = document.createElement('script');
+                blocksJsLoad.src = '../blocks/' + catDir + '/blocks.js';
+                head.appendChild(blocksJsLoad);
 
                 var blocksGeneratorJsLoad = document.createElement('script');
                 blocksGeneratorJsLoad.src = '../blocks/' + catDir +

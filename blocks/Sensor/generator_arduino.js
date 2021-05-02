@@ -214,3 +214,32 @@ Blockly.Arduino['photocells_read_var'] = function (block) {
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['lm35_read'] = function (block) {
+    var pin = block.getFieldValue('DATAPIN');
+
+    var code = '(analogRead(' + pin + ')-102)*100/207; //0C=102, 100C=309';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['lm35_read_var'] = function (block) {
+    var pin = Blockly.Arduino.valueToCode(
+        block, 'DATAPIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code = '(analogRead(' + pin + ')-102)*100/207; //0C=102, 100C=309';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

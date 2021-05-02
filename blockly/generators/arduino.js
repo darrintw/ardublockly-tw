@@ -435,7 +435,9 @@ Blockly.Arduino.getArduinoType_ = function (typeBlockly) {
             return 'long';
         case Blockly.Types.DECIMAL.typeId:
             return 'float';
-        case Blockly.Types.TEXT.typeId:
+        /*case Blockly.Types.TEXT.typeId:
+            return 'TEXT';*/
+        case Blockly.Types.STRING.typeId:
             return 'String';
         case Blockly.Types.CHARACTER.typeId:
             return 'char';
