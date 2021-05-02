@@ -4,7 +4,7 @@
 goog.require('Blockly.Msg.en');
 
 // LinkIt
-Blockly.Msg.BLOCKS_CATEGORY_LINKITBEACON = "LinkIt";
+Blockly.Msg.BLOCKS_CATEGORY_LINKIT = "LinkIt";
 /// Wi-Fi
 Blockly.Msg.CATEGORY_LINKIT_WIFI = "Wi-Fi";
 Blockly.Msg.CATEGORY_LINKIT_WIFI_DISCONNECT = "Disconnect Wi-Fi";
