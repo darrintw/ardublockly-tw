@@ -1,11 +1,11 @@
 .idea
 CH341SER
-ardublockly.log
-test.py
+/ArdublocklySketch/
 appdata
 node_modules
 notepad++
 ArdublocklySketch
+ardublockly.log
 ArdublocklySketch/ArdublocklySketch/ArdublocklySketch.ino
 ServerCompilerSettings.ini
-/ArdublocklySketch/
+test.py
