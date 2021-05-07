@@ -36,8 +36,8 @@ var copyTask = function () {
         matching: paths.copyFromAppDir
     });
 };
-//gulp.task('copy', ['clean'], copyTask);
-gulp.task('copy', gulp.series('clean',), copyTask);
+gulp.task('copy', ['clean'], copyTask);
+//gulp.task('copy', gulp.series('clean',), copyTask);
 gulp.task('copy-watch', copyTask);
 
 var bundleApplication = function () {
@@ -49,12 +49,12 @@ var bundleApplication = function () {
 var bundleTask = function () {
     return bundleApplication();
 };
-//gulp.task('bundle', ['clean'], bundleTask);
-gulp.task('bundle', gulp.series('clean',), bundleTask);
+gulp.task('bundle', ['clean'], bundleTask);
+//gulp.task('bundle', gulp.series('clean',), bundleTask);
 gulp.task('bundle-watch', bundleTask);
 
-//gulp.task('finalize', ['clean'], function () {
-gulp.task('finalize', gulp.series('clean',), function () {
+gulp.task('finalize', ['clean'], function () {
+//gulp.task('finalize', gulp.series('clean',), function () {
     var manifest = srcDir.read('package.json', 'json');
 
     // Add "dev" or "test" suffix to name, so Electron will write all data
@@ -87,5 +87,5 @@ gulp.task('watch', function () {
     }));
 });
 
-//gulp.task('build', ['bundle', 'copy', 'finalize']);
-gulp.task('build', gulp.series('bundle', 'copy', 'finalize',));
+gulp.task('build', ['bundle', 'copy', 'finalize']);
+//gulp.task('build', gulp.series('bundle', 'copy', 'finalize',));
