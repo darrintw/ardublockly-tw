@@ -13,21 +13,49 @@ goog.require('Blockly.Arduino');
  */
 Blockly.Arduino['serial_print'] = function (block) {
     var serialId = block.getFieldValue('SERIAL_ID');
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
     var content = Blockly.Arduino.valueToCode(
         block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
-    var checkbox_name = (block.getFieldValue('NEW_LINE') === 'TRUE');
 
     var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
     for (var i = 0; i < serialPins.length; i++) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
     }
     var code;
-    if (checkbox_name) {
+    if (new_line) {
         code = serialId + '.println(' + content + ');\n';
     } else {
         code = serialId + '.print(' + content + ');\n';
     }
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['serial_print_hex'] = function (block) {
+    var serialId = block.getFieldValue('SERIAL_ID');
+    var decimal = block.getFieldValue('STAT');
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
+    for (var i = 0; i < serialPins.length; i++) {
+        Blockly.Arduino.reservePin(block, serialPins[i][1],
+            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
+    }
+
+    var code;
+    if (new_line) {
+        code = serialId + '.println(' + content + ', ' + decimal + ');\n';
+    } else {
+        code = serialId + '.print(' + content + ', ' + decimal + ');\n';
+    }
+
     return code;
 };
 

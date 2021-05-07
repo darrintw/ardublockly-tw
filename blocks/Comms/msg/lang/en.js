@@ -5,13 +5,18 @@ goog.require('Blockly.Msg');
 /// Toolbox category name
 Blockly.Msg.BLOCKS_CATEGORY_COMMS = 'Serial';
 
-/// Ardublockly name
+/// Serial
 Blockly.Msg.ARD_SERIAL_BPS = "bps";
 Blockly.Msg.ARD_SERIAL_PRINT_MSG = "%1 print %2 %3 add new line";
 Blockly.Msg.ARD_SERIAL_PRINT = "send";
 Blockly.Msg.ARD_SERIAL_PRINT_NEWLINE = "return";
 Blockly.Msg.ARD_SERIAL_PRINT_TIP = "Send text to terminal/serial port";
 Blockly.Msg.ARD_SERIAL_PRINT_WARN = "A setup block for %1 must be added to the workspace to use this block!";
+Blockly.Msg.ARD_MATH_BIN = 'binary';
+Blockly.Msg.ARD_MATH_DEC = 'decimal';
+Blockly.Msg.ARD_MATH_OCT = 'octal';
+Blockly.Msg.ARD_MATH_HEX = 'hex';
+Blockly.Msg.ARD_SERIAL_PRINT_HEX_TOOLTIP = "Print the specified text, number or other value.";
 Blockly.Msg.ARD_SERIAL_SETUP = "setup";
 Blockly.Msg.ARD_SERIAL_SETUP_TIP = "Selects the speed for a specific Serial peripheral";
 Blockly.Msg.ARD_SERIAL_SPEED = "serial speed";
