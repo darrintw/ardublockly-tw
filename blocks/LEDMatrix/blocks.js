@@ -18,7 +18,7 @@ Blockly.Blocks.LEDMatrix.HUE = 180;
 Blockly.Blocks['user_block'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ADR_USER_ＭSG);
+        .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.LEDMatrix.HUE);
   }
