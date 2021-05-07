@@ -293,31 +293,31 @@ var getHelpMenuData = function () {
                 label: '快速入門',
                 click: function () {
                     shell.openExternal(
-                        'http://localhost:8000/docs/Quick-Start');
+                        'http://localhost:8007/docs/Quick-Start');
                 }
             }, {
                 label: '手冊',
                 click: function () {
-                    shell.openExternal('http://localhost:8000/docs/');
+                    shell.openExternal('http://localhost:8007/docs/');
                 }
             }, {
                 type: 'separator'
             }, {
                 label: '網站',
                 click: function () {
-                    shell.openExternal('http://ardublockly.embeddedlog.com');
+                    shell.openExternal('http://ardublockly.ymtech.education');
                 }
             }, {
                 label: '原始碼',
                 click: function () {
                     shell.openExternal(
-                        'https://github.com/carlosperate/ardublockly');
+                        'https://github.com/darrintw/ardublockly-tw');
                 }
             }, {
                 label: '回報錯誤',
                 click: function () {
                     shell.openExternal(
-                        'https://github.com/carlosperate/ardublockly/issues');
+                        'https://github.com/darrintw/ardublockly-tw/issues');
                 }
             }, {
                 type: 'separator'

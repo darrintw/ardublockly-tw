@@ -205,7 +205,7 @@ def copy_ardublockly_folder():
     The copy operation ignores a list of directories.
     :return: Boolean indicating the success state of the operation.
     """
-    ignore_pat = (".idea*", ".git*", ".svn", ".travis*", ".appveyor*", "circle.yml",
+    ignore_pat = (".idea*", ".svn", ".travis*", ".appveyor*", "circle.yml", "notepad++", "CNAME",
                   ".ruby-version", "TestTemp_*", "package", ".coveragerc", "ardublockly.log",
                   "run_dev.bat", "ServerCompilerSettings.ini", "pack.bat", "buildBlockly.cmd",
                   "build.bat", "test.py")
@@ -243,6 +243,14 @@ def copy_ardublockly_folder():
         print(script_tab + "               into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\notepad++", copied_project_up_dir)
         '''
+
+        print(script_tab + "Moving PortableGit of %s\\PortableGit" % copied_project_dir)
+        print(script_tab + "                  into %s" % copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\PortableGit", copied_project_up_dir)
+
+        print(script_tab + "Moving update.bat of %s" % copied_project_dir)
+        print(script_tab + "                  into %s" % copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\update.bat", copied_project_up_dir)
 
         print(script_tab + "Reset Arduino preferences %s\\Arduino\\portable\\preferences.txt" % copied_project_dir)
         shutil.copyfile(copied_project_dir + "\\Arduino\\portable\\preferences.bak",
