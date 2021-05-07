@@ -3,20 +3,6 @@ title Ardublockly update tool
 @echo off
 rem echo.
 rem echo ***************************Mixly 安装^&升级助手****************************
-rem echo 感谢您选择使用Mixly软件，如果您是第一次使用本软件，请仔细阅读本说明。
-rem echo.
-rem echo.
-rem echo 目前Mixly软件支持对多种硬件的编程，因为支持所有硬件编程需要占用您硬盘较大的空间，您可以选择只安装您需要用到的部分功能即可。
-rem echo.
-rem echo Mixly软件支持的硬件，具体说明如下：
-rem echo ·Arduino AVR系列开发板（包括Arduino UNO,Nano,Mega 2560,Pro Mini 等）为默认支持，无需选择。
-rem echo ·MicroPython ESP32系列开发板(MicroPython[ESP32_MixGo]、MicroPython[ESP32_HandBit]等)为默认支持，无需选择。
-rem echo ·ESP8266系列开发板（包括WeMos D1,NodeMCU 等）
-rem echo ·ESP32系列开发板（包括MixGo,掌控板,普通ESP32开发板等）
-rem echo ·STM32系列开发板
-rem echo.
-rem echo.
-rem echo 安装^&升级即将开始，您可以选择安装部分功能，输入y表示安装该功能，输入n表示不安装该功能。
 rem @echo off
 
 rem echo.
@@ -60,6 +46,7 @@ rem ) ELSE (
 rem 	echo Yes
 rem )
 
+echo.
 IF EXIST "%~dp0"\.git\index.lock (
 	del /f /s /q "%~dp0"\.git\index.lock > nul
 	rd /q /s "%~dp0"\.git\index.lock > nul
