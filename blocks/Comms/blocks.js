@@ -135,6 +135,38 @@ Blockly.Blocks['serial_print'] = {
     }
 };
 
+Blockly.Blocks['serial_print_hex'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.serial.HUE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID')
+            .appendField(Blockly.Msg.ARD_SERIAL_PRINT);
+        this.appendValueInput("CONTENT", Number);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox('TRUE'), 'NEW_LINE')
+            .appendField(Blockly.Msg.ARD_SERIAL_PRINT_NEWLINE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.ARD_MATH_HEX, "HEX"],
+                [Blockly.Msg.ARD_MATH_BIN, "BIN"],
+                [Blockly.Msg.ARD_MATH_OCT, "OCT"],
+                [Blockly.Msg.ARD_MATH_DEC, "DEC"]
+            ]), "STAT");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_PRINT_HEX_TOOLTIP);
+    },
+    /**
+     * Updates the content of the the serial related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
 Blockly.Blocks['serial_available'] = {
     /**
      * Block for creating a write to serial com function.
