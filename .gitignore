@@ -1,7 +1,4 @@
 .idea
-arduino
-!blockly/blocks/arduino/procedures.js
-!blockly/generators/arduino/*
 CH341SER
 ardublockly.log
 test.py
