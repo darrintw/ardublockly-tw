@@ -8,11 +8,12 @@ var releaseForOs = {
     linux: require('./linux'),
     windows: require('./windows'),
 };
-/*
+
 gulp.task('release', ['build'], function () {
     return releaseForOs[utils.os()]();
 });
-*/
+/*
 gulp.task('release', gulp.series('build',), function () {
     return releaseForOs[utils.os()]();
 });
+*/

@@ -4,7 +4,7 @@ var childProcess = require('child_process');
 var electron = require('electron-prebuilt');
 var gulp = require('gulp');
 
-/*
+
 gulp.task('start', ['build', 'watch'], function () {
     childProcess.spawn(electron, ['./build'], {
         stdio: 'inherit'
@@ -14,8 +14,8 @@ gulp.task('start', ['build', 'watch'], function () {
         process.exit();
     });
 });
-*/
 
+/*
 gulp.task('start', gulp.series('build', 'watch',), function () {
     childProcess.spawn(electron, ['./build'], {
         stdio: 'inherit'
@@ -25,3 +25,4 @@ gulp.task('start', gulp.series('build', 'watch',), function () {
             process.exit();
         });
 });
+*/
