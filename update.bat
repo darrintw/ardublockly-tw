@@ -12,14 +12,14 @@ IF EXIST "%~dp0"\Ardublockly\.git\index.lock (
 )
 @echo off
 
-cd "%~dp0"\PortableGit\cmd\
+cd "%~dp0"\..\PortableGit\cmd\
 rem update blocks
 git config --system core.longpaths true
-git reset --hard origin/master
-git -pull origin master
+git --git-dir=..\..\Ardublockly\.git\ reset --hard origin/master
+git --git-dir=..\..\Ardublockly\.git\ pull origin master
 
-git gc
-git prune
+git --git-dir=..\..\Ardublockly\.git\ gc
+git --git-dir=..\..\Ardublockly\.git\ prune
 
 IF EXIST "%~dp0"\Ardublockly\__pycache__ (
 	echo.
@@ -81,11 +81,16 @@ IF EXIST "%~dp0"\Ardublockly\run_dev.bat (
 	@echo off
 )
 
+IF EXIST "%~dp0"\Ardublockly\update.bat (
+	echo.
+	del /f /s /q "%~dp0"\Ardublockly\update.bat > nul
+	@echo off
+)
+
 cd "%~dp0"
 
 @echo on
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
 @echo off
-pause
 run.bat
