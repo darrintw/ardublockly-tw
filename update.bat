@@ -81,12 +81,6 @@ IF EXIST "%~dp0"\Ardublockly\run_dev.bat (
 	@echo off
 )
 
-IF EXIST "%~dp0"\Ardublockly\update.bat (
-	echo.
-	del /f /s /q "%~dp0"\Ardublockly\update.bat > nul
-	@echo off
-)
-
 cd "%~dp0"
 
 @echo on
