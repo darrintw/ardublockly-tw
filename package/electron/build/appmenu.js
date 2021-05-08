@@ -15,6 +15,7 @@ const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 
 const server = require('./servermgr.js');
+const projectLocator = require('./projectlocator.js');
 
 module.exports.setArdublocklyMenu = function (devMode) {
     if (typeof (devMode) === 'undefined') devMode = false;
@@ -143,6 +144,7 @@ var getFileMenuData = function () {
                 label: '離開',
                 accelerator: 'CmdOrCtrl+Q',
                 click: function () {
+                    server.stopServer();
                     app.quit();
                 }
             }
@@ -326,7 +328,7 @@ var getHelpMenuData = function () {
                 click: function () {
                     server.stopServer();
                     app.quit();
-                    shell.openItem('update.bat');
+                    shell.openItem(projectLocator.getProjectRootPath() + '\\update.bat');
                 }
             }, {
                 label: '關於',
