@@ -19,3 +19,9 @@
 # localhost name resolution is handled within DNS itself.
 #	127.0.0.1       localhost
 #	::1             localhost
+
+127.0.0.1 lmlicenses.wip4.adobe.com
+127.0.0.1 lm.licenses.adobe.com
+127.0.0.1 cap.cyberlink.com
+
+127.0.0.1       iccert.nhi.gov.tw #mNHIICC use this. 
