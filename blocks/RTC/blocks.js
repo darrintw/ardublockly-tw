@@ -88,8 +88,12 @@ Blockly.Blocks['RTC_get_rtc'] = {
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
         this.setInputsInline(true);
-        this.setOutput(true, Number);
+        this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.ADR_RTC_TOOLTIP_GETTIME.replace('%1', this.getFieldValue("TIME_TYPE")));
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
     }
 };
 

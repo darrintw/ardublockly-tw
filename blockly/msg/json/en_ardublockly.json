@@ -1,7 +1,7 @@
 {
   "@metadata": {
     "author": "carlosperate",
-    "lastupdated": "2021-05-02 19:27:12.960000",
+    "lastupdated": "2021-05-10 01:21:29.741000",
     "locale": "en",
     "messagedocumentation": "qqq_ardublockly"
   },
@@ -28,6 +28,8 @@
   "RENAME_INSTANCE_TITLE": "Rename all '%1' instances to:",
   "ARD_VAR_AS": "as",
   "ARD_VAR_AS_TIP": "Sets a value to a specific type",
+  "VARIABLES_DECLARE": "Declare %1 to %2",
+  "VARIABLES_DECLARE_TOOLTIP": "Declare global value",
   "VARIABLES_INIT": "initialize %1 to %2",
   "VARIABLES_INIT_TOOLTIP": "assign an initial value for a variable.",
   "VARIABLES_INIT_NOT_IN_SETUP_WARNING": "Warning: This block may only be used within SETUP.",
@@ -39,6 +41,7 @@
   "VARIABLES_TYPE_FLOAT": "float",
   "VARIABLES_TYPE_ONOFF": "Switch (boolean)",
   "VARIABLES_TYPE_CATEGORY": "Category (String)",
+  "VARIABLES_WARN_TEXT": "The variable %1 has been first assigned to the %2 type and this block tries to assign the type %3!",
   "ARD_PIN": "Pin",
   "ARD_PWM_PIN": "PWM Pin",
   "ARD_ANALOG_PIN": "Analog Pin",
@@ -52,9 +55,6 @@
   "ARD_WRITE_TO": "to",
   "ARD_DIGITALWRITE": "set digital Pin#",
   "ARD_DIGITALWRITE_TIP": "Write digital value HIGH or LOW to a specific Port",
-  "ARD_I2CREAD": "I2C Pin#",
-  "ARD_I2CREAD_MSG": "SDA or SLC pin of I2C",
-  "ARD_I2CREAD_TIP": "Select SDA or SLC pin of I2C",
   "ARD_SETTONE": "Set tone on Pin #",
   "ARD_NOTONE": "Turn off tone on Pin #",
   "ARD_TONEFREQ": "at frequency",

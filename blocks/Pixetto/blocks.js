@@ -256,6 +256,10 @@ Blockly.Blocks['pixetto_detected'] = {
         this.setColour(Blockly.Blocks.pixetto.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
     }
 };
 
@@ -427,6 +431,10 @@ Blockly.Blocks['pixetto_inputnum'] = {
         this.setColour(Blockly.Blocks.pixetto.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
     }
 };
 

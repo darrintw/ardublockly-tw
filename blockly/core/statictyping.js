@@ -199,10 +199,14 @@ Blockly.StaticTyping.prototype.setBlockTypeWarning =
     block.setWarningText(null, warningLabel);
   } else if ((this.varTypeDict[varName] !== blockType) &&
              (blockType !== Blockly.Types.UNDEF)) {
-    block.setWarningText('The variable ' + varName + ' has been first ' +
+
+    block.setWarningText(Blockly.Msg.VARIABLES_WARN_TEXT.replace('%1', varName)
+        .replace('%2', this.varTypeDict[varName].typeName)
+        .replace('%3',blockType.typeName), warningLabel);
+    /*block.setWarningText('The variable ' + varName + ' has been first ' +
         'assigned to the "' + this.varTypeDict[varName].typeName + '" type\n' +
         'and this block tries to assign the type "' + blockType.typeName + '"!',
-        warningLabel);
+        warningLabel);*/
   } else {
     block.setWarningText(null, warningLabel);
   }

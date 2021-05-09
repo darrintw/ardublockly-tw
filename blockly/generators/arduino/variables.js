@@ -26,16 +26,27 @@ Blockly.Arduino['variables_get'] = function (block) {
 };
 
 Blockly.Arduino['variables_init'] = function (block) {
-  var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE',
-    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var varName = Blockly.Arduino.variableDB_.getName(
-    block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
+    var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE',
+        Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+    var varName = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
 
-  Blockly.Arduino.addVariable(block.getFieldValue('VAR'),
-    varType + ' ' + varName + ' = ' + argument0 + ';', true);
-  var code = '';
-  return code;
+    Blockly.Arduino.addVariable(block.getFieldValue('VAR'),
+        varType + ' ' + varName + ' = ' + argument0 + ';', true);
+    var code = '';
+    return code;
+};
+
+Blockly.Arduino['variables_declare'] = function (block) {
+    var varName = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
+
+    Blockly.Arduino.addVariable(block.getFieldValue('VAR'),
+        varType + ' ' + varName + ';', true);
+    var code = '';
+    return code;
 };
 
 /**

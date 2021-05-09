@@ -54,10 +54,14 @@ Blockly.Blocks['linkit_wifi_getip'] = {
         this.setColour(Blockly.Blocks.linkit.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.CATEGORY_LINKIT_WIFI_GETIP);
-        this.setOutput(true, Blockly.Types.STRING.output);
+        this.setOutput(true, "String");
         this.setPreviousStatement(false, null);
         this.setNextStatement(false, null);
         this.setTooltip(Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
     }
 };
 Blockly.Blocks['mcs'] = {
@@ -82,32 +86,32 @@ Blockly.Blocks['mcs'] = {
 };
 
 Blockly.Blocks['mcslite'] = {
-  init: function() {
-    this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCSLITE_HELPURL);
-    this.setColour(Blockly.Blocks.linkit.HUE);
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_WIFI)
-    this.appendValueInput("DEVICEIDL")
-      .setCheck(Blockly.Types.STRING.output)
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEID);
-    this.appendValueInput("DEVICEKEYL")
-      .setCheck(Blockly.Types.STRING.output)
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEKEY);
-    this.appendValueInput("SERV")
-      .setCheck(Blockly.Types.STRING.output)
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_SERV);
-    this.appendValueInput("PORT")
-      .setCheck(Blockly.Types.NUMBER.output)
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_PORT);
-    this.appendStatementInput("CONTENT");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
-  }
+    init: function () {
+        this.setHelpUrl(Blockly.Msg.LINKIT_SET_MCSLITE_HELPURL);
+        this.setColour(Blockly.Blocks.linkit.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_WIFI)
+        this.appendValueInput("DEVICEIDL")
+            .setCheck(Blockly.Types.STRING.output)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEID);
+        this.appendValueInput("DEVICEKEYL")
+            .setCheck(Blockly.Types.STRING.output)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_DEVICEKEY);
+        this.appendValueInput("SERV")
+            .setCheck(Blockly.Types.STRING.output)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_SERV);
+        this.appendValueInput("PORT")
+            .setCheck(Blockly.Types.NUMBER.output)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.LINKIT_SET_MCSLITE_PORT);
+        this.appendStatementInput("CONTENT");
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
+    }
 };
 
 Blockly.Blocks['mcs_set_control_channel'] = {
@@ -178,8 +182,12 @@ Blockly.Blocks['mcs_channel_value'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.LINKIT_CHECK_MCS_LED_VALUE_TAIL);
         this.setInputsInline(true);
-        this.setOutput(true);
+        this.setOutput(true, "String");
         this.setTooltip(Blockly.Msg.LINKIT_SET_WIFI_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
     }
 };
 
@@ -214,6 +222,10 @@ Blockly.Blocks['mcs_channel_updated'] = {
         this.setInputsInline(true);
         this.setOutput(true, 'Boolean');
         this.setTooltip(Blockly.Msg.LINKIT_SET_MCS_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
     }
 };
 
@@ -300,6 +312,10 @@ Blockly.Blocks['linkit_ble_get_address'] = {
             .appendField(Blockly.Msg.LINKIT_SET_BLE_GET_ADDRESS_TITLE);
         this.setOutput(true, 'String');
         this.setTooltip(Blockly.Msg.LINKIT_SET_BLE_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
     }
 };
 
@@ -341,6 +357,10 @@ Blockly.Blocks['linkit_ble_periphral_is_written'] = {
         this.setInputsInline(true);
         this.setOutput(true, 'Boolean');
         this.setTooltip(Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
     }
 };
 
@@ -357,6 +377,10 @@ Blockly.Blocks['linkit_ble_periphral_get_value'] = {
         this.setInputsInline(true);
         this.setOutput(true, ["Number", "String"]);
         this.setTooltip(Blockly.Msg.LINKIT_SET_BLE_PERIPHRAL_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER, Blockly.Types.STRING;
     }
 };
 
@@ -391,6 +415,10 @@ Blockly.Blocks['linkit_ble_central_get_peripheral_with_index'] = {
             Blockly.ALIGN_RIGHT);
         this.setOutput(true, 'String');
         this.setTooltip(Blockly.Msg.LINKIT_SET_BLE_CENTRAL_SCAN_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
     }
 };
 
@@ -402,6 +430,10 @@ Blockly.Blocks['linkit_ble_central_scan_count'] = {
             .appendField(Blockly.Msg.LINKIT_SET_BLE_CENTRAL_SCAN_COUNT);
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.LINKIT_SET_BLE_CENTRAL_SCAN_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
     }
 };
 
@@ -437,5 +469,9 @@ Blockly.Blocks['linkit_ble_ready'] = {
             .appendField(Blockly.Msg.LINKIT_SET_BLE_READY_TITLE);
         this.setOutput(true, 'Boolean');
         this.setTooltip(Blockly.Msg.LINKIT_SET_BLE_TOOLTIP);
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
     }
 };

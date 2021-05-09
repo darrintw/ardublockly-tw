@@ -93,6 +93,10 @@ Blockly.Msg.ARD_VAR_AS = 'as';
 /// Arduino
 Blockly.Msg.ARD_VAR_AS_TIP = 'Sets a value to a specific type';
 /// Arduino
+Blockly.Msg.VARIABLES_DECLARE = "Declare %1 to %2";
+/// Arduino
+Blockly.Msg.VARIABLES_DECLARE_TOOLTIP = "Declare global value";
+/// Arduino
 Blockly.Msg.VARIABLES_INIT = 'initialize %1 to %2';
 /// Arduino
 Blockly.Msg.VARIABLES_INIT_TOOLTIP = 'assign an initial value for a variable.';
@@ -114,7 +118,8 @@ Blockly.Msg.VARIABLES_TYPE_FLOAT = 'float';
 Blockly.Msg.VARIABLES_TYPE_ONOFF = 'Switch (boolean)';
 /// Arduino
 Blockly.Msg.VARIABLES_TYPE_CATEGORY = 'Category (String)';
-
+/// Arduino
+Blockly.Msg.VARIABLES_WARN_TEXT = 'The variable %1 has been first assigned to the %2 type and this block tries to assign the type %3!';
 /**
  * Ardublockly Input Output
  */
