@@ -93,4 +93,5 @@ cd "%~dp0"
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
 @echo off
+pause
 run.bat

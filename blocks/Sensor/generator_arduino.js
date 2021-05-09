@@ -217,7 +217,7 @@ Blockly.Arduino['photocells_read_var'] = function (block) {
 
 /**
  * Code generator of block for writing to the serial com.
- * Arduino code: loop { Serial.print(X); }
+ * Arduino code: loop { read lm35; }
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {(string|number)[]} Completed code.
  */
@@ -242,4 +242,162 @@ Blockly.Arduino['lm35_read_var'] = function (block) {
     var code = '(analogRead(' + pin + ')-102)*100/207; //0C=102, 100C=309';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ irrecv_Ax.enableIRIn(); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['irrecv_setup'] = function (block) {
+    var irrecvName = block.getFieldValue('DATAPIN');
+    var irrecvId = 'irrecv_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var decodeId = 'results_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var irrecvVarCode = 'IRrecv ' + irrecvId + '(' + irrecvName + ');';
+    var decodeVarCode = 'decode_results ' + decodeId + ';';
+    var irrecvSetupCode = irrecvId + '.enableIRIn();';
+
+    Blockly.Arduino.addInclude('irrecv_', '#include <IRremote.h>');
+    Blockly.Arduino.addVariable(irrecvId, irrecvVarCode, true);
+    Blockly.Arduino.addVariable(irrecvId, decodeVarCode, true);
+    Blockly.Arduino.addSetup('irrecv_' + irrecvId, irrecvSetupCode, true);
+    var code = '';
+    return code;
+};
+
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ irrecv_Ax.enableIRIn(); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['irrecv_setup_var'] = function (block) {
+    var irrecvName = Blockly.Arduino.valueToCode(
+        block, 'DATAPIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var irrecvId = 'irrecv_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var decodeId = 'results_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var irrecvVarCode = 'IRrecv ' + irrecvId + '(' + irrecvName + ');';
+    var decodeVarCode = 'decode_results ' + decodeId + ';';
+    var irrecvSetupCode = irrecvId + '.enableIRIn();';
+
+    Blockly.Arduino.addInclude('irrecv_', '#include <IRremote.h>');
+    Blockly.Arduino.addVariable(irrecvId, irrecvVarCode, true);
+    Blockly.Arduino.addVariable(decodeId, decodeVarCode, true);
+    Blockly.Arduino.addSetup('irrecv_' + irrecvId, irrecvSetupCode, true);
+    var code = '';
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['irrecv_available'] = function (block) {
+    var irrecvName = block.getFieldValue('DATAPIN');
+    var irrecvId = 'irrecv_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var decodeId = 'results_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = irrecvId + '.decode(&' + decodeId + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['irrecv_available_var'] = function (block) {
+    var irrecvName = Blockly.Arduino.valueToCode(
+        block, 'DATAPIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var irrecvId = 'irrecv_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var decodeId = 'results_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = irrecvId + '.decode(&' + decodeId + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['irrecv_read'] = function (block) {
+    var irrecvName = block.getFieldValue('DATAPIN');
+    var decodeId = 'results_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = decodeId + '.value';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['irrecv_read_var'] = function (block) {
+    var irrecvName = Blockly.Arduino.valueToCode(
+        block, 'DATAPIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var decodeId = 'results_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = decodeId + '.value';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['irrecv_resume'] = function (block) {
+    var irrecvName = block.getFieldValue('DATAPIN');
+    var irrecvId = 'irrecv_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = irrecvId + '.resume();\n';
+
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['irrecv_resume_var'] = function (block) {
+    var irrecvName = Blockly.Arduino.valueToCode(
+        block, 'DATAPIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var irrecvId = 'irrecv_' + Blockly.Arduino.variableDB_.getName(
+        irrecvName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = irrecvId + '.resume();\n';
+
+    return code;
 };

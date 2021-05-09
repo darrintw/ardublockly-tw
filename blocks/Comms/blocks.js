@@ -307,7 +307,7 @@ Blockly.Blocks['bluetooth_available'] = {
     },
     /** @return {!string} Type of the block, text length always an integer. */
     getBlockType: function () {
-        return Blockly.Types.NUMBER;
+        return Blockly.Types.BOOLEAN;
     }
 };
 
@@ -361,10 +361,14 @@ Blockly.Blocks['bluetooth_at_command'] = {
             .appendField(new Blockly.FieldDropdown(at_command_list), "CMD")
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_AS)
             .appendField(new Blockly.FieldTextInput(""), "VALUE");
-        this.setOutput(true, "Text");
+        this.setOutput(true, "String");
         this.setColour(Blockly.Blocks.serial.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+    },
+     /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
     }
 };
 
@@ -373,10 +377,14 @@ Blockly.Blocks['bluetooth_at_cmd'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_MSG)
             .appendField(new Blockly.FieldTextInput(""), "CMD");
-        this.setOutput(true, "Text");
+        this.setOutput(true, "String");
         this.setColour(Blockly.Blocks.serial.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
     }
 };
 

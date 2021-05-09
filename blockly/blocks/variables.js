@@ -120,6 +120,44 @@ Blockly.Blocks['variables_init'] = {
     },
 };
 
+Blockly.Blocks['variables_declare'] = {
+    /**
+     * Block for variable setter.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.VARIABLES_DECLARE,
+            "args0": [
+                {
+                    "type": "field_variable",
+                    "name": "VAR",
+                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
+                },
+                {
+                    "type": "field_dropdown",
+                    "name": "VARIABLE_TYPE",
+                    "options": Blockly.Types.getValidTypeArray()
+                }
+            ],
+            "inputsInline": true,
+            "colour": Blockly.Blocks.variables.HUE,
+            "tooltip": Blockly.Msg.VARIABLES_DECLARE_TOOLTIP,
+            "helpUrl": Blockly.Msg.VARIABLES_SET_HELPURL
+        });
+    },
+    /**
+     * Searches through the nested blocks to find a variable type.
+     * @this Blockly.Block
+     * @param {!string} varName Name of this block variable to check type.
+     * @return {Blockly.Type} String to indicate the type of this block.
+     */
+    getVarType: function () {
+        var blocklyTypeKey = this.getFieldValue('VARIABLE_TYPE');
+        return Blockly.Types[blocklyTypeKey];
+    },
+};
+
 Blockly.Blocks['variables_set'] = {
     /**
      * Block for variable setter.
