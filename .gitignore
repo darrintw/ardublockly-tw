@@ -1,12 +1,9 @@
 .idea
-CH341SER
-DigisparkWindowsDriver
 /ArdublocklySketch/
-appdata
-node_modules
-notepad++
-ArdublocklySketch
-ardublockly.log
 ArdublocklySketch/ArdublocklySketch/ArdublocklySketch.ino
+CH341SER
+/DigisparkWindowsDriver/
+appdata
+ardublockly.log
 ServerCompilerSettings.ini
 test.py
