@@ -774,6 +774,16 @@ Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER = 'Prompt for user for a number.';
 /// See [https://github.com/google/blockly/wiki/Text#printing-text
 /// https://github.com/google/blockly/wiki/Text#printing-text].
 Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT = 'Prompt for user for some text.';
+/// block text - Precedes the message with which the user should be prompted for some text.
+Blockly.Msg.TEXT_TO_HEX = ' convert to %1 string';
+/// dropdown - Precedes the message with which the user should be prompted for some text.
+Blockly.Msg.TEXT_HEX = 'hex';
+/// dropdown - Precedes the message with which the user should be prompted for some text.
+Blockly.Msg.TEXT_BIN = 'binary';
+/// dropdown - Precedes the message with which the user should be prompted for some text.
+Blockly.Msg.TEXT_DEC = 'decimal';
+/// tooltip - See [https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/?from=Reference.StringClass]
+Blockly.Msg.TEXT_TO_HEX_TOOLTIP = 'Use selectd base to convert to string.';
 
 // Lists Blocks.
 /// url - Information on empty lists.
