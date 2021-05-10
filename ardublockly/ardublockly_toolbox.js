@@ -151,6 +151,7 @@ Ardublockly.TOOLBOX_XML =
     '  <sep></sep>' +
     '  <category id="catText" name="Text">' +
     '    <block type="char"></block>' +
+    '    <block type="string_hex"></block>' +
     '    <block type="text"></block>' +
     '    <block type="text_join"></block>' +
     '    <block type="text_append"></block>' +
