@@ -281,5 +281,5 @@ Blockly.Arduino['string_hex'] = function (block) {
 
     var code = 'String(' + content + ', ' + decimal + ')';
 
-    return [code, Blockly.Arduino.ORDER_NONE];
+    return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };

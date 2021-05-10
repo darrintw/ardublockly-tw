@@ -181,7 +181,7 @@ def do_compile(params, target_filename, filenames, remove):
     conn = httplib.HTTPSConnection("closure-compiler.appspot.com")
     conn.request("POST", "/compile", urllib.urlencode(params), headers)
     response = conn.getresponse()
-    json_str = response.read()
+    json_str = response.read().decode("utf-8")
     conn.close()
 
     # Parse the JSON response.
@@ -279,10 +279,18 @@ limitations under the License.
 def gen_blocks():
     target_filename = "blocks_compressed.js"
     # Define the parameters for the POST request.
-    params = [("compilation_level", "SIMPLE_OPTIMIZATIONS"), ("output_format", "json"),
-              ("output_info", "compiled_code"), ("output_info", "warnings"), ("output_info", "errors"),
-              ("output_info", "statistics"), ("js_code", "goog.provide('Blockly.Blocks');"),
-              ("js_code", "goog.provide('Blockly.Types');")]
+    params = [
+        ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
+        ("use_closure_library", "true"),
+        ("output_format", "json"),
+        ("output_info", "compiled_code"),
+        ("output_info", "warnings"),
+        ("output_info", "errors"),
+        ("output_info", "statistics"),
+        ("js_code", "goog.provide('Blockly');"),
+        ("js_code", "goog.provide('Blockly.Blocks');"),
+        ("js_code", "goog.provide('Blockly.Types');")
+    ]
 
     # Read in all the source files.
     # Add Blockly.Blocks to be compatible with the compiler.
