@@ -32,43 +32,11 @@ IF EXIST "%~dp0\__pycache__" (
 	@echo off
 )
 
-IF EXIST "%~dp0\CH341SER" (
-    echo *****Delete CH341SER folder******
+IF EXIST "%~dp0\Tools" (
+    echo *****Delete Tools folder******
 	echo.
-	del /f /s /q "%~dp0\CH341SER" > nul
-	rd /q /s "%~dp0\CH341SER" > nul
-	@echo off
-)
-
-IF EXIST "%~dp0\DigisparkWindowsDriver" (
-    echo *****Delete DigisparkWindowsDriver folder******
-	echo.
-	del /f /s /q "%~dp0\DigisparkWindowsDriver" > nul
-	rd /q /s "%~dp0\DigisparkWindowsDriver" > nul
-	@echo off
-)
-
-IF EXIST "%~dp0\notepad++" (
-    echo *****Delete notepad++ folder******
-	echo.
-	del /f /s /q "%~dp0\notepad++" > nul
-	rd /q /s "%~dp0\notepad++" > nul
-	@echo off
-)
-
-IF EXIST "%~dp0\package" (
-    echo *****Delete package folder******
-	echo.
-	del /f /s /q "%~dp0\package" > nul
-	rd /q /s "%~dp0\package" > nul
-	@echo off
-)
-
-IF EXIST "%~dp0\PortableGit" (
-	echo *****Delete PortableGit folder******
-	echo.
-	del /f /s /q "%~dp0\PortableGit" > nul
-	rd /q /s "%~dp0\PortableGit" > nul
+	del /f /s /q "%~dp0\Tools" > nul
+	rd /q /s "%~dp0\Tools" > nul
 	@echo off
 )
 
