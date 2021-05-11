@@ -76,7 +76,7 @@ IF EXIST "%~dp0\run_dev.bat" (
 )
 
 IF EXIST "%~dp0\start.py" (
-    echo *****Delete run_dev.bat file******
+    echo *****Delete start.py file******
 	echo.
 	del /f /s /q "%~dp0\start.py" > nul
 	@echo off
