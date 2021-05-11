@@ -3,7 +3,7 @@
 #
 # Creates a zip file of the self executable Ardublockly application.
 #
-# Copyright (c) 2016 carlosperate https://github.com/carlosperate/
+# Copyright (c) 2021 darrin https://github.com/darrintw/
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,14 +27,14 @@
 # executable application and zip the contents of the folder.
 #
 import os
+import platform
 import re
+import shutil
+import subprocess
 import sys
 import time
-import shutil
-import struct
 import zipfile
-import platform
-import subprocess
+
 from bs4 import BeautifulSoup
 
 script_tag = "[Ardublockly pack] "
@@ -165,7 +165,7 @@ def tag_from_ci_env_vars(ci_name, pull_request_var, branch_var, commit_var):
 
     if pull_request and pull_request != "false":
         try:
-            pr_number = int(re.findall("\d+", pull_request)[0])
+            pr_number = int(re.findall("\\d+", pull_request)[0])
             print(script_tab + "Pull request valid '%s' variable found: %s" %
                   (ci_name, pr_number))
             return "pull_%s" % pr_number
@@ -206,8 +206,8 @@ def copy_ardublockly_folder():
     :return: Boolean indicating the success state of the operation.
     """
     ignore_pat = (".idea*", ".svn", ".travis*", ".appveyor*", "circle.yml", "notepad++", "CNAME",
-                  ".ruby-version", "TestTemp_*", "package", ".coveragerc", "ardublockly.iml",
-                  "ardublockly.log",  "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
+                  ".ruby-version", "TestTemp_*", "package", ".coverage's", "ardublockly.iml",
+                  "ardublockly.log", "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
                   "pack.bat", "buildBlockly.cmd", "build.bat", "test.py")
     if not os.path.exists(copied_project_dir):
         print(script_tab + "Copying contents of %s" % project_root_dir)
@@ -400,7 +400,7 @@ def zip_ardublockly_copy(name_append):
             for filename in files:
                 try:
                     zip_file.write(os.path.join(root_dir, filename))
-                except:
+                except e:
                     print('Zipping file', os.path.join(root_dir, filename))
         zip_file.close()
 

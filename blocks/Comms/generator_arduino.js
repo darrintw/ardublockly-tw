@@ -113,9 +113,6 @@ Blockly.Arduino['serial_read_char'] = function (block) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
             Blockly.Arduino.PinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
     }
-
-    var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
-        Blockly.Arduino.ORDER_NONE) || '""';
     var code = serialId + '.read()';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -148,8 +145,8 @@ Blockly.Arduino['serial_read_string'] = function (block) {
     var funcName = Blockly.Arduino.addFunction(
         'getSerialChar', func.join('\n'));
 
-    var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
-        Blockly.Arduino.ORDER_NONE) || '""';
+    /*var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
+        Blockly.Arduino.ORDER_NONE) || '""';*/
     var code = funcName + '(&' + serialId + ')';
 
     //Blockly.Arduino.addSetup('serial_' + serialId, 'Serial.begin(9600);', false);
@@ -162,7 +159,7 @@ Blockly.Arduino['serial_read_string'] = function (block) {
  * Code generator for block for setting the serial com speed.
  * Arduino code: setup{ Serial.begin(X); }
  * @param {!Blockly.Block} block Block to generate the code from.
- * @return {string} Completed code.
+ * @return {null} Completed code.
  */
 Blockly.Arduino['bluetooth'] = function (block) {
     var rx_pin = block.getFieldValue('RX_PIN');
@@ -173,14 +170,13 @@ Blockly.Arduino['bluetooth'] = function (block) {
     Blockly.Arduino.addInclude('bt', '#include <SoftwareSerial.h>');
     Blockly.Arduino.addDeclaration('bt', 'SoftwareSerial BT(' + tx_pin + ', ' + rx_pin + '); //藍芽端接收腳對應Arduino傳送腳, 藍芽端傳送腳對應Arduino接收腳');
     Blockly.Arduino.addSetup('bt', bluetoothCode, true);
-    var code = '';
-    return code;
+
+    return '';
 };
 
 /**
  * Code generator of block for writing to the serial com.
  * Arduino code: loop { Serial.print(X); }
- * @param {!Blockly.Block} block Block to generate the code from.
  * @return {(string|number)[]} Completed code.
  */
 Blockly.Arduino['bluetooth_available'] = function () {
@@ -188,9 +184,9 @@ Blockly.Arduino['bluetooth_available'] = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['bluetooth_read'] = function (block) {
-    var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
-        Blockly.Arduino.ORDER_NONE) || '""';
+Blockly.Arduino['bluetooth_read'] = function () {
+    /*var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
+        Blockly.Arduino.ORDER_NONE) || '""';*/
     var code = 'BT.read()';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -271,8 +267,8 @@ Blockly.Arduino['softwareserial_setup'] = function (block) {
     Blockly.Arduino.addInclude('softwareserial_', '#include <SoftwareSerial.h>');
     Blockly.Arduino.addVariable(serialName, serialVarCode, true);
     Blockly.Arduino.addSetup('softwareserial_' + serialId, serialSetupCode, true);
-    var code = '';
-    return code;
+
+    return '';
 };
 
 /**
@@ -304,8 +300,8 @@ Blockly.Arduino['softwareserial_read'] = function (block) {
     var funcName = Blockly.Arduino.addFunction(
         'getSoftwareSerialChar', func.join('\n'));
 
-    var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
-        Blockly.Arduino.ORDER_NONE) || '""';
+    /*var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
+        Blockly.Arduino.ORDER_NONE) || '""';*/
     var code = funcName + '(&' + serialId + ')';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
