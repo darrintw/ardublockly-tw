@@ -206,9 +206,9 @@ def copy_ardublockly_folder():
     :return: Boolean indicating the success state of the operation.
     """
     ignore_pat = (".idea*", ".svn", ".travis*", ".appveyor*", "circle.yml", "notepad++", "CNAME",
-                  ".ruby-version", "TestTemp_*", "package", ".coveragerc", "ardublockly.log",
-                  "run_dev.bat", "ServerCompilerSettings.ini", "pack.bat", "buildBlockly.cmd",
-                  "build.bat", "test.py")
+                  ".ruby-version", "TestTemp_*", "package", ".coveragerc", "ardublockly.iml",
+                  "ardublockly.log",  "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
+                  "pack.bat", "buildBlockly.cmd", "build.bat", "test.py")
     if not os.path.exists(copied_project_dir):
         print(script_tab + "Copying contents of %s" % project_root_dir)
         print(script_tab + "               into %s" % copied_project_dir)
