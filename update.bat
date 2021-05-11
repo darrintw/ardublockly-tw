@@ -21,7 +21,7 @@ git --git-dir=..\..\Ardublockly\.git\ pull origin master
 git --git-dir=..\..\Ardublockly\.git\ gc
 git --git-dir=..\..\Ardublockly\.git\ prune
 
-IF EXIST %~dp0\Ardublockly\__pycache__" (
+IF EXIST "%~dp0\Ardublockly\__pycache__" (
 	echo.
 	del /f /s /q "%~dp0\Ardublockly\__pycache__" > nul
 	rd /q /s "%~dp0\Ardublockly\__pycache__" > nul
@@ -81,17 +81,22 @@ IF EXIST "%~dp0\Ardublockly\pack.bat" (
 	@echo off
 )
 
+IF EXIST "%~dp0\Ardublockly\run.bat" (
+	echo.
+	del /f /s /q "%~dp0\Ardublockly\run_dev.bat" > nul
+	@echo off
+)
+
 IF EXIST "%~dp0\Ardublockly\run_dev.bat" (
 	echo.
 	del /f /s /q "%~dp0\Ardublockly\run_dev.bat" > nul
 	@echo off
 )
 
-@echo off
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
 @echo off
 pause
 
-cd "%~dp0/../"
+cd "%~dp0\..\"
 run.bat
