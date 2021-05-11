@@ -12,14 +12,14 @@ IF EXIST "%~dp0\Ardublockly\.git\index.lock" (
 )
 @echo off
 
-cd "%~dp0\..\PortableGit\cmd\"
+cd "%~dp0"
 rem update blocks
-git config --system core.longpaths true
-git --git-dir=..\..\Ardublockly\.git\ reset --hard origin/master
-git --git-dir=..\..\Ardublockly\.git\ pull origin master
+..\PortableGit\cmd\git config --system core.longpaths true
+..\PortableGit\cmd\git reset --hard origin/master
+..\PortableGit\cmd\git pull origin master
 
-git --git-dir=..\..\Ardublockly\.git\ gc
-git --git-dir=..\..\Ardublockly\.git\ prune
+..\PortableGit\cmd\git gc
+..\PortableGit\cmd\git prune
 
 IF EXIST "%~dp0\Ardublockly\__pycache__" (
 	echo.
