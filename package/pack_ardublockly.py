@@ -82,7 +82,7 @@ def set_tag(tag):
 
 
 def replace_title_version(tag):
-    path = project_root_dir + '\\ardublockly\\index.html'
+    path = copied_project_dir + '\\ardublockly\\index.html'
     with open(path, 'r', encoding='UTF-8') as html_doc:
         soup = BeautifulSoup(html_doc.read(), 'lxml')
         title = soup.find('title')
@@ -416,9 +416,6 @@ def pack_ardublockly(tag):
     # Set the copied folder name to the stamp
     set_tag(tag)
 
-    print(script_tag + "Add version tag to index.html title tag:")
-    replace_title_version(tag)
-
     print(script_tag + "Copying the project root folder:")
     success = copy_ardublockly_folder()
     if not success:
@@ -438,6 +435,9 @@ def pack_ardublockly(tag):
 
     print(script_tag + "Removing Python 3 pycache directories:")
     remove_pycache_dirs(scan_path=copied_project_dir)
+
+    print(script_tag + "Add version tag to index.html title tag:")
+    replace_title_version(tag)
 
     print(script_tag + "Creating zip file of the new Ardublockly folder:")
     zip_ardublockly_copy(tag)
