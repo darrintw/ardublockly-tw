@@ -70,7 +70,7 @@
             <field name="VAR">cmd</field>
             <value name="VALUE">
               <block type="variables_set_type" id="N3ypjw#rt1M@|~S}r(A8">
-                <field name="VARIABLE_SETTYPE_TYPE">TEXT</field>
+                <field name="VARIABLE_SETTYPE_TYPE">STRING</field>
                 <value name="VARIABLE_SETTYPE_INPUT">
                   <block type="bluetooth_at_command" id="lO4:PGSqnO?{zcU*?92@">
                     <field name="HC_TYPE">HC-06</field>
