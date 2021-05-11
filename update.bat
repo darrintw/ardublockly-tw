@@ -57,6 +57,12 @@ IF EXIST "%~dp0\Ardublockly\DigisparkWindowsDriver" (
 	@echo off
 )
 
+IF EXIST "%~dp0\Ardublockly\ardublockly.iml" (
+	echo.
+	del /f /s /q "%~dp0\Ardublockly\ardublockly.iml" > nul
+	@echo off
+)
+
 IF EXIST "%~dp0\Ardublockly\ardublockly.log" (
 	echo.
 	del /f /s /q "%~dp0\Ardublockly\ardublockly.log" > nul
@@ -83,7 +89,7 @@ IF EXIST "%~dp0\Ardublockly\run_dev.bat" (
 
 cd "%~dp0"
 
-@echo on
+@echo off
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
 @echo off
