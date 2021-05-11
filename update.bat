@@ -87,11 +87,11 @@ IF EXIST "%~dp0\Ardublockly\run_dev.bat" (
 	@echo off
 )
 
-cd "%~dp0"
-
 @echo off
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
 @echo off
 pause
+
+cd "%~dp0"
 run.bat
