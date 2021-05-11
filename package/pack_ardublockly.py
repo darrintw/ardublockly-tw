@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*- #
 #
 # Creates a zip file of the self executable Ardublockly application.
@@ -22,7 +22,7 @@
 #
 # This script file will create a copy of the project folder in its parent dir.
 # So if the project folder is located in ~/projects/ardublockly it will create
-# a copy in ~/projects/ardublockly_<timestamp>_<tag>.
+# a copy in ~/projects/ardublockly_release/ardublockly_<timestamp>_<tag>.
 # It will then delete unnecessary files for a working version of the self
 # executable application and zip the contents of the folder.
 #
@@ -230,27 +230,30 @@ def copy_ardublockly_folder():
         print(script_tab + "                  into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\blockfactory", copied_project_up_dir)
 
-        print(script_tab + "Moving CH341SER of %s\\CH341SER" % copied_project_dir)
+        print(script_tab + "Moving CH341SER of %s\\Tools\\CH341SER" % copied_project_dir)
         print(script_tab + "              into %s" % copied_project_up_dir)
-        shutil.move(copied_project_dir + "\\CH341SER", copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\Tools\\CH341SER", copied_project_up_dir)
 
-        print(script_tab + "Moving DigisparkWindowsDriver of %s\\DigisparkWindowsDriver" % copied_project_dir)
+        print(script_tab + "Moving DigisparkWindowsDriver of %s\\Tools\\DigisparkWindowsDriver" % copied_project_dir)
         print(script_tab + "              into %s" % copied_project_up_dir)
-        shutil.move(copied_project_dir + "\\DigisparkWindowsDriver", copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\Tools\\DigisparkWindowsDriver", copied_project_up_dir)
 
         '''
-        print(script_tab + "Moving notepad++ of %s\\notepad++" % copied_project_dir)
+        print(script_tab + "Moving notepad++ of %s\\Tools\\notepad++" % copied_project_dir)
         print(script_tab + "               into %s" % copied_project_up_dir)
-        shutil.move(copied_project_dir + "\\notepad++", copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\Tools\\notepad++", copied_project_up_dir)
         
         print(script_tab + "Moving update.bat of %s" % copied_project_dir)
         print(script_tab + "                  into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\update.bat", copied_project_up_dir)
         '''
 
-        print(script_tab + "Moving PortableGit of %s\\PortableGit" % copied_project_dir)
+        print(script_tab + "Moving PortableGit of %s\\Tools\\PortableGit" % copied_project_dir)
         print(script_tab + "                  into %s" % copied_project_up_dir)
-        shutil.move(copied_project_dir + "\\PortableGit", copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\Tools\\PortableGit", copied_project_up_dir)
+
+        print(script_tag + "Removing Tools directory after move to top folder")
+        remove_directory(os.path.join(copied_project_dir, "Tools"))
 
         print(script_tab + "Reset Arduino preferences %s\\Arduino\\portable\\preferences.txt" % copied_project_dir)
         shutil.copyfile(copied_project_dir + "\\Arduino\\portable\\preferences.bak",

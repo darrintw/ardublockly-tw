@@ -1,6 +1,4 @@
-cd %~dp0\PortableGit\cmd\
-git gc --aggressive --prune
-git lfs prune
-cd %~dp0
+Tools\PortableGit\cmd\git.exe gc --aggressive --prune
+Tools\PortableGit\cmd\git.exe lfs prune
 python package\pack_ardublockly.py
 pause
