@@ -181,21 +181,17 @@ def do_compile(params, target_filename, filenames, remove):
     conn = httplib.HTTPSConnection("closure-compiler.appspot.com")
     conn.request("POST", "/compile", urllib.urlencode(params), headers)
     response = conn.getresponse()
-    json_str = response.read().decode("utf-8")
+    json_str = response.read()
     conn.close()
 
     # Parse the JSON response.
     json_data = json.loads(json_str)
 
     def file_lookup(name):
-        if not name.startswith("Input_") and not name.endswith(".js"):
+        if not name.startswith("Input_"):
             return "???"
-        n = name.split("/")
-        if len(n) <= 1:
-            return "???"
-        # n = int(name[6:]) - 1
-        # return filenames[n]
-        return n[len(n) - 1]
+        n = int(name[6:]) - 1
+        return filenames[n]
 
     if json_data.has_key("serverErrors"):
         errors = json_data["serverErrors"]
@@ -279,18 +275,10 @@ limitations under the License.
 def gen_blocks():
     target_filename = "blocks_compressed.js"
     # Define the parameters for the POST request.
-    params = [
-        ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
-        ("use_closure_library", "true"),
-        ("output_format", "json"),
-        ("output_info", "compiled_code"),
-        ("output_info", "warnings"),
-        ("output_info", "errors"),
-        ("output_info", "statistics"),
-        ("js_code", "goog.provide('Blockly');"),
-        ("js_code", "goog.provide('Blockly.Blocks');"),
-        ("js_code", "goog.provide('Blockly.Types');")
-    ]
+    params = [("compilation_level", "SIMPLE_OPTIMIZATIONS"), ("output_format", "json"),
+              ("output_info", "compiled_code"), ("output_info", "warnings"), ("output_info", "errors"),
+              ("output_info", "statistics"), ("js_code", "goog.provide('Blockly.Blocks');"),
+              ("js_code", "goog.provide('Blockly.Types');")]
 
     # Read in all the source files.
     # Add Blockly.Blocks to be compatible with the compiler.
@@ -344,7 +332,7 @@ class Gen_compressed(threading.Thread):
         self.search_paths = search_paths
 
     def run(self):
-        self.gen_core()
+        # self.gen_core()
         gen_blocks()
         gen_generator("arduino")
         '''

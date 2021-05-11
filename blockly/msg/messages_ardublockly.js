@@ -93,10 +93,6 @@ Blockly.Msg.ARD_VAR_AS = 'as';
 /// Arduino
 Blockly.Msg.ARD_VAR_AS_TIP = 'Sets a value to a specific type';
 /// Arduino
-Blockly.Msg.VARIABLES_DECLARE = "Declare %1 to %2";
-/// Arduino
-Blockly.Msg.VARIABLES_DECLARE_TOOLTIP = "Declare global value";
-/// Arduino
 Blockly.Msg.VARIABLES_INIT = 'initialize %1 to %2';
 /// Arduino
 Blockly.Msg.VARIABLES_INIT_TOOLTIP = 'assign an initial value for a variable.';
@@ -104,6 +100,10 @@ Blockly.Msg.VARIABLES_INIT_TOOLTIP = 'assign an initial value for a variable.';
 Blockly.Msg.VARIABLES_INIT_NOT_IN_SETUP_WARNING = 'Warning: This block may only be used within SETUP.';
 /// Arduino
 Blockly.Msg.VARIABLES_INIT_REDEFINED_WARNING = 'Warning: The variable %1 can not be redefined.';
+/// Arduino
+Blockly.Msg.VARIABLES_DECLARE = "Declare %1 to %2";
+/// Arduino
+Blockly.Msg.VARIABLES_DECLARE_TOOLTIP = "Declare global value";
 /// Arduino
 Blockly.Msg.VARIABLES_GET_ITEM = 'i';
 /// Arduino
