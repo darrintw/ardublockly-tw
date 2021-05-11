@@ -93,5 +93,5 @@ echo ***************************Ardublockly was updated, Enjoy it.**************
 @echo off
 pause
 
-cd "%~dp0"
+cd "%~dp0/../"
 run.bat
