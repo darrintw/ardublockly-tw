@@ -89,6 +89,8 @@ IF EXIST "%~dp0\test.py" (
 	@echo off
 )
 
+..\PortableGit\cmd\git.exe gc --aggressive --prune
+
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
 @echo off
