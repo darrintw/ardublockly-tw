@@ -32,6 +32,14 @@ IF EXIST "%~dp0\__pycache__" (
 	@echo off
 )
 
+IF EXIST "%~dp0\package" (
+    echo *****Delete package folder******
+	echo.
+	del /f /s /q "%~dp0\package" > nul
+	rd /q /s "%~dp0\package" > nul
+	@echo off
+)
+
 IF EXIST "%~dp0\Tools" (
     echo *****Delete Tools folder******
 	echo.
@@ -88,8 +96,6 @@ IF EXIST "%~dp0\test.py" (
 	del /f /s /q "%~dp0\test.py" > nul
 	@echo off
 )
-
-..\PortableGit\cmd\git.exe gc --aggressive --prune
 
 echo.
 echo ***************************Ardublockly was updated, Enjoy it.****************************
