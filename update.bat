@@ -18,7 +18,7 @@ cd "%~dp0"
 rem update blocks
 ..\PortableGit\cmd\git config --system core.longpaths true
 ..\PortableGit\cmd\git reset --hard origin/master
-..\PortableGit\cmd\git pull --force origin master
+..\PortableGit\cmd\git pull --force origin/master
 
 ..\PortableGit\cmd\git gc
 ..\PortableGit\cmd\git prune
