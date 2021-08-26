@@ -5,6 +5,6 @@ arduexec/appdata/
 CH341SER
 DigisparkWindowsDriver
 PortableGit
-ArdublocklySketch/ArdublocklySketch/ArdublocklySketch.ino
+ArdublocklySketch/*.*
 ardublockly.log
 ServerCompilerSettings.ini
