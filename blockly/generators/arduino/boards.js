@@ -317,6 +317,7 @@ Blockly.Arduino.Boards.profiles.esp8266 = {
 */
 
 /** LinkIt 7697. */
+/*
 Blockly.Arduino.Boards.profiles.linkit_7697 = {
     name: 'LinkIt 7697',
     description: 'LinkIt 7697',
@@ -345,7 +346,7 @@ Blockly.Arduino.Boards.profiles.linkit_7697 = {
     builtinLed: [['BUILTIN_LED', '7']],
     builtinButton: [['BUILTIN_BUTTON', '6']]
 };
-
+*/
 /** Digispark Attiny85 **/
 Blockly.Arduino.Boards.profiles.attiny85 = {
     name: 'Digispark Attiny85 (Default - 16.5mhz)',
