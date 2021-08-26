@@ -16,11 +16,6 @@ goog.provide('Blockly.Arduino.Sensor');
 goog.require('Blockly.Arduino');
 
 /**
- * Code generator to read an angle value from a servo Pin (X).
- * Arduino code: #include <Servo.h>
- *               Servo myServoX;
- *               setup { myServoX.attach(X); }
- *               loop  { myServoX.read();    }
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */

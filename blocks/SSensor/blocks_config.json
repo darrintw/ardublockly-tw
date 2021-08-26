@@ -1,0 +1,22 @@
+{
+  "categoryName": "SSensor",
+  "description": "Special sensors blocks to demonstrate the feature.",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "SSensor",
+  "toolbox": [
+    "<category>",
+    "  <block type=\"hx711_setup\">",
+    "    <field name=\"DATA_PIN\">6</field>",
+    "    <field name=\"CLK_PIN\">5</field>",
+    "  </block>",
+    "  <block type=\"hx711_set_scale\"></block>",
+    "  <block type=\"hx711_tare\"></block>",
+    "  <block type=\"hx711_get_units\"></block>",
+    "  <block type=\"hx711_power_down\"></block>",
+    "  <block type=\"hx711_power_up\"></block>",
+    "</category>"
+  ]
+}

@@ -52,6 +52,8 @@ goog.require('Blockly.Msg');
 /// For more context, see
 /// [[Translating:Blockly#infrequent_message_types]].\n{{Identical|Item}}
 Blockly.Msg.VARIABLES_DEFAULT_NAME = 'item';
+/// Label for a checkbox  let variable is const or not
+Blockly.Msg.VARIABLES_CONST = 'Const';
 /// button text - Button that sets a calendar to today's date.\n{{Identical|Today}}
 Blockly.Msg.TODAY = 'Today';
 
