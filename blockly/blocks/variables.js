@@ -102,6 +102,11 @@ Blockly.Blocks['variables_init'] = {
                 {
                     "type": "input_value",
                     "name": "VALUE"
+                },
+                {
+                    "type": "field_checkbox",
+                    "name": "CONST",
+                    "checked": false
                 }
             ],
             "colour": Blockly.Blocks.variables.HUE,
@@ -138,6 +143,11 @@ Blockly.Blocks['variables_declare'] = {
                     "type": "field_dropdown",
                     "name": "VARIABLE_TYPE",
                     "options": Blockly.Types.getValidTypeArray()
+                },
+                {
+                    "type": "field_checkbox",
+                    "name": "CONST",
+                    "checked": false
                 }
             ],
             "inputsInline": true,

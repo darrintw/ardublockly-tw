@@ -12,6 +12,8 @@ goog.provide('Blockly.Blocks.user');
 
 goog.require('Blockly.Blocks');
 
+goog.require('Blockly.Types');
+
 Blockly.Blocks.user.HUE = 180;
 
 /* User define block */

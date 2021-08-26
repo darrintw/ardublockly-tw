@@ -11,6 +11,7 @@
     ]
   },
   "VARIABLES_DEFAULT_NAME": "變數",
+  "VARIABLES_CONST": "常數",
   "TODAY": "今天",
   "DUPLICATE_BLOCK": "複製",
   "ADD_COMMENT": "加入註解",
