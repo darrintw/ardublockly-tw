@@ -16,12 +16,12 @@ IF EXIST "%~dp0\.git\index.lock" (
 echo.
 cd "%~dp0"
 rem update blocks
-..\PortableGit\cmd\git config --system core.longpaths true
-..\PortableGit\cmd\git reset --hard origin/master
-..\PortableGit\cmd\git pull --force origin/master
+..\MinGit\cmd\git config --system core.longpaths true
+..\MinGit\cmd\git reset --hard origin/master
+..\MinGit\cmd\git pull --force origin/master
 
-..\PortableGit\cmd\git gc
-..\PortableGit\cmd\git prune
+..\MinGit\cmd\git gc
+..\MinGit\cmd\git prune
 @echo off
 
 IF EXIST "%~dp0\__pycache__" (
