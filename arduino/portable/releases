@@ -19,7 +19,7 @@
 
   <link crossorigin="anonymous" media="all" integrity="sha512-OK6IZWlYcNCIf6IuE5bGqAXE7k29nTS+lmNILcaRxHusCPjgNy/6WsKt8fSsrKwZZX7zZjYxlYn1guNNXcnjHA==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-38ae8865695870d0887fa22e1396c6a8.css" />
   
-    <link crossorigin="anonymous" media="all" integrity="sha512-G1hJqw/pzfTYTgSNCXvPGSGx9Oja8jPgTrr/oADHGVkXmpgLPT7ptHWIW2oHWzjPtcrPTd9MZKGOShBo6Kr/9A==" rel="stylesheet" href="https://github.githubassets.com/assets/behaviors-1b5849ab0fe9cdf4d84e048d097bcf19.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-rH3jwTfJlLZ2j1L4jnv6sppMywy4JaloAXvf+U6XXkc/TpZ4mYq/1Ag516A3BW759gOkL/nlKXRHs5xVTphiFA==" rel="stylesheet" href="https://github.githubassets.com/assets/behaviors-ac7de3c137c994b6768f52f88e7bfab2.css" />
     
     
     
@@ -91,7 +91,7 @@
   <link rel="assets" href="https://github.githubassets.com/">
   
 
-  <meta name="request-id" content="D9C8:7B4C:A0DF2F:BE2897:612CED33" data-pjax-transient="true"/><meta name="html-safe-nonce" content="7adbfcff07ebe7a6d6b4ac878d69c66abba5f5b9375dcc710dc530adfdf99abd" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiJEOUM4OjdCNEM6QTBERjJGOkJFMjg5Nzo2MTJDRUQzMyIsInZpc2l0b3JfaWQiOiI0NzM2NjE1NTMzMzg3NzcxMTg3IiwicmVnaW9uX2VkZ2UiOiJhcC1ub3J0aGVhc3QtMSIsInJlZ2lvbl9yZW5kZXIiOiJhcC1ub3J0aGVhc3QtMSJ9" data-pjax-transient="true"/><meta name="visitor-hmac" content="b6d97fedcf246ba37d612e1603def48b732e3d627ad3856f5673ec17f29eb63a" data-pjax-transient="true"/>
+  <meta name="request-id" content="F856:24FB:93D17:AAF5B:612CF472" data-pjax-transient="true"/><meta name="html-safe-nonce" content="4f26eb7c3210ad1db5706e3e9e837fa812c95b0f9a769ba7dec5dd80056ae1b7" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiJGODU2OjI0RkI6OTNEMTc6QUFGNUI6NjEyQ0Y0NzIiLCJ2aXNpdG9yX2lkIjoiNjI0ODUwMTE4NzU5NDQ4MjgwMiIsInJlZ2lvbl9lZGdlIjoiYXAtbm9ydGhlYXN0LTEiLCJyZWdpb25fcmVuZGVyIjoiYXAtbm9ydGhlYXN0LTEifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="ad5f697e1e31ee63725f52730eabb047df92886091fb1c57ff34fb2071c17ac4" data-pjax-transient="true"/>
 
     <meta name="hovercard-subject-tag" content="repository:309551402" data-pjax-transient>
 
@@ -353,7 +353,7 @@
           spellcheck="false"
           autocomplete="off"
         >
-        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="vF/H7IpPjJvvKlLtusNU/+4t6ezCNvVriiiS3D3BITL/+cjfvm0P5h6o91qxlZ5ReATlE+9+QT23BozPVUrQHg==" />
+        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="7/gtH/s/uLkk8e3qKyb7IZB1zE4nCX6HVrmy8LIZa8AS+id2q2h23tyQvNcm5T+VswuRDrzq9154ZMLOxkEDPQ==" />
         <input type="hidden" class="js-site-search-type-field" name="type" >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
 
