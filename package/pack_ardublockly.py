@@ -248,9 +248,9 @@ def copy_ardublockly_folder():
         shutil.move(copied_project_dir + "\\update.bat", copied_project_up_dir)
         '''
 
-        print(script_tab + "Moving PortableGit of %s\\Tools\\PortableGit" % copied_project_dir)
+        print(script_tab + "Moving MinGit of %s\\Tools\\MinGit" % copied_project_dir)
         print(script_tab + "                  into %s" % copied_project_up_dir)
-        shutil.move(copied_project_dir + "\\Tools\\PortableGit", copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\Tools\\MinGit", copied_project_up_dir)
 
         print(script_tag + "Removing Tools directory after move to top folder")
         remove_directory(os.path.join(copied_project_dir, "Tools"))
