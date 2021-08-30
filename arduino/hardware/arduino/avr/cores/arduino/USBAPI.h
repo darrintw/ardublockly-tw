@@ -65,8 +65,6 @@ public:
 	void detach();	// Serial port goes down too...
 	void poll();
 	bool wakeupHost(); // returns false, when wakeup cannot be processed
-
-	bool isSuspended();
 };
 extern USBDevice_ USBDevice;
 

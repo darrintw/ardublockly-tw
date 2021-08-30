@@ -208,7 +208,7 @@ def copy_ardublockly_folder():
     ignore_pat = (".idea*", ".svn", ".travis*", ".appveyor*", "circle.yml", "notepad++", "CNAME",
                   ".ruby-version", "TestTemp_*", "package", ".coverage's", "ardublockly.iml",
                   "ardublockly.log", "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
-                  "pack.bat", "buildBlockly.cmd", "build.bat", "test.py")
+                  "pack.bat", "buildBlockly.cmd", "build.bat", "test.py", ".git", "update.bat")
     if not os.path.exists(copied_project_dir):
         print(script_tab + "Copying contents of %s" % project_root_dir)
         print(script_tab + "               into %s" % copied_project_dir)
@@ -246,11 +246,11 @@ def copy_ardublockly_folder():
         print(script_tab + "Moving update.bat of %s" % copied_project_dir)
         print(script_tab + "                  into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\update.bat", copied_project_up_dir)
-        '''
 
         print(script_tab + "Moving MinGit of %s\\Tools\\MinGit" % copied_project_dir)
         print(script_tab + "                  into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\Tools\\MinGit", copied_project_up_dir)
+        '''
 
         print(script_tag + "Removing Tools directory after move to top folder")
         remove_directory(os.path.join(copied_project_dir, "Tools"))
