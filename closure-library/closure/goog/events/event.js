@@ -18,7 +18,7 @@
 
 
 goog.provide('goog.events.Event');
-goog.provide('goog.events.EventLike');
+//goog.provide('goog.events.EventLike');
 
 /**
  * goog.events.Event no longer depends on goog.Disposable. Keep requiring
@@ -37,7 +37,7 @@ goog.require('goog.events.EventId');
  * of the Event.
  * @typedef {string|Object|goog.events.Event|goog.events.EventId}
  */
-goog.events.EventLike;
+//goog.events.EventLike;
 
 
 

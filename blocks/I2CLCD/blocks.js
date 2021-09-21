@@ -82,12 +82,12 @@ Blockly.Blocks['I2CLCD_move'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2CLCD_MOVE_MSG1);
         this.appendValueInput("X")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2CLCD_MOVE_MSG2);
         this.appendValueInput("Y")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2CLCD_MOVE_MSG3);

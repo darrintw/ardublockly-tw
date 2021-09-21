@@ -105,6 +105,17 @@ Blockly.Arduino['io_allpins'] = function (block) {
 };
 
 /**
+ * Value for defining Analog Pins.
+ * Arduino code: pin number
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Arduino['io_analogpins'] = function (block) {
+    var code = block.getFieldValue('PIN');
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
  * Value for defining PWM Pins.
  * Arduino code: pin number
  * @param {!Blockly.Block} block Block to generate the code from.
@@ -116,12 +127,12 @@ Blockly.Arduino['io_pwmpins'] = function (block) {
 };
 
 /**
- * Value for defining Analog Pins.
+ * Value for defining SPI Pins.
  * Arduino code: pin number
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */
-Blockly.Arduino['io_analogpins'] = function (block) {
+Blockly.Arduino['io_spipins'] = function (block) {
     var code = block.getFieldValue('PIN');
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
