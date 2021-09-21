@@ -140,8 +140,7 @@ window.BLOCKLY_BOOT = function() {
         # This allows blockly_uncompressed.js to be compiled on one computer and be
         # used on another, even if the directory name differs.
         m = re.search('[/]([^/]+)[/]core[/]blockly.js', add_dependency)
-        add_dependency = re.sub('([/])' + re.escape(m.group(1)) +
-                                '([/]core[/])', '\\1" + dir + "\\2', add_dependency)
+        add_dependency = re.sub('([/])' + re.escape(m.group(1)) + '([/]core[/])', '\\1" + dir + "\\2', add_dependency)
         f.write(add_dependency + '\n')
 
         provides = []
@@ -175,7 +174,142 @@ if (isNodeJS) {
         print("SUCCESS: " + target_filename)
 
 
+def do_compile_jar(params):
+    dash_params = ["--compilation_level SIMPLE", "--define='goog.DEBUG=false'",
+                   "--rewrite_polyfills=false", "--js=../closure-library"]
+    for (arg, value) in params:
+        if arg == "js_file":
+            dash_params.append("--js='" + value + "'")
+    args = []
+    for group in [["java -jar closure-compiler-v20160208.jar"], dash_params]:
+        args.extend(group)
+    # print args
+    if sys.platform == "darwin":
+        proc = subprocess.Popen(" ".join(args), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    else:
+        proc = subprocess.Popen(" ".join(args), stdin=subprocess.PIPE, stdout=subprocess.PIPE, shell=True)
+    (stdout, stderr) = proc.communicate()
+
+    # print stdout
+    print stderr
+    # Build the JSON response.
+    filesizes = [os.path.getsize(value) for (arg, value) in params if arg == "js_file"]
+    return dict(
+        compiledCode=stdout,
+        statistics=dict(
+            originalSize=reduce(lambda v, size: v + size, filesizes, 0),
+            compressedSize=len(stdout),
+        )
+    )
+
+
 def do_compile(params, target_filename, filenames, remove):
+    json_data = do_compile_jar(params)
+    if report_errors(target_filename, filenames, json_data):
+        write_output(target_filename, remove, json_data)
+        report_stats(target_filename, json_data)
+
+
+def report_errors(target_filename, filenames, json_data):
+    def file_lookup(name):
+        if not name.startswith("Input_"):
+            return "???"
+        n = int(name[6:]) - 1
+        return filenames[n]
+
+    if json_data.has_key("serverErrors"):
+        errors = json_data["serverErrors"]
+        for error in errors:
+            print("SERVER ERROR: %s" % target_filename)
+            print(error["error"])
+    elif json_data.has_key("errors"):
+        errors = json_data["errors"]
+        for error in errors:
+            print("FATAL ERROR")
+            print(error["error"])
+            if error["file"]:
+                print("%s at line %d:" % (
+                    file_lookup(error["file"]), error["lineno"]))
+                print(error["line"])
+                print((" " * error["charno"]) + "^")
+            # sys.exit(1)
+    else:
+        if json_data.has_key("warnings"):
+            warnings = json_data["warnings"]
+            for warning in warnings:
+                print("WARNING")
+                print(warning["warning"])
+                if warning["file"]:
+                    print("%s at line %d:" % (
+                        file_lookup(warning["file"]), warning["lineno"]))
+                    print(warning["line"])
+                    print((" " * warning["charno"]) + "^")
+            print()
+        return True
+    return False
+
+
+def write_output(target_filename, remove, json_data):
+    if not json_data.has_key("compiledCode"):
+        print("FATAL ERROR: Compiler did not return compiledCode.")
+        # sys.exit(1)
+
+    code = HEADER + "\n" + json_data["compiledCode"]
+    for code_statement in remove:
+        code = code.replace(code_statement, "")
+
+    # Trim down Google's Apache licences.
+    # The Closure Compiler used to preserve these until August 2015.
+    # Delete this in a few months if the licences don't return.
+    LICENSE = re.compile("""/\\*
+
+    [\w ]+
+
+    (Copyright \\d+ Google Inc.)
+    https://developers.google.com/blockly/
+
+    Licensed under the Apache License, Version 2.0 \(the "License"\);
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    \\*/""")
+    code = re.sub(LICENSE, r"\n// \1  Apache License 2.0", code)
+    stats = json_data["statistics"]
+    original_b = stats["originalSize"]
+    compressed_b = stats["compressedSize"]
+    if original_b > 0 and compressed_b > 0:
+        f = open(target_filename, "w")
+        f.write(code)
+        f.close()
+
+
+def report_stats(target_filename, json_data):
+    stats = json_data["statistics"]
+    original_b = stats["originalSize"]
+    compressed_b = stats["compressedSize"]
+    if original_b > 0 and compressed_b > 0:
+        f = open(target_filename, "w")
+        f.write(code)
+        f.close()
+
+        original_kb = int(original_b / 1024 + 0.5)
+        compressed_kb = int(compressed_b / 1024 + 0.5)
+        ratio = int(float(compressed_b) / float(original_b) * 100 + 0.5)
+        print("SUCCESS: " + target_filename)
+        print("Size changed from %d KB to %d KB (%d%%)." % (
+            original_kb, compressed_kb, ratio))
+    else:
+        print("UNKNOWN ERROR")
+
+
+def do_compile_online(params, target_filename, filenames, remove):
     # Send the request to Google.
     headers = {"Content-type": "application/x-www-form-urlencoded"}
     conn = httplib.HTTPSConnection("closure-compiler.appspot.com")
@@ -203,6 +337,7 @@ def do_compile(params, target_filename, filenames, remove):
         for error in errors:
             print("FATAL ERROR")
             print(error["error"])
+            print(error["file"])
             if error["file"]:
                 print("%s at line %d:" % (
                     file_lookup(error["file"]), error["lineno"]))
@@ -244,7 +379,7 @@ Licensed under the Apache License, Version 2.0 \(the "License"\);
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+https://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -286,14 +421,20 @@ def gen_blocks():
     for root, folders, files in os.walk("blocks"):
         for filename in fnmatch.filter(files, "*.js"):
             filenames.append(os.path.join(root, filename))
+    # glob.glob ordering is platform-dependent and not necessary deterministic
+    # filenames.sort()  # Deterministic build.
     for filename in filenames:
+        # Append filenames as false arguments the step before compiling will
+        # either transform them into arguments for local or remote compilation
+        # params.append(("js_file", filename))
         f = open(filename)
         params.append(("js_code", "".join(f.readlines())))
         f.close()
 
     # Remove Blockly.Blocks to be compatible with Blockly.
     remove = ["var Blockly={Blocks:{}};", "Blockly.Types={};"]
-    do_compile(params, target_filename, filenames, remove)
+    do_compile_online(params, target_filename, filenames, remove)
+    # do_compile(params, target_filename, filenames, remove)
 
 
 def gen_generator(language):
@@ -309,7 +450,12 @@ def gen_generator(language):
     filenames = glob.glob(
         os.path.join("generators", language, "*.js"))
     filenames.insert(0, os.path.join("generators", language + ".js"))
+    # glob.glob ordering is platform-dependent and not necessary deterministic
+    # filenames.sort()  # Deterministic build.
     for filename in filenames:
+        # Append filenames as false arguments the step before compiling will
+        # either transform them into arguments for local or remote compilation
+        # params.append(("js_file", filename))
         f = open(filename)
         params.append(("js_code", "".join(f.readlines())))
         f.close()
@@ -317,7 +463,8 @@ def gen_generator(language):
 
     # Remove Blockly.Generator to be compatible with Blockly.
     remove = ["var Blockly={Generator:{}};", "Blockly.StaticTyping={};"]
-    do_compile(params, target_filename, filenames, remove)
+    do_compile_online(params, target_filename, filenames, remove)
+    # do_compile(params, target_filename, filenames, remove)
 
 
 class Gen_compressed(threading.Thread):
@@ -335,13 +482,6 @@ class Gen_compressed(threading.Thread):
         # self.gen_core()
         gen_blocks()
         gen_generator("arduino")
-        '''
-        self.gen_generator("javascript")
-        self.gen_generator("python")
-        self.gen_generator("php")
-        self.gen_generator("dart")
-        self.gen_generator("lua")
-        '''
 
     def gen_core(self):
         target_filename = "blockly_compressed.js"
@@ -357,17 +497,22 @@ class Gen_compressed(threading.Thread):
         ]
 
         # Read in all the source files.
-        filenames = calcdeps.CalculateDependencies(self.search_paths,
-                                                   [os.path.join("core", "blockly.js")])
+        filenames = calcdeps.CalculateDependencies(self.search_paths, [os.path.join("core", "blockly.js")])
+        # glob.glob ordering is platform-dependent and not necessary deterministic
+        # filenames.sort()  # Deterministic build.
         for filename in filenames:
             # Filter out the Closure files (the compiler will add them).
             if filename.startswith(os.pardir + os.sep):  # '../'
                 continue
+            # Append filenames as false arguments the step before compiling will
+            # either transform them into arguments for local or remote compilation
+            # params.append(("js_file", filename))
             f = open(filename)
             params.append(("js_code", "".join(f.readlines())))
             f.close()
-
-        do_compile(params, target_filename, filenames, [])
+        remove = []
+        do_compile_online(params, target_filename, filenames, remove)
+        # do_compile(params, target_filename, filenames, [])
 
 
 def _rebuild(srcs, dests):
@@ -421,8 +566,8 @@ def generate_blockly():
             "--output_dir", os.path.join("msg", "js"),
             "--quiet"]
         json_files = glob.glob(os.path.join("msg", "json", "*.json"))
-        json_files = [files for files in json_files if not files.endswith(("keys.json", "synonyms.json", "qqq.json",
-                                                                           "_ardublockly.json"))]
+        json_files = [files for files in json_files if
+                      not files.endswith(("keys.json", "synonyms.json", "qqq.json", "_ardublockly.json"))]
         cmd.extend(json_files)
         subprocess.check_call(cmd)
     except (subprocess.CalledProcessError, OSError) as e:
@@ -524,14 +669,12 @@ if __name__ == "__main__":
             print("""Error: Closure not found. Read this: https://developers.google.com/blockly/hacking/closure""")
         sys.exit(1)
 
-    search_paths = calcdeps.ExpandDirectories(
-        ["core", os.path.join(os.path.pardir, "closure-library")])
+    search_paths = calcdeps.ExpandDirectories(["core", os.path.join(os.path.pardir, "closure-library")])
 
     # Run both tasks in parallel threads.
     # Uncompressed is limited by processor speed.
-    # Compressed is limited by network and server speed.
     Gen_uncompressed(search_paths).start()
+    # Compressed is limited by network and server speed.
     Gen_compressed(search_paths).start()
-
     # This is run locally in a separate thread.
     Gen_langfiles().start()

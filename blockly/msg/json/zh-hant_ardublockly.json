@@ -44,6 +44,7 @@
   "VARIABLES_WARN_TEXT": "變數 %1 已經設定為 %2 型態, 但這個積木輸出為 %3 型態！",
   "ARD_PIN": "腳位",
   "ARD_PWM_PIN": "PWM腳位",
+  "ARD_SPI_PIN": "SPI腳位",
   "ARD_ANALOG_PIN": "類比腳位",
   "ARD_HIGH": "高",
   "ARD_LOW": "低",

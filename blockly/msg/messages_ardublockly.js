@@ -130,6 +130,8 @@ Blockly.Msg.ARD_PWM_PIN = 'PWM Pin';
 /// Arduino
 Blockly.Msg.ARD_ANALOG_PIN = 'Analog Pin';
 /// Arduino
+Blockly.Msg.ARD_SPI_PIN = 'SPI Pin';
+/// Arduino
 Blockly.Msg.ARD_HIGH = 'HIGH';
 /// Arduino
 Blockly.Msg.ARD_LOW = 'LOW';

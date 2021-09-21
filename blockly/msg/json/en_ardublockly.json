@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "carlosperate",
-		"lastupdated": "2021-08-27 01:50:52.468000",
+		"lastupdated": "2021-09-21 17:16:00.905000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -32,8 +32,6 @@
 	"VARIABLES_INIT_TOOLTIP": "assign an initial value for a variable.",
 	"VARIABLES_INIT_NOT_IN_SETUP_WARNING": "Warning: This block may only be used within SETUP.",
 	"VARIABLES_INIT_REDEFINED_WARNING": "Warning: The variable %1 can not be redefined.",
-	"VARIABLES_DECLARE": "Declare %1 to %2, %3 const",
-	"VARIABLES_DECLARE_TOOLTIP": "Declare global value",
 	"VARIABLES_GET_ITEM": "i",
 	"VARIABLES_AS": "variables as",
 	"VARIABLES_TYPE_NUMBER": "int",
@@ -45,6 +43,7 @@
 	"ARD_PIN": "Pin",
 	"ARD_PWM_PIN": "PWM Pin",
 	"ARD_ANALOG_PIN": "Analog Pin",
+	"ARD_SPI_PIN": "SPI Pin",
 	"ARD_HIGH": "HIGH",
 	"ARD_LOW": "LOW",
 	"ARD_DIGITALWRITE_MSG": "set digital %1 to %2",

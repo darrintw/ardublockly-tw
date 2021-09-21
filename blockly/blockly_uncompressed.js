@@ -465,7 +465,7 @@ goog.addDependency("events/actionhandler_test.js", [], []);
 goog.addDependency("events/browserevent.js", ['goog.events.BrowserEvent', 'goog.events.BrowserEvent.MouseButton', 'goog.events.BrowserEvent.PointerType'], ['goog.debug', 'goog.events.BrowserFeature', 'goog.events.Event', 'goog.events.EventType', 'goog.reflect', 'goog.userAgent']);
 goog.addDependency("events/browserevent_test.js", [], []);
 goog.addDependency("events/browserfeature.js", ['goog.events.BrowserFeature'], ['goog.userAgent']);
-goog.addDependency("events/event.js", ['goog.events.Event', 'goog.events.EventLike'], ['goog.Disposable', 'goog.events.EventId']);
+goog.addDependency("events/event.js", ['goog.events.Event'], ['goog.Disposable', 'goog.events.EventId']);
 goog.addDependency("events/eventhandler.js", ['goog.events.EventHandler'], ['goog.Disposable', 'goog.events', 'goog.object']);
 goog.addDependency("events/eventhandler_test.js", [], []);
 goog.addDependency("events/eventid.js", ['goog.events.EventId'], []);

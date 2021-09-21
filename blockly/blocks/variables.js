@@ -213,13 +213,13 @@ Blockly.Blocks['variables_set_type'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/HomePage');
+        this.setHelpUrl('https://arduino.cc/en/Reference/HomePage');
         this.setColour(Blockly.Blocks.variables.HUE);
         this.appendValueInput('VARIABLE_SETTYPE_INPUT');
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_VAR_AS)
             .appendField(new Blockly.FieldDropdown(
-                Blockly.Types.getValidTypeArray()),
+                    Blockly.Types.getValidTypeArray()),
                 'VARIABLE_SETTYPE_TYPE');
         this.setInputsInline(true);
         this.setOutput(true);
@@ -245,7 +245,7 @@ Blockly.Blocks['io_highlow'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/Constants');
+        this.setHelpUrl('https://arduino.cc/en/Reference/Constants');
         this.setColour(Blockly.Blocks.pin.HUE);
         this.appendDummyInput()
             .appendField(
@@ -263,7 +263,7 @@ Blockly.Blocks['io_highlow'] = {
 
 Blockly.Blocks['io_allpins'] = {
     init: function () {
-        this.setHelpUrl('http://www.arduino.cc/en/reference/board');
+        this.setHelpUrl('https://www.arduino.cc/en/reference/board');
         this.setColour(Blockly.Blocks.pin.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_PIN)
@@ -285,9 +285,33 @@ Blockly.Blocks['io_allpins'] = {
     }
 };
 
+Blockly.Blocks['io_analogpins'] = {
+    init: function () {
+        this.setHelpUrl('https://www.arduino.cc/en/reference/board');
+        this.setColour(Blockly.Blocks.pin.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_ANALOG_PIN)
+            .appendField(
+                new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins),
+                'PIN');
+        this.setOutput(true, Blockly.Types.NUMBER.output);
+        this.setTooltip('');
+    },
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    },
+    /**
+     * Updates the content of the the Pin related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'PIN', 'analogPins');
+    }
+};
+
 Blockly.Blocks['io_pwmpins'] = {
     init: function () {
-        this.setHelpUrl('http://www.arduino.cc/en/reference/board');
+        this.setHelpUrl('https://www.arduino.cc/en/reference/board');
         this.setColour(Blockly.Blocks.pin.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_PWM_PIN)
@@ -309,14 +333,14 @@ Blockly.Blocks['io_pwmpins'] = {
     }
 };
 
-Blockly.Blocks['io_analogpins'] = {
+Blockly.Blocks['io_spipins'] = {
     init: function () {
-        this.setHelpUrl('http://www.arduino.cc/en/reference/board');
+        this.setHelpUrl('https://www.arduino.cc/en/reference/board');
         this.setColour(Blockly.Blocks.pin.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_ANALOG_PIN)
+            .appendField(Blockly.Msg.ARD_SPI_PIN)
             .appendField(
-                new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins),
+                new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.spiPins.SPI),
                 'PIN');
         this.setOutput(true, Blockly.Types.NUMBER.output);
         this.setTooltip('');
@@ -329,6 +353,6 @@ Blockly.Blocks['io_analogpins'] = {
      * @this Blockly.Block
      */
     updateFields: function () {
-        Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'PIN', 'analogPins');
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'PIN', 'spiPins');
     }
 };
