@@ -272,7 +272,7 @@ def copy_ardublockly_folder():
         print(script_tab + "Creating ServerCompilerSettings.ini to %s" % copied_project_dir)
         shell_text = "[Arduino_IDE]\n" + \
                      "arduino_exec_path = arduino\\arduino_debug.exe\n" + \
-                     "arduino_board = Uno\n" + \
+                     "arduino_board = uno\n" + \
                      "arduino_board_flag = arduino:avr:uno\n" + \
                      "arduino_serial_port = none\n" + \
                      "\n" + \
