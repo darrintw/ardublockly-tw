@@ -19,29 +19,25 @@ Blockly.Blocks["MAX7219_init"] = {
     init: function () {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.ARD_MAX7219_INIT);
-        this.appendValueInput("PIN1")
+        this.appendValueInput("DIN")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("DIN(MOSI)")
+            .appendField("DIN")
             .appendField(Blockly.Msg.ARD_PIN);
-        this.appendValueInput("PIN2")
+        this.appendValueInput("CS")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("CS")
             .appendField(Blockly.Msg.ARD_PIN);
-        this.appendValueInput("PIN3")
+        this.appendValueInput("CLK")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("CLK(SCK)")
+            .appendField("CLK")
             .appendField(Blockly.Msg.ARD_PIN);
-        this.appendValueInput("hDisplays")
+        this.appendValueInput("NUMS")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.ARD_MAX7219_HDISPALY);
-        this.appendValueInput("vDisplays")
-            .setCheck(Blockly.Types.NUMBER.checkList)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.ARD_MAX7219_VDISPALY);
+            .appendField(Blockly.Msg.ARD_MAX7219_NUMS);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);
@@ -67,7 +63,7 @@ Blockly.Blocks["HT16K33_Init"] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.Msg.ARD_TOOPTIP_Matrix_HK16T33_INIT);
+        this.setTooltip(Blockly.Msg.ARD_TOOPTIP_MATRIX_HK16T33_INIT);
         this.setFieldValue("A5", "SCL");
         this.setFieldValue("A4", "SDA");
     }
@@ -99,7 +95,6 @@ Blockly.Blocks["display_Matrix_DrawPixel"] = {
         this.setTooltip(Blockly.Msg.ARD_DISPLAY_TOOLTIP);
     }
 };
-
 
 //旋轉角度
 var display_Rotation_NUM = [

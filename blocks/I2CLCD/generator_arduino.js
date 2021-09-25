@@ -14,8 +14,8 @@ function initI2CLCD(block, i2cAddr, replace, row, col) {
         'LiquidCrystal_I2C I2CLCD(' + i2cAddr + ', ' + col + ', ' + row + ');';
     var i2cLCDSetupCode = 'I2CLCD.begin();';
 
-    Blockly.Arduino.addInclude('Wire_tag', '#include <Wire.h>');
-    Blockly.Arduino.addInclude('I2CLCD_tag', '#include <LiquidCrystal_I2C.h>');
+    Blockly.Arduino.addInclude('Wire_inc', '#include <Wire.h>');
+    Blockly.Arduino.addInclude('LiquidCrystal_I2C_inc', '#include <LiquidCrystal_I2C.h>');
 
     if (replace === true && Blockly.Arduino.definitions_['I2CLCD_tag'] !== undefined) {
         Blockly.Arduino.definitions_['I2CLCD_tag'] = i2cLCDDeclareCode;
@@ -38,7 +38,7 @@ function initI2CLCD(block, i2cAddr, replace, row, col) {
  * @return {string} Completed code.
  */
 Blockly.Arduino['I2CLCD_scan'] = function (block) {
-    Blockly.Arduino.addInclude("I2CSCAN", "#include <Wire.h>")
+    Blockly.Arduino.addInclude("Wire_inc", "#include <Wire.h>")
     var setup = 'Wire.begin();\n' +
         '  Serial.begin(9600);\n' +
         '  while (!Serial);\n' +

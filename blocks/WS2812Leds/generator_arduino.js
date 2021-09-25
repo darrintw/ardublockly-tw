@@ -20,7 +20,7 @@ Blockly.Arduino["pixel_init_var"] = function (block) {
     var pixel_number = Blockly.Arduino.valueToCode(
         block, 'PIXEL_NUM', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
-    Blockly.Arduino.addInclude('neopixel_flag', '#include <Adafruit_NeoPixel.h>');
+    Blockly.Arduino.addInclude('Adafruit_NeoPixel_inc', '#include <Adafruit_NeoPixel.h>');
     var dec = 'Adafruit_NeoPixel ' + pixel_var +
         ' = Adafruit_NeoPixel(' + pixel_number + ', ' + pixel_pin + ', NEO_GRB + NEO_KHZ800);'
     Blockly.Arduino.addDeclaration(pixel_var + '_tag', dec);

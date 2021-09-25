@@ -17,11 +17,11 @@ Blockly.Arduino['DS1302_init'] = function (block) {
     var dropdown_rst = Blockly.Arduino.valueToCode(block, 'RST', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_dat = Blockly.Arduino.valueToCode(block, 'DAT', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_clk = Blockly.Arduino.valueToCode(block, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.addDefine('include_ThreeWire', '#include <ThreeWire.h>');
-    Blockly.Arduino.addDefine(['include_RtcDS1302'], '#include <RtcDS1302.h>');
+    Blockly.Arduino.addInclude('ThreeWire_inc', '#include <ThreeWire.h>');
+    Blockly.Arduino.addInclude(['RtcDS1302_inc'], '#include <RtcDS1302.h>');
     //Blockly.Arduino.definitions_['var_declare_RtcDateTime_dt'] = 'const RtcDateTime dt;';
-    Blockly.Arduino.addDefine('var_declare_ThreeWire', 'ThreeWire ' + 'myWire(' + dropdown_dat + ',' + dropdown_clk + ',' + dropdown_rst + ');');
-    Blockly.Arduino.addDefine('var_declare_RtcDS1302', 'RtcDS1302<ThreeWire> Rtc(myWire);');
+    Blockly.Arduino.addDefine('ThreeWire_def', 'ThreeWire ' + 'myWire(' + dropdown_dat + ',' + dropdown_clk + ',' + dropdown_rst + ');');
+    Blockly.Arduino.addDefine('RtcDS1302_def', 'RtcDS1302<ThreeWire> Rtc(myWire);');
     Blockly.Arduino.addSetup('setup_Rtc.Begin', 'Rtc.Begin();\n  Rtc.SetIsRunning(true);');
     return "";
 };
@@ -30,15 +30,15 @@ Blockly.Arduino['DS1307_init'] = function (block) {
     var SDA = Blockly.Arduino.valueToCode(block, 'SDA', Blockly.Arduino.ORDER_ATOMIC);
     var SCL = Blockly.Arduino.valueToCode(block, 'SCL', Blockly.Arduino.ORDER_ATOMIC);
     var RTCType = block.getFieldValue('RTCType');
-    Blockly.Arduino.addDefine('include_' + RTCType, '#include <' + RTCType + '.h>');
+    Blockly.Arduino.addIncldue(RTCType + '_inc', '#include <' + RTCType + '.h>');
     //Blockly.Arduino.definitions_['var_declare_RtcDateTime_dt'] = 'const RtcDateTime dt;';
     if (SDA != "SDA" || SCL != "SCL") {
-        Blockly.Arduino.addDefine('include_SoftwareWire', '#include <SoftwareWire.h>');
-        Blockly.Arduino.addDefine('var_declare_SoftwareWire', 'SoftwareWire myWire(' + SDA + ',' + SCL + ');');
-        Blockly.Arduino.addDefine('var_declare_' + RTCType, RTCType + '<SoftwareWire> Rtc(myWire);');
+        Blockly.Arduino.addIncldue('SoftwareWire_inc', '#include <SoftwareWire.h>');
+        Blockly.Arduino.addDefine('DS1307_def', 'SoftwareWire myWire(' + SDA + ',' + SCL + ');');
+        Blockly.Arduino.addDefine('SoftwareWire_DS1307_def' + RTCType, RTCType + '<SoftwareWire> Rtc(myWire);');
     } else {
-        Blockly.Arduino.addDefine('include_Wire', '#include <Wire.h>');
-        Blockly.Arduino.addDefine('var_declare_' + RTCType, RTCType + '<TwoWire> Rtc(Wire);');
+        Blockly.Arduino.addIncldue('Wire_inc', '#include <Wire.h>');
+        Blockly.Arduino.addDefine('DS1307_TwoWire_def' + RTCType, RTCType + '<TwoWire> Rtc(Wire);');
     }
     Blockly.Arduino.addSetup('setup_Rtc.Begin', 'Rtc.Begin();\n  Rtc.SetIsRunning(true);');
     return "";

@@ -17,14 +17,15 @@ goog.require('Blockly.Msg.en');
  */
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_LEDMATRIX = 'LED Matrix';
+Blockly.Msg.BLOCKS_CATEGORY_LEDMATRIX = 'MAX7219 LED Matrix';
 
 /// Ardublockly name
 Blockly.Msg.ARD_MAX7219_INIT = 'MAX7219 matrix Init';
 Blockly.Msg.ARD_MAX7219_INIT_TOOLTIP = 'Init Matrix';
 Blockly.Msg.ARD_DISPLAY_MATRIX_INIT = "HT16K33 Matrix Init";
 Blockly.Msg.ARD_ISPLAY_MATRIX_SHOW = "Dot matrix display";
-Blockly.Msg.ARD_TOOPTIP_Matrix_HK16T33_INIT = 'Initialize HK16T33 8*8 Matrix Screen';
+Blockly.Msg.ARD_TOOPTIPMATRIX_HK16T33_INIT = 'Initialize HK16T33 8*8 Matrix Screen';
+Blockly.Msg.ARD_MAX7219_NUMS = 'Numbers of MAX7219';
 Blockly.Msg.ARD_MAX7219_HDISPALY = 'Row';
 Blockly.Msg.ARD_MAX7219_VDISPALY = 'Col';
 Blockly.Msg.ARD_MATRIX_TYPE = 'Matrix Type';

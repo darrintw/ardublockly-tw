@@ -167,9 +167,9 @@ Blockly.Arduino['bluetooth'] = function (block) {
     var baudrate = block.getFieldValue('BAUDRATE');
     var bluetoothCode = 'BT.begin(' + baudrate + ');';
 
-    Blockly.Arduino.addInclude('bt', '#include <SoftwareSerial.h>');
-    Blockly.Arduino.addDeclaration('bt', 'SoftwareSerial BT(' + tx_pin + ', ' + rx_pin + '); //藍芽端接收腳對應Arduino傳送腳, 藍芽端傳送腳對應Arduino接收腳');
-    Blockly.Arduino.addSetup('bt', bluetoothCode, true);
+    Blockly.Arduino.addInclude('SoftwareSerial_inc', '#include <SoftwareSerial.h>');
+    Blockly.Arduino.addDeclaration('SoftwareSerial_bt', 'SoftwareSerial BT(' + tx_pin + ', ' + rx_pin + '); //藍芽端接收腳對應Arduino傳送腳, 藍芽端傳送腳對應Arduino接收腳');
+    Blockly.Arduino.addSetup('SoftwareSerial_bt', bluetoothCode, true);
 
     return '';
 };
@@ -264,9 +264,9 @@ Blockly.Arduino['softwareserial_setup'] = function (block) {
     Blockly.Arduino.reservePin(block, tx_pin,
         Blockly.Arduino.PinTypes.SERIAL, 'SOFTWARE SERIAL');
 
-    Blockly.Arduino.addInclude('softwareserial_', '#include <SoftwareSerial.h>');
+    Blockly.Arduino.addInclude('SoftwareSerial_inc', '#include <SoftwareSerial.h>');
     Blockly.Arduino.addVariable(serialName, serialVarCode, true);
-    Blockly.Arduino.addSetup('softwareserial_' + serialId, serialSetupCode, true);
+    Blockly.Arduino.addSetup('SoftwareSerial_' + serialId, serialSetupCode, true);
 
     return '';
 };

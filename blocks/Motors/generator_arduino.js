@@ -31,7 +31,7 @@ Blockly.Arduino['servo_attach'] = function (block) {
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
     Blockly.Arduino.reservePin(block, pinKey, Blockly.Arduino.PinTypes.SERVO, 'Servo Write');
-    Blockly.Arduino.addInclude('servo', '#include <Servo.h>');
+    Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
 
@@ -52,7 +52,7 @@ Blockly.Arduino['servo_read'] = function (block) {
         servoName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    Blockly.Arduino.addInclude('servo', '#include <Servo.h>');
+    Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
     var code = servoId + '.read()';
@@ -75,7 +75,7 @@ Blockly.Arduino['servo_write'] = function (block) {
         servoName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    Blockly.Arduino.addInclude('servo', '#include <Servo.h>');
+    Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
     var code = servoId + '.write(' + servoAngle + ');\n';
@@ -101,7 +101,7 @@ Blockly.Arduino['servo_write_angle'] = function (block) {
     Blockly.Arduino.reservePin(
         block, pinKey, Blockly.Arduino.PinTypes.SERVO, 'Servo Write');
 
-    Blockly.Arduino.addInclude('servo', '#include <Servo.h>');
+    Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addDeclaration('servo_' + pinKey, 'Servo ' + servoName + ';');
 
     var code = servoName + '.attach(' + pinKey + ');\n' +
@@ -122,7 +122,7 @@ Blockly.Arduino['servo_detach'] = function (block) {
         servoName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    Blockly.Arduino.addInclude('servo', '#include <Servo.h>');
+    Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
     var code = servoId + '.detach();\n';
@@ -149,7 +149,7 @@ Blockly.Arduino['afmotor'] = function (block) {
     }
     var afmotor_speed = block.getFieldValue('afmotor_speed');
 
-    Blockly.Arduino.addInclude('AF_DCMotor', '#include <AFMotor.h>');
+    Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
     Blockly.Arduino.addDeclaration('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
 
     var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
@@ -178,8 +178,8 @@ Blockly.Arduino['afmotor_var'] = function (block) {
     var afmotor_speed = Blockly.Arduino.valueToCode(
         block, 'afmotor_speed', Blockly.Arduino.ORDER_ATOMIC) || 255;
 
-    Blockly.Arduino.addInclude('AF_DCMotor', '#include <AFMotor.h>');
-    Blockly.Arduino.addDeclaration('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
+    Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
+    Blockly.Arduino.addDeclaration('AFMotor_declar_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
 
     var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
         motorName + '.run(' + afmotor_control + ');\n';
@@ -195,9 +195,9 @@ Blockly.Arduino["stepper_setup_2pin"] = function (block) {
     var pin2 = Blockly.Arduino.valueToCode(block, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
     var steps = Blockly.Arduino.valueToCode(block, 'STEPS', Blockly.Arduino.ORDER_ATOMIC);
     var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.addDefine('include_Stepper', '#include <Stepper.h>');
-    Blockly.Arduino.addDefine('var_declare_stepper' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin2 + ');');
-    Blockly.Arduino.addSetup('setup_stepper' + varName, varName + '.setSpeed(' + speed + ');');
+    Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
+    Blockly.Arduino.addDefine('Stepper_def_' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin2 + ');');
+    Blockly.Arduino.addSetup('setup_stepper_' + varName, varName + '.setSpeed(' + speed + ');');
     return '';
 };
 
@@ -211,9 +211,9 @@ Blockly.Arduino["stepper_setup_4pin"] = function (block) {
     var pin4 = Blockly.Arduino.valueToCode(block, 'PIN4', Blockly.Arduino.ORDER_ATOMIC);
     var steps = Blockly.Arduino.valueToCode(block, 'STEPS', Blockly.Arduino.ORDER_ATOMIC);
     var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.addDefine('include_Stepper', '#include <Stepper.h>');
-    Blockly.Arduino.addDefine('var_declare_stepper' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin2 + ',' + pin3 + ',' + pin4 + ');');
-    Blockly.Arduino.addSetup('setup_stepper' + varName, varName + '.setSpeed(' + speed + ');');
+    Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
+    Blockly.Arduino.addDefine('Stepper_def_' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin2 + ',' + pin3 + ',' + pin4 + ');');
+    Blockly.Arduino.addSetup('setup_stepper_' + varName, varName + '.setSpeed(' + speed + ');');
     return '';
 };
 
@@ -222,6 +222,6 @@ Blockly.Arduino["stepper_move"] = function (block) {
         block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
     var step = Blockly.Arduino.valueToCode(this, 'STEP', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.addDefine('include_Stepper', '#include <Stepper.h>');
+    Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
     return varName + '.step(' + step + ');\n';
 };
