@@ -12,17 +12,16 @@ goog.provide('Blockly.Arduino.LEDMatrix');
 
 goog.require('Blockly.Arduino');
 
-//Max7219点阵初始化
+//MAX7219初始化
 Blockly.Arduino["MAX7219_init"] = function () {
-    var pin_cs = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-    //var matrixName = this.getFieldValue('matrixName');
-    var matrixName = "myMatrix";
-    var hDisplays = Blockly.Arduino.valueToCode(this, 'hDisplays', Blockly.Arduino.ORDER_ATOMIC);
-    var vDisplays = Blockly.Arduino.valueToCode(this, 'vDisplays', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
-    Blockly.Arduino.definitions_['include_Adafruit_GFX'] = '#include <Adafruit_GFX.h>';
-    Blockly.Arduino.definitions_['include_Max72xxPanel'] = '#include <Max72xxPanel.h>';
-    Blockly.Arduino.definitions_['var_declare_Max72xxPanel'] = 'Max72xxPanel ' + matrixName + ' = Max72xxPanel(' + pin_cs + ',' + hDisplays + ',' + vDisplays + ');';
+    var pin_din = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
+    var pin_cs = Blockly.Arduino.valueToCode(this, 'CS', Blockly.Arduino.ORDER_ATOMIC);
+    var pin_clk = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
+    var nums = Blockly.Arduino.valueToCode(this, 'NUMS', Blockly.Arduino.ORDER_ATOMIC);
+    var matrixName = "lc_matrix";
+    Blockly.Arduino.addInclude('LedControl_inc', '#include <LedControl.h>');
+    Blockly.Arduino.addInclude('binary_inc', '#include <binary.h>');
+    Blockly.Arduino.addDefine('LedControl_def', 'LedControl ' + matrixName + ' = LedControl(' + pin_din + ',' + pin_cs + ',' + pin_clk + ',' + nums + ');');
     var code = '';
     return code;
 };
@@ -31,8 +30,8 @@ Blockly.Arduino["MAX7219_init"] = function () {
 Blockly.Arduino["HT16K33_Init"] = function () {
     var SDA = this.getFieldValue('SDA');
     var SCL = this.getFieldValue('SCL');
-    //var matrixName = this.getFieldValue('matrixName');
-    var matrixName = "myMatrix";
+    var matrixName = this.getFieldValue('matrixName');
+    //var matrixName = "lc_matrix";
     Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
     Blockly.Arduino.definitions_['var_declare' + matrixName] = 'Matrix ' + matrixName + '(' + SDA + ',' + SCL + ');';
     Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70);';

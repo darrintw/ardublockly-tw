@@ -81,8 +81,8 @@ Blockly.Arduino['DHT11_readTemp'] = function (block) {
     var dht11_tag = "dht11_tag_" + dataPin;
     var dht11DefineCode = "#define DHTTYPE DHT11";
     var dht11DeclareCode = "DHT dht" + dataPin + "(" + dataPin + ", DHTTYPE);\n";
-    Blockly.Arduino.addInclude("dht11_tag", '#include <DHT.h>');
-    Blockly.Arduino.addDefine("dht11_tag", dht11DefineCode);
+    Blockly.Arduino.addInclude("DHT_inc", '#include <DHT.h>');
+    Blockly.Arduino.addDefine("dht11_def", dht11DefineCode);
     Blockly.Arduino.addSetup(dht11_tag, "dht" + dataPin + ".begin();", false);
     Blockly.Arduino.addDeclaration(dht11_tag, dht11DeclareCode)
     var code = 'dht' + dataPin + '.readTemperature()';
@@ -102,8 +102,8 @@ Blockly.Arduino['DHT11_readTemp_var'] = function (block) {
     var dht11_tag = "dht11_tag_" + dataPin;
     var dht11DefineCode = "#define DHTTYPE DHT11";
     var dht11DeclareCode = "DHT dht" + dataPin + "(" + dataPin + ", DHTTYPE);\n";
-    Blockly.Arduino.addInclude("dht11_tag", '#include <DHT.h>');
-    Blockly.Arduino.addDefine("dht11_tag", dht11DefineCode);
+    Blockly.Arduino.addInclude("DHT_inc", '#include <DHT.h>');
+    Blockly.Arduino.addDefine("dht11_def", dht11DefineCode);
     Blockly.Arduino.addSetup(dht11_tag, "dht" + dataPin + ".begin();", false);
     Blockly.Arduino.addDeclaration(dht11_tag, dht11DeclareCode)
     var code = 'dht' + dataPin + '.readTemperature()';
@@ -116,8 +116,8 @@ Blockly.Arduino['DHT11_readHumi'] = function (block) {
     var dht11_tag = "dht11_tag_" + dataPin;
     var dht11DefineCode = "#define DHTTYPE DHT11";
     var dht11DeclareCode = "DHT dht" + dataPin + "(" + dataPin + ", DHTTYPE);\n";
-    Blockly.Arduino.addInclude("dht11_tag", '#include <DHT.h>');
-    Blockly.Arduino.addDefine("dht11_tag", dht11DefineCode);
+    Blockly.Arduino.addInclude("DHT_inc", '#include <DHT.h>');
+    Blockly.Arduino.addDefine("dht11_def", dht11DefineCode);
     Blockly.Arduino.addSetup(dht11_tag, "dht" + dataPin + ".begin();", false);
     Blockly.Arduino.addDeclaration(dht11_tag, dht11DeclareCode)
     var code = 'dht' + dataPin + '.readHumidity()';
@@ -131,8 +131,8 @@ Blockly.Arduino['DHT11_readHumi_var'] = function (block) {
     var dht11_tag = "dht11_tag_" + dataPin;
     var dht11DefineCode = "#define DHTTYPE DHT11";
     var dht11DeclareCode = "DHT dht" + dataPin + "(" + dataPin + ", DHTTYPE);\n";
-    Blockly.Arduino.addInclude("dht11_tag", '#include <DHT.h>');
-    Blockly.Arduino.addDefine("dht11_tag", dht11DefineCode);
+    Blockly.Arduino.addInclude("DHT_inc", '#include <DHT.h>');
+    Blockly.Arduino.addDefine("dht11_def", dht11DefineCode);
     Blockly.Arduino.addSetup(dht11_tag, "dht" + dataPin + ".begin();", false);
     Blockly.Arduino.addDeclaration(dht11_tag, dht11DeclareCode)
     var code = 'dht' + dataPin + '.readHumidity()';
@@ -152,8 +152,8 @@ Blockly.Arduino['DS18B20_readTemp'] = function (block) {
     var code = 'DS18B20_' + pin + '.getTempCByIndex(0)';
     block.prefixCode = 'DS18B20_' + pin + '.requestTemperatures();\n';
 
-    Blockly.Arduino.addInclude('DS18B20_OneWire_flag', '#include <OneWire.h>');
-    Blockly.Arduino.addInclude('DS18B20_DallasT_flag', '#include <DallasTemperature.h>');
+    Blockly.Arduino.addInclude('OneWire_inc', '#include <OneWire.h>');
+    Blockly.Arduino.addInclude('DallasTemperature_inc', '#include <DallasTemperature.h>');
     Blockly.Arduino.addDeclaration('DS18B20_' + pin, 'OneWire oneWire(' + pin + '); \nDallasTemperature DS18B20_' + pin + '(&oneWire);');
     Blockly.Arduino.addSetup('DS18B20_' + pin, 'DS18B20_' + pin + '.begin();', false);
 
@@ -173,8 +173,8 @@ Blockly.Arduino['DS18B20_readTemp_var'] = function (block) {
     var code = 'DS18B20_' + pin + '.getTempCByIndex(0)';
     block.prefixCode = 'DS18B20_' + pin + '.requestTemperatures();\n';
 
-    Blockly.Arduino.addInclude('DS18B20_OneWire_flag', '#include <OneWire.h>');
-    Blockly.Arduino.addInclude('DS18B20_DallasT_flag', '#include <DallasTemperature.h>');
+    Blockly.Arduino.addInclude('OneWire_inc', '#include <OneWire.h>');
+    Blockly.Arduino.addInclude('DallasTemperature_inc', '#include <DallasTemperature.h>');
     Blockly.Arduino.addDeclaration('DS18B20_' + pin, 'OneWire oneWire(' + pin + '); \nDallasTemperature DS18B20_' + pin + '(&oneWire);');
     Blockly.Arduino.addSetup('DS18B20_' + pin, 'DS18B20_' + pin + '.begin();', false);
 
@@ -257,7 +257,7 @@ Blockly.Arduino['irrecv_setup'] = function (block) {
     var decodeVarCode = 'decode_results ' + decodeId + ';';
     var irrecvSetupCode = irrecvId + '.enableIRIn();';
 
-    Blockly.Arduino.addInclude('irrecv_', '#include <IRremote.h>');
+    Blockly.Arduino.addInclude('IRremote_inc', '#include <IRremote.h>');
     Blockly.Arduino.addVariable(irrecvId, irrecvVarCode, true);
     Blockly.Arduino.addVariable(decodeId, decodeVarCode, true);
     Blockly.Arduino.addSetup('irrecv_' + irrecvId, irrecvSetupCode, true);
@@ -284,7 +284,7 @@ Blockly.Arduino['irrecv_setup_var'] = function (block) {
     var decodeVarCode = 'decode_results ' + decodeId + ';';
     var irrecvSetupCode = irrecvId + '.enableIRIn();';
 
-    Blockly.Arduino.addInclude('irrecv_', '#include <IRremote.h>');
+    Blockly.Arduino.addInclude('IRremote_inc', '#include <IRremote.h>');
     Blockly.Arduino.addVariable(irrecvId, irrecvVarCode, true);
     Blockly.Arduino.addVariable(decodeId, decodeVarCode, true);
     Blockly.Arduino.addSetup('irrecv_' + irrecvId, irrecvSetupCode, true);
@@ -393,6 +393,82 @@ Blockly.Arduino['irrecv_resume_var'] = function (block) {
         irrecvName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     var code = irrecvId + '.resume();\n';
+
+    return code;
+};
+
+/**
+ * @param {!Blockly.Block} block Block to generate the code from.
+ */
+Blockly.Arduino['hx711_setup'] = function (block) {
+    var dataPin = block.getFieldValue('DATA_PIN');
+    var clkPin = block.getFieldValue('CLK_PIN');
+    var hx711Id = Blockly.Arduino.variableDB_.getName(
+        "hx711_scale",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.addInclude('HX711_inc', '#include "HX711.h"');
+    Blockly.Arduino.addDeclaration('HX711_declar_' + hx711Id, 'HX711 ' + hx711Id + ';');
+    Blockly.Arduino.addSetup('HX711_setup_' + hx711Id, hx711Id + '.begin(' + dataPin + ', ' + clkPin + ');', true);
+
+    return "";
+};
+
+/** . */
+Blockly.Arduino['hx711_set_scale'] = function (block) {
+    var scaleValue = Blockly.Arduino.valueToCode(
+        block, 'HX711_SET_SCALE', Blockly.Arduino.ORDER_ATOMIC) || '';
+    var hx711Id = Blockly.Arduino.variableDB_.getName(
+        "hx711_scale",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var code = hx711Id + '.set_scale(' + scaleValue + ');\n';
+
+    return code;
+};
+
+/** . */
+Blockly.Arduino['hx711_tare'] = function (block) {
+    var hx711Id = Blockly.Arduino.variableDB_.getName(
+        "hx711_scale",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var code = hx711Id + '.tare();\n';
+
+    return code;
+};
+
+/** . */
+Blockly.Arduino['hx711_get_units'] = function (block) {
+    var unitsValue = Blockly.Arduino.valueToCode(
+        block, 'HX711_GET_UNITS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var hx711Id = Blockly.Arduino.variableDB_.getName(
+        "hx711_scale",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var code = hx711Id + '.get_units(' + unitsValue + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/** . */
+Blockly.Arduino['hx711_power_down'] = function (block) {
+    var hx711Id = Blockly.Arduino.variableDB_.getName(
+        "hx711_scale",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var code = hx711Id + '.power_down();\n';
+
+    return code;
+};
+
+/** . */
+Blockly.Arduino['hx711_power_up'] = function (block) {
+    var hx711Id = Blockly.Arduino.variableDB_.getName(
+        "hx711_scale",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var code = hx711Id + '.power_up();\n';
 
     return code;
 };
