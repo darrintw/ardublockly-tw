@@ -2,7 +2,7 @@
 ArdublocklySketch
 arduino/portable/preferences.txt
 arduexec/appdata/
-arduexec/
+arduexec/*
 CH341SER
 DigisparkWindowsDriver
 PortableGit
