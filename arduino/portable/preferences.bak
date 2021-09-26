@@ -1,5 +1,5 @@
 board=uno
-boardsmanager.additional.urls=http://download.labs.mediatek.com/package_mtk_linkit_7697_index.json,http://digistump.com/package_digistump_index.json,https://github.com/pixetto/Pixetto/releases
+boardsmanager.additional.urls=http://digistump.com/package_digistump_index.json,https://github.com/pixetto/Pixetto/releases
 build.verbose=false
 build.warn_data_percentage=75
 compiler.cache_core=true
