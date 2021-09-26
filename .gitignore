@@ -11,3 +11,4 @@ ardublockly.log
 ServerCompilerSettings.ini
 /blockly/closure-compiler-v20160208.jar
 /blockly/buildBlockly.cmd
+arduino/*
