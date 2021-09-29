@@ -101,9 +101,9 @@ Blockly.Msg.VARIABLES_INIT_NOT_IN_SETUP_WARNING = 'Warning: This block may only 
 /// Arduino
 Blockly.Msg.VARIABLES_INIT_REDEFINED_WARNING = 'Warning: The variable %1 can not be redefined.';
 /// Arduino
-Blockly.Msg.VARIABLES_DECLARE = "Declare %1 to %2, %3 const";
+Blockly.Msg.VARIABLES_DECLARE = 'Declare %1 to %2, %3 const';
 /// Arduino
-Blockly.Msg.VARIABLES_DECLARE_TOOLTIP = "Declare global value";
+Blockly.Msg.VARIABLES_DECLARE_TOOLTIP = 'Declare global value';
 /// Arduino
 Blockly.Msg.VARIABLES_GET_ITEM = 'i';
 /// Arduino

@@ -42,11 +42,11 @@ Blockly.Arduino['variables_init'] = function (block) {
 Blockly.Arduino['variables_declare'] = function (block) {
     var varName = Blockly.Arduino.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    console.log(varName);
     var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
     var varConst = (block.getFieldValue('CONST') === 'TRUE' ? 'const ' : '');
 
-    Blockly.Arduino.addVariable(block.getFieldValue('VAR'),
-        varConst + varType + ' ' + varName + ';', true);
+    Blockly.Arduino.addVariable(block.getFieldValue('VAR'), varConst + varType + ' ' + varName + ';', true);
     var code = '';
     return code;
 };
@@ -74,7 +74,7 @@ Blockly.Arduino['variables_set'] = function (block) {
  */
 Blockly.Arduino['variables_set_type'] = function (block) {
     var argument0 = Blockly.Arduino.valueToCode(block, 'VARIABLE_SETTYPE_INPUT',
-        Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+        Blockly.Arduino.ORDER_ATOMIC) || '0';
     var varType = Blockly.Arduino.getArduinoType_(
         Blockly.Types[block.getFieldValue('VARIABLE_SETTYPE_TYPE')]);
     var code = '(' + varType + ')(' + argument0 + ')';
