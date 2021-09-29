@@ -352,19 +352,19 @@ Blockly.Arduino.Boards.profiles.attiny85 = {
     name: 'Digispark Attiny85 (Default - 16.5mhz)',
     description: 'Digispark Attiny85 (Default - 16.5mhz)',
     compilerFlag: 'digistump:avr:digispark-tiny',
-    analogPins: [['P2', 'P2'], ['P3', 'P3'], ['P4', 'P4'], ['P5', 'P5']],
-    digitalPins: [['P0', 'P0'], ['P1', 'P1'], ['P2', 'P2'], ['P3', 'P3'],
-        ['P4', 'P4'], ['P5', 'P5']],
-    pwmPins: [['P0', 'P0'], ['P1', 'P1'], ['P4', 'P4']],
+    analogPins: [['P2', '2'], ['P3', '3'], ['P4', '4'], ['P5', '5']],
+    digitalPins: [['P0', '0'], ['P1', '1'], ['P2', '2'], ['P3', '3'],
+        ['P4', '4'], ['P5', '5']],
+    pwmPins: [['P0', '0'], ['P1', '1'], ['P4', '4']],
     serial: [['serial1', 'Serial1']],
     serialPins: {Serial: [['RX', 'RX'], ['TX', 'TX']]},
     serialSpeed: Blockly.Arduino.Boards.profiles.uno.serialSpeed,
     i2c: [['I2C', 'Wire']],
-    i2cPins: {Wire: [['SDA', 'P0'], ['SCL', 'P2']]},
+    i2cPins: {Wire: [['SDA', '0'], ['SCL', '2']]},
     i2cSpeed: Blockly.Arduino.Boards.profiles.uno.i2cSpeed,
     interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
         ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']],
-    usb: [['USB+', 'P3'], ['USB-', 'P4']]
+    usb: [['USB+', '3'], ['USB-', '4']]
 };
 
 /** Set default profile to Arduino standard-compatible board */
@@ -399,24 +399,23 @@ Blockly.Arduino.Boards.changeBoard = function (workspace, newBoard) {
  * @param {!string} fieldName Name of the block FieldDropdown to refresh.
  * @param {!string} boardKey Name of the board profile property to fetch.
  */
-Blockly.Arduino.Boards.refreshBlockFieldDropdown =
-    function (block, fieldName, boardKey) {
-        var field = block.getField(fieldName);
-        var fieldValue = field.getValue();
-        var dataArray = Blockly.Arduino.Boards.selected[boardKey];
-        field.menuGenerator_ = dataArray;
+Blockly.Arduino.Boards.refreshBlockFieldDropdown = function (block, fieldName, boardKey) {
+    var field = block.getField(fieldName);
+    var fieldValue = field.getValue();
+    var dataArray = Blockly.Arduino.Boards.selected[boardKey];
+    field.menuGenerator_ = dataArray;
 
-        var currentValuePresent = false;
-        for (var i = 0; i < dataArray.length; i++) {
-            if (fieldValue === dataArray[i][1]) {
-                currentValuePresent = true;
-            }
+    var currentValuePresent = false;
+    for (var i = 0; i < dataArray.length; i++) {
+        if (fieldValue === dataArray[i][1]) {
+            currentValuePresent = true;
         }
-        // If the old value is not present any more, add a warning to the block.
-        if (!currentValuePresent) {
-            block.setWarningText(
-                'The old Pin value ' + fieldValue + ' is no longer available.', 'bPin');
-        } else {
-            block.setWarningText(null, 'bPin');
-        }
-    };
+    }
+    // If the old value is not present any more, add a warning to the block.
+    if (!currentValuePresent) {
+        block.setWarningText(
+            'The old Pin value ' + fieldValue + ' is no longer available.', 'bPin');
+    } else {
+        block.setWarningText(null, 'bPin');
+    }
+};

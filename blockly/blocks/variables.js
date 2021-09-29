@@ -332,27 +332,3 @@ Blockly.Blocks['io_pwmpins'] = {
         Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'PIN', 'pwmPins');
     }
 };
-
-Blockly.Blocks['io_spipins'] = {
-    init: function () {
-        this.setHelpUrl('https://www.arduino.cc/en/reference/board');
-        this.setColour(Blockly.Blocks.pin.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_SPI_PIN)
-            .appendField(
-                new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.spiPins.SPI),
-                'PIN');
-        this.setOutput(true, Blockly.Types.NUMBER.output);
-        this.setTooltip('');
-    },
-    getBlockType: function () {
-        return Blockly.Types.NUMBER;
-    },
-    /**
-     * Updates the content of the the Pin related fields.
-     * @this Blockly.Block
-     */
-    updateFields: function () {
-        Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'PIN', 'spiPins');
-    }
-};
