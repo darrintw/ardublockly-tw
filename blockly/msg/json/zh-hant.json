@@ -14,6 +14,7 @@
   "VARIABLES_CONST": "常數",
   "TODAY": "今天",
   "DUPLICATE_BLOCK": "複製",
+  "DUPLICATE_ALL_BLOCK": "複製(包含連接的積木)",
   "ADD_COMMENT": "加入註解",
   "REMOVE_COMMENT": "移除註解",
   "EXTERNAL_INPUTS": "多行輸入",

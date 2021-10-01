@@ -26,7 +26,7 @@ Blockly.Msg.ARD_SERVO_DETACH = "離線伺服馬達";
 Blockly.Msg.ARD_SERVO_DETACH_TIP = "離線伺服馬達確保PWM的8、9腳位可以正常運作";
 
 /// AFMorot
-Blockly.Msg.ARD_AFMOROT = "L293D";
+Blockly.Msg.ARD_AFMOROT = "L293D小車";
 Blockly.Msg.ARD_AFMOROT_CONTROL = "指令";
 Blockly.Msg.ARD_AFMOROT_FORWARD = "正轉";
 Blockly.Msg.ARD_AFMOROT_BACKWARD = "反轉";

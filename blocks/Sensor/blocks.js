@@ -20,7 +20,7 @@ Blockly.Blocks['ultrasonic_distance'] = {
     init: function () {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(new Blockly.FieldImage("../blocks/Sensor/img/hcsr04.png", 60, 60, "*"))
+            .appendField(new Blockly.FieldImage("../blocks/Sensor傳感器/img/hcsr04.png", 60, 60, "*"))
             .appendField(Blockly.Msg.ARD_ULTRASONIC_DISTANCE_SETUP);
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)

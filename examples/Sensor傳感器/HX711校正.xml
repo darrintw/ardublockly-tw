@@ -1,0 +1,146 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="e)Ypnae)SJfA^37/lOQ7" x="31" y="43">
+    <field name="VAR">sample_weight</field>
+    <field name="CONST">TRUE</field>
+    <value name="VALUE">
+      <block type="variables_set_type" id="q68m1juD)9rcyyN,!fBC">
+        <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="math_number" id="~HFJ1Q~V:0Mv^,Rkv_@F">
+            <field name="NUM">150</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="33" y="94">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="5`0Xz?PCd6x]KVt[1#,y">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="hx711_setup" id="=g{9Of:WcN666ihyrdef">
+            <field name="DATA_PIN">6</field>
+            <field name="CLK_PIN">5</field>
+            <next>
+              <block type="hx711_set_scale" id="46YeZ6I8ctRR#;[cK_v9">
+                <next>
+                  <block type="hx711_tare" id="xZe@1YWhI:(l|vfrQ~OU">
+                    <next>
+                      <block type="serial_print" id=",C41`[7lrxMG0QyDt-KG">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="dDL+ZhqDxGP+j{WOY4zz">
+                            <field name="TEXT">尚未放置物品</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="3rVg[3qlX^:9,9#bDs`x">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="hx711_get_units" id="Qfy?j`zvidPF6.sgf#g;">
+                                <value name="HX711_GET_UNITS">
+                                  <block type="math_number" id="^7w3R,S#MP/a=DS5#h|B">
+                                    <field name="NUM">10</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="serial_print" id="~|MW;S:{ic_x;W9^qn[Q">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">TRUE</field>
+                                <value name="CONTENT">
+                                  <block type="text" id="CUky%CXv8!}+pZitLd^6">
+                                    <field name="TEXT">放上基準物品...</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="}QbQ~BP}9wFT_.2ieE1i">
+        <field name="VAR">current_weight</field>
+        <value name="VALUE">
+          <block type="variables_set_type" id="vs/%vsRwIY0.SCe[uz5I">
+            <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+            <value name="VARIABLE_SETTYPE_INPUT">
+              <block type="hx711_get_units" id="x~y4HzP%f:K78.Q3GXcN">
+                <value name="HX711_GET_UNITS">
+                  <block type="math_number" id="4bC/ovj/73f3LEg43Abe">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="K=T{R1c.uSj?W;U!0RB#">
+            <field name="VAR">scale_factor</field>
+            <value name="VALUE">
+              <block type="variables_set_type" id="+9]5;D79.]s_Che.,PmL">
+                <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                <value name="VARIABLE_SETTYPE_INPUT">
+                  <block type="math_arithmetic" id="PD,5DiX5aX,lLyiouz6o">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="variables_get" id="n;yx!D7DH,ssB9+[WGFN">
+                        <field name="VAR">current_weight</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="jAvJp.OR+%j/SCsXa`Iu">
+                        <field name="VAR">sample_weight</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="7i|F@]p2P9WVWCn_M|o6">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">FALSE</field>
+                <value name="CONTENT">
+                  <block type="text" id="=fyY|KM(dVAr*AkPc:qh">
+                    <field name="TEXT">較正比例參數為：</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="d!sqksCb2(S7NJ1htwpD">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="math_round" id="O,OX-U9`;-m(=u6%I!Ih">
+                        <field name="OP">ROUNDDOWN</field>
+                        <value name="NUM">
+                          <block type="variables_get" id="}p0tt43lHv}BHt4hF_+@">
+                            <field name="VAR">scale_factor</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
