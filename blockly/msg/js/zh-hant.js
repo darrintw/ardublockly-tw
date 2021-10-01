@@ -79,6 +79,7 @@ Blockly.Msg.DELETE_ALL_BLOCKS = "刪除共 %1 塊積木？";
 Blockly.Msg.DELETE_BLOCK = "刪除積木";
 Blockly.Msg.DELETE_X_BLOCKS = "刪除 %1 塊積木";
 Blockly.Msg.DISABLE_BLOCK = "停用積木";
+Blockly.Msg.DUPLICATE_ALL_BLOCK = "複製(包含連接的積木)";
 Blockly.Msg.DUPLICATE_BLOCK = "複製";
 Blockly.Msg.ENABLE_BLOCK = "啟用積木";
 Blockly.Msg.EXPAND_ALL = "展開積木";

@@ -367,9 +367,25 @@ Blockly.longStop_ = function() {
  */
 Blockly.copy_ = function(block) {
   var xmlBlock = Blockly.Xml.blockToDom(block);
-  /*if (Blockly.dragMode_ != Blockly.DRAG_FREE) {
+  if (Blockly.dragMode_ != Blockly.DRAG_FREE) {
     Blockly.Xml.deleteNext(xmlBlock);
-  }*/
+  }
+
+  // Encode start position in XML.
+  var xy = block.getRelativeToSurfaceXY();
+  xmlBlock.setAttribute('x', block.RTL ? -xy.x : xy.x);
+  xmlBlock.setAttribute('y', xy.y);
+  Blockly.clipboardXml_ = xmlBlock;
+  Blockly.clipboardSource_ = block.workspace;
+};
+
+/**
+ * Copy a block onto the local clipboard.
+ * @param {!Blockly.Block} block Block to be copied.
+ * @private
+ */
+Blockly.copy_all_ = function(block) {
+  var xmlBlock = Blockly.Xml.blockToDom(block);
 
   // Encode start position in XML.
   var xy = block.getRelativeToSurfaceXY();
@@ -397,7 +413,24 @@ Blockly.duplicate_ = function(block) {
   Blockly.clipboardXml_ = clipboardXml;
   Blockly.clipboardSource_ = clipboardSource;
 };
+/**
+ * Duplicate this block and its children.
+ * @param {!Blockly.Block} block Block to be copied.
+ * @private
+ */
+Blockly.duplicate_all_ = function(block) {
+  // Save the clipboard.
+  var clipboardXml = Blockly.clipboardXml_;
+  var clipboardSource = Blockly.clipboardSource_;
 
+  // Create a duplicate via a copy/paste operation.
+  Blockly.copy_all_(block);
+  block.workspace.paste(Blockly.clipboardXml_);
+
+  // Restore the clipboard.
+  Blockly.clipboardXml_ = clipboardXml;
+  Blockly.clipboardSource_ = clipboardSource;
+};
 /**
  * Cancel the native context menu, unless the focus is on an HTML input widget.
  * @param {!Event} e Mouse down event.

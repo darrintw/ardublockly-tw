@@ -319,7 +319,11 @@ def do_compile_online(params, target_filename, filenames, remove):
     conn.close()
 
     # Parse the JSON response.
-    json_data = json.loads(json_str)
+    try:
+        json_data = json.loads(json_str)
+    except e:
+        print(e)
+        return
 
     def file_lookup(name):
         if not name.startswith("Input_"):
