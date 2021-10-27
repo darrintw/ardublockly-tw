@@ -1,6 +1,6 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
@@ -20,7 +20,6 @@ Blockly.Blocks['ultrasonic_distance'] = {
     init: function () {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(new Blockly.FieldImage("../blocks/Sensor傳感器/img/hcsr04.png", 60, 60, "*"))
             .appendField(Blockly.Msg.ARD_ULTRASONIC_DISTANCE_SETUP);
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -37,7 +36,7 @@ Blockly.Blocks['ultrasonic_distance'] = {
                     [Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH, "inch"]]),
                 "DISTANCE_UNIT");
         this.setOutput(true, "Number");
-        this.setColour(230);
+        this.setColour(Blockly.Blocks.sensor.HUE);
         this.setTooltip("");
         this.setHelpUrl("https://www.itead.cc/wiki/Ultrasonic_Ranging_Module_HC-SR04");
     },

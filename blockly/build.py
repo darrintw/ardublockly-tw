@@ -321,8 +321,8 @@ def do_compile_online(params, target_filename, filenames, remove):
     # Parse the JSON response.
     try:
         json_data = json.loads(json_str)
-    except e:
-        print(e)
+    except ValueError:
+        print(target_filename, ", ValueError")
         return
 
     def file_lookup(name):
@@ -483,7 +483,7 @@ class Gen_compressed(threading.Thread):
         self.search_paths = search_paths
 
     def run(self):
-        # self.gen_core()
+        self.gen_core()
         gen_blocks()
         gen_generator("arduino")
 

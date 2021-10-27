@@ -67,13 +67,15 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="math_trig"></block>' +
     '    <block type="math_constant"></block>' +
     '    <block type="math_number_property"></block>' +
-    '    <block type="math_change">' +
+    '    <block type="math_base_map"></block>' +
+    '    <block type="math_any_map"></block>' +
+    /*'    <block type="math_change">' +
     '      <value name="DELTA">' +
     '        <block type="math_number">' +
     '          <field name="NUM">1</field>' +
     '        </block>' +
     '      </value>' +
-    '    </block>' +
+    '    </block>' + */
     '    <block type="math_round"></block>' +
     '    <block type="math_modulo"></block>' +
     '    <block type="math_constrain">' +

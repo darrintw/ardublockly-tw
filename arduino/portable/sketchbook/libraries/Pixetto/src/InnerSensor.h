@@ -64,10 +64,11 @@ public:
 	float getEquationAnswer();
 	void getApriltagInfo(float* px, float* py, float* pz, int* rx, int* ry, int* rz, int* cx, int* cy);
 	float getApriltagField(Pixetto::EApriltagField field);
-	
+	bool hasLane();
+	bool hasTrafficSign();	
 private:
 	void resetUboot();
-	bool openCam();
+	bool openCam(bool bCheckAlive);
 	bool readFromSerial();
 	void calcDataChecksum(uint8_t *buf, int len);
 	bool verifyDataChecksum(uint8_t *buf, int len);
@@ -75,6 +76,7 @@ private:
 	void parse_Equation(uint8_t *buf, int len);
 	void parse_Apriltag(uint8_t *buf);
 	void parse_SimpleClassifier(uint8_t *buf);
+	void parse_LaneAndSign(uint8_t *buf);
 	void sendDetModeCommand();
 	void sendQueryCommand();
 	void sendFuncCommand();
@@ -85,6 +87,7 @@ private:
 	bool hasDelayed;
 	int  nOpenCamFailCount;
 	int  nHexErrCount;
+	int  nNoDataCount;
 	unsigned long nTime4ObjNum;
 	bool bEnableUVC;
 	bool bDetMode;  // false: Event mode, true: Callback mode
@@ -118,17 +121,17 @@ private:
 	int m_roty;
 	int m_rotz;
 	int m_centerx;
-	int m_centery;	
+	int m_centery;
 };
 
 template <class SerType>
-InnerSensor<SerType>::InnerSensor(SerType* p)
-	: m_id(0), m_type(0),
-	m_x(0), m_y(0), m_h(0), m_w(0), m_eqAnswer(0), m_eqLen(0),
-	isCamOpened(false), hasDelayed(false), bSendStreamOn(false),
-	nHexErrCount(0), nOpenCamFailCount(0), 
-	bEnableUVC(false), bDetMode(false), m_bDetModeDone(false), nTime4ObjNum(0),
-	m_dataLen(0), m_nFuncID(0), m_bFuncDone(true),
+InnerSensor<SerType>::InnerSensor(SerType* p) :
+	isCamOpened(false), bSendStreamOn(false), hasDelayed(false),
+	nOpenCamFailCount(0), nHexErrCount(0), nNoDataCount(0), nTime4ObjNum(0), 
+	bEnableUVC(false), bDetMode(false), m_bDetModeDone(false),
+	m_nFuncID(0), m_bFuncDone(true), m_dataLen(0),
+	m_id(0), m_type(0),	m_x(0), m_y(0), m_h(0), m_w(0), m_objnum(0),
+	m_eqAnswer(0), m_eqLen(0),
 	m_posx(0.0), m_posy(0.0), m_posz(0.0), m_rotx(0), m_roty(0), m_rotz(0),
 	m_centerx(0), m_centery(0)
 {
@@ -166,7 +169,7 @@ template <class SerType>
 void InnerSensor<SerType>::flush()
 {
 	while (swSerial->available() > 0)
-		char t = swSerial->read();
+		swSerial->read();
 }
 
 template <class SerType>
@@ -192,6 +195,7 @@ void InnerSensor<SerType>::begin()
 	bSendStreamOn = false;
 	nOpenCamFailCount = 0;
 	nHexErrCount = 0; 
+	nNoDataCount = 0;
 }
 
 template <class SerType>
@@ -216,7 +220,7 @@ void InnerSensor<SerType>::clearDetectedData()
 template <class SerType>
 void InnerSensor<SerType>::enableFunc(Pixetto::EFunc fid)
 {
-	if (fid < 0 || fid > Pixetto::FUNC_VOICE_COMMAND || fid == 5 || fid == 7) 
+	if (fid < 0 || fid > Pixetto::FUNC_AUTONOMOUS_DRIVING || fid == 5 || fid == 7) 
 		return;
 	
 	m_nFuncID = fid;
@@ -230,7 +234,7 @@ void InnerSensor<SerType>::enableFunc(Pixetto::EFunc fid)
 template <class SerType>
 void InnerSensor<SerType>::sendDetModeCommand()
 {       
-	uint8_t SENSOR_CMD[] =  {PXT_PACKET_START, 0x06, PXT_CMD_DETMODE, bDetMode?1:0, 0, PXT_PACKET_END};
+	uint8_t SENSOR_CMD[] =  {PXT_PACKET_START, 0x06, PXT_CMD_DETMODE, bDetMode?(uint8_t)1:(uint8_t)0, 0, PXT_PACKET_END};
 	calcDataChecksum(SENSOR_CMD, 6);		
 	swSerial->write(SENSOR_CMD, sizeof(SENSOR_CMD)/sizeof(uint8_t));
 }
@@ -238,7 +242,7 @@ void InnerSensor<SerType>::sendDetModeCommand()
 template <class SerType>
 void InnerSensor<SerType>::sendQueryCommand()
 {
-	uint8_t SENSOR_CMD[] = {PXT_PACKET_START, 0x06, PXT_CMD_ENABLEFUNC, m_nFuncID, 0, PXT_PACKET_END};
+	uint8_t SENSOR_CMD[] = {PXT_PACKET_START, 0x06, PXT_CMD_ENABLEFUNC, (uint8_t)m_nFuncID, 0, PXT_PACKET_END};
 	calcDataChecksum(SENSOR_CMD, 6);
 	swSerial->write(SENSOR_CMD, sizeof(SENSOR_CMD)/sizeof(uint8_t));
 }
@@ -258,9 +262,13 @@ void InnerSensor<SerType>::sendFuncCommand()
 }
 
 template <class SerType>
-bool InnerSensor<SerType>::openCam()
+bool InnerSensor<SerType>::openCam(bool bCheckAlive)
 {
-	if (isCamOpened)
+	if (bCheckAlive) {
+		bSendStreamOn = false;
+		isCamOpened = false;
+	}
+	else if (isCamOpened)
 		return true;
 	
 	if (!hasDelayed)
@@ -284,11 +292,12 @@ bool InnerSensor<SerType>::openCam()
 	if (!bSendStreamOn)
 	{
 		uint8_t SENSOR_CMD[] =  {PXT_PACKET_START, 0x05, PXT_CMD_STREAMOFF, 0, PXT_PACKET_END};
-		calcDataChecksum(SENSOR_CMD, 5);
-		swSerial->write(SENSOR_CMD, sizeof(SENSOR_CMD)/sizeof(uint8_t));
-		delay(500);
+		if (!bCheckAlive) {
+			calcDataChecksum(SENSOR_CMD, 5);
+			swSerial->write(SENSOR_CMD, sizeof(SENSOR_CMD)/sizeof(uint8_t));
+			delay(500);
+		}
 		flush();
-
 		SENSOR_CMD[2] = PXT_CMD_STREAMON;
 		calcDataChecksum(SENSOR_CMD, 5);
 		swSerial->write(SENSOR_CMD, sizeof(SENSOR_CMD)/sizeof(uint8_t));
@@ -371,6 +380,7 @@ bool InnerSensor<SerType>::openCam()
 			Serial.println("STREAMON OK!!");
 #endif
 			isCamOpened = true;
+			nOpenCamFailCount = 0;
 			
 			if (!m_bDetModeDone) {
 				sendDetModeCommand();
@@ -487,6 +497,31 @@ void InnerSensor<SerType>::parse_SimpleClassifier(uint8_t *buf)
 }
 
 template <class SerType>
+void InnerSensor<SerType>::parse_LaneAndSign(uint8_t *buf)
+{
+	if (buf[18] == 0 || buf[18] == 2)
+	{
+		m_x = -1; m_y = -1;
+	}
+	else
+	{
+	   	m_x = buf[3];
+		m_y = buf[4];
+		for (int aa=0; aa<8; aa++)
+			m_points[aa] = buf[aa+5];
+	}
+	
+	if (buf[18] == 0 || buf[18] == 1)
+		m_type = -1;
+	else
+   		m_type = buf[13];
+		//m_x = buf[14];
+		//m_y = buf[15];
+		//m_w = buf[16];
+		//m_h = buf[17];
+}
+
+template <class SerType>
 bool InnerSensor<SerType>::readFromSerial()
 {
 	uint8_t tmpbuf[PXT_BUF_SIZE];
@@ -514,9 +549,20 @@ bool InnerSensor<SerType>::readFromSerial()
 		}
 	}
 	
-	if (readnum == 0)
+	if (readnum == 0) {
+		nNoDataCount++;
+#ifdef DEBUG_LOG
+		//Serial.print("NoDataCount=");
+		//Serial.println(nNoDataCount);
+#endif
+		if (nNoDataCount > 250) {
+			openCam(true);
+			nNoDataCount = 0;
+		}
 		return false;
-	
+	}
+	nNoDataCount = 0;
+		
 	int i = 0;
 	while (i < readnum) 
 	{
@@ -594,7 +640,7 @@ bool InnerSensor<SerType>::isDetected()
 	}
 	else
 	{
-		bool ret = openCam();
+		bool ret = openCam(false);
 		if (!ret) 
 		{
 #ifdef DEBUG_LOG
@@ -604,16 +650,7 @@ bool InnerSensor<SerType>::isDetected()
 		}
 	}
 
-	//sendFuncCommand();
-	if (!bDetMode && !m_bFuncDone)
-	{
-		sendQueryCommand();
-#ifdef DEBUG_LOG 
-		Serial.print("sendFuncCommand=");
-		Serial.println(m_nFuncID);
-#endif
-		m_bFuncDone = true;
-	}
+	sendFuncCommand();
 	
 	if (bDetMode == true) {
 		flush();
@@ -654,6 +691,11 @@ bool InnerSensor<SerType>::isDetected()
 		else if (m_id == Pixetto::FUNC_SIMPLE_CLASSIFIER)
 		{
 			parse_SimpleClassifier(m_inbuf);
+		}
+		else if (m_id == Pixetto::FUNC_AUTONOMOUS_DRIVING)
+		{
+			parse_LaneAndSign(m_inbuf);
+			m_objnum = 1;
 		}
 		else
 		{
@@ -762,8 +804,10 @@ void InnerSensor<SerType>::getLanePoints(int* lx1, int* ly1, int* lx2, int* ly2,
 template <class SerType>
 void InnerSensor<SerType>::getEquationExpr(char *buf, int len)
 {
-	 strncpy(buf, m_eqExpr, m_eqLen);
-	 buf[m_eqLen] = '\0';
+	if (m_eqLen > len)
+		m_eqLen = len-1;
+	strncpy(buf, m_eqExpr, m_eqLen);
+	buf[m_eqLen] = '\0';
 }
 
 template <class SerType>

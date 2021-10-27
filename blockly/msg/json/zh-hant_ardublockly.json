@@ -136,5 +136,9 @@
   "ARD_PULSE_READ": "量測 %1 脈波在腳位# %2",
   "ARD_PULSE_READ_TIMEOUT": "量測 %1 脈波在腳位# %2 (過期時間: %3 微秒)",
   "ARD_PULSETIMEOUT_MSG": "測量 %2 為 %1 的時間 (最多等待 %3 微秒)",
-  "ARD_PULSETIMEOUT_TIP": "量測選擇腳位產生高或低脈波的持續時間, 如果時間尚未過期(單位是微秒)"
+  "ARD_PULSETIMEOUT_TIP": "量測選擇腳位產生高或低脈波的持續時間, 如果時間尚未過期(單位是微秒)",
+  "ARD_MAP": "對應",
+  "ARD_MAP_TIP": "重新對應 [0-1024]範圍值 到[0-其他範圍]的值",
+  "ARD_MAP_X_TIP": "重新對應 [x - y]範圍值 到[x'- y']的值",
+  "ARD_MAP_VAL": "數值範圍到 [ 0 - "
 }

@@ -9080,6 +9080,116 @@
           ]
         },
         {
+          "name": "arduino-fwuploader",
+          "version": "2.0.1",
+          "systems": [
+            {
+              "host": "i686-linux-gnu",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_Linux_32bit.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.0.1_Linux_32bit.tar.gz",
+              "checksum": "SHA-256:c1df11f9096955ceca5ae0fb0d16394408c373a72e603034f96ddbd48bc6af0a",
+              "size": "6592200"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_Linux_64bit.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.0.1_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:fd7408d52c4b187e00ac60a2ebc37150ab680989a992168fcab524caa0e4519b",
+              "size": "6787210"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_Windows_32bit.zip",
+              "archiveFileName": "arduino-fwuploader_2.0.1_Windows_32bit.zip",
+              "checksum": "SHA-256:7d99c03d4b8a127b6f4acf40e89fe0fbd4c3bb7fe11d2b4c89ca9200e8993f73",
+              "size": "6790043"
+            },
+            {
+              "host": "x86_64-mingw32",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_Windows_64bit.zip",
+              "archiveFileName": "arduino-fwuploader_2.0.1_Windows_64bit.zip",
+              "checksum": "SHA-256:94f120eb2d5172e9afc03e3cd04d80e5e5312927065cd53c3fef3926b4e3e398",
+              "size": "6885151"
+            },
+            {
+              "host": "i386-apple-darwin11",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_macOS_64bit.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.0.1_macOS_64bit.tar.gz",
+              "checksum": "SHA-256:11b907d0ff0be73f9b7ef3a9b90b1265fc416c22aee10d724354668168550fb1",
+              "size": "6802383"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_Linux_ARM.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.0.1_Linux_ARM.tar.gz",
+              "checksum": "SHA-256:de2759ff0cc560e651658f9d7cebebada9bb246281e9370d3362ce0a08353ff6",
+              "size": "6296962"
+            },
+            {
+              "host": "aarch64-linux-gnu",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.0.1_Linux_ARM64.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.0.1_Linux_ARM64.tar.gz",
+              "checksum": "SHA-256:ab280543697379be604a59f3db4694e80d5a85fee61b7073dba8b2df31989404",
+              "size": "6311327"
+            }
+          ]
+        },
+        {
+          "name": "arduino-fwuploader",
+          "version": "2.1.0",
+          "systems": [
+            {
+              "host": "i686-linux-gnu",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_Linux_32bit.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.1.0_Linux_32bit.tar.gz",
+              "checksum": "SHA-256:fe9a8ac10841ba9855aee79b487b0c3620930e25fceedc635d90996cc4f8745a",
+              "size": "6592713"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_Linux_64bit.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.1.0_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:7b375b7cc1618027c609e76e97c77cc2036e7c7a95e10db743261e2f397f04db",
+              "size": "6909998"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_Windows_32bit.zip",
+              "archiveFileName": "arduino-fwuploader_2.1.0_Windows_32bit.zip",
+              "checksum": "SHA-256:70c3f58074aa04bfe0392f504a24c39f196b85d93fdd41accf75f5e9eda58441",
+              "size": "6770325"
+            },
+            {
+              "host": "x86_64-mingw32",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_Windows_64bit.zip",
+              "archiveFileName": "arduino-fwuploader_2.1.0_Windows_64bit.zip",
+              "checksum": "SHA-256:8c2f7b1b76502323fc2fb0eb43375a2d88509ddf084b6a9836a138f0fb4d1c9b",
+              "size": "6994066"
+            },
+            {
+              "host": "i386-apple-darwin11",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_macOS_64bit.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.1.0_macOS_64bit.tar.gz",
+              "checksum": "SHA-256:6979551a7a84417ec7f5f04fa6b75bec89c12d3891f061c1843cec43957d4d9a",
+              "size": "6926299"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_Linux_ARM.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.1.0_Linux_ARM.tar.gz",
+              "checksum": "SHA-256:3b707df47b8b33a8fc9756838999c77e4605b79b8b2acadb4162e6a9d7aa9e79",
+              "size": "6317910"
+            },
+            {
+              "host": "aarch64-linux-gnu",
+              "url": "http://downloads.arduino.cc/arduino-fwuploader/arduino-fwuploader_2.1.0_Linux_ARM64.tar.gz",
+              "archiveFileName": "arduino-fwuploader_2.1.0_Linux_ARM64.tar.gz",
+              "checksum": "SHA-256:ac32bf7c2b28e71fcfb06ea485775b43712bbd63f07eee4bbcd0ea197c1b475e",
+              "size": "6374511"
+            }
+          ]
+        },
+        {
           "name": "nrf5x-cl-tools",
           "version": "9.3.1",
           "systems": [

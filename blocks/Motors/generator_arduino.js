@@ -1,11 +1,11 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
  * @fileOverview Arduino code generator for the Servo library blocks.
- *     The Arduino Servo library docs: http://arduino.cc/en/reference/servo
+ *     The Arduino Servo library docs: https://arduino.cc/en/reference/servo
  *
  * TODO: If angle selector added to blocks edit code here.
  */
@@ -79,6 +79,28 @@ Blockly.Arduino['servo_write'] = function (block) {
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
     var code = servoId + '.write(' + servoAngle + ');\n';
+    return code;
+};
+
+/**
+ * Code generator to set an writeMicroseconds (Y) value to a servo Pin (X).
+ * Arduino code: #include <Servo.h>
+ *               Servo servo_X;
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['servo_pwm'] = function (block) {
+    var servoName = block.getFieldValue('SERVO_NAME');
+    var servoPWM = Blockly.Arduino.valueToCode(
+        block, 'SERVO_PWM', Blockly.Arduino.ORDER_ATOMIC);
+    var servoId = Blockly.Arduino.variableDB_.getName(
+        servoName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
+    Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
+
+    var code = servoId + '.writeMicroseconds(' + servoPWM + ');\n';
     return code;
 };
 

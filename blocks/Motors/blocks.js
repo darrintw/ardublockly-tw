@@ -1,6 +1,6 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
@@ -40,7 +40,7 @@ Blockly.Blocks['servo_read'] = {
         this.setOutput(true, null);
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_READ_TIP);
-        this.setHelpUrl("http://arduino.cc/en/Reference/ServoRead");
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoRead");
     }
 };
 
@@ -59,7 +59,7 @@ Blockly.Blocks['servo_write'] = {
         this.setInputsInline(true);
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_WRITE_TIP);
-        this.setHelpUrl("http://arduino.cc/en/Reference/ServoWrite");
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
     }
 };
 
@@ -77,7 +77,7 @@ Blockly.Blocks['servo_write_angle'] = {
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_WRITE_TIP);
-        this.setHelpUrl("http://arduino.cc/en/Reference/ServoWrite");
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
     }
 };
 
@@ -119,7 +119,7 @@ Blockly.Blocks['servo_read'] = {
         this.setOutput(true, null);
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_READ_TIP);
-        this.setHelpUrl("http://arduino.cc/en/Reference/ServoRead");
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoRead");
     }
 };
 
@@ -138,10 +138,25 @@ Blockly.Blocks['servo_write'] = {
         this.setInputsInline(true);
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_WRITE_TIP);
-        this.setHelpUrl("http://arduino.cc/en/Reference/ServoWrite");
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
     }
 };
 
+Blockly.Blocks['servo_pwm'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SERVO_PWM)
+            .appendField(new Blockly.FieldVariable('servo'), 'SERVO_NAME');
+        this.appendValueInput('SERVO_PWM')
+            .appendField(Blockly.Msg.ARD_SERVO_PWM_TO);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip(Blockly.Msg.ARD_SERVO_PWM_TIP);
+        this.setHelpUrl("https://www.arduino.cc/reference/en/libraries/servo/writemicroseconds/");
+    }
+};
 Blockly.Blocks['servo_write_angle'] = {
     init: function () {
         this.appendDummyInput()
@@ -156,7 +171,7 @@ Blockly.Blocks['servo_write_angle'] = {
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_WRITE_TIP);
-        this.setHelpUrl("http://arduino.cc/en/Reference/ServoWrite");
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
     }
 };
 
