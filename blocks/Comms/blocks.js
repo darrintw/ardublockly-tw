@@ -1,15 +1,15 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
  * @fileOverview Blocks for the Arduino serial communication functions.
  *     The Arduino built in functions syntax can be found at:
- *     http://arduino.cc/en/Reference/HomePage
+ *     https://arduino.cc/en/Reference/HomePage
  *
  * TODO: There are more function that can be added:
- *       http://arduino.cc/en/Reference/Serial
+ *       https://arduino.cc/en/Reference/Serial
  */
 'use strict';
 
@@ -28,7 +28,7 @@ Blockly.Blocks['serial_setup'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Serial/Begin');
+        this.setHelpUrl('https://arduino.cc/en/Serial/Begin');
         this.setColour(Blockly.Blocks.serial.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_SETUP)
@@ -71,7 +71,7 @@ Blockly.Blocks['serial_print'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://www.arduino.cc/en/Serial/Print');
+        this.setHelpUrl('https://www.arduino.cc/en/Serial/Print');
         this.setColour(Blockly.Blocks.serial.HUE);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(
@@ -337,7 +337,7 @@ Blockly.Blocks['bluetooth_print'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://www.arduino.cc/en/Serial/Print');
+        this.setHelpUrl('https://www.arduino.cc/en/Serial/Print');
         this.setColour(Blockly.Blocks.serial.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_WRITE_MSG);

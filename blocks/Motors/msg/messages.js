@@ -1,6 +1,6 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
@@ -27,6 +27,9 @@ Blockly.Msg.ARD_SERVO_WRITE_DEG_180 = "Degrees (0~180)";
 Blockly.Msg.ARD_SERVO_DELAY = "delay";
 Blockly.Msg.ARD_SERVO_SECOND = "second";
 Blockly.Msg.ARD_SERVO_WRITE_TIP = "Set a Servo to an specified angle";
+Blockly.Msg.ARD_SERVO_PWM = "Servo PWM ";
+Blockly.Msg.ARD_SERVO_PWM_TO = " microseconds";
+Blockly.Msg.ARD_SERVO_PWM_TIP = "Set Servo PWM microseconds";
 Blockly.Msg.ARD_SERVO_READ = "read SERVO from PIN#";
 Blockly.Msg.ARD_SERVO_READ_TIP = "Read a Servo angle";
 Blockly.Msg.ARD_SERVO_ATTACH = "attach SERVO from Pin";

@@ -606,3 +606,66 @@ Blockly.Blocks['math_random_float'] = {
         return Blockly.Types.DECIMAL;
     }
 };
+
+Blockly.Blocks['math_base_map'] = {
+    /**
+     * Block for creating a the map function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl('https://arduino.cc/en/Reference/map');
+        this.setColour(Blockly.Blocks.math.HUE);
+        this.appendValueInput('NUM')
+            .appendField(Blockly.Msg.ARD_MAP)
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendValueInput('DMAX')
+            .appendField(Blockly.Msg.ARD_MAP_VAL)
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendDummyInput()
+            .appendField(']');
+        this.setInputsInline(true);
+        this.setOutput(true);
+        this.setTooltip(Blockly.Msg.ARD_MAP_TIP);
+    },
+    /** @return {string} The type of return value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    }
+};
+
+Blockly.Blocks['math_any_map'] = {
+    /**
+     * Block for creating a the map function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl('https://arduino.cc/en/Reference/map');
+        this.setColour(Blockly.Blocks.math.HUE);
+        this.appendValueInput('NUM')
+            .appendField(Blockly.Msg.ARD_MAP)
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendValueInput('SMIN')
+            .appendField('[')
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendValueInput('SMAX')
+            .appendField(' - ')
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendDummyInput()
+            .appendField(']');
+        this.appendValueInput('DMIN')
+            .appendField(' → [')
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendValueInput('DMAX')
+            .appendField(' - ')
+            .setCheck(Blockly.Types.NUMBER.checkList);
+        this.appendDummyInput()
+            .appendField(']');
+        this.setInputsInline(true);
+        this.setOutput(true);
+        this.setTooltip(Blockly.Msg.ARD_MAP_X_TIP);
+    },
+    /** @return {string} The type of return value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    }
+};

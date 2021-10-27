@@ -205,7 +205,14 @@ Blockly.Msg.ARD_PULSE_READ_TIMEOUT = 'measure %1 pulse on Pin #%2 (timeout after
 Blockly.Msg.ARD_PULSETIMEOUT_MSG = 'read %1 pulse on %2 timeout after %3 ms';
 /// Arduino
 Blockly.Msg.ARD_PULSETIMEOUT_TIP = 'Measures the duration of a pulse on the selected Pin; if it is within the time-out in microseconds.'
-
+/// Arduino
+Blockly.Msg.ARD_MAP = "Map";
+/// Arduino
+Blockly.Msg.ARD_MAP_TIP = "Re-maps a number from [0-1024] to another.";
+/// Arduino
+Blockly.Msg.ARD_MAP_VAL = "value to [0-";
+/// Arduino
+Blockly.Msg.ARD_MAP_X_TIP = "Re-maps a number from [x - y] to [x'- y']";
 /**
  * Ardublockly Text
  */

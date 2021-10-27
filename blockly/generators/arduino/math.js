@@ -343,3 +343,39 @@ Blockly.Arduino['math_random_int'] = function (block) {
 Blockly.Arduino['math_random_float'] = function (block) {
     return ['(rand() / RAND_MAX)', Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };
+
+/**
+ * Code generator for the map block.
+ * Arduino code: loop { map(x, 0, 1024, 0, y) }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Arduino['math_base_map'] = function (block) {
+    var valueNum = Blockly.Arduino.valueToCode(
+            block, 'NUM', Blockly.Arduino.ORDER_NONE) || '0',
+        valueDmax = Blockly.Arduino.valueToCode(
+            block, 'DMAX', Blockly.Arduino.ORDER_ATOMIC) || '0',
+        code = 'map(' + valueNum + ', 0, 1024, 0, ' + valueDmax + ')';
+    return [code, Blockly.Arduino.ORDER_NONE];
+};
+
+/**
+ * Code generator for the map block.
+ * Arduino code: loop { map(x, smin, smax, dmin, dmax) }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Arduino['math_any_map'] = function (block) {
+    var valueNum = Blockly.Arduino.valueToCode(
+            block, 'NUM', Blockly.Arduino.ORDER_NONE) || '0',
+        valueSmin = Blockly.Arduino.valueToCode(
+            block, 'SMIN', Blockly.Arduino.ORDER_ATOMIC) || '0',
+        valueSmax = Blockly.Arduino.valueToCode(
+            block, 'SMAX', Blockly.Arduino.ORDER_ATOMIC) || '0',
+        valueDmin = Blockly.Arduino.valueToCode(
+            block, 'DMIN', Blockly.Arduino.ORDER_ATOMIC) || '0',
+        valueDmax = Blockly.Arduino.valueToCode(
+            block, 'DMAX', Blockly.Arduino.ORDER_ATOMIC) || '0',
+        code = 'map(' + valueNum + ', ' + valueSmin + ', ' + valueSmax + ', ' + valueDmin + ', ' + valueDmax + ')';
+    return [code, Blockly.Arduino.ORDER_NONE];
+};
