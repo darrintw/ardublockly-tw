@@ -382,6 +382,7 @@ Blockly.Arduino.Boards.changeBoard = function (workspace, newBoard) {
         return;
     }
     Blockly.Arduino.Boards.selected = Blockly.Arduino.Boards.profiles[newBoard];
+
     // Update the Pin out of all the blocks that uses them
     var blocks = workspace.getAllBlocks();
     for (var i = 0; i < blocks.length; i++) {

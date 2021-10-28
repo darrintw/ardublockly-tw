@@ -9,7 +9,7 @@ _(Top view description of the extensibility options should go here)_
 _(this has not yet been implemented)_
 
 ```javascript
-Blockly.Arduino.PinTypes.add('PIN_NAME');
+Blockly.Arduino.pinTypes.add('PIN_NAME');
 ```
 
 ## Adding a new Data Types

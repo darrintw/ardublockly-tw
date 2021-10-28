@@ -197,6 +197,12 @@ Ardublockly.TOOLBOX_XML =
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catInput" name="Input">' +
+    '    <block type="io_input"></block>' +
+    '    <block type="io_input_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
     '    <block type="io_digitalread"></block>' +
     '    <block type="io_digitalread_var">' +
     '      <value name="PIN">' +
@@ -246,6 +252,12 @@ Ardublockly.TOOLBOX_XML =
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catOutput" name="Output">' +
+    '    <block type="io_output"></block>' +
+    '    <block type="io_output_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
     '    <block type="io_digitalwrite">' +
     '      <value name="STATE">' +
     '        <shadow type="io_highlow"></shadow>' +

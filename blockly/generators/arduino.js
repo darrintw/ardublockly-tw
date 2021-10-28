@@ -86,7 +86,7 @@ Blockly.Arduino.ORDER_NONE = 99;             // (...)
  * A list of types tasks that the pins can be assigned. Used to track usage and
  * warn if the same Pin has been assigned to more than one task.
  */
-Blockly.Arduino.PinTypes = {
+Blockly.Arduino.pinTypes = {
     INPUT: 'INPUT',
     OUTPUT: 'OUTPUT',
     PWM: 'PWM',

@@ -1,12 +1,12 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
  * @fileOverview Blocks for Arduino Digital and Analogue input and output
  *     functions. The Arduino function syntax can be found at
- *     http://arduino.cc/en/Reference/HomePage
+ *     https://arduino.cc/en/Reference/HomePage
  */
 'use strict';
 
@@ -18,13 +18,60 @@ goog.require('Blockly.Types');
 /** Common HSV hue for all blocks in this category. */
 Blockly.Blocks.output.HUE = 250;
 
+Blockly.Blocks['io_output'] = {
+    /**
+     * Block for creating a 'set Pin' to a state.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.digitalPins), 'PIN')
+            .appendField(Blockly.Msg.ARD_SET_OUTPUT);
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SET_OUTPUT_TIP);
+        this.setHelpUrl('https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/');
+    },
+    /**
+     * Updates the content of the the Pin related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'PIN', 'digitalPins');
+    }
+};
+
+Blockly.Blocks['io_output_var'] = {
+    /**
+     * Block for creating a 'set Pin' to a state.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_DIGITAL);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SET_OUTPUT);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SET_OUTPUT_TIP);
+        this.setHelpUrl('https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/');
+    }
+};
+
 Blockly.Blocks['io_digitalwrite'] = {
     /**
      * Block for creating a 'set Pin' to a state.
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/DigitalWrite');
+        this.setHelpUrl('https://arduino.cc/en/Reference/DigitalWrite');
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendValueInput('STATE')
             .appendField(Blockly.Msg.ARD_DIGITALWRITE)
@@ -72,7 +119,7 @@ Blockly.Blocks['io_digitalwrite_var'] = {
             "nextStatement": true,
             "colour": Blockly.Blocks.output.HUE,
             "tooltip": Blockly.Msg.ARD_DIGITALWRITE_TIP,
-            "helpUrl": 'http://arduino.cc/en/Reference/DigitalWrite'
+            "helpUrl": 'https://arduino.cc/en/Reference/DigitalWrite'
         });
     }
 };
@@ -83,7 +130,7 @@ Blockly.Blocks['io_analogwrite'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/AnalogWrite');
+        this.setHelpUrl('https://arduino.cc/en/Reference/AnalogWrite');
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendValueInput('NUM')
             .appendField(Blockly.Msg.ARD_ANALOGWRITE)
@@ -136,7 +183,7 @@ Blockly.Blocks['io_analogwrite_var'] = {
             "nextStatement": true,
             "colour": Blockly.Blocks.output.HUE,
             "tooltip": Blockly.Msg.ARD_ANALOGWRITE_TIP,
-            "helpUrl": 'http://arduino.cc/en/Reference/AnalogWrite'
+            "helpUrl": 'https://arduino.cc/en/Reference/AnalogWrite'
         });
     },
     /** @return {!string} The type of input value for the block, an integer. */

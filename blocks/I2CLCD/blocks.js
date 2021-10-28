@@ -116,6 +116,27 @@ Blockly.Blocks['I2CLCD_clear'] = {
     }
 };
 
+Blockly.Blocks['I2CLCD_clear_y'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2CLCD_CLEAR);
+        this.appendValueInput("Y")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2CLCD_CLEAR_ROW);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.I2CLCD.HUE);
+        this.setTooltip(Blockly.Msg.ARD_I2CLCD_CLEAR_ROW_TIP);
+        this.setHelpUrl("https://github.com/marcmerlin/NewLiquidCrystal");
+    }
+};
+
 Blockly.Blocks['I2CLCD_print'] = {
     /**
      * Block for creating a write to serial com function.

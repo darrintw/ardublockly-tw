@@ -20,7 +20,7 @@ Blockly.Arduino['serial_print'] = function (block) {
     var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
     for (var i = 0; i < serialPins.length; i++) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
     }
     var code;
     if (new_line) {
@@ -46,7 +46,7 @@ Blockly.Arduino['serial_print_hex'] = function (block) {
     var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
     for (var i = 0; i < serialPins.length; i++) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
     }
 
     var code;
@@ -88,7 +88,7 @@ Blockly.Arduino['serial_available'] = function (block) {
     var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
     for (var i = 0; i < serialPins.length; i++) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
     }
 
     //Blockly.Arduino.addSetup('serial_' + serialId, 'Serial.begin(9600);', false);
@@ -111,7 +111,7 @@ Blockly.Arduino['serial_read_char'] = function (block) {
     var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
     for (var i = 0; i < serialPins.length; i++) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
     }
     var code = serialId + '.read()';
 
@@ -133,7 +133,7 @@ Blockly.Arduino['serial_read_string'] = function (block) {
     var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
     for (var i = 0; i < serialPins.length; i++) {
         Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.PinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
     }
 
     var func = [];
@@ -260,9 +260,9 @@ Blockly.Arduino['softwareserial_setup'] = function (block) {
     var serialSetupCode = serialId + '.begin(' + baudrate + ');';
 
     Blockly.Arduino.reservePin(block, rx_pin,
-        Blockly.Arduino.PinTypes.SERIAL, 'SOFTWARE SERIAL');
+        Blockly.Arduino.pinTypes.SERIAL, 'SOFTWARE SERIAL');
     Blockly.Arduino.reservePin(block, tx_pin,
-        Blockly.Arduino.PinTypes.SERIAL, 'SOFTWARE SERIAL');
+        Blockly.Arduino.pinTypes.SERIAL, 'SOFTWARE SERIAL');
 
     Blockly.Arduino.addInclude('SoftwareSerial_inc', '#include <SoftwareSerial.h>');
     Blockly.Arduino.addVariable(serialName, serialVarCode, true);

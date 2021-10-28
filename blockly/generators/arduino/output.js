@@ -18,12 +18,50 @@ goog.require('Blockly.Arduino');
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {string} Completed code.
  */
+Blockly.Arduino['io_output'] = function (block) {
+    var pin = block.getFieldValue('PIN');
+
+    Blockly.Arduino.reservePin(
+        block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Digital Write');
+
+    var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
+    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+
+    var code = '';
+    return code;
+};
+
+/**
+ * Function for 'set pin' (X) to a state (Y).
+ * Arduino code: setup { pinMode(X, OUTPUT); }
+ *               loop  { digitalWrite(X, Y); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['io_output_var'] = function (block) {
+    var pin = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
+    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+
+    var code = '';
+    return code;
+};
+
+/**
+ * Function for 'set pin' (X) to a state (Y).
+ * Arduino code: setup { pinMode(X, OUTPUT); }
+ *               loop  { digitalWrite(X, Y); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
 Blockly.Arduino['io_digitalwrite'] = function (block) {
     var pin = block.getFieldValue('PIN');
     var stateOutput = Blockly.Arduino.valueToCode(
         block, 'STATE', Blockly.Arduino.ORDER_ATOMIC) || 'LOW';
 
-    Blockly.Arduino.reservepin(
+    Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Digital Write');
 
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
@@ -33,6 +71,13 @@ Blockly.Arduino['io_digitalwrite'] = function (block) {
     return code;
 };
 
+/**
+ * Function for 'set pin' (X) to a state (Y).
+ * Arduino code: setup { pinMode(X, OUTPUT); }
+ *               loop  { digitalWrite(X, Y); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
 Blockly.Arduino['io_digitalwrite_var'] = function (block) {
     var pin = Blockly.Arduino.valueToCode(
         block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
@@ -59,7 +104,7 @@ Blockly.Arduino['io_builtin_led'] = function (block) {
     var stateOutput = Blockly.Arduino.valueToCode(
         block, 'STATE', Blockly.Arduino.ORDER_ATOMIC) || 'LOW';
 
-    Blockly.Arduino.reservepin(
+    Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Set LED');
 
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
@@ -81,7 +126,7 @@ Blockly.Arduino['io_analogwrite'] = function (block) {
     var stateOutput = Blockly.Arduino.valueToCode(
         block, 'NUM', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
-    Blockly.Arduino.reservepin(
+    Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Analogue Write');
 
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
@@ -122,7 +167,7 @@ Blockly.Arduino['io_analogwrite_var'] = function (block) {
 Blockly.Arduino['io_tone'] = function (block) {
     var pin = block.getFieldValue('TONEPIN');
     var freq = Blockly.Arduino.valueToCode(block, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.reservepin(
+    Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Tone pin');
 
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);\n';
@@ -134,7 +179,7 @@ Blockly.Arduino['io_tone'] = function (block) {
 
 Blockly.Arduino['io_notone'] = function (block) {
     var pin = block.getFieldValue("TONEPIN");
-    Blockly.Arduino.reservepin(
+    Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Tone pin');
 
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);\n';

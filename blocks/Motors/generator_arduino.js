@@ -30,7 +30,7 @@ Blockly.Arduino['servo_attach'] = function (block) {
         servoName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    Blockly.Arduino.reservePin(block, pinKey, Blockly.Arduino.PinTypes.SERVO, 'Servo Write');
+    Blockly.Arduino.reservePin(block, pinKey, Blockly.Arduino.pinTypes.SERVO, 'Servo Write');
     Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
 
@@ -121,7 +121,7 @@ Blockly.Arduino['servo_write_angle'] = function (block) {
     var servoDelayVar = 'servo' + pinKey + 'delaytime';
 
     Blockly.Arduino.reservePin(
-        block, pinKey, Blockly.Arduino.PinTypes.SERVO, 'Servo Write');
+        block, pinKey, Blockly.Arduino.pinTypes.SERVO, 'Servo Write');
 
     Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addDeclaration('servo_' + pinKey, 'Servo ' + servoName + ';');

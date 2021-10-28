@@ -28,7 +28,7 @@ function initI2CLCD(block, i2cAddr, replace, row, col) {
     var i2cPins = Blockly.Arduino.Boards.selected.i2cPins.Wire;
     for (var i = 0; i < i2cPins.length; i++) {
         Blockly.Arduino.reservePin(block, i2cPins[i][1],
-            Blockly.Arduino.PinTypes.I2C, 'I2C ' + i2cPins[i][0]);
+            Blockly.Arduino.pinTypes.I2C, 'I2C ' + i2cPins[i][0]);
     }
 }
 /**
@@ -129,6 +129,14 @@ Blockly.Arduino['I2CLCD_move'] = function (block) {
 Blockly.Arduino['I2CLCD_clear'] = function (block) {
 
     var code = 'I2CLCD.clear();\n'
+    return code;
+};
+
+Blockly.Arduino['I2CLCD_clear_y'] = function (block) {
+    var y = Blockly.Arduino.valueToCode(
+        block, 'Y', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var code = 'I2CLCD.setCursor(0, ' + y + ');\n' +
+               'I2CLCD.print("                    ");\n'
     return code;
 };
 

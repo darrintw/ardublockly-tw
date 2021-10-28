@@ -148,6 +148,16 @@ Blockly.Msg.ARD_HIGHLOW_TIP = 'Set a Pin state logic High or Low.';
 /// Arduino
 Blockly.Msg.ARD_WRITE_TO = 'to';
 /// Arduino
+Blockly.Msg.ARD_DIGITAL = 'digital Pin#';
+/// Arduino
+Blockly.Msg.ARD_SET_INPUT = " set to input";
+/// Arduino
+Blockly.Msg.ARD_SET_INPUT_TIP = 'Set digital pin to input mode';
+/// Arduino
+Blockly.Msg.ARD_SET_OUTPUT = " set to output";
+/// Arduino
+Blockly.Msg.ARD_SET_OUTPUT_TIP = 'Set digital pin to output mode';
+/// Arduino
 Blockly.Msg.ARD_DIGITALWRITE = 'set digital Pin#';
 /// Arduino
 Blockly.Msg.ARD_DIGITALWRITE_TIP = 'Write digital value HIGH or LOW to a specific Port';
