@@ -67,13 +67,15 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="math_trig"></block>' +
     '    <block type="math_constant"></block>' +
     '    <block type="math_number_property"></block>' +
-    '    <block type="math_change">' +
+    '    <block type="math_base_map"></block>' +
+    '    <block type="math_any_map"></block>' +
+    /*'    <block type="math_change">' +
     '      <value name="DELTA">' +
     '        <block type="math_number">' +
     '          <field name="NUM">1</field>' +
     '        </block>' +
     '      </value>' +
-    '    </block>' +
+    '    </block>' + */
     '    <block type="math_round"></block>' +
     '    <block type="math_modulo"></block>' +
     '    <block type="math_constrain">' +
@@ -195,6 +197,12 @@ Ardublockly.TOOLBOX_XML =
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catInput" name="Input">' +
+    '    <block type="io_input"></block>' +
+    '    <block type="io_input_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
     '    <block type="io_digitalread"></block>' +
     '    <block type="io_digitalread_var">' +
     '      <value name="PIN">' +
@@ -244,6 +252,12 @@ Ardublockly.TOOLBOX_XML =
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catOutput" name="Output">' +
+    '    <block type="io_output"></block>' +
+    '    <block type="io_output_var">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
     '    <block type="io_digitalwrite">' +
     '      <value name="STATE">' +
     '        <shadow type="io_highlow"></shadow>' +

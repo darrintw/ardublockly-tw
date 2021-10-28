@@ -62,6 +62,13 @@
     "      </shadow>",
     "    </value>",
     "  </block>",
+    "  <block type=\"pixel_all_off\">",
+    "    <value name=\"PIXEL_VAR\">",
+    "      <block type=\"variables_get\">",
+    "        <field name=\"VAR\">ledstrip</field>\",",
+    "      </block>",
+    "    </value>",
+    "  </block>",
     "</category>"
   ]
 }

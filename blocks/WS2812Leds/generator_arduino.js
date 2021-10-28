@@ -69,7 +69,8 @@ Blockly.Arduino["pixel_all_off"] = function (block) {
     var pixel_var = Blockly.Arduino.valueToCode(
         block, 'PIXEL_VAR', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
-    var code = pixel_var + '.clear();\n';
+    var code = pixel_var + '.clear();\n' +
+               pixel_var + '.show();\n';
 
     return code;
 };

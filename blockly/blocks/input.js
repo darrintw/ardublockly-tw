@@ -1,12 +1,12 @@
 /**
  * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
  * @fileOverview Blocks for Arduino Digital and Analogue input and output
  *     functions. The Arduino function syntax can be found at
- *     http://arduino.cc/en/Reference/HomePage
+ *     https://arduino.cc/en/Reference/HomePage
  *
  * TODO: maybe change this to a "PIN" BlocklyType
  */
@@ -20,13 +20,61 @@ goog.require('Blockly.Types');
 /** Common HSV hue for all blocks in this category. */
 Blockly.Blocks.input.HUE = 250;
 
+Blockly.Blocks['io_input'] = {
+    /**
+     * Block for creating a 'read Pin'.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
+        this.setColour(Blockly.Blocks.input.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.digitalPins), 'PIN')
+            .appendField(Blockly.Msg.ARD_SET_INPUT);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SET_INPUT_TIP);
+    },
+    /**
+     * Updates the content of the the Pin related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'PIN', 'digitalPins');
+    }
+};
+
+Blockly.Blocks['io_input_var'] = {
+    /**
+     * Block for creating a 'read Pin'.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_DIGITAL);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SET_INPUT);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SET_INPUT_TIP);
+        this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
+        this.setColour(Blockly.Blocks.input.HUE);
+    },
+};
+
 Blockly.Blocks['io_digitalread'] = {
     /**
      * Block for creating a 'read Pin'.
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/DigitalRead');
+        this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
         this.setColour(Blockly.Blocks.input.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_DIGITALREAD)
@@ -67,7 +115,7 @@ Blockly.Blocks['io_digitalread_var'] = {
             "output": Blockly.Types.BOOLEAN.output,
             "colour": Blockly.Blocks.input.HUE,
             "tooltip": Blockly.Msg.ARD_DIGITALREAD_TIP,
-            "helpUrl": 'http://arduino.cc/en/Reference/DigitalRead'
+            "helpUrl": 'https://arduino.cc/en/Reference/DigitalRead'
         });
     },
     /** @return {!string} The type of return value for the block, an integer. */
@@ -82,7 +130,7 @@ Blockly.Blocks['io_analogread'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setHelpUrl('http://arduino.cc/en/Reference/AnalogRead');
+        this.setHelpUrl('https://arduino.cc/en/Reference/AnalogRead');
         this.setColour(Blockly.Blocks.input.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_ANALOGREAD)
@@ -122,7 +170,7 @@ Blockly.Blocks['io_analogread_var'] = {
             "output": Blockly.Types.NUMBER.output,
             "colour": Blockly.Blocks.input.HUE,
             "tooltip": Blockly.Msg.ARD_ANALOGREAD_TIP,
-            "helpUrl": 'http://arduino.cc/en/Reference/AnalogRead'
+            "helpUrl": 'https://arduino.cc/en/Reference/AnalogRead'
         });
     },
     /** @return {!string} The type of return value for the block, an integer. */

@@ -135,9 +135,22 @@ Ardublockly.ideSendUpload = function () {
         Ardublockly.showExtraIdeButtons(false);
         Ardublockly.setIdeSettings(null, 'upload');
     }
-    Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'));
-    Ardublockly.resetIdeOutputContent();
-    Ardublockly.sendCode();
+    var el = document.getElementById('serial_port');
+    var serialValue = el.options[el.selectedIndex].value;
+    if (serialValue == "USB") {
+        Ardublockly.alertMessage(
+            Ardublockly.getLocalStr('usbUploadTitle'),
+            Ardublockly.getLocalStr('usbUploadBody'),
+            true, function () {
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'));
+                Ardublockly.resetIdeOutputContent();
+                Ardublockly.sendCode();
+            });
+    } else {
+        Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'));
+        Ardublockly.resetIdeOutputContent();
+        Ardublockly.sendCode();
+    }
 };
 
 /** Sets the Ardublockly server IDE setting to open and sends the code. */
