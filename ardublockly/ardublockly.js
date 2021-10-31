@@ -960,7 +960,7 @@ Ardublockly.addExtraCategories = function () {
                 Ardublockly.addToolboxCategory(toolboxName, catArray[toolboxName]);
             }
         }
-    }, 200);
+    }, 1000);
 };
 
 /** Informs the user that the selected function is not yet implemented. */
