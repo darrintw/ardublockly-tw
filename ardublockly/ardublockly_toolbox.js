@@ -203,6 +203,11 @@ Ardublockly.TOOLBOX_XML =
     '        <block type="variables_get"></block>' +
     '      </value>' +
     '    </block>' +
+    '    <block type="io_input_pullup">' +
+    '      <value name="PIN">' +
+    '        <block type="variables_get"></block>' +
+    '      </value>' +
+    '    </block>' +
     '    <block type="io_digitalread"></block>' +
     '    <block type="io_digitalread_var">' +
     '      <value name="PIN">' +
@@ -211,11 +216,6 @@ Ardublockly.TOOLBOX_XML =
     '    </block>' +
     '    <block type="io_analogread"></block>' +
     '    <block type="io_analogread_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
-    '    </block>' +
-    '    <block type="io_input_pullup">' +
     '      <value name="PIN">' +
     '        <block type="variables_get"></block>' +
     '      </value>' +

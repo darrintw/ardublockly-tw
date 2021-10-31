@@ -23,10 +23,7 @@ Blockly.Arduino['io_input'] = function (block) {
     Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.INPUT, 'Digital Read');
 
-    var pinSetupCode = 'pinMode(' + pin + ', INPUT);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
-
-    var code = '';
+    var code = 'pinMode(' + pin + ', INPUT);\n';
     return code;
 };
 
@@ -41,11 +38,16 @@ Blockly.Arduino['io_input_var'] = function (block) {
     var pin = Blockly.Arduino.valueToCode(
         block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
-    var pinSetupCode = 'pinMode(' + pin + ', INPUT);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+    var code = 'pinMode(' + pin + ', INPUT);\n';
 
-    var code = '';
+    return code;
+};
 
+Blockly.Arduino['io_input_pullup'] = function (block) {
+    var pin = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code = 'pinMode(' + pin + ', INPUT_PULLUP);\n';
     return code;
 };
 
@@ -162,19 +164,6 @@ Blockly.Arduino['io_pulsetimeout_var'] = function (block) {
 
     var code = 'pulseIn(' + pin + ', ' + type + ', ' + timeout + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['io_input_pullup'] = function (block) {
-    var pin = block.getFieldValue('PIN');
-
-    Blockly.Arduino.reservePin(
-        block, pin, Blockly.Arduino.pinTypes.INPUT, 'Digital Read');
-
-    var pinSetupCode = 'pinMode(' + pin + ', INPUT_PULLUP);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
-
-    var code = '';
-    return code;
 };
 
 Blockly.Arduino['io_pin_name'] = function (block) {

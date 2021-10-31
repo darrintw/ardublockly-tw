@@ -65,7 +65,27 @@ Blockly.Blocks['io_input_var'] = {
         this.setTooltip(Blockly.Msg.ARD_SET_INPUT_TIP);
         this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
         this.setColour(Blockly.Blocks.input.HUE);
-    },
+    }
+};
+
+Blockly.Blocks['io_input_pullup'] = {
+    /**
+     * Block for creating a 'read Pin'.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_DIGITAL);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_INPUT_PULLUP);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_INPUT_PULLUP_TIP);
+        this.setHelpUrl('https://www.arduino.cc/reference/en/language/variables/constants/constants/');
+        this.setColour(Blockly.Blocks.input.HUE);
+    }
 };
 
 Blockly.Blocks['io_digitalread'] = {
@@ -279,41 +299,6 @@ Blockly.Blocks['io_pulsetimeout_var'] = {
     /** @return {!string} The type of input value for the block, an integer. */
     getBlockType: function () {
         return Blockly.Types.NUMBER;
-    }
-};
-
-Blockly.Blocks['io_input_pullup'] = {
-    /**
-     * Block for setting the speed of the serial connection.
-     * @this Blockly.Block
-     */
-    init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_INPUT_PULLUP_MSG,
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "PIN",
-                    "options": Blockly.Arduino.Boards.selected.digitalPins
-                }
-            ],
-            "inputsInline": true,
-            "previousStatement": null,
-            "nextStatement": null,
-            "tooltip": Blockly.Msg.ARD_INPUT_PULLUP_TIP,
-            "colour": Blockly.Blocks.input.HUE
-        });
-    },
-    getVarType: function () {
-        return Blockly.Types.ARRAY;
-    },
-    /**
-     * Updates the content of the the Pin related fields.
-     * @this Blockly.Block
-     */
-    updateFields: function () {
-        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
-            this, 'PIN', 'digitalPins');
     }
 };
 
