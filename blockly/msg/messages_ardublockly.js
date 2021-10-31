@@ -154,7 +154,7 @@ Blockly.Msg.ARD_SET_INPUT = " set to input";
 /// Arduino
 Blockly.Msg.ARD_SET_INPUT_TIP = 'Set digital pin to input mode';
 /// Arduino
-Blockly.Msg.ARD_SET_OUTPUT = " set to output";
+Blockly.Msg.ARD_SET_OUTPUT = ' set to output';
 /// Arduino
 Blockly.Msg.ARD_SET_OUTPUT_TIP = 'Set digital pin to output mode';
 /// Arduino
