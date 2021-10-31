@@ -150,7 +150,7 @@ Blockly.Msg.ARD_WRITE_TO = 'to';
 /// Arduino
 Blockly.Msg.ARD_DIGITAL = 'digital Pin#';
 /// Arduino
-Blockly.Msg.ARD_SET_INPUT = " set to input";
+Blockly.Msg.ARD_SET_INPUT = ' set to input';
 /// Arduino
 Blockly.Msg.ARD_SET_INPUT_TIP = 'Set digital pin to input mode';
 /// Arduino
@@ -162,11 +162,11 @@ Blockly.Msg.ARD_DIGITALWRITE = 'set digital Pin#';
 /// Arduino
 Blockly.Msg.ARD_DIGITALWRITE_TIP = 'Write digital value HIGH or LOW to a specific Port';
 /// Arduino
-Blockly.Msg.ARD_I2CREAD = "I2C Pin#";
+Blockly.Msg.ARD_I2CREAD = 'I2C Pin#';
 /// Arduino
-Blockly.Msg.ARD_I2CREAD_MSG = "SDA or SLC pin of I2C";
+Blockly.Msg.ARD_I2CREAD_MSG = 'SDA or SLC pin of I2C';
 /// Arduino
-Blockly.Msg.ARD_I2CREAD_TIP = "Select SDA or SLC pin of I2C";
+Blockly.Msg.ARD_I2CREAD_TIP = 'Select SDA or SLC pin of I2C';
 /// Arduino
 Blockly.Msg.ARD_SETTONE = 'Set tone on Pin #';
 /// Arduino
@@ -218,13 +218,13 @@ Blockly.Msg.ARD_PULSETIMEOUT_MSG = 'read %1 pulse on %2 timeout after %3 ms';
 /// Arduino
 Blockly.Msg.ARD_PULSETIMEOUT_TIP = 'Measures the duration of a pulse on the selected Pin; if it is within the time-out in microseconds.'
 /// Arduino
-Blockly.Msg.ARD_MAP = "Map";
+Blockly.Msg.ARD_MAP = 'Map';
 /// Arduino
-Blockly.Msg.ARD_MAP_TIP = "Re-maps a number from [0-1024] to another.";
+Blockly.Msg.ARD_MAP_TIP = 'Re-maps a number from [0-1024] to another.';
 /// Arduino
-Blockly.Msg.ARD_MAP_VAL = "value to [0-";
+Blockly.Msg.ARD_MAP_VAL = 'value to [0-';
 /// Arduino
-Blockly.Msg.ARD_MAP_X_TIP = "Re-maps a number from [x - y] to [x'- y']";
+Blockly.Msg.ARD_MAP_X_TIP = 'Re-maps a number from [x - y] to [x"- y"]';
 /**
  * Ardublockly Text
  */
