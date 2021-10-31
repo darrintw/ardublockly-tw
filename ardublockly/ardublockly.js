@@ -927,18 +927,25 @@ Ardublockly.addExtraCategories = function () {
      *     indicates an error occurred.
      * @return {void} Might exit early if response is null.
      */
+    var catArray = {};
+    var catList = [];
     var jsonDataCb = function (jsonDataObj) {
         if (jsonDataObj === null) return Ardublockly.openNotConnectedModal();
         if (jsonDataObj.categories !== undefined) {
+            var preChild = Ardublockly.xmlTree.getElementsByTagName('category')[Ardublockly.xmlTree.getElementsByTagName('category').length - 1].id;
             for (var catDir in jsonDataObj.categories) {
+                catList.push(catDir);
                 var cat = jsonDataObj.categories[catDir];
                 var tempCat = '../blocks/' + cat;
                 ArdublocklyServer.getJson(tempCat, function (jsonSubData) {
                     var catDom = (new DOMParser()).parseFromString(
                         jsonSubData.toolbox.join(''), 'text/xml').firstChild;
+                    catArray[jsonSubData.toolboxName] = catDom;
+                    /*
                     if (!Ardublockly.checkCategoryExists(jsonSubData.toolboxName)) {
                         Ardublockly.addToolboxCategory(jsonSubData.toolboxName, catDom);
                     }
+                    */
                 });
             }
         }
@@ -946,6 +953,14 @@ Ardublockly.addExtraCategories = function () {
     // Reads the JSON data containing all block categories from ./blocks directory
     // Now reading a local file, to be replaced by server generated JSON
     ArdublocklyServer.getJson('../blocks/blocks_data.json', jsonDataCb);
+    setTimeout(function () {
+        for (var index = 0; index < catList.length; index++) {
+            var toolboxName = catList[index];
+            if (!Ardublockly.checkCategoryExists(toolboxName)) {
+                Ardublockly.addToolboxCategory(toolboxName, catArray[toolboxName]);
+            }
+        }
+    }, 200);
 };
 
 /** Informs the user that the selected function is not yet implemented. */
