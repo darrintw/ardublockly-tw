@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "carlosperate",
-		"lastupdated": "2021-10-28 15:03:22.702000",
+		"lastupdated": "2021-10-31 16:13:50.383000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -55,9 +55,8 @@
 	"ARD_HIGHLOW_TIP": "Set a Pin state logic High or Low.",
 	"ARD_WRITE_TO": "to",
 	"ARD_DIGITAL": "digital Pin#",
-	"ARD_SET_INPUT": "set to input",
+	"ARD_SET_INPUT": " set to input",
 	"ARD_SET_INPUT_TIP": "Set digital pin to input mode",
-	"ARD_SET_OUTPUT": "set to output",
 	"ARD_SET_OUTPUT_TIP": "Set digital pin to output mode",
 	"ARD_DIGITALWRITE": "set digital Pin#",
 	"ARD_DIGITALWRITE_TIP": "Write digital value HIGH or LOW to a specific Port",
@@ -74,6 +73,7 @@
 	"ARD_NOTONE_TIP": "Turns the tone off on the selected Pin",
 	"ARD_DIGITALREAD_MSG": "read digital %1",
 	"ARD_ANALOGREAD_MSG": "read analog %1",
+	"ARD_INPUT_PULLUP": " set to input(as internal pullup resister)",
 	"ARD_INPUT_PULLUP_MSG": "enable internal pullup resister at Pin %1",
 	"ARD_INPUT_PULLUP_TIP": "enable internal pullup resister at specified Pin",
 	"ARD_ANALOGREAD": "read analog %1",

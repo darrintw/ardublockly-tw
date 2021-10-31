@@ -29,7 +29,7 @@ Blockly.Msg.ARD_ULTRASONIC_DISTANCE_CM = "cm";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH = "inch";
 
 /// TRTC5000
-Blockly.Msg.ARD_TRTC5000_FROM = "Read Reflective Infrared Sensor傳感器 value \u207B from ";
+Blockly.Msg.ARD_TRTC5000_FROM = "Read Reflective Infrared Sensor感測器 value \u207B from ";
 Blockly.Msg.ARD_TRTC5000_READ = "";
 Blockly.Msg.ARD_TRTC5000_TIP = 'Only for TRTC5000. Value is reverse.';
 
