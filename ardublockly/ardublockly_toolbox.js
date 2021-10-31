@@ -298,5 +298,4 @@ Ardublockly.TOOLBOX_XML =
     '    </block>' +
     '    <block type="io_notone"></block>' +
     '  </category>' +
-    '  <sep></sep>' +
     '</xml>';
