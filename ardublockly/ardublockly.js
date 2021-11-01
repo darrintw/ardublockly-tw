@@ -51,6 +51,10 @@ Ardublockly.init = function () {
         elId.hidden = true;
     }
 
+    window.oncontextmenu = (e) => {
+        e.preventDefault();
+    }
+
     Ardublockly.restoreDefault();
 };
 
