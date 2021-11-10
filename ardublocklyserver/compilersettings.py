@@ -3,7 +3,7 @@
 
 Copyright (c) 2017 carlosperate https://github.com/carlosperate/
 Licensed under the Apache License, Version 2.0 (the "License"):
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 
 The ServerCompilerSettings is a singleton class maintained in memory, and
 the the Ardublockly and Arduino IDE settings into a file.
@@ -106,6 +106,7 @@ class ServerCompilerSettings(object):
         self.__serial_port_key = None
         self.__serial_port_value = None
         self.__baud_rate_option = None
+        self.__load_delay_option = None
         if settings_dir:
             self.__settings_path = os.path.join(settings_dir,
                                                 self.__settings_filename)
@@ -331,7 +332,7 @@ class ServerCompilerSettings(object):
     arduino_board_flag = property(get_arduino_board_flag, set_arduino_board_flag)
 
     def set_arduino_board_default(self):
-        self.__arduino_board_key = 'Arduino Uno'
+        self.__arduino_board_key = 'uno'
 
     def set_arduino_board_flag_default(self):
         self.__arduino_board_value = 'arduino:avr:uno'
@@ -492,7 +493,7 @@ class ServerCompilerSettings(object):
     def populate_serial_port_list(self):
         """Populate the serial ports dictionary with the available ports."""
         port_list = ardublocklyserver.serialport.get_port_list()
-        self.__serial_ports = {'USB':'USB'}
+        self.__serial_ports = {'USB': 'USB'}
         if port_list:
             port_id = 0
             for item in port_list:
@@ -588,6 +589,32 @@ class ServerCompilerSettings(object):
         return self.__baud_rate_options
 
     #
+    # Load extra block delay time
+    #
+
+    def get_load_delay(self):
+        return self.__load_delay_option
+
+    def set_load_delay(self, new_load_delay_option):
+        self.__load_delay_option = new_load_delay_option
+        print('Load Delay options set to:\n\t%s' % self.__load_delay_option)
+        self.save_settings()
+
+    load_delay_option = property(get_load_delay, set_load_delay)
+
+    def set_load_delay_default(self):
+        self.__load_delay_option = 800
+
+    def set_load_delay_from_file(self, new_load_delay_option):
+        self.__load_delay_option = new_load_delay_option
+        if not self.__load_delay_option:
+            print('Settings file "Load Delay option" is not valid:'
+                  '\n\t%s' % new_load_delay_option)
+            self.set_load_delay_default()
+            print('Default "Load delay option" set:\n\t%s' %
+                  self.__load_delay_option)
+
+    #
     # Sets all the settings to default values
     #
     def set_default_settings(self):
@@ -600,6 +627,7 @@ class ServerCompilerSettings(object):
         self.set_arduino_board_default()
         self.set_arduino_board_flag_default()
         self.set_baud_rate_default()
+        self.set_load_delay_default()
 
     #
     # Settings file
@@ -628,6 +656,7 @@ class ServerCompilerSettings(object):
         settings_parser.add_section('Ardublockly')
         settings_parser.set('Ardublockly', 'ide_load', '%s' % self.load_ide_option)
         settings_parser.set('Ardublockly', 'baud_rate', '%s' % self.baud_rate_option)
+        settings_parser.set('Ardublockly', 'load_delay', '%s' % self.load_delay_option)
 
         # Set the path and create/overwrite the file
         try:
@@ -658,6 +687,7 @@ class ServerCompilerSettings(object):
             self.set_examples_dir_from_file(settings_dict['examples_directory'])
             self.set_load_ide_from_file(settings_dict['ide_load'])
             self.set_baud_rate_from_file(settings_dict['baud_rate'])
+            self.set_load_delay_from_file(settings_dict['load_delay'])
         else:
             print('Settings will be set to the default values.')
             self.set_default_settings()
@@ -673,6 +703,7 @@ class ServerCompilerSettings(object):
         print('\tSketch Directory: %s' % self.__sketch_dir)
         print('\tLoad IDE option: %s' % self.__load_ide_option)
         print('\tBaud Rate option: %s' % self.__baud_rate_option)
+        print('\tLoad Delay option: %s' % self.__load_delay_option)
 
         # The read X_from_file() functions do not save new settings and neither
         # does the set_default_settings() function, so save them either way.
@@ -707,6 +738,8 @@ class ServerCompilerSettings(object):
                 settings_parser.get('Ardublockly', 'ide_load')
             settings_dict['baud_rate'] = \
                 settings_parser.get('Ardublockly', 'baud_rate')
+            settings_dict['load_delay'] = \
+                settings_parser.get('Ardublockly', 'load_delay')
             print('Settings loaded from:\n\t%s' % self.__settings_path)
         except Exception:
             print('Settings file corrupted or not found in:\n\t%s'

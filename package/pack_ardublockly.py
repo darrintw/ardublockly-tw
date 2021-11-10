@@ -283,7 +283,8 @@ def copy_ardublockly_folder():
                      "\n" + \
                      "[Ardublockly]\n" + \
                      "ide_load = upload\n" + \
-                     "baud_rate = 9600\n"
+                     "baud_rate = 9600\n" + \
+                     "load_delay = 800\n"
         print(shell_text)
         shell_location = os.path.join(copied_project_dir, "ServerCompilerSettings.ini")
 

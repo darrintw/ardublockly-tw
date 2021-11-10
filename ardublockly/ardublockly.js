@@ -130,6 +130,9 @@ Ardublockly.bindActionFunctions = function () {
     settingsPathInputListeners('settings_sketch_location',
         ArdublocklyServer.setSketchLocationHtml,
         Ardublockly.setSketchLocationHtml);
+    settingsPathInputListeners('settings_load_delay',
+        ArdublocklyServer.setLoadDelayOptions,
+        Ardublockly.setLoadDelayHtml);
 };
 
 /** Sets the Ardublockly server IDE setting to upload and sends the code. */
@@ -422,6 +425,10 @@ Ardublockly.openSettings = function () {
         });
         ArdublocklyServer.requestIdeOptions(function (jsonObj) {
             Ardublockly.setIdeHtml(ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+        });
+        ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
+            Ardublockly.setLoadDelayHtml(
+                ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
         });
     }
     // Language menu only set on page load within Ardublockly.initLanguage()
@@ -749,6 +756,22 @@ Ardublockly.setBaudRateSettings = function (e, preset) {
     });
 };
 
+
+/**
+ * Sets the load delay form data retrieve from an updated element.
+ * @return {void} Might exit early if response is null.
+ * @param newEl
+ */
+Ardublockly.setLoadDelayHtml = function (newEl) {
+    if (newEl === null) return Ardublockly.openNotConnectedModal();
+
+    var load_Delay_Value = document.getElementById('settings_load_delay');
+    if (load_Delay_Value != null) {
+        load_Delay_Value.value = newEl.value || load_Delay_Value.value;
+        load_Delay_Value.style.cssText = newEl.style.cssText;
+    }
+};
+
 /**
  * Send the Arduino Code to the ArdublocklyServer to process.
  * Shows a loader around the button, blocking it (unblocked upon received
@@ -945,11 +968,6 @@ Ardublockly.addExtraCategories = function () {
                     var catDom = (new DOMParser()).parseFromString(
                         jsonSubData.toolbox.join(''), 'text/xml').firstChild;
                     catArray[jsonSubData.toolboxName] = catDom;
-                    /*
-                    if (!Ardublockly.checkCategoryExists(jsonSubData.toolboxName)) {
-                        Ardublockly.addToolboxCategory(jsonSubData.toolboxName, catDom);
-                    }
-                    */
                 });
             }
         }
@@ -957,6 +975,17 @@ Ardublockly.addExtraCategories = function () {
     // Reads the JSON data containing all block categories from ./blocks directory
     // Now reading a local file, to be replaced by server generated JSON
     ArdublocklyServer.getJson('../blocks/blocks_data.json', jsonDataCb);
+
+    var load_delay = 800;
+    ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
+        if (jsonObj.errors) {
+            /*element.setAttribute('value', '');
+            element.style.cssText = 'border-bottom: 1px solid #f75c51;' +
+                'box-shadow: 0 1px 0 0 #d73c30;';*/
+        } else {
+            load_delay = jsonObj.selected || '800';
+        }
+    });
     setTimeout(function () {
         for (var index = 0; index < catList.length; index++) {
             var toolboxName = catList[index];
@@ -964,7 +993,7 @@ Ardublockly.addExtraCategories = function () {
                 Ardublockly.addToolboxCategory(toolboxName, catArray[toolboxName]);
             }
         }
-    }, 1000);
+    }, load_delay);
 };
 
 /** Informs the user that the selected function is not yet implemented. */

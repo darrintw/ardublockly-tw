@@ -3,7 +3,7 @@
 
 Copyright (c) 2017 carlosperate https://github.com/carlosperate/
 Licensed under the Apache License, Version 2.0 (the "License"):
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 """
 from __future__ import unicode_literals, absolute_import, print_function
 import os
@@ -192,6 +192,9 @@ def handler_settings_get_all():
             'options': [{'value': k, 'display_text': v} for k, v in
                         iteritems(actions.get_baud_rate_options())],
             'selected': actions.get_baud_rate_selected()
+        }, {
+            'settings_type': 'loaddelay',
+            'selected': actions.get_load_delay()
         }]
     }
     set_header_no_cache()
@@ -242,6 +245,9 @@ def handler_settings_get_individual(name):
             'options': [{'value': k, 'display_text': v}
                         for k, v in iteritems(actions.get_baud_rate_options())],
             'selected': actions.get_baud_rate_selected()})
+    elif name == 'loaddelay':
+        response_dict.update({
+            'selected': actions.get_load_delay()})
     else:
         success = False
         response_dict.update({
@@ -348,6 +354,8 @@ def handler_settings_update_individual(name):
                 set_value = actions.set_baud_rate_only(new_value)
                 options = [{'value': k, 'display_text': v} for k, v in
                            iteritems(actions.get_baud_rate_options())]
+            elif name == 'loaddelay':
+                set_value = actions.set_load_delay(new_value)
             else:
                 response_dict.update({'success': False,
                                       'settings_type': 'invalid'})

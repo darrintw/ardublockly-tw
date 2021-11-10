@@ -3,7 +3,7 @@
 
 Copyright (c) 2017 carlosperate https://github.com/carlosperate/
 Licensed under the Apache License, Version 2.0 (the "License"):
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 """
 from __future__ import unicode_literals, absolute_import, print_function
 
@@ -99,7 +99,7 @@ def load_arduino_cli(sketch_path):
         # Concatenates the CLI command and execute if the flags are valid
         cli_command = [settings.compiler_dir, "%s" % sketch_path]
         if settings.load_ide_option == 'upload':
-            if (settings.get_serial_port_flag() == 'USB'):
+            if settings.get_serial_port_flag() == 'USB':
                 print('\nUploading sketch to Board from USB...')
                 cli_command.append('--upload')
                 cli_command.append('--board')
@@ -423,11 +423,32 @@ def get_end_of_line_options():
 
 
 def get_end_of_line_selected():
-    """Get the Baud Rate option from the Settings.
+    """Get the End Of Line option from the Settings.
 
     :return: The currently selected End Of Line option from the Settings.
     """
     return ServerCompilerSettings().end_of_line_option
+
+
+#
+# Load delay settings
+#
+def set_load_delay(new_value):
+    """Set a new load delay option.
+
+    :param new_value: New load delay option to save in the Settings.
+    :return: Same as the get_load_delay_selected() function.
+    """
+    ServerCompilerSettings().load_delay_option = new_value
+    return get_load_delay()
+
+
+def get_load_delay():
+    """Get the available load delay options.
+
+    :return: Dictionary of load delay options.
+    """
+    return ServerCompilerSettings().get_load_delay()
 
 
 #
@@ -448,11 +469,7 @@ def load_putty_cli():
 
     if success:
         baud = settings.get_baud_rate()
-        cli_command = ['putty.exe']
-        cli_command.append('-serial')
-        cli_command.append(settings.get_serial_port_flag())
-        cli_command.append('-sercfg')
-        cli_command.append(baud)
+        cli_command = ['putty.exe', '-serial', settings.get_serial_port_flag(), '-sercfg', baud]
         # print(cli_command)
         print('\nOpen putty...')
         subprocess.Popen(cli_command, shell=False)
