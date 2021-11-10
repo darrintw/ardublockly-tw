@@ -35,6 +35,7 @@ Ardublockly.LOCALISED_TEXT = {
     comPort: "COM Port",
     comPortDefault: "COM Port unknown",
     baudrate: "Baud Rate",
+    loaddelay: "Load extra block delay ms",
     defaultIdeButton: "Default IDE Button",
     defaultIdeButtonDefault: "IDE options unknown",
     language: "Language",

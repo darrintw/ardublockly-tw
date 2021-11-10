@@ -409,6 +409,30 @@ ArdublocklyServer.setBaudRateOptions = function (baud_rate_option, callback) {
 
 
 /**
+ * Gets the current Load Delay setting from the Ardublockly Server settings. The new
+ * settings menu for the Load Delay options is then processed into an HTML element
+ * and sent to the callback function as an argument.
+ * @param {!function} callback Callback function for the server request, must
+ *     have one argument to receive the JSON response.
+ */
+ArdublocklyServer.requestLoadDelayOptions = function (callback) {
+    ArdublocklyServer.getJson('/settings/loaddelay', callback);
+};
+
+/**
+ * Sends the inputted Load Delay option to the Ardublockly Server Settings. The new
+ * settings menu for the End Of Line options is then processed into an HTML element
+ * and sent to the callback function as an argument.
+ * @param end_of_line_option
+ * @param {!function} callback Callback function for the server request, must
+ *     have one argument to receive the JSON response.
+ */
+ArdublocklyServer.setLoadDelayOptions = function (load_delay_option, callback) {
+    ArdublocklyServer.putJson(
+        '/settings/loaddelay', {"new_value": load_delay_option}, callback);
+};
+
+/**
  * Gets the current End Of Line setting from the Ardublockly Server settings. The new
  * settings menu for the End Of Line options is then processed into an HTML element
  * and sent to the callback function as an argument.
@@ -431,7 +455,6 @@ ArdublocklyServer.setEndOfLineOptions = function (end_of_line_option, callback) 
     ArdublocklyServer.putJson(
         '/settings/endofline', {"new_value": end_of_line_option}, callback);
 };
-
 
 /**
  * Gets the current time stamp setting from the Ardublockly Server settings. The new

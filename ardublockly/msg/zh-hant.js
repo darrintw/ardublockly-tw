@@ -36,6 +36,7 @@ Ardublockly.LOCALISED_TEXT = {
     comPort: "序列埠",
     comPortDefault: "序列埠未知",
     baudrate: "鮑率",
+    loaddelay: "載入額外積木延遲毫秒",
     defaultIdeButton: "預設IDE按鈕",
     defaultIdeButtonDefault: "IDE選項設定未知",
     language: "語言",
