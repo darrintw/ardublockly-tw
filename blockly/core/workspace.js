@@ -35,44 +35,44 @@ goog.require('goog.math');
  * @param {Blockly.Options} opt_options Dictionary of options.
  * @constructor
  */
-Blockly.Workspace = function(opt_options) {
-  /** @type {string} */
-  this.id = Blockly.genUid();
-  Blockly.Workspace.WorkspaceDB_[this.id] = this;
-  /** @type {!Blockly.Options} */
-  this.options = opt_options || {};
-  /** @type {boolean} */
-  this.RTL = !!this.options.RTL;
-  /** @type {boolean} */
-  this.horizontalLayout = !!this.options.horizontalLayout;
-  /** @type {number} */
-  this.toolboxPosition = this.options.toolboxPosition;
+Blockly.Workspace = function (opt_options) {
+    /** @type {string} */
+    this.id = Blockly.genUid();
+    Blockly.Workspace.WorkspaceDB_[this.id] = this;
+    /** @type {!Blockly.Options} */
+    this.options = opt_options || {};
+    /** @type {boolean} */
+    this.RTL = !!this.options.RTL;
+    /** @type {boolean} */
+    this.horizontalLayout = !!this.options.horizontalLayout;
+    /** @type {number} */
+    this.toolboxPosition = this.options.toolboxPosition;
 
-  /**
-   * @type {!Array.<!Blockly.Block>}
-   * @private
-   */
-  this.topBlocks_ = [];
-  /**
-   * @type {!Array.<!Function>}
-   * @private
-   */
-  this.listeners_ = [];
-  /**
-   * @type {!Array.<!Blockly.Events.Abstract>}
-   * @private
-   */
-  this.undoStack_ = [];
-  /**
-   * @type {!Array.<!Blockly.Events.Abstract>}
-   * @private
-   */
-  this.redoStack_ = [];
-  /**
-   * @type {!Object}
-   * @private
-   */
-  this.blockDB_ = Object.create(null);
+    /**
+     * @type {!Array.<!Blockly.Block>}
+     * @private
+     */
+    this.topBlocks_ = [];
+    /**
+     * @type {!Array.<!Function>}
+     * @private
+     */
+    this.listeners_ = [];
+    /**
+     * @type {!Array.<!Blockly.Events.Abstract>}
+     * @private
+     */
+    this.undoStack_ = [];
+    /**
+     * @type {!Array.<!Blockly.Events.Abstract>}
+     * @private
+     */
+    this.redoStack_ = [];
+    /**
+     * @type {!Object}
+     * @private
+     */
+    this.blockDB_ = Object.create(null);
 };
 
 /**
@@ -91,11 +91,11 @@ Blockly.Workspace.prototype.MAX_UNDO = 1024;
  * Dispose of this workspace.
  * Unlink from all DOM elements to prevent memory leaks.
  */
-Blockly.Workspace.prototype.dispose = function() {
-  this.listeners_.length = 0;
-  this.clear();
-  // Remove from workspace database.
-  delete Blockly.Workspace.WorkspaceDB_[this.id];
+Blockly.Workspace.prototype.dispose = function () {
+    this.listeners_.length = 0;
+    this.clear();
+    // Remove from workspace database.
+    delete Blockly.Workspace.WorkspaceDB_[this.id];
 };
 
 /**
@@ -110,26 +110,26 @@ Blockly.Workspace.SCAN_ANGLE = 3;
  * Add a block to the list of top blocks.
  * @param {!Blockly.Block} block Block to remove.
  */
-Blockly.Workspace.prototype.addTopBlock = function(block) {
-  this.topBlocks_.push(block);
+Blockly.Workspace.prototype.addTopBlock = function (block) {
+    this.topBlocks_.push(block);
 };
 
 /**
  * Remove a block from the list of top blocks.
  * @param {!Blockly.Block} block Block to remove.
  */
-Blockly.Workspace.prototype.removeTopBlock = function(block) {
-  var found = false;
-  for (var child, i = 0; child = this.topBlocks_[i]; i++) {
-    if (child == block) {
-      this.topBlocks_.splice(i, 1);
-      found = true;
-      break;
+Blockly.Workspace.prototype.removeTopBlock = function (block) {
+    var found = false;
+    for (var child, i = 0; child = this.topBlocks_[i]; i++) {
+        if (child == block) {
+            this.topBlocks_.splice(i, 1);
+            found = true;
+            break;
+        }
     }
-  }
-  if (!found) {
-    throw 'Block not present in workspace\'s list of top-most blocks.';
-  }
+    if (!found) {
+        throw 'Block not present in workspace\'s list of top-most blocks.';
+    }
 };
 
 /**
@@ -138,49 +138,49 @@ Blockly.Workspace.prototype.removeTopBlock = function(block) {
  * @param {boolean} ordered Sort the list if true.
  * @return {!Array.<!Blockly.Block>} The top-level block objects.
  */
-Blockly.Workspace.prototype.getTopBlocks = function(ordered) {
-  // Copy the topBlocks_ list.
-  var blocks = [].concat(this.topBlocks_);
-  if (ordered && blocks.length > 1) {
-    var offset = Math.sin(goog.math.toRadians(Blockly.Workspace.SCAN_ANGLE));
-    if (this.RTL) {
-      offset *= -1;
+Blockly.Workspace.prototype.getTopBlocks = function (ordered) {
+    // Copy the topBlocks_ list.
+    var blocks = [].concat(this.topBlocks_);
+    if (ordered && blocks.length > 1) {
+        var offset = Math.sin(goog.math.toRadians(Blockly.Workspace.SCAN_ANGLE));
+        if (this.RTL) {
+            offset *= -1;
+        }
+        blocks.sort(function (a, b) {
+            var aXY = a.getRelativeToSurfaceXY();
+            var bXY = b.getRelativeToSurfaceXY();
+            return (aXY.y + offset * aXY.x) - (bXY.y + offset * bXY.x);
+        });
     }
-    blocks.sort(function(a, b) {
-      var aXY = a.getRelativeToSurfaceXY();
-      var bXY = b.getRelativeToSurfaceXY();
-      return (aXY.y + offset * aXY.x) - (bXY.y + offset * bXY.x);
-    });
-  }
-  return blocks;
+    return blocks;
 };
 
 /**
  * Find all blocks in workspace.  No particular order.
  * @return {!Array.<!Blockly.Block>} Array of blocks.
  */
-Blockly.Workspace.prototype.getAllBlocks = function() {
-  var blocks = this.getTopBlocks(false);
-  for (var i = 0; i < blocks.length; i++) {
-    blocks.push.apply(blocks, blocks[i].getChildren());
-  }
-  return blocks;
+Blockly.Workspace.prototype.getAllBlocks = function () {
+    var blocks = this.getTopBlocks(false);
+    for (var i = 0; i < blocks.length; i++) {
+        blocks.push.apply(blocks, blocks[i].getChildren());
+    }
+    return blocks;
 };
 
 /**
  * Dispose of all blocks in workspace.
  */
-Blockly.Workspace.prototype.clear = function() {
-  var existingGroup = Blockly.Events.getGroup();
-  if (!existingGroup) {
-    Blockly.Events.setGroup(true);
-  }
-  while (this.topBlocks_.length) {
-    this.topBlocks_[0].dispose();
-  }
-  if (!existingGroup) {
-    Blockly.Events.setGroup(false);
-  }
+Blockly.Workspace.prototype.clear = function () {
+    var existingGroup = Blockly.Events.getGroup();
+    if (!existingGroup) {
+        Blockly.Events.setGroup(true);
+    }
+    while (this.topBlocks_.length) {
+        this.topBlocks_[0].dispose();
+    }
+    if (!existingGroup) {
+        Blockly.Events.setGroup(false);
+    }
 };
 
 /**
@@ -189,8 +189,8 @@ Blockly.Workspace.prototype.clear = function() {
  * Not relevant for a headless workspace.
  * @return {number} Width.
  */
-Blockly.Workspace.prototype.getWidth = function() {
-  return 0;
+Blockly.Workspace.prototype.getWidth = function () {
+    return 0;
 };
 
 /**
@@ -201,8 +201,8 @@ Blockly.Workspace.prototype.getWidth = function() {
  *     create a new id.
  * @return {!Blockly.Block} The created block.
  */
-Blockly.Workspace.prototype.newBlock = function(prototypeName, opt_id) {
-  return new Blockly.Block(this, prototypeName, opt_id);
+Blockly.Workspace.prototype.newBlock = function (prototypeName, opt_id) {
+    return new Blockly.Block(this, prototypeName, opt_id);
 };
 
 /**
@@ -210,50 +210,50 @@ Blockly.Workspace.prototype.newBlock = function(prototypeName, opt_id) {
  *     the maxBlocks.
  * @return {number} Number of blocks left.
  */
-Blockly.Workspace.prototype.remainingCapacity = function() {
-  if (isNaN(this.options.maxBlocks)) {
-    return Infinity;
-  }
-  return this.options.maxBlocks - this.getAllBlocks().length;
+Blockly.Workspace.prototype.remainingCapacity = function () {
+    if (isNaN(this.options.maxBlocks)) {
+        return Infinity;
+    }
+    return this.options.maxBlocks - this.getAllBlocks().length;
 };
 
 /**
  * Undo or redo the previous action.
  * @param {boolean} redo False if undo, true if redo.
  */
-Blockly.Workspace.prototype.undo = function(redo) {
-  var inputStack = redo ? this.redoStack_ : this.undoStack_;
-  var outputStack = redo ? this.undoStack_ : this.redoStack_;
-  var inputEvent = inputStack.pop();
-  if (!inputEvent) {
-    return;
-  }
-  var events = [inputEvent];
-  // Do another undo/redo if the next one is of the same group.
-  while (inputStack.length && inputEvent.group &&
-      inputEvent.group == inputStack[inputStack.length - 1].group) {
-    events.push(inputStack.pop());
-  }
-  // Push these popped events on the opposite stack.
-  for (var i = 0, event; event = events[i]; i++) {
-    outputStack.push(event);
-  }
-  events = Blockly.Events.filter(events, redo);
-  Blockly.Events.recordUndo = false;
-  for (var i = 0, event; event = events[i]; i++) {
-    event.run(redo);
-  }
-  Blockly.Events.recordUndo = true;
+Blockly.Workspace.prototype.undo = function (redo) {
+    var inputStack = redo ? this.redoStack_ : this.undoStack_;
+    var outputStack = redo ? this.undoStack_ : this.redoStack_;
+    var inputEvent = inputStack.pop();
+    if (!inputEvent) {
+        return;
+    }
+    var events = [inputEvent];
+    // Do another undo/redo if the next one is of the same group.
+    while (inputStack.length && inputEvent.group &&
+    inputEvent.group == inputStack[inputStack.length - 1].group) {
+        events.push(inputStack.pop());
+    }
+    // Push these popped events on the opposite stack.
+    for (var i = 0, event; event = events[i]; i++) {
+        outputStack.push(event);
+    }
+    events = Blockly.Events.filter(events, redo);
+    Blockly.Events.recordUndo = false;
+    for (var i = 0, event; event = events[i]; i++) {
+        event.run(redo);
+    }
+    Blockly.Events.recordUndo = true;
 };
 
 /**
  * Clear the undo/redo stacks.
  */
-Blockly.Workspace.prototype.clearUndo = function() {
-  this.undoStack_.length = 0;
-  this.redoStack_.length = 0;
-  // Stop any events already in the firing queue from being undoable.
-  Blockly.Events.clearPendingUndo();
+Blockly.Workspace.prototype.clearUndo = function () {
+    this.undoStack_.length = 0;
+    this.redoStack_.length = 0;
+    // Stop any events already in the firing queue from being undoable.
+    Blockly.Events.clearPendingUndo();
 };
 
 /**
@@ -262,37 +262,37 @@ Blockly.Workspace.prototype.clearUndo = function() {
  * @return {!Function} Function that can be passed to
  *     removeChangeListener.
  */
-Blockly.Workspace.prototype.addChangeListener = function(func) {
-  this.listeners_.push(func);
-  return func;
+Blockly.Workspace.prototype.addChangeListener = function (func) {
+    this.listeners_.push(func);
+    return func;
 };
 
 /**
  * Stop listening for this workspace's changes.
  * @param {Function} func Function to stop calling.
  */
-Blockly.Workspace.prototype.removeChangeListener = function(func) {
-  var i = this.listeners_.indexOf(func);
-  if (i != -1) {
-    this.listeners_.splice(i, 1);
-  }
+Blockly.Workspace.prototype.removeChangeListener = function (func) {
+    var i = this.listeners_.indexOf(func);
+    if (i != -1) {
+        this.listeners_.splice(i, 1);
+    }
 };
 
 /**
  * Fire a change event.
  * @param {!Blockly.Events.Abstract} event Event to fire.
  */
-Blockly.Workspace.prototype.fireChangeListener = function(event) {
-  if (event.recordUndo) {
-    this.undoStack_.push(event);
-    this.redoStack_.length = 0;
-    if (this.undoStack_.length > this.MAX_UNDO) {
-      this.undoStack_.unshift();
+Blockly.Workspace.prototype.fireChangeListener = function (event) {
+    if (event.recordUndo) {
+        this.undoStack_.push(event);
+        this.redoStack_.length = 0;
+        if (this.undoStack_.length > this.MAX_UNDO) {
+            this.undoStack_.unshift();
+        }
     }
-  }
-  for (var i = 0, func; func = this.listeners_[i]; i++) {
-    func(event);
-  }
+    for (var i = 0, func; func = this.listeners_[i]; i++) {
+        func(event);
+    }
 };
 
 /**
@@ -300,8 +300,8 @@ Blockly.Workspace.prototype.fireChangeListener = function(event) {
  * @param {string} id ID of block to find.
  * @return {Blockly.Block} The sought after block or null if not found.
  */
-Blockly.Workspace.prototype.getBlockById = function(id) {
-  return this.blockDB_[id] || null;
+Blockly.Workspace.prototype.getBlockById = function (id) {
+    return this.blockDB_[id] || null;
 };
 
 /**
@@ -315,8 +315,8 @@ Blockly.Workspace.WorkspaceDB_ = Object.create(null);
  * @param {string} id ID of workspace to find.
  * @return {Blockly.Workspace} The sought after workspace or null if not found.
  */
-Blockly.Workspace.getById = function(id) {
-  return Blockly.Workspace.WorkspaceDB_[id] || null;
+Blockly.Workspace.getById = function (id) {
+    return Blockly.Workspace.WorkspaceDB_[id] || null;
 };
 
 // Export symbols that would otherwise be renamed by Closure compiler.

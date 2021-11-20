@@ -668,6 +668,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
         }
         menuOptions.push(duplicateOption);
 
+        // Add by darrin - 2021/11/01 - start
         // Option to duplicate this block and it's child.
         var duplicateAllOption = {
             text: Blockly.Msg.DUPLICATE_ALL_BLOCK,
@@ -680,6 +681,35 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
             duplicateAllOption.enabled = false;
         }
         menuOptions.push(duplicateAllOption);
+        // Add by darrin - 2021/11/01 - end
+
+        // Add by darrin - 2021/11/20 - start
+        var copyToStorageOption = {
+            text: Blockly.Msg.COPY_BLOCK,
+            enabled: true,
+            callback: function () {
+                Blockly.copy_storage_(block);
+            }
+        };
+        if (this.getDescendants().length > this.workspace.remainingCapacity()) {
+            copyToStorageOption.enabled = false;
+        }
+        menuOptions.push(copyToStorageOption);
+        // Add by darrin - 2021/11/20 - end
+
+        // Add by darrin - 2021/11/20 - start
+        var copyAllToStorageOption = {
+            text: Blockly.Msg.COPY_ALL_BLOCK,
+            enabled: true,
+            callback: function () {
+                Blockly.copy_all_storage_(block);
+            }
+        };
+        if (this.getDescendants().length > this.workspace.remainingCapacity()) {
+            copyToStorageOption.enabled = false;
+        }
+        menuOptions.push(copyAllToStorageOption);
+        // Add by darrin - 2021/11/20 - end
 
         if (this.isEditable() && !this.collapsed_ &&
             this.workspace.options.comments) {
@@ -699,6 +729,8 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
             menuOptions.push(commentOption);
         }
 
+        /*
+        Comma by darrin = 2021/11/20
         // Option to make block inline.
         if (!this.collapsed_) {
             for (var i = 1; i < this.inputList.length; i++) {
@@ -737,6 +769,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
                 menuOptions.push(collapseOption);
             }
         }
+        */
 
         if (this.workspace.options.disable) {
             // Option to disable/enable block.
@@ -779,7 +812,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
     helpOption.callback = function () {
         block.showHelp_();
     };
-    menuOptions.push(helpOption);
+    // menuOptions.push(helpOption);
 
     // Allow the block to add or modify menuOptions.
     if (this.customContextMenu && !block.isInFlyout) {

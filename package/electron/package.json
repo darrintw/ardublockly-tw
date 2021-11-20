@@ -2,7 +2,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "asar": "^0.11.0",
-    "electron-prebuilt": "~1.2.8",
+    "electron": "^16.0.1",
     "fs-jetpack": "^0.9.2",
     "gulp": "^3.9.1",
     "gulp-batch": "^1.0.5",
@@ -10,7 +10,7 @@
     "gulp-watch": "^4.3.11",
     "q": "^1.4.1",
     "rollup": "^0.26.3",
-    "yargs": "^16.2.0"
+    "yargs": "^8.0.2"
   },
   "optionalDependencies": {
     "rcedit": "^0.5.0"
@@ -30,6 +30,7 @@
     "url": "https://github.com/darrintw/ardublockly/issues"
   },
   "dependencies": {
+    "async": "^3.2.2",
     "lodash": ">=4.17.21"
   }
 }

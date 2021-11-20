@@ -1,0 +1,226 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="MAX7219_init" id="-%/lBq.1=F2#uTgVunqH">
+        <field name="MATRIX_VAR">lc_matrix</field>
+        <value name="DIN">
+          <shadow type="io_allpins" id="W@cB#4|6lkVH`,co*iIa">
+            <field name="PIN">A2</field>
+          </shadow>
+        </value>
+        <value name="CS">
+          <shadow type="io_allpins" id="?fA`W%@c7*puh]l6/PSH">
+            <field name="PIN">A1</field>
+          </shadow>
+        </value>
+        <value name="CLK">
+          <shadow type="io_allpins" id="ByI~m|bOS{foMpH*Fw:_">
+            <field name="PIN">A0</field>
+          </shadow>
+        </value>
+        <value name="NUMS">
+          <shadow type="math_number" id="V.rS]6swRC49~(h~k.Y+">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="display_Matrix_clearDisplay" id="tmw1IV.MnhTDfvmIeMH-">
+            <field name="MATRIX_VAR">lc_matrix</field>
+            <value name="NO">
+              <shadow type="math_number" id="mZOm?V0!v}(_Iia}E%|l">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="time_delay" id="5|V]y8_Fj}LjS*c@ZQg+">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="1Xe|Q3(!^8cVwIGq3_;]">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="@mCn7Ll`IV{Q!b)x#-eE">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="5@tW)8B6_1d23h.;Nyqn">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="Y!J}[3?1-;]/3L]OSEO8">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id=":%IJuos*nTj;r9F-V:[)">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="controls_for" id="*c1wz?UzK?nRsVZ7d(^r">
+            <field name="VAR">j</field>
+            <value name="FROM">
+              <block type="math_number" id="8-9GG=gL0glid~jQHI%k">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="acHtqnmzd7Q1O8I6TN46">
+                <field name="NUM">7</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="Bc_~|P(D+St%28E5MKD.">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="display_Matrix_DrawPixel" id="9wsQ5,{IPxT7FwJ,3x(S">
+                <field name="MATRIX_VAR">lc_matrix</field>
+                <value name="NO">
+                  <shadow type="math_number" id="V.MntX1,)([ATfKspN6{">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="XVALUE">
+                  <shadow type="math_number" id="eg91HuKJ(dp*]jZ(R(,O">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="variables_get" id="QR[CW++T9F8[ZB?WwnXV">
+                    <field name="VAR">i</field>
+                  </block>
+                </value>
+                <value name="YVALUE">
+                  <shadow type="math_number" id="]pC;ANXqLn`tGSg]R{ct">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="variables_get" id="6(3Mr]^gfC~[`;F1zj/%">
+                    <field name="VAR">j</field>
+                  </block>
+                </value>
+                <value name="STAT">
+                  <shadow type="io_highlow" id="{F1QI,o+eJ#aOdx#E-VV">
+                    <field name="STATE">HIGH</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="time_delay" id="@|bcvBVL@,I`~ss`FT7/">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="q@QqKQGR`?SF_]B{d:3Z">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="time_delay" id="v;Kt0xn!]J0gyK?~!4@E">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="eUNNtRgygvAlFdP8vT.a">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_for" id="7coNN5kT7)[I!3fhgM9t">
+                <field name="VAR">i</field>
+                <value name="FROM">
+                  <block type="math_number" id="i/J|48k*5fYQ+aL3%{=]">
+                    <field name="NUM">7</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id="U@jv?!Wy)4f)k9Q2y(0R">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <block type="math_number" id="6{mhmBk6l=[:Xg)HLI)[">
+                    <field name="NUM">-1</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="controls_for" id="`gN[.XaX/}_WWv^*!ZBd">
+                    <field name="VAR">j</field>
+                    <value name="FROM">
+                      <block type="math_number" id="7F|(oQ^v.lrrq3N0H0+t">
+                        <field name="NUM">7</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <block type="math_number" id="ek{676P?^|l@S.NWtm}%">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="BY">
+                      <block type="math_number" id="T2WR]5%+Xz=_XJ~miHv-">
+                        <field name="NUM">-1</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="display_Matrix_DrawPixel" id="t`:?q#oxv4,q4Kq[ifL%">
+                        <field name="MATRIX_VAR">lc_matrix</field>
+                        <value name="NO">
+                          <shadow type="math_number" id="D71Z?=4rq}v4nuI/Bx[:">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="XVALUE">
+                          <shadow type="math_number" id="eg91HuKJ(dp*]jZ(R(,O">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get" id="2#?~Z4uWa:D*85L3)B=7">
+                            <field name="VAR">i</field>
+                          </block>
+                        </value>
+                        <value name="YVALUE">
+                          <shadow type="math_number" id="]pC;ANXqLn`tGSg]R{ct">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get" id="NXv~u~e;CJL13ugBR_n@">
+                            <field name="VAR">j</field>
+                          </block>
+                        </value>
+                        <value name="STAT">
+                          <shadow type="io_highlow" id="3AoDy~GBRIQR,XyQkEA4">
+                            <field name="STATE">LOW</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="ue5]AO{jq6;(8v=tY7a4">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="mz]:jG+uQ/Hnh+ao{(;3">
+                                <field name="NUM">100</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="time_delay" id="-WJ2}!d-HyK-p-:9**`^">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="lz.-`luQn7hj#*W#FQKx">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

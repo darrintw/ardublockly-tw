@@ -25,7 +25,6 @@
 </head>
 
 <body oncontextmenu = "return false">
-
 <!-- Horizontal Navigation bar -->
 <nav class="nav-fixed arduino_teal">
     <div class="nav-wrapper container">
@@ -231,10 +230,6 @@
             </label>
         </div>
         <div class="modal_section">
-            <label><span class="translatable_loaddelay">載入額外積木延遲毫秒</span></label>
-            <label for="settings_load_delay"><input type="text" id="settings_load_delay"></label>
-        </div>
-        <div class="modal_section">
             <label><span class="translatable_defaultIdeButton">預設IDE按鈕</span></label>
             <label for="ide_settings">
                 <select name="settings_ide" id="ide_settings">
@@ -245,6 +240,10 @@
         <div class="modal_section">
             <label><span class="translatable_language">介面語言</span></label>
             <label for="language"><select name="settings_language" id="language"></select></label>
+        </div>
+        <div class="modal_section">
+            <label><span class="translatable_loaddelay">載入額外積木延遲毫秒</span></label>
+            <label for="settings_load_delay"><input type="text" id="settings_load_delay"></label>
         </div>
     </div>
     <div class="modal-footer">
@@ -362,7 +361,6 @@
                 class="translatable_okay">確定</span></a>
     </div>
 </div>
-
 <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->
 <script src="ardublockly_desktop.js"></script>
 <!-- jQuery and Materialize JS -->

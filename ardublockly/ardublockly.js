@@ -11,9 +11,35 @@
 var Ardublockly = Ardublockly || {};
 Ardublockly.selectedboard = '';
 
+/*
+function getBroswer() {
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/edge\/([\d.]+)/)) ? Sys.edge = s[1] :
+        (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+            (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+                (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+                    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+                        (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+                            (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+
+    if (Sys.edge) return {broswer: "Edge", version: Sys.edge};
+    if (Sys.ie) return {broswer: "IE", version: Sys.ie};
+    if (Sys.firefox) return {broswer: "Firefox", version: Sys.firefox};
+    if (Sys.chrome) return {broswer: "Chrome", version: Sys.chrome};
+    if (Sys.opera) return {broswer: "Opera", version: Sys.opera};
+    if (Sys.safari) return {broswer: "Safari", version: Sys.safari};
+
+    return {broswer: "", version: "0"};
+}
+*/
 
 /** Initialize function for Ardublockly, to be called on page load. */
 Ardublockly.init = function () {
+    /*var abc = getBroswer();
+    console.log("broswer:" + abc.broswer + " version:" + abc.version);*/
+
     // Lang init must run first for the rest of the page to pick the right msgs
     Ardublockly.initLanguage();
     // Inject Blockly into content_blocks and fetch additional blocks
@@ -245,11 +271,6 @@ Ardublockly.loadServerXmlFile = function (xmlFile, filename) {
 
 Ardublockly.restoreDefault = function () {
     Ardublockly.discardAllBlocks();
-    setTimeout(function () {
-        Ardublockly.replaceBlocksfromXml(defaultProjectXML);
-        Ardublockly.renderContent();
-    }, 500)
-    Ardublockly.workspace.clearUndo();
 };
 
 //Add by darrin - 20190602 - start

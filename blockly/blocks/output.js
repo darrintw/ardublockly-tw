@@ -26,7 +26,7 @@ Blockly.Blocks['io_output'] = {
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(Blockly.Msg.ARD_PIN)
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.digitalPins), 'PIN')
             .appendField(Blockly.Msg.ARD_SET_OUTPUT);
@@ -54,7 +54,7 @@ Blockly.Blocks['io_output_var'] = {
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendValueInput('PIN')
-            .appendField(Blockly.Msg.ARD_DIGITAL);
+            .appendField(Blockly.Msg.ARD_PIN);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SET_OUTPUT);
         this.setInputsInline(true);

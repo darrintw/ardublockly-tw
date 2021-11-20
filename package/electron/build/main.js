@@ -28,10 +28,8 @@ var splashWindow = null;
 //Add env parameter for development, by darrin 20190322
 var env = packageData.env.name;
 var argv = process.argv.slice(1).toString();
-if(argv.indexOf("--env=")>-1)
-{
-    if(argv.indexOf("development")>-1)
-    {
+if (argv.indexOf("--env=") > -1) {
+    if (argv.indexOf("development") > -1) {
         env = "development";
     }
 }
@@ -47,6 +45,7 @@ if(argv.indexOf("--env=")>-1)
 })();
 
 // Ensure this is a single instance application
+/*
 const shouldQuit = app.makeSingleInstance(function(cmdLine, workingDirectory) {
   // User tried to run a second instance, focus existing window.
   if (mainWindow) {
@@ -54,13 +53,14 @@ const shouldQuit = app.makeSingleInstance(function(cmdLine, workingDirectory) {
     mainWindow.focus();
   }
 });
+*/
 
 // Electron application entry point
-app.on('ready', function() {
-    if (shouldQuit) {
+app.on('ready', function () {
+    /*if (shouldQuit) {
       app.quit();
       return;
-    }
+    }*/
 
     setupLogging();
     createSplashWindow();
@@ -98,16 +98,16 @@ app.on('ready', function() {
     }
 
     mainWindow.webContents.on('did-fail-load',
-        function(event, errorCode, errorDescription) {
+        function (event, errorCode, errorDescription) {
             winston.warn(tag + 'Page failed to load (' + errorCode + '). The ' +
                 'server is probably not yet running. Trying again in 200 ms.');
-            setTimeout(function() {
+            setTimeout(function () {
                 mainWindow.webContents.reload();
             }, 350);
         }
     );
 
-    mainWindow.webContents.on('did-finish-load', function() {
+    mainWindow.webContents.on('did-finish-load', function () {
         if (splashWindow !== null) {
             splashWindow.close();
             splashWindow = null;
@@ -115,7 +115,7 @@ app.on('ready', function() {
         mainWindow.show();
     });
 
-    mainWindow.on('close', function() {
+    mainWindow.on('close', function () {
         mainWindow = null;
     });
 
@@ -126,7 +126,7 @@ app.on('ready', function() {
     mainWindow.loadURL('http://localhost:8007/ardublockly');
 });
 
-app.on('window-all-closed', function() {
+app.on('window-all-closed', function () {
     server.stopServer();
     app.quit();
 });
