@@ -28,6 +28,7 @@ Ardublockly.isRunningElectron = function () {
  * of that this file must be called in the HTML before the Materialize library
  * is loaded.
  */
+/*
 (function loadJsInElectron() {
     if (Ardublockly.isRunningElectron()) {
         projectLocator = require('electron').remote.require('./projectlocator.js');
@@ -38,6 +39,7 @@ Ardublockly.isRunningElectron = function () {
         window.JsDiff = require(projectRoot + '/ardublockly/js_libs/diff.js');
     }
 })();
+*/
 
 /** Sets all the elements using the container class to have a width of 100%. */
 Ardublockly.containerFullWidth = function () {

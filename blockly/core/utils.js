@@ -39,7 +39,7 @@ goog.require('goog.userAgent');
  * Similar to Closure's goog.dom.classes.add, except it handles SVG elements.
  * @param {!Element} element DOM element to add class to.
  * @param {string} className Name of class to add.
- * @private
+ * @public
  */
 Blockly.addClass_ = function(element, className) {
   var classes = element.getAttribute('class') || '';

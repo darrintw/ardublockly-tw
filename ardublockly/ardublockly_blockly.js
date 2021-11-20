@@ -182,14 +182,7 @@ Ardublockly.loadSessionStorageBlocks = function () {
 /** Discard all blocks from the workspace. */
 Ardublockly.discardAllBlocks = function () {
     var blockCount = Ardublockly.workspace.getAllBlocks().length;
-    if (blockCount === 1) {
-        // 載入預設積木
-        // 立刻 loadServerXmlFile 的話, 有時候會直接顯示英文語系
-        setTimeout(function () {
-            Ardublockly.replaceBlocksfromXml(defaultProjectXML);
-            Ardublockly.renderContent();
-        }, 500)
-    } else if (blockCount > 1) {
+    if (blockCount > 1) {
         Ardublockly.alertMessage(
             Ardublockly.getLocalStr('discardBlocksTitle'),
             Ardublockly.getLocalStr('discardBlocksBody')
@@ -203,6 +196,13 @@ Ardublockly.discardAllBlocks = function () {
                     Ardublockly.renderContent();
                 }, 500)
             });
+    } else {
+        // 載入預設積木
+        // 立刻 loadServerXmlFile 的話, 有時候會直接顯示英文語系
+        setTimeout(function () {
+            Ardublockly.replaceBlocksfromXml(defaultProjectXML);
+            Ardublockly.renderContent();
+        }, 500)
     }
 };
 

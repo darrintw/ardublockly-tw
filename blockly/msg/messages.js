@@ -59,6 +59,12 @@ Blockly.Msg.TODAY = 'Today';
 
 // Context menus.
 /// context menu - Make a copy of the selected block (and any blocks it contains).\n{{Identical|Duplicate}}
+Blockly.Msg.COPY_BLOCK = 'Copy';
+/// context menu - Make a copy of the selected block (and any blocks it contains and it's child).\n{{Identical|Duplicate}}
+Blockly.Msg.COPY_ALL_BLOCK = 'Copy include child';
+/// context menu - Make a copy of the selected block (and any blocks it contains).\n{{Identical|Duplicate}}
+Blockly.Msg.PASTE_BLOCK = 'Paste';
+/// context menu - Make a copy of the selected block (and any blocks it contains).\n{{Identical|Duplicate}}
 Blockly.Msg.DUPLICATE_BLOCK = 'Duplicate';
 /// context menu - Make a copy of the selected block (and any blocks it contains and it's child).\n{{Identical|Duplicate}}
 Blockly.Msg.DUPLICATE_ALL_BLOCK = 'Duplicate include child';
