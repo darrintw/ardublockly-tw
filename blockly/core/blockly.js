@@ -284,20 +284,31 @@ Blockly.onKeyDown_ = function (e) {
         if (Blockly.selected &&
             Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
             if (e.keyCode == 67) {
-                // 'c' for copy.
-                Blockly.hideChaff();
-                Blockly.copy_(Blockly.selected);
+                if (!e.shiftKey) {
+                    // 'c' for copy.
+                    Blockly.hideChaff();
+                    // Blockly.copy_(Blockly.selected);
+                    Blockly.copy_storage_(Blockly.selected);
+                } else {
+                    // 'C' for copy with child.
+                    Blockly.hideChaff();
+                    Blockly.copy_all_storage_(Blockly.selected);
+                }
             } else if (e.keyCode == 88) {
                 // 'x' for cut.
-                Blockly.copy_(Blockly.selected);
+                // Blockly.copy_(Blockly.selected);
+                Blockly.copy_storage_(Blockly.selected);
                 deleteBlock = true;
             }
         }
         if (e.keyCode == 86) {
             // 'v' for paste.
+            Blockly.paste_();
+            /*
             if (Blockly.clipboardXml_) {
                 Blockly.clipboardSource_.paste(Blockly.clipboardXml_);
             }
+            */
         } else if (e.keyCode == 90) {
             // 'z' for undo 'Z' is for redo.
             Blockly.hideChaff();
@@ -438,6 +449,23 @@ Blockly.copy_all_storage_ = function (block) {
             var xmlBlock = Blockly.Xml.domToText(domBlock);
             await navigator.clipboard.writeText(xmlBlock);
             // console.log(xmlBlock);
+        })();
+    } catch (err) {
+        console.error(err.name, err.message);
+    }
+};
+
+/**
+ * Paste a block onto the workspace.
+ * @private
+ */
+Blockly.paste_ = function () {
+    try {
+        (async () => {
+            var xmlBlock = await navigator.clipboard.readText();
+            var domXml = Blockly.Xml.textToDom(xmlBlock);
+            var domBlock = domXml.childNodes[0];
+            Blockly.mainWorkspace.paste(domBlock);
         })();
     } catch (err) {
         console.error(err.name, err.message);

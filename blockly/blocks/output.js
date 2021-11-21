@@ -16,7 +16,7 @@ goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
 
 /** Common HSV hue for all blocks in this category. */
-Blockly.Blocks.output.HUE = 250;
+Blockly.Blocks.output.HUE = 280;
 
 Blockly.Blocks['io_output'] = {
     /**

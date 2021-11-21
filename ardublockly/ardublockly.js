@@ -11,30 +11,6 @@
 var Ardublockly = Ardublockly || {};
 Ardublockly.selectedboard = '';
 
-/*
-function getBroswer() {
-    var Sys = {};
-    var ua = navigator.userAgent.toLowerCase();
-    var s;
-    (s = ua.match(/edge\/([\d.]+)/)) ? Sys.edge = s[1] :
-        (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
-            (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
-                (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
-                    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
-                        (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
-                            (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
-
-    if (Sys.edge) return {broswer: "Edge", version: Sys.edge};
-    if (Sys.ie) return {broswer: "IE", version: Sys.ie};
-    if (Sys.firefox) return {broswer: "Firefox", version: Sys.firefox};
-    if (Sys.chrome) return {broswer: "Chrome", version: Sys.chrome};
-    if (Sys.opera) return {broswer: "Opera", version: Sys.opera};
-    if (Sys.safari) return {broswer: "Safari", version: Sys.safari};
-
-    return {broswer: "", version: "0"};
-}
-*/
-
 /** Initialize function for Ardublockly, to be called on page load. */
 Ardublockly.init = function () {
     /*var abc = getBroswer();
@@ -159,6 +135,83 @@ Ardublockly.bindActionFunctions = function () {
     settingsPathInputListeners('settings_load_delay',
         ArdublocklyServer.setLoadDelayOptions,
         Ardublockly.setLoadDelayHtml);
+
+
+    Ardublockly.bindClick_('serial_timestamp_label', Ardublockly.serialTimeStamp);
+    Ardublockly.bindClick_('serial_send_input', Ardublockly.serialSendInput);
+    Ardublockly.bindClick_('serial_send_clear', Ardublockly.clearSerialSandedContent);
+    Ardublockly.bindClick_('serial_receive_clear', Ardublockly.clearSerialReceivedContent);
+
+    var serialInputListeners = function (elId) {
+        var el = document.getElementById(elId);
+        if (el.readOnly === false) {
+            // Event listener that send the data when the user presses 'Enter'
+            el.onkeypress = function (e) {
+                if (!e) { // noinspection JSDeprecatedSymbols
+                    e = window.event;
+                }
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) {
+                    Ardublockly.serialSendInput();
+                }
+            };
+        }
+    };
+    serialInputListeners('serial_input');
+};
+
+/** Set show time stamp or not in serial monitor. */
+Ardublockly.serialTimeStamp = function () {
+    var el = document.getElementById('serial_timestamp');
+    el.checked = !el.checked;
+    Ardublockly.setSerialTimeStampSettings(el.checked);
+};
+
+/** Clear serial monitor received data.*/
+Ardublockly.clearSerialInput = function () {
+    var el = document.getElementById('serial_input');
+    el.value = '';
+};
+
+/** Clear serial monitor sanded data.*/
+Ardublockly.clearSerialSandedContent = function () {
+    var el = document.getElementById('serial_send_content');
+    el.value = '';
+};
+
+/** Clear serial monitor received data.*/
+Ardublockly.clearSerialReceivedContent = function () {
+    var el = document.getElementById('serial_receive_content');
+    el.value = '';
+};
+
+/** Input data to serial port. */
+Ardublockly.serialSendInput = function () {
+    var el = document.getElementById('serial_input');
+    var appendEl = document.getElementById('serial_send_content');
+    var eolsEl = document.getElementById('end_of_line_setting');
+    var eolsValue = eolsEl.options[eolsEl.selectedIndex].value;
+    var timeStampEl = document.getElementById('serial_timestamp');
+    var timeStampValue = timeStampEl.checked;
+    var timeStamp = '';
+    if (timeStampValue) {
+        timeStamp = Ardublockly.getNowFormatDate() + ' ->   ';
+    }
+    if (eolsValue !== 'none') {
+        if (eolsValue === 'cr') {
+            appendEl.value = appendEl.value + timeStamp + el.value + '\r';
+        } else if (eolsValue !== 'nl') {
+            appendEl.value = appendEl.value + timeStamp + el.value + '\n';
+        } else {
+            appendEl.value = appendEl.value + timeStamp + el.value + '\r\n';
+        }
+    } else {
+        appendEl.value = appendEl.value + timeStamp + el.value;
+    }
+    Ardublockly.clearSerialInput();
+    setInterval(function () {
+        appendEl.scrollTop = appendEl.scrollHeight;
+    }, 1000);
 };
 
 /** Sets the Ardublockly server IDE setting to upload and sends the code. */
@@ -407,6 +460,60 @@ Ardublockly.openSerialMonitor = function () {
     }
 };
 
+/*
+Ardublockly.openSerialMonitor = function () {
+    if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+        Ardublockly.openNotConnectedModal();
+    } else {
+        var serialPortValue = 'USB';
+        ArdublocklyServer.requestSerialPorts(function (jsonObj) {
+            if (!jsonObj.errors) {
+                serialPortValue = jsonObj.selected || '';
+            }
+        });
+        (async () => {
+            if (serialPortValue !== null && serialPortValue !== '' && serialPortValue !== 'USB') {
+                ArdublocklyServer.requestSerialTimeStamp(function (jsonObj) {
+                    Ardublockly.setSerialTimeStampHtml(jsonObj);
+                });
+                ArdublocklyServer.requestEndOfLineOptions(function (jsonObj) {
+                    Ardublockly.setEndOfLineHtml(
+                        ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+                });
+                ArdublocklyServer.requestBaudRateOptions(function (jsonObj) {
+                    Ardublockly.setBaudRateHtml(
+                        ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+                });
+                Ardublockly.clearSerialReceivedContent();
+                Ardublockly.clearSerialSandedContent();
+                Ardublockly.clearSerialInput();
+                var el = document.getElementById('baud_rate_setting');
+                var serialReceiveEl = document.getElementById('serial_receive_content');
+                var baudRateValue = el.options[el.selectedIndex].value;
+
+                Ardublockly.openSerialMonitorModal();
+                var Readline = require('@electron/remote').require('@serialport/parser-readline');
+                var SerialPort = require('@electron/remote').require("serialport");
+                var parser = new Readline();
+                var arduinoport = new SerialPort(serialValue, {baudRate: baudRateValue}).setEncoding('utf8');
+                arduinoport.on("open", (err) => {
+                    console.log('serial port open'); //成功連接時印出port open
+                    if (err) {
+                        console.log("no serial device found")//失敗時印出 device not found
+                    }
+                }, 20);
+                arduinoport.pipe(parser)
+                parser.on('data', line => {
+                    console.log(line)
+                })
+            } else {
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'))
+            }
+        })();
+    }
+};
+*/
+
 /**
  * Show about dialog.
  */
@@ -447,10 +554,12 @@ Ardublockly.openSettings = function () {
         ArdublocklyServer.requestIdeOptions(function (jsonObj) {
             Ardublockly.setIdeHtml(ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
+        /*
         ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
             Ardublockly.setLoadDelayHtml(
                 ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
         });
+        */
     }
     // Language menu only set on page load within Ardublockly.initLanguage()
     Ardublockly.openSettingsModal();
@@ -777,6 +886,79 @@ Ardublockly.setBaudRateSettings = function (e, preset) {
     });
 };
 
+/**
+ * Replaces End Of Line options form data with a new HTMl element.
+ * Ensures there is a change listener to call 'setEndOfLineSettings' function
+ * @return {void} Might exit early if response is null.
+ * @param newEl
+ */
+Ardublockly.setEndOfLineHtml = function (newEl) {
+    if (newEl === null) return Ardublockly.openNotConnectedModal();
+
+    var endOfLineDropdown = document.getElementById('end_of_line_setting');
+    if (endOfLineDropdown !== null) {
+        // Restarting the select elements built by materialize
+        $('select').material_select('destroy');
+        newEl.name = 'setting_end_of_line';
+        newEl.id = 'end_of_line_setting';
+        newEl.onchange = Ardublockly.setEndOfLineSettings;
+        endOfLineDropdown.parentNode.replaceChild(newEl, endOfLineDropdown);
+        // Refresh the materialize select menus
+        $('select').material_select();
+    }
+};
+
+/**
+ * Sets the End Of Line settings data with the selected user input from the drop down.
+ * @param {Event} e Event that triggered this function call. Required for link
+ *     it to the listeners, but not used.
+ * @param {string} preset A value to set the End Of Line settings bypassing the drop
+ *     down selected value. Valid data: 'none', 'nl', 'cr', or 'nlcr.
+ */
+Ardublockly.setEndOfLineSettings = function (e, preset) {
+    var endOfLineValue;
+    if (preset !== undefined) {
+        endOfLineValue = preset;
+    } else {
+        var el = document.getElementById('end_of_line_setting');
+        endOfLineValue = el.options[el.selectedIndex].value;
+    }
+    ArdublocklyServer.setEndOfLineOptions(endOfLineValue, function (jsonObj) {
+        Ardublockly.setEndOfLineHtml(ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+    });
+};
+
+/**
+ * Replaces Time Stamp option form data with a new HTMl element.
+ * Ensures there is a change listener to call 'setSerialTimeStampSettings' function
+ * @return {void} Might exit early if response is null.
+ * @param newEl
+ */
+Ardublockly.setSerialTimeStampHtml = function (newEl) {
+    if (newEl === null) return Ardublockly.openNotConnectedModal();
+
+    var serialTimeStampInput = document.getElementById('serial_timestamp');
+    if (serialTimeStampInput !== null) {
+        serialTimeStampInput.checked = newEl.selected === 1;
+    }
+};
+
+/**
+ * Sets the Time Stamp settings data with the selected user input from the drop down.
+ * @param {boolean} preset A value to time stamp.
+ */
+Ardublockly.setSerialTimeStampSettings = function (preset) {
+    var timeStampValue;
+    if (preset !== undefined) {
+        timeStampValue = preset;
+    } else {
+        var el = document.getElementById('serial_timestamp');
+        timeStampValue = el.checked;
+    }
+    ArdublocklyServer.setSerialTimeStamp(timeStampValue ? '1' : '0', function (jsonObj) {
+        Ardublockly.setSerialTimeStampHtml(jsonObj);
+    });
+};
 
 /**
  * Sets the load delay form data retrieve from an updated element.
@@ -997,14 +1179,10 @@ Ardublockly.addExtraCategories = function () {
     // Now reading a local file, to be replaced by server generated JSON
     ArdublocklyServer.getJson('../blocks/blocks_data.json', jsonDataCb);
 
-    var load_delay = 800;
+    var load_delay = 2000;
     ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
-        if (jsonObj.errors) {
-            /*element.setAttribute('value', '');
-            element.style.cssText = 'border-bottom: 1px solid #f75c51;' +
-                'box-shadow: 0 1px 0 0 #d73c30;';*/
-        } else {
-            load_delay = jsonObj.selected || '800';
+        if (!jsonObj.errors) {
+            load_delay = jsonObj.selected || '2000';
         }
     });
     setTimeout(function () {
@@ -1105,3 +1283,28 @@ Ardublockly.getNowFormatDate = function () {
     return currentdate;
 };
 //Add by darrin - 20200130 -end
+
+//Add by darrin - 20211121 -start
+function getBroswer() {
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/edge\/([\d.]+)/)) ? Sys.edge = s[1] :
+        (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+            (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+                (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+                    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+                        (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+                            (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+
+    if (Sys.edge) return {broswer: "Edge", version: Sys.edge};
+    if (Sys.ie) return {broswer: "IE", version: Sys.ie};
+    if (Sys.firefox) return {broswer: "Firefox", version: Sys.firefox};
+    if (Sys.chrome) return {broswer: "Chrome", version: Sys.chrome};
+    if (Sys.opera) return {broswer: "Opera", version: Sys.opera};
+    if (Sys.safari) return {broswer: "Safari", version: Sys.safari};
+
+    return {broswer: "", version: "0"};
+}
+
+//Add by darrin - 20211121 -end

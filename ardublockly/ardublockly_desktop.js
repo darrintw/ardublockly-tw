@@ -28,10 +28,11 @@ Ardublockly.isRunningElectron = function () {
  * of that this file must be called in the HTML before the Materialize library
  * is loaded.
  */
-/*
+
 (function loadJsInElectron() {
     if (Ardublockly.isRunningElectron()) {
-        projectLocator = require('electron').remote.require('./projectlocator.js');
+        //projectLocator = require('electron').remote.require('./projectlocator.js');
+        projectLocator = require('@electron/remote').require('./projectlocator.js');
         var projectRoot = projectLocator.getProjectRootPath();
         window.$ = window.jQuery = require(projectRoot +
             '/ardublockly/js_libs/jquery-2.1.3.min.js');
@@ -39,7 +40,6 @@ Ardublockly.isRunningElectron = function () {
         window.JsDiff = require(projectRoot + '/ardublockly/js_libs/diff.js');
     }
 })();
-*/
 
 /** Sets all the elements using the container class to have a width of 100%. */
 Ardublockly.containerFullWidth = function () {
@@ -81,7 +81,8 @@ Ardublockly.htmlPrompt = function (message, defaultValue, callback) {
  * Electron file/folder browsers.
  */
 Ardublockly.bindSettingsPathInputs = function () {
-    var {showOpenDialog} = require('electron').remote.dialog;
+    //var {showOpenDialog} = require('electron').remote.dialog;
+    var {showOpenDialog} = require('@electron/remote').dialog;
 
     // Compiler path
     var compilerEl = document.getElementById('settings_compiler_location');
@@ -130,7 +131,8 @@ Ardublockly.bindSettingsPathInputs = function () {
 
 /** Wraps the console.log warn and errors to send data to logging file. */
 Ardublockly.redirectConsoleLogging = function () {
-    var winston = require('electron').remote.require('winston');
+    //var winston = require('electron').remote.require('winston');
+    var winston = require('@electron/remote').require('winston');
     var consoleLog = console.log;
     var consoleWarning = console.warning;
     var consoleError = console.error;
@@ -200,9 +202,10 @@ window.addEventListener('load', function load(event) {
 
 
         // Prevent browser zoom changes like pinch-to-zoom
+        /*
         var webFrame = require('electron').webFrame;
         webFrame.setZoomLevelLimits(1, 1);
-
+        */
         Ardublockly.redirectConsoleLogging();
 
         // Electron does not offer a prompt, so replace Blocks version with modal
