@@ -10,7 +10,7 @@
 var Ardublockly = Ardublockly || {};
 
 Ardublockly.TOOLBOX_XML =
-    '<xml id="toolbox" style="display: none">' +
+    '<xml id="toolbox" style="display:none">' +
     '  <category id="catFunctions" name="Functions" custom="PROCEDURE"></category>' +
     '  <sep></sep>' +
     '  <category id="catLogic" name="Logic">' +
@@ -189,9 +189,9 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="array_create_with"></block>' +
     '    <block type="array_getIndex">' +
     '        <value name="AT">' +
-    '            <shadow type="math_number">' +
+    '            <block type="math_number">' +
     '                <field name="NUM">1</field>' +
-    '            </shadow>' +
+    '            </block>' +
     '        </value>' +
     '    </block>' +
     '  </category>' +
@@ -222,17 +222,17 @@ Ardublockly.TOOLBOX_XML =
     '    </block>' +
     '    <block type="io_pulsein">' +
     '      <value name="PULSETYPE">' +
-    '        <shadow type="io_highlow"></shadow>' +
+    '        <block type="io_highlow"></block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_pulsetimeout">' +
     '      <value name="PULSETYPE">' +
-    '        <shadow type="io_highlow"></shadow>' +
+    '        <block type="io_highlow"></block>' +
     '      </value>' +
     '      <value name="TIMEOUT">' +
-    '        <shadow type="math_number">' +
+    '        <block type="math_number">' +
     '          <field name="NUM">100</field>' +
-    '        </shadow>' +
+    '        </block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_pulsetimeout_var">' +
@@ -241,12 +241,12 @@ Ardublockly.TOOLBOX_XML =
     '        </block>' +
     '      </value>' +
     '      <value name="PULSETYPE">' +
-    '        <shadow type="io_highlow"></shadow>' +
+    '        <block type="io_highlow"></block>' +
     '      </value>' +
     '      <value name="TIMEOUT">' +
-    '        <shadow type="math_number">' +
+    '        <block type="math_number">' +
     '          <field name="NUM">1000</field>' +
-    '        </shadow>' +
+    '        </block>' +
     '      </value>' +
     '    </block>' +
     '  </category>' +
@@ -260,7 +260,7 @@ Ardublockly.TOOLBOX_XML =
     '    </block>' +
     '    <block type="io_digitalwrite">' +
     '      <value name="STATE">' +
-    '        <shadow type="io_highlow"></shadow>' +
+    '        <block type="io_highlow"></block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_digitalwrite_var">' +
@@ -268,14 +268,14 @@ Ardublockly.TOOLBOX_XML =
     '        <block type="variables_get"></block>' +
     '      </value>' +
     '      <value name="STATE">' +
-    '        <shadow type="io_highlow"></shadow>' +
+    '        <block type="io_highlow"></block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_analogwrite">' +
     '      <value name="NUM">' +
-    '        <shadow type="math_number">' +
+    '        <block type="math_number">' +
     '          <field name="NUM">100</field>' +
-    '        </shadow>' +
+    '        </block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_analogwrite_var">' +
@@ -283,17 +283,17 @@ Ardublockly.TOOLBOX_XML =
     '        <block type="variables_get"></block>' +
     '      </value>' +
     '      <value name="NUM">' +
-    '        <shadow type="math_number">' +
+    '        <block type="math_number">' +
     '          <field name="NUM">100</field>' +
-    '        </shadow>' +
+    '        </block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_tone">' +
     '      <field name="TONEPIN">0</field>' +
     '      <value name="FREQUENCY">' +
-    '        <shadow type="math_number">' +
+    '        <block type="math_number">' +
     '          <field name="NUM">220</field>' +
-    '        </shadow>' +
+    '        </block>' +
     '      </value>' +
     '    </block>' +
     '    <block type="io_notone"></block>' +

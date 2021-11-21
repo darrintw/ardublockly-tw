@@ -193,6 +193,14 @@ def handler_settings_get_all():
                         iteritems(actions.get_baud_rate_options())],
             'selected': actions.get_baud_rate_selected()
         }, {
+            'settings_type': 'endofline',
+            'options': [{'value': k, 'display_text': v} for k, v in
+                        iteritems(actions.get_end_of_line_options())],
+            'selected': actions.get_end_of_line_selected()
+        }, {
+            'settings_type': 'serialtimestamp',
+            'selected': actions.get_serial_time_stamp()
+        }, {
             'settings_type': 'loaddelay',
             'selected': actions.get_load_delay()
         }]
@@ -245,6 +253,14 @@ def handler_settings_get_individual(name):
             'options': [{'value': k, 'display_text': v}
                         for k, v in iteritems(actions.get_baud_rate_options())],
             'selected': actions.get_baud_rate_selected()})
+    elif name == 'endofline':
+        response_dict.update({
+            'options': [{'value': k, 'display_text': v}
+                        for k, v in iteritems(actions.get_end_of_line_options())],
+            'selected': actions.get_end_of_line_selected()})
+    elif name == 'serialtimestamp':
+        response_dict.update({
+            'selected': actions.get_serial_time_stamp()})
     elif name == 'loaddelay':
         response_dict.update({
             'selected': actions.get_load_delay()})
@@ -354,6 +370,12 @@ def handler_settings_update_individual(name):
                 set_value = actions.set_baud_rate_only(new_value)
                 options = [{'value': k, 'display_text': v} for k, v in
                            iteritems(actions.get_baud_rate_options())]
+            elif name == 'endofline':
+                set_value = actions.set_end_of_line_only(new_value)
+                options = [{'value': k, 'display_text': v} for k, v in
+                           iteritems(actions.get_end_of_line_options())]
+            elif name == 'serialtimestamp':
+                set_value = actions.set_serial_time_stamp(new_value)
             elif name == 'loaddelay':
                 set_value = actions.set_load_delay(new_value)
             else:

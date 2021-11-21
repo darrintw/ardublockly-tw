@@ -749,17 +749,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {
     pasteFromStorageOption.text = Blockly.Msg.PASTE_BLOCK;
     pasteFromStorageOption.enabled = true;
     pasteFromStorageOption.callback = function () {
-        try {
-            (async () => {
-                var xmlBlock = await navigator.clipboard.readText();
-                // console.log(xmlBlock);
-                var domXml = Blockly.Xml.textToDom(xmlBlock);
-                var domBlock = domXml.childNodes[0];
-                topBlocks[0].workspace.paste(domBlock);
-            })();
-        } catch (err) {
-            console.error(err.name, err.message);
-        }
+        Blockly.paste_();
     };
     menuOptions.push(pasteFromStorageOption);
     // Add by darrin - 2021/11/20 - end
@@ -773,9 +763,9 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {
         menuOptions.push(cleanOption);
     }
 
+    var DELAY = 10;
     // Add a little animation to collapsing and expanding.
     /* Comma by darrin - 2021/11/20
-    var DELAY = 10;
     if (this.options.collapse) {
         var hasCollapsedBlocks = false;
         var hasExpandedBlocks = false;

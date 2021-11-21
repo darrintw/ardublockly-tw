@@ -423,7 +423,7 @@ ArdublocklyServer.requestLoadDelayOptions = function (callback) {
  * Sends the inputted Load Delay option to the Ardublockly Server Settings. The new
  * settings menu for the End Of Line options is then processed into an HTML element
  * and sent to the callback function as an argument.
- * @param end_of_line_option
+ * @param load_delay_option
  * @param {!function} callback Callback function for the server request, must
  *     have one argument to receive the JSON response.
  */

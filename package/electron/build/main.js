@@ -7,6 +7,7 @@
  * @fileOverview Electron entry point continues here. Creates windows and
  *               handles system events.
  */
+
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -61,6 +62,7 @@ app.on('ready', function () {
       app.quit();
       return;
     }*/
+    require('@electron/remote/main').initialize();
 
     setupLogging();
     createSplashWindow();
@@ -74,20 +76,22 @@ app.on('ready', function () {
         backgroundColor: '#EEEEEE',
         frame: true,
         show: false,
-        'webPreferences': {
-            'nodeIntegration': true,
-            'webSecurity': true,
-            'allowDisplayingInsecureContent': false,
-            'allowRunningInsecureContent': false,
-            'java': false,
-            'webgl': false,
-            'webaudio': true,
-            'plugins': false,
-            'experimentalFeatures': false,
-            'experimentalCanvasFeatures': false,
-            'overlayScrollbars': true,
-            'textAreasAreResizable': false,
-            'directWrite': true
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true,
+            webSecurity: true,
+            allowDisplayingInsecureContent: false,
+            allowRunningInsecureContent: false,
+            java: false,
+            webgl: false,
+            webaudio: true,
+            plugins: false,
+            experimentalFeatures: false,
+            experimentalCanvasFeatures: false,
+            overlayScrollbars: true,
+            textAreasAreResizable: false,
+            directWrite: true,
         }
     });
 
@@ -96,6 +100,7 @@ app.on('ready', function () {
     } else {
         appMenu.setArdublocklyMenu();
     }
+    require("@electron/remote/main").enable(mainWindow.webContents);
 
     mainWindow.webContents.on('did-fail-load',
         function (event, errorCode, errorDescription) {
@@ -145,9 +150,9 @@ function createSplashWindow() {
             transparent: true,
             images: true,
             center: true,
-            'alwaysOnTop': true,
-            'skipTaskbar': true,
-            'useContentSize': true
+            alwaysOnTop: true,
+            skipTaskbar: true,
+            useContentSize: true,
         });
         splashWindow.loadURL(imagePath);
     }

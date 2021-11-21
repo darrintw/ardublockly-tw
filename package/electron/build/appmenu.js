@@ -6,6 +6,7 @@
  *
  * @fileOverview Generates the application menu bar.
  */
+
 const electron = require('electron');
 const app = electron.app;
 const Menu = electron.Menu;
@@ -13,7 +14,6 @@ const shell = electron.shell;
 const dialog = electron.dialog;
 const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
-
 const server = require('./servermgr.js');
 const projectLocator = require('./projectlocator.js');
 

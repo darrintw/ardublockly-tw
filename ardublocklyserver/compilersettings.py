@@ -106,6 +106,8 @@ class ServerCompilerSettings(object):
         self.__serial_port_key = None
         self.__serial_port_value = None
         self.__baud_rate_option = None
+        self.__end_of_line_option = None
+        self.__serial_time_stamp = None
         self.__load_delay_option = None
         if settings_dir:
             self.__settings_path = os.path.join(settings_dir,
@@ -589,6 +591,71 @@ class ServerCompilerSettings(object):
         return self.__baud_rate_options
 
     #
+    # Serial monitor end of line
+    #
+
+    def get_end_of_line(self):
+        return self.__end_of_line_option
+
+    def set_end_of_line(self, new_end_of_line_option):
+        if new_end_of_line_option in self.__end_of_line_options:
+            self.__end_of_line_option = new_end_of_line_option
+            print('End of line options set to:\n\t%s' %
+                  self.__end_of_line_options[self.__end_of_line_option])
+            self.save_settings()
+        else:
+            print('The provided "end of line option" is not valid !!!'
+                  '\n\t%s' % new_end_of_line_option)
+            if self.__end_of_line_option:
+                print('Previous "end of line option" maintained:\n\t%s' %
+                      self.__end_of_line_options[self.__end_of_line_option])
+            else:
+                self.set_end_of_line_default()
+                print('Default "end of line option" set:\n\t%s' %
+                      self.__end_of_line_options[self.__end_of_line_option])
+                self.save_settings()
+
+    end_of_line_option = property(get_end_of_line, set_end_of_line)
+
+    def set_end_of_line_default(self):
+        self.__end_of_line_option = \
+            sorted(self.__end_of_line_options.keys())[3]
+
+    def set_end_of_line_from_file(self, new_end_of_line_option):
+        if new_end_of_line_option in self.__end_of_line_options:
+            self.__end_of_line_option = new_end_of_line_option
+        else:
+            print('Settings file "end of line option" is not valid:'
+                  '\n\t%s' % new_end_of_line_option)
+            self.set_end_of_line_default()
+            print('Default "end of line option" set:\n\t%s' %
+                  self.__end_of_line_option)
+
+    def get_end_of_line_options(self):
+        return self.__end_of_line_options
+
+    #
+    # Serial Monitor Show Time Stamp accessors
+    #
+
+    def get_serial_time_stamp(self):
+        return self.__serial_time_stamp
+
+    def set_serial_time_stamp(self, new_serial_time_stamp):
+        # Set the timestamp click.
+        self.__serial_time_stamp = new_serial_time_stamp
+        print('Show time stamp set to:\n\t%s' % self.__serial_time_stamp)
+        self.save_settings()
+
+    serial_time_stamp = property(get_serial_time_stamp, set_serial_time_stamp)
+
+    def set_serial_time_stamp_default(self):
+        self.__serial_time_stamp = '0'
+
+    def set_serial_time_stamp_from_file(self, new_serial_time_stamp):
+        self.__serial_time_stamp = new_serial_time_stamp
+
+    #
     # Load extra block delay time
     #
 
@@ -627,6 +694,8 @@ class ServerCompilerSettings(object):
         self.set_arduino_board_default()
         self.set_arduino_board_flag_default()
         self.set_baud_rate_default()
+        self.set_end_of_line_default()
+        self.set_serial_time_stamp_default()
         self.set_load_delay_default()
 
     #
@@ -656,6 +725,8 @@ class ServerCompilerSettings(object):
         settings_parser.add_section('Ardublockly')
         settings_parser.set('Ardublockly', 'ide_load', '%s' % self.load_ide_option)
         settings_parser.set('Ardublockly', 'baud_rate', '%s' % self.baud_rate_option)
+        settings_parser.set('Ardublockly', 'end_of_line', '%s' % self.end_of_line_option)
+        settings_parser.set('Ardublockly', 'serialtimestamp', '%s' % self.serial_time_stamp)
         settings_parser.set('Ardublockly', 'load_delay', '%s' % self.load_delay_option)
 
         # Set the path and create/overwrite the file
@@ -687,6 +758,8 @@ class ServerCompilerSettings(object):
             self.set_examples_dir_from_file(settings_dict['examples_directory'])
             self.set_load_ide_from_file(settings_dict['ide_load'])
             self.set_baud_rate_from_file(settings_dict['baud_rate'])
+            self.set_end_of_line_from_file(settings_dict['end_of_line'])
+            self.set_serial_time_stamp_from_file(settings_dict['serialtimestamp'])
             self.set_load_delay_from_file(settings_dict['load_delay'])
         else:
             print('Settings will be set to the default values.')
@@ -703,6 +776,8 @@ class ServerCompilerSettings(object):
         print('\tSketch Directory: %s' % self.__sketch_dir)
         print('\tLoad IDE option: %s' % self.__load_ide_option)
         print('\tBaud Rate option: %s' % self.__baud_rate_option)
+        print('\tEnd Of Line option: %s' % self.__end_of_line_option)
+        print('\tTime Stamp option: %s' % self.__serial_time_stamp)
         print('\tLoad Delay option: %s' % self.__load_delay_option)
 
         # The read X_from_file() functions do not save new settings and neither
@@ -738,6 +813,10 @@ class ServerCompilerSettings(object):
                 settings_parser.get('Ardublockly', 'ide_load')
             settings_dict['baud_rate'] = \
                 settings_parser.get('Ardublockly', 'baud_rate')
+            settings_dict['end_of_line'] = \
+                settings_parser.get('Ardublockly', 'end_of_line')
+            settings_dict['serialtimestamp'] = \
+                settings_parser.get('Ardublockly', 'serialtimestamp')
             settings_dict['load_delay'] = \
                 settings_parser.get('Ardublockly', 'load_delay')
             print('Settings loaded from:\n\t%s' % self.__settings_path)
