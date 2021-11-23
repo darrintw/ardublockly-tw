@@ -42,7 +42,6 @@ Blockly.Arduino['variables_init'] = function (block) {
 Blockly.Arduino['variables_declare'] = function (block) {
     var varName = Blockly.Arduino.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    console.log(varName);
     var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
     var varConst = (block.getFieldValue('CONST') === 'TRUE' ? 'const ' : '');
 

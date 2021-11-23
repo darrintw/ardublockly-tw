@@ -70,7 +70,14 @@ Blockly.Blocks['variables_get'] = {
      * @this Blockly.Block
      */
     getBlockType: function () {
-        return [Blockly.Types.UNDEF, this.getFieldValue('VAR')];
+        // change by darrin - 2021/11/24 - start
+        var blockType = Blockly.Types.NULL;
+        if (Blockly.Arduino.StaticTyping.varTypeDict[this.getFieldValue('VAR')])
+        {
+            blockType = Blockly.Arduino.StaticTyping.varTypeDict[this.getFieldValue('VAR')];
+        }
+        return blockType;
+        // change by darrin - 2021/11/24 - end
     },
     /**
      * Gets the stored type of the variable indicated in the argument. As only one
@@ -81,7 +88,12 @@ Blockly.Blocks['variables_get'] = {
      * @this Blockly.Block
      */
     getVarType: function (varName) {
-        return [Blockly.Types.UNDEF, this.getFieldValue('VAR')];
+        var blockType = Blockly.Types.NULL;
+        if (Blockly.Arduino.StaticTyping.varTypeDict[varName])
+        {
+            blockType = Blockly.Arduino.StaticTyping.varTypeDict[varName];
+        }
+        return blockType;
     },
 };
 
