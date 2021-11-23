@@ -20,10 +20,10 @@ To run Blockly uncompressed, the `/ardublockly/index.html` file already contains
   <script src="../blockly/blocks/lists.js"></script>
   <script src="../blockly/blocks/colour.js"></script>
   <script src="../blockly/blocks/variables.js"></script>
-  <script src="../blockly/blocks/procedures.js"></script>
+  <script src="../blockly/blocks/procedures.js.bak"></script>
   <script src="../blockly/blocks/arduino/io.js"></script>
   <script src="../blockly/blocks/arduino/map.js"></script>
-  <script src="../blockly/blocks/arduino/procedures.js"></script>
+  <script src="../blockly/blocks/arduino/procedures.js.bak"></script>
   <script src="../blockly/blocks/arduino/serial.js"></script>
   <script src="../blockly/blocks/arduino/servo.js"></script>
   <script src="../blockly/blocks/arduino/spi.js"></script>
@@ -39,7 +39,7 @@ To run Blockly uncompressed, the `/ardublockly/index.html` file already contains
   <script src="../blockly/generators/arduino/loops.js"></script>
   <script src="../blockly/generators/arduino/map.js"></script>
   <script src="../blockly/generators/arduino/math.js"></script>
-  <script src="../blockly/generators/arduino/procedures.js"></script>
+  <script src="../blockly/generators/arduino/procedures.js.bak"></script>
   <script src="../blockly/generators/arduino/serial.js"></script>
   <script src="../blockly/generators/arduino/servo.js"></script>
   <script src="../blockly/generators/arduino/spi.js"></script>
@@ -66,10 +66,10 @@ To:
   <script src="../blockly/blocks/lists.js"></script>
   <script src="../blockly/blocks/colour.js"></script>
   <script src="../blockly/blocks/variables.js"></script>
-  <script src="../blockly/blocks/procedures.js"></script>
+  <script src="../blockly/blocks/procedures.js.bak"></script>
   <script src="../blockly/blocks/arduino/io.js"></script>
   <script src="../blockly/blocks/arduino/map.js"></script>
-  <script src="../blockly/blocks/arduino/procedures.js"></script>
+  <script src="../blockly/blocks/arduino/procedures.js.bak"></script>
   <script src="../blockly/blocks/arduino/serial.js"></script>
   <script src="../blockly/blocks/arduino/servo.js"></script>
   <script src="../blockly/blocks/arduino/spi.js"></script>
@@ -85,7 +85,7 @@ To:
   <script src="../blockly/generators/arduino/loops.js"></script>
   <script src="../blockly/generators/arduino/map.js"></script>
   <script src="../blockly/generators/arduino/math.js"></script>
-  <script src="../blockly/generators/arduino/procedures.js"></script>
+  <script src="../blockly/generators/arduino/procedures.js.bak"></script>
   <script src="../blockly/generators/arduino/serial.js"></script>
   <script src="../blockly/generators/arduino/servo.js"></script>
   <script src="../blockly/generators/arduino/spi.js"></script>

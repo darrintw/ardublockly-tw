@@ -19,7 +19,7 @@
  */
 
 /**
- * @fileOverview Procedure blocks for Blockly.
+ * @fileoverview Procedure blocks for Blockly.
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
@@ -57,6 +57,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
         this.setTooltip(Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL);
         this.arguments_ = [];
+        this.argumentstype_ = []; //add by darrin
         this.setStatements_(true);
         this.statementConnection_ = null;
     },
@@ -139,6 +140,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
         for (var i = 0; i < this.arguments_.length; i++) {
             var parameter = document.createElement('arg');
             parameter.setAttribute('name', this.arguments_[i]);
+            parameter.setAttribute('vartype', this.argumentstype_[i]); //add by darrin
             if (opt_paramIds && this.paramIds_) {
                 parameter.setAttribute('paramId', this.paramIds_[i]);
             }
@@ -158,9 +160,11 @@ Blockly.Blocks['procedures_defnoreturn'] = {
      */
     domToMutation: function (xmlElement) {
         this.arguments_ = [];
+        this.argumentstype_ = []; //add by darrin
         for (var i = 0, childNode; childNode = xmlElement.childNodes[i]; i++) {
             if (childNode.nodeName.toLowerCase() == 'arg') {
                 this.arguments_.push(childNode.getAttribute('name'));
+                this.argumentstype_.push(childNode.getAttribute('vartype')); //add by darrin
             }
         }
         this.updateParams_();
@@ -193,6 +197,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             var paramBlock = workspace.newBlock('procedures_mutatorarg');
             paramBlock.initSvg();
             paramBlock.setFieldValue(this.arguments_[i], 'NAME');
+            paramBlock.setFieldValue(this.argumentstype_[i], 'TYPEVAR'); //add by darrin
             // Store the old location.
             paramBlock.oldLocation = i;
             connection.connect(paramBlock.previousConnection);
@@ -211,9 +216,11 @@ Blockly.Blocks['procedures_defnoreturn'] = {
         // Parameter list.
         this.arguments_ = [];
         this.paramIds_ = [];
+        this.argumentstype_ = []; //add by darrin
         var paramBlock = containerBlock.getInputTargetBlock('STACK');
         while (paramBlock) {
             this.arguments_.push(paramBlock.getFieldValue('NAME'));
+            this.argumentstype_.push(paramBlock.getFieldValue('TYPEVAR')); //add by darrin
             this.paramIds_.push(paramBlock.id);
             paramBlock = paramBlock.nextConnection &&
                 paramBlock.nextConnection.targetBlock();
@@ -318,6 +325,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
         for (var i = 0; i < this.arguments_.length; i++) {
             var xmlArg = goog.dom.createDom('arg');
             xmlArg.setAttribute('name', this.arguments_[i]);
+            xmlArg.setAttribute('type', this.argumentstype_[i]); //add by darrin
             xmlMutation.appendChild(xmlArg);
         }
         var xmlBlock = goog.dom.createDom('block', null, xmlMutation);
@@ -333,6 +341,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
                 option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
                 var xmlField = goog.dom.createDom('field', null, name);
                 xmlField.setAttribute('name', 'VAR');
+                xmlField.setAttribute('type', 'TYPEVAR'); //add by darrin
                 var xmlBlock = goog.dom.createDom('block', null, xmlField);
                 xmlBlock.setAttribute('type', 'variables_get');
                 option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
@@ -340,45 +349,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             }
         }
     },
-    callType_: 'procedures_callnoreturn',
-    /** @return {!string} This block does not define type, so 'undefined' */
-    getVarType: function (varName) {
-        return Blockly.Types.UNDEF;
-    },
-    /** Contains the type of the arguments added with mutators. */
-    argsTypes: {},
-    /**
-     * Searches through a list of variables with type to assign the type of the
-     * arguments.
-     * @this Blockly.Block
-     * @param {Array<string>} existingVars Associative array variable already
-     *     defined, names as key, type as value.
-     */
-    setArgsType: function (existingVars) {
-        var varNames = this.arguments_;
-
-        // Check if variable has been defined already and save type
-        for (var name in existingVars) {
-            for (var i = 0, length_ = varNames.length; i < length_; i++) {
-                if (name === varNames[i]) {
-                    this.argsTypes[name] = existingVars[name];
-                }
-            }
-        }
-    },
-    /**
-     * Retrieves the type of the arguments, types defined at setArgsType.
-     * @this Blockly.Block
-     * @return {string} Type of the argument indicated in the input.
-     */
-    getArgType: function (varName) {
-        for (var name in this.argsTypes) {
-            if (name == varName) {
-                return this.argsTypes[varName];
-            }
-        }
-        return null;
-    }
+    callType_: 'procedures_callnoreturn'
 };
 
 Blockly.Blocks['procedures_defreturn'] = {
@@ -390,7 +361,7 @@ Blockly.Blocks['procedures_defreturn'] = {
         var nameField = new Blockly.FieldTextInput(
             Blockly.Msg.PROCEDURES_DEFRETURN_PROCEDURE,
             Blockly.Procedures.rename);
-        nameField.setSpellcheck(false);
+            nameField.setSpellcheck(false);
         this.appendDummyInput()
             .appendField(Blockly.Msg.PROCEDURES_DEFRETURN_TITLE)
             .appendField(nameField, 'NAME')
@@ -436,6 +407,7 @@ Blockly.Blocks['procedures_defreturn'] = {
     argsTypes: {},
     setArgsType: Blockly.Blocks['procedures_defnoreturn'].setArgsType,
     getArgType: Blockly.Blocks['procedures_defnoreturn'].getArgType,
+
     /**
      * Searches through the nested blocks in the return input to find a variable
      * type or returns NULL.
@@ -449,6 +421,7 @@ Blockly.Blocks['procedures_defreturn'] = {
             // First check if the block itself has a type already
             if (returnBlock.getBlockType) {
                 returnType = returnBlock.getBlockType();
+
             } else {
                 returnType = Blockly.Types.getChildBlockType(returnBlock);
             }
@@ -483,6 +456,7 @@ Blockly.Blocks['procedures_mutatorarg'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
+            .appendField(new Blockly.FieldDropdown(Blockly.Types.getValidTypeArray()), "TYPEVAR")
             .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
         this.setPreviousStatement(true);
         this.setNextStatement(true);

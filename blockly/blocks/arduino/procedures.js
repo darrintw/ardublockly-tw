@@ -12,9 +12,8 @@
 
 goog.require('Blockly.Blocks');
 
-
 /** Common HSV hue for all blocks in this category. */
-Blockly.Blocks.procedures.HUE = 290;
+//Blockly.Blocks.procedures.HUE = 290;
 
 Blockly.Blocks['arduino_functions'] = {
     /**
@@ -29,7 +28,7 @@ Blockly.Blocks['arduino_functions'] = {
             .appendField(Blockly.Msg.ARD_FUN_RUN_LOOP);
         this.appendStatementInput('LOOP_FUNC');
         this.setInputsInline(false);
-        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setColour(290);
         this.setTooltip(Blockly.Msg.ARD_FUN_RUN_TIP);
         this.setHelpUrl('https://arduino.cc/en/Reference/Loop');
         this.contextMenu = false;
