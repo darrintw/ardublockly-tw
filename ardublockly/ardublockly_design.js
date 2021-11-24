@@ -412,6 +412,7 @@ Ardublockly.resetIdeOutputContent = function () {
     var ideOutputContent = document.getElementById('content_ide_output');
     ideOutputContent.innerHTML = '<span class="arduino_dialog_out">' +
         Ardublockly.getLocalStr('arduinoOpWaiting') + '</span>';
+    Ardublockly.highlightIdeOutputHeader(ideOutputContent);
 };
 
 /**

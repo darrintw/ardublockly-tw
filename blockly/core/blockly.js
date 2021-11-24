@@ -401,8 +401,8 @@ Blockly.copy_ = function (block) {
  * @private
  */
 Blockly.copy_storage_ = function (block) {
-    try {
-        (async () => {
+    (async () => {
+        try {
             var domBlock = Blockly.Xml.blockToDomWithXY(block);
             if (Blockly.dragMode_ != Blockly.DRAG_FREE) {
                 Blockly.Xml.deleteNext(domBlock);
@@ -412,10 +412,10 @@ Blockly.copy_storage_ = function (block) {
             var xmlBlock = Blockly.Xml.domToText(newDomBlock);
             // console.log(xmlBlock);
             await navigator.clipboard.writeText(xmlBlock);
-        })();
-    } catch (err) {
-        console.error(err.name, err.message);
-    }
+        } catch (err) {
+            //console.error(err.name, err.message);
+        }
+    })();
 };
 // Add by darrin - 2021/11/20 - end
 
@@ -442,17 +442,17 @@ Blockly.copy_all_ = function (block) {
  * @private
  */
 Blockly.copy_all_storage_ = function (block) {
-    try {
-        (async () => {
+    (async () => {
+        try {
             var domBlock = Blockly.Xml.textToDom("<xml xmlns=\"http://www.w3.org/1999/xhtml\"></xml>");
             domBlock.appendChild(Blockly.Xml.blockToDomWithXY(block));
             var xmlBlock = Blockly.Xml.domToText(domBlock);
             await navigator.clipboard.writeText(xmlBlock);
             // console.log(xmlBlock);
-        })();
-    } catch (err) {
-        console.error(err.name, err.message);
-    }
+        } catch (err) {
+            //console.error(err.name, err.message);
+        }
+    })();
 };
 
 /**
@@ -460,16 +460,16 @@ Blockly.copy_all_storage_ = function (block) {
  * @private
  */
 Blockly.paste_ = function () {
-    try {
-        (async () => {
+    (async () => {
+        try {
             var xmlBlock = await navigator.clipboard.readText();
             var domXml = Blockly.Xml.textToDom(xmlBlock);
             var domBlock = domXml.childNodes[0];
             Blockly.mainWorkspace.paste(domBlock);
-        })();
-    } catch (err) {
-        console.error(err.name, err.message);
-    }
+        } catch (err) {
+            //console.error(err.name, err.message);
+        }
+    })();
 };
 // Add by darrin - 2021/11/20 - end
 

@@ -432,16 +432,16 @@ Ardublockly.saveTextFileAs = function (fileName, content) {
  * and opens the Examples list dialog.
  */
 Ardublockly.openExamples = function () {
+    //Ardublockly.listExamples('./examples/');
+
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
-        var jsonObj;
-        Ardublockly.openNotConnectedModal();
-        console.log('Offline app modal opened as non localhost host name found: ' +
-            document.location.hostname);
+        Ardublockly.listExamples('./examples/');
     } else {
         ArdublocklyServer.requestExamplesList(function (jsonObj) {
-            Ardublockly.setExamplesHtml(jsonObj);
+            //Ardublockly.setExamplesHtml(jsonObj);
         });
     }
+
 };
 
 /**
@@ -554,12 +554,10 @@ Ardublockly.openSettings = function () {
         ArdublocklyServer.requestIdeOptions(function (jsonObj) {
             Ardublockly.setIdeHtml(ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
-        /*
         ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
             Ardublockly.setLoadDelayHtml(
                 ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
         });
-        */
     }
     // Language menu only set on page load within Ardublockly.initLanguage()
     Ardublockly.openSettingsModal();
@@ -753,32 +751,64 @@ Ardublockly.setIdeSettings = function (e, preset) {
     });
 };
 
-Ardublockly.listExamples = function (exampleslist, readExamplesLoc, index) {
+Ardublockly.listExamples = function (readExamplesLoc) {
     var resultStringArray = [];
+    var index;
 
-    var ii = index;
-    exampleslist.forEach(function (element) {
-        resultStringArray.push(
-            '<li id="example_file_' + Ardublockly.addZero(ii, 2) + '">' +
-            '<a href="#">' + element + '</a></li>');
-    });
+    resultStringArray.push('<ul class="collapsible" data-collapsible="accordion">');
+    var fs_dir = require('@electron/remote').require('fs');
+    var exlist = fs_dir.readdirSync(readExamplesLoc);
+    exlist.forEach(exname => {
+        if (exname.indexOf(".xml") < 0) {
+            resultStringArray.push('<li id="exdir_' + exname + '">');
+            resultStringArray.push('<div class="collapsible-header">' + exname + '</div>');
+            resultStringArray.push('<div class="collapsible-body">');
+            resultStringArray.push('<ul class="collection">');
+            index = 1;
+
+            var fs_file = require('@electron/remote').require('fs');
+            var exfiles = fs_file.readdirSync(readExamplesLoc + exname);
+            exfiles.forEach(files => {
+                if (files.indexOf(".xml") >= 0) {
+                    resultStringArray.push(
+                        '<li id="exfile_' + exname + Ardublockly.addZero(index, 2) + '">' +
+                        '<a href="#" class="collection-item">' + files + '</a></li>');
+                    index++;
+                }
+            })
+            resultStringArray.push('</ul></div></li>');
+        }
+    })
+    resultStringArray.push('</ul>');
 
     document.getElementById('examples_list').innerHTML =
         prettyPrintOne(resultStringArray.join(''), 'html', false);
 
-    ii = index;
-    exampleslist.forEach(function (element) {
-        if (!Array.isArray(element)) {
-            Ardublockly.bindClick_('example_file_' + Ardublockly.addZero(ii, 2), function () {
-                //Ardublockly.workspace.clearUndo();
-                Ardublockly.loadServerXmlFile('../' + readExamplesLoc + element, element.split(".")[0]);
+    exlist.forEach(exname => {
+        index = 1;
+        var fs_file = require('@electron/remote').require('fs');
+        var exfiles = fs_file.readdirSync(readExamplesLoc + exname);
+        exfiles.forEach(function (files) {
+            Ardublockly.bindClick_('exfile_' + exname + Ardublockly.addZero(index, 2), function () {
+                var fname = files.substr(0, files.indexOf(".xml"));
+                Ardublockly.loadServerXmlFile('../' + readExamplesLoc + exname +
+                    "/" + files, fname);
                 $('#examples_dialog').closeModal();
             });
-            ii++;
-        }
+            index++;
+        });
+    });
+    $('.collapsible').collapsible({
+        accordion: false,
+        onOpen: function (el) {
+            alert('Open');
+        }, // Callback for Collapsible open
+        onClose: function (el) {
+            alert('Closed');
+        } // Callback for Collapsible close
     });
 
-    return ii;
+    Ardublockly.openExamplesModal();
 }
 
 /**
@@ -786,6 +816,7 @@ Ardublockly.listExamples = function (exampleslist, readExamplesLoc, index) {
  * @return {void} Might exit early if response is null.
  */
 Ardublockly.setExamplesHtml = function (jsonObj) {
+    console.log(jsonObj);
     if (jsonObj) {
         var examplesLocIp = jsonObj["exampleslist"]["path"];
         var readExamplesLoc = jsonObj["exampleslist"]["path"].replace("\\", "/") + "/";
@@ -824,8 +855,9 @@ Ardublockly.setExamplesHtml = function (jsonObj) {
             index = 1;
             exfiles.forEach(function (files) {
                 Ardublockly.bindClick_('exfile_' + exname + Ardublockly.addZero(index, 2), function () {
+                    var fname = files.substr(0, files.indexOf(".xml"));
                     Ardublockly.loadServerXmlFile('../' + readExamplesLoc + exname +
-                        "/" + files, files.split(".")[0]);
+                        "/" + files, fname);
                     $('#examples_dialog').closeModal();
                 });
                 index++;
@@ -1180,11 +1212,13 @@ Ardublockly.addExtraCategories = function () {
     ArdublocklyServer.getJson('../blocks/blocks_data.json', jsonDataCb);
 
     var load_delay = 2000;
-    ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
-        if (!jsonObj.errors) {
-            load_delay = jsonObj.selected || '2000';
-        }
-    });
+    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+        ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
+            if (!jsonObj.errors) {
+                load_delay = jsonObj.selected || '2000';
+            }
+        });
+    }
     setTimeout(function () {
         for (var index = 0; index < catList.length; index++) {
             var toolboxName = catList[index];
