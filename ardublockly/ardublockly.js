@@ -43,9 +43,9 @@ Ardublockly.init = function () {
         elId.hidden = true;
         elId = document.getElementById('button_serial_monitor');
         elId.hidden = true;
+        /*
         elId = document.getElementById('button_examples');
         elId.hidden = true;
-        /*
         elId = document.getElementById('menu_settings');
         elId.hidden = true;
          */
