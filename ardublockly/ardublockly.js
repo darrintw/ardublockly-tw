@@ -43,9 +43,9 @@ Ardublockly.init = function () {
         elId.hidden = true;
         elId = document.getElementById('button_serial_monitor');
         elId.hidden = true;
-        /*
         elId = document.getElementById('button_examples');
         elId.hidden = true;
+        /*
         elId = document.getElementById('menu_settings');
         elId.hidden = true;
          */
@@ -432,13 +432,11 @@ Ardublockly.saveTextFileAs = function (fileName, content) {
  * and opens the Examples list dialog.
  */
 Ardublockly.openExamples = function () {
-    //Ardublockly.listExamples('./examples/');
-
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         Ardublockly.listExamples('./examples/');
     } else {
         ArdublocklyServer.requestExamplesList(function (jsonObj) {
-            //Ardublockly.setExamplesHtml(jsonObj);
+            Ardublockly.setExamplesHtml(jsonObj);
         });
     }
 
@@ -752,6 +750,7 @@ Ardublockly.setIdeSettings = function (e, preset) {
 };
 
 Ardublockly.listExamples = function (readExamplesLoc) {
+    /*
     var resultStringArray = [];
     var index;
 
@@ -809,6 +808,7 @@ Ardublockly.listExamples = function (readExamplesLoc) {
     });
 
     Ardublockly.openExamplesModal();
+    */
 }
 
 /**
@@ -816,7 +816,6 @@ Ardublockly.listExamples = function (readExamplesLoc) {
  * @return {void} Might exit early if response is null.
  */
 Ardublockly.setExamplesHtml = function (jsonObj) {
-    console.log(jsonObj);
     if (jsonObj) {
         var examplesLocIp = jsonObj["exampleslist"]["path"];
         var readExamplesLoc = jsonObj["exampleslist"]["path"].replace("\\", "/") + "/";
