@@ -684,6 +684,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
         // Add by darrin - 2021/11/01 - end
         */
         // Add by darrin - 2021/11/20 - start
+        /*
         var copyToStorageOption = {
             text: Blockly.Msg.COPY_BLOCK,
             enabled: true,
@@ -695,11 +696,12 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
             copyToStorageOption.enabled = false;
         }
         menuOptions.push(copyToStorageOption);
+        */
         // Add by darrin - 2021/11/20 - end
 
         // Add by darrin - 2021/11/20 - start
         var copyAllToStorageOption = {
-            text: Blockly.Msg.COPY_ALL_BLOCK,
+            text: Blockly.Msg.COPY_BLOCK,
             enabled: true,
             callback: function () {
                 Blockly.copy_all_storage_(block);

@@ -314,12 +314,12 @@ Blockly.Blocks['io_i2cPins'] = {
             .appendField(Blockly.Msg.ARD_I2CREAD)
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.i2cPins.Wire), 'PIN');
-        this.setOutput(true, Blockly.Types.BOOLEAN.output);
+        this.setOutput(true, Blockly.Types.NUMBER.output);
         this.setTooltip(Blockly.Msg.ARD_I2CREAD_TIP);
     },
     /** @return {!string} The type of return value for the block, an integer. */
     getBlockType: function () {
-        return Blockly.Types.BOOLEAN;
+        return Blockly.Types.NUMBER;
     },
     /**
      * Updates the content of the the Pin related fields.
@@ -346,7 +346,7 @@ Blockly.Blocks['io_i2cPins_var'] = {
                     "options": Blockly.Arduino.Boards.selected.i2cPins.Wire
                 }
             ],
-            "output": Blockly.Types.BOOLEAN.output,
+            "output": Blockly.Types.NUMBER.output,
             "colour": Blockly.Blocks.input.HUE,
             "tooltip": Blockly.Msg.ARD_I2CREAD_TIP,
             "helpUrl": ''
@@ -354,6 +354,6 @@ Blockly.Blocks['io_i2cPins_var'] = {
     },
     /** @return {!string} The type of return value for the block, an integer. */
     getBlockType: function () {
-        return Blockly.Types.BOOLEAN;
+        return Blockly.Types.NUMBER;
     }
 };

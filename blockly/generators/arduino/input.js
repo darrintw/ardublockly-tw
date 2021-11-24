@@ -174,7 +174,6 @@ Blockly.Arduino['io_pin_name'] = function (block) {
 
     Blockly.Arduino.addVariable(pinName,
         'int ' + pinName + ' = ' + pin + ';', true);
-    //Blockly.Arduino.addDeclaration('PIN_' + pinName, serialDeclareCode);
     var code = '';
     return code;
 };
@@ -199,11 +198,12 @@ Blockly.Arduino['io_set_name'] = function (block) {
  * @return {null} Completed code with order of operation.
  */
 Blockly.Arduino['io_i2cpins'] = function (block) {
-    var code = block.getFieldValue('PIN');
+    var pin = block.getFieldValue("PIN");
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['io_i2cpins_var'] = function (block) {
-    var code = block.getFieldValue('PIN');
+    var code = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

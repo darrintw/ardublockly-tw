@@ -16,7 +16,15 @@ Blockly.Blocks.rtc.HUE = 180;
 var RTCTypeList = [['DS1307', 'RtcDS1307'], ['DS3231', 'RtcDS3231']];
 
 //時鐘模組
-var RTC_TIME_TYPE;
+var RTC_TIME_TYPE = [
+    [Blockly.Msg.ADR_RTC_YEAR, 'Year'],
+    [Blockly.Msg.ADR_RTC_MONTH, 'Month'],
+    [Blockly.Msg.ADR_RTC_DAY, 'Day'],
+    [Blockly.Msg.ADR_RTC_HOUR, 'Hour'],
+    [Blockly.Msg.ADR_RTC_MINUTE, 'Minute'],
+    [Blockly.Msg.ADR_RTC_SECOND, 'Second'],
+    [Blockly.Msg.ADR_RTC_WEEK, 'DayOfWeek']
+];
 
 //DS1302 RTC
 Blockly.Blocks['DS1302_init'] = {
@@ -42,6 +50,7 @@ Blockly.Blocks['DS1302_init'] = {
 }
 
 //DS1307 RTC
+/*
 Blockly.Blocks['DS1307_init'] = {
     init: function () {
         RTC_TIME_TYPE = [
@@ -74,6 +83,7 @@ Blockly.Blocks['DS1307_init'] = {
         this.setTooltip(Blockly.Msg.ADR_RTC_TOOLTIP_INIT);
     },
 };
+ */
 
 //獲取RTC時間
 Blockly.Blocks['RTC_get_rtc'] = {
@@ -89,7 +99,9 @@ Blockly.Blocks['RTC_get_rtc'] = {
             .appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
         this.setInputsInline(true);
         this.setOutput(true, "Number");
-        this.setTooltip(Blockly.Msg.ADR_RTC_TOOLTIP_GETTIME.replace('%1', this.getFieldValue("TIME_TYPE")));
+        this.setTooltip(function () {
+            Blockly.Msg.ADR_RTC_TOOLTIP_GETTIME.replace('%1', this.getFieldValue("TIME_TYPE"))
+        });
     },
     /** @return {!string} Type of the block, text length always an integer. */
     getBlockType: function () {
