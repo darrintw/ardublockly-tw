@@ -479,13 +479,15 @@ ArdublocklyServer.setSerialTimeStamp = function (serialtimestamp, callback) {
     ArdublocklyServer.putJson(
         '/settings/serialtimestamp', {"new_value": serialtimestamp}, callback);
 };
+
 /**
  * Gets the Example files from local directory.
+ * @param url Path to example file or action
  * @param {!function} callback Callback function for the server request, must
  *     have one argument to receive the JSON response.
  */
-ArdublocklyServer.requestExamplesList = function (callback) {
-    ArdublocklyServer.getJson('/exampleslist', callback);
+ArdublocklyServer.requestExamplesList = function (url, callback) {
+    ArdublocklyServer.getJson(url, callback);
 };
 
 

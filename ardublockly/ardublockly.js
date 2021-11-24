@@ -432,10 +432,28 @@ Ardublockly.saveTextFileAs = function (fileName, content) {
  * and opens the Examples list dialog.
  */
 Ardublockly.openExamples = function () {
+        ArdublocklyServer.requestExamplesList('./examples.json', function (jsonObj) {
+            console.log(jsonObj);
+            //Ardublockly.setExamplesHtml(jsonObj);
+        });
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+        ArdublocklyServer.requestExamplesList('./examples.json', function (jsonObj) {
+            Ardublockly.setExamplesHtml(jsonObj);
+        });
         Ardublockly.listExamples('./examples/');
     } else {
-        ArdublocklyServer.requestExamplesList(function (jsonObj) {
+        ArdublocklyServer.requestExamplesList('/exampleslist', function (jsonObj) {
+            try {
+                var fs = require("@electron/remote").require('fs');
+                var data = JSON.stringify(jsonObj);
+                fs.writeFile("./ardublockly/examples.json", data, function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            } catch (e) {
+                console.log(e);
+            }
             Ardublockly.setExamplesHtml(jsonObj);
         });
     }
