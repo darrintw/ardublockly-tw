@@ -662,7 +662,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
                 Blockly.duplicate_(block);
             }
         };
-
+        /*
         if (this.getDescendants().length > this.workspace.remainingCapacity()) {
             duplicateOption.enabled = false;
         }
@@ -682,7 +682,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
         }
         menuOptions.push(duplicateAllOption);
         // Add by darrin - 2021/11/01 - end
-
+        */
         // Add by darrin - 2021/11/20 - start
         var copyToStorageOption = {
             text: Blockly.Msg.COPY_BLOCK,

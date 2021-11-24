@@ -200,12 +200,6 @@ window.addEventListener('load', function load(event) {
         // Open the file or directory browsers when clicking on the Settings inputs
         Ardublockly.bindSettingsPathInputs();
 
-
-        // Prevent browser zoom changes like pinch-to-zoom
-        /*
-        var webFrame = require('electron').webFrame;
-        webFrame.setZoomLevelLimits(1, 1);
-        */
         Ardublockly.redirectConsoleLogging();
 
         // Electron does not offer a prompt, so replace Blocks version with modal
