@@ -1,13 +1,14 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="variables_init" id=")2Jgw0STj*FaBT3(b#|i" x="150" y="154">
+  <block type="variables_init" id=")2Jgw0STj*FaBT3(b#|i" x="0" y="0">
     <field name="VAR">dht11_pin</field>
+    <field name="CONST">FALSE</field>
     <value name="VALUE">
       <block type="io_allpins" id=".wMNBi`N#dN9m{]H_MtU">
-        <field name="PIN">2</field>
+        <field name="PIN">A3</field>
       </block>
     </value>
   </block>
-  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="145" y="193">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="64">
     <statement name="SETUP_FUNC">
       <block type="serial_setup" id="#r0O|wE[W8a!20dJhIB/">
         <field name="SERIAL_ID">Serial</field>
