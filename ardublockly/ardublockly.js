@@ -43,9 +43,9 @@ Ardublockly.init = function () {
         elId.hidden = true;
         elId = document.getElementById('button_serial_monitor');
         elId.hidden = true;
-        /*
         elId = document.getElementById('button_examples');
         elId.hidden = true;
+        /*
         elId = document.getElementById('menu_settings');
         elId.hidden = true;
          */
@@ -312,6 +312,7 @@ Ardublockly.loadServerXmlFile = function (xmlFile, filename) {
                     Ardublockly.getLocalStr('invalidXmlTitle'),
                     Ardublockly.getLocalStr('invalidXmlBody'),
                     false);
+                Ardublockly.restoreDefault();
             }
         };
         var connectionErrorCb = function () {
@@ -370,6 +371,7 @@ Ardublockly.loadUserXmlFile = function () {
                         Ardublockly.getLocalStr('invalidXmlTitle'),
                         Ardublockly.getLocalStr('invalidXmlBody'),
                         false);
+                    Ardublockly.restoreDefault();
                 }
             };
             reader.readAsText(xmlFile);
@@ -436,7 +438,6 @@ Ardublockly.openExamples = function () {
         ArdublocklyServer.requestExamplesList('./examples.json', function (jsonObj) {
             Ardublockly.setExamplesHtml(jsonObj);
         });
-        Ardublockly.listExamples('./examples/');
     } else {
         ArdublocklyServer.requestExamplesList('/exampleslist', function (jsonObj) {
             try {
@@ -453,7 +454,6 @@ Ardublockly.openExamples = function () {
             Ardublockly.setExamplesHtml(jsonObj);
         });
     }
-
 };
 
 /**
@@ -763,68 +763,6 @@ Ardublockly.setIdeSettings = function (e, preset) {
     });
 };
 
-Ardublockly.listExamples = function (readExamplesLoc) {
-    /*
-    var resultStringArray = [];
-    var index;
-
-    resultStringArray.push('<ul class="collapsible" data-collapsible="accordion">');
-    var fs_dir = require('@electron/remote').require('fs');
-    var exlist = fs_dir.readdirSync(readExamplesLoc);
-    exlist.forEach(exname => {
-        if (exname.indexOf(".xml") < 0) {
-            resultStringArray.push('<li id="exdir_' + exname + '">');
-            resultStringArray.push('<div class="collapsible-header">' + exname + '</div>');
-            resultStringArray.push('<div class="collapsible-body">');
-            resultStringArray.push('<ul class="collection">');
-            index = 1;
-
-            var fs_file = require('@electron/remote').require('fs');
-            var exfiles = fs_file.readdirSync(readExamplesLoc + exname);
-            exfiles.forEach(files => {
-                if (files.indexOf(".xml") >= 0) {
-                    resultStringArray.push(
-                        '<li id="exfile_' + exname + Ardublockly.addZero(index, 2) + '">' +
-                        '<a href="#" class="collection-item">' + files + '</a></li>');
-                    index++;
-                }
-            })
-            resultStringArray.push('</ul></div></li>');
-        }
-    })
-    resultStringArray.push('</ul>');
-
-    document.getElementById('examples_list').innerHTML =
-        prettyPrintOne(resultStringArray.join(''), 'html', false);
-
-    exlist.forEach(exname => {
-        index = 1;
-        var fs_file = require('@electron/remote').require('fs');
-        var exfiles = fs_file.readdirSync(readExamplesLoc + exname);
-        exfiles.forEach(function (files) {
-            Ardublockly.bindClick_('exfile_' + exname + Ardublockly.addZero(index, 2), function () {
-                var fname = files.substr(0, files.indexOf(".xml"));
-                Ardublockly.loadServerXmlFile('../' + readExamplesLoc + exname +
-                    "/" + files, fname);
-                $('#examples_dialog').closeModal();
-            });
-            index++;
-        });
-    });
-    $('.collapsible').collapsible({
-        accordion: false,
-        onOpen: function (el) {
-            alert('Open');
-        }, // Callback for Collapsible open
-        onClose: function (el) {
-            alert('Closed');
-        } // Callback for Collapsible close
-    });
-
-    Ardublockly.openExamplesModal();
-    */
-}
-
 /**
  * Show the examples list form example folder.
  * @return {void} Might exit early if response is null.
@@ -1055,6 +993,7 @@ Ardublockly.XmlTextareaToBlocks = function () {
             Ardublockly.getLocalStr('invalidXmlTitle'),
             Ardublockly.getLocalStr('invalidXmlBody'),
             false);
+        Ardublockly.restoreDefault();
     }
 };
 

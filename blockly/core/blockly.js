@@ -288,11 +288,13 @@ Blockly.onKeyDown_ = function (e) {
                     // 'c' for copy.
                     Blockly.hideChaff();
                     // Blockly.copy_(Blockly.selected);
-                    Blockly.copy_storage_(Blockly.selected);
+                    // Blockly.copy_storage_(Blockly.selected);
+                    Blockly.copy_all_storage_(Blockly.selected);
                 } else {
                     // 'C' for copy with child.
                     Blockly.hideChaff();
-                    Blockly.copy_all_storage_(Blockly.selected);
+                    // Blockly.copy_all_storage_(Blockly.selected);
+                    Blockly.copy_storage_(Blockly.selected);
                 }
             } else if (e.keyCode == 88) {
                 // 'x' for cut.
