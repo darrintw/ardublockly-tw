@@ -432,10 +432,6 @@ Ardublockly.saveTextFileAs = function (fileName, content) {
  * and opens the Examples list dialog.
  */
 Ardublockly.openExamples = function () {
-        ArdublocklyServer.requestExamplesList('./examples.json', function (jsonObj) {
-            console.log(jsonObj);
-            //Ardublockly.setExamplesHtml(jsonObj);
-        });
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         ArdublocklyServer.requestExamplesList('./examples.json', function (jsonObj) {
             Ardublockly.setExamplesHtml(jsonObj);
@@ -457,7 +453,6 @@ Ardublockly.openExamples = function () {
             Ardublockly.setExamplesHtml(jsonObj);
         });
     }
-
 };
 
 /**
