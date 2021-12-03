@@ -654,6 +654,35 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
     var menuOptions = [];
 
     if (this.isDeletable() && this.isMovable() && !block.isInFlyout) {
+        // Add by darrin - 2021/11/20 - start
+        var copyToStorageOption = {
+            text: Blockly.Msg.COPY_BLOCK,
+            enabled: true,
+            callback: function () {
+                Blockly.copy_storage_(block);
+            }
+        };
+        if (this.getDescendants().length > this.workspace.remainingCapacity()) {
+            copyToStorageOption.enabled = false;
+        }
+        menuOptions.push(copyToStorageOption);
+        // Add by darrin - 2021/11/20 - end
+
+        // Add by darrin - 2021/11/20 - start
+        var copyAllToStorageOption = {
+            text: Blockly.Msg.COPY_BLOCK,
+            enabled: true,
+            callback: function () {
+                Blockly.copy_all_storage_(block);
+            }
+        };
+        if (this.getDescendants().length > this.workspace.remainingCapacity()) {
+            copyToStorageOption.enabled = false;
+        }
+        menuOptions.push(copyAllToStorageOption);
+        // Add by darrin - 2021/11/20 - end
+
+
         // Option to duplicate this block.
         var duplicateOption = {
             text: Blockly.Msg.DUPLICATE_BLOCK,
@@ -662,7 +691,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
                 Blockly.duplicate_(block);
             }
         };
-        /*
+
         if (this.getDescendants().length > this.workspace.remainingCapacity()) {
             duplicateOption.enabled = false;
         }
@@ -682,36 +711,6 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
         }
         menuOptions.push(duplicateAllOption);
         // Add by darrin - 2021/11/01 - end
-        */
-        // Add by darrin - 2021/11/20 - start
-        /*
-        var copyToStorageOption = {
-            text: Blockly.Msg.COPY_BLOCK,
-            enabled: true,
-            callback: function () {
-                Blockly.copy_storage_(block);
-            }
-        };
-        if (this.getDescendants().length > this.workspace.remainingCapacity()) {
-            copyToStorageOption.enabled = false;
-        }
-        menuOptions.push(copyToStorageOption);
-        */
-        // Add by darrin - 2021/11/20 - end
-
-        // Add by darrin - 2021/11/20 - start
-        var copyAllToStorageOption = {
-            text: Blockly.Msg.COPY_BLOCK,
-            enabled: true,
-            callback: function () {
-                Blockly.copy_all_storage_(block);
-            }
-        };
-        if (this.getDescendants().length > this.workspace.remainingCapacity()) {
-            copyToStorageOption.enabled = false;
-        }
-        menuOptions.push(copyAllToStorageOption);
-        // Add by darrin - 2021/11/20 - end
 
         if (this.isEditable() && !this.collapsed_ &&
             this.workspace.options.comments) {

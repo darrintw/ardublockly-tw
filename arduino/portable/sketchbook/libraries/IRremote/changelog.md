@@ -2,7 +2,16 @@
 The latest version may not be released!
 See also the commit log at github: https://github.com/Arduino-IRremote/Arduino-IRremote/commits/master
 
-## 3.4.1
+## 3.5.0
+- Improved ir_DistanceProtocol.
+- Tone for ESP32.
+- last phase renamed *.cpp.h to .hpp.
+- No deprecation print for ATtinies.
+- Renamed ac_LG.cpp to ac_LG.hpp.
+- Maintained MagiQuest by E. Stuart Hicks.
+- Improved print Pronto by Asuki Kono.
+- Added printActiveIRProtocols() function.
+- Used IR_SEND_PIN to reduce code size and improved send timing for AVR.
 
 ## 3.4.0
 - Added LG2 protocol.

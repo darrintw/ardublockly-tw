@@ -682,7 +682,7 @@ uint8_t IRrecv::compare(unsigned int oldval, unsigned int newval) {
  * Hopefully this code is unique for each button.
  * This isn't a "real" decoding, just an arbitrary value.
  *
- * see: http://arcfn.com/2010/01/using-arbitrary-remotes-with-arduino.html
+ * see: http://www.righto.com/2010/01/using-arbitrary-remotes-with-arduino.html
  */
 bool IRrecv::decodeHash() {
     long hash = FNV_BASIS_32;
@@ -863,6 +863,60 @@ void CheckForRecordGapsMicros(Print *aSerial, IRData *aIRDataPtr) {
  * Print functions
  * Since a library should not allocate the "Serial" object, all functions require a pointer to a Print object.
  **********************************************************************************************************************/
+void printActiveIRProtocols(Print *aSerial) {
+#if defined(DECODE_NEC)
+    aSerial->print(F("NEC, "));
+#endif
+#if defined(DECODE_PANASONIC) || defined(DECODE_KASEIKYO)
+    aSerial->print(F("Panasonic/Kaseikyo, "));
+#endif
+#if defined(DECODE_DENON)
+    aSerial->print(F("Denon/Sharp, "));
+#endif
+#if defined(DECODE_SONY)
+    aSerial->print(F("Sony, "));
+#endif
+#if defined(DECODE_RC5)
+    aSerial->print(F("RC5, "));
+#endif
+#if defined(DECODE_RC6)
+    aSerial->print(F("RC6, "));
+#endif
+#if defined(DECODE_LG)
+    aSerial->print(F("LG, "));
+#endif
+#if defined(DECODE_JVC)
+    aSerial->print(F("JVC, "));
+#endif
+#if defined(DECODE_SAMSUNG)
+    aSerial->print(F("Samsung, "));
+#endif
+    /*
+     * Start of the exotic protocols
+     */
+#if defined(DECODE_WHYNTER)
+    aSerial->print(F("Whynter, "));
+#endif
+#if defined(DECODE_LEGO_PF)
+    aSerial->print(F("Lego Power Functions, "));
+#endif
+#if defined(DECODE_BOSEWAVE)
+    aSerial->print(F("Bosewave , "));
+#endif
+#if defined(DECODE_MAGIQUEST)
+    aSerial->print(F("MagiQuest, "));
+#endif
+#if defined(DECODE_DISTANCE)
+    aSerial->print(F("Universal Distance, "));
+#endif
+#if defined(DECODE_HASH)
+    aSerial->print(F("Hash "));
+#endif
+#if defined(NO_DECODER) // for sending raw only
+    (void)aSerial; // to avoid compiler warnings
+#endif
+
+    }
 /**
  * Internal function to print decoded result and flags in one line.
  * Ends with println().
@@ -1277,9 +1331,9 @@ const __FlashStringHelper* getProtocolString(decode_type_t aProtocol) {
  * => Minimal CPU frequency is 4 MHz
  *
  **********************************************************************************************************************/
-//#define IR_MEASURE_TIMING
-//#define IR_TIMING_TEST_PIN 7 // do not forget to execute: "pinMode(IR_TIMING_TEST_PIN, OUTPUT);" if activated by line above
-#if defined(IR_MEASURE_TIMING) && defined(IR_TIMING_TEST_PIN)
+//#define _IR_MEASURE_TIMING
+//#define _IR_TIMING_TEST_PIN 7 // do not forget to execute: "pinMode(_IR_TIMING_TEST_PIN, OUTPUT);" if activated by line above
+#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
 #include "digitalWriteFast.h"
 #endif
 #if defined(TIMER_INTR_NAME)
@@ -1288,8 +1342,8 @@ ISR (TIMER_INTR_NAME) // for ISR definitions
 ISR () // for functions definitions which are called by separate (board specific) ISR
 #endif
 {
-#if defined(IR_MEASURE_TIMING) && defined(IR_TIMING_TEST_PIN)
-    digitalWriteFast(IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
+#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
+    digitalWriteFast(_IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
 #endif
 // 7 - 8.5 us for ISR body (without pushes and pops) for ATmega328 @16MHz
 
@@ -1321,8 +1375,8 @@ ISR () // for functions definitions which are called by separate (board specific
             if (irparams.TickCounterForISR > RECORD_GAP_TICKS) {
                 // Gap just ended; Record gap duration + start recording transmission
                 // Initialize all state machine variables
-#if defined(IR_MEASURE_TIMING) && defined(IR_TIMING_TEST_PIN)
-//                digitalWriteFast(IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
+#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
+//                digitalWriteFast(_IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
 #endif
                 irparams.OverflowFlag = false;
                 irparams.rawbuf[0] = irparams.TickCounterForISR;
@@ -1334,8 +1388,8 @@ ISR () // for functions definitions which are called by separate (board specific
 
     } else if (irparams.StateForISR == IR_REC_STATE_MARK) {  // Timing mark
         if (tIRInputLevel != INPUT_MARK) {   // Mark ended; Record time
-#if defined(IR_MEASURE_TIMING) && defined(IR_TIMING_TEST_PIN)
-//            digitalWriteFast(IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
+#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
+//            digitalWriteFast(_IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
 #endif
             irparams.rawbuf[irparams.rawlen++] = irparams.TickCounterForISR;
             irparams.StateForISR = IR_REC_STATE_SPACE;
@@ -1349,8 +1403,8 @@ ISR () // for functions definitions which are called by separate (board specific
                 irparams.OverflowFlag = true;
                 irparams.StateForISR = IR_REC_STATE_STOP;
             } else {
-#if defined(IR_MEASURE_TIMING) && defined(IR_TIMING_TEST_PIN)
-//                digitalWriteFast(IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
+#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
+//                digitalWriteFast(_IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
 #endif
                 irparams.rawbuf[irparams.rawlen++] = irparams.TickCounterForISR;
                 irparams.StateForISR = IR_REC_STATE_MARK;
@@ -1371,8 +1425,8 @@ ISR () // for functions definitions which are called by separate (board specific
          * Complete command received
          * stay here until resume() is called, which switches state to IR_REC_STATE_IDLE
          */
-#if defined(IR_MEASURE_TIMING) && defined(IR_TIMING_TEST_PIN)
-//        digitalWriteFast(IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
+#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
+//        digitalWriteFast(_IR_TIMING_TEST_PIN, HIGH); // 2 clock cycles
 #endif
         if (tIRInputLevel == INPUT_MARK) {
             // Reset gap TickCounterForISR, to prepare for detection if we are in the middle of a transmission after call of resume()
@@ -1386,8 +1440,8 @@ ISR () // for functions definitions which are called by separate (board specific
     }
 #endif
 
-#ifdef IR_MEASURE_TIMING
-    digitalWriteFast(IR_TIMING_TEST_PIN, LOW); // 2 clock cycles
+#ifdef _IR_MEASURE_TIMING
+    digitalWriteFast(_IR_TIMING_TEST_PIN, LOW); // 2 clock cycles
 #endif
 }
 
@@ -1407,8 +1461,10 @@ bool IRrecv::decode(decode_results *aResults) {
     }
 
     if (!sDeprecationMessageSent) {
+#if !(defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny87__) || defined(__AVR_ATtiny167__))
         Serial.println(
                 "The function decode(&results)) is deprecated and may not work as expected! Just use decode() without a parameter and IrReceiver.decodedIRData.<fieldname> .");
+#endif
         sDeprecationMessageSent = true;
     }
 

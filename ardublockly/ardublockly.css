@@ -542,7 +542,7 @@ ul.side-nav li.side-menu-end {
 
 .modal_serial {
     width: 100%;
-    height: 35vh;
+    height: 30vh;
     overflow-y: scroll;
     resize: none;
     background-color: #000000;

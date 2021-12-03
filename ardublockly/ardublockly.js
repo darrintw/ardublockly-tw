@@ -136,7 +136,7 @@ Ardublockly.bindActionFunctions = function () {
         ArdublocklyServer.setLoadDelayOptions,
         Ardublockly.setLoadDelayHtml);
 
-
+    Ardublockly.bindClick_('serial_startstop_label', Ardublockly.serialStartStop);
     Ardublockly.bindClick_('serial_timestamp_label', Ardublockly.serialTimeStamp);
     Ardublockly.bindClick_('serial_send_input', Ardublockly.serialSendInput);
     Ardublockly.bindClick_('serial_send_clear', Ardublockly.clearSerialSandedContent);
@@ -165,6 +165,46 @@ Ardublockly.serialTimeStamp = function () {
     var el = document.getElementById('serial_timestamp');
     el.checked = !el.checked;
     Ardublockly.setSerialTimeStampSettings(el.checked);
+};
+
+/** Set start or stop serial monitor. */
+Ardublockly.serialStartStop = function () {
+    var el = document.getElementById('serial_startstop');
+    el.checked = !el.checked;
+    var elSP = document.getElementById('serial_value_setting');
+    var serialPortValue = elSP.options[elSP.selectedIndex].value;
+    var elBRV = document.getElementById('baud_rate_setting');
+    var baudRateValue = elBRV.options[elBRV.selectedIndex].value;
+    if (serialPortValue != 'USB') {
+        if (el.checked) {
+            document.getElementById('serial_startstop_label').textContent =
+                Ardublockly.getLocalStr('serial_stop');
+            Ardublockly.serialRun(serialPortValue, baudRateValue);
+        } else {
+            document.getElementById('serial_startstop_label').textContent =
+                Ardublockly.getLocalStr('serial_start');
+        }
+    }
+};
+
+/** Start or stop serial monitor */
+Ardublockly.serialRun = function () {
+    (async () => {
+        var Readline = require('@electron/remote').require('@serialport/parser-readline');
+        var SerialPort = require('@electron/remote').require("serialport");
+        var parser = new Readline();
+        var arduinoport = new SerialPort(serialValue, {baudRate: baudRateValue}).setEncoding('utf8');
+        arduinoport.on("open", (err) => {
+            console.log('serial port open'); //成功連接時印出port open
+            if (err) {
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'))
+            }
+        }, 20);
+        arduinoport.pipe(parser)
+        parser.on('data', line => {
+            console.log(line)
+        })
+    })();
 };
 
 /** Clear serial monitor received data.*/
@@ -211,7 +251,7 @@ Ardublockly.serialSendInput = function () {
     Ardublockly.clearSerialInput();
     setInterval(function () {
         appendEl.scrollTop = appendEl.scrollHeight;
-    }, 1000);
+    }, 500);
 };
 
 /** Sets the Ardublockly server IDE setting to upload and sends the code. */
@@ -459,6 +499,7 @@ Ardublockly.openExamples = function () {
 /**
  * Open putty as serial monitor.
  */
+
 Ardublockly.openSerialMonitor = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         Ardublockly.openNotConnectedModal();
@@ -472,56 +513,41 @@ Ardublockly.openSerialMonitor = function () {
     }
 };
 
+/**
+ * Open serial monitor dialog.
+ */
 /*
 Ardublockly.openSerialMonitor = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         Ardublockly.openNotConnectedModal();
     } else {
-        var serialPortValue = 'USB';
         ArdublocklyServer.requestSerialPorts(function (jsonObj) {
-            if (!jsonObj.errors) {
-                serialPortValue = jsonObj.selected || '';
-            }
+            Ardublockly.setSerialPortsValueHtml(
+                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
-        (async () => {
-            if (serialPortValue !== null && serialPortValue !== '' && serialPortValue !== 'USB') {
-                ArdublocklyServer.requestSerialTimeStamp(function (jsonObj) {
-                    Ardublockly.setSerialTimeStampHtml(jsonObj);
-                });
-                ArdublocklyServer.requestEndOfLineOptions(function (jsonObj) {
-                    Ardublockly.setEndOfLineHtml(
-                        ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
-                });
-                ArdublocklyServer.requestBaudRateOptions(function (jsonObj) {
-                    Ardublockly.setBaudRateHtml(
-                        ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
-                });
-                Ardublockly.clearSerialReceivedContent();
-                Ardublockly.clearSerialSandedContent();
-                Ardublockly.clearSerialInput();
-                var el = document.getElementById('baud_rate_setting');
-                var serialReceiveEl = document.getElementById('serial_receive_content');
-                var baudRateValue = el.options[el.selectedIndex].value;
-
-                Ardublockly.openSerialMonitorModal();
-                var Readline = require('@electron/remote').require('@serialport/parser-readline');
-                var SerialPort = require('@electron/remote').require("serialport");
-                var parser = new Readline();
-                var arduinoport = new SerialPort(serialValue, {baudRate: baudRateValue}).setEncoding('utf8');
-                arduinoport.on("open", (err) => {
-                    console.log('serial port open'); //成功連接時印出port open
-                    if (err) {
-                        console.log("no serial device found")//失敗時印出 device not found
-                    }
-                }, 20);
-                arduinoport.pipe(parser)
-                parser.on('data', line => {
-                    console.log(line)
-                })
-            } else {
-                Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'))
-            }
-        })();
+        ArdublocklyServer.requestSerialTimeStamp(function (jsonObj) {
+            Ardublockly.setSerialTimeStampHtml(jsonObj);
+        });
+        ArdublocklyServer.requestEndOfLineOptions(function (jsonObj) {
+            Ardublockly.setEndOfLineHtml(
+                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+        });
+        ArdublocklyServer.requestBaudRateOptions(function (jsonObj) {
+            Ardublockly.setBaudRateHtml(
+                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+        });
+        Ardublockly.clearSerialReceivedContent();
+        Ardublockly.clearSerialSandedContent();
+        Ardublockly.clearSerialInput();
+        var elSP = document.getElementById('serial_value_setting');
+        var serialPortValue = elSP.options[elSP.selectedIndex].value;
+        if (serialPortValue !== 'USB') {
+            var elBRV = document.getElementById('baud_rate_setting');
+            var baudRateValue = elBRV.options[elBRV.selectedIndex].value;
+            Ardublockly.openSerialMonitorModal();
+        } else {
+            Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'))
+        }
     }
 };
 */
@@ -870,6 +896,95 @@ Ardublockly.setBaudRateSettings = function (e, preset) {
 };
 
 /**
+ * Sets the load delay form data retrieve from an updated element.
+ * @return {void} Might exit early if response is null.
+ * @param newEl
+ */
+Ardublockly.setLoadDelayHtml = function (newEl) {
+    if (newEl === null) return Ardublockly.openNotConnectedModal();
+
+    var load_Delay_Value = document.getElementById('settings_load_delay');
+    if (load_Delay_Value != null) {
+        load_Delay_Value.value = newEl.value || load_Delay_Value.value;
+        load_Delay_Value.style.cssText = newEl.style.cssText;
+    }
+};
+
+/**
+ * Replaces the Serial Port form data with a new HTMl element.
+ * Ensures there is a change listener to call 'setSerialPort' function
+ * @return {void} Might exit early if response is null.
+ * @param newEl
+ */
+Ardublockly.setSerialPortsValueHtml = function (newEl) {
+    if (newEl === null) return Ardublockly.openNotConnectedModal();
+
+    var serialDropdown = document.getElementById('serial_value_setting');
+    if (serialDropdown !== null) {
+        // Restarting the select elements built by materialize
+        $('select').material_select('destroy');
+        newEl.name = 'settings_serial_value';
+        newEl.id = 'serial_value_setting';
+        newEl.onchange = Ardublockly.setSerialValue;
+        serialDropdown.parentNode.replaceChild(newEl, serialDropdown);
+        // Refresh the materialize select menus
+        $('select').material_select();
+    }
+};
+
+/** Sets the Serial Port with the selected user input from the drop down. */
+Ardublockly.setSerialValue = function () {
+    var el = document.getElementById('serial_value_setting');
+    var serialValue = el.options[el.selectedIndex].value;
+    ArdublocklyServer.setSerialPort(serialValue, function (jsonObj) {
+        var newEl = ArdublocklyServer.jsonToHtmlDropdown(jsonObj);
+        Ardublockly.setSerialPortsValueHtml(newEl);
+    });
+};
+
+/**
+ * Replaces Baud Rate options form data with a new HTMl element.
+ * Ensures there is a change listener to call 'setBaudRateSettings' function
+ * @return {void} Might exit early if response is null.
+ * @param newEl
+ */
+Ardublockly.setBaudRateValueHtml = function (newEl) {
+    if (newEl === null) return Ardublockly.openNotConnectedModal();
+
+    var baudRateDropdown = document.getElementById('baud_rate_value_setting');
+    if (baudRateDropdown !== null) {
+        // Restarting the select elements built by materialize
+        $('select').material_select('destroy');
+        newEl.name = 'setting_baud_rate_value';
+        newEl.id = 'baud_rate_value_setting';
+        newEl.onchange = Ardublockly.setBaudRateSettings;
+        baudRateDropdown.parentNode.replaceChild(newEl, baudRateDropdown);
+        // Refresh the materialize select menus
+        $('select').material_select();
+    }
+};
+
+/**
+ * Sets the Baud Rate settings data with the selected user input from the drop down.
+ * @param {Event} e Event that triggered this function call. Required for link
+ *     it to the listeners, but not used.
+ * @param {string} preset A value to set the Baud Rate settings bypassing the drop
+ *     down selected value.
+ */
+Ardublockly.setBaudRateValueSettings = function (e, preset) {
+    var baudRateValue;
+    if (preset !== undefined) {
+        baudRateValue = preset;
+    } else {
+        var el = document.getElementById('baud_rate_value_setting');
+        baudRateValue = el.options[el.selectedIndex].value;
+    }
+    ArdublocklyServer.setBaudRateOptions(baudRateValue, function (jsonObj) {
+        Ardublockly.setBaudRateValueHtml(ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+    });
+};
+
+/**
  * Replaces End Of Line options form data with a new HTMl element.
  * Ensures there is a change listener to call 'setEndOfLineSettings' function
  * @return {void} Might exit early if response is null.
@@ -919,15 +1034,15 @@ Ardublockly.setEndOfLineSettings = function (e, preset) {
  */
 Ardublockly.setSerialTimeStampHtml = function (newEl) {
     if (newEl === null) return Ardublockly.openNotConnectedModal();
-
-    var serialTimeStampInput = document.getElementById('serial_timestamp');
-    if (serialTimeStampInput !== null) {
-        serialTimeStampInput.checked = newEl.selected === 1;
+    var serialTimeStampLabel = document.getElementById('serial_timestamp_label');
+    serialTimeStampLabel.style.color = "#ff0000";
+    if (newEl.selected == 1) {
+        serialTimeStampLabel.style.color = "#00ff00";
     }
 };
 
 /**
- * Sets the Time Stamp settings data with the selected user input from the drop down.
+ * Sets the Time Stamp settings data with the selected user input from the checkbox.
  * @param {boolean} preset A value to time stamp.
  */
 Ardublockly.setSerialTimeStampSettings = function (preset) {
@@ -941,21 +1056,6 @@ Ardublockly.setSerialTimeStampSettings = function (preset) {
     ArdublocklyServer.setSerialTimeStamp(timeStampValue ? '1' : '0', function (jsonObj) {
         Ardublockly.setSerialTimeStampHtml(jsonObj);
     });
-};
-
-/**
- * Sets the load delay form data retrieve from an updated element.
- * @return {void} Might exit early if response is null.
- * @param newEl
- */
-Ardublockly.setLoadDelayHtml = function (newEl) {
-    if (newEl === null) return Ardublockly.openNotConnectedModal();
-
-    var load_Delay_Value = document.getElementById('settings_load_delay');
-    if (load_Delay_Value != null) {
-        load_Delay_Value.value = newEl.value || load_Delay_Value.value;
-        load_Delay_Value.style.cssText = newEl.style.cssText;
-    }
 };
 
 /**

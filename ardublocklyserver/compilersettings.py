@@ -650,10 +650,16 @@ class ServerCompilerSettings(object):
     serial_time_stamp = property(get_serial_time_stamp, set_serial_time_stamp)
 
     def set_serial_time_stamp_default(self):
-        self.__serial_time_stamp = '0'
+        self.__serial_time_stamp = 0
 
     def set_serial_time_stamp_from_file(self, new_serial_time_stamp):
         self.__serial_time_stamp = new_serial_time_stamp
+        if not self.__serial_time_stamp:
+            print('Settings file "Serial time stamp option" is not valid:'
+                  '\n\t%s' % new_serial_time_stamp)
+            self.set_serial_time_stamp_default()
+            print('Default "Serial time stamp option" set:\n\t%s' %
+                  self.new_serial_time_stamp)
 
     #
     # Load extra block delay time

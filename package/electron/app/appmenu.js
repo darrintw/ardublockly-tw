@@ -323,14 +323,14 @@ var getHelpMenuData = function () {
                 }
             }, {
                 type: 'separator'
-            }, /*{
+            }, {
                 label: '線上更新',
                 click: function () {
                     server.stopServer();
                     app.quit();
                     shell.openItem(projectLocator.getProjectRootPath() + '\\update.bat');
                 }
-            }, */{
+            }, {
                 label: '關於',
                 click: function () {
                     BrowserWindow.getFocusedWindow().webContents

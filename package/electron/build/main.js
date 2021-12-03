@@ -73,7 +73,7 @@ app.on('ready', function () {
         height: 765,
         title: 'Ardublockly',
         transparent: false,
-        backgroundColor: '#EEEEEE',
+        backgroundColor: '#FFFFFF00',
         frame: true,
         show: false,
         webPreferences: {
@@ -118,6 +118,7 @@ app.on('ready', function () {
             splashWindow = null;
         }
         mainWindow.show();
+        mainWindow.focus();
     });
 
     mainWindow.on('close', function () {
@@ -147,7 +148,8 @@ function createSplashWindow() {
             height: 300,
             frame: false,
             show: true,
-            transparent: true,
+            transparent: false,
+            backgroundColor: "#FFFFFF00",
             images: true,
             center: true,
             alwaysOnTop: true,

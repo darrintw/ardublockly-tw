@@ -21,7 +21,7 @@
 //#define SEND_PWM_BY_TIMER
 //#define USE_NO_SEND_PWM
 
-#include <IRremote.h>
+#include <IRremote.hpp>
 
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
@@ -34,7 +34,7 @@ void setup() {
     /*
      * The IR library setup. That's all!
      */
-    IrSender.begin(IR_SEND_PIN, ENABLE_LED_FEEDBACK); // Specify send pin and enable feedback LED at default feedback LED pin
+    IrSender.begin(); // Start with IR_SEND_PIN as send pin and enable feedback LED at default feedback LED pin
 
     Serial.print(F("Ready to send IR signals at pin "));
     Serial.println(IR_SEND_PIN);

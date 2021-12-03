@@ -431,6 +431,27 @@ def get_end_of_line_selected():
 
 
 #
+# Time Stamp settings
+#
+def set_serial_time_stamp(new_value):
+    """Set a new Time Stamp option.
+
+    :param new_value: New Time Stamp option to save in the Settings.
+    :return: Same as the get_timestamp() function.
+    """
+    ServerCompilerSettings().serial_time_stamp = new_value
+    return get_serial_time_stamp()
+
+
+def get_serial_time_stamp():
+    """Get the Baud Rate option from the Settings.
+
+    :return: The currently selected End Of Line option from the Settings.
+    """
+    return ServerCompilerSettings().serial_time_stamp
+
+
+#
 # Load delay settings
 #
 def set_load_delay(new_value):
