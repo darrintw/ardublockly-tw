@@ -4,7 +4,7 @@ title Ardublockly update tool
 echo.
 echo ***************************Ardublockly Update Tool****************************
 @echo off
-timeout 5
+timeout 5 > nil
 
 IF EXIST "%~dp0\.git\index.lock" (
     echo *****Delete .git\index.lock file******
@@ -20,7 +20,8 @@ rem update blocks
 ..\MinGit\cmd\git remote set-url origin https://github.com/darrintw/ardublockly-tw.git
 ..\MinGit\cmd\git config --system core.longpaths true
 ..\MinGit\cmd\git reset --hard origin/master
-..\MinGit\cmd\git pull --force origin master
+timeout 1 > nil
+..\MinGit\cmd\git pull origin master
 ..\MinGit\cmd\git gc
 @echo off
 
