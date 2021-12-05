@@ -31,6 +31,7 @@
   "EXPAND_BLOCK": "展開積木",
   "EXPAND_ALL": "展開積木",
   "DISABLE_BLOCK": "停用積木",
+  "DISABLE_ALL_BLOCK": "停用積木串",
   "ENABLE_BLOCK": "啟用積木",
   "HELP": "說明",
   "UNDO": "還原",

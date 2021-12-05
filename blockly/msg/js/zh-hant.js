@@ -80,6 +80,7 @@ Blockly.Msg.COPY_BLOCK = "複製";
 Blockly.Msg.DELETE_ALL_BLOCKS = "刪除共 %1 塊積木？";
 Blockly.Msg.DELETE_BLOCK = "刪除積木";
 Blockly.Msg.DELETE_X_BLOCKS = "刪除 %1 塊積木";
+Blockly.Msg.DISABLE_ALL_BLOCK = "停用積木串";
 Blockly.Msg.DISABLE_BLOCK = "停用積木";
 Blockly.Msg.DUPLICATE_ALL_BLOCK = "複製積木串並貼上";
 Blockly.Msg.DUPLICATE_BLOCK = "複製並貼上";

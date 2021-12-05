@@ -80,6 +80,7 @@ Blockly.Msg.COPY_BLOCK = "Copy";
 Blockly.Msg.DELETE_ALL_BLOCKS = "Delete all %1 blocks?";
 Blockly.Msg.DELETE_BLOCK = "Delete Block";
 Blockly.Msg.DELETE_X_BLOCKS = "Delete %1 Blocks";
+Blockly.Msg.DISABLE_ALL_BLOCK = "Disable Blocks";
 Blockly.Msg.DISABLE_BLOCK = "Disable Block";
 Blockly.Msg.DUPLICATE_ALL_BLOCK = "Duplicate include child";
 Blockly.Msg.DUPLICATE_BLOCK = "Duplicate";
