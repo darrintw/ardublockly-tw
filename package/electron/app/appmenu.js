@@ -328,7 +328,7 @@ var getHelpMenuData = function () {
                 click: function () {
                     server.stopServer();
                     app.quit();
-                    shell.openItem(projectLocator.getProjectRootPath() + '\\update.bat');
+                    shell.openPath(projectLocator.getProjectRootPath() + '\\update.bat');
                 }
             }, {
                 label: '關於',
