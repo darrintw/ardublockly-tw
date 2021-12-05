@@ -18,6 +18,7 @@ Ardublockly.init = function () {
 
     // Lang init must run first for the rest of the page to pick the right msgs
     Ardublockly.initLanguage();
+    Ardublockly.addVersion();
     // Inject Blockly into content_blocks and fetch additional blocks
     Ardublockly.injectBlockly(document.getElementById('content_blocks'),
         Ardublockly.TOOLBOX_XML, '../blockly/');
@@ -58,6 +59,14 @@ Ardublockly.init = function () {
     }
 
     Ardublockly.restoreDefault();
+};
+
+/** Change title and add version info to html title. */
+Ardublockly.addVersion = function () {
+    ArdublocklyServer.getVersionNumber(function (version) {
+        if (version === null) return Ardublockly.openNotConnectedModal();
+        document.title = "Ardublockly  v" + version;
+    });
 };
 
 /** Binds functions to each of the buttons, nav links, and related. */
@@ -1371,7 +1380,7 @@ Ardublockly.getNowFormatDate = function () {
 //Add by darrin - 20200130 -end
 
 //Add by darrin - 20211121 -start
-function getBroswer() {
+Ardublockly.getBroswer = function () {
     var Sys = {};
     var ua = navigator.userAgent.toLowerCase();
     var s;
