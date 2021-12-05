@@ -3,6 +3,7 @@ title Ardublockly update tool
 @echo off
 echo.
 echo ***************************Ardublockly Update Tool****************************
+echo First update will spend long time to fetch git info.
 @echo off
 timeout 5 > nil
 
