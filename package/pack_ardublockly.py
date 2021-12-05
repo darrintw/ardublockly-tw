@@ -97,13 +97,12 @@ def replace_title_version(tag):
 
 def get_commit_tag():
     """
-    The tag will always contain the timestamp and platform architecture.
-    If provided as a command line argument it will add an additional string,
-    if not it will check for environmental variables set in build servers to
-    create an identification tag.
+    Get Build tag from commit number.
     :return: String with the final tag.
     """
-
+    path = '..\\ardublockly\\ardublockly\\build_number'
+    with open(path, 'r', encoding='UTF-8') as version:
+        arch_time_stamp = version.read()
     return arch_time_stamp
 
 
@@ -462,7 +461,8 @@ def pack_ardublockly(tag):
 def main():
     print(script_tag + "Pack Ardublockly script started.")
     print(script_tag + "Checking for tag to attach to zip file:")
-    build_tag = get_build_tag()
+    # build_tag = get_build_tag()
+    build_tag = get_commit_tag()
     pack_ardublockly(build_tag)
 
 
