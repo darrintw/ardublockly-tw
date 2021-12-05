@@ -374,7 +374,7 @@ Ardublockly.blocklyCut = function () {
 /** Wraps the blockly 'copy' functionality. */
 Ardublockly.blocklyCopy = function () {
     if (Blockly.selected) {
-        Blockly.copy_(Blockly.selected);
+        Blockly.copy_all_(Blockly.selected);
     }
 };
 

@@ -4,6 +4,7 @@ title Ardublockly update tool
 echo.
 echo ***************************Ardublockly Update Tool****************************
 @echo off
+timeout 5
 
 IF EXIST "%~dp0\.git\index.lock" (
     echo *****Delete .git\index.lock file******
