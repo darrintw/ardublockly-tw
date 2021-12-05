@@ -219,7 +219,8 @@ def copy_ardublockly_folder():
     ignore_pat = (".idea*", ".svn", ".travis*", ".appveyor*", "circle.yml", "notepad++", "CNAME",
                   ".ruby-version", "TestTemp_*", "package", ".coverage's", "ardublockly.iml",
                   "ardublockly.log", "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
-                  "pack.bat", "buildBlockly.cmd", "build.bat", "test.py")
+                  "pack.bat", "buildBlockly.cmd", "build.bat", "test.py",
+                  "FETCH_HEAD", "*.pack")
     if not os.path.exists(copied_project_dir):
         print(script_tab + "Copying contents of %s" % project_root_dir)
         print(script_tab + "               into %s" % copied_project_dir)
@@ -227,6 +228,7 @@ def copy_ardublockly_folder():
                         copied_project_dir,
                         symlinks=True,
                         ignore=shutil.ignore_patterns(*ignore_pat))
+        shutil.rmtree(copied_project_dir + "\\.git\\lfs\\objects")
         # Add by darrin 20190602 - Start
         print(script_tab + "Creating run.bat to %s" % copied_project_up_dir)
         shell_text = "@echo off\n" + \
