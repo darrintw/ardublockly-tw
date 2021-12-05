@@ -174,16 +174,16 @@ if (isNodeJS) {
         print("SUCCESS: " + target_filename)
 
 
-def do_compile_jar(params):
-    dash_params = ["--compilation_level SIMPLE", "--define='goog.DEBUG=false'",
-                   "--rewrite_polyfills=false", "--js=../closure-library"]
+def do_compile_jar(params, target_filename):
+    dash_params = ["--js_output_file '" + target_filename + "'"]
     for (arg, value) in params:
-        if arg == "js_file":
-            dash_params.append("--js='" + value + "'")
+        if arg != "js_file":
+            dash_params.append("--" + arg + " '" + value + "'")
+    # print(dash_params)
     args = []
-    for group in [["java -jar closure-compiler-v20160208.jar"], dash_params]:
+    for group in [["java -jar closure-compiler-v20200101.jar"], dash_params]:
         args.extend(group)
-    # print args
+    # print(args)
     if sys.platform == "darwin":
         proc = subprocess.Popen(" ".join(args), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     else:
@@ -191,7 +191,7 @@ def do_compile_jar(params):
     (stdout, stderr) = proc.communicate()
 
     # print stdout
-    print stderr
+    print(stderr)
     # Build the JSON response.
     filesizes = [os.path.getsize(value) for (arg, value) in params if arg == "js_file"]
     return dict(
@@ -204,7 +204,7 @@ def do_compile_jar(params):
 
 
 def do_compile(params, target_filename, filenames, remove):
-    json_data = do_compile_jar(params)
+    json_data = do_compile_jar(params, target_filename)
     if report_errors(target_filename, filenames, json_data):
         write_output(target_filename, remove, json_data)
         report_stats(target_filename, json_data)
@@ -483,22 +483,16 @@ class Gen_compressed(threading.Thread):
         self.search_paths = search_paths
 
     def run(self):
-        # self.gen_core()
+        self.gen_core()
         gen_blocks()
         gen_generator("arduino")
 
     def gen_core(self):
         target_filename = "blockly_compressed.js"
         # Define the parameters for the POST request.
-        params = [
-            ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
-            ("use_closure_library", "true"),
-            ("output_format", "json"),
-            ("output_info", "compiled_code"),
-            ("output_info", "warnings"),
-            ("output_info", "errors"),
-            ("output_info", "statistics"),
-        ]
+        params = [("compilation_level", "SIMPLE_OPTIMIZATIONS"), ("use_closure_library", "true"),
+                  ("output_format", "json"), ("output_info", "compiled_code"), ("output_info", "warnings"),
+                  ("output_info", "errors"), ("output_info", "statistics")]
 
         # Read in all the source files.
         filenames = calcdeps.CalculateDependencies(self.search_paths, [os.path.join("core", "blockly.js")])
@@ -516,7 +510,7 @@ class Gen_compressed(threading.Thread):
             f.close()
         remove = []
         do_compile_online(params, target_filename, filenames, remove)
-        # do_compile(params, target_filename, filenames, [])
+        # do_compile(params, target_filename, filenames, remove)
 
 
 def _rebuild(srcs, dests):

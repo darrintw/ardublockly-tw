@@ -35,6 +35,7 @@ Ardublockly.LOCALISED_TEXT = {
     comPort: "COM Port",
     comPortDefault: "COM Port unknown",
     baudrate: "Baud Rate",
+    endofline: "End Of Line",
     loaddelay: "Load extra block delay ms",
     defaultIdeButton: "Default IDE Button",
     defaultIdeButtonDefault: "IDE options unknown",
@@ -44,10 +45,13 @@ Ardublockly.LOCALISED_TEXT = {
     /*Serial Monitor*/
     serial_monitor: "Serial Monitor",
     timestamp: "Time Stamp",
+    startstop: "Start/Stop",
     serial_input: "Input",
     serial_receive: "Receive",
     serial_send: "Send",
     serial_port_error: "Setup serial port first",
+    serial_start: "Start",
+    serial_stop: "Stop",
 
     /* Arduino console output */
     arduinoOpMainTitle: "Arduino IDE output",

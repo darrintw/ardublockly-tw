@@ -36,6 +36,7 @@ Ardublockly.LOCALISED_TEXT = {
     comPort: "序列埠",
     comPortDefault: "序列埠未知",
     baudrate: "鮑率",
+    endofline: "換行符號",
     loaddelay: "載入額外積木延遲毫秒",
     defaultIdeButton: "預設IDE按鈕",
     defaultIdeButtonDefault: "IDE選項設定未知",
@@ -46,10 +47,13 @@ Ardublockly.LOCALISED_TEXT = {
     /*Serial Monitor*/
     serial_monitor: "序列埠監控",
     timestamp: "時間標記",
+    startstop: "開始/停止",
     serial_input: "輸入",
     serial_receive: "接收",
     serial_send: "傳送",
     serial_port_error: "請先設定序列埠",
+    serial_start: "開始",
+    serial_stop: "停止",
 
     /* Arduino console output */
     arduinoOpMainTitle: "Arduino IDE 輸出",

@@ -55,9 +55,10 @@ goog.require('goog.color');
 goog.require('goog.userAgent');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventWrapper');
+goog.require('goog.events.EventLike');
 
 // Turn off debugging when compiled.
-var CLOSURE_DEFINES = {'goog.DEBUG': true};
+var CLOSURE_DEFINES = {'goog.DEBUG': false};
 
 /**
  * The main workspace most recently used.

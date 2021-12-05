@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2021-11-20 17:59:16.844000",
+		"lastupdated": "2021-12-05 21:14:07.082000",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -26,6 +26,7 @@
 	"EXPAND_BLOCK": "Expand Block",
 	"EXPAND_ALL": "Expand Blocks",
 	"DISABLE_BLOCK": "Disable Block",
+	"DISABLE_ALL_BLOCK": "Disable Blocks",
 	"ENABLE_BLOCK": "Enable Block",
 	"HELP": "Help",
 	"UNDO": "Undo",

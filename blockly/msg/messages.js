@@ -94,6 +94,8 @@ Blockly.Msg.EXPAND_BLOCK = 'Expand Block';
 Blockly.Msg.EXPAND_ALL = 'Expand Blocks';
 /// context menu - Make the selected block have no effect (unless reenabled).
 Blockly.Msg.DISABLE_BLOCK = 'Disable Block';
+/// context menu - Make the selected block and it's childs have no effect (unless reenabled).
+Blockly.Msg.DISABLE_ALL_BLOCK = 'Disable Blocks';
 /// context menu - Make the selected block have effect (after having been disabled earlier).
 Blockly.Msg.ENABLE_BLOCK = 'Enable Block';
 /// context menu - Provide helpful information about the selected block.\n{{Identical|Help}}

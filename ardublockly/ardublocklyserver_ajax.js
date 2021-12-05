@@ -38,8 +38,7 @@ ArdublocklyServer.putJson = function (url, json, callback) {
  * @param {!function} cb Request callback function, takes a single input for a
  *     parsed JSON object.
  */
-ArdublocklyServer.sendRequest = function (
-    url, method, contentType, jsonObjSend, cb) {
+ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend, cb) {
     var request = ArdublocklyServer.createRequest();
 
     // The data received is JSON, so it needs to be converted into the right
@@ -47,14 +46,31 @@ ArdublocklyServer.sendRequest = function (
     var onReady = function () {
         if (request.readyState === 4) {
             if (request.status === 200) {
-                var jsonObjReceived = null;
-                try {
-                    jsonObjReceived = JSON.parse(request.responseText);
-                } catch (e) {
-                    console.error('Incorrectly formatted JSON data from ' + url);
-                    throw e;
+                if (contentType === 'application/json;') {
+                    var jsonObjReceived = null;
+                    try {
+                        jsonObjReceived = JSON.parse(request.responseText);
+                    } catch (e) {
+                        console.error('Incorrectly formatted JSON data from ' + url);
+                        throw e;
+                    }
+                    cb(jsonObjReceived);
                 }
-                cb(jsonObjReceived);
+                else if (contentType === 'application/text')
+                {
+                    var textReceived = null;
+                    try {
+                        textReceived = request.responseText;
+                    } catch (e) {
+                        console.error('Incorrectly text from ' + url);
+                        throw e;
+                    }
+                    cb(textReceived);
+                }
+                else
+                {
+                    console.error('Incorrectly data type from ' + url);
+                }
             } else {
                 // return a null element which will be dealt with in the front end
                 cb(null);
@@ -490,7 +506,6 @@ ArdublocklyServer.requestExamplesList = function (url, callback) {
     ArdublocklyServer.getJson(url, callback);
 };
 
-
 /**
  * Sends the Arduino code to the ArdublocklyServer to be processed as defined
  * by the settings.
@@ -503,11 +518,18 @@ ArdublocklyServer.sendSketchToServer = function (code, callback) {
         '/code', 'POST', 'application/json', {"sketch_code": code}, callback);
 };
 
-
 /**
  * Open putty to be processed as defined by the settings.
  */
 ArdublocklyServer.sendCliToPutty = function (callback) {
     ArdublocklyServer.sendRequest(
         '/putty', 'POST', 'application/json', null, callback);
+};
+
+/**
+ * Get version number.
+ */
+ArdublocklyServer.getVersionNumber = function (callback) {
+    ArdublocklyServer.sendRequest(
+        'build_number', 'GET', 'application/text', null, callback);
 };

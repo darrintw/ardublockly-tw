@@ -14,8 +14,8 @@
 
     <script src="global.js"></script>
     <!-- Ardublockly - These three files contain the compress version -->
-    <!--script src="../blockly/blockly_compressed.js"></script-->
-    <script src="../blockly/blockly_uncompressed.js"></script>
+    <script src="../blockly/blockly_compressed.js"></script>
+    <!--script src="../blockly/blockly_uncompressed.js"></script-->
     <script src="../blockly/blocks_compressed.js"></script>
     <script src="../blockly/arduino_compressed.js"></script>
     <!--script src="../blockly/blocks/arduino/procedures.js"></script>
@@ -63,7 +63,8 @@
             <!-- Sketch name editable text field -->
             <span class="sketch_name_wrapper">
               <!--<i class="mdi-image-edit sketch_name_icon"></i>-->
-              <label for="sketch_name"><input class="sketch_name" id="sketch_name" size="250" type="text" spellcheck="false"></label>
+              <label for="sketch_name"><input class="sketch_name" id="sketch_name" size="250" type="text"
+                                              spellcheck="false"></label>
             </span>
         </a>
         <!-- Horizontal Navbar links only shown on large resolutions -->
@@ -249,7 +250,7 @@
                 </select>
             </label>
         </div>
-        <div class="modal_section">
+        <div class="modal_section" type="hidden">
             <label><span class="translatable_baudrate">鮑率</span></label>
             <label for="baud_rate_setting">
                 <select name="setting_baud_rate" id="baud_rate_setting" readonly>
@@ -269,7 +270,7 @@
             <label><span class="translatable_language">介面語言</span></label>
             <label for="language"><select name="settings_language" id="language"></select></label>
         </div>
-        <div class="modal_section">
+        <div class="modal_section" type="hidden">
             <label><span class="translatable_loaddelay">載入額外積木延遲毫秒</span></label>
             <label for="settings_load_delay"><input type="text" id="settings_load_delay"></label>
         </div>
@@ -331,56 +332,81 @@
 <div id="serial_dialog" class="modal modal-fixed-footer">
     <div class="modal-content">
         <table style="width: 100%;">
-            <tbody>
             <tr>
-                <td style="width: 150px">
-                    <h5><span class="translatable_serial_monitor">序列埠監控</span></h5>
-                </td>
-                <td></td>
-                <td style="width: 130px">
-                    <label for="serial_timestamp"><input type="checkbox" id="serial_timestamp" readonly/></label>
-                    <label><span class="translatable_timestamp"
-                                 id="serial_timestamp_label">時間標記</span></label>
-                </td>
                 <td style="width: 200px">
-                    <label for="end_of_line_setting">
-                        <select name="setting_end_of_line" id="end_of_line_setting" readonly>
-                            <option value="nlcr" class="translatable_comPortNLCR">NL & CR</option>
+                    <label for="serial_value_setting">
+                        <label><span class="translatable_comPort">序列埠</span></label>
+                        <select name="settings_serial_value" id="serial_value_setting">
+                            <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
                         </select>
                     </label>
                 </td>
-                <td style="width: 10px"></td>
-            </tr>
-            <tr>
-                <td style="width: 120px">
-                    <label><span class="translatable_serial_input">輸入</span></label>
+                <td style="width: 200px">
+                    <label><span class="translatable_baudrate">鮑率</span></label>
+                    <label for="baud_rate_value_setting">
+                        <select name="setting_baud_rate_value" id="baud_rate_value_setting" readonly>
+                            <option value="9600">9600 baud</option>
+                        </select>
+                    </label>
                 </td>
-                <td colspan="4"><label for="serial_input"><input type="text" id="serial_input"></label></td>
-                <td style="width: 5px"><input type="button" id="serial_send_input" value="送出"></td>
+                <td style="width: 150px">
+                    <label for="end_of_line_setting">
+                        <label><span class="translatable_endofline">序列埠</span></label>
+                        <select name="setting_end_of_line" id="end_of_line_setting" readonly>
+                            <option value="nlcr" class="comPortNLCR">NL & CR</option>
+                        </select>
+                    </label>
+                </td>
+                <td style="width: 5px"></td>
+                <td style="width: 100px">
+                    <label for="serial_timestamp">
+                        <span class="translatable_timestamp" id="serial_timestamp_label">時間標記</span>
+                        <input type="checkbox" id="serial_timestamp" readonly/>
+                    </label>
+                </td>
+                <td></td>
+                <td style="width: 50px">
+                    <label for="serial_startstop">
+                        <span class="translatable_startstop" id="serial_startstop_label">開始</span>
+                        <input type="checkbox" id="serial_startstop" readonly/>
+                    </label>
+                </td>
             </tr>
-            </tbody>
         </table>
         <table>
             <tr>
                 <td>
-                    <label><span class="translatable_serial_send">傳送</span></label>
-                    <input type="button" id="serial_send_clear" value="清空傳送">
                     <label for="serial_send_content">
+                        <span class="translatable_serial_send">傳送</span>
+                        <input type="button" id="serial_send_clear" value="清空傳送">
                         <textarea name="serial_send_content" id="serial_send_content"
-                                  class="modal_serial"
-                                  readonly></textarea>
+                                  class="modal_serial" readonly></textarea>
                     </label>
                 </td>
                 <td>
-                    <label><span class="translatable_serial_receive">接收</span></label>
-                    <input type="button" id="serial_receive_clear" value="清空接收">
                     <label for="serial_receive_content">
-                        <textarea name="serial_receive_content" id="serial_receive_content" class="modal_serial"
-                                  readonly></textarea>
+                        <span class="translatable_serial_receive">接收</span>
+                        <input type="button" id="serial_receive_clear" value="清空接收">
+                        <textarea name="serial_receive_content" id="serial_receive_content"
+                                  class="modal_serial" readonly></textarea>
                     </label>
                 </td>
             </tr>
         </table>
+        <label for="serial_input">
+            <span class="translatable_serial_input">輸入</span>
+            <input type="text" id="serial_input">
+            <input type="button" id="serial_send_input" value="送出">
+        </label>
+        <!--table>
+        <tr>
+            <td style="width: 120px">
+                <label><span class="translatable_serial_input">輸入</span></label>
+            </td>
+            <td colspan="5"><label for="serial_input"><input type="text" id="serial_input"></label></td>
+            <td style="width: 5px"><input type="button" id="serial_send_input" value="送出"></td>
+        </tr>
+        </table-->
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect btn-flat modal-close"><span class="translatable_return">返回</span></a>

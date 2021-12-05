@@ -20,6 +20,7 @@
 	"EXPAND_BLOCK": "context menu - Restore the appearance of the selected block by showing information about it that was hidden (collapsed) earlier.",
 	"EXPAND_ALL": "context menu - Restore the appearance of all blocks by showing information about it that was hidden (collapsed) earlier.  Use the same terminology as in the previous message.",
 	"DISABLE_BLOCK": "context menu - Make the selected block have no effect (unless reenabled).",
+	"DISABLE_ALL_BLOCK": "context menu - Make the selected block and it's childs have no effect (unless reenabled).",
 	"ENABLE_BLOCK": "context menu - Make the selected block have effect (after having been disabled earlier).",
 	"HELP": "context menu - Provide helpful information about the selected block.\n{{Identical|Help}}",
 	"UNDO": "context menu - Undo the previous action.\n{{Identical|Undo}}",
