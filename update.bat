@@ -20,9 +20,7 @@ rem update blocks
 ..\MinGit\cmd\git config --system core.longpaths true
 ..\MinGit\cmd\git reset --hard origin/master
 ..\MinGit\cmd\git pull --force origin master
-
 ..\MinGit\cmd\git gc
-..\MinGit\cmd\git remote prune origin
 @echo off
 
 IF EXIST "%~dp0\__pycache__" (
