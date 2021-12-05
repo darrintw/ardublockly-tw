@@ -95,6 +95,18 @@ def replace_title_version(tag):
         fp.close()
 
 
+def get_commit_tag():
+    """
+    The tag will always contain the timestamp and platform architecture.
+    If provided as a command line argument it will add an additional string,
+    if not it will check for environmental variables set in build servers to
+    create an identification tag.
+    :return: String with the final tag.
+    """
+
+    return arch_time_stamp
+
+
 def get_build_tag():
     """
     The tag will always contain the timestamp and platform architecture.
@@ -439,10 +451,10 @@ def pack_ardublockly(tag):
 
     print(script_tag + "Removing Python 3 pycache directories:")
     remove_pycache_dirs(scan_path=copied_project_dir)
-
+    '''
     print(script_tag + "Add version tag to index.html title tag:")
     replace_title_version(tag)
-
+    '''
     print(script_tag + "Creating zip file of the new Ardublockly folder:")
     zip_ardublockly_copy(tag)
 
