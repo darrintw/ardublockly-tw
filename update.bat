@@ -17,12 +17,25 @@ IF EXIST "%~dp0\.git\index.lock" (
 echo.
 cd "%~dp0"
 rem update blocks
-..\MinGit\cmd\git remote set-url origin https://github.com/darrintw/ardublockly-tw.git
-..\MinGit\cmd\git config --system core.longpaths true
-..\MinGit\cmd\git reset --hard origin/master
-timeout 1 > nil
-..\MinGit\cmd\git pull origin master
-..\MinGit\cmd\git gc
+echo.
+echo Set git url
+"%~dp0..\MinGit\cmd\git.exe" remote set-url origin https://github.com/darrintw/ardublockly-tw.git
+
+echo.
+echo Set git longpaths true
+"%~dp0..\MinGit\cmd\git.exe" config --system core.longpaths true
+
+echo.
+echo Reset origin/master
+"%~dp0..\MinGit\cmd\git.exe" reset --hard origin/master
+
+echo.
+echo pull origin/master
+"%~dp0..\MinGit\cmd\git.exe" pull --force origin master
+
+echo.
+echo Git gc
+"%~dp0..\MinGit\cmd\git.exe" gc
 @echo off
 
 IF EXIST "%~dp0\__pycache__" (
