@@ -670,7 +670,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
 
         // Add by darrin - 2021/11/20 - start
         var copyAllToStorageOption = {
-            text: Blockly.Msg.COPY_BLOCK,
+            text: Blockly.Msg.COPY_ALL_BLOCK,
             enabled: true,
             callback: function () {
                 Blockly.copy_all_storage_(block);
@@ -681,7 +681,6 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
         }
         menuOptions.push(copyAllToStorageOption);
         // Add by darrin - 2021/11/20 - end
-
 
         // Option to duplicate this block.
         var duplicateOption = {
