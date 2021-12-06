@@ -34,9 +34,9 @@ echo.
 echo pull origin/master
 "%~dp0..\MinGit\cmd\git.exe" pull --force origin master
 
-echo.
-echo Git gc
-"%~dp0..\MinGit\cmd\git.exe" gc
+rem echo.
+rem echo Git gc
+rem "%~dp0..\MinGit\cmd\git.exe" gc
 @echo off
 
 IF EXIST "%~dp0\__pycache__" (

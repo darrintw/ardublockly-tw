@@ -58,7 +58,7 @@ goog.require('goog.events.EventWrapper');
 goog.require('goog.events.EventLike');
 
 // Turn off debugging when compiled.
-var CLOSURE_DEFINES = {'goog.DEBUG': false};
+var CLOSURE_DEFINES = {'goog.DEBUG': true};
 
 /**
  * The main workspace most recently used.
