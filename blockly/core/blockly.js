@@ -286,20 +286,26 @@ Blockly.onKeyDown_ = function (e) {
             Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
             if (e.keyCode == 67) {
                 if (!e.shiftKey) {
-                    // 'c' for copy.
+                    // 'c' copy with child.
                     Blockly.hideChaff();
-                    // Blockly.copy_(Blockly.selected);
-                    // Blockly.copy_storage_(Blockly.selected);
                     Blockly.copy_all_storage_(Blockly.selected);
                 } else {
-                    // 'C' for copy with child.
+                    // 'C' for for copy.
                     Blockly.hideChaff();
-                    // Blockly.copy_all_storage_(Blockly.selected);
                     Blockly.copy_storage_(Blockly.selected);
+                }
+            } else if (e.keyCode == 68) {
+                if (!e.shiftKey) {
+                    // 'd' for duplicate with child.
+                    Blockly.hideChaff();
+                    Blockly.duplicate_all_(Blockly.selected);
+                } else {
+                    // 'D' for duplicate.
+                    Blockly.hideChaff();
+                    Blockly.duplicate_(Blockly.selected);
                 }
             } else if (e.keyCode == 88) {
                 // 'x' for cut.
-                // Blockly.copy_(Blockly.selected);
                 Blockly.copy_storage_(Blockly.selected);
                 deleteBlock = true;
             }
@@ -307,11 +313,6 @@ Blockly.onKeyDown_ = function (e) {
         if (e.keyCode == 86) {
             // 'v' for paste.
             Blockly.paste_();
-            /*
-            if (Blockly.clipboardXml_) {
-                Blockly.clipboardSource_.paste(Blockly.clipboardXml_);
-            }
-            */
         } else if (e.keyCode == 90) {
             // 'z' for undo 'Z' is for redo.
             Blockly.hideChaff();

@@ -386,6 +386,13 @@ Ardublockly.blocklyPaste = function () {
     }
 };
 
+/** Wraps the blockly 'duplicate' functionality. */
+Ardublockly.blocklyDuplicate = function () {
+    if (Blockly.selected) {
+        Blockly.duplicate_all_(Blockly.selected);
+    }
+};
+
 /** Wraps the blockly 'delete' functionality. */
 Ardublockly.blocklyDelete = function () {
     if (Blockly.selected && Blockly.selected.isDeletable()) {
