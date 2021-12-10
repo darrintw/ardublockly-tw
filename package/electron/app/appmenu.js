@@ -175,13 +175,13 @@ var getEditMenuData = function () {
             }, {
                 type: 'separator'
             }, {
-            /*    label: '剪下',
+                label: '剪下',
                 accelerator: 'CmdOrCtrl+X',
                 click: function () {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.blocklyCut()');
                 }
-            }, {*/
+            }, {
                 label: '複製',
                 accelerator: 'CmdOrCtrl+C',
                 click: function () {

@@ -284,6 +284,7 @@ Blockly.onKeyDown_ = function (e) {
     } else if (e.altKey || e.ctrlKey || e.metaKey) {
         if (Blockly.selected &&
             Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
+            e.preventDefault();
             if (e.keyCode == 67) {
                 if (!e.shiftKey) {
                     // 'c' copy with child.
@@ -297,11 +298,9 @@ Blockly.onKeyDown_ = function (e) {
             } else if (e.keyCode == 68) {
                 if (!e.shiftKey) {
                     // 'd' for duplicate with child.
-                    Blockly.hideChaff();
                     Blockly.duplicate_all_(Blockly.selected);
                 } else {
                     // 'D' for duplicate.
-                    Blockly.hideChaff();
                     Blockly.duplicate_(Blockly.selected);
                 }
             } else if (e.keyCode == 88) {
@@ -484,16 +483,17 @@ Blockly.paste_ = function () {
  */
 Blockly.duplicate_ = function (block) {
     // Save the clipboard.
-    var clipboardXml = Blockly.clipboardXml_;
-    var clipboardSource = Blockly.clipboardSource_;
+    /*var clipboardXml = Blockly.clipboardXml_;
+    var clipboardSource = Blockly.clipboardSource_;*/
 
     // Create a duplicate via a copy/paste operation.
-    Blockly.copy_(block);
-    block.workspace.paste(Blockly.clipboardXml_);
+    Blockly.copy_storage_(block);
+    Blockly.paste_();
+    // block.workspace.paste(Blockly.clipboardXml_);
 
     // Restore the clipboard.
-    Blockly.clipboardXml_ = clipboardXml;
-    Blockly.clipboardSource_ = clipboardSource;
+    /*Blockly.clipboardXml_ = clipboardXml;
+    Blockly.clipboardSource_ = clipboardSource;*/
 };
 /**
  * Duplicate this block and its children.
@@ -502,16 +502,17 @@ Blockly.duplicate_ = function (block) {
  */
 Blockly.duplicate_all_ = function (block) {
     // Save the clipboard.
-    var clipboardXml = Blockly.clipboardXml_;
-    var clipboardSource = Blockly.clipboardSource_;
+    /*var clipboardXml = Blockly.clipboardXml_;
+    var clipboardSource = Blockly.clipboardSource_;*/
 
     // Create a duplicate via a copy/paste operation.
-    Blockly.copy_all_(block);
-    block.workspace.paste(Blockly.clipboardXml_);
+    Blockly.copy_all_storage_(block);
+    Blockly.paste_();
+    // block.workspace.paste(Blockly.clipboardXml_);
 
     // Restore the clipboard.
-    Blockly.clipboardXml_ = clipboardXml;
-    Blockly.clipboardSource_ = clipboardSource;
+    /*Blockly.clipboardXml_ = clipboardXml;
+    Blockly.clipboardSource_ = clipboardSource;*/
 };
 /**
  * Cancel the native context menu, unless the focus is on an HTML input widget.
