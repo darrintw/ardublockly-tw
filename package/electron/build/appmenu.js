@@ -196,6 +196,13 @@ var getEditMenuData = function () {
                         .executeJavaScript('Ardublockly.blocklyPaste()');
                 }
             }, {
+                label: '複製並貼上',
+                accelerator: 'CmdOrCtrl+D',
+                click: function () {
+                    BrowserWindow.getFocusedWindow().webContents
+                        .executeJavaScript('Ardublockly.blocklyDuplicate()');
+                }
+            }, {
                 label: '刪除',
                 accelerator: 'Delete',
                 click: function () {
@@ -324,13 +331,13 @@ var getHelpMenuData = function () {
             }, {
                 type: 'separator'
             }, {
-                label: '線上更新',
+            /*    label: '線上更新',
                 click: function () {
                     server.stopServer();
                     app.quit();
                     shell.openPath(projectLocator.getProjectRootPath() + '\\update.bat');
                 }
-            }, {
+            }, {*/
                 label: '關於',
                 click: function () {
                     BrowserWindow.getFocusedWindow().webContents
