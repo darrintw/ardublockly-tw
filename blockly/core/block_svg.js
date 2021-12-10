@@ -655,6 +655,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
 
     if (this.isDeletable() && this.isMovable() && !block.isInFlyout) {
         // Add by darrin - 2021/11/20 - start
+        /*
         var copyToStorageOption = {
             text: Blockly.Msg.COPY_BLOCK,
             enabled: true,
@@ -666,11 +667,12 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
             copyToStorageOption.enabled = false;
         }
         menuOptions.push(copyToStorageOption);
+        */
         // Add by darrin - 2021/11/20 - end
 
         // Add by darrin - 2021/11/20 - start
         var copyAllToStorageOption = {
-            text: Blockly.Msg.COPY_ALL_BLOCK,
+            text: Blockly.Msg.COPY_BLOCK,
             enabled: true,
             callback: function () {
                 Blockly.copy_all_storage_(block);
@@ -683,6 +685,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
         // Add by darrin - 2021/11/20 - end
 
         // Option to duplicate this block.
+        /*
         var duplicateOption = {
             text: Blockly.Msg.DUPLICATE_BLOCK,
             enabled: true,
@@ -695,11 +698,12 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function (e) {
             duplicateOption.enabled = false;
         }
         menuOptions.push(duplicateOption);
-
+        */
+        
         // Add by darrin - 2021/11/01 - start
         // Option to duplicate this block and it's child.
         var duplicateAllOption = {
-            text: Blockly.Msg.DUPLICATE_ALL_BLOCK,
+            text: Blockly.Msg.DUPLICATE_BLOCK,
             enabled: true,
             callback: function () {
                 Blockly.duplicate_all_(block);
