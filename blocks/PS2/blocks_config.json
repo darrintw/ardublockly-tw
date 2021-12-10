@@ -1,0 +1,16 @@
+{
+  "categoryName": "PS2",
+  "description": "PS2 controler block.",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "PS2",
+  "toolbox": [
+    "<category name=\"PS2\">",
+    "    <block type=\"PS2_init\"></block>",
+    "    <block type=\"PS2_Button\"></block> ",
+    "    <block type=\"PS2_stk\"></block>",
+    "</category>"
+  ]
+}
