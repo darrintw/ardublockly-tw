@@ -46,7 +46,7 @@ ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend,
     var onReady = function () {
         if (request.readyState === 4) {
             if (request.status === 200) {
-                if (contentType === 'application/json;') {
+                if (contentType.indexOf('application/json') > -1) {
                     var jsonObjReceived = null;
                     try {
                         jsonObjReceived = JSON.parse(request.responseText);
@@ -55,9 +55,7 @@ ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend,
                         throw e;
                     }
                     cb(jsonObjReceived);
-                }
-                else if (contentType === 'application/text')
-                {
+                } else if (contentType.indexOf('application/text') > -1) {
                     var textReceived = null;
                     try {
                         textReceived = request.responseText;
@@ -66,9 +64,8 @@ ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend,
                         throw e;
                     }
                     cb(textReceived);
-                }
-                else
-                {
+                } else {
+                    console.log(contentType);
                     console.error('Incorrectly data type from ' + url);
                 }
             } else {
