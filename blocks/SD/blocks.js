@@ -8,13 +8,13 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.user');
+goog.provide('Blockly.Blocks.sd');
 
 goog.require('Blockly.Blocks');
 
 goog.require('Blockly.Types');
 
-Blockly.Blocks.user.HUE = 180;
+Blockly.Blocks.sd.HUE = 180;
 
 /* User define block */
 Blockly.Blocks['user_block'] = {
@@ -22,6 +22,6 @@ Blockly.Blocks['user_block'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.user.HUE);
+    this.setColour(Blockly.Blocks.sd.HUE);
   }
 };
