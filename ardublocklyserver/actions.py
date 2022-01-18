@@ -43,6 +43,12 @@ def create_sketch_from_string(sketch_code):
     :return: Sketch location. None if there was a problem.
     """
     settings = ServerCompilerSettings()
+    try:
+        os.makedirs(settings.sketch_dir)
+    except FileExistsError:
+        print()
+    except PermissionError:
+        print()
     return sketchcreator.create_sketch(sketch_dir=settings.sketch_dir,
                                        sketch_name=settings.sketch_name,
                                        sketch_code=sketch_code)
