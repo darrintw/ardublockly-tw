@@ -8,85 +8,110 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.ps2');
+goog.provide('Blockly.Blocks.PS2');
 
 goog.require('Blockly.Blocks');
 
-goog.require('Blockly.Types');
+Blockly.Blocks.PS2.HUE = 180;
 
-Blockly.Blocks.ps2.HUE = 180;
-
-/* User define block */
-Blockly.Blocks['user_block'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ADR_USER_MSG);
-        this.setNextStatement(true);
-        this.setColour(Blockly.Blocks.user.HUE);
-    }
-};
 //PS2
 Blockly.Blocks["PS2_init"] = {
     init: function () {
-        this.setColour(Blockly.Blocks.ps2.HUE);
-        this.appendDummyInput("")
-            .appendTitle("初始化PS2為")
-            .appendTitle(new Blockly.FieldDropdown([["Uno", "Uno"], ["Mega2560", "Mega2560"]]), "board");
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_SETUP)
+            .appendField(new Blockly.FieldVariable('ps2x'), 'VAR');
+        this.appendValueInput("CLOCK")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_PIN1);
+        this.appendValueInput("ATTENTION")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_PIN2);
+        this.appendValueInput("COMMAND")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_PIN3);
+        this.appendValueInput("DATA")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_PIN4);
+        this.setColour(Blockly.Blocks.PS2.HUE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setTooltip('');
+    }
+};
 
+// Start read PS2
+Blockly.Blocks["PS2_read"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_PS2)
+            .appendField(new Blockly.FieldVariable('ps2x'), 'VAR')
+            .appendField(Blockly.Msg.ARD_PS2_START_READ);
+        this.setColour(Blockly.Blocks.PS2.HUE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
     }
 };
 
 //
 Blockly.Blocks["PS2_Button"] = {
     init: function () {
-        this.setColour(Blockly.Blocks.ps2.HUE);
         var PSBUTTON = [
-            ["PSB_GREEN", "4096"],
-            ["PSB_RED", "8192"],
-            ["PSB_BLUE", "16384"],
-            ["PSB_PINK", "32768"],
-            ["PSB_L1", "1024"],
-            ["PSB_L2", "256"],
-            ["PSB_L3", "2"],
-            ["PSB_R1", "2048"],
-            ["PSB_R2", "512"],
-            ["PSB_R3", "4"],
-            ["PSB_PAD_UP", "16"],
-            ["PSB_PAD_RIGHT", "32"],
-            ["PSB_PAD_DOWN", "64"],
-            ["PSB_PAD_LEFT", "128"],
-            ["PSB_SELECT", "1"],
-            ["PSB_START", "8"]
+            ["Select", "PSB_SELECT"],
+            ["Start", "PSB_START"],
+            [Blockly.Msg.ARD_PS2_GREEN, "PSB_GREEN"],
+            [Blockly.Msg.ARD_PS2_RED, "PSB_RED"],
+            [Blockly.Msg.ARD_PS2_BLUE, "PSB_BLUE"],
+            [Blockly.Msg.ARD_PS2_PINK, "PSB_PINK"],
+            [Blockly.Msg.ARD_PS2_TRIANGLE, "PSB_TRIANGLE"],
+            [Blockly.Msg.ARD_PS2_CIRCLE, "PSB_CIRCLE"],
+            [Blockly.Msg.ARD_PS2_CROSS, "PSB_CROSS"],
+            [Blockly.Msg.ARD_PS2_SQUARE, "PSB_SQUARE"],
+            ["L1", "PSB_L1"],
+            ["L2", "PSB_L2"],
+            ["L3", "PSB_L3"],
+            ["R1", "PSB_R1"],
+            ["R2", "PSB_R2"],
+            ["R3", "PSB_R3"],
+            [Blockly.Msg.ARD_PS2_LEFT, "PSB_PAD_LEFT"],
+            [Blockly.Msg.ARD_PS2_RIGHT, "PSB_PAD_RIGHT"],
+            [Blockly.Msg.ARD_PS2_UP, "PSB_PAD_UP"],
+            [Blockly.Msg.ARD_PS2_DOWN, "PSB_PAD_DOWN"]
         ];
-        this.appendDummyInput("")
-            .appendTitle("PS2按钮")
-            .appendTitle(new Blockly.FieldDropdown(PSBUTTON), "psbt")
-            .appendTitle("狀態")
-            .appendTitle(new Blockly.FieldDropdown([["按下", "1"], ["鬆開", "0"]]), "btstate");
-        this.setOutput(true, Boolean);
+        this.setColour(Blockly.Blocks.PS2.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_PS2)
+            .appendField(new Blockly.FieldVariable('ps2x'), 'VAR')
+            .appendField(Blockly.Msg.ARD_PS2_BUT)
+            .appendField(new Blockly.FieldDropdown(PSBUTTON), "psbt")
+            .appendField(Blockly.Msg.ARD_PS2_STATUS)
+            .appendField(new Blockly.FieldDropdown(
+                [[Blockly.Msg.ARD_PS2_BUTTON, "0"],
+                    [Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "1"],
+                    [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "2"],
+                    [Blockly.Msg.ARD_PS2_NEW_BUTTON_STATUS, "3"]]), "btstate");
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
-
     }
 };
 
 Blockly.Blocks["PS2_stk"] = {
     init: function () {
-        this.setColour(Blockly.Blocks.ps2.HUE);
+        this.setColour(Blockly.Blocks.PS2.HUE);
         var PSSTK = [
-            ["PSS_RX", "5"],
-            ["PSS_RY", "6"],
-            ["PSS_LX", "7"],
-            ["PSS_LY", "8"],
+            [Blockly.Msg.ARD_PS2_PSS_LX, "PSS_LX"],
+            [Blockly.Msg.ARD_PS2_PSS_LY, "PSS_LY"],
+            [Blockly.Msg.ARD_PS2_PSS_RX, "PSS_RX"],
+            [Blockly.Msg.ARD_PS2_PSS_RY, "PSS_RY"]
         ];
-        this.appendDummyInput("")
-            .appendTitle("PS2搖桿")
-            .appendTitle(new Blockly.FieldDropdown(PSSTK), "psstk")
-        this.setOutput(true, Number);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_PS2)
+            .appendField(new Blockly.FieldVariable('ps2x'), 'VAR')
+            .appendField(Blockly.Msg.ARD_PS2_READ)
+            .appendField(new Blockly.FieldDropdown(PSSTK), "psstk")
+        this.setOutput(true, "Number");
         this.setTooltip('');
-
     }
 };
 

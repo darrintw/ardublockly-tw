@@ -84,7 +84,7 @@ Ardublockly.LOCALISED_TEXT = {
     arduinoOpErrorIdContext_56: "Unknown Arduino Board<br>" +
         "The Arduino Board has not been set.<br>" +
         "Please select the appropriate Arduino Board from the settings.",
-    arduinoOpErrorIdContext_52: "Unexpected server error.",
+    arduinoOpErrorIdContext_57: "Unexpected server error.",
     arduinoOpErrorIdContext_64: "Unable to parse sent JSON.",
     arduinoOpErrorUnknown: "Unexpected error",
     /* Modals */
@@ -145,6 +145,7 @@ Ardublockly.LOCALISED_TEXT = {
     catComms: "Comms",
     catSensor: "Sensor",
     //catSSensor: "Special Sensor感測器",
+    catSDCard: "SD Card",
     catWS2812Leds: "WS2812 LED Strip",
     catI2CLCD: "I2C LCD Display",
     catLEDMatrix: "MAX7219 LED Matrix Display",

@@ -156,7 +156,7 @@ Blockly.Arduino['afmotor'] = function (block) {
     var afmotor_control = block.getFieldValue('afmotor_control');
     var afmotor_channel = block.getFieldValue('afmotor_channel');
     var motorName = 'motor_dc_' + afmotor_channel;
-    var feqName = '';
+    var feqName;
     switch (parseInt(afmotor_channel)) {
         case 1:
         case 2:
@@ -184,7 +184,7 @@ Blockly.Arduino['afmotor_var'] = function (block) {
     var afmotor_control = block.getFieldValue('afmotor_control');
     var afmotor_channel = block.getFieldValue('afmotor_channel');
     var motorName = 'motor_dc_' + afmotor_channel;
-    var feqName = '';
+    var feqName;
     switch (parseInt(afmotor_channel)) {
         case 1:
         case 2:

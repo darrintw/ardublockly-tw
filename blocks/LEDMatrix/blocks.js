@@ -237,7 +237,7 @@ Blockly.Blocks["display_Matrix_LedArray"] = {
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a86")
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a87")
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a88");
-        this.setOutput(true, Number);
+        this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
     }
 };

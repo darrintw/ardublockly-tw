@@ -86,7 +86,7 @@ Ardublockly.LOCALISED_TEXT = {
     arduinoOpErrorIdContext_56: "未知的Arduino開發板<br>" +
         "Arduino開發板種類未設定<br>" +
         "請在[設定]功能選擇適當的Arduino開發板",
-    arduinoOpErrorIdContext_52: "未知的伺服器錯誤",
+    arduinoOpErrorIdContext_57: "未知的伺服器錯誤",
     arduinoOpErrorIdContext_64: "無法解析JSON檔",
     arduinoOpErrorUnknown: "未知的錯誤",
     /*
@@ -160,12 +160,12 @@ Ardublockly.LOCALISED_TEXT = {
     catTime: "時間",
     catTone: "蜂鳴器",
     catMotors: "馬達",
-    catPS2: "PS2",
+    catPS2: "PS2搖桿",
     catRTC: "時鐘",
     catComms: "序列埠",
     catSensor: "感測器",
     //catSSensor: "罕用感測器",
-    catRTC: "時鐘",
+    catSDCard: "SD卡",
     catWS2812Leds: "WS2812 LED 燈條",
     catI2CLCD: "I2C LCD 顯示器",
     catLEDMatrix: "MAX7219 LED 點矩陣",

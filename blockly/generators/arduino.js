@@ -158,34 +158,35 @@ Blockly.Arduino.init = function (workspace) {
 Blockly.Arduino.finish = function (code) {
     // Convert the includes, definitions, and functions dictionaries into lists
     var includes = [], defines = [], definitions = [], variables = [], functions = [];
-    for (var name in Blockly.Arduino.includes_) {
+    var name;
+    for (name in Blockly.Arduino.includes_) {
         includes.push(Blockly.Arduino.includes_[name]);
     }
     if (includes.length) {
         includes.push('\n');
     }
-    for (var name in Blockly.Arduino.variables_) {
+    for (name in Blockly.Arduino.variables_) {
         variables.push(Blockly.Arduino.variables_[name]);
     }
     if (variables.length) {
         variables.push('\n');
     }
-    for (var name in Blockly.Arduino.defines_) {
+    for (name in Blockly.Arduino.defines_) {
         defines.push(Blockly.Arduino.defines_[name]);
     }
     if (defines.length) {
         defines.push('\n');
     }
-    for (var name in Blockly.Arduino.definitions_) {
+    for (name in Blockly.Arduino.definitions_) {
         definitions.push(Blockly.Arduino.definitions_[name]);
     }
     if (definitions.length) {
         definitions.push('\n');
     }
-    for (var name in Blockly.Arduino.codeFunctions_) {
+    for (name in Blockly.Arduino.codeFunctions_) {
         functions.push(Blockly.Arduino.codeFunctions_[name]);
     }
-    for (var name in Blockly.Arduino.userFunctions_) {
+    for (name in Blockly.Arduino.userFunctions_) {
         functions.push(Blockly.Arduino.userFunctions_[name]);
     }
     if (functions.length) {
@@ -198,7 +199,7 @@ Blockly.Arduino.finish = function (code) {
         userSetupCode = '\n' + Blockly.Arduino.setups_['userSetupCode'];
         delete Blockly.Arduino.setups_['userSetupCode'];
     }
-    for (var name in Blockly.Arduino.setups_) {
+    for (name in Blockly.Arduino.setups_) {
         setups.push(Blockly.Arduino.setups_[name]);
     }
     if (userSetupCode) {
@@ -384,7 +385,6 @@ Blockly.Arduino.quote_ = function (string) {
  * @param {!Blockly.Block} block The current block.
  * @param {string} code The Arduino code created for this block.
  * @return {string} Arduino code with comments and subsequent blocks added.
- * @this {Blockly.CodeGenerator}
  * @private
  */
 Blockly.Arduino.scrub_ = function (block, code) {
@@ -406,7 +406,7 @@ Blockly.Arduino.scrub_ = function (block, code) {
             if (block.inputList[x].type === Blockly.INPUT_VALUE) {
                 var childBlock = block.inputList[x].connection.targetBlock();
                 if (childBlock) {
-                    var comment = Blockly.Arduino.allNestedComments(childBlock);
+                    comment = Blockly.Arduino.allNestedComments(childBlock);
                     if (comment) {
                         commentCode += Blockly.Arduino.prefixLines(comment, '// ');
                     }
