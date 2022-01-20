@@ -1,0 +1,14 @@
+{
+  "categoryName": "SDCard",
+  "description": "SD Card Reader",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "SDCard",
+  "toolbox": [
+    "<category>",
+    "  <block type=\"user_block\"></block>",
+    "</category>"
+  ]
+}

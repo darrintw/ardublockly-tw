@@ -14,7 +14,7 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.Motors.HUE = 180;
 
-var afmotor_options = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+const afmotor_options = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
 
 Blockly.Blocks['servo_attach'] = {
     init: function () {
@@ -195,7 +195,7 @@ Blockly.Blocks['afmotor'] = {
             .appendField(Blockly.Msg.ARD_AFMOROT)
             .appendField(Blockly.Msg.ARD_AFMOROT_CHANNEL)
             .appendField(new Blockly.FieldDropdown(afmotor_options), "afmotor_channel")
-            .appendField(Blockly.Msg.AFMOROT_CONTROL)
+            .appendField(Blockly.Msg.ARD_AFMOROT_CONTROL)
             .appendField(new Blockly.FieldDropdown([[Blockly.Msg.ARD_AFMOROT_FORWARD, "FORWARD"],
                     [Blockly.Msg.ARD_AFMOROT_BACKWARD, "BACKWARD"],
                     [Blockly.Msg.ARD_AFMOROT_RELEASE, "RELEASE"]]),
@@ -218,7 +218,7 @@ Blockly.Blocks['afmotor_var'] = {
             .appendField(Blockly.Msg.ARD_AFMOROT)
             .appendField(Blockly.Msg.ARD_AFMOROT_CHANNEL)
             .appendField(new Blockly.FieldDropdown(afmotor_options), "afmotor_channel")
-            .appendField(Blockly.Msg.AFMOROT_CONTROL)
+            .appendField(Blockly.Msg.ARD_AFMOROT_CONTROL)
             .appendField(new Blockly.FieldDropdown([
                     [Blockly.Msg.ARD_AFMOROT_FORWARD, "FORWARD"],
                     [Blockly.Msg.ARD_AFMOROT_BACKWARD, "BACKWARD"],
@@ -236,7 +236,7 @@ Blockly.Blocks['afmotor_var'] = {
 };
 
 /* stepper */
-Blockly.Blocks["stepper_setup_4pin"] = {
+Blockly.Blocks["stepper_setup_2pin"] = {
     init: function () {
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.appendDummyInput()
@@ -260,6 +260,7 @@ Blockly.Blocks["stepper_setup_4pin"] = {
     }
 };
 
+/* stepper */
 Blockly.Blocks["stepper_setup_4pin"] = {
     init: function () {
         this.setColour(Blockly.Blocks.Motors.HUE);

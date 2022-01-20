@@ -7,6 +7,8 @@
     "I2CLCD": "I2CLCD/blocks_config.json",
     "LEDMatrix": "LEDMatrix/blocks_config.json",
     "WS2812Leds": "WS2812Leds/blocks_config.json",
+    "PS2": "PS2/blocks_config.json",
+    "SDCard": "SDCard/blocks_config.json",
     "Pixetto": "Pixetto/blocks_config.json"
   }
 }

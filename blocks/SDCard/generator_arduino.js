@@ -8,7 +8,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Arduino.sd');
+goog.provide('Blockly.Arduino.SDCard');
 
 goog.require('Blockly.Arduino');
 

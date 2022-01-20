@@ -242,16 +242,22 @@ Ardublockly.updateToolboxLanguage = function () {
  * @param {!Element} categoryDom Toolbox category to add add the end of tree.
  */
 Ardublockly.addToolboxCategory = function (categoryTitle, categoryDom) {
-    categoryDom.id = 'cat' + categoryTitle.replace(/\s+/g, '');
-    var catText = Ardublockly.getLocalStr(categoryDom.id) ||
-        Ardublockly.getLocalStr('BLOCKS_CATEGORY_' + categoryTitle.toUpperCase());
-    if (!catText) {
-        catText = categoryTitle;
+    try {
+        categoryDom.id = 'cat' + categoryTitle.replace(/\s+/g, '');
+        var catText = Ardublockly.getLocalStr(categoryDom.id) ||
+            Ardublockly.getLocalStr('BLOCKS_CATEGORY_' + categoryTitle.toUpperCase());
+        if (!catText) {
+            catText = categoryTitle;
+        }
+        categoryDom.setAttribute('name', catText);
+        Ardublockly.xmlTree.appendChild(document.createElement('sep'));
+        Ardublockly.xmlTree.appendChild(categoryDom);
+        Ardublockly.workspace.updateToolbox(Ardublockly.xmlTree);
     }
-    categoryDom.setAttribute('name', catText);
-    Ardublockly.xmlTree.appendChild(document.createElement('sep'));
-    Ardublockly.xmlTree.appendChild(categoryDom);
-    Ardublockly.workspace.updateToolbox(Ardublockly.xmlTree);
+    catch (e){
+        console.log(categoryTitle);
+        console.log(e);
+    }
 };
 
 /**
