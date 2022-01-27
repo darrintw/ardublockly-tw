@@ -27,7 +27,7 @@ Blockly.Msg.ARD_SERVO_DETACH = "detach SERVO from Pin";
 Blockly.Msg.ARD_SERVO_DETACH_TIP = "";
 
 /// AFMorot
-Blockly.Msg.ARD_AFMOROT = 'L293D小車';
+Blockly.Msg.ARD_AFMOROT = '2.L293D小車';
 Blockly.Msg.ARD_AFMOROT_CONTROL = 'Command';
 Blockly.Msg.ARD_AFMOROT_FORWARD = 'Forward';
 Blockly.Msg.ARD_AFMOROT_BACKWARD = 'Backward';

@@ -1,0 +1,113 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="VDyW/!E(IvS]9.5ZE[lq">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="pixetto_setup" id="2Xo4Qbt4e+:exQD@pS=-">
+            <field name="PIXETTO_RX">A4</field>
+            <field name="PIXETTO_TX">A5</field>
+            <next>
+              <block type="controls_whileUntil" id=".?6]cA7C%CaZcQ0z*pa%">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_boolean" id=".:)o9uWY@@8(EO^V3X0E">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="controls_if" id="ORZQ{D]/)zPTqwUd*oIm">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="pixetto_detected" id="sAWEfxDWGJ@;0.Ljj8*`"></block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="(/aoVMVR+2^+EM!9!^}w">
+                        <value name="IF0">
+                          <block type="logic_compare" id="2]%*dM_Ouub05KMk#E7=">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="pixetto_gettypeid" id="AX~VC1`L6(R1VmWeKZI`"></block>
+                            </value>
+                            <value name="B">
+                              <block type="pixetto_color" id="8UJD%;[6wlAGq{~^yii0">
+                                <field name="PIXETTO_COLOR_SELECTOR">COLOR_RED</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="serial_print" id="oF#rEta`2y)7hCn[.u)#">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="pixetto_getposx" id="Pr%KV*GMc}il?2j]LYMr"></block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="VP)30!Ba7=mzyU,}acp#">
+                            <value name="IF0">
+                              <block type="logic_compare" id="fTgl8A?qqQ`gqk?Go6NG">
+                                <field name="OP">NEQ</field>
+                                <value name="A">
+                                  <block type="pixetto_gettypeid" id="EQ_]D@[|/@BV:504ET/N"></block>
+                                </value>
+                                <value name="B">
+                                  <block type="pixetto_color" id="66Jn6yyqkuFAvkktehC[">
+                                    <field name="PIXETTO_COLOR_SELECTOR">COLOR_RED</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="serial_print" id="Uo;{%mpyx;]34Fbx2KYJ">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">TRUE</field>
+                                <value name="CONTENT">
+                                  <block type="text" id="(R`nIsgu@#9.5CET9g=p">
+                                    <field name="TEXT">not red</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_flow_statements" id="85WMe:b1k_N)+xG%~n7/">
+                                    <field name="FLOW">BREAK</field>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="serial_print" id="1W?2lXO])]Y1qT~:T*M7">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="dz_cGXlBrm8rm;g(.Vc8">
+                            <field name="TEXT">null</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="time_delay" id="%nD^c,}A%*Bn6x*[+s!Z">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="Q33@-BSxLwlkwHx^e0@b">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
