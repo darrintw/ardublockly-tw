@@ -39,19 +39,15 @@ Ardublockly.init = function () {
             Ardublockly.changeBlocklyArduinoBoard(
                 jsonObj['selected'].toLowerCase().replace(/ /g, '_'));
         });
+        document.getElementById('version_output').hidden = true;
     } else {
-        var elId = document.getElementById('ide_buttons_wrapper');
-        elId.hidden = true;
-        elId = document.getElementById('button_serial_monitor');
-        elId.hidden = true;
+        document.getElementById('ide_buttons_wrapper').hidden = true;
+        document.getElementById('button_serial_monitor').hidden = true;
         /*
-        elId = document.getElementById('button_examples');
-        elId.hidden = true;
-        elId = document.getElementById('menu_settings');
-        elId.hidden = true;
+        document.getElementById('button_examples').hidden = true;
+        document.getElementById('menu_settings').hidden = true;
          */
-        elId = document.getElementById('ide_output');
-        elId.hidden = true;
+        document.getElementById('ide_output').hidden = true;
     }
 
     window.oncontextmenu = (e) => {
@@ -65,7 +61,10 @@ Ardublockly.init = function () {
 Ardublockly.addVersion = function () {
     ArdublocklyServer.getVersionNumber(function (version) {
         if (version === null) return Ardublockly.openNotConnectedModal();
-        document.getElementById("ide_output_collapsible_ardublocklyVersion").textContent = "v" + version;
+        var elId = document.getElementsByClassName("translatable_ardublocklyVersion");
+        Array.prototype.forEach.call(elId, function (el) {
+            el.textContent = "v" + version;
+        });
         //document.title = "Ardublockly  v" + version;
     });
 };
