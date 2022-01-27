@@ -65,7 +65,8 @@ Ardublockly.init = function () {
 Ardublockly.addVersion = function () {
     ArdublocklyServer.getVersionNumber(function (version) {
         if (version === null) return Ardublockly.openNotConnectedModal();
-        document.title = "Ardublockly  v" + version;
+        document.getElementById("ide_output_collapsible_ardublocklyVersion").textContent = "v" + version;
+        //document.title = "Ardublockly  v" + version;
     });
 };
 

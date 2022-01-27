@@ -239,6 +239,14 @@ ul.side-nav li.side-menu-end {
     border-right: 0;
 }
 
+.ide_output_collapsible .translatable_arduinoOpMainTitle {
+    float: left;
+}
+
+.ide_output_collapsible .translatable_ardublocklyVersion {
+    float: right;
+}
+
 .ide_output_header_normal {
     background-color: #006468;
     color: #ffffff;
