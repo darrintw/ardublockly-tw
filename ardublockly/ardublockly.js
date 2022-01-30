@@ -43,10 +43,6 @@ Ardublockly.init = function () {
     } else {
         document.getElementById('ide_buttons_wrapper').hidden = true;
         document.getElementById('button_serial_monitor').hidden = true;
-        /*
-        document.getElementById('button_examples').hidden = true;
-        document.getElementById('menu_settings').hidden = true;
-         */
         document.getElementById('ide_output').hidden = true;
     }
 
@@ -65,7 +61,6 @@ Ardublockly.addVersion = function () {
         Array.prototype.forEach.call(elId, function (el) {
             el.textContent = "v" + version;
         });
-        //document.title = "Ardublockly  v" + version;
     });
 };
 
@@ -282,6 +277,7 @@ Ardublockly.ideSendUpload = function () {
                 Ardublockly.sendCode();
             });
     } else {
+        ArdublocklyServer.cliKillPutty();
         Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'));
         Ardublockly.resetIdeOutputContent();
         Ardublockly.sendCode();
@@ -518,6 +514,7 @@ Ardublockly.openSerialMonitor = function () {
             var dataBack = ArdublocklyServer.jsonToIdeModal(jsonObj);
             Ardublockly.arduinoIdeOutput(dataBack);
         };
+        ArdublocklyServer.cliKillPutty();
         ArdublocklyServer.sendCliToPutty(sendCodeReturn);
     }
 };

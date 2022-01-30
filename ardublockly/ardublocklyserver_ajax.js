@@ -524,6 +524,14 @@ ArdublocklyServer.sendCliToPutty = function (callback) {
 };
 
 /**
+ * kill putty process.
+ */
+ArdublocklyServer.cliKillPutty = function () {
+    ArdublocklyServer.sendRequest(
+        '/killputty', 'POST', 'application/json', null, null);
+};
+
+/**
  * Get version number.
  */
 ArdublocklyServer.getVersionNumber = function (callback) {
