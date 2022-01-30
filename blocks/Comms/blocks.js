@@ -168,6 +168,34 @@ Blockly.Blocks['serial_print_hex'] = {
     }
 };
 
+Blockly.Blocks['serial_write'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl('https://www.arduino.cc/en/Serial/write');
+        this.setColour(Blockly.Blocks.serial.HUE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID')
+            .appendField(Blockly.Msg.ARD_SERIAL_WRITE);
+        this.appendValueInput('CONTENT');
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_PRINT_TIP);
+    },
+    /**
+     * Updates the content of the the serial related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
+
 Blockly.Blocks['serial_available'] = {
     /**
      * Block for creating a write to serial com function.

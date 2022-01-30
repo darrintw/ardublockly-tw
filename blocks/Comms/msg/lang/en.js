@@ -9,6 +9,7 @@ Blockly.Msg.BLOCKS_CATEGORY_COMMS = 'Serial';
 Blockly.Msg.ARD_SERIAL_BPS = "bps";
 Blockly.Msg.ARD_SERIAL_PRINT_MSG = "%1 print %2 %3 add new line";
 Blockly.Msg.ARD_SERIAL_PRINT = "send";
+Blockly.Msg.ARD_SERIAL_WRITE = "write";
 Blockly.Msg.ARD_SERIAL_PRINT_NEWLINE = "return";
 Blockly.Msg.ARD_SERIAL_PRINT_TIP = "Send text to terminal/serial port";
 Blockly.Msg.ARD_SERIAL_PRINT_WARN = "A setup block for %1 must be added to the workspace to use this block!";

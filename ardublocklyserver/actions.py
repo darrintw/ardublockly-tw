@@ -12,6 +12,8 @@ import locale
 import os
 import subprocess
 import sys
+import time
+import psutil
 # local-packages imports
 import six
 # This package modules
@@ -19,6 +21,8 @@ from os import listdir
 from os.path import isfile, isdir, join
 from ardublocklyserver import sketchcreator
 from ardublocklyserver.compilersettings import ServerCompilerSettings
+
+prog_pid = -1
 
 
 #
@@ -499,6 +503,27 @@ def load_putty_cli():
         cli_command = ['putty.exe', '-serial', settings.get_serial_port_flag(), '-sercfg', baud]
         # print(cli_command)
         print('\nOpen putty...')
-        subprocess.Popen(cli_command, shell=False)
+        prog_start = subprocess.Popen(cli_command, shell=False)
+
+        global prog_pid
+        prog_pid = psutil.Process(prog_start.pid)
+    return success, std_out, err_out, exit_code
+
+
+#
+# Kill Putty
+#
+def kill_putty_cli():
+    success = True
+    std_out = ''
+    err_out = ''
+    exit_code = 0
+
+    try:
+        for c in prog_pid.children(recursive=True):
+            c.kill()
+        prog_pid.kill()
+    except Exception as e:
+        print(e)
 
     return success, std_out, err_out, exit_code

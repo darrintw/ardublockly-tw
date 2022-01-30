@@ -4,7 +4,6 @@ goog.provide('Blockly.Arduino.serial');
 
 goog.require('Blockly.Arduino');
 
-
 /**
  * Code generator of block for writing to the serial com.
  * Arduino code: loop { Serial.print(X); }
@@ -55,6 +54,28 @@ Blockly.Arduino['serial_print_hex'] = function (block) {
     } else {
         code = serialId + '.print(' + content + ', ' + decimal + ');\n';
     }
+
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['serial_write'] = function (block) {
+    var serialId = block.getFieldValue('SERIAL_ID');
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
+    for (var i = 0; i < serialPins.length; i++) {
+        Blockly.Arduino.reservePin(block, serialPins[i][1],
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL_' + serialPins[i][0]);
+    }
+    var code = serialId + '.write(' + content + ');\n';
 
     return code;
 };

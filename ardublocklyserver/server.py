@@ -523,7 +523,39 @@ def handler_code_post():
         response_dict.update({
             'errors': [{
                 'id': exit_code,
-                'description': 'More info available in the \'ide_data\' value.'
+                'description': 'More info available in the \'putty\' value.'
+            }]
+        })
+    set_header_no_cache()
+    return response_dict
+
+
+@app.post('/killputty')
+def handler_code_post():
+    success = False
+    std_out, err_out = '', ''
+
+    response_dict = {'response_type': 'ide_output',
+                     'response_state': 'full_response'}
+    try:
+        success, std_out, err_out, exit_code = \
+            actions.kill_putty_cli()
+    except Exception as e:
+        exit_code = 52
+        err_out += 'Unexpected server error.'
+        print('Error: Exception in load_putty_cli:\n%s' % str(e))
+
+    response_dict.update({'success': success,
+                          'ide_mode': 'killputty',
+                          'ide_data': {
+                              'std_output': std_out,
+                              'err_output': err_out,
+                              'exit_code': exit_code}})
+    if not success:
+        response_dict.update({
+            'errors': [{
+                'id': exit_code,
+                'description': 'More info available in the \'killputty\' value.'
             }]
         })
     set_header_no_cache()
