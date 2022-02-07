@@ -1,0 +1,109 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="92" y="-182">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="]*joKmY4evNVzUmJw5AZ">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="DS1302_init" id="I-]wh`wi5g5H@1QB1_cI">
+            <value name="RST">
+              <shadow type="io_allpins" id="]j.PH^)z%qoyk1VM^LEg">
+                <field name="PIN">7</field>
+              </shadow>
+            </value>
+            <value name="DAT">
+              <shadow type="io_allpins" id="I/.2W:vI+#rZ}#jI(r21">
+                <field name="PIN">8</field>
+              </shadow>
+            </value>
+            <value name="CLK">
+              <shadow type="io_allpins" id="MN-Oqd2ZI5@lq6|XtVHt">
+                <field name="PIN">9</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="RTC_set_datetime" id=")%x#%u1CRHExDzirA?7/">
+                <value name="date">
+                  <block type="get_system_date_time" id="vh9@.DF.M6.G(0EGI!3d">
+                    <field name="type">DATE</field>
+                  </block>
+                </value>
+                <value name="time">
+                  <block type="get_system_date_time" id="h%d}|`)VFEX.6(*TnsMP">
+                    <field name="type">TIME</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="s)qCSr]%FUuRTU.]j4w)">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">TRUE</field>
+        <value name="CONTENT">
+          <block type="text_join" id="76?0.YEa;nB@p,ps9:JB">
+            <mutation items="11"></mutation>
+            <value name="ADD0">
+              <block type="RTC_get_rtc" id="cl4)vh|k+.fP!yEVOFXn">
+                <field name="TIME_TYPE">Year</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="GJgV^YhzP#0=g?W,UX_?">
+                <field name="TEXT">/</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="RTC_get_rtc" id="_Cw~0^`U;p)Pti7D=TaG">
+                <field name="TIME_TYPE">Month</field>
+              </block>
+            </value>
+            <value name="ADD3">
+              <block type="text" id=")-Lz|at-III6]rkGrUs,">
+                <field name="TEXT">/</field>
+              </block>
+            </value>
+            <value name="ADD4">
+              <block type="RTC_get_rtc" id="r~KMeOA-@,;N8Tg%Azz[">
+                <field name="TIME_TYPE">Day</field>
+              </block>
+            </value>
+            <value name="ADD5">
+              <block type="text" id="_zy{HjQ]Tp[{h*EOIX/4">
+                <field name="TEXT"> </field>
+              </block>
+            </value>
+            <value name="ADD6">
+              <block type="RTC_get_rtc" id="861klolxI=6mo;1b{SnQ">
+                <field name="TIME_TYPE">Hour</field>
+              </block>
+            </value>
+            <value name="ADD7">
+              <block type="text" id="Jezu|2-t}r{;C:#EALW+">
+                <field name="TEXT">:</field>
+              </block>
+            </value>
+            <value name="ADD8">
+              <block type="RTC_get_rtc" id="L*mswluynuVz+pe)!wau">
+                <field name="TIME_TYPE">Minute</field>
+              </block>
+            </value>
+            <value name="ADD9">
+              <block type="text" id="76X-uqy[r?IK3)PmC{LN">
+                <field name="TEXT">:</field>
+              </block>
+            </value>
+            <value name="ADD10">
+              <block type="RTC_get_rtc" id=".+p*BM?Es;!uRa^.i8sq">
+                <field name="TIME_TYPE">Second</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

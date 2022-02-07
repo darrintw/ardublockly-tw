@@ -1,0 +1,197 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="-94" y="174">
+    <statement name="SETUP_FUNC">
+      <block type="I2CLCD_setup" id="t=0!lAcXp.{CuzLtx,!s">
+        <field name="I2C_ADDR">0x27</field>
+        <field name="COL">16</field>
+        <field name="ROW">2</field>
+        <next>
+          <block type="I2CLCD_clear" id="m:+Ozc7@@edh)u~92(;2">
+            <next>
+              <block type="I2CLCD_backlightOn" id="]cu7L`o9~1(=IV3x1F!M">
+                <next>
+                  <block type="io_input" id="58#6x*L8%km9]vn3X~;1">
+                    <field name="PIN">2</field>
+                    <next>
+                      <block type="variables_set" id="cFP-I!{bO:z[-D|)U@%Z">
+                        <field name="VAR">click_times</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="4-;)x6iob(b:WrG7La[v">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="?=^kIP`%r}./%wT[da2_">
+        <field name="VAR">x_value</field>
+        <value name="VALUE">
+          <block type="io_analogread" id="cbHh1*tD~{zk=NNK01oF">
+            <field name="PIN">A6</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="{!saeQ_U=/.n.HH-A}+R">
+            <field name="VAR">y_value</field>
+            <value name="VALUE">
+              <block type="io_analogread" id="47p-S9zW?Lgd*`W0HL2{">
+                <field name="PIN">A7</field>
+              </block>
+            </value>
+            <next>
+              <block type="I2CLCD_move" id="ni~vEH=1,[^eYIl@j/3N">
+                <value name="X">
+                  <block type="math_number" id="B+*UM7%k__nWD{,]Bkfi">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="Y">
+                  <block type="math_number" id="ZL1i8qYR)3VJlq@T;n2M">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="I2CLCD_print" id="5._eSLfkT*jG(qlqi|z*">
+                    <value name="CONTENT">
+                      <block type="text_join" id="3eFD^+W*[;/rB=nQnsG`">
+                        <mutation items="4"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="u73b+.H(0Gd7Lr_9~``=">
+                            <field name="TEXT">X:</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="j7Y*XYi[Un31e[[Oa0~8">
+                            <field name="VAR">x_value</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="0msgM#,mp=y-hF|cZmR1">
+                            <field name="TEXT">, Y:</field>
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="variables_get" id="r#cUo5v?2cHVk|{j]]1I">
+                            <field name="VAR">y_value</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="dDUo(eweJ#W}vo:Wxw,w">
+                        <value name="IF0">
+                          <block type="logic_compare" id="j]eT]|Wi2*dJE[DBbHfi">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="io_digitalread" id="LZ=xD++V?2GUYJvK0@LN">
+                                <field name="PIN">2</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="io_highlow" id="6VvFCvAM!a?*X?/WYjLS">
+                                <field name="STATE">HIGH</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="time_delay" id="nemZ4i)EIeDk%D=H9hB+">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="#4C:Sp8pHaKg){5wa=zs">
+                                <field name="NUM">20</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="controls_if" id=";i}:y??RI??C,z~r|c*/">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="=#O9J6S!NP0GZGva[xgS">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="io_digitalread" id=":ua:xH-Q7K+wZ`=]Mnep">
+                                        <field name="PIN">2</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="io_highlow" id="Eo3`Y+.^P]6Ft.U6z.|}">
+                                        <field name="STATE">HIGH</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="variables_set" id="3R~IYMXeLjxoi_^pD6FR">
+                                    <field name="VAR">click_times</field>
+                                    <value name="VALUE">
+                                      <block type="math_arithmetic" id="fFoTHct14DP7.0KE4%S:">
+                                        <field name="OP">ADD</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="MK}7!f=fe/J,,X/4US./">
+                                            <field name="VAR">click_times</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="jq4Oss,9:@I%)[y/C]HT">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="I2CLCD_move" id="I?;/}F_0?RbYBI#yB:o!">
+                            <value name="X">
+                              <block type="math_number" id=":=5M)^k!,q#{(NIB~S|H">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <block type="math_number" id="mtmrPKDmxv5DTz)*=RYu">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="I2CLCD_print" id="J~vDK|KEtvpf/S9ZP^XI">
+                                <value name="CONTENT">
+                                  <block type="text_join" id=".y=at]58[U/xDqT8N[%|">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text" id="eb4v.4(o3vhEXXuft`@W">
+                                        <field name="TEXT">Click:</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="variables_get" id="JI0:|j=.N{:zceAOV2AE">
+                                        <field name="VAR">click_times</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

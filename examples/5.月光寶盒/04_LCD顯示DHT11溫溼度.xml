@@ -1,0 +1,192 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="10" y="-185">
+    <statement name="SETUP_FUNC">
+      <block type="I2CLCD_setup" id="t=0!lAcXp.{CuzLtx,!s">
+        <field name="I2C_ADDR">0x27</field>
+        <field name="COL">16</field>
+        <field name="ROW">2</field>
+        <next>
+          <block type="I2CLCD_clear" id="m:+Ozc7@@edh)u~92(;2">
+            <next>
+              <block type="I2CLCD_backlightOn" id="]cu7L`o9~1(=IV3x1F!M">
+                <next>
+                  <block type="time_delay" id="2Y6qwX`B*`,p=/tkLuWj">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="jozO?w!*lbZ%p_n0)i=l">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="I2CLCD_backlightOff" id="lhg!Ggq+.K0[CcHB@zA@">
+                        <next>
+                          <block type="time_delay" id="LKk@oL2,I2TjIE.[b(S0">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="x9h;W?GWpBG]0eWWz9`J">
+                                <field name="NUM">500</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="I2CLCD_backlightOn" id="ovHSggzLWM`9]H_};a_J">
+                                <next>
+                                  <block type="time_delay" id="T)-V%U7HPRE9zp^09EM-">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id="d70bYWKCGByq:5e}X9zW">
+                                        <field name="NUM">500</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="I2CLCD_backlightOff" id="tdEoK}~U5[Er%o/;?r0U">
+                                        <next>
+                                          <block type="time_delay" id=".j3m#ZG,*x.,7)aI0XQ`">
+                                            <value name="DELAY_TIME_MILI">
+                                              <block type="math_number" id="{3bsi{A]3S}SC2!A-OMs">
+                                                <field name="NUM">500</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="I2CLCD_backlightOn" id="L*18Ef|_EBVdcgO7j39m"></block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="!2B#wc5lc~XWuBQp3G=^">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_operation" id="7pX1eB`=V+#U2jbX[eM*">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="logic_nan" id="R7`k@EyLb`3!)!]`r3B/">
+                <value name="VALUE">
+                  <block type="DHT11_readTemp" id="khQ^HI/35s?l28B6leJ!">
+                    <field name="DATAPIN">A3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_nan" id="Lu+t@8^e[w%/MHR_ecFb">
+                <value name="VALUE">
+                  <block type="DHT11_readHumi" id="o_I+p*LeWp[`N@Gm8#Gh">
+                    <field name="DATAPIN">A3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="I2CLCD_print" id="44q]M!SX/Dcdkf72lc~r">
+            <value name="CONTENT">
+              <block type="text" id="_rVaL;@Q?-TmX-9bH0wR">
+                <field name="TEXT">DHT11 error</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="I2CLCD_move" id="}vS1cmjS4CmQIU}pQwoz">
+            <value name="X">
+              <block type="math_number" id="7ngLC-9rHp2O@bfvG(w#">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="Y">
+              <block type="math_number" id="pY9%_oY7.VYjj(#}r/AG">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="I2CLCD_print" id="UDrt(TwNj%r?-_.+6|Pl">
+                <value name="CONTENT">
+                  <block type="text_join" id="Y`kv4nb92ZZXrCL~?8J*">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="1P^35K=6i=hWdRIHH`_W">
+                        <field name="TEXT">Tempture:</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="DHT11_readTemp" id="l9egNQM}gFn%c*|}v_kA">
+                        <field name="DATAPIN">A3</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id="dthsiG+oYe?uulCg1kc1">
+                        <field name="TEXT">C</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="I2CLCD_move" id="oS8k46-].MG(kya`WE4;">
+                    <value name="X">
+                      <block type="math_number" id="xcHs/fRH#]3Z-dZb%XFx">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="Y">
+                      <block type="math_number" id="YSvNiXf*^Ry16qjY[#f9">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="I2CLCD_print" id="aF6{k3YI3+M)!tX{fVo6">
+                        <value name="CONTENT">
+                          <block type="text_join" id="rj4(,e7W3?8AGar%p/8c">
+                            <mutation items="3"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="(JW-JGO49u{-#SbF)lMC">
+                                <field name="TEXT">Humidity:</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="DHT11_readHumi" id="CSgtdmP)T%O~`Ap}iFIQ">
+                                <field name="DATAPIN">A3</field>
+                              </block>
+                            </value>
+                            <value name="ADD2">
+                              <block type="text" id="KuQe_]{^u^iM9K}I!luP">
+                                <field name="TEXT">%</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="time_delay" id="ZXP./FGTDWS]25,l]c?)">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="G`u?G+M4Lk4Rhwi?AbqI">
+                <field name="NUM">2000</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

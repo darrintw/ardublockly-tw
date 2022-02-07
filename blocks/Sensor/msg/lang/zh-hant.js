@@ -19,6 +19,10 @@ Blockly.Msg.ARD_TRTC5000_FROM = "從";
 Blockly.Msg.ARD_TRTC5000_READ = "讀取 紅外線光感測器 的數值 \u207B";
 Blockly.Msg.ARD_TRTC5000_TIP = 'TRTC5000專用，數值為1023(白)~0(黑)';
 
+// LOGIC NAN
+Blockly.Msg.ARD_ISNAN_TITLE = "是否為nan";
+Blockly.Msg.ARD_ISNAN_TOOLTIP = "判斷數值是否為nan";
+
 /// DHT11
 Blockly.Msg.ARD_DHT11_READTEMP_FROM = "從 ";
 Blockly.Msg.ARD_DHT11_READTEMP_MSG = " 的 DHT11 模組讀取攝氏溫度值";

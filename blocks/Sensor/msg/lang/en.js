@@ -18,6 +18,10 @@ Blockly.Msg.ARD_TRTC5000_FROM = "Read Reflective Infrared Sensor感測器 value 
 Blockly.Msg.ARD_TRTC5000_READ = "";
 Blockly.Msg.ARD_TRTC5000_TIP = 'Only for TRTC5000. Value is reverse.';
 
+// LOGIC NAN
+Blockly.Msg.ARD_ISNAN_TITLE = "is nan?";
+Blockly.Msg.ARD_ISNAN_TOOLTIP = "check value is nan or not";
+
 /// DHT11
 Blockly.Msg.ARD_DHT11_READTEMP_FROM = "Read celsius temperature from DHT11 module at ";
 Blockly.Msg.ARD_DHT11_READTEMP_MSG = "";
