@@ -34,7 +34,7 @@ Blockly.Blocks['I2CLCD_setup'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2CLCD_SETUP_MSG1)
-            .appendField(new Blockly.FieldTextInput("0x3F"), "I2C_ADDR")
+            .appendField(new Blockly.FieldTextInput("0x27"), "I2C_ADDR")
             .appendField(new Blockly.FieldDropdown([["16", "16"], ["20", "20"]]), "COL")
             .appendField("x")
             .appendField(new Blockly.FieldDropdown([["2", "2"], ["4", "4"]]), "ROW")
