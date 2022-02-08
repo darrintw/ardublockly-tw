@@ -64,8 +64,10 @@ Blockly.Arduino['io_digitalwrite'] = function (block) {
     Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Digital Write');
 
+    /*
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
     Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+    */
 
     var code = 'digitalWrite(' + pin + ', ' + stateOutput + ');\n';
     return code;
@@ -84,10 +86,10 @@ Blockly.Arduino['io_digitalwrite_var'] = function (block) {
 
     var stateOutput = Blockly.Arduino.valueToCode(
         block, 'STATE', Blockly.Arduino.ORDER_ATOMIC) || 'LOW';
-
+    /*
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
     Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
-
+    */
     var code = 'digitalWrite(' + pin + ', ' + stateOutput + ');\n';
     return code;
 };

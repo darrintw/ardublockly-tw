@@ -1,52 +1,49 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="SD_initial" id="q*N;L`%^/[Um)CTI7r!(" x="-35" y="-137">
+  <block type="SD_initial" id="Les)9ZqBPT+KB+^wxr~x" x="34" y="-52">
     <field name="SD_VAR">sd_card</field>
     <field name="CS_VAR">sd_cs_pin</field>
     <field name="CS_PIN">10</field>
   </block>
-  <block type="SD_file_var" id="Fa=-PpdJ`ij^gYl4W{Bj" x="-32" y="-62">
-    <field name="FILE_NAME">myFile</field>
-  </block>
-  <block type="variables_init" id="SZF)@5sWsePdGW:_i5Tj" x="-41" y="-25">
+  <block type="variables_init" id="`mG]8/?e?n|~l(s~:n6T" x="33" y="8">
     <field name="VAR">checksd</field>
     <field name="CONST">FALSE</field>
     <value name="VALUE">
-      <block type="variables_set_type" id="/P{kMpS+CX@%1DOp)[#:">
+      <block type="variables_set_type" id="m@.-4ATL]v{Hh%~I(%:/">
         <field name="VARIABLE_SETTYPE_TYPE">BOOLEAN</field>
         <value name="VARIABLE_SETTYPE_INPUT">
-          <block type="logic_boolean" id=",zL4r0GGr5RLE#*go.)z">
+          <block type="logic_boolean" id="?wUr9xGzuw6e@#-~-osB">
             <field name="BOOL">FALSE</field>
           </block>
         </value>
       </block>
     </value>
   </block>
-  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="-36" y="34">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="38" y="73">
     <statement name="SETUP_FUNC">
-      <block type="I2CLCD_setup" id="t=0!lAcXp.{CuzLtx,!s">
+      <block type="I2CLCD_setup" id="]v}Stgh)1aUFy^ED.YEW">
         <field name="I2C_ADDR">0x27</field>
         <field name="COL">16</field>
         <field name="ROW">2</field>
         <next>
-          <block type="I2CLCD_clear" id="m:+Ozc7@@edh)u~92(;2">
+          <block type="I2CLCD_clear" id="?2wJ;+AJ{z6MS9Ol_tOk">
             <next>
-              <block type="I2CLCD_backlightOn" id="]cu7L`o9~1(=IV3x1F!M">
+              <block type="I2CLCD_backlightOn" id="KG(%3zpVhnS+}Ky[OcTa">
                 <next>
-                  <block type="DS1302_init" id="I-]wh`wi5g5H@1QB1_cI">
+                  <block type="DS1302_init" id="U{gn!OQ}{.ly#[hnbG9G">
                     <value name="RST">
-                      <shadow type="io_allpins" id="]j.PH^)z%qoyk1VM^LEg">
+                      <block type="io_allpins" id="z]{M-C7?_5G)lRV}|otw">
                         <field name="PIN">7</field>
-                      </shadow>
+                      </block>
                     </value>
                     <value name="DAT">
-                      <shadow type="io_allpins" id="I/.2W:vI+#rZ}#jI(r21">
+                      <block type="io_allpins" id="Z_N:PFuB|3ONh`g=PM[-">
                         <field name="PIN">8</field>
-                      </shadow>
+                      </block>
                     </value>
                     <value name="CLK">
-                      <shadow type="io_allpins" id="MN-Oqd2ZI5@lq6|XtVHt">
+                      <block type="io_allpins" id="b,*-7/U*f|uveGZE|`ug">
                         <field name="PIN">9</field>
-                      </shadow>
+                      </block>
                     </value>
                     <next>
                       <block type="controls_if" id="Ixhr*wh~Hw0:)q,FB6f)">
@@ -142,9 +139,14 @@
                                         <field name="TYPE">ln</field>
                                         <value name="INPUT">
                                           <block type="text" id="EsP{q*sqqA5ZppHl%u2D">
-                                            <field name="TEXT">TIme,Temperature, Humidity</field>
+                                            <field name="TEXT">Time,Temperature, Humidity</field>
                                           </block>
                                         </value>
+                                        <next>
+                                          <block type="SD_file_close" id="w#M]j,(9c%fqs0g6P!PE">
+                                            <field name="FILE_NAME">myFile</field>
+                                          </block>
+                                        </next>
                                       </block>
                                     </next>
                                   </block>
@@ -164,9 +166,9 @@
       </block>
     </statement>
     <statement name="LOOP_FUNC">
-      <block type="controls_if" id="{%ClSriOlWIS#h3C1IKy">
+      <block type="controls_if" id="Jg:b=n*|pM:zab|Fs#z4">
         <value name="IF0">
-          <block type="variables_get" id="nb-b[^=0fKy!6VV`?ysY">
+          <block type="variables_get" id="dj8y}!,.vM~(rd]`SE^|">
             <field name="VAR">checksd</field>
           </block>
         </value>
@@ -270,7 +272,7 @@
                           <block type="I2CLCD_print" id=":V~#!]3vX[zX)i9fXUYo">
                             <value name="CONTENT">
                               <block type="text_join" id="1#IFgU5zQ,H4%n=ID@~u">
-                                <mutation items="9"></mutation>
+                                <mutation items="10"></mutation>
                                 <value name="ADD0">
                                   <block type="RTC_get_rtc" id=")dUuB?9XsT:ro=r_kYo%">
                                     <field name="TIME_TYPE">Year</field>
@@ -316,107 +318,118 @@
                                     <field name="TIME_TYPE">Minute</field>
                                   </block>
                                 </value>
+                                <value name="ADD9">
+                                  <block type="text" id="Jbq(hIS@!kaR[;~6i3hs">
+                                    <field name="TEXT">                         </field>
+                                  </block>
+                                </value>
                               </block>
                             </value>
                             <next>
-                              <block type="SD_file_write" id="?|@IR3,3j48{s[2`^4`U">
+                              <block type="SD_file_open" id="ySxhoSG;E0@-s0FF%Z,6">
                                 <field name="FILE_NAME">myFile</field>
-                                <field name="TYPE">ln</field>
-                                <value name="INPUT">
-                                  <block type="text_join" id="B3Y/xzcl;0L}8sr(#1bq">
-                                    <mutation items="3"></mutation>
-                                    <value name="ADD0">
-                                      <block type="text_join" id="f.!C#|bw#;qR3~x~II;(">
-                                        <mutation items="9"></mutation>
-                                        <value name="ADD0">
-                                          <block type="RTC_get_rtc" id="9;YJQ4Ipo-05X[-wsVwW">
-                                            <field name="TIME_TYPE">Year</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD1">
-                                          <block type="text" id="Qel{3fl_/aNJ8@-8sg-e">
-                                            <field name="TEXT">/</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD2">
-                                          <block type="RTC_get_rtc" id="dZj?c.B1?d{{USWV3#X6">
-                                            <field name="TIME_TYPE">Month</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD3">
-                                          <block type="text" id=":1{_Es-^Sv1nH(2tW!|N">
-                                            <field name="TEXT">/</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD4">
-                                          <block type="RTC_get_rtc" id="Wzl432,z]?T#]JcgFc^?">
-                                            <field name="TIME_TYPE">Day</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD5">
-                                          <block type="text" id="kK:^q[Mttu}0|9m-4bM(">
-                                            <field name="TEXT"> </field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD6">
-                                          <block type="RTC_get_rtc" id="zZBa_-.T83X~%]~7,Io+">
-                                            <field name="TIME_TYPE">Hour</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD7">
-                                          <block type="text" id="hc!{}G~-UUk(k4qR;`pQ">
-                                            <field name="TEXT">:</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD8">
-                                          <block type="RTC_get_rtc" id="jf#OD{u)*!@9%K=:)lh{">
-                                            <field name="TIME_TYPE">Minute</field>
-                                          </block>
-                                        </value>
-                                      </block>
-                                    </value>
-                                    <value name="ADD1">
-                                      <block type="text" id="|%Q_g_.il:Pq0?oTj-JC">
-                                        <field name="TEXT">, </field>
-                                      </block>
-                                    </value>
-                                    <value name="ADD2">
-                                      <block type="text_join" id="Npq@kI!#,_RLq/F!mi-X">
-                                        <mutation items="6"></mutation>
-                                        <value name="ADD0">
-                                          <block type="text" id="t7C_-wcPvOoiRBUgAtk?">
-                                            <field name="TEXT">T:</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD1">
-                                          <block type="DHT11_readTemp" id="}%3](K~4PD3XTXe1s[L3">
-                                            <field name="DATAPIN">A3</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD2">
-                                          <block type="text" id="HRGt8!lW!4n%Qi8Be@_w">
-                                            <field name="TEXT">C, </field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD3">
-                                          <block type="text" id="=))},s1S6{C`o;E.2XXp">
-                                            <field name="TEXT">H:</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD4">
-                                          <block type="DHT11_readHumi" id="{4nPZ:W.5)scS90Hv,%2">
-                                            <field name="DATAPIN">A3</field>
-                                          </block>
-                                        </value>
-                                        <value name="ADD5">
-                                          <block type="text" id="KyoYvL@%)V]FAGR*G;6I">
-                                            <field name="TEXT">%</field>
-                                          </block>
-                                        </value>
-                                      </block>
-                                    </value>
+                                <field name="TYPE">FILE_WRITE</field>
+                                <value name="DIR_FILE_NAME">
+                                  <block type="text" id="B)yDBF:WZpxggLGJ?*w@">
+                                    <field name="TEXT">record.txt</field>
                                   </block>
                                 </value>
+                                <next>
+                                  <block type="SD_file_write" id="pX#{q]P[3~G5E:,7Ng!V">
+                                    <field name="FILE_NAME">myFile</field>
+                                    <field name="TYPE">ln</field>
+                                    <value name="INPUT">
+                                      <block type="text_join" id="[Lk+z]HlQ7H0wD[ao+/^">
+                                        <mutation items="5"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text_join" id="RqwKts!,3yVxXOo:nl]8">
+                                            <mutation items="11"></mutation>
+                                            <value name="ADD0">
+                                              <block type="RTC_get_rtc" id="3n.@908-q1S5@SmILMBj">
+                                                <field name="TIME_TYPE">Year</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="text" id="RpKPXYiV0RE?|!+AbrVt">
+                                                <field name="TEXT">/</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD2">
+                                              <block type="RTC_get_rtc" id="JG|:bB-A|~L{(J8rth4w">
+                                                <field name="TIME_TYPE">Month</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD3">
+                                              <block type="text" id="P+xIm_mehMtSAu+Z%G?_">
+                                                <field name="TEXT">/</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD4">
+                                              <block type="RTC_get_rtc" id="pKjN5~ldt{Emz@|w`:gB">
+                                                <field name="TIME_TYPE">Day</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD5">
+                                              <block type="text" id="_%N(P4O~TIMjdL7nfeg+">
+                                                <field name="TEXT"> </field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD6">
+                                              <block type="RTC_get_rtc" id="VA6{%(9y|.Ht(yMen;+.">
+                                                <field name="TIME_TYPE">Hour</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD7">
+                                              <block type="text" id="VgB*^4naR]#u^VF{3_o]">
+                                                <field name="TEXT">:</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD8">
+                                              <block type="RTC_get_rtc" id="~Pz={|9S+gmwv|_oFE-k">
+                                                <field name="TIME_TYPE">Minute</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD9">
+                                              <block type="text" id="y=|q=yMk3bqkF,#6}3:I">
+                                                <field name="TEXT">:</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD10">
+                                              <block type="RTC_get_rtc" id="xInF#Q+cL|tuHob%fLkW">
+                                                <field name="TIME_TYPE">Second</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="text" id="Kq`PsX!zC-nilw11/8G1">
+                                            <field name="TEXT">,</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="DHT11_readTemp" id="%oES+gyNb)m=1yhPZ:8s">
+                                            <field name="DATAPIN">A3</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD3">
+                                          <block type="text" id="8:#ju=?IkFF{kkOq|:xh">
+                                            <field name="TEXT">,</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD4">
+                                          <block type="DHT11_readHumi" id="v2dhzY!vXc7}}H)?faIR">
+                                            <field name="DATAPIN">A3</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="SD_file_close" id="(8Zj7nq*5pex%9v4{uS=">
+                                        <field name="FILE_NAME">myFile</field>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
                               </block>
                             </next>
                           </block>
@@ -431,7 +444,7 @@
               <block type="time_delay" id="ZXP./FGTDWS]25,l]c?)">
                 <value name="DELAY_TIME_MILI">
                   <block type="math_number" id="G`u?G+M4Lk4Rhwi?AbqI">
-                    <field name="NUM">1000</field>
+                    <field name="NUM">5000</field>
                   </block>
                 </value>
               </block>
