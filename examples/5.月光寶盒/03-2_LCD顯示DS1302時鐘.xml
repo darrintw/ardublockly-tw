@@ -10,21 +10,21 @@
             <next>
               <block type="I2CLCD_backlightOn" id="b,2ma4%JG}?KUyJ.?L(8">
                 <next>
-                  <block type="DS1302_init" id="I-]wh`wi5g5H@1QB1_cI">
+                  <block type="DS1302_init" id="60OsylY`[5[xq4d=RkQi">
                     <value name="RST">
-                      <shadow type="io_allpins" id="]j.PH^)z%qoyk1VM^LEg">
+                      <block type="io_allpins" id="sNouPjmrw=TjmVyaoc7|">
                         <field name="PIN">7</field>
-                      </shadow>
+                      </block>
                     </value>
                     <value name="DAT">
-                      <shadow type="io_allpins" id="I/.2W:vI+#rZ}#jI(r21">
+                      <block type="io_allpins" id="uVEuOaA)@,Mtth)25Wz+">
                         <field name="PIN">8</field>
-                      </shadow>
+                      </block>
                     </value>
                     <value name="CLK">
-                      <shadow type="io_allpins" id="MN-Oqd2ZI5@lq6|XtVHt">
+                      <block type="io_allpins" id="=UUX@rc+_pXRU@=zmB8A">
                         <field name="PIN">9</field>
-                      </shadow>
+                      </block>
                     </value>
                   </block>
                 </next>

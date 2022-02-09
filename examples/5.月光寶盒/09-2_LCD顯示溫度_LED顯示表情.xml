@@ -140,7 +140,7 @@
                         </value>
                         <value name="LEDArray">
                           <block type="Matrix_img" id="{2QWDxQv?81A4%:=)jl}">
-                            <field name="img_">3C42A58199A5423C</field>
+                            <field name="img_">3c42a581a599423c</field>
                           </block>
                         </value>
                       </block>

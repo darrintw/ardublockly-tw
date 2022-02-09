@@ -358,7 +358,7 @@ Blockly.Blocks["Matrix_char_lower"] = {
     }
 };
 
-var img_list = [
+var led_img_list = [
     ["↑", "183c7edb18181818"],
     ["↓", "18181818db7e3c18"],
     ["←", "103060ffff603010"],
@@ -407,7 +407,7 @@ Blockly.Blocks["Matrix_img"] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_MAX7219_IMG)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(new Blockly.FieldDropdown(img_list), "img_");
+            .appendField(new Blockly.FieldDropdown(led_img_list), "img_");
         this.setOutput(true);
         this.setInputsInline(false);
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);

@@ -1,5 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="-30" y="136">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="105" y="132">
     <statement name="SETUP_FUNC">
       <block type="stepper_setup_4pin" id=";tIIaXl][DQLjBPESu;o">
         <field name="VAR">mystepper</field>
@@ -25,27 +25,47 @@
         </value>
         <value name="STEPS">
           <block type="math_number" id="iK!(]`NVVT4)RAis}})K">
-            <field name="NUM">2048</field>
+            <field name="NUM">64</field>
           </block>
         </value>
         <value name="SPEED">
           <block type="math_number" id="v/rHQc9:yI)JXSZPkTAx">
-            <field name="NUM">10</field>
+            <field name="NUM">60</field>
           </block>
         </value>
       </block>
     </statement>
     <statement name="LOOP_FUNC">
-      <block type="stepper_move" id="@7yGP5K4EedrNW#HRr%m">
-        <field name="VAR">mystepper</field>
-        <value name="STEP">
-          <shadow type="math_number" id="NoVuqh5l+Ze4YDFJH8lF">
-            <field name="NUM">10</field>
-          </shadow>
-          <block type="math_number" id="{M2K4]q6~z*+9O1`0*7s">
-            <field name="NUM">2048</field>
+      <block type="controls_for" id="ngf.A5}01/:Metr0+Yq@">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="%yXijV}:93m:bqJ@U~Y5">
+            <field name="NUM">1</field>
           </block>
         </value>
+        <value name="TO">
+          <block type="math_number" id="0,]}Pi.(!N~?0vf),6S=">
+            <field name="NUM">4096</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="2(lAlJZX|[f5w-8X`+@.">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="stepper_move" id="@7yGP5K4EedrNW#HRr%m">
+            <field name="VAR">mystepper</field>
+            <value name="STEP">
+              <shadow type="math_number" id="NoVuqh5l+Ze4YDFJH8lF">
+                <field name="NUM">10</field>
+              </shadow>
+              <block type="math_number" id="{M2K4]q6~z*+9O1`0*7s">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </statement>
         <next>
           <block type="time_delay" id="zC1i1,2C]VF!_keE@YVU">
             <value name="DELAY_TIME_MILI">
@@ -54,30 +74,50 @@
               </block>
             </value>
             <next>
-              <block type="stepper_move" id="0UmlQ+GEEN%L!rC@_P#_">
-                <field name="VAR">mystepper</field>
-                <value name="STEP">
-                  <shadow type="math_number" id="NoVuqh5l+Ze4YDFJH8lF">
-                    <field name="NUM">10</field>
-                  </shadow>
-                  <block type="math_arithmetic" id="fAoC10}|G|NbQ1^wzOzL">
-                    <field name="OP">MINUS</field>
-                    <value name="A">
-                      <block type="math_number" id="[%+PX}/XL^,Ym`q{L6s-">
-                        <field name="NUM">0</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" id="Xzsmrc`LAwM*7hXnq6oh">
-                        <field name="NUM">2048</field>
+              <block type="controls_for" id="[Bz=Oz.@|jKz%!.@HD]4">
+                <field name="VAR">i</field>
+                <value name="FROM">
+                  <block type="math_number" id="1(]GI^dT[4pp=bWf5xV9">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id="JoWZ;in%=Az/X?dou2^R">
+                    <field name="NUM">4096</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <block type="math_number" id="Hs%y#b8iq+xEQ[xM|+1V">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="stepper_move" id="az?O_ZaM%!bB8(v0ee1q">
+                    <field name="VAR">mystepper</field>
+                    <value name="STEP">
+                      <shadow type="math_number" id="NoVuqh5l+Ze4YDFJH8lF">
+                        <field name="NUM">10</field>
+                      </shadow>
+                      <block type="math_arithmetic" id="fAoC10}|G|NbQ1^wzOzL">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="math_number" id="[%+PX}/XL^,Ym`q{L6s-">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="Xzsmrc`LAwM*7hXnq6oh">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
                       </block>
                     </value>
                   </block>
-                </value>
+                </statement>
                 <next>
-                  <block type="time_delay" id="Xd]:LcVZ*Z7F[EA:Ft~J">
+                  <block type="time_delay" id="|6eE,n!]!:qo6TGbI!n2">
                     <value name="DELAY_TIME_MILI">
-                      <block type="math_number" id="|bCLkl|Gw_Eu]|LY@9xA">
+                      <block type="math_number" id="n0uNe=ECR^tj!5OG+s]P">
                         <field name="NUM">1000</field>
                       </block>
                     </value>
