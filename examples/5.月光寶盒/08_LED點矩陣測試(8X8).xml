@@ -1,27 +1,27 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
     <statement name="SETUP_FUNC">
-      <block type="MAX7219_init" id="-%/lBq.1=F2#uTgVunqH">
+      <block type="MAX7219_init" id="AQ2#Nm--+]!Md#LPl)0?">
         <field name="MATRIX_VAR">lc_matrix</field>
         <value name="DIN">
-          <shadow type="io_allpins" id="W@cB#4|6lkVH`,co*iIa">
+          <block type="io_allpins" id="b+14LZ2*^PetJB=,b5@a">
             <field name="PIN">A2</field>
-          </shadow>
+          </block>
         </value>
         <value name="CS">
-          <shadow type="io_allpins" id="?fA`W%@c7*puh]l6/PSH">
+          <block type="io_allpins" id="G]^(vRf7roTD.MpHfaHZ">
             <field name="PIN">A1</field>
-          </shadow>
+          </block>
         </value>
         <value name="CLK">
-          <shadow type="io_allpins" id="ByI~m|bOS{foMpH*Fw:_">
+          <block type="io_allpins" id="Q4_;}IX[x}!/2py*?a26">
             <field name="PIN">A0</field>
-          </shadow>
+          </block>
         </value>
         <value name="NUMS">
-          <shadow type="math_number" id="V.rS]6swRC49~(h~k.Y+">
+          <block type="math_number" id="~S6EFMM^rbhYo]ozU~/+">
             <field name="NUM">1</field>
-          </shadow>
+          </block>
         </value>
         <next>
           <block type="display_Matrix_clearDisplay" id="tmw1IV.MnhTDfvmIeMH-">
@@ -81,33 +81,27 @@
               </block>
             </value>
             <statement name="DO">
-              <block type="display_Matrix_DrawPixel" id="9wsQ5,{IPxT7FwJ,3x(S">
+              <block type="display_Matrix_DrawPixel" id="TEanmgQpvQwq@8]1sBh(">
                 <field name="MATRIX_VAR">lc_matrix</field>
                 <value name="NO">
-                  <shadow type="math_number" id="V.MntX1,)([ATfKspN6{">
+                  <block type="math_number" id="]@2Am[oorR)J_UE[:Ne{">
                     <field name="NUM">0</field>
-                  </shadow>
+                  </block>
                 </value>
                 <value name="XVALUE">
-                  <shadow type="math_number" id="eg91HuKJ(dp*]jZ(R(,O">
-                    <field name="NUM">0</field>
-                  </shadow>
                   <block type="variables_get" id="QR[CW++T9F8[ZB?WwnXV">
                     <field name="VAR">i</field>
                   </block>
                 </value>
                 <value name="YVALUE">
-                  <shadow type="math_number" id="]pC;ANXqLn`tGSg]R{ct">
-                    <field name="NUM">0</field>
-                  </shadow>
                   <block type="variables_get" id="6(3Mr]^gfC~[`;F1zj/%">
                     <field name="VAR">j</field>
                   </block>
                 </value>
                 <value name="STAT">
-                  <shadow type="io_highlow" id="{F1QI,o+eJ#aOdx#E-VV">
+                  <block type="io_highlow" id="|p2;Y}/|{P#a^]-io8#n">
                     <field name="STATE">HIGH</field>
-                  </shadow>
+                  </block>
                 </value>
                 <next>
                   <block type="time_delay" id="@|bcvBVL@,I`~ss`FT7/">
@@ -172,6 +166,9 @@
                           <shadow type="math_number" id="D71Z?=4rq}v4nuI/Bx[:">
                             <field name="NUM">0</field>
                           </shadow>
+                          <block type="math_number" id="eUvmDfoyl`aVJy3v}p]n">
+                            <field name="NUM">0</field>
+                          </block>
                         </value>
                         <value name="XVALUE">
                           <shadow type="math_number" id="eg91HuKJ(dp*]jZ(R(,O">
@@ -193,6 +190,9 @@
                           <shadow type="io_highlow" id="3AoDy~GBRIQR,XyQkEA4">
                             <field name="STATE">LOW</field>
                           </shadow>
+                          <block type="io_highlow" id="F#;P;)6iJ=Mcm`:=:AiM">
+                            <field name="STATE">LOW</field>
+                          </block>
                         </value>
                         <next>
                           <block type="time_delay" id="ue5]AO{jq6;(8v=tY7a4">

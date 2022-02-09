@@ -62,9 +62,9 @@ Blockly.Arduino['io_digitalread'] = function (block) {
     var pin = block.getFieldValue('PIN');
     Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.INPUT, 'Digital Read');
-
+    /*
     var pinSetupCode = 'pinMode(' + pin + ', INPUT);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);*/
 
     var code = 'digitalRead(' + pin + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -80,9 +80,9 @@ Blockly.Arduino['io_digitalread'] = function (block) {
 Blockly.Arduino['io_digitalread_var'] = function (block) {
     var pin = Blockly.Arduino.valueToCode(
         block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
-
+    /*
     var pinSetupCode = 'pinMode(' + pin + ', INPUT);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);*/
 
     var code = 'digitalRead(' + pin + ')';
 

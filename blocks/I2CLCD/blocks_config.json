@@ -37,6 +37,12 @@
     "      </block>",
     "    </value>",
     "  </block>",
+    "  <block type=\"I2CLCD_createChar\">",
+    "    <value name=\"CONTENT\">",
+    "      <block type=\"I2CLCD_img\"></block>",
+    "    </value>",
+    "  </block>",
+    "  <block type=\"I2CLCD_img\"></block>",
     "  <block type=\"I2CLCD_backlightOn\"></block>",
     "  <block type=\"I2CLCD_backlightOff\"></block>",
     "</category>"

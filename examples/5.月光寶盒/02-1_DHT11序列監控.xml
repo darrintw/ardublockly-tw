@@ -1,0 +1,89 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="RbQlofG?_Z0yM@X~DYf-">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="!2B#wc5lc~XWuBQp3G=^">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_operation" id="7pX1eB`=V+#U2jbX[eM*">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="logic_nan" id="R7`k@EyLb`3!)!]`r3B/">
+                <value name="VALUE">
+                  <block type="DHT11_readTemp" id="khQ^HI/35s?l28B6leJ!">
+                    <field name="DATAPIN">A3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_nan" id="Lu+t@8^e[w%/MHR_ecFb">
+                <value name="VALUE">
+                  <block type="DHT11_readHumi" id="o_I+p*LeWp[`N@Gm8#Gh">
+                    <field name="DATAPIN">A3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="serial_print" id="H28Yd04K(d((Wr%FMTlW">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="text" id="_rVaL;@Q?-TmX-9bH0wR">
+                <field name="TEXT">DHT11 error</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="serial_print" id="M_#X*lz#6ci.^v##qL_x">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="text_join" id="Y`kv4nb92ZZXrCL~?8J*">
+                <mutation items="4"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="1P^35K=6i=hWdRIHH`_W">
+                    <field name="TEXT">Tempture:</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="DHT11_readTemp" id="l9egNQM}gFn%c*|}v_kA">
+                    <field name="DATAPIN">A3</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id=",`j~^dlBu!.kQ5S=|@Jp">
+                    <field name="TEXT">, Humidity:</field>
+                  </block>
+                </value>
+                <value name="ADD3">
+                  <block type="DHT11_readHumi" id="]5fom3J{lnA!|i*`fXMS">
+                    <field name="DATAPIN">A3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="time_delay" id="ZXP./FGTDWS]25,l]c?)">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="G`u?G+M4Lk4Rhwi?AbqI">
+                <field name="NUM">2000</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

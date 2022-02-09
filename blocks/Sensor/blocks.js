@@ -80,6 +80,27 @@ Blockly.Blocks['tcrt5000_var'] = {
     }
 };
 
+Blockly.Blocks['logic_nan'] = {
+    /**
+     * Block for boolean data type: true and false.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendValueInput("VALUE")
+            .appendField(Blockly.Msg.ARD_ISNAN_TITLE);
+        this.setPreviousStatement(false, null);
+        this.setNextStatement(false, null);
+        this.setInputsInline(true);
+        this.setOutput(true, "Boolean");
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setTooltip(Blockly.Msg.ARD_ISNAN_TOOLTIP);
+    },
+    /** Assigns a type to the boolean block. */
+    getBlockType: function () {
+        return Blockly.Types.BOOLEAN;
+    }
+};
+
 Blockly.Blocks['DHT11_readTemp'] = {
     /**
      * Block for setting the speed of the serial connection.

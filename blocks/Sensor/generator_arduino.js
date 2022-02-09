@@ -76,6 +76,20 @@ Blockly.Arduino['tcrt5000_var'] = function (block) {
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {(string|number)[]} Completed code.
  */
+Blockly.Arduino['logic_nan'] = function (block) {
+    var value = Blockly.Arduino.valueToCode(
+        block, 'VALUE', Blockly.Arduino.ORDER_ATOMIC) || 'nan';
+    var code = 'isnan(' + value + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
 Blockly.Arduino['DHT11_readTemp'] = function (block) {
     var dataPin = block.getFieldValue('DATAPIN');
     var dht11_tag = "dht11_tag_" + dataPin;

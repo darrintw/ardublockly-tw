@@ -34,7 +34,7 @@ Blockly.Blocks['I2CLCD_setup'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2CLCD_SETUP_MSG1)
-            .appendField(new Blockly.FieldTextInput("0x3F"), "I2C_ADDR")
+            .appendField(new Blockly.FieldTextInput("0x27"), "I2C_ADDR")
             .appendField(new Blockly.FieldDropdown([["16", "16"], ["20", "20"]]), "COL")
             .appendField("x")
             .appendField(new Blockly.FieldDropdown([["2", "2"], ["4", "4"]]), "ROW")
@@ -154,6 +154,49 @@ Blockly.Blocks['I2CLCD_print'] = {
         this.setColour(Blockly.Blocks.I2CLCD.HUE);
         this.setTooltip(Blockly.Msg.ARD_I2CLCD_PRINT_TIP);
         this.setHelpUrl("https://github.com/marcmerlin/NewLiquidCrystal");
+    }
+};
+
+Blockly.Blocks['I2CLCD_createChar'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendValueInput("CONTENT")
+            .setCheck(null)
+            .appendField(Blockly.Msg.ARD_I2CLCD_CREATE_CHAR_MSG1);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2CLCD_CREATE_CHAR_MSG2);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.I2CLCD.HUE);
+        this.setTooltip(Blockly.Msg.ARD_I2CLCD_CREATE_CHAR_TIP);
+        this.setHelpUrl("https://github.com/marcmerlin/NewLiquidCrystal");
+    }
+};
+
+var lcd_img_list = [
+    ["↑", "040e150404040404"],
+    ["↓", "0404040404150e04"],
+    ["←", "0004081f1f080400"],
+    ["→", "0004021f1f020400"],
+    ["°c", "1818070808080807"]
+];
+
+//點陣LED預設圖案
+Blockly.Blocks["I2CLCD_img"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2CLCD_IMG)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(new Blockly.FieldDropdown(lcd_img_list), "img_");
+        this.setOutput(true);
+        this.setInputsInline(false);
+        this.setColour(Blockly.Blocks.I2CLCD.HUE);
+        this.setTooltip(Blockly.Msg.ARD_I2CLCD_PREDEFARR_TOOLTIP);
+        this.setHelpUrl('');
     }
 };
 

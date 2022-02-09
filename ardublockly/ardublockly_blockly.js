@@ -195,6 +195,7 @@ Ardublockly.discardAllBlocks = function () {
                     Ardublockly.replaceBlocksfromXml(defaultProjectXML);
                     Ardublockly.renderContent();
                 }, 500)
+                Ardublockly.sketchNameSet("Sketch_Name");
             });
     } else {
         // 載入預設積木
@@ -203,6 +204,7 @@ Ardublockly.discardAllBlocks = function () {
             Ardublockly.replaceBlocksfromXml(defaultProjectXML);
             Ardublockly.renderContent();
         }, 500)
+        Ardublockly.sketchNameSet("Sketch_Name");
     }
 };
 
@@ -253,8 +255,7 @@ Ardublockly.addToolboxCategory = function (categoryTitle, categoryDom) {
         Ardublockly.xmlTree.appendChild(document.createElement('sep'));
         Ardublockly.xmlTree.appendChild(categoryDom);
         Ardublockly.workspace.updateToolbox(Ardublockly.xmlTree);
-    }
-    catch (e){
+    } catch (e) {
         console.log(categoryTitle);
         console.log(e);
     }

@@ -1,0 +1,217 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="SD_initial" id="^#s]P;T_I?*]kZ,1e}CD" x="70" y="6">
+    <field name="SD_VAR">sd_card</field>
+    <field name="CS_VAR">sd_cs_pin</field>
+    <field name="CS_PIN">10</field>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="69" y="68">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="e{[qcQ0uXp:+-=4qjQ^t">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="controls_if" id="cb^b,rUl,BO,};1bU+HH">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_negate" id="ignr!jQi}JS:o)Qrorkz">
+                <value name="BOOL">
+                  <block type="SD_success" id="5[KVH?rOKEDfZhj9jAye">
+                    <field name="CS_VAR">sd_cs_pin</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="serial_print" id="NX7rmTzLKTi-}fV-@U@O">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="text" id="6/qLL13GmvF}x6/7u@)P">
+                    <field name="TEXT">SD Card Module Error</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="controls_if" id="bxpjNYQm~cmKp^bCybN,">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_negate" id="l~Lo({6nxC2IiYBm{EG2">
+                    <value name="BOOL">
+                      <block type="SD_exists" id="p5^*w-K[P[?;9=Z`6|j4">
+                        <field name="SD_VAR">sd_card</field>
+                        <field name="CS_VAR">sd_cs_pin</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="serial_print" id="5=mtx:tYH{VT_H(Mz!vE">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="J0gZI%;la=8Gi|{x^+zu">
+                        <field name="TEXT">SD Card Error</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="controls_if" id="Xq*2|J8?f8O8B-IJ-:]j">
+                    <value name="IF0">
+                      <block type="SD_dir_file_exist" id="punqcV`7SYZuXmit:G|8">
+                        <value name="DIR_FILE_NAME">
+                          <block type="text" id="ugEa+N]?/l_G|ed!2Uxz">
+                            <field name="TEXT">record.txt</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="?D[BnR-WF((*dx/f73{L">
+                        <field name="VAR">sd_delete</field>
+                        <value name="VALUE">
+                          <block type="SD_remove" id="Qx/Q[J`kEjqRSKUn*gKI">
+                            <value name="FILE_NAME">
+                              <block type="text" id="];Rl:N_*`eG8Sc5)Uebx">
+                                <field name="TEXT">record.txt</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="=eYBmc7wSzNbdI8!FRED">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="text" id="iX[Y/-Z]0;Y-(CRJwS6+">
+                                <field name="TEXT">record.txt deleted</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="SD_file_open" id="75;H_}{^6q^g*sH=8F0k">
+                        <field name="FILE_NAME">myFile</field>
+                        <field name="TYPE">FILE_WRITE</field>
+                        <value name="DIR_FILE_NAME">
+                          <block type="text" id="lZViinZpBDDR/RcYf6(l">
+                            <field name="TEXT">record.txt</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="L(_cTs(uA,!%T:o2ZsL!">
+                            <mutation else="1"></mutation>
+                            <value name="IF0">
+                              <block type="logic_negate" id=")CO7Q1^]YE|dyPF#KvpS">
+                                <value name="BOOL">
+                                  <block type="SD_file_opened" id="3PDd1HgNfuu`3;njdJ-I">
+                                    <field name="FILE_NAME">myFile</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="serial_print" id="NMcE[WRbv79h-H.u)LhW">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">TRUE</field>
+                                <value name="CONTENT">
+                                  <block type="text" id="AYar@gl;h7LxgHk,pEuT">
+                                    <field name="TEXT">record.txt open error</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <statement name="ELSE">
+                              <block type="SD_file_write" id=",.k0}}j1j}*3xRRnSLTT">
+                                <field name="FILE_NAME">myFile</field>
+                                <field name="TYPE">ln</field>
+                                <value name="INPUT">
+                                  <block type="text" id="ZZ6[vNuo6hD3_s4JUZxB">
+                                    <field name="TEXT">Hello 12345</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="SD_file_close" id="r(LL5JS[wrO#c%7N}ei`">
+                                <field name="FILE_NAME">myFile</field>
+                                <next>
+                                  <block type="SD_file_open" id="IJWGvwGnh:hdTTcRq.Pl">
+                                    <field name="FILE_NAME">myFile</field>
+                                    <field name="TYPE">FILE_READ</field>
+                                    <value name="DIR_FILE_NAME">
+                                      <block type="text" id="k2~RP[70;:.eM)v9.qb(">
+                                        <field name="TEXT">record.txt</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="controls_if" id="Eb[=WwptUb573PTqZu^L">
+                                        <mutation else="1"></mutation>
+                                        <value name="IF0">
+                                          <block type="logic_negate" id="d(*n)8jMCV[MhBHk{qOL">
+                                            <value name="BOOL">
+                                              <block type="SD_file_opened" id=")_uK|oz/CMS?wKNbfK^s">
+                                                <field name="FILE_NAME">myFile</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="serial_print" id="kd|+s-w5.:}oa5h!Ri`V">
+                                            <field name="SERIAL_ID">Serial</field>
+                                            <field name="NEW_LINE">TRUE</field>
+                                            <value name="CONTENT">
+                                              <block type="text" id="/+?Q.|~97QY(dC*)BaE!">
+                                                <field name="TEXT">record.txt open error</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </statement>
+                                        <statement name="ELSE">
+                                          <block type="controls_whileUntil" id="?o~_u8?9AW=:`W.f*yvg">
+                                            <field name="MODE">WHILE</field>
+                                            <value name="BOOL">
+                                              <block type="SD_file_available" id="Q=cF}c#-S}u=uPvj#9X.">
+                                                <field name="FILE_NAME">myFile</field>
+                                              </block>
+                                            </value>
+                                            <statement name="DO">
+                                              <block type="serial_write" id="?A=-2[CMC=!Rn}naHY=.">
+                                                <field name="SERIAL_ID">Serial</field>
+                                                <value name="CONTENT">
+                                                  <block type="SD_file_read" id="Tk3jZDxk*RWytb-%CIL4">
+                                                    <field name="FILE_NAME">myFile</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </statement>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="SD_file_close" id="Z5M]75e3fCQ_b1/=7:wA">
+                                            <field name="FILE_NAME">myFile</field>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

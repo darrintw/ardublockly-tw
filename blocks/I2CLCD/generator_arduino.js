@@ -148,6 +148,53 @@ Blockly.Arduino['I2CLCD_print'] = function (block) {
     return code;
 };
 
+var lcd_img_map = [
+    ["0", "040e150404040404"],
+    ["1", "0404040404150e04"],
+    ["2", "0004081f1f080400"],
+    ["3", "0004021f1f020400"],
+    ["4", "1818070808080807"]
+]
+
+Blockly.Arduino['I2CLCD_createChar'] = function (block) {
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var img_index = 0;
+    console.log(content);
+    for (var i = 0; i < lcd_img_map.length; i++){
+        if (lcd_img_map[i][1] === content)
+        {
+            img_index = lcd_img_map[i][0];
+            break;
+        }
+    }
+    var code = 'I2CLCD.write(byte(' + img_index + '));\n'
+    return code;
+};
+
+//顯示預設圖案
+Blockly.Arduino["I2CLCD_img"] = function (block) {
+    var dropdown_img_ = this.getFieldValue('img_');
+    var code = '"' + dropdown_img_ + '"';
+    code = '{';
+    for (var i = 0; i < 15; i += 2) {
+        code += 'B' + hex2bin(dropdown_img_.substr(i, 2)).substr(3, 5) + ((i != 14) ? ', ' : '');
+    }
+    code += '};';
+    Blockly.Arduino.addDefine('I2CLCD_img_' + dropdown_img_,  "byte " + 'I2CLCD_img_' + dropdown_img_ + "[8] = " + code);
+    var img_index = 0;
+    for (var i = 0; i < lcd_img_map.length; i++){
+        if (lcd_img_map[i][1] === dropdown_img_)
+        {
+            img_index = lcd_img_map[i][0];
+            break;
+        }
+    }
+    code = 'I2CLCD.createChar(' + img_index + ', I2CLCD_img_' + dropdown_img_ + ');\n'
+    Blockly.Arduino.addSetup('I2CLCD_img_' + dropdown_img_, code, true);
+    return [dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino['I2CLCD_backlightOn'] = function (block) {
     var code = 'I2CLCD.backlight();\n';
     return code;

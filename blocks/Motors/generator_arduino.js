@@ -234,9 +234,18 @@ Blockly.Arduino["stepper_setup_4pin"] = function (block) {
     var steps = Blockly.Arduino.valueToCode(block, 'STEPS', Blockly.Arduino.ORDER_ATOMIC);
     var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
-    Blockly.Arduino.addDefine('Stepper_def_' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin2 + ',' + pin3 + ',' + pin4 + ');');
+    Blockly.Arduino.addDefine('Stepper_def_' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin3 + ',' + pin2 + ',' + pin4 + ');');
     Blockly.Arduino.addSetup('setup_stepper_' + varName, varName + '.setSpeed(' + speed + ');');
     return '';
+};
+
+Blockly.Arduino["stepper_speed"] = function (block) {
+    var varName = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('VAR'),
+        Blockly.Variables.NAME_TYPE);
+    var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
+    var code = varName + '.setSpeed(' + speed + ');\n';
+    return code;
 };
 
 Blockly.Arduino["stepper_move"] = function (block) {
