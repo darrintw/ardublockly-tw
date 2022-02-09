@@ -291,6 +291,21 @@ Blockly.Blocks["stepper_setup_4pin"] = {
     }
 };
 
+Blockly.Blocks["stepper_speed"] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_STEPPER)
+            .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
+        this.appendValueInput('SPEED')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_STEPPER_SET_SPEED);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.Msg.ARD_TOOLTIP_STEPPER_MOVE);
+    }
+};
 Blockly.Blocks["stepper_move"] = {
     init: function () {
         this.setColour(Blockly.Blocks.Motors.HUE);

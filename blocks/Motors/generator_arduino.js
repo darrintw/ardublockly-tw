@@ -239,6 +239,15 @@ Blockly.Arduino["stepper_setup_4pin"] = function (block) {
     return '';
 };
 
+Blockly.Arduino["stepper_speed"] = function (block) {
+    var varName = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('VAR'),
+        Blockly.Variables.NAME_TYPE);
+    var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
+    var code = varName + '.setSpeed(' + speed + ');\n';
+    return code;
+};
+
 Blockly.Arduino["stepper_move"] = function (block) {
     var varName = Blockly.Arduino.variableDB_.getName(
         block.getFieldValue('VAR'),
