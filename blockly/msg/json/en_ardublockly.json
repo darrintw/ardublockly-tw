@@ -1,7 +1,7 @@
 {
 	"@metadata": {
-		"author": "carlosperate",
-		"lastupdated": "2022-03-26 16:53:24.890000",
+		"author": "darrin",
+		"lastupdated": "2022-03-26 21:06:28.401000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -72,6 +72,11 @@
 	"ARD_TONE_PIN_TIP": "Generate audio tones on a Pin",
 	"ARD_TONE_TIP": "Sets tone on Pin to specified frequency within range 31 - 4987",
 	"ARD_TONE_WARNING": "Frequency must be in range 31 - 4987",
+	"ARD_TONE_USE": "Use ",
+	"ARD_TONE_PLAY": " play, speed ",
+	"ARD_NOTE": "Note",
+	"ARD_TONE": "Tone",
+	"ARD_TEMPO": "Tempo",
 	"ARD_NOTONE_PIN": "No tone PIN#",
 	"ARD_NOTONE_PIN_TIP": "Stop generating a tone on a Pin",
 	"ARD_NOTONE_TIP": "Turns the tone off on the selected Pin",

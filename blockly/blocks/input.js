@@ -29,7 +29,7 @@ Blockly.Blocks['io_input'] = {
         this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
         this.setColour(Blockly.Blocks.input.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(Blockly.Msg.ARD_PIN)
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.digitalPins), 'PIN')
             .appendField(Blockly.Msg.ARD_SET_INPUT);
@@ -56,7 +56,7 @@ Blockly.Blocks['io_input_var'] = {
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(Blockly.Msg.ARD_PIN)
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SET_INPUT);
@@ -81,7 +81,7 @@ Blockly.Blocks['io_input_pullup'] = {
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(Blockly.Msg.ARD_PIN)
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.digitalPins), 'PIN');
         this.appendDummyInput()
@@ -107,7 +107,7 @@ Blockly.Blocks['io_input_pullup_var'] = {
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(Blockly.Msg.ARD_PIN)
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_INPUT_PULLUP);
@@ -301,9 +301,9 @@ Blockly.Blocks['io_pulsetimeout_var'] = {
                     "check": ["Boolean", "Number"]
                 },
                 {
-                    "type": "input_value",
+                    "type": "field_variable",
                     "name": "PIN",
-                    "check": "Number"
+                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
                 },
                 {
                     "type": "input_value",

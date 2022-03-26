@@ -295,9 +295,11 @@ def report_stats(target_filename, json_data):
     original_b = stats["originalSize"]
     compressed_b = stats["compressedSize"]
     if original_b > 0 and compressed_b > 0:
+        '''
         f = open(target_filename, "w")
-        f.write(code)
+        f.write(stats)
         f.close()
+        '''
 
         original_kb = int(original_b / 1024 + 0.5)
         compressed_kb = int(compressed_b / 1024 + 0.5)
@@ -596,7 +598,7 @@ def generate_ardublockly():
             subprocess.check_call([
                 "python",
                 os.path.join("i18n", "js_to_json.py"),
-                "--author", "carlosperate",
+                "--author", "darrin",
                 "--input_file", "msg/messages_ardublockly.js",
                 "--output_dir", "msg/json/",
                 "--ardublockly",
@@ -611,14 +613,14 @@ def generate_ardublockly():
             "python",
             os.path.join("i18n", "create_messages.py"),
             "--source_lang_file", os.path.join("msg", "json",
-                                               "en_ardublockly.json"),
+                                               "qqq_ardublockly.json"),
             "--source_synonym_file", os.path.join("msg", "json",
                                                   "synonyms_ardublockly.json"),
             "--output_dir", os.path.join("msg", "js"),
             "--ardublockly",
             "--quiet"]
         json_files = glob.glob(os.path.join("msg", "json", "*.json"))
-        json_files = [files for files in json_files if not files.endswith(("keys.json", "synonyms.json", "qqq.json",
+        json_files = [files for files in json_files if not files.endswith(("synonyms.json", "qqq.json",
                                                                            "_ardublockly.json"))]
         cmd.extend(json_files)
         subprocess.check_call(cmd)
