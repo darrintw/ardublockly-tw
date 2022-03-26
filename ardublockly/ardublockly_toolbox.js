@@ -205,8 +205,7 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="io_digitalread_var">' +
     '    </block>' +
     '    <block type="io_analogread"></block>' +
-    '    <block type="io_analogread_var">' +
-    '    </block>' +
+    '    <block type="io_analogread_var"></block>' +
     '    <block type="io_pulsein">' +
     '      <value name="PULSETYPE">' +
     '        <block type="io_highlow"></block>' +
@@ -223,10 +222,6 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="io_pulsetimeout_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get">' +
-    '        </block>' +
-    '      </value>' +
     '      <value name="PULSETYPE">' +
     '        <block type="io_highlow"></block>' +
     '      </value>' +

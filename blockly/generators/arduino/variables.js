@@ -28,24 +28,26 @@ Blockly.Arduino['variables_get'] = function (block) {
 Blockly.Arduino['variables_init'] = function (block) {
     var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE',
         Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var varName = block.getFieldValue('VAR')
+    var varId = Blockly.Arduino.variableDB_.getName(
+        varName, Blockly.Variables.NAME_TYPE);
     var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
     var varConst = (block.getFieldValue('CONST') === 'TRUE' ? 'const ' : '');
 
-    Blockly.Arduino.addVariable(block.getFieldValue('VAR'),
-        varConst + varType + ' ' + varName + ' = ' + argument0 + ';', true);
+    Blockly.Arduino.addVariable(varName,
+        varConst + varType + ' ' + varId + ' = ' + argument0 + ';', true);
     var code = '';
     return code;
 };
 
 Blockly.Arduino['variables_declare'] = function (block) {
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var varName = block.getFieldValue('VAR')
+    var varId = Blockly.Arduino.variableDB_.getName(
+        varName, Blockly.Variables.NAME_TYPE);
     var varType = Blockly.Arduino.getArduinoType_(block.getVarType());
     var varConst = (block.getFieldValue('CONST') === 'TRUE' ? 'const ' : '');
 
-    Blockly.Arduino.addVariable(block.getFieldValue('VAR'), varConst + varType + ' ' + varName + ';', true);
+    Blockly.Arduino.addVariable(varName, varConst + varType + ' ' + varId + ';', true);
     var code = '';
     return code;
 };

@@ -1,0 +1,76 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="~m7#AA_%4O=0mx.a@2Hq">
+        <field name="VAR">buzzer</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="{*Qa@~[ZPUgU9l~HIY2{">
+            <field name="PIN">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_play_tone" id="A4lcjO?DG+|)y,+o,ant">
+            <field name="TONEPIN">buzzer</field>
+            <field name="SPEED">0.5</field>
+            <statement name="BUZZER_PLAY">
+              <block type="io_multi_tone" id="Nb9V~x%nTBEgfYE5FY)=">
+                <value name="NOTE_TONE">
+                  <block type="text" id="VgbPrD)HUoJU_G4w^#;2">
+                    <field name="TEXT">00,00,00,B4,CS5,D5,D5,CS5,D5,G5,CS5,CS5,CS5,F4,F4,B4,B4,A4,B4,D5,A4,A4,A4,F4,G4,G4,F4,G4,D5,F4,F4,00,D5,D5,D5,CS5,CS5,G4,G4,CS5,CS5,CS5,00,B4,CS5,D5,D5,CS5,D5,F5</field>
+                  </block>
+                </value>
+                <value name="TEMPO">
+                  <block type="text" id="S[XU`|g|cS}P^?B3i97/">
+                    <field name="TEXT">1,1,1,2,2,1,2,2,1,1,1,1,1,2,2,1,2,2,1,1,1,1,1,1,1,2,2,1,1,1,1,2,2,2,2,1,2,2,1,1,1,1,1,2,2,1,2,2,1,1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_multi_tone" id="ab?83)wGcocZDr;XiG]r">
+                    <value name="NOTE_TONE">
+                      <block type="text" id="m:tQR[2MaYw5WL~a;^Y5">
+                        <field name="TEXT">CS5,CS5,CS5,F4,F4,B4,B4,A4,B4,D5,A4,A4,A4,E4,F4,G4,D5,CS5,CS5,D5,D5,E5,E5,F5,D5,D5,D5,D5,CS5,B4,B4,CS5,A4,B4,B4,B4,D5,E5,F5,F5,E5,F5,A5,E5,E5,E5,A4,A4,D5,D5</field>
+                      </block>
+                    </value>
+                    <value name="TEMPO">
+                      <block type="text" id="n^+,z(mDg[fdbcxM91!S">
+                        <field name="TEXT">1,1,1,2,2,1,2,2,1,1,1,1,1,2,2,1,2,4,4,4,2,2,2,2,4,2,1,2,2,2,2,1,1,1,1,1,2,2,1,2,2,1,1,1,1,1,2,2,2,8</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_multi_tone" id="DB)V0KR}%/[Fa!BMMQP9">
+                        <value name="NOTE_TONE">
+                          <block type="text" id="{7kC#oaj{!y{Ed+SHO0w">
+                            <field name="TEXT">CS5,D5,F5,F5,F5,F5,F5,B4,CS5,D5,CS5,E5,E5,D5,D5,A4,A4,A4,G5,F5,E5,D5,F5,F5,F5,F5,B5,B5,A5,A5,F5,E5,D5,D5,00,D5,E5,D5,E5,E5,A5,F5,F5,F5,F5,B5,B5,A5,A5,F5</field>
+                          </block>
+                        </value>
+                        <value name="TEMPO">
+                          <block type="text" id="GP#=rk[nbm`{YiXuS.9^">
+                            <field name="TEXT">2,1,1,1,1,1,1,2,2,1,1,2,2,2,8,4,2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,2,2,1,2,2,1,1,1,1,1,1,1,1,1,1,2</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="io_multi_tone" id="FFqx4M6,1H]DUisM0]zQ">
+                            <value name="NOTE_TONE">
+                              <block type="text" id="Erf*92B(_0p`kAufEzjp">
+                                <field name="TEXT">E5,D5,D5,00,D5,E5,D5,E5,E5,CS5,B4,B4,B4,B4,CS5</field>
+                              </block>
+                            </value>
+                            <value name="TEMPO">
+                              <block type="text" id="BiZj=5Sgy.+T9`~k2h-[">
+                                <field name="TEXT">2,1,1,2,2,1,2,4,2,1,1,1,1,2,2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

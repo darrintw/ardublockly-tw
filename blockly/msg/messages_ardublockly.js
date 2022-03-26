@@ -184,17 +184,15 @@ Blockly.Msg.ARD_TONE_TIP = 'Sets tone on Pin to specified frequency within range
 /// Arduino
 Blockly.Msg.ARD_TONE_WARNING = 'Frequency must be in range 31 - 4987';
 /// Arduino
-Blockly.Msg.ARD_TONE_USE = "Use ";
+Blockly.Msg.ARD_TONE_USE = 'Use ';
 /// Arduino
-Blockly.Msg.ARD_TONE_PLAY = " play, speed ";
+Blockly.Msg.ARD_TONE_PLAY = ' play, speed ';
 /// Arduino
-Blockly.Msg.ARD_NOTE = "Note";
+Blockly.Msg.ARD_NOTE = 'Note';
 /// Arduino
-Blockly.Msg.ARD_TONE = "tone";
+Blockly.Msg.ARD_TONE = 'Tone';
 /// Arduino
-Blockly.Msg.ARD_TEMPO = "tempo";
-/// Arduino
-Blockly.Msg.ARD_TONE_TIP = "Use tone and tempo to play.";
+Blockly.Msg.ARD_TEMPO = 'Tempo';
 /// Arduino
 Blockly.Msg.ARD_NOTONE_PIN = 'No tone PIN#';
 /// Arduino
@@ -237,6 +235,7 @@ Blockly.Msg.ARD_MAP_TIP = 'Re-maps a number from [0-1024] to another.';
 Blockly.Msg.ARD_MAP_VAL = 'value to [0-';
 /// Arduino
 Blockly.Msg.ARD_MAP_X_TIP = 'Re-maps a number from [x - y] to [x"- y"]';
+
 /**
  * Ardublockly Text
  */

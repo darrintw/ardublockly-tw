@@ -144,7 +144,7 @@ Blockly.Arduino.init = function (workspace) {
 
     // Set variable declarations with their Arduino type in the defines dictionary
     for (var varName in varsWithTypes) {
-         Blockly.Arduino.addVariable(varName,
+        Blockly.Arduino.addVariable(varName,
             Blockly.Arduino.getArduinoType_(varsWithTypes[varName]) + ' ' +
             Blockly.Arduino.variableDB_.getName(varName, Blockly.Variables.NAME_TYPE) + ';');
     }

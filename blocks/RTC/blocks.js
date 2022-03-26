@@ -13,18 +13,21 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.rtc.HUE = 180;
 
-var RTCTypeList = [['DS1307', 'RtcDS1307'], ['DS3231', 'RtcDS3231']];
+var RTCTypeList;
+var RTC_TIME_TYPE;
 
-//時鐘模組
-var RTC_TIME_TYPE = [
-    [Blockly.Msg.ADR_RTC_YEAR, 'Year'],
-    [Blockly.Msg.ADR_RTC_MONTH, 'Month'],
-    [Blockly.Msg.ADR_RTC_DAY, 'Day'],
-    [Blockly.Msg.ADR_RTC_HOUR, 'Hour'],
-    [Blockly.Msg.ADR_RTC_MINUTE, 'Minute'],
-    [Blockly.Msg.ADR_RTC_SECOND, 'Second'],
-    [Blockly.Msg.ADR_RTC_WEEK, 'DayOfWeek']
-];
+function initList() {
+    RTCTypeList = [['DS1307', 'RtcDS1307'], ['DS3231', 'RtcDS3231']];
+    RTC_TIME_TYPE = [
+        [Blockly.Msg.ADR_RTC_YEAR, 'Year'],
+        [Blockly.Msg.ADR_RTC_MONTH, 'Month'],
+        [Blockly.Msg.ADR_RTC_DAY, 'Day'],
+        [Blockly.Msg.ADR_RTC_HOUR, 'Hour'],
+        [Blockly.Msg.ADR_RTC_MINUTE, 'Minute'],
+        [Blockly.Msg.ADR_RTC_SECOND, 'Second'],
+        [Blockly.Msg.ADR_RTC_WEEK, 'DayOfWeek']
+    ];
+}
 
 //DS1302 RTC
 Blockly.Blocks['DS1302_init'] = {
@@ -53,15 +56,7 @@ Blockly.Blocks['DS1302_init'] = {
 /*
 Blockly.Blocks['DS1307_init'] = {
     init: function () {
-        RTC_TIME_TYPE = [
-            [Blockly.Msg.ADR_RTC_YEAR, 'Year'],
-            [Blockly.Msg.ADR_RTC_MONTH, 'Month'],
-            [Blockly.Msg.ADR_RTC_DAY, 'Day'],
-            [Blockly.Msg.ADR_RTC_HOUR, 'Hour'],
-            [Blockly.Msg.ADR_RTC_MINUTE, 'Minute'],
-            [Blockly.Msg.ADR_RTC_SECOND, 'Second'],
-            [Blockly.Msg.ADR_RTC_WEEK, 'DayOfWeek']
-        ],
+        initList();
         this.setColour(Blockly.Blocks.rtc.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.Msg.ADR_RTC_INIT);
@@ -88,6 +83,7 @@ Blockly.Blocks['DS1307_init'] = {
 //獲取RTC時間
 Blockly.Blocks['RTC_get_rtc'] = {
     init: function () {
+        initList();
         this.setColour(Blockly.Blocks.rtc.HUE);
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
