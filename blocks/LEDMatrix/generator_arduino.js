@@ -19,13 +19,14 @@ Blockly.Arduino["MAX7219_init"] = function (block) {
     var pin_cs = Blockly.Arduino.valueToCode(this, 'CS', Blockly.Arduino.ORDER_ATOMIC);
     var pin_clk = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
     var nums = Blockly.Arduino.valueToCode(this, 'NUMS', Blockly.Arduino.ORDER_ATOMIC);
-    var matrixName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('MATRIX_VAR'),
+    var matrixName = block.getFieldValue('MATRIX_VAR');
+    var matrixId = Blockly.Arduino.variableDB_.getName(
+        matrixName,
         Blockly.Variables.NAME_TYPE);
     Blockly.Arduino.addInclude('LedControl_inc', '#include <LedControl.h>');
     Blockly.Arduino.addInclude('binary_inc', '#include <binary.h>');
-    Blockly.Arduino.addDefine('LedControl_def_' + matrixName , 'LedControl ' + matrixName + ' = LedControl(' + pin_din + ', ' + pin_clk + ', ' + pin_cs + ', ' + nums + ');');
-    var code = '  for(int index = 0; index < ' + matrixName + '.getDeviceCount(); index++) {\n' +
+    Blockly.Arduino.addVariable(matrixId, 'LedControl ' + matrixName + ' = LedControl(' + pin_din + ', ' + pin_clk + ', ' + pin_cs + ', ' + nums + ');', true)
+    var code = '  for(int index = 0; index < ' + matrixId + '.getDeviceCount(); index++) {\n' +
         '    ' + matrixName + '.shutdown(index, false); \n' +
         '  } \n';
     return code;
@@ -33,22 +34,24 @@ Blockly.Arduino["MAX7219_init"] = function (block) {
 
 //設置亮度
 Blockly.Arduino["display_Matrix_Brightness"] = function (block) {
-    var matrixName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('MATRIX_VAR'),
+    var matrixName = block.getFieldValue('MATRIX_VAR');
+    var matrixId = Blockly.Arduino.variableDB_.getName(
+        matrixName,
         Blockly.Variables.NAME_TYPE);
     var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
     var BRIGHTNESS = block.getFieldValue('Brightness');
-    var code = matrixName + '.setIntensity(' + NO + ', ' + BRIGHTNESS + ');\n';
+    var code = matrixId + '.setIntensity(' + NO + ', ' + BRIGHTNESS + ');\n';
     return code;
 };
 
 //點陣LED全暗
 Blockly.Arduino["display_Matrix_clearDisplay"] = function (block) {
-    var matrixName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('MATRIX_VAR'),
+    var matrixName = block.getFieldValue('MATRIX_VAR');
+    var matrixId = Blockly.Arduino.variableDB_.getName(
+        matrixName,
         Blockly.Variables.NAME_TYPE);
     var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
-    var code = matrixName + '.clearDisplay(' + NO + ');\n';
+    var code = matrixId + '.clearDisplay(' + NO + ');\n';
     return code;
 };
 
@@ -56,19 +59,21 @@ Blockly.Arduino["display_Matrix_clearDisplay"] = function (block) {
 Blockly.Arduino["display_Matrix_DrawPixel"] = function (block) {
     var pos_x = Blockly.Arduino.valueToCode(this, 'XVALUE', Blockly.Arduino.ORDER_ATOMIC);
     var pos_y = Blockly.Arduino.valueToCode(this, 'YVALUE', Blockly.Arduino.ORDER_ATOMIC);
-    var matrixName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('MATRIX_VAR'),
+    var matrixName = block.getFieldValue('MATRIX_VAR');
+    var matrixId = Blockly.Arduino.variableDB_.getName(
+        matrixName,
         Blockly.Variables.NAME_TYPE);
     var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_type = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
-    var code = matrixName + '.setLed(' + NO + ', ' + pos_x + ', ' + pos_y + ', ' + dropdown_type + ');\n';
+    var code = matrixId + '.setLed(' + NO + ', ' + pos_x + ', ' + pos_y + ', ' + dropdown_type + ');\n';
     return code;
 };
 
 //依據陣列顯示內容
 Blockly.Arduino["display_Matrix_predefarr"] = function (block) {
-    var matrixName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('MATRIX_VAR'),
+    var matrixName = block.getFieldValue('MATRIX_VAR');
+    var matrixId = Blockly.Arduino.variableDB_.getName(
+        matrixName,
         Blockly.Variables.NAME_TYPE);
     var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.addDefine('var_declare_LEDArray', 'byte LEDArray[8];');
@@ -76,15 +81,16 @@ Blockly.Arduino["display_Matrix_predefarr"] = function (block) {
     var code = 'memcpy_P(&LEDArray, &' + dotMatrixArray + ', 8);\n';
     code += 'for(int index_i = 0; index_i < 8; index_i++)\n';
     code += '{\n';
-    code += '  ' + matrixName + '.setRow(' + NO + ', index_i, LEDArray[index_i]);\n';
+    code += '  ' + matrixId + '.setRow(' + NO + ', index_i, LEDArray[index_i]);\n';
     code += '}\n';
     return code;
 };
 
 //依點陣內容顯示
 Blockly.Arduino["display_Matrix_LedArray"] = function (block) {
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('ARRAY_VAR'),
+    var arrayName = block.getFieldValue('ARRAY_VAR');
+    var arrayId = Blockly.Arduino.variableDB_.getName(
+        arrayName,
         Blockly.Variables.NAME_TYPE);
     var a = [];
     for (var i = 1; i < 9; i++) {
@@ -102,8 +108,8 @@ Blockly.Arduino["display_Matrix_LedArray"] = function (block) {
         code += tmp + ((i != 8) ? ',' : '');
     }
     code += '};';
-    Blockly.Arduino.addDefine(varName, "const byte " + varName + "[8] PROGMEM = " + code);
-    return [varName, Blockly.Arduino.ORDER_ATOMIC];
+    Blockly.Arduino.addVariable(arrayName, "const byte " + arrayId + "[8] PROGMEM = " + code, true);
+    return [arrayId, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 //顯示預設數字字元

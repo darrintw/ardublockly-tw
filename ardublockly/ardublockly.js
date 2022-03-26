@@ -39,6 +39,10 @@ Ardublockly.init = function () {
             Ardublockly.changeBlocklyArduinoBoard(
                 jsonObj['selected'].toLowerCase().replace(/ /g, '_'));
         });
+        ArdublocklyServer.requestSerialPorts(function (jsonObj) {
+            Ardublockly.setSerialPortsHtml(
+                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+        });
         document.getElementById('version_output').hidden = true;
     } else {
         document.getElementById('ide_buttons_wrapper').hidden = true;
@@ -272,7 +276,7 @@ Ardublockly.ideSendUpload = function () {
             Ardublockly.getLocalStr('usbUploadTitle'),
             Ardublockly.getLocalStr('usbUploadBody'),
             true, function () {
-                Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'));
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'));
                 Ardublockly.resetIdeOutputContent();
                 Ardublockly.sendCode();
             });

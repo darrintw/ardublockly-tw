@@ -1,5 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="variables_init" id="wEG4:~C{ZdP}RF,2tXL/" x="107" y="61">
+  <block type="variables_init" id="wEG4:~C{ZdP}RF,2tXL/" x="0" y="0">
     <field name="VAR">x_pin</field>
     <field name="CONST">FALSE</field>
     <value name="VALUE">
@@ -8,7 +8,7 @@
       </block>
     </value>
   </block>
-  <block type="variables_init" id="{RVw23/AEvHG7b4vg=,R" x="104" y="109">
+  <block type="variables_init" id="{RVw23/AEvHG7b4vg=,R" x="0" y="64">
     <field name="VAR">y_pin</field>
     <field name="CONST">FALSE</field>
     <value name="VALUE">
@@ -17,7 +17,7 @@
       </block>
     </value>
   </block>
-  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="28" y="312">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="128">
     <statement name="SETUP_FUNC">
       <block type="I2CLCD_setup" id="6ygiV?+t%S~HW{BBn%tE">
         <field name="I2C_ADDR">0x27</field>
@@ -29,7 +29,7 @@
               <block type="I2CLCD_backlightOn" id="N6#!!2*p%WAMn+0/(HXi">
                 <next>
                   <block type="stepper_setup_4pin" id=";tIIaXl][DQLjBPESu;o">
-                    <field name="VAR">mystepper</field>
+                    <field name="STEPPER_NAME">mystepper</field>
                     <value name="PIN1">
                       <block type="io_allpins" id="oEWOQT.5ut(3=z/SO87m">
                         <field name="PIN">3</field>
@@ -162,7 +162,7 @@
                         </value>
                         <next>
                           <block type="stepper_speed" id="?b;+]4S6=3F4`L{tLWDn">
-                            <field name="VAR">mystepper</field>
+                            <field name="STEPPER_NAME">mystepper</field>
                             <value name="SPEED">
                               <block type="variables_get" id="t5Y(h+JiyV032f/1{kkh">
                                 <field name="VAR">rpm</field>
@@ -231,7 +231,7 @@
                         </value>
                         <next>
                           <block type="stepper_speed" id="A~(db;?!r3uVm6rJnfSJ">
-                            <field name="VAR">mystepper</field>
+                            <field name="STEPPER_NAME">mystepper</field>
                             <value name="SPEED">
                               <block type="variables_get" id="=-54gHjGQ|;C=DWQ.uHS">
                                 <field name="VAR">rpm</field>
@@ -341,7 +341,7 @@
                                     </value>
                                     <next>
                                       <block type="stepper_move" id="@7yGP5K4EedrNW#HRr%m">
-                                        <field name="VAR">mystepper</field>
+                                        <field name="STEPPER_NAME">mystepper</field>
                                         <value name="STEP">
                                           <shadow type="math_number" id="NoVuqh5l+Ze4YDFJH8lF">
                                             <field name="NUM">10</field>

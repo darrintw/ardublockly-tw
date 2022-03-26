@@ -15,8 +15,9 @@ Blockly.Blocks.WS2812Leds.HUE = 180;
 
 Blockly.Blocks["pixel_init_var"] = {
     init: function () {
-        this.appendValueInput("PIXEL_VAR")
-            .appendField(Blockly.Msg.NEOPIXEL_SETUP);
+        this.appendDummyInput("")
+            .appendField(Blockly.Msg.NEOPIXEL_SETUP)
+            .appendField(new Blockly.FieldVariable('ledstrip'), 'PIXEL_VAR');
         this.appendValueInput("PIXEL_NUM")
             .appendField(Blockly.Msg.NEOPIXEL_NUM);
         this.appendValueInput("PIXEL_PIN")
@@ -32,8 +33,9 @@ Blockly.Blocks["pixel_init_var"] = {
 
 Blockly.Blocks["pixel_single_color"] = {
     init: function () {
-        this.appendValueInput("PIXEL_VAR")
-            .appendField(Blockly.Msg.NEOPIXEL_STRIP);
+        this.appendDummyInput("")
+            .appendField(Blockly.Msg.NEOPIXEL_STRIP)
+            .appendField(new Blockly.FieldVariable('ledstrip'), 'PIXEL_VAR');
         this.appendValueInput("PIXEL_NUMTH")
             .appendField(Blockly.Msg.NEOPIXEL_NUMTH_1);
         this.appendDummyInput()
@@ -56,8 +58,9 @@ Blockly.Blocks["pixel_single_color"] = {
 
 Blockly.Blocks["pixel_single_off"] = {
     init: function () {
-        this.appendValueInput("PIXEL_VAR")
-            .appendField(Blockly.Msg.NEOPIXEL_STRIP);
+        this.appendDummyInput("")
+            .appendField(Blockly.Msg.NEOPIXEL_STRIP)
+            .appendField(new Blockly.FieldVariable('ledstrip'), 'PIXEL_VAR');
         this.appendValueInput("PIXEL_NUMTH")
             .appendField(Blockly.Msg.NEOPIXEL_NUMTH_1);
         this.appendDummyInput()
@@ -74,8 +77,9 @@ Blockly.Blocks["pixel_single_off"] = {
 
 Blockly.Blocks["pixel_all_off"] = {
     init: function () {
-        this.appendValueInput("PIXEL_VAR")
-            .appendField(Blockly.Msg.NEOPIXEL_STRIP);
+        this.appendDummyInput("")
+            .appendField(Blockly.Msg.NEOPIXEL_STRIP)
+            .appendField(new Blockly.FieldVariable('ledstrip'), 'PIXEL_VAR');
         this.appendDummyInput()
             .appendField(Blockly.Msg.NEOPIXEL_ALLOFF);
         this.setInputsInline(true);

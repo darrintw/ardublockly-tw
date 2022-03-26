@@ -198,27 +198,14 @@ Ardublockly.TOOLBOX_XML =
     '  <sep></sep>' +
     '  <category id="catInput" name="Input">' +
     '    <block type="io_input"></block>' +
-    '    <block type="io_input_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
-    '    </block>' +
-    '    <block type="io_input_pullup">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
-    '    </block>' +
+    '    <block type="io_input_var"></block>' +
+    '    <block type="io_input_pullup"></block>' +
+    '    <block type="io_input_pullup_var"></block>' +
     '    <block type="io_digitalread"></block>' +
     '    <block type="io_digitalread_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
     '    </block>' +
     '    <block type="io_analogread"></block>' +
     '    <block type="io_analogread_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
     '    </block>' +
     '    <block type="io_pulsein">' +
     '      <value name="PULSETYPE">' +
@@ -254,9 +241,6 @@ Ardublockly.TOOLBOX_XML =
     '  <category id="catOutput" name="Output">' +
     '    <block type="io_output"></block>' +
     '    <block type="io_output_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
     '    </block>' +
     '    <block type="io_digitalwrite">' +
     '      <value name="STATE">' +
@@ -264,9 +248,6 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="io_digitalwrite_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
     '      <value name="STATE">' +
     '        <block type="io_highlow"></block>' +
     '      </value>' +
@@ -279,15 +260,13 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="io_analogwrite_var">' +
-    '      <value name="PIN">' +
-    '        <block type="variables_get"></block>' +
-    '      </value>' +
     '      <value name="NUM">' +
     '        <block type="math_number">' +
     '          <field name="NUM">100</field>' +
     '        </block>' +
     '      </value>' +
     '    </block>' +
+    /*
     '    <block type="io_tone">' +
     '      <field name="TONEPIN">0</field>' +
     '      <value name="FREQUENCY">' +
@@ -297,5 +276,24 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="io_notone"></block>' +
+    */
+    '    <block type="io_play_tone"></block>' +
+    '    <block type="io_single_tone">' +
+    '      <field name="NOTE">C</field>' +
+    '      <field name="TONE">1</field>' +
+    '      <field name="TEMPO">1</field>' +
+    '    </block>' +
+    '    <block type="io_multi_tone">' +
+    '      <value name="NOTE_TONE">' +
+    '        <block type="text">' +
+    '           <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>' +
+    '        </block>' +
+    '      </value>' +
+    '      <value name="TEMPO">' +
+    '        <block type="text">' +
+    '           <field name="TEXT">1,1,1,1,1,1,1</field>' +
+    '        </block>' +
+    '      </value>' +
+    '    </block>' +
     '  </category>' +
     '</xml>';

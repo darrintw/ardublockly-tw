@@ -20,7 +20,7 @@ Blockly.Blocks["MAX7219_init"] = {
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219)
-            .appendField(new Blockly.FieldTextInput('lc_matrix'), 'MATRIX_VAR');
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219_INIT);
@@ -64,7 +64,7 @@ Blockly.Blocks["display_Matrix_Brightness"] = {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219)
-            .appendField(new Blockly.FieldTextInput('lc_matrix'), 'MATRIX_VAR');
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
         this.appendValueInput("NO")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -87,7 +87,7 @@ Blockly.Blocks["display_Matrix_clearDisplay"] = {
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219)
-            .appendField(new Blockly.FieldTextInput('lc_matrix'), 'MATRIX_VAR');
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
         this.appendValueInput("NO")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -112,7 +112,7 @@ Blockly.Blocks["display_Matrix_DrawPixel"] = {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219)
-            .appendField(new Blockly.FieldTextInput('lc_matrix'), 'MATRIX_VAR');
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
         this.appendValueInput("NO")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -143,7 +143,7 @@ Blockly.Blocks["display_Matrix_predefarr"] = {
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219)
-            .appendField(new Blockly.FieldTextInput('lc_matrix'), 'MATRIX_VAR');
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
         this.appendValueInput("NO")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -164,7 +164,7 @@ Blockly.Blocks["display_Matrix_LedArray"] = {
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_MAX7219_ARRAYVAR)
-            .appendField(new Blockly.FieldTextInput("LedArray1"), "ARRAY_VAR");
+            .appendField(new Blockly.FieldVariable("LedArray1"), "ARRAY_VAR");
         this.appendDummyInput()
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a11")
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a12")

@@ -180,9 +180,21 @@ Blockly.Msg.ARD_TONE_PIN = 'Tone PIN#';
 /// Arduino
 Blockly.Msg.ARD_TONE_PIN_TIP = 'Generate audio tones on a Pin';
 /// Arduino
-Blockly.Msg.ARD_TONE_TIP = 'Sets tone on Pin to specified frequency within range 31 - 65535';
+Blockly.Msg.ARD_TONE_TIP = 'Sets tone on Pin to specified frequency within range 31 - 4987';
 /// Arduino
-Blockly.Msg.ARD_TONE_WARNING = 'Frequency must be in range 31 - 65535';
+Blockly.Msg.ARD_TONE_WARNING = 'Frequency must be in range 31 - 4987';
+/// Arduino
+Blockly.Msg.ARD_TONE_USE = "Use ";
+/// Arduino
+Blockly.Msg.ARD_TONE_PLAY = " play, speed ";
+/// Arduino
+Blockly.Msg.ARD_NOTE = "Note";
+/// Arduino
+Blockly.Msg.ARD_TONE = "tone";
+/// Arduino
+Blockly.Msg.ARD_TEMPO = "tempo";
+/// Arduino
+Blockly.Msg.ARD_TONE_TIP = "Use tone and tempo to play.";
 /// Arduino
 Blockly.Msg.ARD_NOTONE_PIN = 'No tone PIN#';
 /// Arduino
