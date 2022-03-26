@@ -210,23 +210,25 @@ Blockly.Arduino['afmotor_var'] = function (block) {
 
 /** stepper */
 Blockly.Arduino["stepper_setup_2pin"] = function (block) {
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('VAR'),
-        Blockly.Variables.NAME_TYPE);
+    var stepperName = block.getFieldValue('STEPPER_NAME');
+    var stepperId = Blockly.Arduino.variableDB_.getName(
+        stepperName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     var pin1 = Blockly.Arduino.valueToCode(block, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
     var pin2 = Blockly.Arduino.valueToCode(block, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
     var steps = Blockly.Arduino.valueToCode(block, 'STEPS', Blockly.Arduino.ORDER_ATOMIC);
     var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
-    Blockly.Arduino.addDefine('Stepper_def_' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin2 + ');');
-    Blockly.Arduino.addSetup('setup_stepper_' + varName, varName + '.setSpeed(' + speed + ');');
+    Blockly.Arduino.addVariable(stepperName, 'Stepper ' + stepperId + '(' + steps + ',' + pin1 + ',' + pin2 + ');', true);
+    Blockly.Arduino.addSetup('setup_stepper_' + stepperId, stepperId + '.setSpeed(' + speed + ');');
     return '';
 };
 
 Blockly.Arduino["stepper_setup_4pin"] = function (block) {
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('VAR'),
-        Blockly.Variables.NAME_TYPE);
+    var stepperName = block.getFieldValue('STEPPER_NAME');
+    var stepperId = Blockly.Arduino.variableDB_.getName(
+        stepperName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     var pin1 = Blockly.Arduino.valueToCode(block, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
     var pin2 = Blockly.Arduino.valueToCode(block, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
     var pin3 = Blockly.Arduino.valueToCode(block, 'PIN3', Blockly.Arduino.ORDER_ATOMIC);
@@ -234,25 +236,27 @@ Blockly.Arduino["stepper_setup_4pin"] = function (block) {
     var steps = Blockly.Arduino.valueToCode(block, 'STEPS', Blockly.Arduino.ORDER_ATOMIC);
     var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
-    Blockly.Arduino.addDefine('Stepper_def_' + varName, 'Stepper ' + varName + '(' + steps + ',' + pin1 + ',' + pin3 + ',' + pin2 + ',' + pin4 + ');');
-    Blockly.Arduino.addSetup('setup_stepper_' + varName, varName + '.setSpeed(' + speed + ');');
+    Blockly.Arduino.addVariable(stepperName, 'Stepper ' + stepperId + '(' + steps + ',' + pin1 + ',' + pin3 + ',' + pin2 + ',' + pin4 + ');', true);
+    Blockly.Arduino.addSetup('setup_stepper_' + stepperId, stepperId + '.setSpeed(' + speed + ');');
     return '';
 };
 
 Blockly.Arduino["stepper_speed"] = function (block) {
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('VAR'),
-        Blockly.Variables.NAME_TYPE);
+    var stepperName = block.getFieldValue('STEPPER_NAME');
+    var stepperId = Blockly.Arduino.variableDB_.getName(
+        stepperName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
-    var code = varName + '.setSpeed(' + speed + ');\n';
+    var code = stepperId + '.setSpeed(' + speed + ');\n';
     return code;
 };
 
 Blockly.Arduino["stepper_move"] = function (block) {
-    var varName = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('VAR'),
-        Blockly.Variables.NAME_TYPE);
+    var stepperName = block.getFieldValue('STEPPER_NAME');
+    var stepperId = Blockly.Arduino.variableDB_.getName(
+        stepperName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     var step = Blockly.Arduino.valueToCode(this, 'STEP', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.addInclude('Stepper_inc', '#include <Stepper.h>');
-    return varName + '.step(' + step + ');\n';
+    return stepperId + '.step(' + step + ');\n';
 };

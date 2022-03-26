@@ -296,7 +296,7 @@ Blockly.Blocks['lists_indexOf'] = {
         this.setColour(Blockly.Blocks.lists.HUE);
         this.setOutput(true, Blockly.Types.NUMBER.output);
         this.appendValueInput('VALUE')
-            .setCheck('Array')
+            .setCheck(Blockly.Types.ARRAY.checkList)
             .appendField(Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
         this.appendValueInput('FIND')
             .appendField(new Blockly.FieldDropdown(OPERATORS), 'END');
@@ -328,7 +328,7 @@ Blockly.Blocks['lists_getIndex'] = {
             this.sourceBlock_.updateStatement_(isStatement);
         });
         this.appendValueInput('VALUE')
-            .setCheck('Array')
+            .setCheck(Blockly.Types.ARRAY.checkList)
             .appendField(Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST);
         this.appendDummyInput()
             .appendField(modeMenu, 'MODE')
@@ -455,7 +455,7 @@ Blockly.Blocks['lists_setIndex'] = {
         this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
         this.setColour(Blockly.Blocks.lists.HUE);
         this.appendValueInput('LIST')
-            .setCheck('Array')
+            .setCheck(Blockly.Types.ARRAY.checkList)
             .appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(MODE), 'MODE')
@@ -556,7 +556,7 @@ Blockly.Blocks['lists_getSublist'] = {
         this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
         this.setColour(Blockly.Blocks.lists.HUE);
         this.appendValueInput('LIST')
-            .setCheck('Array')
+            .setCheck(Blockly.Types.ARRAY.checkList)
             .appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
         this.appendDummyInput('AT1');
         this.appendDummyInput('AT2');
@@ -565,7 +565,7 @@ Blockly.Blocks['lists_getSublist'] = {
                 .appendField(Blockly.Msg.LISTS_GET_SUBLIST_TAIL);
         }
         this.setInputsInline(true);
-        this.setOutput(true, 'Array');
+        this.setOutput(true, Blockly.Types.ARRAY.checkList);
         this.updateAt_(1, true);
         this.updateAt_(2, true);
         this.setTooltip(Blockly.Msg.LISTS_GET_SUBLIST_TOOLTIP);
@@ -726,11 +726,11 @@ Blockly.Blocks['lists_split'] = {
      */
     updateType_: function (newMode) {
         if (newMode == 'SPLIT') {
-            this.outputConnection.setCheck('Array');
+            this.outputConnection.setCheck(Blockly.Types.ARRAY.checkList);
             this.getInput('INPUT').setCheck(Blockly.Types.STRING.checkList);
         } else {
             this.outputConnection.setCheck(Blockly.Types.STRING.checkList);
-            this.getInput('INPUT').setCheck('Array');
+            this.getInput('INPUT').setCheck(Blockly.Types.ARRAY.checkList);
         }
     },
     /**

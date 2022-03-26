@@ -108,7 +108,8 @@ Ardublockly.LOCALISED_TEXT = {
     invalidExampleBody: "Not define Example path",
     /* Tooltips */
     usbUploadTitle: "USB Uploader",
-    usbUploadBody: "Plese plug-in USB in 60 seconds, after plug-in USB press confirm...",
+    usbUploadBody: "Plese remove USB and press confirm, wait message to plugin-USB...",
+    usbUpload: "Plese plug-in USB in 60 seconds...",
     uploadingSketch: "Uploading Sketch into Arduino...",
     uploadSketch: "Upload Sketch to the Arduino",
     verifyingSketch: "Verifying Sketch...",

@@ -208,7 +208,7 @@ Blockly.Blocks['controls_if'] = {
         // Rebuild block.
         for (var i = 1; i <= this.elseifCount_; i++) {
             this.appendValueInput('IF' + i)
-                .setCheck('Boolean')
+                .setCheck(Blockly.Types.BOOLEAN.checkList)
                 .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
             this.appendStatementInput('DO' + i)
                 .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);

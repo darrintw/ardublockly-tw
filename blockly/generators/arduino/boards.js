@@ -17,8 +17,8 @@ goog.require('Blockly.Arduino');
 /**
  * Helper function to generate an array of pins (each an array of length 2) for
  * the digital IO.
- * @param {!integer} pinStart Start number for the IOs Pin list to generate.
- * @param {!integer} pinEnd Last inclusive number for the list to generate.
+ * @param {!Integer} pinStart Start number for the IOs Pin list to generate.
+ * @param {!Integer} pinEnd Last inclusive number for the list to generate.
  * @return {!array} Two dimensional array with the name and value for the
  *     digital IO pins.
  */
@@ -33,8 +33,8 @@ Blockly.Arduino.Boards.generateDigitalIo = function (pinStart, pinEnd) {
 /**
  * Helper function to generate an array of pins (each an array of length 2) for
  * the analogue IO.
- * @param {!integer} pinStart Start number for the IOs Pin list to generate.
- * @param {!integer} pinEnd Last inclusive number for the list to generate.
+ * @param {!Integer} pinStart Start number for the IOs Pin list to generate.
+ * @param {!Integer} pinEnd Last inclusive number for the list to generate.
  * @return {!array} Two dimensional array with the name and value for the
  *     analogue IO pins.
  */
@@ -50,6 +50,7 @@ Blockly.Arduino.Boards.generateAnalogIo = function (pinStart, pinEnd) {
  * Creates a new Board Profile copying all the attributes from an existing
  * profile, with the exception of the name, and optionally the description and
  * compiler flag.
+ * @param {!string} originalBoard Original board profile for copy.
  * @param {!string} name_ Mandatory new name of the new board profile.
  * @param {string=} description Optional new description of the new profile.
  * @param {string=} compilerFlag Optional new description of the new profile.
@@ -263,6 +264,7 @@ Blockly.Arduino.Boards.profiles.esp8266_huzzah = {
 */
 
 /** ESP8266 for the Wemos D1 R2. */
+/*
 Blockly.Arduino.Boards.profiles.wemos_d1 = {
     name: 'Wemos D1',
     description: 'Wemos D1 R2 compatible board',
@@ -289,6 +291,7 @@ Blockly.Arduino.Boards.profiles.wemos_d1 = {
     interrupt: [['D0', 'D0'], ['D1', 'D1'], ['D2', 'D2'], ['D3', 'D3'],
         ['D4', 'D4'], ['D5', 'D5'], ['D6', 'D7'], ['D8', 'D8']]
 };
+*/
 
 /** ESP8266. */
 /*

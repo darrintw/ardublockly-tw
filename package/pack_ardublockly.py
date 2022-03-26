@@ -103,7 +103,8 @@ def get_commit_tag():
     path = '..\\ardublockly\\ardublockly\\build_number'
     with open(path, 'r', encoding='UTF-8') as version:
         arch_time_stamp = version.read()
-    return arch_time_stamp
+    print(arch_time_stamp.replace('\n', ''))
+    return arch_time_stamp.replace('\n', '')
 
 
 def get_build_tag():
@@ -220,7 +221,7 @@ def copy_ardublockly_folder():
                   ".ruby-version", "TestTemp_*", "package", ".coverage's", "ardublockly.iml",
                   "ardublockly.log", "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
                   "pack.bat", "buildBlockly.cmd", "build.bat", "test.py", "update.bat", ".git"
-                  "FETCH_HEAD", "*.pack")
+                                                                                        "FETCH_HEAD", "*.pack")
     if not os.path.exists(copied_project_dir):
         print(script_tab + "Copying contents of %s" % project_root_dir)
         print(script_tab + "               into %s" % copied_project_dir)
@@ -246,6 +247,10 @@ def copy_ardublockly_folder():
         print(script_tab + "Moving CH341SER of %s\\Tools\\CH341SER" % copied_project_dir)
         print(script_tab + "              into %s" % copied_project_up_dir)
         shutil.move(copied_project_dir + "\\Tools\\CH341SER", copied_project_up_dir)
+
+        print(script_tab + "Moving CP210x of %s\\Tools\\CP210x" % copied_project_dir)
+        print(script_tab + "              into %s" % copied_project_up_dir)
+        shutil.move(copied_project_dir + "\\Tools\\CP210x", copied_project_up_dir)
 
         print(script_tab + "Moving DigisparkWindowsDriver of %s\\Tools\\DigisparkWindowsDriver" % copied_project_dir)
         print(script_tab + "              into %s" % copied_project_up_dir)
@@ -417,7 +422,7 @@ def zip_ardublockly_copy(name_append):
             for filename in files:
                 try:
                     zip_file.write(os.path.join(root_dir, filename))
-                except e:
+                except Exception as e:
                     print('Zipping file', os.path.join(root_dir, filename))
         zip_file.close()
 

@@ -128,7 +128,8 @@ Ardublockly.LOCALISED_TEXT = {
     invalidExampleBody: "尚未定義Example的路徑",
     /* Tooltips */
     usbUploadTitle: "USB 燒錄器",
-    usbUploadBody: "請於60秒內插上USB，插入後請按下確定開始燒錄....",
+    usbUploadBody: "請先拔除USB後按下確定，並於看到指示後插上USB開始燒錄....",
+    usbUpload: "請插上USB開始燒錄....",
     uploadingSketch: "上傳草稿碼至Arduino開發板中...",
     uploadSketch: "上傳草稿碼至Arduino開發板",
     verifyingSketch: "驗證/編譯草稿碼中...",

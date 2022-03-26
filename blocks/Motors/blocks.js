@@ -241,7 +241,7 @@ Blockly.Blocks["stepper_setup_2pin"] = {
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_STEPPER_SETUP_4PIN)
-            .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
+            .appendField(new Blockly.FieldVariable('mystepper'), 'STEPPER_NAME');
         this.appendValueInput("PIN1", Number)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_STEPPER_PIN1);
@@ -266,7 +266,7 @@ Blockly.Blocks["stepper_setup_4pin"] = {
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_STEPPER_SETUP_4PIN)
-            .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
+            .appendField(new Blockly.FieldVariable('mystepper'), 'STEPPER_NAME');
         this.appendValueInput("PIN1", Number)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_STEPPER_PIN1);
@@ -296,7 +296,7 @@ Blockly.Blocks["stepper_speed"] = {
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_STEPPER)
-            .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
+            .appendField(new Blockly.FieldVariable('mystepper'), 'STEPPER_NAME');
         this.appendValueInput('SPEED')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_STEPPER_SET_SPEED);
@@ -311,7 +311,7 @@ Blockly.Blocks["stepper_move"] = {
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_STEPPER)
-            .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
+            .appendField(new Blockly.FieldVariable('mystepper'), 'STEPPER_NAME');
         this.appendValueInput('STEP')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_STEPPER_STEP);

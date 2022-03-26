@@ -55,8 +55,9 @@ Blockly.Blocks['io_input_var'] = {
      */
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
-        this.appendValueInput('PIN')
-            .appendField(Blockly.Msg.ARD_DIGITAL);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SET_INPUT);
         this.setInputsInline(true);
@@ -65,6 +66,10 @@ Blockly.Blocks['io_input_var'] = {
         this.setTooltip(Blockly.Msg.ARD_SET_INPUT_TIP);
         this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
         this.setColour(Blockly.Blocks.input.HUE);
+    },
+    /** @return {!string} The type of input value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
     }
 };
 
@@ -75,8 +80,10 @@ Blockly.Blocks['io_input_pullup'] = {
      */
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
-        this.appendValueInput('PIN')
-            .appendField(Blockly.Msg.ARD_DIGITAL);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.digitalPins), 'PIN');
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_INPUT_PULLUP);
         this.setInputsInline(true);
@@ -85,6 +92,35 @@ Blockly.Blocks['io_input_pullup'] = {
         this.setTooltip(Blockly.Msg.ARD_INPUT_PULLUP_TIP);
         this.setHelpUrl('https://www.arduino.cc/reference/en/language/variables/constants/constants/');
         this.setColour(Blockly.Blocks.input.HUE);
+    },
+    /** @return {!string} The type of input value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    }
+};
+
+Blockly.Blocks['io_input_pullup_var'] = {
+    /**
+     * Block for creating a 'read Pin'.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITAL)
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_INPUT_PULLUP);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_INPUT_PULLUP_TIP);
+        this.setHelpUrl('https://www.arduino.cc/reference/en/language/variables/constants/constants/');
+        this.setColour(Blockly.Blocks.input.HUE);
+    },
+    /** @return {!string} The type of input value for the block, an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
     }
 };
 
@@ -123,20 +159,13 @@ Blockly.Blocks['io_digitalread_var'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_DIGITALREAD_MSG,
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "PIN",
-                    "check": "Number"
-                }
-            ],
-            "output": Blockly.Types.BOOLEAN.output,
-            "colour": Blockly.Blocks.input.HUE,
-            "tooltip": Blockly.Msg.ARD_DIGITALREAD_TIP,
-            "helpUrl": 'https://arduino.cc/en/Reference/DigitalRead'
-        });
+        this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
+        this.setColour(Blockly.Blocks.input.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITALREAD)
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.setOutput(true, Blockly.Types.BOOLEAN.output);
+        this.setTooltip(Blockly.Msg.ARD_DIGITALREAD_TIP);
     },
     /** @return {!string} The type of return value for the block, an integer. */
     getBlockType: function () {
@@ -178,20 +207,13 @@ Blockly.Blocks['io_analogread_var'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_ANALOGREAD_MSG,
-            "args0": [
-                {
-                    "type": "input_value",
-                    "name": "PIN",
-                    "check": "Number"
-                }
-            ],
-            "output": Blockly.Types.NUMBER.output,
-            "colour": Blockly.Blocks.input.HUE,
-            "tooltip": Blockly.Msg.ARD_ANALOGREAD_TIP,
-            "helpUrl": 'https://arduino.cc/en/Reference/AnalogRead'
-        });
+        this.setHelpUrl('https://arduino.cc/en/Reference/AnalogRead');
+        this.setColour(Blockly.Blocks.input.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_ANALOGREAD)
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.setOutput(true, Blockly.Types.NUMBER.output);
+        this.setTooltip(Blockly.Msg.ARD_ANALOGREAD_TIP);
     },
     /** @return {!string} The type of return value for the block, an integer. */
     getBlockType: function () {

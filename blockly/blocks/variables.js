@@ -171,7 +171,6 @@ Blockly.Blocks['variables_declare'] = {
     /**
      * Searches through the nested blocks to find a variable type.
      * @this Blockly.Block
-     * @param {!string} varName Name of this block variable to check type.
      * @return {Blockly.Type} String to indicate the type of this block.
      */
     getVarType: function () {

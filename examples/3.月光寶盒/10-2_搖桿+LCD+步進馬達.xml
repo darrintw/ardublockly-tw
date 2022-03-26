@@ -1,0 +1,372 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="wEG4:~C{ZdP}RF,2tXL/" x="0" y="0">
+    <field name="VAR">x_pin</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="=arJgD`u,*`_6.CRZj|J">
+        <field name="PIN">A6</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="{RVw23/AEvHG7b4vg=,R" x="0" y="64">
+    <field name="VAR">y_pin</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="v~bK7dcl^pd6%s_EQ}Uq">
+        <field name="PIN">A7</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="128">
+    <statement name="SETUP_FUNC">
+      <block type="I2CLCD_setup" id="6ygiV?+t%S~HW{BBn%tE">
+        <field name="I2C_ADDR">0x27</field>
+        <field name="COL">16</field>
+        <field name="ROW">2</field>
+        <next>
+          <block type="I2CLCD_clear" id="?gVvS*7?0sp/l@{QqjPl">
+            <next>
+              <block type="I2CLCD_backlightOn" id="N6#!!2*p%WAMn+0/(HXi">
+                <next>
+                  <block type="stepper_setup_4pin" id=";tIIaXl][DQLjBPESu;o">
+                    <field name="STEPPER_NAME">mystepper</field>
+                    <value name="PIN1">
+                      <block type="io_allpins" id="oEWOQT.5ut(3=z/SO87m">
+                        <field name="PIN">3</field>
+                      </block>
+                    </value>
+                    <value name="PIN2">
+                      <block type="io_allpins" id="pSe0+FzDXA]Uu.bw!xLx">
+                        <field name="PIN">4</field>
+                      </block>
+                    </value>
+                    <value name="PIN3">
+                      <block type="io_allpins" id="}hHN/M6-P{aAO6De5[+f">
+                        <field name="PIN">5</field>
+                      </block>
+                    </value>
+                    <value name="PIN4">
+                      <block type="io_allpins" id="v6,v=cyO1}7S;3:@[Rjv">
+                        <field name="PIN">6</field>
+                      </block>
+                    </value>
+                    <value name="STEPS">
+                      <block type="math_number" id="iK!(]`NVVT4)RAis}})K">
+                        <field name="NUM">64</field>
+                      </block>
+                    </value>
+                    <value name="SPEED">
+                      <block type="math_number" id="~3*]BB6*}FRP8]f_=:lQ">
+                        <field name="NUM">60</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="qaR]ggUK6.s4u7:4KvYU">
+                        <field name="VAR">pre_step</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="Y_`u@Y,d0tjH*i7b4%u5">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="ZGwe%mzKur:A,=n{e)uD">
+        <field name="VAR">x_value</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="-b@A|(7)r)DuYJOE.3T@">
+            <value name="PIN">
+              <block type="variables_get" id="kj|Y)I]g}*o!=1o-9UdS">
+                <field name="VAR">x_pin</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="7d_m8{v6)/Pu)6l.wuI[">
+            <field name="VAR">y_value</field>
+            <value name="VALUE">
+              <block type="io_analogread_var" id="]),C]Q{E(sPOzkr2/.aD">
+                <value name="PIN">
+                  <block type="variables_get" id="T=lTI=?i]LTD9#wa_Lha">
+                    <field name="VAR">y_pin</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="Yxe)?`~ewx}zJoK7iZ_D">
+                <field name="VAR">rpm</field>
+                <value name="VALUE">
+                  <block type="math_number" id="=-xz}2|vUKB?}9MC/qH#">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="WN8=R;e.,AT]~A#TE]ih">
+                    <mutation elseif="1" else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="[zYy+9vqk_;^}bjb+SGi">
+                        <field name="OP">LTE</field>
+                        <value name="A">
+                          <block type="variables_get" id="yO{AspM,AyNKD:aE5_I+">
+                            <field name="VAR">x_value</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="`48i#ts?%yl|c{5%8eVQ">
+                            <field name="NUM">450</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="_N@6WNZ6J^=_=:v9x-Mp">
+                        <field name="VAR">rpm</field>
+                        <value name="VALUE">
+                          <block type="math_any_map" id="P7A.U|JN|Ch4IH[TK0r@">
+                            <value name="NUM">
+                              <block type="variables_get" id="([F|p1th|N]U,%5^g7,T">
+                                <field name="VAR">x_value</field>
+                              </block>
+                            </value>
+                            <value name="SMIN">
+                              <block type="math_number" id="MTjxfGI[V6@]dfqnrL_y">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="SMAX">
+                              <block type="math_number" id="~7.D^L;bTkegu%P(c9)9">
+                                <field name="NUM">450</field>
+                              </block>
+                            </value>
+                            <value name="DMIN">
+                              <block type="math_number" id="nE3!ki!W/)Op}U3IP)ZE">
+                                <field name="NUM">360</field>
+                              </block>
+                            </value>
+                            <value name="DMAX">
+                              <block type="math_number" id="K}=[dG*TsO2JpCym^wY%">
+                                <field name="NUM">60</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="stepper_speed" id="?b;+]4S6=3F4`L{tLWDn">
+                            <field name="STEPPER_NAME">mystepper</field>
+                            <value name="SPEED">
+                              <block type="variables_get" id="t5Y(h+JiyV032f/1{kkh">
+                                <field name="VAR">rpm</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id=")u~?rTp)rNKa*xkQYZ)d">
+                                <field name="VAR">pre_step</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="@*tuK4JUgI#N{2[^yuUq">
+                                    <field name="NUM">20</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="logic_compare" id="uXKFs9}MfL)R1ATn*?w9">
+                        <field name="OP">GTE</field>
+                        <value name="A">
+                          <block type="variables_get" id="o=9j0sB0Yc^H*2Mf^!9J">
+                            <field name="VAR">x_value</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="~#Fxqk.r/.LLaUnUGMpg">
+                            <field name="NUM">550</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="variables_set" id="A;6/OE(~lmF~#7DqmVo4">
+                        <field name="VAR">rpm</field>
+                        <value name="VALUE">
+                          <block type="math_any_map" id="AuuY[1-=pm|@R.;#t4}[">
+                            <value name="NUM">
+                              <block type="variables_get" id="gxJ`VB^`T{dSqs|jFpZ@">
+                                <field name="VAR">x_value</field>
+                              </block>
+                            </value>
+                            <value name="SMIN">
+                              <block type="math_number" id="bhC+C6u]DdTAMwz2mcbL">
+                                <field name="NUM">550</field>
+                              </block>
+                            </value>
+                            <value name="SMAX">
+                              <block type="math_number" id="c?!oQ=SvXl)fl*m`7@%3">
+                                <field name="NUM">1023</field>
+                              </block>
+                            </value>
+                            <value name="DMIN">
+                              <block type="math_number" id="9,XNyg~-8G;09o=WX!_^">
+                                <field name="NUM">60</field>
+                              </block>
+                            </value>
+                            <value name="DMAX">
+                              <block type="math_number" id="h6*%W(:!R(*Dh)#g4{-+">
+                                <field name="NUM">360</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="stepper_speed" id="A~(db;?!r3uVm6rJnfSJ">
+                            <field name="STEPPER_NAME">mystepper</field>
+                            <value name="SPEED">
+                              <block type="variables_get" id="=-54gHjGQ|;C=DWQ.uHS">
+                                <field name="VAR">rpm</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="Zo~R2Cdwvq~]ou/]1P/2">
+                                <field name="VAR">pre_step</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="ox._s=2iTn5,#J(80R0L">
+                                    <field name="NUM">-20</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="variables_set" id="n4PEcECsj*Oo-oV22Cke">
+                        <field name="VAR">pre_step</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="lrb*4*Nyofk`Q!STj|H-">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="I2CLCD_move" id="P^B6F.[Y9mZ0Oo8^B`X]">
+                        <value name="X">
+                          <block type="math_number" id="puelq4,af?,4Mk,znAEX">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="Y">
+                          <block type="math_number" id="1|/d6!%Dj-W}7xaI}5]a">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="I2CLCD_print" id="}RRU^K%knV?;h7Y.]bmt">
+                            <value name="CONTENT">
+                              <block type="text_join" id="?QOh{MsJ-jBo*xKoB1SC">
+                                <mutation items="5"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="_WkmP%0MSWesKrVb+^Uc">
+                                    <field name="TEXT">X:</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id="PO2A6ska5V,;[LfXCWl)">
+                                    <field name="VAR">x_value</field>
+                                  </block>
+                                </value>
+                                <value name="ADD2">
+                                  <block type="text" id=",6hs?U7?/hCeFTRta/;O">
+                                    <field name="TEXT"> RPM:</field>
+                                  </block>
+                                </value>
+                                <value name="ADD3">
+                                  <block type="variables_get" id="`YN`e3qX1L%`4O?Rb:k(">
+                                    <field name="VAR">rpm</field>
+                                  </block>
+                                </value>
+                                <value name="ADD4">
+                                  <block type="text" id="VBYY{0rqNV-tu%9to.4;">
+                                    <field name="TEXT">               </field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="I2CLCD_move" id="J`1LXcJE[w?qSp0(Mh8g">
+                                <value name="X">
+                                  <block type="math_number" id="xIoCRaU3{zcqb1jFBnms">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="!_v[uoynw{Ea[W|hpah^">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="I2CLCD_print" id="F1.gQ/#1}Dw}/@rX,rBj">
+                                    <value name="CONTENT">
+                                      <block type="text_join" id="iwP-t?T3|)J;2K5:9{_s">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="%5mF]Q/3LSV(W-MZ@z|b">
+                                            <field name="TEXT">Pre_step:</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="variables_get" id="zj?(Y|U%5hS*D0cmOffR">
+                                            <field name="VAR">pre_step</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="y.h;(8}:bg]FWnO]M)pi">
+                                            <field name="TEXT">        </field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="stepper_move" id="@7yGP5K4EedrNW#HRr%m">
+                                        <field name="STEPPER_NAME">mystepper</field>
+                                        <value name="STEP">
+                                          <shadow type="math_number" id="NoVuqh5l+Ze4YDFJH8lF">
+                                            <field name="NUM">10</field>
+                                          </shadow>
+                                          <block type="variables_get" id="^1^Aj}6[Gy?Pt9QSDVCq">
+                                            <field name="VAR">pre_step</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

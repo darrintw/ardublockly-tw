@@ -66,7 +66,7 @@
 	"ARD_TONE_PIN_TIP": "Arduino",
 	"ARD_TONE_TIP": "Arduino",
 	"ARD_TONE_WARNING": "Arduino",
-	"ARD_NOTONE_PIN": "Arduino",
+	"ARD_NOTONE_PIN": "Arduino Arduino Arduino Arduino Arduino Arduino Arduino",
 	"ARD_NOTONE_PIN_TIP": "Arduino",
 	"ARD_NOTONE_TIP": "Arduino",
 	"ARD_DIGITALREAD_MSG": "Arduino",

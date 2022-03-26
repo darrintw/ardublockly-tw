@@ -194,10 +194,10 @@ Blockly.Blocks['array_getIndex'] = {
         this.setHelpUrl(Blockly.Msg.ARRAY_GETINDEX);
         this.setColour(Blockly.Blocks.array.HUE);
         this.appendValueInput("AT")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.checkList)
             .appendField(Blockly.Msg.ARRAY_GETINDEX_AT);
         this.appendValueInput("VAR")
-            .setCheck('Array')
+            .setCheck(Blockly.Types.ARRAY.checkList)
             .appendField(Blockly.Msg.ARRAY_GETINDEX_ITEM);
         this.setInputsInline(true);
         this.setOutput(true);
@@ -209,7 +209,7 @@ Blockly.Blocks['array_modify'] = {
     init: function () {
         this.setColour(Blockly.Blocks.array.HUE);
         this.appendValueInput("indice")
-            .setCheck("Number")
+            .setCheck(Blockly.Types.NUMBER.checkList)
             .appendField(Blockly.Msg.ARRAY_MODIFY_INDICE);
         this.appendValueInput("name")
             .setCheck(null)
