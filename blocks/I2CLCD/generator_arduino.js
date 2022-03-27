@@ -31,6 +31,7 @@ function initI2CLCD(block, i2cAddr, replace, row, col) {
             Blockly.Arduino.pinTypes.I2C, 'I2C ' + i2cPins[i][0]);
     }
 }
+
 /**
  * Code generator for block for setting the serial com speed.
  * Arduino code: setup{ Serial.begin(X); }
@@ -136,7 +137,7 @@ Blockly.Arduino['I2CLCD_clear_y'] = function (block) {
     var y = Blockly.Arduino.valueToCode(
         block, 'Y', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var code = 'I2CLCD.setCursor(0, ' + y + ');\n' +
-               'I2CLCD.print("                    ");\n'
+        'I2CLCD.print("                    ");\n'
     return code;
 };
 
@@ -161,9 +162,8 @@ Blockly.Arduino['I2CLCD_createChar'] = function (block) {
         block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var img_index = 0;
     console.log(content);
-    for (var i = 0; i < lcd_img_map.length; i++){
-        if (lcd_img_map[i][1] === content)
-        {
+    for (var i = 0; i < lcd_img_map.length; i++) {
+        if (lcd_img_map[i][1] === content) {
             img_index = lcd_img_map[i][0];
             break;
         }
@@ -181,11 +181,10 @@ Blockly.Arduino["I2CLCD_img"] = function (block) {
         code += 'B' + hex2bin(dropdown_img_.substr(i, 2)).substr(3, 5) + ((i != 14) ? ', ' : '');
     }
     code += '};';
-    Blockly.Arduino.addDefine('I2CLCD_img_' + dropdown_img_,  "byte " + 'I2CLCD_img_' + dropdown_img_ + "[8] = " + code);
+    Blockly.Arduino.addDefine('I2CLCD_img_' + dropdown_img_, "byte " + 'I2CLCD_img_' + dropdown_img_ + "[8] = " + code);
     var img_index = 0;
-    for (var i = 0; i < lcd_img_map.length; i++){
-        if (lcd_img_map[i][1] === dropdown_img_)
-        {
+    for (var i = 0; i < lcd_img_map.length; i++) {
+        if (lcd_img_map[i][1] === dropdown_img_) {
             img_index = lcd_img_map[i][0];
             break;
         }
@@ -202,5 +201,51 @@ Blockly.Arduino['I2CLCD_backlightOn'] = function (block) {
 
 Blockly.Arduino['I2CLCD_backlightOff'] = function (block) {
     var code = 'I2CLCD.noBacklight();\n';
+    return code;
+};
+
+/**
+ * Function for .
+ * Arduino code: setup {  }
+ *               loop  {  }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['I2CLCD_multi_tone'] = function (block) {
+    var noteTone = Blockly.Arduino.valueToCode(
+        block, 'NOTE_TONE', Blockly.Arduino.ORDER_ATOMIC) || '';
+    var tempo = Blockly.Arduino.valueToCode(
+        block, 'TEMPO', Blockly.Arduino.ORDER_ATOMIC) || '';
+    var noteSize = 0;
+    var code = '';
+    var lastTempo = 0;
+    var tempoLen = 1;
+    if (tempo.indexOf(',') > -1) {
+        tempo = tempo.replaceAll('"', '').split(',');
+        tempoLen = tempo.length;
+    } else {
+        lastTempo = tempo.replaceAll('"', '');
+    }
+    lastTempo = (lastTempo < 1 ? 1 : lastTempo);
+
+    if (noteTone.indexOf(',') > -1) {
+        noteTone = noteTone.replaceAll('"', '').split(',');
+        noteSize = noteTone.length;
+        for (var i = 0; i < noteTone.length; i++) {
+            if (tempoLen > i)
+                lastTempo = tempo[i];
+            code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone[i] + '"), 240000 / %toneSpeed% / ' + lastTempo + ');\n' +
+                'I2CLCD.setCursor(0, 0);\n' +
+                'I2CLCD.print("' + noteTone[i] + '");\n' +
+                'delay((240000 / %toneSpeed% * ' + lastTempo + '));\n' +
+                'noTone(%toneName%);\n';
+        }
+    } else {
+        code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone + '"), (240000 / %toneSpeed% / ' + lastTempo + ');\n' +
+            'I2CLCD.setCursor(0, 0);\n' +
+            'I2CLCD.print("' + noteTone + '");\n' +
+            'delay(240000 / %toneSpeed% / ' + lastTempo + ');\n' +
+            'noTone(%toneName%);\n';
+    }
     return code;
 };

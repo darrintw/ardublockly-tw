@@ -222,8 +222,6 @@ var note = [["0", "0"], ["C", "C"], ["CS", "CS"], ["D", "D"], ["DS", "DS"], ["E"
 var tone = [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]];
 
 var tempo = [["1", "1"], ["2", "2"], ["4", "4"], ["8", "8"], ["16", "16"]];
-var speed = [["1", "1"], ["2", "0.9"], ["3", "0.8"], ["4", "0.7"], ["5", "0.6"], ["6", "0.5"], ["7", "0.4"],
-    ["8", "0.3"], ["9", "0.2"], ["10", "0.1"]];
 
 Blockly.Blocks['io_play_tone'] = {
     /**
@@ -231,11 +229,21 @@ Blockly.Blocks['io_play_tone'] = {
      * @this Blockly.Block
      */
     init: function () {
+        var validator = function (newValue) {
+            if (isNaN(newValue)) {
+                return 120;
+            } else {
+                if (newValue < 1)
+                    return 1;
+                if (newValue > 240)
+                    return 240;
+            }
+        }
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_TONE_USE)
             .appendField(new Blockly.FieldVariable("buzzer"), "TONEPIN")
             .appendField(Blockly.Msg.ARD_TONE_PLAY)
-            .appendField(new Blockly.FieldDropdown(speed), "SPEED");
+            .appendField(new Blockly.FieldNumber(120, validator), "SPEED");
         this.appendStatementInput("BUZZER_PLAY")
             .setCheck(['io_single_tone', 'io_multi_tone']);
         this.setPreviousStatement(true, null);

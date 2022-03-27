@@ -1,0 +1,142 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="64">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="aXu_|yWkn_?AdPEEN:]U">
+        <field name="VAR">counter</field>
+        <value name="VALUE">
+          <block type="math_number" id="Lqw0}~;N*n,r6EOn={wE">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_setup" id="#r0O|wE[W8a!20dJhIB/">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="SPEED">9600</field>
+            <next>
+              <block type="I2CLCD_setup" id="||bdzZ[e86+`(Kyg~OHr">
+                <field name="I2C_ADDR">0x27</field>
+                <field name="COL">16</field>
+                <field name="ROW">2</field>
+                <next>
+                  <block type="I2CLCD_clear" id="{7LsSUyqHfFI)@6UA:tk">
+                    <next>
+                      <block type="I2CLCD_print" id="b(?.M7%7|utTxva^oY0W">
+                        <value name="CONTENT">
+                          <block type="text" id="WHTMjaR{4N/j,GjnnAgA">
+                            <field name="TEXT">Hello</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="hMK0hc#mk0gT_R*0Z6@*">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="i_2*_#flfIu#WN=/ApW@">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="I2CLCD_clear_y" id="%zQDKu3tM7z@YC3:J4vZ">
+        <value name="Y">
+          <block type="math_number" id="Q|PWkvj9(reK}=40LU[C">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="I2CLCD_move" id="|;,_R]87nkV(F/,Ys7H~">
+            <value name="X">
+              <block type="math_number" id="4CE.MGVaO%0_(H3W#v/v">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="Y">
+              <block type="math_number" id="`P3(XP(D@0QTS{Fh5%LI">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="I2CLCD_print" id="%U6HfgYpb]_,tT4i7:s0">
+                <value name="CONTENT">
+                  <block type="variables_get" id="@,Ya-fnTw{z40KAB%R_r">
+                    <field name="VAR">counter</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="ixw(~A;Er#k%#=]]-k?v">
+                    <field name="VAR">counter</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="832]32w6q*/td_(B[r0%">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <block type="variables_get" id="nnC6(sGYiLk3}Sc-FDwJ">
+                            <field name="VAR">counter</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="mWXfm+P!K/Y,n]V[HQ_v">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="I2CLCD_clear_y" id="{GR;F]IB~,ccs3[fl31i">
+                        <value name="Y">
+                          <block type="math_number" id="XO1i+GC.+^I24b_T)JNa">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="I2CLCD_move" id="CqwzPylKy:+3fOSz%}UB">
+                            <value name="X">
+                              <block type="math_number" id="]FSgXc}tl9(YOH^*`{GS">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <block type="math_number" id="8*EXNJ,#x)(S|0+Z%N@,">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="I2CLCD_print" id="ZIN=1mO]p9,w#8jrADBR">
+                                <value name="CONTENT">
+                                  <block type="variables_get" id="z5x+4.Nt`t;r1+9b`ZPf">
+                                    <field name="VAR">counter</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="time_delay" id="WeKQBXV1qMBn:F#9HN9?">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id="S;|e`+RiD#{EL+`5#n*E">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

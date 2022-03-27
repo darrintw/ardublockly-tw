@@ -36,3 +36,4 @@ Blockly.Msg.ARD_I2CLCD_BACKLIGHTON_MSG = "開啟 LCD 背光";
 Blockly.Msg.ARD_I2CLCD_BACKLIGHTON_TIP = "將 LCD 液晶顯示器的背光照明打開";
 Blockly.Msg.ARD_I2CLCD_BACKLIGHTOFF_MSG = "關閉 LCD 背光";
 Blockly.Msg.ARD_I2CLCD_BACKLIGHTOFF_TIP = "將 LCD 液晶顯示器的背光照明關閉";
+Blockly.Msg.ARD_I2CLCD_SHOW_TONE = "LCD 顯示音符";

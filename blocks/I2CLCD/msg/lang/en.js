@@ -36,3 +36,4 @@ Blockly.Msg.ARD_I2CLCD_BACKLIGHTON_MSG = "turn on LCD backlight";
 Blockly.Msg.ARD_I2CLCD_BACKLIGHTON_TIP = "Turn on LCD backlight";
 Blockly.Msg.ARD_I2CLCD_BACKLIGHTOFF_MSG = "turn off LCD backlight";
 Blockly.Msg.ARD_I2CLCD_BACKLIGHTOFF_TIP = "Turn off LCD backlight";
+Blockly.Msg.ARD_I2CLCD_SHOW_TONE = "LCD show tone";

@@ -1,0 +1,283 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="8NrfWIc@O|L^^Y+1jt0L">
+        <field name="VAR">R</field>
+        <value name="VALUE">
+          <block type="math_number" id=":FKFL`lRBT_9|GD3Jx@G">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="DE*KNP5ohrb1?*~Q]q|#">
+            <field name="VAR">G</field>
+            <value name="VALUE">
+              <block type="math_number" id="}#1by3665wSeMts)iT;u">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="6_NO;Nt`?06u7)aAqhRP">
+                <field name="VAR">B</field>
+                <value name="VALUE">
+                  <block type="math_number" id="vB5;qg%=ONPg{pD3?05^">
+                    <field name="NUM">6</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_analogwrite" id="=E;.a;M=D+]E7XP_0/]*">
+                    <field name="PIN">3</field>
+                    <value name="NUM">
+                      <shadow type="math_number" id="18bK/gq9~wO5zieCvCVv">
+                        <field name="NUM">255</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="io_analogwrite" id="FiBue}[giPIAA@0y3[`M">
+                        <field name="PIN">5</field>
+                        <value name="NUM">
+                          <shadow type="math_number" id="Pl?[}4!=YQVeC])ufQ%!">
+                            <field name="NUM">255</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="io_analogwrite" id=")FWR4x_GBu4fm}^Z)`[9">
+                            <field name="PIN">6</field>
+                            <value name="NUM">
+                              <shadow type="math_number" id="F=dvQ6FOBicbgC(ylJ5G">
+                                <field name="NUM">255</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="{GdZ_wYftqfWvP:?@kS-">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="QQ[m0.-~8v,@,~K.PwI*">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="K`rW-aj)t++RKduuOB9P">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="e[;m~1A|teeaKA0H/z|7">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_analogwrite_var" id="Ij9(UF3}l2Mbn{R|5^Ip">
+            <value name="PIN">
+              <block type="variables_get" id="fRK+YJ|z;FE[O,7a60bj">
+                <field name="VAR">R</field>
+              </block>
+            </value>
+            <value name="NUM">
+              <shadow type="math_number" id="-o%)G)nfY9(X%8:6Q8P#">
+                <field name="NUM">100</field>
+              </shadow>
+              <block type="variables_get" id="25AYh}Ji*~uCGPk+?I-h">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_analogwrite_var" id="ZlKGN+vSD@075C(v2ci1">
+                <value name="PIN">
+                  <block type="variables_get" id="s#*IG;-B^ye|Y%Ir.M^p">
+                    <field name="VAR">G</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <shadow type="math_number" id="eiPM+#:T+mkNl{N7n;Fp">
+                    <field name="NUM">100</field>
+                  </shadow>
+                  <block type="math_arithmetic" id="|#^y0l}1Z}1#W+vQyX!c">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="math_number" id="N@*cg#)x[!E;[rk7e;?Z">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="IVpGJ|m3*GZxp=XK=6)U">
+                        <field name="VAR">i</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="=Q#hkA9WV-k.{Z.;O46e">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="(mgJqhS}0O,Q,dn-m^o.">
+                        <field name="NUM">20</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_for" id="TAbttzMO(5-r+oNeSClj">
+            <field name="VAR">i</field>
+            <value name="FROM">
+              <block type="math_number" id="jw9ljy0VD*RA/9amAeu?">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="bD@v6oU!+Vc6Xg=oZhu.">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="nS},I3W9NIS=n*7%H`_W">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_analogwrite_var" id="ggz}i.Vz9I{MB=n^rymg">
+                <value name="PIN">
+                  <block type="variables_get" id="ipE.Q#i!*h5un.!GIf_y">
+                    <field name="VAR">G</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <shadow type="math_number" id="-o%)G)nfY9(X%8:6Q8P#">
+                    <field name="NUM">100</field>
+                  </shadow>
+                  <block type="variables_get" id="yk+FUx8M%ZQ6Lhu2}5]U">
+                    <field name="VAR">i</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_analogwrite_var" id="VY`DIbd1u2V0*HZePBh9">
+                    <value name="PIN">
+                      <block type="variables_get" id="jo,|7O6dm][Z=2iiPG:%">
+                        <field name="VAR">B</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <shadow type="math_number" id="dpx}O{fk1i`Bx%fD~hxp">
+                        <field name="NUM">100</field>
+                      </shadow>
+                      <block type="math_arithmetic" id="d1Q{U=pHyO2Ru|ZZOpdJ">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="math_number" id="mE2jKtk?^iGPC5#C5.[)">
+                            <field name="NUM">255</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="pVbgd~(m[HCmpq4-cJb7">
+                            <field name="VAR">i</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="NXR!e@.s[Mp0XrfPwb4_">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="rX~VkI!!bczRJpYEPb2Z">
+                            <field name="NUM">20</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_for" id="lEmnDq/d-Ty7;)D++Ax:">
+                <field name="VAR">i</field>
+                <value name="FROM">
+                  <block type="math_number" id="OS`RoLiV|*d}*NuM%/.5">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id="hi%h45VWbkIn:ag#F1Q3">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <block type="math_number" id="S56acg@9*`H{qr1GZ9XJ">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="io_analogwrite_var" id="udqb%[MngC#v]W3nIo7B">
+                    <value name="PIN">
+                      <block type="variables_get" id="u(tZ7?2`WpbcIkAVHkZ*">
+                        <field name="VAR">B</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <shadow type="math_number" id="-o%)G)nfY9(X%8:6Q8P#">
+                        <field name="NUM">100</field>
+                      </shadow>
+                      <block type="variables_get" id="L]=T;z|@YeSE4HgwY,|Q">
+                        <field name="VAR">i</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_analogwrite_var" id="g3Flx2nI]sW;psTh[5:F">
+                        <value name="PIN">
+                          <block type="variables_get" id="#Yfxkf|v%3=`ZSPZ4-{`">
+                            <field name="VAR">R</field>
+                          </block>
+                        </value>
+                        <value name="NUM">
+                          <shadow type="math_number" id="NtFH(BdSC2k-MP3TZ@-u">
+                            <field name="NUM">100</field>
+                          </shadow>
+                          <block type="math_arithmetic" id="cW/+WC{{iLzOdDJa@c3%">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="math_number" id="6m-o8P)d.:Rp^~-PF*ru">
+                                <field name="NUM">255</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="v#mgfH~OO@O#j[hu1xT.">
+                                <field name="VAR">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="DvBmE@V{.3j^]pCVeXWh">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="Mr/u*_+y(;#Sv;6r@PIZ">
+                                <field name="NUM">20</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

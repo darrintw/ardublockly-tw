@@ -1,0 +1,129 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="io_output" id="iAqnRZ=Q=g,*EXox+kT?">
+        <field name="PIN">3</field>
+        <next>
+          <block type="variables_set" id="YPPqu~;T9CDUq:i!]`Ov">
+            <field name="VAR">亮度</field>
+            <value name="VALUE">
+              <block type="math_number" id="F}*P8!,@s*}]FeIh/K4S">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="v7RsbE72DnldcuZ-]z.c">
+                <field name="VAR">變化量</field>
+                <value name="VALUE">
+                  <block type="math_number" id="?RxL7t~.{H/Aa*TLI)9/">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="io_analogwrite" id="LqmcqCqFbhH:mwDyXdU_">
+        <field name="PIN">3</field>
+        <value name="NUM">
+          <shadow type="math_number" id="M3~C^.t=rJm7caz%tBvp">
+            <field name="NUM">100</field>
+          </shadow>
+          <block type="variables_get" id="V[m^51@;J.@O/kj@GZyF">
+            <field name="VAR">亮度</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="4*mk=AmMz9nTGPphQo[c">
+            <field name="VAR">亮度</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="##S#5|OhF28n/WzveU[8">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <block type="variables_get" id="J5#ii4fM+oh3dqA[2?c6">
+                    <field name="VAR">亮度</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="(m2S:lX2;]UAh8w+[XSE">
+                    <field name="VAR">變化量</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="kZh92i08{YZwr7qYR-Jr">
+                <value name="IF0">
+                  <block type="logic_compare" id="Ddq}Tdn9x=KVEkSgZLyI">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="variables_get" id="!9C{uur[}x_D(_XNyXG-">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="b^)B1`*56~*imLU]xHN%">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="JL@f0M?q=bCLVtdduo*E">
+                    <field name="VAR">變化量</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="/:pDbhtsHgIi[]EUy-bY">
+                        <field name="NUM">-5</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="dcINK@DNIBT_Dk}8.b~a">
+                    <value name="IF0">
+                      <block type="logic_compare" id="wK-3Xk+5tq9eATk)a,kM">
+                        <field name="OP">LTE</field>
+                        <value name="A">
+                          <block type="variables_get" id=":bhkF-lv*AgsL,4s/blr">
+                            <field name="VAR">亮度</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="*0~C0PGW_VJVl2{JLa-~">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="=9,u)ke^U]W]8,XVx^ey">
+                        <field name="VAR">變化量</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="]vC|vQEfXF*R#_T4cO1`">
+                            <field name="NUM">5</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="time_delay" id="Bl{oNV]Y.fF7%@~6K;)1">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="}R:~AU/tDywTvI~2Up0G">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
