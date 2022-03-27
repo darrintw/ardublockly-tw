@@ -1,0 +1,74 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="62" y="111">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="Hfz#[Rfk7G=5,chy7bjq">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="S9[YV|JrCcwvD1@/vp%j">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">FALSE</field>
+        <value name="CONTENT">
+          <block type="text" id="u3Di.kYtsj*uP=5,E@lJ">
+            <field name="TEXT">Analog Output  Value-=</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id="2{!*XNr2KqX%L0f^Wffe">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">FALSE</field>
+            <value name="CONTENT">
+              <block type="io_analogread" id="yW+LRZsmGVZxTa8OtS[e">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="16Ys4HHKTdlMZJ,R/[Py">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">FALSE</field>
+                <value name="CONTENT">
+                  <block type="text" id="+FdGQuU==gLtk0?-W0Z/">
+                    <field name="TEXT">,</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="/LU0yM#XqYQ}m4A:sAL%">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">FALSE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="34EKFC=w839qf_jymhXB">
+                        <field name="TEXT">Digital Output Value-=</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="serial_print" id="`c!T{;Asms/sN,A|`~=8">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="io_digitalread" id="Gn~Wuz_(?1Rpqig.EKVS">
+                            <field name="PIN">A1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="oj7O#?;9iEu?/VS(38b8">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="t;`bh_G9{dCjcu?mZ,4I">
+                                <field name="NUM">500</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

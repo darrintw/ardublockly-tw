@@ -136,7 +136,7 @@ Blockly.Blocks["display_Matrix_DrawPixel"] = {
     }
 };
 
-//點陣LED顯示圖案
+//點陣LED顯示全寬圖案
 Blockly.Blocks["display_Matrix_predefarr"] = {
     init: function () {
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);
@@ -155,6 +155,89 @@ Blockly.Blocks["display_Matrix_predefarr"] = {
         this.setNextStatement(true, null);
         this.setInputsInline(false);
         this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+    }
+};
+
+//點陣LED顯示半寬圖案
+Blockly.Blocks["display_Matrix_half_predefarr"] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219)
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
+        this.appendValueInput("NO")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_NO);
+        this.appendValueInput("LEDArray_left")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_PREDEFARR_LEFT);
+        this.appendValueInput("LEDArray_right")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_PREDEFARR_RIGHT);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(false);
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+    }
+};
+
+//點陣LED顯示兩位數字
+Blockly.Blocks["display_Matrix_two_digital"] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219)
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
+        this.appendValueInput("NO")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_NO);
+        this.appendValueInput("LEDArray_left")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_LEFT);
+        this.appendValueInput("LEDArray_right")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_RIGHT);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(false);
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+    }
+};
+
+//點陣LED顯示音符
+Blockly.Blocks['display_Matrix_multi_tone'] = {
+    /**
+     * Block for
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_SHOW_TONE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
+        this.appendValueInput("NO")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_NO);
+        this.appendValueInput("NOTE_TONE")
+            .setCheck(Blockly.Types.STRING.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_NOTE + " " + Blockly.Msg.ARD_TONE);
+        this.appendValueInput("TEMPO")
+            .setCheck(Blockly.Types.STRING.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_TEMPO);
+        this.setPreviousStatement(true, ['io_single_tone', 'io_multi_tone']);
+        this.setNextStatement(true, ['io_single_tone', 'io_multi_tone']);
+        this.setColour(Blockly.Blocks.I2CLCD.HUE);
+        this.setTooltip(Blockly.Msg.ARD_TONE_TIP);
+        this.setHelpUrl('buzzer-piano/index.html');
     }
 };
 
@@ -237,6 +320,59 @@ Blockly.Blocks["display_Matrix_LedArray"] = {
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a86")
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a87")
             .appendField(new Blockly.FieldCheckbox("FALSE"), "a88");
+        this.setOutput(true, "Number");
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+    }
+};
+
+
+//點陣LED顯示數個圖案
+Blockly.Blocks["display_Matrix_half_LedArray"] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_MAX7219_ARRAYVAR)
+            .appendField(new Blockly.FieldVariable("LedArray1"), "ARRAY_VAR");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a11")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a12")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a13")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a14");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a21")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a22")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a23")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a24");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a31")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a32")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a33")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a34");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a41")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a42")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a43")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a44");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a51")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a52")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a53")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a54");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a61")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a62")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a63")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a64");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a71")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a72")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a73")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a74");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a81")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a82")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a83")
+            .appendField(new Blockly.FieldCheckbox("FALSE"), "a84");
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
     }
@@ -408,6 +544,125 @@ Blockly.Blocks["Matrix_img"] = {
             .appendField(Blockly.Msg.ARD_MAX7219_IMG)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(new Blockly.FieldDropdown(led_img_list), "img_");
+        this.setOutput(true);
+        this.setInputsInline(false);
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+//半寬數字
+var char_digital_half_list = [
+    ["0", "7C928A7C"],
+    ["1", "42FE0200"],
+    ["2", "468A9262"],
+    ["3", "4492926C"],
+    ["4", "3848FE08"],
+    ["5", "F492928C"],
+    ["6", "7C92924C"],
+    ["7", "008080FE"],
+    ["8", "6C92926C"],
+    ["9", "6492927C"],
+];
+
+//點陣LED預設半寬數字
+Blockly.Blocks["Matrix_char_digital_half"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(new Blockly.FieldDropdown(char_digital_half_list), "char_digital_half_");
+        this.setOutput(true);
+        this.setInputsInline(false);
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+//半寬大寫英文
+var char_upper_half_list = [
+    ["A", "7EFFC3C3FFFFC3C3"],
+    ["B", "FEC3C3FEFFC3C2FE"],
+    ["C", "7EC3C0C0C0C0C37E"],
+    ["D", "FEC7C3C3C3C3C7FE"],
+    ["E", "FFC0C0C0FEC0C0FF"],
+    ["F", "FFC0C0C0FEC0C0C0"],
+    ["G", "7EC3C0C0C0C7C33E"],
+    ["H", "C3C3C3FFFFC3C3C3"],
+    ["I", "3C1818181818183C"],
+    ["J", "1E0C0C0C0C6C6C38"],
+    ["K", "C3C6DCF8F8DCC6C3"],
+    ["L", "C0C0C0C0C0C0C0FF"],
+    ["M", "C3E7E7FFDBC3C3C3"],
+    ["N", "C3E3F3FBDFCFC7C3"],
+    ["O", "3C66C3C3C3C3663C"],
+    ["P", "FEC3C1C1C3FEC0C0"],
+    ["Q", "7EC3C3C3C3CF7E03"],
+    ["R", "FEC3C3C3FEFCC6C3"],
+    ["S", "7EE3C0C07E03C37E"],
+    ["T", "FFFF991818181818"],
+    ["U", "C3C3C3C3C3C3C37F"],
+    ["V", "C3C3C3C3C3E77E18"],
+    ["W", "C3C3C3C3DBFFE7C3"],
+    ["X", "C3C3E77E3C66C3C3"],
+    ["Y", "C3C3C3FF7E181818"],
+    ["Z", "FF03060C183060FF"]
+];
+
+//點陣LED預設半寬大寫英文
+Blockly.Blocks["Matrix_char_upper_half"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(new Blockly.FieldDropdown(char_upper_half_list), "char_upper_half_");
+        this.setOutput(true);
+        this.setInputsInline(false);
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+//半寬小寫英文
+var char_lower_half_list = [
+    ["a", "0000003C063E663E"],
+    ["b", "006060607C66667C"],
+    ["c", "0000003C6660663C"],
+    ["d", "000606063E66663E"],
+    ["e", "0000003C667E603C"],
+    ["f", "001C3630307C3030"],
+    ["g", "00003E66663E063C"],
+    ["h", "006060607C666666"],
+    ["i", "000018001818183C"],
+    ["j", "000C000C0C6C6C38"],
+    ["k", "006060666C786C66"],
+    ["l", "0018181818181818"],
+    ["m", "00000063777F6B6B"],
+    ["n", "0000007C7E666666"],
+    ["o", "0000003C6666663C"],
+    ["p", "00007C66667C6060"],
+    ["q", "00003C6C6C3C0D0F"],
+    ["r", "0000007C66666060"],
+    ["s", "0000003E403C027C"],
+    ["t", "000018187E181818"],
+    ["u", "000000666666663E"],
+    ["v", "0000000066663C18"],
+    ["w", "000000636B6B6B3E"],
+    ["x", "000000663C183C66"],
+    ["y", "1D05051F"],
+    ["z", "13171D19"]
+];
+
+//點陣LED預設半寬小寫英文
+Blockly.Blocks["Matrix_char_lower_half"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(new Blockly.FieldDropdown(char_lower_half_list), "char_lower_half_");
         this.setOutput(true);
         this.setInputsInline(false);
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);

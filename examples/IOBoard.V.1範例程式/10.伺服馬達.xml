@@ -1,0 +1,105 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="servo_attach" id="HN#M=6/*.cW5+*_%3lU^">
+        <field name="SERVO_NAME">servo_2</field>
+        <field name="SERVO_PIN">2</field>
+        <next>
+          <block type="servo_write" id="Cce9T+uA:O5HjjKs;w#p">
+            <field name="SERVO_NAME">servo_2</field>
+            <value name="SERVO_ANGLE">
+              <shadow type="math_number" id="djrhc(Y]VOGY}GN7/V|y">
+                <field name="NUM">90</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="time_delay" id="|#=e_O|3Tn[JKW56zCSK">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="XKcop]y:Y}L!Pb;]RI)=">
+                    <field name="NUM">3000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="servo_write" id="^nvz!w8~yxRITJ2@8Sd2">
+        <field name="SERVO_NAME">servo_2</field>
+        <value name="SERVO_ANGLE">
+          <shadow type="math_number" id="K`}F51_2EP,u3Y6Q?l9O">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="time_delay" id="[)s-g#_1*dBuW~N19(Y^">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="[SJ8b.cOg#8F#vYd]wVu">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="servo_write" id=".Q`fS7]vI*t!,JuVG]~a">
+                <field name="SERVO_NAME">servo_2</field>
+                <value name="SERVO_ANGLE">
+                  <shadow type="math_number" id=".I]s]l5]6qHb`ZS?;z;X">
+                    <field name="NUM">90</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="time_delay" id="|6Wx[%Ao{pJ+QXUXY.hy">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="@Z63=!OA)@)T%Qvqxb,V">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="servo_write" id="n)U;}Pc8=k8+@4em3?x/">
+                        <field name="SERVO_NAME">servo_2</field>
+                        <value name="SERVO_ANGLE">
+                          <shadow type="math_number" id="G!*M3UJWGwB(j*zZ%s;x">
+                            <field name="NUM">170</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="R4NIu7QfDLtgcim0rO+t">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="=d:MOG`uHoV]fgb#K!O?">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="servo_write" id="(VW;a[:[{fv]zw;56!f=">
+                                <field name="SERVO_NAME">servo_2</field>
+                                <value name="SERVO_ANGLE">
+                                  <shadow type="math_number" id="44Paojzf,Vjow/RP)dF_">
+                                    <field name="NUM">90</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="time_delay" id="QM/2/s{/9IM(g!QccF-Q">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id="+#)L{_K.W}_RPUEnNTnQ">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

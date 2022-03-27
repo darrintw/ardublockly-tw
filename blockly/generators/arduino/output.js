@@ -217,6 +217,7 @@ Blockly.Arduino['io_notone'] = function (block) {
 };
 
 var tone_list = "void initToneMap() {\n" +
+    "  tonehashMap.put(\"0\", 0);\n" +
     "  tonehashMap.put(\"00\", 0);\n" +
     "  tonehashMap.put(\"B0\", 31);\n" +
     "  tonehashMap.put(\"C1\", 33);\n" +
@@ -350,8 +351,8 @@ Blockly.Arduino['io_single_tone'] = function (block) {
     if (note == "0") {
         tone = "0";
     }
-    var code = 'tone(%toneName%, tonehashMap.valueFor("' + note + tone + '"), 1000 / ' + tempo + ' * %toneSpeed%);\n' +
-        'delay(1000 / ' + tempo + ' * %toneSpeed%);\n' +
+    var code = 'tone(%toneName%, tonehashMap.valueFor("' + note + tone + '"), 240000 / %toneSpeed% / ' + tempo + ');\n' +
+        'delay(240000 / %toneSpeed% / ' + tempo + ');\n' +
         'noTone(%toneName%);\n';
     return code;
 };
@@ -386,13 +387,13 @@ Blockly.Arduino['io_multi_tone'] = function (block) {
         for (var i = 0; i < noteTone.length; i++) {
             if (tempoLen > i)
                 lastTempo = tempo[i];
-            code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone[i] + '"), 1000 / ' + lastTempo + ' * %toneSpeed%);\n' +
-                'delay(1000 / ' + lastTempo + ' * %toneSpeed%);\n' +
+            code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone[i] + '"), 240000 / %toneSpeed% / ' + lastTempo + ');\n' +
+                'delay(240000 / %toneSpeed% / ' + lastTempo + ');\n' +
                 'noTone(%toneName%);\n';
         }
     } else {
-        code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone + '"), 1000 / ' + lastTempo + ' * %toneSpeed%);\n' +
-            'delay(1000 / ' + lastTempo + ');\n' +
+        code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone + '"), 240000 / %toneSpeed% / ' + lastTempo + ');\n' +
+            'delay(240000 / %toneSpeed% / ' + lastTempo + ');\n' +
             'noTone(%toneName%);\n';
     }
     return code;

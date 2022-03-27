@@ -1,0 +1,105 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="procedures_callnoreturn" id=":w1M-;.s7UD5qXr#e9A+">
+        <mutation name="燈滅"></mutation>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="t:@E,rz?Cx!//noEkL.p">
+        <value name="IF0">
+          <block type="logic_compare" id="8:QSVv~zP|I.*3nkF8j:">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread" id="rCXc@p5JeI2}n7@9[}u2">
+                <field name="PIN">4</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="bO`,FA_2)Mww=zGs4g/.">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="procedures_callnoreturn" id="W0DUVwA2se296ul1vBkh">
+            <mutation name="亮橘色"></mutation>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="i9,GQ8)bQX8CtT.-rD;v">
+            <value name="IF0">
+              <block type="logic_compare" id="-/#Yl+1zf88#zvI)5578">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="io_digitalread" id="Fa:de9:X_[U3}MG~UO5z">
+                    <field name="PIN">4</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="io_highlow" id="B7TkIzq~lGXWJ6M,}hAC">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="procedures_callnoreturn" id="C.o5ZNXWeyZ*!:t2VKwE">
+                <mutation name="燈滅"></mutation>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="6+pLb,L3t/}H*kyEBz;{" x="0" y="270">
+    <field name="NAME">亮橘色</field>
+    <comment pinned="false" h="80" w="160">描述此函數...</comment>
+    <statement name="STACK">
+      <block type="io_digitalwrite" id="2ljh!4t-qYUnR7)pQhph">
+        <field name="PIN">3</field>
+        <value name="STATE">
+          <shadow type="io_highlow" id=";UyWCp/wrf?jMLrhP~/9">
+            <field name="STATE">LOW</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="io_digitalwrite" id="6b?eUi#c4_lR+~kK*#YP">
+            <field name="PIN">5</field>
+            <value name="STATE">
+              <shadow type="io_highlow" id="~}#h9Zfba)+n|7M=qJYe">
+                <field name="STATE">LOW</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="f?ujY{_rm-T?f/*Xwj4t" x="0" y="388">
+    <field name="NAME">燈滅</field>
+    <comment pinned="false" h="80" w="160">描述此函數...</comment>
+    <statement name="STACK">
+      <block type="io_digitalwrite" id="w4i86UVmXcMZk5!Dly!`">
+        <field name="PIN">3</field>
+        <value name="STATE">
+          <shadow type="io_highlow" id="Ygw~hKX536nyRuh^wcgt">
+            <field name="STATE">HIGH</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="io_digitalwrite" id="uI6k9_UF,0dW{+DiAwE3">
+            <field name="PIN">5</field>
+            <value name="STATE">
+              <shadow type="io_highlow" id="{zvYx{@g:q~oVK6L?hZ}">
+                <field name="STATE">HIGH</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

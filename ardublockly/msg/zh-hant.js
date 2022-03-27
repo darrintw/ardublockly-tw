@@ -20,7 +20,8 @@ Ardublockly.LOCALISED_TEXT = {
     examples: "Arduino範例",
     exar: "範例程式與arduino可攜版",
     serial: "序列埠",
-    blockfactory: "自訂積木",
+    blockfactory: "積木工作室",
+    buzzerpiano: "蜂鳴器鋼琴",
     /* Settings */
     compilerLocation: "編譯器位置",
     compilerLocationDefault: "arduino.exe編譯器位置未知",

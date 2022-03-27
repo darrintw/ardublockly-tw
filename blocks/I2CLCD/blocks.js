@@ -231,3 +231,25 @@ Blockly.Blocks['I2CLCD_backlightOff'] = {
         this.setHelpUrl("https://github.com/marcmerlin/NewLiquidCrystal");
     }
 };
+
+Blockly.Blocks['I2CLCD_multi_tone'] = {
+    /**
+     * Block for
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2CLCD_SHOW_TONE);
+        this.appendValueInput("NOTE_TONE")
+            .setCheck(Blockly.Types.STRING.checkList)
+            .appendField(Blockly.Msg.ARD_NOTE + " " + Blockly.Msg.ARD_TONE);
+        this.appendValueInput("TEMPO")
+            .setCheck(Blockly.Types.STRING.checkList)
+            .appendField(Blockly.Msg.ARD_TEMPO);
+        this.setPreviousStatement(true, ['io_single_tone', 'io_multi_tone']);
+        this.setNextStatement(true, ['io_single_tone', 'io_multi_tone']);
+        this.setColour(Blockly.Blocks.I2CLCD.HUE);
+        this.setTooltip(Blockly.Msg.ARD_TONE_TIP);
+        this.setHelpUrl('buzzer-piano/index.html');
+    }
+};

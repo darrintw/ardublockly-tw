@@ -20,6 +20,7 @@ Ardublockly.LOCALISED_TEXT = {
     exar: "Examples and arduino portable",
     serial: "serial",
     blockfactory: "Block Factory",
+    buzzerpiano: "Buzzer Piano",
     /* Settings */
     compilerLocation: "Compiler Location",
     compilerLocationDefault: "Compiler Location unknown",

@@ -1,0 +1,33 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="amikiN~PnwYY^Y`-57;f" x="30" y="6">
+    <field name="VAR">buzzer</field>
+    <field name="CONST">TRUE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="ugZCW8gBQGhV_mw/I0[y">
+        <field name="PIN">2</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="30" y="63">
+    <statement name="SETUP_FUNC">
+      <block type="io_play_tone" id="qv(#K1Thvc~k2G8!b^Q/">
+        <field name="TONEPIN">buzzer</field>
+        <field name="SPEED">120</field>
+        <statement name="BUZZER_PLAY">
+          <block type="io_multi_tone" id="M1X)BM@!O+25*?M-S4je">
+            <value name="NOTE_TONE">
+              <block type="text" id="2iu_h)yKSWuf7Rv3D5h1">
+                <field name="TEXT">G4,E4,E4,00,F4,D4,D4,0,C4,D4,E4,F4,G4,G4,G4,00,G4,E4,E4,0,F4,D4,D4,0,C4,E4,G4,G4,E4,0,D4,D4,D4,D4,D4,F4,G4,0,E4,E4,E4,E4,E4,F4,G4,00,G4,E4,E4,00,F4,D4,D4,00,C4,E4,G4,G4,C4</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="text" id="i+7~-qB9gWxzH7*[mf.y">
+                <field name="TEXT">5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

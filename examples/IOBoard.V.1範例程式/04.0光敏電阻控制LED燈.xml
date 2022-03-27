@@ -1,0 +1,78 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="-56" y="100">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="Tm3iXq=+QRuX!M6%P_uT">
+        <field name="VAR">光敏電阻值</field>
+        <value name="VALUE">
+          <block type="math_number" id="uj1V76I#_Kj)KW3dXZ{x">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="IPL):j^+2CDN0uWZyHRr">
+            <field name="VAR">LED亮度</field>
+            <value name="VALUE">
+              <block type="math_number" id="d6Y6vCJzFD+o/4`RKqC(">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="53M0fcI%@r52~9)`9a7n">
+        <field name="VAR">光敏電阻值</field>
+        <value name="VALUE">
+          <block type="io_analogread" id="c2qhev/i,JC]xawF{T*`">
+            <field name="PIN">A0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="P;PertVa2G5*O24FB*~-">
+            <field name="VAR">LED亮度</field>
+            <value name="VALUE">
+              <block type="math_any_map" id="=byYa8o2fc+(A/c6N|tN">
+                <value name="NUM">
+                  <block type="variables_get" id="z:{I;RCD9wDkDTaIkz}O">
+                    <field name="VAR">光敏電阻值</field>
+                  </block>
+                </value>
+                <value name="SMIN">
+                  <block type="math_number" id=".28LIrq0*;`H6Z;_B/`v">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="SMAX">
+                  <block type="math_number" id="c+O{ODdSBIZ2tr|Y]?,w">
+                    <field name="NUM">1023</field>
+                  </block>
+                </value>
+                <value name="DMIN">
+                  <block type="math_number" id="k/3}z_e0Qi%R.)f)|bZ7">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="DMAX">
+                  <block type="math_number" id="DigFsHo0qwX:F/^{w::i">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="io_analogwrite" id="~QAylJY}*2o,lrHD0@My">
+                <field name="PIN">3</field>
+                <value name="NUM">
+                  <block type="variables_get" id="c_?ab01^|G)K{WE0(._a">
+                    <field name="VAR">LED亮度</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
