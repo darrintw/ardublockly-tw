@@ -99,8 +99,6 @@
     "    </value>",
     "  </block>",
     "  <block type=\"Matrix_char_digital_half\"></block>",
-    "  <block type=\"Matrix_char_upper_half\"></block>",
-    "  <block type=\"Matrix_char_lower_half\"></block>",
     "  <block type=\"display_Matrix_half_predefarr\">",
     "    <value name=\"NO\">",
     "      <block type=\"math_number\">",
