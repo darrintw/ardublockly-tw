@@ -14,3 +14,4 @@ ServerCompilerSettings.ini
 arduino/*
 closure-library/scripts/*
 package/electron/node_modules/electron/dist/resources/default_app.asar
+sync.ffs_db
