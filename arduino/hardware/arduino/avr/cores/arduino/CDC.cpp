@@ -22,6 +22,13 @@
 
 #if defined(USBCON)
 
+#ifndef CDC_ENABLED
+
+#warning "! Disabled serial console via USB (CDC)!"
+#warning "! With this change you'll have to use the Arduino's reset button/pin to flash (upload)!"
+
+#else // CDC not disabled
+
 typedef struct
 {
 	u32	dwDTERate;
@@ -41,7 +48,7 @@ static u8 wdtcsr_save;
 extern const CDCDescriptor _cdcInterface PROGMEM;
 const CDCDescriptor _cdcInterface =
 {
-	D_IAD(0,2,CDC_COMMUNICATION_INTERFACE_CLASS,CDC_ABSTRACT_CONTROL_MODEL,1),
+	D_IAD(0,2,CDC_COMMUNICATION_INTERFACE_CLASS,CDC_ABSTRACT_CONTROL_MODEL,0),
 
 	//	CDC communication interface
 	D_INTERFACE(CDC_ACM_INTERFACE,1,CDC_COMMUNICATION_INTERFACE_CLASS,CDC_ABSTRACT_CONTROL_MODEL,0),
@@ -299,4 +306,5 @@ int32_t Serial_::readBreak() {
 
 Serial_ Serial;
 
+#endif /* if defined(CDC_ENABLED) */
 #endif /* if defined(USBCON) */

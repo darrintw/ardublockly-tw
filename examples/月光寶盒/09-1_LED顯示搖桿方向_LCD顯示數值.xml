@@ -1,5 +1,32 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="108" y="93">
+  <block type="variables_init" id="dFra?%BW{hY|5YmoAaA}" x="0" y="0">
+    <field name="VAR">sw</field>
+    <field name="CONST">TRUE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="F-U:E3r0.O,*[GRVz,[g">
+        <field name="PIN">2</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="zZsP?K|Xl:r9Hsi7o6t?" x="0" y="64">
+    <field name="VAR">x_pin</field>
+    <field name="CONST">TRUE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="b!L2X}g+YJ+?Ojir}zZ8">
+        <field name="PIN">A6</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="%AXh|idIw_y^UyCiC^kj" x="0" y="128">
+    <field name="VAR">y_pin</field>
+    <field name="CONST">TRUE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="^@KmP1eI5MmkxdjuEE:V">
+        <field name="PIN">A7</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="192">
     <statement name="SETUP_FUNC">
       <block type="variables_set" id="3R)p!A9-vxJZIOZIwXG^">
         <field name="VAR">click_times</field>
@@ -9,87 +36,57 @@
           </block>
         </value>
         <next>
-          <block type="variables_set" id="y=+n8q,%S.rW^GxcOxjK">
-            <field name="VAR">sw</field>
-            <value name="VALUE">
-              <block type="io_allpins" id="F-U:E3r0.O,*[GRVz,[g">
-                <field name="PIN">2</field>
-              </block>
-            </value>
+          <block type="io_input_pullup_var" id="S0!r3a`OI5[C@eBY@0X@">
+            <field name="PIN">sw</field>
             <next>
-              <block type="variables_set" id="%rrzjgZ(V3mQ8}KwL[kN">
-                <field name="VAR">x_pin</field>
-                <value name="VALUE">
-                  <block type="io_allpins" id="b!L2X}g+YJ+?Ojir}zZ8">
-                    <field name="PIN">A6</field>
-                  </block>
-                </value>
+              <block type="I2CLCD_setup" id="2YEwo?8,Z|Uhh??Ft5Y}">
+                <field name="I2C_ADDR">0x27</field>
+                <field name="COL">16</field>
+                <field name="ROW">2</field>
                 <next>
-                  <block type="variables_set" id="Obn@f6wIxkzQ5|,ESffv">
-                    <field name="VAR">y_pin</field>
-                    <value name="VALUE">
-                      <block type="io_allpins" id="^@KmP1eI5MmkxdjuEE:V">
-                        <field name="PIN">A7</field>
-                      </block>
-                    </value>
+                  <block type="I2CLCD_clear" id="n/;-zdqUS@pl@p`N!g9z">
                     <next>
-                      <block type="io_input_pullup" id="t^6J)H*@WMG?ePCGSHOh">
-                        <field name="PIN">var</field>
+                      <block type="I2CLCD_backlightOn" id="Yig%LP}=%+}O*U{p:k~D">
                         <next>
-                          <block type="I2CLCD_setup" id="2YEwo?8,Z|Uhh??Ft5Y}">
-                            <field name="I2C_ADDR">0x27</field>
-                            <field name="COL">16</field>
-                            <field name="ROW">2</field>
+                          <block type="MAX7219_init" id="m)~^VDiRgSNW@-?O[w!8">
+                            <field name="MATRIX_VAR">lc_matrix</field>
+                            <value name="DIN">
+                              <block type="io_allpins" id=";;@V|LnBKZb3?0ZUmT3l">
+                                <field name="PIN">A2</field>
+                              </block>
+                            </value>
+                            <value name="CS">
+                              <block type="io_allpins" id="Yt.N{,]*4Sr=QxcLP*Hk">
+                                <field name="PIN">A1</field>
+                              </block>
+                            </value>
+                            <value name="CLK">
+                              <block type="io_allpins" id="Z_d;3,mXz86)Ze+hj/4c">
+                                <field name="PIN">A0</field>
+                              </block>
+                            </value>
+                            <value name="NUMS">
+                              <block type="math_number" id="g@u8Coj6o8-78RU(B[KL">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
                             <next>
-                              <block type="I2CLCD_clear" id="n/;-zdqUS@pl@p`N!g9z">
+                              <block type="display_Matrix_clearDisplay" id="NVY%o7yP7diGhQADa[7y">
+                                <field name="MATRIX_VAR">lc_matrix</field>
+                                <value name="NO">
+                                  <block type="math_number" id="!Mf{)QpLg/e~@3a7^a@2">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
                                 <next>
-                                  <block type="I2CLCD_backlightOn" id="Yig%LP}=%+}O*U{p:k~D">
-                                    <next>
-                                      <block type="MAX7219_init" id="m)~^VDiRgSNW@-?O[w!8">
-                                        <field name="MATRIX_VAR">lc_matrix</field>
-                                        <value name="DIN">
-                                          <block type="io_allpins" id=";;@V|LnBKZb3?0ZUmT3l">
-                                            <field name="PIN">A2</field>
-                                          </block>
-                                        </value>
-                                        <value name="CS">
-                                          <block type="io_allpins" id="Yt.N{,]*4Sr=QxcLP*Hk">
-                                            <field name="PIN">A1</field>
-                                          </block>
-                                        </value>
-                                        <value name="CLK">
-                                          <block type="io_allpins" id="Z_d;3,mXz86)Ze+hj/4c">
-                                            <field name="PIN">A0</field>
-                                          </block>
-                                        </value>
-                                        <value name="NUMS">
-                                          <block type="math_number" id="g@u8Coj6o8-78RU(B[KL">
-                                            <field name="NUM">1</field>
-                                          </block>
-                                        </value>
-                                        <next>
-                                          <block type="display_Matrix_clearDisplay" id="NVY%o7yP7diGhQADa[7y">
-                                            <field name="MATRIX_VAR">lc_matrix</field>
-                                            <value name="NO">
-                                              <block type="math_number" id="!Mf{)QpLg/e~@3a7^a@2">
-                                                <field name="NUM">0</field>
-                                              </block>
-                                            </value>
-                                            <next>
-                                              <block type="display_Matrix_Brightness" id="yh2;!0WA2,:N2O,Qd@G^">
-                                                <field name="MATRIX_VAR">lc_matrix</field>
-                                                <field name="Brightness">15</field>
-                                                <value name="NO">
-                                                  <block type="math_number" id="k-WrgMyh@ICzOU4#L3WB">
-                                                    <field name="NUM">0</field>
-                                                  </block>
-                                                </value>
-                                              </block>
-                                            </next>
-                                          </block>
-                                        </next>
+                                  <block type="display_Matrix_Brightness" id="yh2;!0WA2,:N2O,Qd@G^">
+                                    <field name="MATRIX_VAR">lc_matrix</field>
+                                    <field name="Brightness">15</field>
+                                    <value name="NO">
+                                      <block type="math_number" id="k-WrgMyh@ICzOU4#L3WB">
+                                        <field name="NUM">0</field>
                                       </block>
-                                    </next>
+                                    </value>
                                   </block>
                                 </next>
                               </block>
@@ -111,7 +108,7 @@
         <field name="VAR">x_value</field>
         <value name="VALUE">
           <block type="io_analogread_var" id="{64###m+YueJ98RnxGqk">
-            <field name="PIN">var</field>
+            <field name="PIN">x_pin</field>
           </block>
         </value>
         <next>
@@ -119,7 +116,7 @@
             <field name="VAR">y_value</field>
             <value name="VALUE">
               <block type="io_analogread_var" id="#P_*^T_coIX|jGgah]h:">
-                <field name="PIN">var</field>
+                <field name="PIN">y_pin</field>
               </block>
             </value>
             <next>
@@ -311,7 +308,7 @@
                                 <field name="OP">EQ</field>
                                 <value name="A">
                                   <block type="io_digitalread_var" id="#zMU!c7:geiladz-d|1)">
-                                    <field name="PIN">var</field>
+                                    <field name="PIN">sw</field>
                                   </block>
                                 </value>
                                 <value name="B">
@@ -335,7 +332,7 @@
                                         <field name="OP">EQ</field>
                                         <value name="A">
                                           <block type="io_digitalread_var" id="BO4Xj~y_]i=@x5VP^SE8">
-                                            <field name="PIN">var</field>
+                                            <field name="PIN">sw</field>
                                           </block>
                                         </value>
                                         <value name="B">
@@ -373,7 +370,7 @@
                                             <field name="OP">EQ</field>
                                             <value name="A">
                                               <block type="io_digitalread_var" id="1]`i8j2,p7gPi(.PTq1T">
-                                                <field name="PIN">var</field>
+                                                <field name="PIN">sw</field>
                                               </block>
                                             </value>
                                             <value name="B">
