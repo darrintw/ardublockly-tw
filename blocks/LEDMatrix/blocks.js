@@ -554,23 +554,23 @@ Blockly.Blocks["Matrix_img"] = {
 
 //半寬數字
 var char_digital_half_list = [
-    ["0", "7C928A7C"],
-    ["1", "42FE0200"],
-    ["2", "468A9262"],
-    ["3", "4492926C"],
-    ["4", "3848FE08"],
-    ["5", "F492928C"],
-    ["6", "7C92924C"],
-    ["7", "008080FE"],
-    ["8", "6C92926C"],
-    ["9", "6492927C"],
+    ["0", "69999996"],
+    ["1", "26222227"],
+    ["2", "6911124F"],
+    ["3", "69161196"],
+    ["4", "137D9F11"],
+    ["5", "F88E1196"],
+    ["6", "698E9996"],
+    ["7", "F1124888"],
+    ["8", "69969996"],
+    ["9", "69997196"],
 ];
 
 //點陣LED預設半寬數字
 Blockly.Blocks["Matrix_char_digital_half"] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF)
+            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF_DIGITAL)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(new Blockly.FieldDropdown(char_digital_half_list), "char_digital_half_");
         this.setOutput(true);
@@ -583,39 +583,39 @@ Blockly.Blocks["Matrix_char_digital_half"] = {
 
 //半寬大寫英文
 var char_upper_half_list = [
-    ["A", ""],
-    ["B", ""],
-    ["C", ""],
-    ["D", ""],
-    ["E", ""],
-    ["F", ""],
-    ["G", ""],
-    ["H", ""],
-    ["I", ""],
-    ["J", ""],
-    ["K", ""],
-    ["L", ""],
-    ["M", ""],
-    ["N", ""],
-    ["O", ""],
-    ["P", ""],
-    ["Q", ""],
-    ["R", ""],
-    ["S", ""],
-    ["T", ""],
-    ["U", ""],
-    ["V", ""],
-    ["W", ""],
-    ["X", ""],
-    ["Y", ""],
-    ["Z", ""]
+    ["A", "0699F999"],
+    ["B", "0E99E99E"],
+    ["C", "06B888B6"],
+    ["D", "0E99999E"],
+    ["E", "0F88E88F"],
+    ["F", "0F88E888"],
+    ["G", "06988B97"],
+    ["H", "0999F999"],
+    ["I", "0E44444E"],
+    ["J", "07222AA4"],
+    ["K", "09ACCCA9"],
+    ["L", "0888888F"],
+    ["M", "09FF9999"],
+    ["N", "099DFB99"],
+    ["O", "06999996"],
+    ["P", "0E999E88"],
+    ["Q", "06999963"],
+    ["R", "0E99ECA9"],
+    ["S", "06986196"],
+    ["T", "0F666666"],
+    ["U", "09999997"],
+    ["V", "099999F6"],
+    ["W", "09999FF9"],
+    ["X", "099F6F99"],
+    ["Y", "0999F666"],
+    ["Z", "0F136C8F"]
 ];
 
 //點陣LED預設半寬大寫英文
 Blockly.Blocks["Matrix_char_upper_half"] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF)
+            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF_UPPER)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(new Blockly.FieldDropdown(char_upper_half_list), "char_upper_half_");
         this.setOutput(true);
@@ -628,39 +628,39 @@ Blockly.Blocks["Matrix_char_upper_half"] = {
 
 //半寬小寫英文
 var char_lower_half_list = [
-    ["a", ""],
-    ["b", ""],
-    ["c", ""],
-    ["d", ""],
-    ["e", ""],
-    ["f", ""],
-    ["g", ""],
-    ["h", ""],
-    ["i", ""],
-    ["j", ""],
-    ["k", ""],
-    ["l", ""],
-    ["m", ""],
-    ["n", ""],
-    ["o", ""],
-    ["p", ""],
-    ["q", ""],
-    ["r", ""],
-    ["s", ""],
-    ["t", ""],
-    ["u", ""],
-    ["v", ""],
-    ["w", ""],
-    ["x", ""],
-    ["y", "1D05051F"],
-    ["z", "13171D19"]
+    ["a", "00E179B5"],
+    ["b", "0888E99E"],
+    ["c", "00069896"],
+    ["d", "01117997"],
+    ["e", "00069F87"],
+    ["f", "06544F44"],
+    ["g", "0069971E"],
+    ["h", "0888AD99"],
+    ["i", "0060666F"],
+    ["j", "03033BB6"],
+    ["k", "0889BEB9"],
+    ["l", "06666666"],
+    ["m", "0009FF99"],
+    ["n", "0008FD99"],
+    ["o", "00069996"],
+    ["p", "00699E88"],
+    ["q", "004AA633"],
+    ["r", "0008E988"],
+    ["s", "0006861E"],
+    ["t", "0066F666"],
+    ["u", "00099997"],
+    ["v", "000099F6"],
+    ["w", "00099FF9"],
+    ["x", "00006669"],
+    ["y", "00099F16"],
+    ["z", "000F36CF"]
 ];
 
 //點陣LED預設半寬小寫英文
 Blockly.Blocks["Matrix_char_lower_half"] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF)
+            .appendField(Blockly.Msg.ARD_MAX7219_CHAR_HALF_LOWER)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(new Blockly.FieldDropdown(char_lower_half_list), "char_lower_half_");
         this.setOutput(true);

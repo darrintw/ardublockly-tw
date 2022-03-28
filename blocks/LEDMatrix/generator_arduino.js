@@ -9,8 +9,12 @@ goog.provide('Blockly.Arduino.LEDMatrix');
 
 goog.require('Blockly.Arduino');
 
-function hex2bin(hex) {
+function hex28bin(hex) {
     return ("00000000" + (parseInt(hex, 16)).toString(2)).substr(-8);
+}
+
+function hex24bin(hex) {
+    return ("0000" + (parseInt(hex, 16)).toString(2)).substr(-4);
 }
 
 //MAX7219初始化
@@ -135,16 +139,14 @@ Blockly.Arduino["display_Matrix_half_predefarr"] = function (block) {
         matrixName,
         Blockly.Variables.NAME_TYPE);
     var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.addDefine('var_declare_LEDArray_left', 'byte LEDArray_left[4];');
-    Blockly.Arduino.addDefine('var_declare_LEDArray_right', 'byte LEDArray_right[4];');
     var dotMatrixArrayleft = Blockly.Arduino.valueToCode(this, 'LEDArray_left', Blockly.Arduino.ORDER_ASSIGNMENT);
     var dotMatrixArrayright = Blockly.Arduino.valueToCode(this, 'LEDArray_right', Blockly.Arduino.ORDER_ASSIGNMENT);
-    var code = 'memcpy_P(&LEDArray_left, &' + dotMatrixArrayleft + ', 4);\n';
-    code += 'memcpy_P(&LEDArray_right, &' + dotMatrixArrayright + ', 4);\n';
-    code += 'for(int index_i = 0; index_i < 4; index_i++)\n';
+    var code = 'for(int index_i = 0; index_i < 8; index_i++)\n';
     code += '{\n';
-    code += '  ' + matrixId + '.setColumn(' + NO + ', index_i, LEDArray_left[index_i]);\n';
-    code += '  ' + matrixId + '.setColumn(' + NO + ', index_i + 4, LEDArray_right[index_i]);\n';
+    code += '  String binary_string = ' + dotMatrixArrayleft + '[index_i] + ' + dotMatrixArrayright + '[index_i];\n';
+    code += '  for (int index_c = 0; index_c < 8; index_c++){\n';
+    code += '    ' + matrixId + '.setLed(' + NO + ', index_i, index_c, (binary_string.substring(index_c, index_c + 1) == "0" ? LOW : HIGH));\n';
+    code += '  }\n';
     code += '}\n';
     return code;
 };
@@ -265,22 +267,22 @@ Blockly.Arduino["display_Matrix_half_LedArray"] = function (block) {
         arrayName,
         Blockly.Variables.NAME_TYPE);
     var a = [];
-    for (var i = 1; i < 5; i++) {
+    for (var i = 1; i < 9; i++) {
         a[i] = [];
-        for (var j = 1; j < 9; j++) {
+        for (var j = 1; j < 5; j++) {
             a[i][j] = (this.getFieldValue('a' + i + j) == "TRUE") ? 1 : 0;
         }
     }
     var code = '{';
-    for (var i = 1; i < 5; i++) {
+    for (var i = 1; i < 9; i++) {
         var tmp = "B"
-        for (var j = 1; j < 9; j++) {
+        for (var j = 1; j < 5; j++) {
             tmp += a[i][j];
         }
-        code += tmp + ((i != 4) ? ', ' : '');
+        code += tmp + ((i != 8) ? ', ' : '');
     }
     code += '};';
-    Blockly.Arduino.addVariable(arrayName, "const byte " + arrayId + "[4] PROGMEM = " + code, true);
+    Blockly.Arduino.addVariable(arrayName, "const byte " + arrayId + "[8] PROGMEM = " + code, true);
     return [arrayId, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -294,10 +296,9 @@ Blockly.Arduino["display_Matrix_half_LedArray"] = function (block) {
  */
 Blockly.Arduino["Matrix_char_digital"] = function (block) {
     var dropdown_char_digital_ = this.getFieldValue('char_digital_');
-    var code = '"' + dropdown_char_digital_ + '"';
-    code = '{';
+    var code = '{';
     for (var i = 0; i < 15; i += 2) {
-        code += 'B' + hex2bin(dropdown_char_digital_.substr(i, 2)) + ((i != 14) ? ', ' : '');
+        code += 'B' + hex28bin(dropdown_char_digital_.substr(i, 2)) + ((i != 14) ? ', ' : '');
     }
     code += '};';
     Blockly.Arduino.addDefine('matrix_char_' + dropdown_char_digital_, "const byte " + 'matrix_char_' + dropdown_char_digital_ + "[8] PROGMEM = " + code);
@@ -314,10 +315,9 @@ Blockly.Arduino["Matrix_char_digital"] = function (block) {
  */
 Blockly.Arduino["Matrix_char_upper"] = function (block) {
     var dropdown_char_upper_ = this.getFieldValue('char_upper_');
-    var code = '"' + dropdown_char_upper_ + '"';
-    code = '{';
+    var code = '{';
     for (var i = 0; i < 15; i += 2) {
-        code += 'B' + hex2bin(dropdown_char_upper_.substr(i, 2)) + ((i != 14) ? ', ' : '');
+        code += 'B' + hex28bin(dropdown_char_upper_.substr(i, 2)) + ((i != 14) ? ', ' : '');
     }
     code += '};';
     Blockly.Arduino.addDefine('matrix_char_' + dropdown_char_upper_, "const byte " + 'matrix_char_' + dropdown_char_upper_ + "[8] PROGMEM = " + code);
@@ -334,10 +334,9 @@ Blockly.Arduino["Matrix_char_upper"] = function (block) {
  */
 Blockly.Arduino["Matrix_char_lower"] = function (block) {
     var dropdown_char_lower_ = this.getFieldValue('char_lower_');
-    var code = '"' + dropdown_char_lower_ + '"';
-    code = '{';
+    var code = '{';
     for (var i = 0; i < 15; i += 2) {
-        code += 'B' + hex2bin(dropdown_char_lower_.substr(i, 2)) + ((i != 14) ? ', ' : '');
+        code += 'B' + hex28bin(dropdown_char_lower_.substr(i, 2)) + ((i != 14) ? ', ' : '');
     }
     code += '};';
     Blockly.Arduino.addDefine('matrix_char_' + dropdown_char_lower_, "const byte " + 'matrix_char_' + dropdown_char_lower_ + "[8] PROGMEM = " + code);
@@ -354,10 +353,9 @@ Blockly.Arduino["Matrix_char_lower"] = function (block) {
  */
 Blockly.Arduino["Matrix_img"] = function (block) {
     var dropdown_img_ = this.getFieldValue('img_');
-    var code = '"' + dropdown_img_ + '"';
-    code = '{';
+    var code = '{';
     for (var i = 0; i < 15; i += 2) {
-        code += 'B' + hex2bin(dropdown_img_.substr(i, 2)) + ((i != 14) ? ', ' : '');
+        code += 'B' + hex28bin(dropdown_img_.substr(i, 2)) + ((i != 14) ? ', ' : '');
     }
     code += '};';
     Blockly.Arduino.addDefine('matrix_char_' + dropdown_img_, "const byte " + 'matrix_char_' + dropdown_img_ + "[8] PROGMEM = " + code);
@@ -374,13 +372,12 @@ Blockly.Arduino["Matrix_img"] = function (block) {
  */
 Blockly.Arduino["Matrix_char_digital_half"] = function (block) {
     var dropdown_char_half_ = this.getFieldValue('char_digital_half_');
-    var code = '"' + dropdown_char_half_ + '"';
-    code = '{';
-    for (var i = 0; i < 7; i += 2) {
-        code += 'B' + hex2bin(dropdown_char_half_.substr(i, 2)) + ((i != 6) ? ', ' : '');
+    var code = '{';
+    for (var i = 0; i < 8; i++) {
+        code += '"' + hex24bin(dropdown_char_half_.substr(i, 1)) + ((i != 7) ? '", ' : '"');
     }
     code += '};';
-    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const byte " + 'matrix_char_half_' + dropdown_char_half_ + "[4] PROGMEM = " + code);
+    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const String " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
     return ['matrix_char_half_' + dropdown_char_half_, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -394,13 +391,12 @@ Blockly.Arduino["Matrix_char_digital_half"] = function (block) {
  */
 Blockly.Arduino["Matrix_char_upper_half"] = function (block) {
     var dropdown_char_half_ = this.getFieldValue('char_upper_half_');
-    var code = '"' + dropdown_char_half_ + '"';
-    code = '{';
-    for (var i = 0; i < 7; i += 2) {
-        code += 'B' + hex2bin(dropdown_char_half_.substr(i, 2)) + ((i != 6) ? ', ' : '');
+    var code = '{';
+    for (var i = 0; i < 8; i++) {
+        code += '"' + hex24bin(dropdown_char_half_.substr(i, 1)) + ((i != 7) ? '", ' : '"');
     }
     code += '};';
-    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const byte " + 'matrix_char_half_' + dropdown_char_half_ + "[4] PROGMEM = " + code);
+    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const String " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
     return ['matrix_char_half_' + dropdown_char_half_, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -414,12 +410,11 @@ Blockly.Arduino["Matrix_char_upper_half"] = function (block) {
  */
 Blockly.Arduino["Matrix_char_lower_half"] = function (block) {
     var dropdown_char_half_ = this.getFieldValue('char_lower_half_');
-    var code = '"' + dropdown_char_half_ + '"';
-    code = '{';
-    for (var i = 0; i < 7; i += 2) {
-        code += 'B' + hex2bin(dropdown_char_half_.substr(i, 2)) + ((i != 6) ? ', ' : '');
+    var code = '{';
+    for (var i = 0; i < 8; i++) {
+        code += '"' + hex24bin(dropdown_char_half_.substr(i, 1)) + ((i != 7) ? '", ' : '"');
     }
     code += '};';
-    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const byte " + 'matrix_char_half_' + dropdown_char_half_ + "[4] PROGMEM = " + code);
+    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const String " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
     return ['matrix_char_half_' + dropdown_char_half_, Blockly.Arduino.ORDER_ATOMIC];
 };

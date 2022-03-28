@@ -178,7 +178,7 @@ Blockly.Arduino["I2CLCD_img"] = function (block) {
     var code = '"' + dropdown_img_ + '"';
     code = '{';
     for (var i = 0; i < 15; i += 2) {
-        code += 'B' + hex2bin(dropdown_img_.substr(i, 2)).substr(3, 5) + ((i != 14) ? ', ' : '');
+        code += 'B' + hex28bin(dropdown_img_.substr(i, 2)).substr(3, 5) + ((i != 14) ? ', ' : '');
     }
     code += '};';
     Blockly.Arduino.addDefine('I2CLCD_img_' + dropdown_img_, "byte " + 'I2CLCD_img_' + dropdown_img_ + "[8] = " + code);
