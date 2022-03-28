@@ -1,0 +1,64 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="#j:1cY6;5_cB4zl10_Q," x="61" y="14">
+    <field name="VAR">buzzer</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="io_allpins" id="H]R40+s(I@2Rc+{ZVOC#">
+        <field name="PIN">2</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="60" y="70">
+    <statement name="SETUP_FUNC">
+      <block type="MAX7219_init" id="qQvB}Zj~I2K-,L9jH|A2">
+        <field name="MATRIX_VAR">lc_matrix</field>
+        <value name="DIN">
+          <block type="io_allpins" id="Zy|;L_oe||t3%9Y+OV*s">
+            <field name="PIN">A2</field>
+          </block>
+        </value>
+        <value name="CS">
+          <block type="io_allpins" id="8I;K]/Gp32V%,C1tExT%">
+            <field name="PIN">A1</field>
+          </block>
+        </value>
+        <value name="CLK">
+          <block type="io_allpins" id="uaa.q9RLa|SsT-*i95v%">
+            <field name="PIN">A0</field>
+          </block>
+        </value>
+        <value name="NUMS">
+          <block type="math_number" id="u^pfGI!7v65]w@kYJ(.C">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_play_tone" id="u%]].UqnL`IYlnY2^I:L">
+            <field name="TONEPIN">buzzer</field>
+            <field name="SPEED">120</field>
+            <statement name="BUZZER_PLAY">
+              <block type="display_Matrix_multi_tone" id="*vP:B!++/ezGu1C@F!M0">
+                <field name="MATRIX_VAR">lc_matrix</field>
+                <value name="NO">
+                  <block type="math_number" id="Vn|=jOKa.s]l_/PmJ@?e">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="NOTE_TONE">
+                  <block type="text" id="3FgJO@?Q*h@v{I1kGO4D">
+                    <field name="TEXT">G4,G4,A4,G4,C5,B4,0,G4,G4,A4,G4,D5,C5,0,G4,G4,G5,E5,C5,B4,A4,0,F5,F5,E5,C5,D5,C5</field>
+                  </block>
+                </value>
+                <value name="TEMPO">
+                  <block type="text" id="YWU]_abE%DNE!p-~Y]lG">
+                    <field name="TEXT">4,4,2,2,2,2,2,4,4,2,2,2,2,2,4,4,2,2,2,2,2,2,4,4,2,2,2,2</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
