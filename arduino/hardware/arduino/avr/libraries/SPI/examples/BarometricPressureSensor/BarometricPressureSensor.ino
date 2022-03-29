@@ -43,7 +43,7 @@ void setup() {
   // start the SPI library:
   SPI.begin();
 
-  // initialize the  data ready and chip select pins:
+  // initalize the  data ready and chip select pins:
   pinMode(dataReadyPin, INPUT);
   pinMode(chipSelectPin, OUTPUT);
 
@@ -140,3 +140,4 @@ void writeRegister(byte thisRegister, byte thisValue) {
   // take the chip select high to de-select:
   digitalWrite(chipSelectPin, HIGH);
 }
+
