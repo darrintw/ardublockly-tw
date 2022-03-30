@@ -651,7 +651,7 @@ Blockly.WorkspaceSvg.prototype.moveDrag = function (e) {
  */
 Blockly.WorkspaceSvg.prototype.onMouseWheel_ = function (e) {
     // TODO: Remove terminateDrag and compensate for coordinate skew during zoom.
-    Blockly.terminateDrag_();
+    // Blockly.terminateDrag_();
     var delta = e.deltaY > 0 ? -1 : 1;
     var position = Blockly.mouseToSvg(e, this.getParentSvg());
     this.zoom(position.x, position.y, delta);

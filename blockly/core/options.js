@@ -155,7 +155,7 @@ Blockly.Options.parseZoomOptions_ = function(options) {
   var zoom = options['zoom'] || {};
   var zoomOptions = {};
   if (zoom['controls'] === undefined) {
-    zoomOptions.controls = false;
+    zoomOptions.controls = true;
   } else {
     zoomOptions.controls = !!zoom['controls'];
   }
