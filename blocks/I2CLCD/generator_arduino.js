@@ -237,7 +237,7 @@ Blockly.Arduino['I2CLCD_multi_tone'] = function (block) {
             code += 'tone(%toneName%, tonehashMap.valueFor("' + noteTone[i] + '"), 240000 / %toneSpeed% / ' + lastTempo + ');\n' +
                 'I2CLCD.setCursor(0, 0);\n' +
                 'I2CLCD.print("' + noteTone[i] + '");\n' +
-                'delay((240000 / %toneSpeed% * ' + lastTempo + '));\n' +
+                'delay(240000 / %toneSpeed% / ' + lastTempo + ');\n' +
                 'noTone(%toneName%);\n';
         }
     } else {

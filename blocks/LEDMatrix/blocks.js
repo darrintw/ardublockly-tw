@@ -119,12 +119,12 @@ Blockly.Blocks["display_Matrix_DrawPixel"] = {
             .appendField(Blockly.Msg.ARD_MAX7219_NO);
         this.appendValueInput('XVALUE')
             .setCheck(Blockly.Types.NUMBER.checkList)
-            .appendField(Blockly.Msg.ARD_MAX7219_DISPLAY_X)
+            .appendField(Blockly.Msg.ARD_MAX7219_DISPALY_ROW)
             .setAlign(Blockly.ALIGN_RIGHT);
         this.appendValueInput("YVALUE")
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.ARD_MAX7219_DISPLAY_Y);
+            .appendField(Blockly.Msg.ARD_MAX7219_DISPALY_COL);
         this.appendValueInput("STAT")
             .appendField(Blockly.Msg.ARD_MAX7219_STAT)
             .setAlign(Blockly.ALIGN_RIGHT)
