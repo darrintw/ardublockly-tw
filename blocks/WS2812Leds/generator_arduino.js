@@ -17,15 +17,16 @@ Blockly.Arduino["pixel_init_var"] = function (block) {
     var pixelId = Blockly.Arduino.variableDB_.getName(
         pixelName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    /*
     var pixel_var = Blockly.Arduino.valueToCode(
-        block, 'PIXEL_VAR', Blockly.Arduino.ORDER_ATOMIC) || '0';
+        block, 'PIXEL_VAR', Blockly.Arduino.ORDER_ATOMIC) || '0';*/
     var pixel_pin = Blockly.Arduino.valueToCode(
         block, 'PIXEL_PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var pixel_number = Blockly.Arduino.valueToCode(
         block, 'PIXEL_NUM', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     Blockly.Arduino.addInclude('Adafruit_NeoPixel_inc', '#include <Adafruit_NeoPixel.h>');
-    var dec = 'Adafruit_NeoPixel ' + pixel_var +
+    var dec = 'Adafruit_NeoPixel ' + pixelId +
         ' = Adafruit_NeoPixel(' + pixel_number + ', ' + pixel_pin + ', NEO_GRB + NEO_KHZ800);'
     //Blockly.Arduino.addDeclaration(pixel_var + '_tag', dec);
     Blockly.Arduino.addVariable(pixelId, dec, true);
@@ -51,7 +52,7 @@ Blockly.Arduino["pixel_single_color"] = function (block) {
         block, 'PIXEL_BLUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     var code = pixelId + '.setPixelColor(' +
-        pixel_numth + ', ' + pixel_var + '.Color(' +
+        pixel_numth + ', ' + pixelId + '.Color(' +
         pixel_red + ', ' + pixel_green + ', ' + pixel_blue + '));\n' +
         pixelId + '.show();\n';
 
@@ -67,7 +68,7 @@ Blockly.Arduino["pixel_single_off"] = function (block) {
         block, 'PIXEL_NUMTH', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     var code = pixelId + '.setPixelColor(' +
-        pixel_numth + ', ' + pixel_var + '.Color(0, 0, 0));\n' +
+        pixel_numth + ', ' + pixelId + '.Color(0, 0, 0));\n' +
         pixelId + '.show();\n';
 
     return code;

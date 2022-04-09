@@ -72,7 +72,8 @@ Ardublockly.htmlPrompt = function (message, defaultValue, callback) {
     $('#gen_prompt_cancel_link').bind('click', function () {
         callback(null);
     });
-    $('#gen_prompt').openModal();
+    //$('#gen_prompt').openModal();
+    $('#gen_prompt').modal();
     window.location.hash = '';
 };
 

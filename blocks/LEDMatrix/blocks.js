@@ -186,6 +186,32 @@ Blockly.Blocks["display_Matrix_half_predefarr"] = {
 //點陣LED顯示兩位數字
 Blockly.Blocks["display_Matrix_two_digital"] = {
     init: function () {
+        var validator_low = function (newValue) {
+            if (isNaN(newValue)) {
+                return 0;
+            } else {
+                if (newValue < 0) {
+                    return 0;
+                } else if (newValue > 99) {
+                    return 99;
+                } else {
+                    return newValue
+                }
+            }
+        }
+        var validator_high = function (newValue) {
+            if (isNaN(newValue)) {
+                return 99;
+            } else {
+                if (newValue < 0) {
+                    return 0;
+                } else if (newValue > 99) {
+                    return 99;
+                } else {
+                    return newValue
+                }
+            }
+        }
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -195,15 +221,17 @@ Blockly.Blocks["display_Matrix_two_digital"] = {
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_MAX7219_NO);
-        this.appendValueInput("LEDArray_left")
+        this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.ARD_MAX7219_LEFT);
-        this.appendValueInput("LEDArray_right")
+            .appendField(Blockly.Msg.ARD_MAX7219_FROM)
+            .appendField(new Blockly.FieldNumber("99", validator_low), "LED_START");
+        this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.ARD_MAX7219_RIGHT);
+            .appendField(Blockly.Msg.ARD_MAX7219_TO)
+            .appendField(new Blockly.FieldNumber("0", validator_high), "LED_END");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setInputsInline(false);
+        this.setInputsInline(true);
         this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
     }
 };

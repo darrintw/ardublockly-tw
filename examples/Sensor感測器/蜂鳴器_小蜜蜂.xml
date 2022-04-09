@@ -14,17 +14,59 @@
         <field name="TONEPIN">buzzer</field>
         <field name="SPEED">120</field>
         <statement name="BUZZER_PLAY">
-          <block type="io_multi_tone" id="M1X)BM@!O+25*?M-S4je">
+          <block type="io_multi_tone" id="M5Nz!;Z@vX0t_VxD~[*/">
             <value name="NOTE_TONE">
-              <block type="text" id="2iu_h)yKSWuf7Rv3D5h1">
-                <field name="TEXT">G4,E4,E4,00,F4,D4,D4,0,C4,D4,E4,F4,G4,G4,G4,00,G4,E4,E4,0,F4,D4,D4,0,C4,E4,G4,G4,E4,0,D4,D4,D4,D4,D4,F4,G4,0,E4,E4,E4,E4,E4,F4,G4,00,G4,E4,E4,00,F4,D4,D4,00,C4,E4,G4,G4,C4</field>
+              <block type="text" id="_AJQkp{REbRz:]fE!1TG">
+                <field name="TEXT">G4,E4,E4,00,F4,D4,D4,0,C4,D4,E4,F4,G4,G4,G4,00</field>
               </block>
             </value>
             <value name="TEMPO">
-              <block type="text" id="i+7~-qB9gWxzH7*[mf.y">
-                <field name="TEXT">5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5</field>
+              <block type="text" id="ejMI#s*4X}xgL!f3nnjy">
+                <field name="TEXT">5</field>
               </block>
             </value>
+            <next>
+              <block type="io_multi_tone" id="M1X)BM@!O+25*?M-S4je">
+                <value name="NOTE_TONE">
+                  <block type="text" id="2iu_h)yKSWuf7Rv3D5h1">
+                    <field name="TEXT">G4,E4,E4,0,F4,D4,D4,0,C4,E4,G4,G4,E4,0</field>
+                  </block>
+                </value>
+                <value name="TEMPO">
+                  <block type="text" id="i+7~-qB9gWxzH7*[mf.y">
+                    <field name="TEXT">5</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_multi_tone" id="5O)DOI?#~+r/pcVfGIj}">
+                    <value name="NOTE_TONE">
+                      <block type="text" id="~4[lB;pQIr)O#EwE]C0^">
+                        <field name="TEXT">D4,D4,D4,D4,D4,E4,F4,0,E4,E4,E4,E4,E4,F4,G4,00</field>
+                      </block>
+                    </value>
+                    <value name="TEMPO">
+                      <block type="text" id="e*m#=;*PLKnl|5qD)%Ot">
+                        <field name="TEXT">5</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_multi_tone" id="R/;6}@.rg+:bZyow:zs+">
+                        <value name="NOTE_TONE">
+                          <block type="text" id="4lZYkAu6dfcBA9vp;L=W">
+                            <field name="TEXT">G4,E4,E4,00,F4,D4,D4,00,C4,E4,G4,G4,C4</field>
+                          </block>
+                        </value>
+                        <value name="TEMPO">
+                          <block type="text" id="Yf4p@REE)OT/g{[_xO|,">
+                            <field name="TEXT">5</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </statement>
       </block>

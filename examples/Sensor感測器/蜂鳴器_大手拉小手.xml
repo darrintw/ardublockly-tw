@@ -12,7 +12,7 @@
     <statement name="SETUP_FUNC">
       <block type="io_play_tone" id="A4lcjO?DG+|)y,+o,ant">
         <field name="TONEPIN">buzzer</field>
-        <field name="SPEED">120</field>
+        <field name="SPEED">200</field>
         <statement name="BUZZER_PLAY">
           <block type="io_multi_tone" id="ab?83)wGcocZDr;XiG]r">
             <value name="NOTE_TONE">
@@ -22,7 +22,7 @@
             </value>
             <value name="TEMPO">
               <block type="text" id="n^+,z(mDg[fdbcxM91!S">
-                <field name="TEXT">4,4,4,4,2</field>
+                <field name="TEXT">4,4,4,4,4</field>
               </block>
             </value>
             <next>
@@ -34,7 +34,7 @@
                 </value>
                 <value name="TEMPO">
                   <block type="text" id="AIfid71x=n`hDnGclzE!">
-                    <field name="TEXT">2,3,3,3,3,3,2,2</field>
+                    <field name="TEXT">2,4,2,4,4,4,4,2</field>
                   </block>
                 </value>
                 <next>
@@ -46,7 +46,7 @@
                     </value>
                     <value name="TEMPO">
                       <block type="text" id="nDCZXmteg+o7IDvrA+OL">
-                        <field name="TEXT">2,4,4,4,4,2,3,3,2,2,2,2</field>
+                        <field name="TEXT">4,4,4,4,4,2,3,3,2,2,2,2</field>
                       </block>
                     </value>
                     <next>
@@ -58,7 +58,7 @@
                         </value>
                         <value name="TEMPO">
                           <block type="text" id="d[u;Hq5r]YLUDZq@%hbr">
-                            <field name="TEXT">2,4,4,4,4,2,3,3,4,4,4,2,2</field>
+                            <field name="TEXT">4,4,4,4,4,2,3,3,4,4,4,2,2</field>
                           </block>
                         </value>
                         <next>
@@ -70,7 +70,7 @@
                             </value>
                             <value name="TEMPO">
                               <block type="text" id="tni%3kRyK.k{B]YF}bFh">
-                                <field name="TEXT">2,4,4,4,4,2,3,3,4,4,4,2,2</field>
+                                <field name="TEXT">4,4,4,4,4,2,3,3,4,4,4,2,2</field>
                               </block>
                             </value>
                             <next>
@@ -82,7 +82,7 @@
                                 </value>
                                 <value name="TEMPO">
                                   <block type="text" id="m;nY;fYXnA{q=38pk#xw">
-                                    <field name="TEXT">2,4,4,4,4,2,3,3,4,4,4,4,2</field>
+                                    <field name="TEXT">4,4,4,4,4,2,3,3,4,4,4,4,2</field>
                                   </block>
                                 </value>
                                 <next>
@@ -94,7 +94,7 @@
                                     </value>
                                     <value name="TEMPO">
                                       <block type="text" id="Kjtq6]uOubzcX@SJ1j{z">
-                                        <field name="TEXT">2,4,4,4,4,2,3,3,2,2</field>
+                                        <field name="TEXT">4,4,4,4,4,2,3,3,2,2</field>
                                       </block>
                                     </value>
                                     <next>
@@ -118,7 +118,7 @@
                                             </value>
                                             <value name="TEMPO">
                                               <block type="text" id="fuT#4ylS^c}a2VKT0RK7">
-                                                <field name="TEXT">2,4,4,4,4,2,3,3,2,2,2</field>
+                                                <field name="TEXT">4,4,4,4,4,2,3,3,2,2,2</field>
                                               </block>
                                             </value>
                                           </block>
