@@ -169,9 +169,9 @@ ul.side-nav li.side-menu-end {
     border: none;
     padding: 0px 5px;
     font-family: monospace;
-    font-size: smaller;
+    font-size: large;
     overflow: scroll;
-    font-style: 0.2em !important;
+    font-style: 0.9em !important;
     min-height: 384px;
 }
 

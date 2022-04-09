@@ -131,6 +131,7 @@ Ardublockly.LOCALISED_TEXT = {
     usbUploadTitle: "USB 燒錄器",
     usbUploadBody: "請先拔除USB後按下確定，並於看到指示後插上USB開始燒錄....",
     usbUpload: "請插上USB開始燒錄....",
+        usbCantmonitor: "USB不能監控",
     uploadingSketch: "上傳草稿碼至Arduino開發板中...",
     uploadSketch: "上傳草稿碼至Arduino開發板",
     verifyingSketch: "驗證/編譯草稿碼中...",

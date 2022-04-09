@@ -111,6 +111,7 @@ Ardublockly.LOCALISED_TEXT = {
     usbUploadTitle: "USB Uploader",
     usbUploadBody: "Plese remove USB and press confirm, wait message to plugin-USB...",
     usbUpload: "Plese plug-in USB in 60 seconds...",
+    usbCantmonitor: "USB can't monitor.",
     uploadingSketch: "Uploading Sketch into Arduino...",
     uploadSketch: "Upload Sketch to the Arduino",
     verifyingSketch: "Verifying Sketch...",

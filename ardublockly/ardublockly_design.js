@@ -36,7 +36,51 @@ Ardublockly.materializeJsInit = function () {
     // Drop down menus
     $('.dropdown-button').dropdown({hover: false});
     // Overlay content panels using modals (android dialogs)
-    $('.modal-trigger').leanModal({
+    $('.modal-trigger').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    $('#gen_alert').modal();
+    $('#not_running_dialog').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    $('#settings_simple_dialog').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    //$('#settings_dialog').openModal({
+    $('#settings_dialog').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    $('#examples_dialog').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    $('#serial_dialog').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    $('#about_dialog').modal({
+        dismissible: true,
+        opacity: .5,
+        in_duration: 200,
+        out_duration: 250
+    });
+    $('#blocks_menu').modal({
         dismissible: true,
         opacity: .5,
         in_duration: 200,
@@ -274,67 +318,86 @@ Ardublockly.materialAlert = function (title, body, confirm, callback) {
         $('#gen_alert_cancel_link').css({'display': 'none'});
         $('#gen_alert_ok_link').unbind('click');
     }
-    $('#gen_alert').openModal();
+    //$('#gen_alert').openModal();
+    $('#gen_alert').modal('open');
     window.location.hash = '';
 };
 
 /** Opens the modal that displays the "not connected to server" message. */
 Ardublockly.openNotConnectedModal = function () {
+    /*
     $('#not_running_dialog').openModal({
         dismissible: true,
         opacity: .5,
         in_duration: 200,
         out_duration: 250
     });
+    */
+    $('#not_running_dialog').modal();
 };
 
 /** Opens the modal that displays the Settings. */
 Ardublockly.openSettingsModal = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+        /*
         $('#settings_simple_dialog').openModal({
             dismissible: true,
             opacity: .5,
             in_duration: 200,
             out_duration: 250
         });
+        */
+        $('#settings_simple_dialog').modal('open');
     } else {
+        /*
         $('#settings_dialog').openModal({
             dismissible: true,
             opacity: .5,
             in_duration: 200,
             out_duration: 250
         });
+        */
+        $('#settings_dialog').modal('open');
     }
 };
 
 /** Opens the modal that displays the Examples. */
 Ardublockly.openExamplesModal = function () {
+    /*
     $('#examples_dialog').openModal({
         dismissible: true,
         opacity: .5,
         in_duration: 200,
         out_duration: 250
     });
+    */
+    $('#examples_dialog').modal('open');
 };
 
 /** Opens the modal that displays the Examples. */
 Ardublockly.openSerialMonitorModal = function () {
+    /*
     $('#serial_dialog').openModal({
         dismissible: true,
         opacity: .5,
         in_duration: 200,
         out_duration: 250
     });
+    */
+    $('#serial_dialog').modal('open');
 };
 
 /** Opens the modal that displays about. */
 Ardublockly.openAboutModal = function () {
+    /*
     $('#about_dialog').openModal({
         dismissible: true,
         opacity: .5,
         in_duration: 200,
         out_duration: 250
     });
+    */
+    $('#about_dialog').modal('open');
 };
 
 /**
@@ -344,12 +407,15 @@ Ardublockly.openAboutModal = function () {
 Ardublockly.openAdditionalBlocksModal = function (htmlContent) {
     $('#blocks_menu_body').text('');
     $('#blocks_menu_body').append(htmlContent);
+    /*
     $('#blocks_menu').openModal({
         dismissible: true,
         opacity: .5,
         in_duration: 200,
         out_duration: 250
     });
+    */
+    $('#blocks_menu').modal('open');
 };
 
 /**
@@ -390,6 +456,7 @@ Ardublockly.createExtraBlocksCatHtml = function (title, description, clickBind) 
  * @param {!string} message Text to be temporarily displayed.
  */
 Ardublockly.MaterialToast = function (message) {
+    Materialize.Toast.removeAll();
     Materialize.toast(message, 4000);
 };
 

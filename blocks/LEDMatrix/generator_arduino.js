@@ -151,6 +151,134 @@ Blockly.Arduino["display_Matrix_half_predefarr"] = function (block) {
     return code;
 };
 
+//依據陣列顯示半寬內容
+/**
+ * Function for .
+ * Arduino code: setup {  }
+ *               loop  {  }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino["display_Matrix_two_digital"] = function (block) {
+    var matrixName = block.getFieldValue('MATRIX_VAR');
+    var matrixId = Blockly.Arduino.variableDB_.getName(
+        matrixName,
+        Blockly.Variables.NAME_TYPE);
+    var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.addDefine('matrix_char_half_69999996', 'const String matrix_char_half_69999996[8] = {"0110", "1001", "1001", "1001", "1001", "1001", "1001", "0110"};');
+    Blockly.Arduino.addDefine('matrix_char_half_26222227', 'const String matrix_char_half_26222227[8] = {"0010", "0110", "0010", "0010", "0010", "0010", "0010", "0111"};');
+    Blockly.Arduino.addDefine('matrix_char_half_6911124F', 'const String matrix_char_half_6911124F[8] = {"0110", "1001", "0001", "0001", "0001", "0010", "0100", "1111"};');
+    Blockly.Arduino.addDefine('matrix_char_half_69161196', 'const String matrix_char_half_69161196[8] = {"0110", "1001", "0001", "0110", "0001", "0001", "1001", "0110"};');
+    Blockly.Arduino.addDefine('matrix_char_half_137D9F11', 'const String matrix_char_half_137D9F11[8] = {"0001", "0011", "0111", "1101", "1001", "1111", "0001", "0001"};');
+    Blockly.Arduino.addDefine('matrix_char_half_F88E1196', 'const String matrix_char_half_F88E1196[8] = {"1111", "1000", "1000", "1110", "0001", "0001", "1001", "0110"};');
+    Blockly.Arduino.addDefine('matrix_char_half_698E9996', 'const String matrix_char_half_698E9996[8] = {"0110", "1001", "1000", "1110", "1001", "1001", "1001", "0110"};');
+    Blockly.Arduino.addDefine('matrix_char_half_F1124888', 'const String matrix_char_half_F1124888[8] = {"1111", "0001", "0001", "0010", "0100", "1000", "1000", "1000"};');
+    Blockly.Arduino.addDefine('matrix_char_half_69969996', 'const String matrix_char_half_69969996[8] = {"0110", "1001", "1001", "0110", "1001", "1001", "1001", "0110"};');
+    Blockly.Arduino.addDefine('matrix_char_half_69997196', 'const String matrix_char_half_69997196[8] = {"0110", "1001", "1001", "1001", "0111", "0001", "1001", "0110"};');
+
+    var ledStart = block.getFieldValue('LED_START');
+    var ledEnd = block.getFieldValue('LED_END');
+
+    Blockly.Arduino.addVariable('matrix_countdown', 'const bool countdown = ' + (ledStart > ledEnd ? 'true' : 'false') + ';');
+    Blockly.Arduino.addVariable('matrix_start_num', 'int matrix_start_num = ' + ledStart + ';', false);
+    Blockly.Arduino.addVariable('matrix_end_num', 'int matrix_end_num = ' + ledEnd + ';', false);
+    var fCode = 'void ledCountDown(int now) {\n' +
+        '  int secTen = now / 10;\n' +
+        '  int sec = now % 10;\n' +
+        '  for (int index_i = 0; index_i < 8; index_i++)\n' +
+        '  {\n' +
+        '    String binary_string;\n' +
+        '    switch (secTen) {\n' +
+        '      case 0 :\n' +
+        '        binary_string = matrix_char_half_69999996[index_i];\n' +
+        '        break;\n' +
+        '      case 1 :\n' +
+        '        binary_string = matrix_char_half_26222227[index_i];\n' +
+        '        break;\n' +
+        '      case 2 :\n' +
+        '        binary_string = matrix_char_half_6911124F[index_i];\n' +
+        '        break;\n' +
+        '      case 3 :\n' +
+        '        binary_string = matrix_char_half_69161196[index_i];\n' +
+        '        break;\n' +
+        '      case 4 :\n' +
+        '        binary_string = matrix_char_half_137D9F11[index_i];\n' +
+        '        break;\n' +
+        '      case 5 :\n' +
+        '        binary_string = matrix_char_half_F88E1196[index_i];\n' +
+        '        break;\n' +
+        '      case 6 :\n' +
+        '        binary_string = matrix_char_half_698E9996[index_i];\n' +
+        '        break;\n' +
+        '      case 7 :\n' +
+        '        binary_string = matrix_char_half_F1124888[index_i];\n' +
+        '        break;\n' +
+        '      case 8 :\n' +
+        '        binary_string = matrix_char_half_69969996[index_i];\n' +
+        '        break;\n' +
+        '      case 9 :\n' +
+        '        binary_string = matrix_char_half_69997196[index_i];\n' +
+        '        break;\n' +
+        '    }\n' +
+        '    switch (sec) {\n' +
+        '      case 0 :\n' +
+        '        binary_string += matrix_char_half_69999996[index_i];\n' +
+        '        break;\n' +
+        '      case 1 :\n' +
+        '        binary_string += matrix_char_half_26222227[index_i];\n' +
+        '        break;\n' +
+        '      case 2 :\n' +
+        '        binary_string += matrix_char_half_6911124F[index_i];\n' +
+        '        break;\n' +
+        '      case 3 :\n' +
+        '        binary_string += matrix_char_half_69161196[index_i];\n' +
+        '        break;\n' +
+        '      case 4 :\n' +
+        '        binary_string += matrix_char_half_137D9F11[index_i];\n' +
+        '        break;\n' +
+        '      case 5 :\n' +
+        '        binary_string += matrix_char_half_F88E1196[index_i];\n' +
+        '        break;\n' +
+        '      case 6 :\n' +
+        '        binary_string += matrix_char_half_698E9996[index_i];\n' +
+        '        break;\n' +
+        '      case 7 :\n' +
+        '        binary_string += matrix_char_half_F1124888[index_i];\n' +
+        '        break;\n' +
+        '      case 8 :\n' +
+        '        binary_string += matrix_char_half_69969996[index_i];\n' +
+        '        break;\n' +
+        '      case 9 :\n' +
+        '        binary_string += matrix_char_half_69997196[index_i];\n' +
+        '        break;\n' +
+        '    }\n' +
+        '    for (int index_c = 0; index_c < 8; index_c++) {\n' +
+        '      lc_matrix.setLed(0, index_i, index_c, (binary_string.substring(index_c, index_c + 1) == "0" ? LOW : HIGH));\n' +
+        '    }\n' +
+        '  }\n' +
+        '}\n';
+    Blockly.Arduino.addFunction('ledCountDown_func', fCode);
+    var code = '  ledCountDown(matrix_start_num);\n' +
+        '  if (countdown) {\n' +
+        '    if (matrix_start_num > matrix_end_num) {\n' +
+        '      matrix_start_num--;\n' +
+        '    }\n' +
+        '    else {\n' +
+        '      matrix_start_num = 0;\n' +
+        '    }\n' +
+        '  }\n' +
+        '  else\n' +
+        '  {\n' +
+        '    if (matrix_start_num < matrix_end_num) {\n' +
+        '      matrix_start_num++;\n' +
+        '    }\n' +
+        '    else {\n' +
+        '      matrix_start_num = 99;\n' +
+        '    }\n' +
+        '  }\n';
+    return code;
+};
+
 //發出音效順便顯示文字
 /**
  * Function for .
@@ -243,14 +371,14 @@ Blockly.Arduino["display_Matrix_LedArray"] = function (block) {
     }
     var code = '{';
     for (var i = 1; i < 9; i++) {
-        var tmp = "B"
+        var tmp = 'B'
         for (var j = 1; j < 9; j++) {
             tmp += a[i][j];
         }
         code += tmp + ((i != 8) ? ',' : '');
     }
     code += '};';
-    Blockly.Arduino.addVariable(arrayName, "const byte " + arrayId + "[8] = " + code, true);
+    Blockly.Arduino.addVariable(arrayName, 'const byte ' + arrayId + '[8] = ' + code, true);
     return [arrayId, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -276,14 +404,14 @@ Blockly.Arduino["display_Matrix_half_LedArray"] = function (block) {
     }
     var code = '{';
     for (var i = 1; i < 9; i++) {
-        var tmp = "B"
+        var tmp = '"'
         for (var j = 1; j < 5; j++) {
             tmp += a[i][j];
         }
-        code += tmp + ((i != 8) ? ', ' : '');
+        code += tmp + ((i != 8) ? '", ' : '"');
     }
     code += '};';
-    Blockly.Arduino.addVariable(arrayName, "const byte " + arrayId + "[8] PROGMEM = " + code, true);
+    Blockly.Arduino.addVariable(arrayName, "const String " + arrayId + "[8] PROGMEM = " + code, true);
     return [arrayId, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -378,7 +506,7 @@ Blockly.Arduino["Matrix_char_digital_half"] = function (block) {
         code += '"' + hex24bin(dropdown_char_half_.substr(i, 1)) + ((i != 7) ? '", ' : '"');
     }
     code += '};';
-    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const String " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
+    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const byte " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
     return ['matrix_char_half_' + dropdown_char_half_, Blockly.Arduino.ORDER_ATOMIC];
 };
 

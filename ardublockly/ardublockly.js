@@ -513,15 +513,20 @@ Ardublockly.openSerialMonitor = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         Ardublockly.openNotConnectedModal();
     } else {
-        var killPuttyReturn = function (jsonObj) {
-        };
-        var sendCodeReturn = function (jsonObj) {
-            if (jsonObj === null) return Ardublockly.openNotConnectedModal();
-            var dataBack = ArdublocklyServer.jsonToIdeModal(jsonObj);
-            Ardublockly.arduinoIdeOutput(dataBack);
-        };
-        ArdublocklyServer.cliKillPutty();
-        ArdublocklyServer.sendCliToPutty(sendCodeReturn);
+        var el = document.getElementById('serial_port');
+        var serialValue = el.options[el.selectedIndex].value;
+        if (serialValue != "USB") {
+            var sendCodeReturn = function (jsonObj) {
+                if (jsonObj === null) return Ardublockly.openNotConnectedModal();
+                var dataBack = ArdublocklyServer.jsonToIdeModal(jsonObj);
+                Ardublockly.arduinoIdeOutput(dataBack);
+            };
+            ArdublocklyServer.cliKillPutty();
+            ArdublocklyServer.sendCliToPutty(sendCodeReturn);
+        }
+        else {
+            Ardublockly.shortMessage(Ardublockly.getLocalStr('usbCantmonitor'));
+        }
     }
 };
 
@@ -855,10 +860,10 @@ Ardublockly.setExamplesHtml = function (jsonObj) {
         $('.collapsible').collapsible({
             accordion: false,
             onOpen: function (el) {
-                alert('Open');
+                //alert('Open');
             }, // Callback for Collapsible open
             onClose: function (el) {
-                alert('Closed');
+                //alert('Closed');
             } // Callback for Collapsible close
         });
     }
@@ -1275,11 +1280,11 @@ Ardublockly.addExtraCategories = function () {
     // Now reading a local file, to be replaced by server generated JSON
     ArdublocklyServer.getJson('../blocks/blocks_data.json', jsonDataCb);
 
-    var load_delay = 2000;
+    var load_delay = 1000;
     if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
         ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
             if (!jsonObj.errors) {
-                load_delay = jsonObj.selected || '2000';
+                load_delay = jsonObj.selected || '1000';
             }
         });
     }
