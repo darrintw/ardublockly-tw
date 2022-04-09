@@ -513,6 +513,8 @@ Ardublockly.openSerialMonitor = function () {
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         Ardublockly.openNotConnectedModal();
     } else {
+        var killPuttyReturn = function (jsonObj) {
+        };
         var sendCodeReturn = function (jsonObj) {
             if (jsonObj === null) return Ardublockly.openNotConnectedModal();
             var dataBack = ArdublocklyServer.jsonToIdeModal(jsonObj);

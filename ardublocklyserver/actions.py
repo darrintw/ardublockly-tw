@@ -523,6 +523,7 @@ def kill_putty_cli():
         for c in prog_pid.children(recursive=True):
             c.kill()
         prog_pid.kill()
+        exit_code = 1
     except Exception as e:
         print(e)
 

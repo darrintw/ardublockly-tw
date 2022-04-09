@@ -38,3 +38,6 @@ Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP = '依定應的陣列顯示';
 Blockly.Msg.ARD_MAX7219_LEFT = '十位';
 Blockly.Msg.ARD_MAX7219_RIGHT = '個位';
 Blockly.Msg.ARD_MAX7219_SHOW_TONE = "點矩陣顯示音符";
+Blockly.Msg.ARD_MAX7219_FROM = '從';
+Blockly.Msg.ARD_MAX7219_TO = '到';
+Blockly.Msg.ARD_MAX7219_COUNTER = '倒數';

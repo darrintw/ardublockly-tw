@@ -219,7 +219,7 @@ Blockly.Arduino['I2CLCD_multi_tone'] = function (block) {
     var noteSize = 0;
     var code = '';
     var lastTempo = 0;
-    var tempoLen = 1;
+    var tempoLen = 0;
     if (tempo.indexOf(',') > -1) {
         tempo = tempo.replaceAll('"', '').split(',');
         tempoLen = tempo.length;

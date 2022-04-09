@@ -1,6 +1,6 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="variables_init" id="1o-R`E5%3qg;YmQ+cI%3" x="33" y="52">
-    <field name="VAR">變數</field>
+    <field name="VAR">buzzer</field>
     <field name="CONST">TRUE</field>
     <value name="VALUE">
       <block type="io_allpins" id="gy=JRWxu%FW0wJGhV{wz">
@@ -12,7 +12,7 @@
     <statement name="SETUP_FUNC">
       <block type="io_play_tone" id="A4lcjO?DG+|)y,+o,ant">
         <field name="TONEPIN">buzzer</field>
-        <field name="SPEED">120</field>
+        <field name="SPEED">240</field>
         <statement name="BUZZER_PLAY">
           <block type="io_multi_tone" id="Nb9V~x%nTBEgfYE5FY)=">
             <value name="NOTE_TONE">

@@ -181,7 +181,8 @@ Blockly.Arduino['display_Matrix_multi_tone'] = function (block) {
     Blockly.Arduino.addDefine('matrix_tone_b', 'const byte matrix_tone_b[8] PROGMEM = {B01110000, B11000000, B10000110, B11000000, B01100110, B00010110, B00110110, B11100110};');
     var code = '';
     var lastTempo = 0;
-    var tempoLen = 1;
+    var tempoLen = 0;
+    console.log(tempo);
     if (tempo.indexOf(',') > -1) {
         tempo = tempo.replaceAll('"', '').split(',');
         tempoLen = tempo.length;

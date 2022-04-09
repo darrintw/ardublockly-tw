@@ -208,6 +208,30 @@ Blockly.Blocks["display_Matrix_two_digital"] = {
     }
 };
 
+//點陣LED正數/倒數
+Blockly.Blocks["display_Matrix_two_digital"] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.LEDMatrix.HUE);
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219)
+            .appendField(new Blockly.FieldVariable('lc_matrix'), 'MATRIX_VAR');
+        this.appendValueInput("NO")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_NO);
+        this.appendValueInput("LEDArray_left")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_LEFT);
+        this.appendValueInput("LEDArray_right")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_MAX7219_RIGHT);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(false);
+        this.setTooltip(Blockly.Msg.ARD_MAX7219_PREDEFARR_TOOLTIP);
+    }
+};''
 //點陣LED顯示音符
 Blockly.Blocks['display_Matrix_multi_tone'] = {
     /**
