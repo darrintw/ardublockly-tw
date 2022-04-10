@@ -8879,6 +8879,8 @@ button.btn-floating {
     position: absolute;
     z-index: 999;
     will-change: width, height;
+    width: max-content !important;
+    height: auto !important;
 }
 
 .dropdown-content li {
@@ -9172,7 +9174,9 @@ button.btn-floating {
 .collapsible-header i {
     width: 2rem;
     font-size: 1.6rem;
-    display: inline-block;
+    line-height: 3rem;
+    display: block;
+    float: left;
     text-align: center;
     margin-right: 1rem;
 }
@@ -9181,7 +9185,7 @@ button.btn-floating {
     display: none;
     border-bottom: 1px solid #ddd;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     #padding: 2rem;
 }
 

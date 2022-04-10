@@ -489,7 +489,6 @@ Blockly.BlockSvg.prototype.tab = function (start, forward) {
     for (var i = 0, input; input = this.inputList[i]; i++) {
         for (var j = 0, field; field = input.fieldRow[j]; j++) {
             if (field instanceof Blockly.FieldTextInput) {
-                // TODO: Also support dropdown fields.
                 list.push(field);
             }
         }

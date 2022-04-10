@@ -4968,7 +4968,8 @@ if (Vel) {
             $(window).off('click.select');
           }
           if (!options.is(':visible')) {
-            $(this).trigger('open', ['focus']);
+            //Remove this to fix toggle click twice
+            //$(this).trigger('open', ['focus']);
             var label = $(this).val();
             if (multiple && label.indexOf(',') >= 0) {
               label = label.split(',')[0];
