@@ -1,5 +1,5 @@
 board=uno
-boardsmanager.additional.urls=https://raw.githubusercontent.com/ArminJo/DigistumpArduino/master/package_digistump_index.json,https://github.com/pixetto/Pixetto/releases
+boardsmanager.additional.urls=http://digistump.com/package_digistump_index.jsonn,https://github.com/pixetto/Pixetto/releases
 build.verbose=false
 build.warn_data_percentage=75
 compiler.cache_core=true
@@ -40,7 +40,7 @@ export.application.stop=true
 export.delete_target_folder=true
 gui.scale=auto
 last.ide.1.8.8.daterun=1649234974
-last.ide.1.8.8.hardwarepath=D:\Tools\Ardublockly-dev\ardublockly\arduino\hardware
+last.ide.1.8.8.hardwarepath=
 last.screen.height=1080
 last.screen.width=1920
 last.sketch.count=0
