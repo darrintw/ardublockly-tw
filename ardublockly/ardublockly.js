@@ -852,7 +852,7 @@ Ardublockly.setExamplesHtml = function (jsonObj) {
                     var fname = files.substr(0, files.indexOf(".xml"));
                     Ardublockly.loadServerXmlFile('../' + readExamplesLoc + exname +
                         "/" + files, fname);
-                    $('#examples_dialog').closeModal();
+                    $('#examples_dialog').modal('close');
                 });
                 index++;
             });

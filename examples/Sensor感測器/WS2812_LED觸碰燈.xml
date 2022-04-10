@@ -1,0 +1,254 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="pixel_init_var" id="Geu%vI#1g58bXHCoeKpx">
+        <field name="PIXEL_VAR">ledstrip</field>
+        <value name="PIXEL_NUM">
+          <block type="math_number" id="br.`1(3h7Mx!b+bwT8;S">
+            <field name="NUM">16</field>
+          </block>
+        </value>
+        <value name="PIXEL_PIN">
+          <block type="io_allpins" id="AwT?|lfhW56Z8M.p(Mq`">
+            <field name="PIN">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="^=C2^a{WH@D5TLReez^q">
+            <field name="VAR">status</field>
+            <value name="VALUE">
+              <block type="math_number" id="#WvXjKbq3bNsgHNO=)By">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="DK@~pwxcGyt(^R`PSZy)">
+        <value name="IF0">
+          <block type="logic_compare" id="O.0iWZi+cRZtG[#@^.:o">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread" id="wol2p-tRIv`s+.mMcmB|">
+                <field name="PIN">1</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="FG0P7[n!0f)ol=a{alU5">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="-[`oeV8uO~=bT3ne{zss">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id=".rq=SL-FV%/Pd.6d;IjM">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="o|4?k%n4]hlAM^ECguI(">
+                    <field name="VAR">status</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="L{AA?fy0bvkVoM=?;I=o">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="procedures_callnoreturn" id="oeQg31}kFb|I(;=H~PU!">
+                <mutation name="點燈"></mutation>
+                <next>
+                  <block type="variables_set" id="=3/WuANbGb33SvB[NOV+">
+                    <field name="VAR">status</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="sj;del3I8Sr!_-BlK_-,">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="procedures_callnoreturn" id="E9VE*n)9J{TY_F-ZCWSf">
+                <mutation name="關燈"></mutation>
+                <next>
+                  <block type="variables_set" id="PQzXgXc!FGhu^o!1#U~~">
+                    <field name="VAR">status</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="]:zLRkFOBAa@IeE,v@`R">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="j#Vq6V@{/rkB#0H#a*X4" x="0" y="374">
+    <field name="NAME">關燈</field>
+    <comment pinned="false" h="80" w="160">描述此函數...</comment>
+    <statement name="STACK">
+      <block type="controls_for" id="}@9Jklt^q(euJ`:)mvTn">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="o!}z4Q/q_UMR}+)9Y1|1">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="@=WsDh9zwNiQP1dBt*6F">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="a?[@j9ilMb_kl8b3zTwE">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="pixel_single_off" id="A~Mv]MOaV5jCusS6Z-MQ">
+            <field name="PIXEL_VAR">ledstrip</field>
+            <value name="PIXEL_NUMTH">
+              <block type="variables_get" id="lK,KN;bk%z;fYYcuQ5tL">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <next>
+              <block type="pixel_single_off" id="Xcw1D5e|stA./NEq@=uJ">
+                <field name="PIXEL_VAR">ledstrip</field>
+                <value name="PIXEL_NUMTH">
+                  <block type="math_arithmetic" id="w:yXS068atBL[s%kDj2u">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="math_number" id="9RgfbR.|zZ.H]QfCZBRn">
+                        <field name="NUM">15</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="|#`K+04enXS|/52e|Ey2">
+                        <field name="VAR">i</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="klKydqVip%|Idv`0#5{=">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="vCw!sk8:cW@7FyNRbui9">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="*4#VSZJqp@a%AoUSwd,{" x="0" y="613">
+    <field name="NAME">點燈</field>
+    <comment pinned="false" h="80" w="160">描述此函數...</comment>
+    <statement name="STACK">
+      <block type="controls_for" id="U]jo2=0%yBlsrECyQOH!">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="hj30{MN[Bey)IfFg:}:_">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="Q9zjMxiE5h)2=F,[)ExV">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="dBuo`89Q+K+qHn.=Hae2">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="pixel_single_color" id="a/6NcE@KnjP.]i+7[(T}">
+            <field name="PIXEL_VAR">ledstrip</field>
+            <value name="PIXEL_NUMTH">
+              <block type="variables_get" id="RWRZ!H!i@c4~_!uqoY#{">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <value name="PIXEL_RED">
+              <block type="math_number" id="y{STh94ds.C]e`=b8/w^">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="PIXEL_GREEN">
+              <block type="math_number" id="{n(I@aG/W5!]z]3t9vx~">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="PIXEL_BLUE">
+              <block type="math_number" id="PY!r8ICL?n_S/GhmU42m">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <next>
+              <block type="pixel_single_color" id="UkGG1p`-}U;|+[SU6?|U">
+                <field name="PIXEL_VAR">ledstrip</field>
+                <value name="PIXEL_NUMTH">
+                  <block type="math_arithmetic" id="QH5te,5(B-8ALna.nr^m">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="math_number" id="r}:JSAOX4~do!aO[Xo(N">
+                        <field name="NUM">15</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id=";DLa/Pq.LP]W;NeWaq@@">
+                        <field name="VAR">i</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="PIXEL_RED">
+                  <block type="math_number" id="Z3UXhFoABuC7pIKs-)hE">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="PIXEL_GREEN">
+                  <block type="math_number" id="EU,1xSQx[Ye5`q,+2U~1">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="PIXEL_BLUE">
+                  <block type="math_number" id="v)%WpuAc@j)^mO1m=L1k">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="z.a@JppWI}UGk~d-~8E9">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="C1oH}R7f{FWbfsJ@4u69">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
