@@ -87,10 +87,10 @@ Blockly.Blocks["PS2_Button"] = {
             .appendField(new Blockly.FieldDropdown(PSBUTTON), "psbt")
             .appendField(Blockly.Msg.ARD_PS2_STATUS)
             .appendField(new Blockly.FieldDropdown(
-                [[Blockly.Msg.ARD_PS2_BUTTON, "0"],
-                    [Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "1"],
-                    [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "2"],
-                    [Blockly.Msg.ARD_PS2_NEW_BUTTON_STATUS, "3"]]), "btstate");
+                [[Blockly.Msg.ARD_PS2_BUTTON, "1"],
+                    [Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "2"],
+                    [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "3"],
+                    [Blockly.Msg.ARD_PS2_NEW_BUTTON_STATUS, "4"]]), "btstate");
         this.setOutput(true, "Boolean");
         this.setTooltip('');
     }

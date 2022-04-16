@@ -396,10 +396,11 @@ Ardublockly.createExtraBlocksCatHtml = function (title, description, clickBind) 
 /**
  * Displays a short message for 4 seconds in the form of a Materialize toast.
  * @param {!string} message Text to be temporarily displayed.
+ * @param {!integer} delay time to delay.
  */
-Ardublockly.MaterialToast = function (message) {
+Ardublockly.MaterialToast = function (message, delay) {
     Materialize.Toast.removeAll();
-    Materialize.toast(message, 4000);
+    Materialize.toast(message, delay);
 };
 
 /**

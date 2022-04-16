@@ -205,7 +205,7 @@ Ardublockly.serialRun = function () {
         arduinoport.on("open", (err) => {
             console.log('serial port open'); //成功連接時印出port open
             if (err) {
-                Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'))
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'), 4000)
             }
         }, 20);
         arduinoport.pipe(parser)
@@ -276,15 +276,28 @@ Ardublockly.ideSendUpload = function () {
             Ardublockly.getLocalStr('usbUploadTitle'),
             Ardublockly.getLocalStr('usbUploadBody'),
             true, function () {
-                Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'));
-                Ardublockly.resetIdeOutputContent();
-                Ardublockly.sendCode();
+                setTimeout(function () {
+                    Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'), 5000);
+                    Ardublockly.resetIdeOutputContent();
+                    Ardublockly.sendCode();
+                }, 200);
             });
     } else {
-        ArdublocklyServer.cliKillPutty();
-        Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'));
-        Ardublockly.resetIdeOutputContent();
-        Ardublockly.sendCode();
+        var cb = function (jsonObj) {
+            if (jsonObj === null) return Ardublockly.openNotConnectedModal();
+            setTimeout(function () {
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'), 4000);
+                Ardublockly.resetIdeOutputContent();
+                Ardublockly.sendCode();
+            }, 200);
+            setTimeout(function () {
+                if (jsonObj.ide_data.exit_code == 1) {
+                    Ardublockly.openSerialMonitor();
+                }
+            }, 10000);
+        }
+        ArdublocklyServer.cliKillPutty(cb);
+
     }
 };
 
@@ -295,7 +308,7 @@ Ardublockly.ideSendOpen = function () {
         Ardublockly.showExtraIdeButtons(false);
         Ardublockly.setIdeSettings(null, 'open');
     }
-    Ardublockly.shortMessage(Ardublockly.getLocalStr('openingSketch'));
+    Ardublockly.shortMessage(Ardublockly.getLocalStr('openingSketch'), 4000);
     Ardublockly.resetIdeOutputContent();
     Ardublockly.sendCode();
 };
@@ -521,11 +534,17 @@ Ardublockly.openSerialMonitor = function () {
                 var dataBack = ArdublocklyServer.jsonToIdeModal(jsonObj);
                 Ardublockly.arduinoIdeOutput(dataBack);
             };
-            ArdublocklyServer.cliKillPutty();
-            ArdublocklyServer.sendCliToPutty(sendCodeReturn);
-        }
-        else {
-            Ardublockly.shortMessage(Ardublockly.getLocalStr('usbCantmonitor'));
+            var cb = function (jsonObj) {
+                if (jsonObj === null) return Ardublockly.openNotConnectedModal();
+                console.log(jsonObj);
+            }
+            ArdublocklyServer.cliKillPutty(cb);
+            setTimeout(function () {
+                ArdublocklyServer.sendCliToPutty(sendCodeReturn);
+            }, 200);
+
+        } else {
+            Ardublockly.shortMessage(Ardublockly.getLocalStr('usbCantmonitor'), 4000);
         }
     }
 };
@@ -563,7 +582,7 @@ Ardublockly.openSerialMonitor = function () {
             var baudRateValue = elBRV.options[elBRV.selectedIndex].value;
             Ardublockly.openSerialMonitorModal();
         } else {
-            Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'))
+            Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'), 4000)
         }
     }
 };
@@ -1300,7 +1319,7 @@ Ardublockly.addExtraCategories = function () {
 
 /** Informs the user that the selected function is not yet implemented. */
 Ardublockly.functionNotImplemented = function () {
-    Ardublockly.shortMessage('Function not yet implemented');
+    Ardublockly.shortMessage('Function not yet implemented', 4000);
 };
 
 /**
@@ -1319,9 +1338,10 @@ Ardublockly.alertMessage = function (title, body, confirm, callback) {
 /**
  * Interface to displays a short message, which disappears after a time out.
  * @param {!string} message Text to be temporarily displayed.
+ * @param {!integer} delay time to delay.
  */
-Ardublockly.shortMessage = function (message) {
-    Ardublockly.MaterialToast(message);
+Ardublockly.shortMessage = function (message, delay) {
+    Ardublockly.MaterialToast(message, delay);
 };
 
 /**
