@@ -526,9 +526,9 @@ ArdublocklyServer.sendCliToPutty = function (callback) {
 /**
  * kill putty process.
  */
-ArdublocklyServer.cliKillPutty = function () {
+ArdublocklyServer.cliKillPutty = function (callback) {
     ArdublocklyServer.sendRequest(
-        '/killputty', 'POST', 'application/json', null, null);
+        '/killputty', 'POST', 'application/json', null, callback);
 };
 
 /**

@@ -28,7 +28,7 @@ Blockly.Arduino["PS2_init"] = function (block) {
         '    //GamePad(clock, command, attention, data, Pressures?, Rumble?)\n' +
         '    int error = ' + ps2Id + ".config_gamepad(" + clock + ", " + command + ", " + attention + ", " + data + ", true, true);\n" +
         '    if (error == 0) {\n' +
-        '      Serial.print(\"Gamepad found!\");\n' +
+        //'      Serial.print(\"Gamepad found!\");\n' +
         '      break;\n' +
         '    }\n' +
         '    else {\n' +
@@ -57,13 +57,13 @@ Blockly.Arduino["PS2_Button"] = function (block) {
     var btstate = this.getFieldValue('btstate');
     var code = ps2Id;
     if (btstate === "1") {
-        code = code + ".ButtonPressed(" + bt + ")";
-    } else if (btstate === "2") {
-        code = code + ".ButtonReleased(" + bt + ")";
-    } else if (btstate === "3") {
-        code = code + ".NewButtonState(" + bt + ")";
-    } else {
         code = code + ".Button(" + bt + ")";
+    } else if (btstate === "2") {
+        code = code + ".NewButtonState(" + bt + ")";
+    } else if (btstate === "3") {
+        code = code + ".ButtonReleased(" + bt + ")";
+    } else if (btstate === "4") {
+        code = code + ".ButtonPressed(" + bt + ")";
     }
     return [code, Blockly.Arduino.ORDER_NONE];
 };
