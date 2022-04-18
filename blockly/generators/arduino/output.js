@@ -318,10 +318,12 @@ var tone_list = "void initToneMap() {\n" +
  * @return {string} Completed code.
  */
 Blockly.Arduino['io_play_tone'] = function (block) {
+    /*
     Blockly.Arduino.addInclude('HashMap_inc', '#include <HashMap.h>');
     Blockly.Arduino.addDefine('tonehashMap_def', 'HashMap<char*, int> tonehashMap;');
     Blockly.Arduino.addDefine('initToneMap_def', tone_list);
-    Blockly.Arduino.addSetup('initToneMap_set', 'initToneMap();');
+    Blockly.Arduino.addSetup('initToneMap_set', 'initToneMap();');*/
+    Blockly.Arduino.addInclude('HashMap_inc', '#include <Pitches.h>');
 
     var toneName = block.getFieldValue("TONEPIN");
     var toneId = Blockly.Arduino.variableDB_.getName(
