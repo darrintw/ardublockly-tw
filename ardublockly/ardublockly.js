@@ -272,16 +272,23 @@ Ardublockly.ideSendUpload = function () {
     var el = document.getElementById('serial_port');
     var serialValue = el.options[el.selectedIndex].value;
     if (serialValue == "USB") {
+        let confirm = false;
+        let cancel = false;
         Ardublockly.alertMessage(
             Ardublockly.getLocalStr('usbUploadTitle'),
             Ardublockly.getLocalStr('usbUploadBody'),
-            true, function () {
+            true,
+            function () {
                 setTimeout(function () {
-                    Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'), 5000);
                     Ardublockly.resetIdeOutputContent();
-                    Ardublockly.sendCode();
+                    Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'), 5000);
+                    setTimeout(function () {
+                        Ardublockly.sendCode();
+                    }, 5000);
+
                 }, 200);
-            });
+            }
+        );
     } else {
         var cb = function (jsonObj) {
             if (jsonObj === null) return Ardublockly.openNotConnectedModal();
@@ -297,7 +304,6 @@ Ardublockly.ideSendUpload = function () {
             }, 10000);
         }
         ArdublocklyServer.cliKillPutty(cb);
-
     }
 };
 
@@ -1330,9 +1336,11 @@ Ardublockly.functionNotImplemented = function () {
  *     or an option to cancel, with an action applied to the "ok".
  * @param {string=|function=} callback If confirm option is selected this would
  *     be the function called when clicked 'OK'.
+ * @param {string=|function=} callback If cancel option is selected this would
+ *     be the function called when clicked 'cancel'.
  */
-Ardublockly.alertMessage = function (title, body, confirm, callback) {
-    Ardublockly.materialAlert(title, body, confirm, callback);
+Ardublockly.alertMessage = function (title, body, confirm, callback_confirm, callback_canel) {
+    Ardublockly.materialAlert(title, body, confirm, callback_confirm, callback_canel);
 };
 
 /**

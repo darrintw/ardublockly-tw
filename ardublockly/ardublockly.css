@@ -612,7 +612,7 @@ ul.side-nav li.side-menu-end {
 /* Small modal responsive design */
 .modal_small {
     height: auto !important;
-    min-height: 200px;
+    min-height: 210px;
 }
 
 .modal_small .modal-content {

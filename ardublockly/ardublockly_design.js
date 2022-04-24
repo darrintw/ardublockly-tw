@@ -43,6 +43,7 @@ Ardublockly.materializeJsInit = function () {
         out_duration: 250
     });
     $('#gen_alert').modal();
+    $('#gen_prompt').modal();
     $('#not_running_dialog').modal({
         dismissible: true,
         opacity: .5,
@@ -303,19 +304,25 @@ Ardublockly.resizeBlocklyWorkspace = function () {
  *     'Ok' or 'Ok and cancel'.
  * @param {string=|function=} callback If confirm option is selected this would
  *     be the function called when clicked 'OK'.
+ * @param {string=|function=} callback If cancel option is selected this would
+ *     be the function called when clicked 'cancel'.
  */
-Ardublockly.materialAlert = function (title, body, confirm, callback) {
+Ardublockly.materialAlert = function (title, body, confirm, callback_confirm, callback_canel) {
     $('#gen_alert_title').text(title);
     $('#gen_alert_body').text('');
     $('#gen_alert_body').append(body);
     if (confirm === true) {
         $('#gen_alert_cancel_link').css({'display': 'block'});
-        if (callback) {
-            $('#gen_alert_ok_link').bind('click', callback);
+        $('#gen_alert_cancel_link').unbind('click');
+        if (callback_confirm) {
+            $('#gen_alert_ok_link').bind('click', callback_confirm);
         }
     } else {
         $('#gen_alert_cancel_link').css({'display': 'none'});
         $('#gen_alert_ok_link').unbind('click');
+        if (callback_canel) {
+            $('#gen_alert_cancel_link').bind('click', callback_canel);
+        }
     }
     $('#gen_alert').modal('open');
     window.location.hash = '';
@@ -396,7 +403,7 @@ Ardublockly.createExtraBlocksCatHtml = function (title, description, clickBind) 
 /**
  * Displays a short message for 4 seconds in the form of a Materialize toast.
  * @param {!string} message Text to be temporarily displayed.
- * @param {!integer} delay time to delay.
+ * @param {!number} delay time to delay.
  */
 Ardublockly.MaterialToast = function (message, delay) {
     Materialize.Toast.removeAll();
