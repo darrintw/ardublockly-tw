@@ -37,7 +37,9 @@ Blockly.Arduino['io_input'] = function (block) {
  * @return {string} Completed code with order of operation.
  */
 Blockly.Arduino['io_input_var'] = function (block) {
-    var pinName = block.getFieldValue('PIN');
+    var pinName = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    //var pinName = block.getFieldValue('PIN');
     var pinId = Blockly.Arduino.variableDB_.getName(
         pinName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
@@ -62,7 +64,9 @@ Blockly.Arduino['io_input_pullup'] = function (block) {
 };
 
 Blockly.Arduino['io_input_pullup_var'] = function (block) {
-    var pinName = block.getFieldValue('PIN');
+    //var pinName = block.getFieldValue('PIN');
+    var pinName = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var pinId = Blockly.Arduino.variableDB_.getName(
         pinName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
@@ -102,7 +106,9 @@ Blockly.Arduino['io_digitalread'] = function (block) {
  * @return {array} Completed code with order of operation.
  */
 Blockly.Arduino['io_digitalread_var'] = function (block) {
-    var pinName = block.getFieldValue('PIN');
+    //var pinName = block.getFieldValue('PIN');
+    var pinName = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var pinId = Blockly.Arduino.variableDB_.getName(
         pinName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
@@ -143,7 +149,9 @@ Blockly.Arduino['io_analogread'] = function (block) {
  * @return {array} Completed code with order of operation.
  */
 Blockly.Arduino['io_analogread_var'] = function (block) {
-    var pinName = block.getFieldValue('PIN');
+    //var pinName = block.getFieldValue('PIN');
+    var pinName = Blockly.Arduino.valueToCode(
+        block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var pinId = Blockly.Arduino.variableDB_.getName(
         pinName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);

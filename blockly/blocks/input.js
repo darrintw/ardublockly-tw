@@ -55,9 +55,8 @@ Blockly.Blocks['io_input_var'] = {
      */
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_PIN)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_PIN);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SET_INPUT);
         this.setInputsInline(true);
@@ -106,9 +105,8 @@ Blockly.Blocks['io_input_pullup_var'] = {
      */
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_PIN)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_PIN);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_INPUT_PULLUP);
         this.setInputsInline(true);
@@ -161,9 +159,8 @@ Blockly.Blocks['io_digitalread_var'] = {
     init: function () {
         this.setHelpUrl('https://arduino.cc/en/Reference/DigitalRead');
         this.setColour(Blockly.Blocks.input.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_DIGITALREAD)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_DIGITALREAD);
         this.setOutput(true, Blockly.Types.BOOLEAN.output);
         this.setTooltip(Blockly.Msg.ARD_DIGITALREAD_TIP);
     },
@@ -209,9 +206,8 @@ Blockly.Blocks['io_analogread_var'] = {
     init: function () {
         this.setHelpUrl('https://arduino.cc/en/Reference/AnalogRead');
         this.setColour(Blockly.Blocks.input.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_ANALOGREAD)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_ANALOGREAD);
         this.setOutput(true, Blockly.Types.NUMBER.output);
         this.setTooltip(Blockly.Msg.ARD_ANALOGREAD_TIP);
     },
@@ -301,9 +297,8 @@ Blockly.Blocks['io_pulsetimeout_var'] = {
                     "check": ["Boolean", "Number"]
                 },
                 {
-                    "type": "field_variable",
-                    "name": "PIN",
-                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
+                    "type": "input_value",
+                    "name": "PIN"
                 },
                 {
                     "type": "input_value",
