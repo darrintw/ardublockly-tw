@@ -50,9 +50,8 @@ Blockly.Blocks['io_output_var'] = {
      */
     init: function () {
         this.setColour(Blockly.Blocks.output.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_PIN)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN');
+        this.appendValueInput('PIN')
+            .appendField(Blockly.Msg.ARD_PIN);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SET_OUTPUT);
         this.setInputsInline(true);
@@ -97,12 +96,13 @@ Blockly.Blocks['io_digitalwrite_var'] = {
     init: function () {
         this.setHelpUrl('https://arduino.cc/en/Reference/DigitalWrite');
         this.setColour(Blockly.Blocks.output.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_DIGITALWRITE);
+        this.appendValueInput('PIN');
         this.appendValueInput('STATE')
-            .appendField(Blockly.Msg.ARD_DIGITALWRITE)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN')
             .appendField(Blockly.Msg.ARD_WRITE_TO)
             .setCheck(Blockly.Types.BOOLEAN.checkList);
-        this.setInputsInline(false);
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARD_DIGITALWRITE_TIP);
@@ -148,12 +148,13 @@ Blockly.Blocks['io_analogwrite_var'] = {
     init: function () {
         this.setHelpUrl('https://arduino.cc/en/Reference/AnalogWrite');
         this.setColour(Blockly.Blocks.output.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_ANALOGWRITE);
+        this.appendValueInput('PIN');
         this.appendValueInput('NUM')
-            .appendField(Blockly.Msg.ARD_ANALOGWRITE)
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'PIN')
             .appendField(Blockly.Msg.ARD_WRITE_TO)
             .setCheck(Blockly.Types.NUMBER.output);
-        this.setInputsInline(false);
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARD_ANALOGWRITE_TIP);
@@ -216,8 +217,7 @@ Blockly.Blocks['io_notone'] = {
     }
 };
 
-var note = [["0", "0"], ["C", "C"], ["CS", "CS"], ["D", "D"], ["DS", "DS"], ["E", "E"], ["F", "F"], ["G", "G"],
-    ["GS", "GS"], ["A", "A"], ["AS", "AS"], ["B", "B"]];
+var note = [["0", "0"], ["C", "C"], ["CS", "CS"], ["D", "D"], ["DS", "DS"], ["E", "E"], ["F", "F"], ["G", "G"], ["GS", "GS"], ["A", "A"], ["AS", "AS"], ["B", "B"]];
 
 var tone = [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]];
 
@@ -233,10 +233,8 @@ Blockly.Blocks['io_play_tone'] = {
             if (isNaN(newValue)) {
                 return 120;
             } else {
-                if (newValue < 1)
-                    return 1;
-                if (newValue > 240)
-                    return 240;
+                if (newValue < 1) return 1;
+                if (newValue > 240) return 240;
             }
         }
         this.appendDummyInput()

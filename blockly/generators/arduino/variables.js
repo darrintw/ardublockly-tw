@@ -27,7 +27,7 @@ Blockly.Arduino['variables_get'] = function (block) {
 
 Blockly.Arduino['variables_init'] = function (block) {
     var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE',
-        Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+        Blockly.Arduino.ORDER_ATOMIC) || '0';
     var varName = block.getFieldValue('VAR')
     var varId = Blockly.Arduino.variableDB_.getName(
         varName, Blockly.Variables.NAME_TYPE);
