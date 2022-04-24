@@ -9124,7 +9124,7 @@ button.btn-floating {
 
 .modal.modal-fixed-footer {
     padding: 0;
-    height: 90%;
+    height: 100%;
 }
 
 .modal.modal-fixed-footer .modal-content {

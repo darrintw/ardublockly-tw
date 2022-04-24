@@ -73,7 +73,7 @@ Ardublockly.htmlPrompt = function (message, defaultValue, callback) {
         callback(null);
     });
     //$('#gen_prompt').openModal();
-    $('#gen_prompt').modal();
+    $('#gen_prompt').modal('open');
     window.location.hash = '';
 };
 
