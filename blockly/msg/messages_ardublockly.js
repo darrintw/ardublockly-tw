@@ -355,3 +355,13 @@ Blockly.Msg.ARRAY_MODIFY_NAME = 'in array';
 Blockly.Msg.ARRAY_MODIFY_VALUE = 'value';
 /// Arduino
 Blockly.Msg.ARRAY_MODIFY_TOOLTIP = 'set a specific value to an element of an array';
+/// Arduino
+Blockly.Msg.ARRAY_MAP = 'Array Mapping';
+/// Arduino
+Blockly.Msg.ARRAY_MAP_FROM = ' source ';
+/// Arduino
+Blockly.Msg.ARRAY_MAP_TO = ' target ';
+/// Arduino
+Blockly.Msg.ARRAY_MAP_SIZE = ' size of ';
+/// Arduino
+Blockly.Msg.ARRAY_MAP_TOOLTIP = 'Array Mapping';

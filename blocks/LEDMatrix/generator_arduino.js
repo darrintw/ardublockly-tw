@@ -506,7 +506,7 @@ Blockly.Arduino["Matrix_char_digital_half"] = function (block) {
         code += '"' + hex24bin(dropdown_char_half_.substr(i, 1)) + ((i != 7) ? '", ' : '"');
     }
     code += '};';
-    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const byte " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
+    Blockly.Arduino.addDefine('matrix_char_half_' + dropdown_char_half_, "const String " + 'matrix_char_half_' + dropdown_char_half_ + "[8] = " + code);
     return ['matrix_char_half_' + dropdown_char_half_, Blockly.Arduino.ORDER_ATOMIC];
 };
 

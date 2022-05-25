@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "darrin",
-		"lastupdated": "2022-04-25 14:12:32.439000",
+		"lastupdated": "2022-05-25 12:59:55.690000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -151,5 +151,10 @@
 	"ARRAY_MODIFY_INDICE": "set element nb",
 	"ARRAY_MODIFY_NAME": "in array",
 	"ARRAY_MODIFY_VALUE": "value",
-	"ARRAY_MODIFY_TOOLTIP": "set a specific value to an element of an array"
+	"ARRAY_MODIFY_TOOLTIP": "set a specific value to an element of an array",
+	"ARRAY_MAP": "Array Mapping",
+	"ARRAY_MAP_FROM": " source ",
+	"ARRAY_MAP_TO": " target ",
+	"ARRAY_MAP_SIZE": " size of ",
+	"ARRAY_MAP_TOOLTIP": "Array Mapping"
 }

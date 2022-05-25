@@ -31,6 +31,29 @@ goog.require('Blockly.Types');
 
 Blockly.Blocks.array.HUE = 230;
 
+Blockly.Blocks["array_declare"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARRAY_CREATE)
+            .appendField(new Blockly.FieldLabel(Blockly.Msg.ARRAY_ARRAY), "dim")
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR')
+            .appendField(Blockly.Msg.VARIABLES_AS)
+            .appendField(new Blockly.FieldDropdown(Blockly.Types.getValidTypeArray()), "type");
+        this.appendValueInput("contenu")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.ARRAY_TAILLE, "c1"],
+                [Blockly.Msg.ARRAY_CONTIENT, "c2"]
+            ]), "choix");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.array.HUE);
+        this.setTooltip(Blockly.Msg.ARRAY_GETINDEX_TOOLTIP2);
+        this.setHelpUrl("https://www.arduino.cc/reference/en/language/variables/data-types/array/");
+    }
+};
+
 Blockly.Blocks['array_create_with'] = {
     /**
      * Block for creating a list with any number of elements of any type.
@@ -227,25 +250,29 @@ Blockly.Blocks['array_modify'] = {
     }
 };
 
-Blockly.Blocks["array_declare"] = {
+Blockly.Blocks['array_map'] = {
+    /**
+     * Block for creating a list with any number of elements of any type.
+     * @this Blockly.Block
+     */
     init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARRAY_CREATE)
-            .appendField(new Blockly.FieldLabel(Blockly.Msg.ARRAY_ARRAY), "dim")
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR')
-            .appendField(Blockly.Msg.VARIABLES_AS)
-            .appendField(new Blockly.FieldDropdown(Blockly.Types.getValidTypeArray()), "type");
-        this.appendValueInput("contenu")
+        this.setColour(Blockly.Blocks.array.HUE);
+        this.appendValueInput("TARGET")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .appendField(Blockly.Msg.ARRAY_MAP)
+            .appendField(Blockly.Msg.ARRAY_MAP_TO);
+        this.appendValueInput("SOURCE")
+            .setCheck(null)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.ARRAY_TAILLE, "c1"],
-                [Blockly.Msg.ARRAY_CONTIENT, "c2"]
-            ]), "choix");
-        this.setInputsInline(false);
+            .appendField(Blockly.Msg.ARRAY_MAP_FROM);
+        this.appendValueInput("SIZEOF")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARRAY_MAP_SIZE);
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.array.HUE);
-        this.setTooltip(Blockly.Msg.ARRAY_GETINDEX_TOOLTIP2);
-        this.setHelpUrl("https://www.arduino.cc/reference/en/language/variables/data-types/array/");
+        this.setTooltip(Blockly.Msg.ARRAY_MAP_TOOLTIP);
+        this.setHelpUrl();
     }
-};
+}
