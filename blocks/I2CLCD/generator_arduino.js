@@ -204,6 +204,18 @@ Blockly.Arduino['I2CLCD_backlightOff'] = function (block) {
     return code;
 };
 
+Blockly.Arduino['I2CLCD_scroll'] = function (block) {
+    var code = '';
+    var scroll_dir = this.getFieldValue('SCROLL_DIR');
+    if (scroll_dir == 'RIGHT') {
+        code = 'I2CLCD.scrollDisplayRight();\n';
+    }
+    if (scroll_dir == 'LEFT') {
+        code = 'I2CLCD.scrollDisplayLeft();\n';
+    }
+    return code;
+};
+
 /**
  * Function for .
  * Arduino code: setup {  }

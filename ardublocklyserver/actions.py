@@ -110,6 +110,7 @@ def load_arduino_cli(sketch_path):
         cli_command = [settings.compiler_dir, "%s" % sketch_path]
         if settings.load_ide_option == 'upload':
             if settings.get_serial_port_flag() == 'USB':
+                ide_mode = 'USB'
                 print('\nUploading sketch to Board from USB...')
                 cli_command.append('--upload')
                 cli_command.append('--board')
@@ -159,6 +160,13 @@ def load_arduino_cli(sketch_path):
             print('Arduino output:\n%s' % std_out)
             # print('Arduino Error output:\n%s' % err_out)
             print('Arduino Exit code: %s' % exit_code)
+            if ide_mode == 'USB':
+                print('\nUSB Uploaded')
+                if 'Assertion failed' in err_out:
+                    std_out = ''
+                    err_out = 'Assertion failed, please unPlug before upload.'
+                    success = False
+                    exit_code = 58
             # For some reason Arduino CLI can return 256 on success
             if (process.returncode != 0) and (process.returncode != 256):
                 success = False

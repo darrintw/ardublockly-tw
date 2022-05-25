@@ -458,6 +458,7 @@ def handler_code_post():
     55 - Serial Port configured in Settings not accessible.
     56 - Arduino Board not configured in the Settings.
     57 - Unexpected server error.
+    58 - Assertion failed.
     64 - Unable to parse sent JSON.
     """
     success = False
