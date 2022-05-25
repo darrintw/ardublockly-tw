@@ -83,7 +83,11 @@
         <field name="VAR">x_value</field>
         <value name="VALUE">
           <block type="io_analogread_var" id="-b@A|(7)r)DuYJOE.3T@">
-            <field name="PIN">x_pin</field>
+            <value name="PIN">
+              <block type="variables_get" id="p+i6Vnu,GQL5qLUV}]k1">
+                <field name="VAR">x_pin</field>
+              </block>
+            </value>
           </block>
         </value>
         <next>
@@ -91,7 +95,11 @@
             <field name="VAR">y_value</field>
             <value name="VALUE">
               <block type="io_analogread_var" id="]),C]Q{E(sPOzkr2/.aD">
-                <field name="PIN">y_pin</field>
+                <value name="PIN">
+                  <block type="variables_get" id="R#cg1JF*Yeb2GcP~V,_L">
+                    <field name="VAR">y_pin</field>
+                  </block>
+                </value>
               </block>
             </value>
             <next>
