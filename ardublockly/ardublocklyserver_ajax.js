@@ -15,7 +15,7 @@ var ArdublocklyServer = {};
  * @param {!function} jsonDataCb Callback with JSON object or null for error.
  */
 ArdublocklyServer.getJson = function (url, callback) {
-    ArdublocklyServer.sendRequest(url, 'GET', 'application/json;', null, callback);
+    ArdublocklyServer.sendRequest(url, 'GET', 'application/json;', null, callback, true);
 };
 
 /**
@@ -25,7 +25,7 @@ ArdublocklyServer.getJson = function (url, callback) {
  * @param {!function} callback Request callback function.
  */
 ArdublocklyServer.putJson = function (url, json, callback) {
-    ArdublocklyServer.sendRequest(url, 'PUT', 'application/json', json, callback);
+    ArdublocklyServer.sendRequest(url, 'PUT', 'application/json', json, callback, true);
 };
 
 
@@ -37,8 +37,9 @@ ArdublocklyServer.putJson = function (url, json, callback) {
  * @param {string} jsonObjSend JavaScript object to be parsed into JSON to send.
  * @param {!function} cb Request callback function, takes a single input for a
  *     parsed JSON object.
+ * @param {!string} async async or not.
  */
-ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend, cb) {
+ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend, cb, async) {
     var request = ArdublocklyServer.createRequest();
 
     // The data received is JSON, so it needs to be converted into the right
@@ -76,7 +77,8 @@ ArdublocklyServer.sendRequest = function (url, method, contentType, jsonObjSend,
     };
 
     try {
-        request.open(method, url, true);
+
+        request.open(method, url, async);
         request.setRequestHeader('Content-type', contentType);
         request.onreadystatechange = onReady;
         request.send(JSON.stringify(jsonObjSend));
@@ -157,6 +159,8 @@ ArdublocklyServer.jsonToIdeModal = function (jsonObj) {
         // Format a successful response
         if (jsonObj.ide_mode === 'upload') {
             elTitle.innerHTML = Ardublockly.getLocalStr('arduinoOpUploadedTitle');
+        } else if (jsonObj.ide_mode === 'USB') {
+            elTitle.innerHTML = Ardublockly.getLocalStr('arduinoOpUSBTitle');
         } else if (jsonObj.ide_mode === 'verify') {
             elTitle.innerHTML = Ardublockly.getLocalStr('arduinoOpVerifiedTitle');
         } else if (jsonObj.ide_mode === 'open') {
@@ -510,9 +514,9 @@ ArdublocklyServer.requestExamplesList = function (url, callback) {
  * @param {!function} callback Callback function for the server request, must
  *     have one argument to receive the JSON response.
  */
-ArdublocklyServer.sendSketchToServer = function (code, callback) {
+ArdublocklyServer.sendSketchToServer = function (code, callback, async) {
     ArdublocklyServer.sendRequest(
-        '/code', 'POST', 'application/json', {"sketch_code": code}, callback);
+        '/code', 'POST', 'application/json', {"sketch_code": code}, callback, async);
 };
 
 /**
@@ -520,7 +524,7 @@ ArdublocklyServer.sendSketchToServer = function (code, callback) {
  */
 ArdublocklyServer.sendCliToPutty = function (callback) {
     ArdublocklyServer.sendRequest(
-        '/putty', 'POST', 'application/json', null, callback);
+        '/putty', 'POST', 'application/json', null, callback, true);
 };
 
 /**
@@ -528,7 +532,7 @@ ArdublocklyServer.sendCliToPutty = function (callback) {
  */
 ArdublocklyServer.cliKillPutty = function (callback) {
     ArdublocklyServer.sendRequest(
-        '/killputty', 'POST', 'application/json', null, callback);
+        '/killputty', 'POST', 'application/json', null, callback, true);
 };
 
 /**
@@ -536,5 +540,5 @@ ArdublocklyServer.cliKillPutty = function (callback) {
  */
 ArdublocklyServer.getVersionNumber = function (callback) {
     ArdublocklyServer.sendRequest(
-        'build_number', 'GET', 'application/text', null, callback);
+        'build_number', 'GET', 'application/text', null, callback, true);
 };

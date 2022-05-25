@@ -59,7 +59,9 @@ Ardublockly.LOCALISED_TEXT = {
     /* Arduino console output */
     arduinoOpMainTitle: "Arduino IDE 輸出",
     arduinoOpWaiting: "等待Arduino IDE輸出...",
+    arduinoOpUSBWaiting: "請於60秒內插上USB...",
     arduinoOpUploadedTitle: "成功上傳Arduino草稿碼",
+    arduinoOpUSBTitle: "成功透過USB上傳Arduino草稿碼",
     arduinoOpVerifiedTitle: "成功驗證/編譯Arduino草稿碼",
     arduinoOpOpenedTitle: "使用Arduino IDE開啟草稿碼",
     arduinoOpOpenedBody: "草稿碼應該已經在Arduino IDE開啟.",

@@ -311,15 +311,15 @@ Ardublockly.materialAlert = function (title, body, confirm, callback_confirm, ca
     $('#gen_alert_title').text(title);
     $('#gen_alert_body').text('');
     $('#gen_alert_body').append(body);
+    $('#gen_alert_ok_link').unbind('click');
+    $('#gen_alert_cancel_link').unbind('click');
     if (confirm === true) {
         $('#gen_alert_cancel_link').css({'display': 'block'});
-        $('#gen_alert_cancel_link').unbind('click');
         if (callback_confirm) {
             $('#gen_alert_ok_link').bind('click', callback_confirm);
         }
     } else {
         $('#gen_alert_cancel_link').css({'display': 'none'});
-        $('#gen_alert_ok_link').unbind('click');
         if (callback_canel) {
             $('#gen_alert_cancel_link').bind('click', callback_canel);
         }
@@ -406,7 +406,7 @@ Ardublockly.createExtraBlocksCatHtml = function (title, description, clickBind) 
  * @param {!number} delay time to delay.
  */
 Ardublockly.MaterialToast = function (message, delay) {
-    Materialize.Toast.removeAll();
+    //Materialize.Toast.removeAll();
     Materialize.toast(message, delay);
 };
 

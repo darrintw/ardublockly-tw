@@ -337,7 +337,8 @@ Blockly.Arduino['io_play_tone'] = function (block) {
         toneName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    var pinSetupCode = 'pinMode(' + toneId + ', OUTPUT);\n';
+    var pinSetupCode = 'initToneMap();\n' +
+        '  pinMode(' + toneId + ', OUTPUT);\n';
     Blockly.Arduino.addSetup('io_tone_' + toneId, pinSetupCode, false);
 
     var toneSpeed = block.getFieldValue("SPEED");

@@ -57,7 +57,9 @@ Ardublockly.LOCALISED_TEXT = {
     /* Arduino console output */
     arduinoOpMainTitle: "Arduino IDE output",
     arduinoOpWaiting: "Waiting for the IDE output...",
+    arduinoOpUSBWaiting: "Plug USB in 60 second...",
     arduinoOpUploadedTitle: "Successfully Uploaded Sketch",
+    arduinoOpUSBTitle: "Successfully Uploaded Sketch from USB",
     arduinoOpVerifiedTitle: "Successfully Verified Sketch",
     arduinoOpOpenedTitle: "Sketch opened in IDE",
     arduinoOpOpenedBody: "The sketch should be loaded in the Arduino IDE.",

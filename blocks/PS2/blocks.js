@@ -54,6 +54,14 @@ Blockly.Blocks["PS2_read"] = {
     }
 };
 
+/*
+var button_status = [[Blockly.Msg.ARD_PS2_BUTTON, "1"],
+                    [Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "2"],
+                    [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "3"],
+                    [Blockly.Msg.ARD_PS2_NEW_BUTTON_STATUS, "4"]];
+*/
+var button_status = [[Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "4"]];
+
 //
 Blockly.Blocks["PS2_Button"] = {
     init: function () {
@@ -86,11 +94,7 @@ Blockly.Blocks["PS2_Button"] = {
             .appendField(Blockly.Msg.ARD_PS2_BUT)
             .appendField(new Blockly.FieldDropdown(PSBUTTON), "psbt")
             .appendField(Blockly.Msg.ARD_PS2_STATUS)
-            .appendField(new Blockly.FieldDropdown(
-                [[Blockly.Msg.ARD_PS2_BUTTON, "1"],
-                    [Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "2"],
-                    [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "3"],
-                    [Blockly.Msg.ARD_PS2_NEW_BUTTON_STATUS, "4"]]), "btstate");
+            .appendField(new Blockly.FieldDropdown(button_status), "btstate");
         this.setOutput(true, "Boolean");
         this.setTooltip('');
     }

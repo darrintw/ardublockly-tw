@@ -279,14 +279,14 @@ Ardublockly.ideSendUpload = function () {
             Ardublockly.getLocalStr('usbUploadBody'),
             true,
             function () {
+                var ideOutputContent = document.getElementById('content_ide_output');
+                ideOutputContent.innerHTML = '<span class="arduino_dialog_out">' +
+                    Ardublockly.getLocalStr('arduinoOpUSBWaiting') + '</span>';
+                Ardublockly.highlightIdeOutputHeader(ideOutputContent);
+                Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'), 1000);
                 setTimeout(function () {
-                    Ardublockly.resetIdeOutputContent();
-                    Ardublockly.shortMessage(Ardublockly.getLocalStr('usbUpload'), 5000);
-                    setTimeout(function () {
-                        Ardublockly.sendCode();
-                    }, 5000);
-
-                }, 200);
+                    Ardublockly.sendCode(false);
+                }, 400);
             }
         );
     } else {
@@ -295,7 +295,7 @@ Ardublockly.ideSendUpload = function () {
             setTimeout(function () {
                 Ardublockly.shortMessage(Ardublockly.getLocalStr('uploadingSketch'), 4000);
                 Ardublockly.resetIdeOutputContent();
-                Ardublockly.sendCode();
+                Ardublockly.sendCode(true);
             }, 200);
             setTimeout(function () {
                 if (jsonObj.ide_data.exit_code == 1) {
@@ -316,7 +316,7 @@ Ardublockly.ideSendOpen = function () {
     }
     Ardublockly.shortMessage(Ardublockly.getLocalStr('openingSketch'), 4000);
     Ardublockly.resetIdeOutputContent();
-    Ardublockly.sendCode();
+    Ardublockly.sendCode(true);
 };
 
 /** Function bound to the left IDE button, to be changed based on settings. */
@@ -1105,7 +1105,7 @@ Ardublockly.setSerialTimeStampSettings = function (preset) {
  * Shows a loader around the button, blocking it (unblocked upon received
  * message from server).
  */
-Ardublockly.sendCode = function () {
+Ardublockly.sendCode = function (async) {
     Ardublockly.largeIdeButtonSpinner(true);
 
     /**
@@ -1121,7 +1121,7 @@ Ardublockly.sendCode = function () {
     };
 
     ArdublocklyServer.sendSketchToServer(
-        Ardublockly.generateArduino(), sendCodeReturn);
+        Ardublockly.generateArduino(), sendCodeReturn, async);
 };
 
 /** Populate the workspace blocks with the XML written in the XML text area. */
@@ -1418,6 +1418,7 @@ Ardublockly.getNowFormatDate = function () {
 //Add by darrin - 20211121 -start
 Ardublockly.getBroswer = function () {
     var Sys = {};
+
     var ua = navigator.userAgent.toLowerCase();
     var s;
     (s = ua.match(/edge\/([\d.]+)/)) ? Sys.edge = s[1] :

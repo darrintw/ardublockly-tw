@@ -45,6 +45,7 @@
     "  <block type=\"I2CLCD_img\"></block>",
     "  <block type=\"I2CLCD_backlightOn\"></block>",
     "  <block type=\"I2CLCD_backlightOff\"></block>",
+    "  <block type=\"I2CLCD_scroll\"></block>",
     "  <block type=\"I2CLCD_multi_tone\">",
     "      <value name='NOTE_TONE'>",
     "        <block type='text'>",

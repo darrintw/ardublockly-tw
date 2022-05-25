@@ -38,7 +38,11 @@
               <block type="I2CLCD_backlightOn" id="?Cw6my.o:[RsI3I.QH#s">
                 <next>
                   <block type="io_input_pullup_var" id="}etsN{sDV+|.d2w3{K9}">
-                    <field name="PIN">sw</field>
+                    <value name="PIN">
+                      <block type="variables_get" id="~1@Q8I6[Rv`4DDO||AkV">
+                        <field name="VAR">sw</field>
+                      </block>
+                    </value>
                     <next>
                       <block type="variables_set" id="{bH`N6:[MgY)`Z;brf.R">
                         <field name="VAR">click_times</field>
@@ -81,7 +85,11 @@
                 </value>
                 <value name="ADD1">
                   <block type="io_analogread_var" id="^JHa47vMsNI-|.M?)Nn+">
-                    <field name="PIN">x_pin</field>
+                    <value name="PIN">
+                      <block type="variables_get" id="1V~8-m@}bQ@?*W`7-|}?">
+                        <field name="VAR">x_pin</field>
+                      </block>
+                    </value>
                   </block>
                 </value>
                 <value name="ADD2">
@@ -91,7 +99,11 @@
                 </value>
                 <value name="ADD3">
                   <block type="io_analogread_var" id="K@B;_]*q4FhljWemQ*FA">
-                    <field name="PIN">y_pin</field>
+                    <value name="PIN">
+                      <block type="variables_get" id="r1pr^Tcdtl^4m(2K0kh8">
+                        <field name="VAR">y_pin</field>
+                      </block>
+                    </value>
                   </block>
                 </value>
                 <value name="ADD4">
@@ -108,7 +120,11 @@
                     <field name="OP">EQ</field>
                     <value name="A">
                       <block type="io_digitalread_var" id="f!{SMF^a?4^QKUMyjKPQ">
-                        <field name="PIN">sw</field>
+                        <value name="PIN">
+                          <block type="variables_get" id="f+Y`8.fgz#LEj{b}y`Bo">
+                            <field name="VAR">sw</field>
+                          </block>
+                        </value>
                       </block>
                     </value>
                     <value name="B">
@@ -132,7 +148,11 @@
                             <field name="OP">EQ</field>
                             <value name="A">
                               <block type="io_digitalread_var" id="rweR6)l.PJ||kX.%)[ld">
-                                <field name="PIN">sw</field>
+                                <value name="PIN">
+                                  <block type="variables_get" id="et8ppP_[cQ_ktz40pRHs">
+                                    <field name="VAR">sw</field>
+                                  </block>
+                                </value>
                               </block>
                             </value>
                             <value name="B">
@@ -170,7 +190,11 @@
                                 <field name="OP">EQ</field>
                                 <value name="A">
                                   <block type="io_digitalread_var" id="=^E`^zb=!h#(DakUa-b,">
-                                    <field name="PIN">sw</field>
+                                    <value name="PIN">
+                                      <block type="variables_get" id="vYOSm30TaKf]`CxOm`##">
+                                        <field name="VAR">sw</field>
+                                      </block>
+                                    </value>
                                   </block>
                                 </value>
                                 <value name="B">
