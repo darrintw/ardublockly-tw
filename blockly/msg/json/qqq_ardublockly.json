@@ -145,5 +145,10 @@
 	"ARRAY_MODIFY_INDICE": "Arduino",
 	"ARRAY_MODIFY_NAME": "Arduino",
 	"ARRAY_MODIFY_VALUE": "Arduino",
-	"ARRAY_MODIFY_TOOLTIP": "Arduino"
+	"ARRAY_MODIFY_TOOLTIP": "Arduino",
+	"ARRAY_MAP": "Arduino",
+	"ARRAY_MAP_FROM": "Arduino",
+	"ARRAY_MAP_TO": "Arduino",
+	"ARRAY_MAP_SIZE": "Arduino",
+	"ARRAY_MAP_TOOLTIP": "Arduino"
 }

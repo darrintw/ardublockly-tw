@@ -194,6 +194,7 @@ Ardublockly.TOOLBOX_XML =
     '            </block>' +
     '        </value>' +
     '    </block>' +
+    '    <block type="array_map"></block>' +
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catInput" name="Input">' +
