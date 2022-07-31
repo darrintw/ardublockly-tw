@@ -35,10 +35,15 @@
 
 //#define RAW_BUFFER_LENGTH  750  // 750 is the value for air condition remotes.
 
-/*
- * Define macros for input and output pin etc.
- */
-#include "PinDefinitionsAndMore.h"
+//#define EXCLUDE_UNIVERSAL_PROTOCOLS // Saves up to 1000 bytes program memory.
+//#define EXCLUDE_EXOTIC_PROTOCOLS
+//#define SEND_PWM_BY_TIMER
+//#define USE_NO_SEND_PWM
+#define NO_LED_FEEDBACK_CODE // saves 500 bytes program memory
+#define MARK_EXCESS_MICROS    10 // Adapt it to your IR receiver module. See also IRremote.h.
+
+//#define TRACE // For internal usage
+//#define DEBUG // Activate this for lots of lovely debug output from the decoders.
 
 #if FLASHEND >= 0x1FFF      // For 8k flash or more, like ATtiny85
 #define DECODE_DENON        // Includes Sharp
@@ -53,7 +58,7 @@
 #define DECODE_SONY
 #define DECODE_PANASONIC    // the same as DECODE_KASEIKYO
 
-#define DECODE_DISTANCE     // universal decoder for pulse width or pulse distance protocols
+#define DECODE_DISTANCE     // universal decoder for pulse distance protocols
 #define DECODE_HASH         // special decoder for all protocols
 #endif
 
@@ -67,14 +72,7 @@
 #define DECODE_WHYNTER
 #endif
 
-//#define SEND_PWM_BY_TIMER
-//#define USE_NO_SEND_PWM
-//#define _IR_MEASURE_TIMING
-#define MARK_EXCESS_MICROS    10 // Adapt it to your IR receiver module. See also IRremote.h.
-#define NO_LED_FEEDBACK_CODE // halves ISR duration
-//#define DEBUG // Activate this for lots of lovely debug output from the decoders.
-#define INFO // To see valuable informations from universal decoder for pulse width or pulse distance protocols
-
+#include "PinDefinitionsAndMore.h" //Define macros for input and output pin etc.
 #include <IRremote.hpp>
 
 #if defined(APPLICATION_PIN)
@@ -86,14 +84,15 @@
 #define DELAY_AFTER_SEND 1000
 #define DELAY_AFTER_LOOP 5000
 
-void setup() {
-    pinMode(DEBUG_BUTTON_PIN, INPUT_PULLUP);
-#if defined(_IR_MEASURE_TIMING) && defined(_IR_TIMING_TEST_PIN)
-    pinMode(_IR_TIMING_TEST_PIN, OUTPUT);
+#if defined(SEND_PWM_BY_TIMER) && !defined(SEND_PWM_DOES_NOT_USE_RECEIVE_TIMER)
+#error Unit test cannot run if SEND_PWM_BY_TIMER is enabled i.e. receive timer us also used by send
 #endif
 
+void setup() {
+    pinMode(DEBUG_BUTTON_PIN, INPUT_PULLUP);
+
     Serial.begin(115200);
-#if defined(__AVR_ATmega32U4__) || defined(SERIAL_PORT_USBVIRTUAL) || defined(SERIAL_USB) || defined(SERIALUSB_PID) || defined(ARDUINO_attiny3217)
+#if defined(__AVR_ATmega32U4__) || defined(SERIAL_PORT_USBVIRTUAL) || defined(SERIAL_USB) /*stm32duino*/|| defined(USBCON) /*STM32_stm32*/|| defined(SERIALUSB_PID) || defined(ARDUINO_attiny3217)
     delay(4000); // To be able to connect Serial monitor after reset or power up and before first print out. Do not wait for an attached Serial Monitor!
 #endif
     // Just to know which program is running on my Arduino
@@ -106,12 +105,9 @@ void setup() {
 
     Serial.print(F("Ready to receive IR signals of protocols: "));
     printActiveIRProtocols(&Serial);
-    Serial.print(F("at pin "));
-#  if defined(IR_SEND_PIN_STRING)
-    Serial.println(IR_SEND_PIN_STRING);
-#  else
-    Serial.println(IR_SEND_PIN);
-#  endif
+    Serial.println(F("at pin " STR(IR_RECEIVE_PIN)));
+
+    Serial.println(F("Ready to send IR signals at pin " STR(IR_SEND_PIN)));
 
 #if FLASHEND >= 0x3FFF  // For 16k flash or more, like ATtiny1604
 // For esp32 we use PWM generation by ledcWrite() for each pin.
@@ -221,7 +217,7 @@ void loop() {
     checkReceive(sAddress, sCommand);
     delay(DELAY_AFTER_SEND);
 
-#if FLASHEND >= 0x3FFF  // For 16k flash or more, like ATtiny1604. Code does not fit in program space of ATtiny85 etc.
+#if FLASHEND >= 0x3FFF  // For 16k flash or more, like ATtiny1604. Code does not fit in program memory of ATtiny85 etc.
 
     if (sAddress == 0xFFF1) {
         /*
@@ -238,7 +234,7 @@ void loop() {
         checkReceive(0x80, 0x45);
         delay(DELAY_AFTER_SEND);
 
-#  if FLASHEND >= 0x7FFF  // For 32k flash or more, like UNO. Code does not fit in program space of ATtiny1604 etc.
+#  if FLASHEND >= 0x7FFF  // For 32k flash or more, like UNO. Code does not fit in program memory of ATtiny1604 etc.
 
         Serial.println(F("Send NEC 16 bit address=0xFB04 and command 0x08 with exact timing (16 bit array format)"));
         Serial.flush();

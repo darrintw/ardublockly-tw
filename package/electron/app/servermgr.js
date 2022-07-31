@@ -16,24 +16,24 @@ const tagSrv = '[ArdublocklySrv] ';
 
 var serverProcess = null;
 
-module.exports.startServer = function() {
+module.exports.startServer = function () {
     if (serverProcess === null) {
         var serverExecLocation = projectLocator.getServerExecPath();
         winston.info(tagMgr + 'Command: ' + serverExecLocation +
-                     ' --findprojectroot --nobrowser');
+            ' --findprojectroot --nobrowser');
         serverProcess = childProcess.spawn(
-                serverExecLocation, ['--findprojectroot', '--nobrowser']);
+            serverExecLocation, ['--findprojectroot', '--nobrowser']);
 
         // Setting the listeners
-        serverProcess.stdout.on('data', function(data) {
+        serverProcess.stdout.on('data', function (data) {
             winston.info(tagSrv + data);
         });
 
-        serverProcess.stderr.on('data', function(data) {
+        serverProcess.stderr.on('data', function (data) {
             winston.error(tagSrv + data);
         });
 
-        serverProcess.on('close', function(code) {
+        serverProcess.on('close', function (code) {
             if (code !== 0) {
                 winston.info(tagSrv + 'Process exited with code ' + code);
             }
@@ -42,7 +42,7 @@ module.exports.startServer = function() {
     }
 };
 
-module.exports.stopServer = function() {
+module.exports.stopServer = function () {
     if (serverProcess !== null) {
         // Server executable needs to clean up (kill child), so no SIGKILL
         serverProcess.kill('SIGTERM');
@@ -51,9 +51,9 @@ module.exports.stopServer = function() {
     }
 };
 
-module.exports.restartServer = function() {
+module.exports.restartServer = function () {
     module.exports.stopServer();
-    setTimeout(function() {
+    setTimeout(function () {
         module.exports.startServer();
     }, 1000);
 };

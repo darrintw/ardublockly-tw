@@ -19,12 +19,12 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/gpl.html>.
+ *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
  *
  */
 
-#ifndef TINY_IR_RECEIVER_H
-#define TINY_IR_RECEIVER_H
+#ifndef _TINY_IR_RECEIVER_H
+#define _TINY_IR_RECEIVER_H
 
 #include <Arduino.h>
 
@@ -63,8 +63,8 @@ void handleReceivedTinyIRData(uint16_t aAddress, uint8_t aCommand, bool isRepeat
  */
 #define lowerValue25Percent(aDuration)   (aDuration - (aDuration / 4))
 #define upperValue25Percent(aDuration)   (aDuration + (aDuration / 4))
-#define lowerValue(aDuration)   (aDuration - (aDuration / 2))
-#define upperValue(aDuration)   (aDuration + (aDuration / 2))
+#define lowerValue50Percent(aDuration)   (aDuration / 2) // (aDuration - (aDuration / 2))
+#define upperValue50Percent(aDuration)   (aDuration + (aDuration / 2))
 
 /*
  * The states for the state machine
@@ -111,6 +111,4 @@ bool isTinyReceiverIdle();
 
 /** @}*/
 
-#endif // TINY_IR_RECEIVER_H
-
-#pragma once
+#endif // _TINY_IR_RECEIVER_H

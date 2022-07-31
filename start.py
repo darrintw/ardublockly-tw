@@ -4,7 +4,7 @@
 
 Copyright (c) 2017 carlosperate https://github.com/carlosperate/
 Licensed under the Apache License, Version 2.0 (the "License"):
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 """
 from __future__ import unicode_literals, absolute_import, print_function
 import os

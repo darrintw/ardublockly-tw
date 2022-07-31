@@ -471,7 +471,7 @@ Ardublockly.loadUserXmlFile = function () {
  */
 Ardublockly.saveXmlFile = function () {
     Ardublockly.saveTextFileAs(
-        document.getElementById('sketch_name').value + '.xml',
+        document.getElementById('sketch_name').value + '.xml', 'xml',
         Ardublockly.generateXml());
 };
 
@@ -482,7 +482,7 @@ Ardublockly.saveXmlFile = function () {
  */
 Ardublockly.saveSketchFile = function () {
     Ardublockly.saveTextFileAs(
-        document.getElementById('sketch_name').value + '.ino',
+        document.getElementById('sketch_name').value + '.ino', 'ino',
         Ardublockly.generateArduino());
 };
 
@@ -490,10 +490,11 @@ Ardublockly.saveSketchFile = function () {
  * Creates an text file with the input content and files name, and prompts the
  * users to save it into their local file system.
  * @param {!string} fileName Name for the file to be saved.
+ * @param {!string} ext extension for the file to be saved.
  * @param {!string} content Text data to be saved in to the file.
  */
-Ardublockly.saveTextFileAs = function (fileName, content) {
-    var blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+Ardublockly.saveTextFileAs = function (fileName, ext, content) {
+    var blob = new Blob([content], {type: 'text/' + ext + ';charset=utf-8'});
     saveAs(blob, fileName);
 };
 
@@ -542,7 +543,7 @@ Ardublockly.openSerialMonitor = function () {
             };
             var cb = function (jsonObj) {
                 if (jsonObj === null) return Ardublockly.openNotConnectedModal();
-                console.log(jsonObj);
+                //console.log(jsonObj);
             }
             ArdublocklyServer.cliKillPutty(cb);
             setTimeout(function () {
