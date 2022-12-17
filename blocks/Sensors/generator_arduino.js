@@ -11,7 +11,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Arduino.Sensor');
+goog.provide('Blockly.Arduino.Sensors');
 
 goog.require('Blockly.Arduino');
 

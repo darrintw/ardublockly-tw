@@ -1,11 +1,11 @@
 {
-  "categoryName": "Sensor",
+  "categoryName": "Sensors",
   "description": "Sensor blocks to demonstrate the feature.",
   "languages": [
     "en",
     "zh-hant"
   ],
-  "toolboxName": "Sensor",
+  "toolboxName": "Sensors",
   "toolbox": [
     "<category>",
     "  <block type=\"ultrasonic_distance\">",

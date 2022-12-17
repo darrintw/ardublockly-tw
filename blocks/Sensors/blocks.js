@@ -8,13 +8,13 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.sensor');
+goog.provide('Blockly.Blocks.sensors');
 
 goog.require('Blockly.Blocks');
 
 goog.require('Blockly.Types');
 
-Blockly.Blocks.sensor.HUE = 120;
+Blockly.Blocks.sensors.HUE = 120;
 
 Blockly.Blocks['ultrasonic_distance'] = {
     init: function () {
@@ -36,7 +36,7 @@ Blockly.Blocks['ultrasonic_distance'] = {
                     [Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH, "inch"]]),
                 "DISTANCE_UNIT");
         this.setOutput(true, "Number");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip("");
         this.setHelpUrl("https://www.itead.cc/wiki/Ultrasonic_Ranging_Module_HC-SR04");
     },
@@ -53,7 +53,7 @@ Blockly.Blocks['tcrt5000'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "ANALOG_PIN")
             .appendField(Blockly.Msg.ARD_TRTC5000_READ);
         this.setOutput(true, "Number");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_TRTC5000_TIP);
         this.setHelpUrl("");
     },
@@ -70,7 +70,7 @@ Blockly.Blocks['tcrt5000_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_TRTC5000_READ);
         this.setOutput(true, "Number");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_TRTC5000_TIP);
         this.setHelpUrl("");
     },
@@ -92,7 +92,7 @@ Blockly.Blocks['logic_nan'] = {
         this.setNextStatement(false, null);
         this.setInputsInline(true);
         this.setOutput(true, "Boolean");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_ISNAN_TOOLTIP);
     },
     /** Assigns a type to the boolean block. */
@@ -112,7 +112,7 @@ Blockly.Blocks['DHT11_readTemp'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_DHT11_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_DHT11_READTEMP_TIP);
         this.setHelpUrl("https://playground.arduino.cc/Main/DHT11Lib");
     },
@@ -133,7 +133,7 @@ Blockly.Blocks['DHT11_readTemp_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_DHT11_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_DHT11_READTEMP_TIP);
         this.setHelpUrl("https://playground.arduino.cc/Main/DHT11Lib");
     },
@@ -154,7 +154,7 @@ Blockly.Blocks['DHT11_readHumi'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_DHT11_READHUMI_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_DHT11_READHUMI_TIP);
         this.setHelpUrl("https://playground.arduino.cc/Main/DHT11Lib");
     },
@@ -175,7 +175,7 @@ Blockly.Blocks['DHT11_readHumi_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_DHT11_READHUMI_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_DHT11_READHUMI_TIP);
         this.setHelpUrl("https://playground.arduino.cc/Main/DHT11Lib");
     },
@@ -196,7 +196,7 @@ Blockly.Blocks['DS18B20_readTemp'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_DS18B20_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_DS18B20_READTEMP_TIP);
         this.setHelpUrl("https://create.arduino.cc/projecthub/TheGadgetBoy/ds18b20-digital-temperature-sensor-and-arduino-9cc806");
     },
@@ -217,7 +217,7 @@ Blockly.Blocks['DS18B20_readTemp_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_DS18B20_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_DS18B20_READTEMP_TIP);
         this.setHelpUrl("https://create.arduino.cc/projecthub/TheGadgetBoy/ds18b20-digital-temperature-sensor-and-arduino-9cc806");
     },
@@ -238,7 +238,7 @@ Blockly.Blocks['photocells_read'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_PHOTOCELLS_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_PHOTOCELLS_READTEMP_TIP);
         this.setHelpUrl("https://learn.adafruit.com/photocells/arduino-code");
     },
@@ -259,7 +259,7 @@ Blockly.Blocks['photocells_read_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_PHOTOCELLS_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_PHOTOCELLS_READTEMP_TIP);
         this.setHelpUrl("https://learn.adafruit.com/photocells/arduino-code");
     },
@@ -280,7 +280,7 @@ Blockly.Blocks['lm35_read'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_LM35_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_LM35_READTEMP_TIP);
         this.setHelpUrl("");
     },
@@ -301,7 +301,7 @@ Blockly.Blocks['lm35_read_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_LM35_READTEMP_MSG);
         this.setOutput(true, "Decimal");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_LM35_READTEMP_TIP);
         this.setHelpUrl("");
     },
@@ -317,7 +317,7 @@ Blockly.Blocks['irrecv_setup'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_IRRECV_SETUP)
             .appendField(
@@ -336,7 +336,7 @@ Blockly.Blocks['irrecv_setup_var'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_IRRECV_SETUP);
         this.appendValueInput("DATAPIN");
@@ -359,7 +359,7 @@ Blockly.Blocks['irrecv_available'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_IRRECV_AVAILABLE_MSG);
         this.setOutput(true, "Boolean");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_IRRECV_AVAILABLE_MSG_TIP);
         this.setHelpUrl("");
     },
@@ -380,7 +380,7 @@ Blockly.Blocks['irrecv_available_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_IRRECV_AVAILABLE_MSG);
         this.setOutput(true, "Boolean");
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_IRRECV_AVAILABLE_MSG_TIP);
         this.setHelpUrl("");
     },
@@ -401,7 +401,7 @@ Blockly.Blocks['irrecv_read'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_IRRECV_READ_MSG);
         this.setOutput(true, 'Large Number');
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_IRRECV_READ_TIP);
         this.setHelpUrl("");
     },
@@ -422,7 +422,7 @@ Blockly.Blocks['irrecv_read_var'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_IRRECV_READ_MSG);
         this.setOutput(true, 'Large Number');
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_IRRECV_READ_TIP);
         this.setHelpUrl("");
     },
@@ -442,7 +442,7 @@ Blockly.Blocks['irrecv_resume'] = {
             .appendField(Blockly.Msg.ARD_IRRECV_RESUME_FROM)
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "DATAPIN")
             .appendField(Blockly.Msg.ARD_IRRECV_RESUME_MSG);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARD_IRRECV_RESUME_TIP);
@@ -460,7 +460,7 @@ Blockly.Blocks['irrecv_resume_var'] = {
             .appendField(Blockly.Msg.ARD_IRRECV_RESUME_FROM);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_IRRECV_RESUME_MSG);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARD_IRRECV_RESUME_TIP);
@@ -483,7 +483,7 @@ Blockly.Blocks['hx711_setup'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "CLK_PIN");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_HX711_TIP);
         this.setHelpUrl();
     }
@@ -497,7 +497,7 @@ Blockly.Blocks['hx711_set_scale'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_HX711_TIP);
         this.setHelpUrl();
     }
@@ -509,7 +509,7 @@ Blockly.Blocks['hx711_tare'] = {
             .appendField(Blockly.Msg.ARD_HX711_TARE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_HX711_TIP);
         this.setHelpUrl();
     }
@@ -523,7 +523,7 @@ Blockly.Blocks['hx711_get_units'] = {
             .appendField(Blockly.Msg.ARD_HX711_GET_UNITS_AVERAGE);
         this.setInputsInline(true);
         this.setOutput(true, null);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_HX711_TIP);
         this.setHelpUrl();
     }
@@ -535,7 +535,7 @@ Blockly.Blocks['hx711_power_down'] = {
             .appendField(Blockly.Msg.ARD_HX711_POWER_DOWN);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_HX711_TIP);
         this.setHelpUrl();
     }
@@ -547,7 +547,7 @@ Blockly.Blocks['hx711_power_up'] = {
             .appendField(Blockly.Msg.ARD_HX711_POWER_UP);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.setColour(Blockly.Blocks.sensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_HX711_TIP);
         this.setHelpUrl();
     }
