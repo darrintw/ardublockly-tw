@@ -8,17 +8,17 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.I2CSensor');
+goog.provide('Blockly.Blocks.I2CSensors');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.I2CSensor.HUE = 120;
+Blockly.Blocks.I2CSensors.HUE = 120;
 
 Blockly.Blocks['I2C_scan'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2C_SCAN);
-        this.setColour(Blockly.Blocks.I2CSensor.HUE);
+        this.setColour(Blockly.Blocks.I2CSensors.HUE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip("");
@@ -39,7 +39,7 @@ Blockly.Blocks['I2C_QMC5883L_setup'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.I2CSensor.HUE);
+        this.setColour(Blockly.Blocks.I2CSensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_I2CLCD_SETUP_TIP);
         this.setHelpUrl("https://github.com/mprograms/QMC5883LCompass");
     }
@@ -58,7 +58,7 @@ Blockly.Blocks['I2C_MAX30100_setup'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.I2CSensor.HUE);
+        this.setColour(Blockly.Blocks.I2CSensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_I2CLCD_SETUP_TIP);
         this.setHelpUrl("https://github.com/kontakt/MAX30100");
     }
@@ -77,7 +77,7 @@ Blockly.Blocks['I2C_MLX90615_setup'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.I2CSensor.HUE);
+        this.setColour(Blockly.Blocks.I2CSensors.HUE);
         this.setTooltip(Blockly.Msg.ARD_I2CLCD_SETUP_TIP);
         this.setHelpUrl("https://github.com/Seeed-Studio/Digital_Infrared_Temperature_Sensor_MLX90615");
     }

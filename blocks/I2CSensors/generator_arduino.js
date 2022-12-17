@@ -8,7 +8,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Arduino.I2CSensor');
+goog.provide('Blockly.Arduino.I2CSensors');
 
 goog.require('Blockly.Arduino');
 
