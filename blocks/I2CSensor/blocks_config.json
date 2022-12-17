@@ -1,0 +1,15 @@
+{
+  "categoryName": "I2CSensor",
+  "description": "I2C Sensor blocks to demonstrate the feature.",
+  "languages": [
+    "en",
+    "zh-hant"
+  ],
+  "toolboxName": "I2CSensor",
+  "toolbox": [
+    "<category>",
+    "  <block type=\"I2C_scan\"></block>",
+
+    "</category>"
+  ]
+}
