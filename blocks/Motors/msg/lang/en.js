@@ -4,7 +4,7 @@ goog.require('Blockly.Msg.en');
 
 goog.require('Blockly.Msg');
 
-Blockly.Msg.BLOCKS_SERVO_CATEGORY = 'Servo';
+Blockly.Msg.BLOCKS_CATEGORY_MOTORS = 'Motor';
 
 /// Servo
 Blockly.Msg.ARD_SERVO_VAR = "SERVO variable";

@@ -88,13 +88,13 @@ Blockly.Arduino['I2CLCD_setup'] = function (block) {
     Blockly.Arduino.addInclude('Wire_inc', '#include <Wire.h>');
     Blockly.Arduino.addInclude('LiquidCrystal_I2C_inc', '#include <LiquidCrystal_I2C.h>');
 
-    if (replace === true && Blockly.Arduino.definitions_['I2CLCD_tag'] !== undefined) {
+    if (Blockly.Arduino.definitions_['I2CLCD_tag'] !== undefined) {
         Blockly.Arduino.definitions_['I2CLCD_tag'] = i2cLCDDeclareCode;
     } else {
         Blockly.Arduino.addDeclaration('I2CLCD_tag', i2cLCDDeclareCode);
     }
 
-    Blockly.Arduino.addSetup('I2CLCD_tag', i2cLCDSetupCode, replace);
+    Blockly.Arduino.addSetup('I2CLCD_tag', i2cLCDSetupCode, true);
 
     var i2cPins = Blockly.Arduino.Boards.selected.i2cPins.Wire;
     for (var i = 0; i < i2cPins.length; i++) {
@@ -156,7 +156,6 @@ Blockly.Arduino['I2CLCD_createChar'] = function (block) {
     var content = Blockly.Arduino.valueToCode(
         block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var img_index = 0;
-    console.log(content);
     for (var i = 0; i < lcd_img_map.length; i++) {
         if (lcd_img_map[i][1] === content) {
             img_index = lcd_img_map[i][0];

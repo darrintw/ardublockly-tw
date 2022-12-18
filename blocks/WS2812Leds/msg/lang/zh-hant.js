@@ -3,7 +3,7 @@
 goog.require('Blockly.Msg.zh.hant');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_WS2812Leds = 'WS2812 LED 燈條';
+Blockly.Msg.BLOCKS_CATEGORY_WS2812LEDS = 'WS2812 LED 燈條';
 
 Blockly.Msg.NEOPIXEL_SETUP = '設定燈條';
 Blockly.Msg.NEOPIXEL_NUM = '燈數';

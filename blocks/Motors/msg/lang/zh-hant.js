@@ -5,7 +5,7 @@ goog.require('Blockly.Msg.zh.hant');
 goog.require('Blockly.Msg');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_SERVO_CATEGORY = "伺服馬達";
+Blockly.Msg.BLOCKS_CATEGORY_MOTORS = "馬達";
 
 /// Servo
 Blockly.Msg.ARD_SERVO_VAR = "伺服馬達變數";

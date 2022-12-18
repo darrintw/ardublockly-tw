@@ -39,6 +39,7 @@ Blockly.Arduino["PS2_init"] = function (block) {
     return '';
 };
 
+//
 Blockly.Arduino["PS2_read"] = function (block) {
     var ps2Name = block.getFieldValue('VAR');
     var ps2Id = Blockly.Arduino.variableDB_.getName(

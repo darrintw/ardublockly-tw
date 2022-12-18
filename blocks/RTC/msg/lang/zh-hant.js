@@ -4,7 +4,7 @@ goog.require('Blockly.Msg.zh.hant');
 
 goog.require('Blockly.Msg');
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_RTC = '時鐘';
+Blockly.Msg.BLOCKS_CATEGORY_RTC = '時鐘模組';
 
 /// Ardublockly name
 Blockly.Msg.ADR_RTC_DS1302_INITPIN = '初始化時鐘模組DS1302 腳位';

@@ -18,7 +18,7 @@ goog.require('Blockly.Arduino');
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {string} Completed code.
  */
-Blockly.Arduino['I2C_scan'] = function (block) {
+Blockly.Arduino['I2C_SCAN'] = function (block) {
     Blockly.Arduino.addInclude("Wire_inc", "#include <Wire.h>")
     var setup = 'Wire.begin();\n' +
         '  Serial.begin(9600);\n' +
@@ -75,3 +75,86 @@ Blockly.Arduino['I2C_scan'] = function (block) {
     return code;
 };
 
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['I2C_QMC5883L_SETUP'] = function (block) {
+    var i2cAddr = block.getFieldValue('QMC5883L_ADDR');
+    var i2cQMC5883LDeclareCode =
+        'QMC5883LCompass compass;';
+    var i2cQMC5883LSetupCode = 'compass.setADDR(' + i2cAddr + ');\n  compass.init();';
+
+    Blockly.Arduino.addInclude('QMC5883L_inc', '#include <QMC5883LCompass.h>');
+
+    if (Blockly.Arduino.definitions_['QMC5883L_tag'] !== undefined) {
+        Blockly.Arduino.definitions_['QMC5883L_tag'] = i2cQMC5883LDeclareCode;
+    } else {
+        Blockly.Arduino.addDeclaration('QMC5883L_tag', i2cQMC5883LDeclareCode);
+    }
+
+    Blockly.Arduino.addSetup('QMC5883L_tag', i2cQMC5883LSetupCode, true);
+
+    var i2cPins = Blockly.Arduino.Boards.selected.i2cPins.Wire;
+    for (var i = 0; i < i2cPins.length; i++) {
+        Blockly.Arduino.reservePin(block, i2cPins[i][1],
+            Blockly.Arduino.pinTypes.I2C, 'I2C ' + i2cPins[i][0]);
+    }
+    var code = '';
+    return code;
+};
+
+//
+Blockly.Arduino["I2C_QMC5883L_READ"] = function (block) {
+    var code = 'compass.read();\n';
+    return code;
+}
+
+//
+Blockly.Arduino["I2C_QMC5883L_FUN"] = function (block) {
+    var fun = this.getFieldValue('FUN');
+    var code = 'compass.get' + fun + '()';
+    return code;
+}
+
+//
+Blockly.Arduino["I2C_QMC5883L_AZIUMTH"] = function (block) {
+    var code = 'compass.getAzimuth()';
+    return code;
+}
+
+//
+Blockly.Arduino["I2C_QMC5883L_BEARING"] = function (block) {
+    var azimuthVar = this.getFieldValue('AZIMUTH');
+    var code = 'compass.getBearing(' + azimuthVar + ')';
+    return code;
+}
+
+//
+Blockly.Arduino["I2C_QMC5883L_DIRECTION"] = function (block) {
+    var azimuthVar = this.getFieldValue('AZIMUTH');
+    var arrayVar = Blockly.Arduino.valueToCode(
+        block, 'ARRAY', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var code = 'compass.getDirection(' + arrayVar + ', ' + azimuthVar + ');\n';
+    return code;
+}
+
+//
+Blockly.Arduino["I2C_QMC5883L_SMOOTHING"] = function (block) {
+    var steps = this.getFieldValue('STEPS');
+    var advanced = this.getFieldValue('ADVANCED');
+    var code = 'compass.setSmoothing(' + steps + ', ' + advanced + ');\n';
+    return code;
+}
+
+//
+Blockly.Arduino["I2C_QMC5883L_SETUP_MODE"] = function (block) {
+    var mode = this.getFieldValue('MODE');
+    var odr = this.getFieldValue('ODR');
+    var rng = this.getFieldValue('RNG');
+    var osr = this.getFieldValue('OSR');
+    var code = 'compass.setMode(' + mode + ', ' + odr + ', ' + rng + ', ' + osr + ');\n';
+    return code;
+}

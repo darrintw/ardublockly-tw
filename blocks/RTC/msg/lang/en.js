@@ -5,7 +5,7 @@ goog.require('Blockly.Msg.en');
 
 goog.require('Blockly.Msg');
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_RTC = 'RTC Clock';
+Blockly.Msg.BLOCKS_CATEGORY_RTC = 'RTC Clock Module';
 
 /// Ardublockly name
 Blockly.Msg.ADR_RTC_DS1302_INITPIN = 'Initial DS1302 RTC module Pin';
