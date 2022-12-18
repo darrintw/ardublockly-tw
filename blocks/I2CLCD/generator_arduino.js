@@ -8,30 +8,6 @@ goog.provide('Blockly.Arduino.I2CLCD');
 
 goog.require('Blockly.Arduino');
 
-
-function initI2CLCD(block, i2cAddr, replace, row, col) {
-    var i2cLCDDeclareCode =
-        'LiquidCrystal_I2C I2CLCD(' + i2cAddr + ', ' + col + ', ' + row + ');';
-    var i2cLCDSetupCode = 'I2CLCD.begin();';
-
-    Blockly.Arduino.addInclude('Wire_inc', '#include <Wire.h>');
-    Blockly.Arduino.addInclude('LiquidCrystal_I2C_inc', '#include <LiquidCrystal_I2C.h>');
-
-    if (replace === true && Blockly.Arduino.definitions_['I2CLCD_tag'] !== undefined) {
-        Blockly.Arduino.definitions_['I2CLCD_tag'] = i2cLCDDeclareCode;
-    } else {
-        Blockly.Arduino.addDeclaration('I2CLCD_tag', i2cLCDDeclareCode);
-    }
-
-    Blockly.Arduino.addSetup('I2CLCD_tag', i2cLCDSetupCode, replace);
-
-    var i2cPins = Blockly.Arduino.Boards.selected.i2cPins.Wire;
-    for (var i = 0; i < i2cPins.length; i++) {
-        Blockly.Arduino.reservePin(block, i2cPins[i][1],
-            Blockly.Arduino.pinTypes.I2C, 'I2C ' + i2cPins[i][0]);
-    }
-}
-
 /**
  * Code generator for block for setting the serial com speed.
  * Arduino code: setup{ Serial.begin(X); }
@@ -105,7 +81,26 @@ Blockly.Arduino['I2CLCD_setup'] = function (block) {
     var i2cAddr = block.getFieldValue('I2C_ADDR');
     var row = block.getFieldValue('ROW');
     var col = block.getFieldValue('COL');
-    initI2CLCD(block, i2cAddr, true, row, col);
+    var i2cLCDDeclareCode =
+        'LiquidCrystal_I2C I2CLCD(' + i2cAddr + ', ' + col + ', ' + row + ');';
+    var i2cLCDSetupCode = 'I2CLCD.begin();';
+
+    Blockly.Arduino.addInclude('Wire_inc', '#include <Wire.h>');
+    Blockly.Arduino.addInclude('LiquidCrystal_I2C_inc', '#include <LiquidCrystal_I2C.h>');
+
+    if (Blockly.Arduino.definitions_['I2CLCD_tag'] !== undefined) {
+        Blockly.Arduino.definitions_['I2CLCD_tag'] = i2cLCDDeclareCode;
+    } else {
+        Blockly.Arduino.addDeclaration('I2CLCD_tag', i2cLCDDeclareCode);
+    }
+
+    Blockly.Arduino.addSetup('I2CLCD_tag', i2cLCDSetupCode, true);
+
+    var i2cPins = Blockly.Arduino.Boards.selected.i2cPins.Wire;
+    for (var i = 0; i < i2cPins.length; i++) {
+        Blockly.Arduino.reservePin(block, i2cPins[i][1],
+            Blockly.Arduino.pinTypes.I2C, 'I2C ' + i2cPins[i][0]);
+    }
     var code = '';
     return code;
 };
@@ -161,7 +156,6 @@ Blockly.Arduino['I2CLCD_createChar'] = function (block) {
     var content = Blockly.Arduino.valueToCode(
         block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var img_index = 0;
-    console.log(content);
     for (var i = 0; i < lcd_img_map.length; i++) {
         if (lcd_img_map[i][1] === content) {
             img_index = lcd_img_map[i][0];

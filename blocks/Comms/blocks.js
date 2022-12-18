@@ -7,20 +7,17 @@
  * @fileOverview Blocks for the Arduino serial communication functions.
  *     The Arduino built in functions syntax can be found at:
  *     https://arduino.cc/en/Reference/HomePage
- *
- * TODO: There are more function that can be added:
- *       https://arduino.cc/en/Reference/Serial
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.serial');
+goog.provide('Blockly.Blocks.comms');
 
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
 
 
 /** Common HSV hue for all blocks in this category. */
-Blockly.Blocks.serial.HUE = 120;
+Blockly.Blocks.comms.HUE = 60;
 
 Blockly.Blocks['serial_setup'] = {
     /**
@@ -29,7 +26,7 @@ Blockly.Blocks['serial_setup'] = {
      */
     init: function () {
         this.setHelpUrl('https://arduino.cc/en/Serial/Begin');
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_SETUP)
             .appendField(
@@ -72,7 +69,7 @@ Blockly.Blocks['serial_print'] = {
      */
     init: function () {
         this.setHelpUrl('https://www.arduino.cc/en/Serial/Print');
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID')
@@ -137,7 +134,7 @@ Blockly.Blocks['serial_print'] = {
 
 Blockly.Blocks['serial_print_hex'] = {
     init: function () {
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID')
@@ -175,7 +172,7 @@ Blockly.Blocks['serial_write'] = {
      */
     init: function () {
         this.setHelpUrl('https://www.arduino.cc/en/Serial/write');
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID')
@@ -212,7 +209,7 @@ Blockly.Blocks['serial_available'] = {
                 }
             ],
             "output": Blockly.Types.BOOLEAN.output,
-            "colour": Blockly.Blocks.serial.HUE,
+            "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SERIAL_AVAILABLE_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
         });
@@ -244,7 +241,7 @@ Blockly.Blocks['serial_read_string'] = {
                 }
             ],
             "output": Blockly.Types.STRING.output,
-            "colour": Blockly.Blocks.serial.HUE,
+            "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SERIAL_READ_STRING_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
         });
@@ -277,7 +274,7 @@ Blockly.Blocks['serial_read_char'] = {
                 }
             ],
             "output": Blockly.Types.STRING.output,
-            "colour": Blockly.Blocks.serial.HUE,
+            "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SERIAL_READ_CHAR_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
         });
@@ -315,7 +312,7 @@ Blockly.Blocks['bluetooth'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.serialSpeed), "BAUDRATE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -330,7 +327,7 @@ Blockly.Blocks['bluetooth_available'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_AVAILABLE_MSG);
         this.setOutput(true, "Boolean");
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     },
@@ -349,7 +346,7 @@ Blockly.Blocks['bluetooth_read'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_READ_MSG);
         this.setOutput(true, "String");
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     },
@@ -366,7 +363,7 @@ Blockly.Blocks['bluetooth_print'] = {
      */
     init: function () {
         this.setHelpUrl('https://www.arduino.cc/en/Serial/Print');
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_WRITE_MSG);
         this.appendValueInput('CONTENT');
@@ -391,7 +388,7 @@ Blockly.Blocks['bluetooth_at_command'] = {
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_AS)
             .appendField(new Blockly.FieldTextInput(""), "VALUE");
         this.setOutput(true, "String");
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     },
@@ -407,7 +404,7 @@ Blockly.Blocks['bluetooth_at_cmd'] = {
             .appendField(Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_MSG)
             .appendField(new Blockly.FieldTextInput(""), "CMD");
         this.setOutput(true, "String");
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     },
@@ -441,7 +438,7 @@ Blockly.Blocks['softwareserial_setup'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.serialSpeed), "BAUDRATE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.serial.HUE);
+        this.setColour(Blockly.Blocks.comms.HUE);
         this.setTooltip(Blockly.Msg.ARD_SOFTWARESERIAL_SETUP_TIP);
         this.setHelpUrl("https://www.arduino.cc/en/Reference/SoftwareSerial");
     }
@@ -474,7 +471,7 @@ Blockly.Blocks['softwareserial_print'] = {
             "inputsInline": true,
             "previousStatement": true,
             "nextStatement": true,
-            "colour": Blockly.Blocks.serial.HUE,
+            "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_PRINT_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialPrint'
         });
@@ -497,7 +494,7 @@ Blockly.Blocks['softwareserial_available'] = {
                 }
             ],
             "output": Blockly.Types.NUMBER.output,
-            "colour": Blockly.Blocks.serial.HUE,
+            "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_AVAILABLE_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
         });
@@ -524,7 +521,7 @@ Blockly.Blocks['softwareserial_read'] = {
                 }
             ],
             "output": Blockly.Types.STRING.output,
-            "colour": Blockly.Blocks.serial.HUE,
+            "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_READ_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
         });

@@ -2,9 +2,10 @@
   "categories": {
     "Comms": "Comms/blocks_config.json",
     "Motors": "Motors/blocks_config.json",
-    "Sensor": "Sensor/blocks_config.json",
-    "RTC": "RTC/blocks_config.json",
+    "Sensors": "Sensors/blocks_config.json",
+    "I2CSensors": "I2CSensors/blocks_config.json",
     "I2CLCD": "I2CLCD/blocks_config.json",
+    "RTC": "RTC/blocks_config.json",
     "LEDMatrix": "LEDMatrix/blocks_config.json",
     "WS2812Leds": "WS2812Leds/blocks_config.json",
     "PS2": "PS2/blocks_config.json",

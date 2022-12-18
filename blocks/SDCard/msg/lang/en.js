@@ -4,7 +4,7 @@
 goog.require('Blockly.Msg.en');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_SDCard = 'SD Card module';
+Blockly.Msg.BLOCKS_CATEGORY_SDCARD = 'SD Card module';
 
 /// Ardublockly name
 Blockly.Msg.ADR_SD_INITIAL = ' declare';

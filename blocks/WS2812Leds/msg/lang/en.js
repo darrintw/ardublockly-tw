@@ -4,7 +4,7 @@
 goog.require('Blockly.Msg.en');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_WS2812Leds = 'WS2812 LED Strip';
+Blockly.Msg.BLOCKS_CATEGORY_WS2812LEDS = 'WS2812 LED Strip';
 
 Blockly.Msg.NEOPIXEL_SETUP = 'Setup strip';
 Blockly.Msg.NEOPIXEL_NUM = ' number of led ';

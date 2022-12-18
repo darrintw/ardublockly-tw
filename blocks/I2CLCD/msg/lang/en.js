@@ -8,9 +8,9 @@ Blockly.Msg.BLOCKS_CATEGORY_I2CLCD = "I2C LCD Display";
 
 /// Ardublockly name
 Blockly.Msg.ARD_I2CLCD_SCAN = "Scan I2C LCD address";
-Blockly.Msg.ARD_I2CLCD_SETUP_MSG1 = "enable LCD at address ";
+Blockly.Msg.ARD_I2CLCD_SETUP_MSG1 = "Enable LCD at address ";
 Blockly.Msg.ARD_I2CLCD_SETUP_MSG2 = "";
-Blockly.Msg.ARD_I2CLCD_SETUP_TIP = "enable I2C interface LCD. Make sure the I2C address is correct.";
+Blockly.Msg.ARD_I2CLCD_SETUP_TIP = "Enable I2C interface LCD. Make sure the I2C address is correct.";
 Blockly.Msg.ARD_I2CLCD_PRINTLINE_MSG1 = "print ";
 Blockly.Msg.ARD_I2CLCD_PRINTLINE_MSG2 = " on row ";
 Blockly.Msg.ARD_I2CLCD_PRINTLINE_MSG3 = " of LCD";

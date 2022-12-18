@@ -3,7 +3,7 @@
 goog.require('Blockly.Msg.zh.hant');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_SDCard = 'SD卡模組';
+Blockly.Msg.BLOCKS_CATEGORY_SDCARD = 'SD卡模組';
 
 /// Ardublockly name
 Blockly.Msg.ADR_SD_INITIAL = '宣告';

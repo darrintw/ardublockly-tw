@@ -247,11 +247,20 @@ Ardublockly.addToolboxCategory = function (categoryTitle, categoryDom) {
     try {
         categoryDom.id = 'cat' + categoryTitle.replace(/\s+/g, '');
         var catText = Ardublockly.getLocalStr(categoryDom.id) ||
-            Ardublockly.getLocalStr('BLOCKS_CATEGORY_' + categoryTitle.toUpperCase());
+            Blockly.Msg['BLOCKS_CATEGORY_' + categoryTitle.replace(/\s+/g, '').toUpperCase()];
         if (!catText) {
             catText = categoryTitle;
         }
         categoryDom.setAttribute('name', catText);
+        var catNodes = categoryDom.getElementsByTagName('category');
+        for (var j = 0; j < catNodes.length; j++) {
+            var catTitle = catNodes[j].getAttribute('name');
+            var catText = Blockly.Msg['BLOCKS_CATEGORY_' + catTitle.toUpperCase()];
+            if (!catText) {
+                catText = catTitle;
+            }
+            catNodes[j].setAttribute('name', catText);
+        }
         Ardublockly.xmlTree.appendChild(document.createElement('sep'));
         Ardublockly.xmlTree.appendChild(categoryDom);
         Ardublockly.workspace.updateToolbox(Ardublockly.xmlTree);

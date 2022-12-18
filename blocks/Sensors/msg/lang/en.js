@@ -3,9 +3,10 @@
 goog.require('Blockly.Msg.en');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_SENSOR = 'Sensor';
+Blockly.Msg.BLOCKS_CATEGORY_SENSORS = 'Sensor';
 
 /// Ultra Sonic
+Blockly.Msg.BLOCKS_CATEGORY_ULTRASONIC_DISTANCE = "HC-SR04 Ultrasonic Distance sensor";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE = "Config Ultrasonic(HC-SR04) Pin";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_TIP = "";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_TRIG = "TRIG Pin";
@@ -14,7 +15,8 @@ Blockly.Msg.ARD_ULTRASONIC_DISTANCE_CM = "cm";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH = "inch";
 
 /// TRTC5000
-Blockly.Msg.ARD_TRTC5000_FROM = "Read Reflective Infrared Sensor感測器 value \u207B from ";
+Blockly.Msg.BLOCKS_CATEGORY_TCRT5000 = "Reflective Infrared Ssensor";
+Blockly.Msg.ARD_TRTC5000_FROM = "Read Reflective Infrared Sensor value \u207B from ";
 Blockly.Msg.ARD_TRTC5000_READ = "";
 Blockly.Msg.ARD_TRTC5000_TIP = 'Only for TRTC5000. Value is reverse.';
 
@@ -23,6 +25,7 @@ Blockly.Msg.ARD_ISNAN_TITLE = "is nan?";
 Blockly.Msg.ARD_ISNAN_TOOLTIP = "check value is nan or not";
 
 /// DHT11
+Blockly.Msg.BLOCKS_CATEGORY_DHT11 = "DHT11 temperature/humidity sensor";
 Blockly.Msg.ARD_DHT11_READTEMP_FROM = "Read celsius temperature from DHT11 module at ";
 Blockly.Msg.ARD_DHT11_READTEMP_MSG = "";
 Blockly.Msg.ARD_DHT11_READTEMP_TIP = "Read celsius temperature, -1 means error.";
@@ -31,21 +34,25 @@ Blockly.Msg.ARD_DHT11_READHUMI_MSG = "";
 Blockly.Msg.ARD_DHT11_READHUMI_TIP = "read relative humidity, -1 means error";
 
 /// DS18B20
+Blockly.Msg.BLOCKS_CATEGORY_DS18B20 = "DS18B20 temperature sensor";
 Blockly.Msg.ARD_DS18B20_READTEMP_FROM = "read celsius temperature from DS18B20 module at ";
 Blockly.Msg.ARD_DS18B20_READTEMP_MSG = "";
 Blockly.Msg.ARD_DS18B20_READTEMP_TIP = "Read celsius temperature, -1 means error.";
 
 /// Photo Cells
+Blockly.Msg.BLOCKS_CATEGORY_PHOTOCELLS = "Photocells";
 Blockly.Msg.ARD_PHOTOCELLS_READTEMP_FROM  = "";
 Blockly.Msg.ARD_PHOTOCELLS_READTEMP_MSG = "read light value from photocells";
 Blockly.Msg.ARD_PHOTOCELLS_READTEMP_TIP = "Read light value from photocells.";
 
 /// LM35
+Blockly.Msg.BLOCKS_CATEGORY_LM35 = "LM35 temperature sensor";
 Blockly.Msg.ARD_LM35_READTEMP_FROM  = "";
 Blockly.Msg.ARD_LM35_READTEMP_MSG = "read temperature from LM35 module at";
 Blockly.Msg.ARD_LM35_READTEMP_TIP = "Read temperature from LM35 module.";
 
 /// IR Reciver
+Blockly.Msg.BLOCKS_CATEGORY_IRRECV = "IR reciver";
 Blockly.Msg.ARD_IRRECV_SETUP = "setup IR reciver pin at ";
 Blockly.Msg.ARD_IRRECV_SETUP_TIP = "";
 Blockly.Msg.ARD_IRRECV_IR = "IR ";
@@ -59,6 +66,7 @@ Blockly.Msg.ARD_IRRECV_RESUME_MSG = " IR reciver.";
 Blockly.Msg.ARD_IRRECV_RESUME_TIP = "Resume IR reciver.";
 
 /// HX711
+Blockly.Msg.BLOCKS_CATEGORY_HX711 = "HX711 weight sensor"
 Blockly.Msg.ARD_HX711_SETUP = "HX711 initial";
 Blockly.Msg.ARD_HX711_TIP = "";
 Blockly.Msg.ARD_HX711_DATA = "DATA pin";

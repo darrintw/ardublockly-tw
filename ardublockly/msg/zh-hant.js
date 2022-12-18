@@ -163,22 +163,18 @@ Ardublockly.LOCALISED_TEXT = {
     catOutput: "輸出",
     catInputOutput: "輸入/輸出",
     catTime: "時間",
+    /*
     catTone: "蜂鳴器",
     catMotors: "馬達",
     catPS2: "PS2搖桿",
     catRTC: "時鐘",
-    catComms: "序列埠",
-    catSensor: "感測器",
-    //catSSensor: "罕用感測器",
+    catComms: "通訊",
+    catSensors: "感測器",
+    catI2CSensors: "I2C感測器",
     catSDCard: "SD卡",
     catWS2812Leds: "WS2812 LED 燈條",
     catI2CLCD: "I2C LCD 顯示器",
     catLEDMatrix: "MAX7219 LED 點矩陣",
     catPixetto: "Pixetto感測器",
-    /*catLinkIt: "LinkIt",
-    catLinkItWiFi: "LinkIt Wi-Fi",
-    catLinkItMCS: "LinkIt MCS",
-    catLinkItIR: "LinkIt 遙控器",
-    catLinkItBLE: "LinkIt BLE周邊",
-    catLinkItBeacon: "LinkIt BLE Beacon",*/
+    */
 };

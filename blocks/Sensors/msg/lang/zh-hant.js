@@ -3,9 +3,10 @@
 goog.require('Blockly.Msg.zh.hant');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_SENSOR = '感測器';
+Blockly.Msg.BLOCKS_CATEGORY_SENSORS = '感測器';
 
 /// Ultra Sonic
+Blockly.Msg.BLOCKS_CATEGORY_ULTRASONIC_DISTANCE = "HC-SR04超音波感測器";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_SETUP = "超音波(HC-SR04)腳位設定";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_TIP = "";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_TRIG = "Trig腳位";
@@ -15,6 +16,7 @@ Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH = "英吋";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE = "超聲波回傳距離";
 
 /// TRTC5000
+Blockly.Msg.BLOCKS_CATEGORY_TCRT5000 = "紅外線光感測器";
 Blockly.Msg.ARD_TRTC5000_FROM = "從";
 Blockly.Msg.ARD_TRTC5000_READ = "讀取 紅外線光感測器 的數值 \u207B";
 Blockly.Msg.ARD_TRTC5000_TIP = 'TRTC5000專用，數值為1023(白)~0(黑)';
@@ -24,6 +26,7 @@ Blockly.Msg.ARD_ISNAN_TITLE = "是否為nan";
 Blockly.Msg.ARD_ISNAN_TOOLTIP = "判斷數值是否為nan";
 
 /// DHT11
+Blockly.Msg.BLOCKS_CATEGORY_DHT11 = "DHT11溫溼度感測器";
 Blockly.Msg.ARD_DHT11_READTEMP_FROM = "從 ";
 Blockly.Msg.ARD_DHT11_READTEMP_MSG = " 的 DHT11 模組讀取攝氏溫度值";
 Blockly.Msg.ARD_DHT11_READTEMP_TIP = "從 DHT11 溫濕度模組讀取整數攝氏溫度值, NAN 表示讀取錯誤";
@@ -32,21 +35,25 @@ Blockly.Msg.ARD_DHT11_READHUMI_MSG = " 的 DHT11 模組讀取相對濕度值";
 Blockly.Msg.ARD_DHT11_READHUMI_TIP = "從 DHT11 溫濕度模組讀取相對濕度值, NAN 表示讀取錯誤";
 
 /// DS18B20
+Blockly.Msg.BLOCKS_CATEGORY_DS18B20 = "DS18B20溫度感測器";
 Blockly.Msg.ARD_DS18B20_READTEMP_FROM  = "從 ";
 Blockly.Msg.ARD_DS18B20_READTEMP_MSG = " 的 DS18B20 感測器讀取攝氏溫度值";
 Blockly.Msg.ARD_DS18B20_READTEMP_TIP = "從 DS18B20 感測器讀取攝氏溫度值, -127 表示讀取錯誤";
 
 /// Photo Cells
+Blockly.Msg.BLOCKS_CATEGORY_PHOTOCELLS = "光敏電阻";
 Blockly.Msg.ARD_PHOTOCELLS_READTEMP_FROM  = "從 ";
 Blockly.Msg.ARD_PHOTOCELLS_READTEMP_MSG = " 的 光敏電阻 感測器讀取感應值";
 Blockly.Msg.ARD_PHOTOCELLS_READTEMP_TIP = "從 光敏電阻 感測器讀取感應值, -1 表示讀取錯誤";
 
 /// LM35
+Blockly.Msg.BLOCKS_CATEGORY_LM35 = "LM35溫度感測器"
 Blockly.Msg.ARD_LM35_READTEMP_FROM  = "從 ";
 Blockly.Msg.ARD_LM35_READTEMP_MSG = " 的 LM35 感測器讀取攝氏溫度值";
-Blockly.Msg.ARD_LM35_READTEMP_TIP = "從 LM35 感測器讀取得攝氏溫度值";
+Blockly.Msg.ARD_LM35_READTEMP_TIP = "從 LM35 感測器讀取攝氏溫度值";
 
 /// IR Receive
+Blockly.Msg.BLOCKS_CATEGORY_IRRECV = "紅外線接收器";
 Blockly.Msg.ARD_IRRECV_SETUP = "設定 紅外線接收器 腳位為 ";
 Blockly.Msg.ARD_IRRECV_SETUP_TIP = "";
 Blockly.Msg.ARD_IRRECV_IR = "紅外線接收器 ";
@@ -60,6 +67,7 @@ Blockly.Msg.ARD_IRRECV_RESUME_MSG = "的紅外線接收器";
 Blockly.Msg.ARD_IRRECV_RESUME_TIP = "復位的紅外線接收器";
 
 /// HX711
+Blockly.Msg.BLOCKS_CATEGORY_HX711 = "HX711重量感測模組"
 Blockly.Msg.ARD_HX711_SETUP = "重量感測模組(HX711)設定";
 Blockly.Msg.ARD_HX711_TIP = "";
 Blockly.Msg.ARD_HX711_DATA = "DATA腳位";

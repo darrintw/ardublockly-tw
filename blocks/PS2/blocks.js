@@ -60,7 +60,9 @@ var button_status = [[Blockly.Msg.ARD_PS2_BUTTON, "1"],
                     [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "3"],
                     [Blockly.Msg.ARD_PS2_NEW_BUTTON_STATUS, "4"]];
 */
-var button_status = [[Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "4"]];
+var button_status = [[Blockly.Msg.ARD_PS2_BUTTON, "1"],
+                     [Blockly.Msg.ARD_PS2_BUTTON_RELEASED, "3"],
+                     [Blockly.Msg.ARD_PS2_BUTTON_PRESSED, "4"]];
 
 //
 Blockly.Blocks["PS2_Button"] = {

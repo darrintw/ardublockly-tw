@@ -451,7 +451,7 @@ Blockly.copy_all_storage_ = function (block) {
             domBlock.appendChild(Blockly.Xml.blockToDomWithXY(block));
             var xmlBlock = Blockly.Xml.domToText(domBlock);
             await navigator.clipboard.writeText(xmlBlock);
-            // console.log(xmlBlock);
+            //console.log(xmlBlock);
         } catch (err) {
             //console.error(err.name, err.message);
         }
