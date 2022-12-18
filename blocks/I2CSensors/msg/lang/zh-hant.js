@@ -33,9 +33,8 @@ Blockly.Msg.ARD_I2C_QMC5883L_BEARING_TIP = "取得16點的方向角.\n" +
     " 例如0 = 北, 4 = 東, 8 = 南, 12 = 西，依此類推.";
 Blockly.Msg.ARD_I2C_QMC5883L_ARRAY = "置入陣列"
 Blockly.Msg.ARD_I2C_QMC5883L_DIRECTION = "方向值陣列";
-Blockly.Msg.ARD_I2C_QMC5883L_DIRECTION_TIP = "To get a 16 point text representation of the direction the sensor.\n" +
-    "This will produce a char array[3] with letters representing each direction.\n" +
-    "Because we can't return an array we need to pass the values by reference.";
+Blockly.Msg.ARD_I2C_QMC5883L_DIRECTION_TIP = "取得16點的方向角文字.\n" +
+    "此功能將產生大小為3的字元陣列儲存方位.";
 Blockly.Msg.ARD_I2C_QMC5883L_SMOOTHING = "平滑參數";
 Blockly.Msg.ARD_I2C_QMC5883L_STEPS = "平滑度";
 Blockly.Msg.ARD_I2C_QMC5883L_ADVANCED = "是否移除最高最低值";
