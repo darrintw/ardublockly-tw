@@ -12,18 +12,16 @@
 
   The circuit:
   - analog sensor (potentiometer will do) attached to analog input 0
-  - LED attached from digital pin 9 to ground through 220 ohm resistor
+  - LED attached from digital pin 9 to ground
 
   created 29 Oct 2008
   by David A Mellis
   modified 30 Aug 2011
   by Tom Igoe
-  modified 07 Apr 2017
-  by Zachary J. Fields
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Calibration
+  http://www.arduino.cc/en/Tutorial/Calibration
 */
 
 // These constants won't change:
@@ -64,11 +62,11 @@ void loop() {
   // read the sensor:
   sensorValue = analogRead(sensorPin);
 
-  // in case the sensor value is outside the range seen during calibration
-  sensorValue = constrain(sensorValue, sensorMin, sensorMax);
-
   // apply the calibration to the sensor reading
   sensorValue = map(sensorValue, sensorMin, sensorMax, 0, 255);
+
+  // in case the sensor value is outside the range seen during calibration
+  sensorValue = constrain(sensorValue, 0, 255);
 
   // fade the LED using the calibrated value:
   analogWrite(ledPin, sensorValue);

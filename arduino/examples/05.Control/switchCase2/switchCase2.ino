@@ -17,7 +17,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/SwitchCase2
+  http://www.arduino.cc/en/Tutorial/SwitchCase2
 */
 
 void setup() {

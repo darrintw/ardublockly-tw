@@ -12,7 +12,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/StringToInt
+  http://www.arduino.cc/en/Tutorial/StringToInt
 */
 
 String inString = "";    // string to hold input

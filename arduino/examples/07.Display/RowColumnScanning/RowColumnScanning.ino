@@ -4,7 +4,7 @@
   This example controls an 8x8 LED matrix using two analog inputs.
 
   This example works for the Lumex LDM-24488NI Matrix. See
-  https://sigma.octopart.com/140413/datasheet/Lumex-LDM-24488NI.pdf
+  http://sigma.octopart.com/140413/datasheet/Lumex-LDM-24488NI.pdf
   for the pin connections.
 
   For other LED cathode column matrixes, you should only need to change the pin
@@ -28,7 +28,9 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/RowColumnScanning
+  http://www.arduino.cc/en/Tutorial/RowColumnScanning
+
+  see also http://www.tigoe.net/pcomp/code/category/arduinowiring for more
 */
 
 // 2-dimensional array of row pin numbers:

@@ -5,7 +5,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/DigitalReadSerial
+  http://www.arduino.cc/en/Tutorial/DigitalReadSerial
 */
 
 // digital pin 2 has a pushbutton attached to it. Give it a name:

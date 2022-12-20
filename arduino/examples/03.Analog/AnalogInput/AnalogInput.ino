@@ -12,7 +12,7 @@
     one side pin (either one) to ground
     the other side pin to +5V
   - LED
-    anode (long leg) attached to digital output 13 through 220 ohm resistor
+    anode (long leg) attached to digital output 13
     cathode (short leg) attached to ground
 
   - Note: because most Arduinos have a built-in LED attached to pin 13 on the
@@ -24,7 +24,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/AnalogInput
+  http://www.arduino.cc/en/Tutorial/AnalogInput
 */
 
 int sensorPin = A0;    // select the input pin for the potentiometer

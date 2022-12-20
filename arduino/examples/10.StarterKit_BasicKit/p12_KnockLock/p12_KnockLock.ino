@@ -20,7 +20,7 @@
   by Scott Fitzgerald
   Thanks to Federico Vanzati for improvements
 
-  https://store.arduino.cc/genuino-starter-kit
+  http://www.arduino.cc/starterKit
 
   This example code is part of the public domain.
 */

@@ -18,7 +18,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/KeyboardAndMouseControl
+  http://www.arduino.cc/en/Tutorial/KeyboardAndMouseControl
 */
 
 #include "Keyboard.h"

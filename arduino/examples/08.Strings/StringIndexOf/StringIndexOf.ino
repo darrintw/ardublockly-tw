@@ -9,7 +9,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/StringIndexOf
+  http://www.arduino.cc/en/Tutorial/StringIndexOf
 */
 
 void setup() {

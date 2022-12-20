@@ -25,7 +25,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/BlinkWithoutDelay
+  http://www.arduino.cc/en/Tutorial/BlinkWithoutDelay
 */
 
 // constants won't change. Used here to set a pin number:

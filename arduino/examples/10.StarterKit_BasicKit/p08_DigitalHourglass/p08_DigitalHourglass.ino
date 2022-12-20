@@ -13,7 +13,7 @@
   created 13 Sep 2012
   by Scott Fitzgerald
 
-  https://store.arduino.cc/genuino-starter-kit
+  http://www.arduino.cc/starterKit
 
   This example code is part of the public domain.
 */

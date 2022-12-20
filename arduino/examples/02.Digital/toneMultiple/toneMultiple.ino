@@ -12,7 +12,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/toneMultiple
+  http://www.arduino.cc/en/Tutorial/Tone4
 */
 
 void setup() {

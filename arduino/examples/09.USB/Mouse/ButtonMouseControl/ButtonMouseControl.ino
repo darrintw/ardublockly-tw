@@ -20,7 +20,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/ButtonMouseControl
+  http://www.arduino.cc/en/Tutorial/ButtonMouseControl
 */
 
 #include "Mouse.h"

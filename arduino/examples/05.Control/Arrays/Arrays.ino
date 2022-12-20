@@ -17,7 +17,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Arrays
+  http://www.arduino.cc/en/Tutorial/Array
 */
 
 int timer = 100;           // The higher the number, the slower the timing.

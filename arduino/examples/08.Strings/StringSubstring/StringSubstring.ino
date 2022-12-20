@@ -9,7 +9,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/StringSubstring
+  http://www.arduino.cc/en/Tutorial/StringSubstring
 */
 
 void setup() {

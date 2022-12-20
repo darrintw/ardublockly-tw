@@ -7,7 +7,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/ReadAnalogVoltage
+  http://www.arduino.cc/en/Tutorial/ReadAnalogVoltage
 */
 
 // the setup routine runs once when you press reset:

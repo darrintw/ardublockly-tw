@@ -9,7 +9,7 @@
 
   This example code is in the public domain.
 
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/StringReplace
+  http://www.arduino.cc/en/Tutorial/StringReplace
 */
 
 void setup() {
