@@ -18,17 +18,22 @@ Blockly.Arduino["PS2_init"] = function (block) {
     var ps2Id = Blockly.Arduino.variableDB_.getName(
         ps2Name,
         Blockly.Variables.NAME_TYPE);
+    var ps2ErrorCode = block.getFieldValue('VAR_ERROR');
+    var ps2ErrorCodeId = Blockly.Arduino.variableDB_.getName(
+        ps2ErrorCode,
+        Blockly.Variables.NAME_TYPE);
     var clock = Blockly.Arduino.valueToCode(block, 'CLOCK', Blockly.Arduino.ORDER_ATOMIC);
     var attention = Blockly.Arduino.valueToCode(block, 'ATTENTION', Blockly.Arduino.ORDER_ATOMIC);
     var command = Blockly.Arduino.valueToCode(block, 'COMMAND', Blockly.Arduino.ORDER_ATOMIC);
     var data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.addInclude('PS2_inc', '#include <PS2X_lib.h>');
     Blockly.Arduino.addVariable(ps2Name, 'PS2X ' + ps2Id + ';', true);
+    Blockly.Arduino.addVariable(ps2ErrorCode, 'int ' + ps2ErrorCodeId + ';', true);
     var setup_code = 'do { \n' +
         '    //GamePad(clock, command, attention, data, Pressures?, Rumble?)\n' +
-        '    int error = ' + ps2Id + ".config_gamepad(" + clock + ", " + command + ", " + attention + ", " + data + ", true, true);\n" +
-        '    if (error == 0) {\n' +
-        //'      Serial.print(\"Gamepad found!\");\n' +
+        '    ' + ps2ErrorCodeId + ' = ' + ps2Id + ".config_gamepad(" + clock + ", " + command + ", " + attention + ", " + data + ", true, true);\n" +
+        '    if (' + ps2ErrorCodeId + ' == 0) {\n' +
+        '      //Serial.print(\"Gamepad found!\");\n' +
         '      break;\n' +
         '    }\n' +
         '    else {\n' +

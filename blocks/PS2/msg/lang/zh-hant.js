@@ -10,6 +10,7 @@ Blockly.Msg.BLOCKS_CATEGORY_PS2 = "PS2搖桿";
 /// Ardublockly name
 Blockly.Msg.ARD_PS2 = "PS2搖桿";
 Blockly.Msg.ARD_PS2_SETUP = "初始化PS2搖桿";
+Blockly.Msg.ARD_PS2_ERROR_CODE = "錯誤代碼變數";
 Blockly.Msg.ARD_PS2_PIN1 = "Clock腳位";
 Blockly.Msg.ARD_PS2_PIN2 = "Attention腳位";
 Blockly.Msg.ARD_PS2_PIN3 = "Command腳位";

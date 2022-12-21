@@ -33,6 +33,11 @@ Blockly.Blocks["PS2_init"] = {
         this.appendValueInput("DATA")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_PS2_PIN4);
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_ERROR_CODE)
+            .appendField(new Blockly.FieldVariable('ps2_error_code'), 'VAR_ERROR');
+        this.setInputsInline(false);
         this.setColour(Blockly.Blocks.PS2.HUE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
