@@ -5,6 +5,94 @@ goog.provide('Blockly.Arduino.serial');
 goog.require('Blockly.Arduino');
 
 /**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['serial_setup'] = function (block) {
+    var serialId = block.getFieldValue('SERIAL_ID');
+    var serialSpeed = block.getFieldValue('SPEED');
+    var serialSetupCode = serialId + '.begin(' + serialSpeed + ');';
+    Blockly.Arduino.addSetup('serial_' + serialId, serialSetupCode, true);
+    return '';
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['serial_available'] = function (block) {
+    var serialId = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('SERIAL_ID'),
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var code = serialId + '.available()';
+
+    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
+    for (var i = 0; i < serialPins.length; i++) {
+        Blockly.Arduino.reservePin(block, serialPins[i][1],
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+    }
+
+    //Blockly.Arduino.addSetup('serial_' + serialId, 'Serial.begin(9600);', false);
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code.
+ */
+Blockly.Arduino['serial_read_string'] = function (block) {
+    var serialId = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('SERIAL_ID'),
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
+    for (var i = 0; i < serialPins.length; i++) {
+        Blockly.Arduino.reservePin(block, serialPins[i][1],
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+    }
+
+    var func = [];
+    func.push('String ' + Blockly.Arduino.DEF_FUNC_NAME + '(HardwareSerial *serial) {');
+    func.push('  String content = "";');
+    func.push('  content += (char)serial->read();');
+    func.push('  return content;');
+    func.push('}');
+    var funcName = Blockly.Arduino.addFunction('getSerialChar', func.join('\n'));
+
+    var code = funcName + '(&' + serialId + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code.
+ */
+Blockly.Arduino['serial_read_char'] = function (block) {
+    var serialId = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('SERIAL_ID'),
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
+    for (var i = 0; i < serialPins.length; i++) {
+        Blockly.Arduino.reservePin(block, serialPins[i][1],
+            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
+    }
+    var code = serialId + '.read()';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
  * Code generator of block for writing to the serial com.
  * Arduino code: loop { Serial.print(X); }
  * @param {!Blockly.Block} block Block to generate the code from.
@@ -84,102 +172,6 @@ Blockly.Arduino['serial_write'] = function (block) {
  * Code generator for block for setting the serial com speed.
  * Arduino code: setup{ Serial.begin(X); }
  * @param {!Blockly.Block} block Block to generate the code from.
- * @return {string} Completed code.
- */
-Blockly.Arduino['serial_setup'] = function (block) {
-    var serialId = block.getFieldValue('SERIAL_ID');
-    var serialSpeed = block.getFieldValue('SPEED');
-    var serialSetupCode = serialId + '.begin(' + serialSpeed + ');';
-    Blockly.Arduino.addSetup('serial_' + serialId, serialSetupCode, true);
-    return '';
-};
-
-/**
- * Code generator of block for writing to the serial com.
- * Arduino code: loop { Serial.print(X); }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {(string|number)[]} Completed code.
- */
-Blockly.Arduino['serial_available'] = function (block) {
-    var serialId = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('SERIAL_ID'),
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-    var code = serialId + '.available()';
-
-    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
-    for (var i = 0; i < serialPins.length; i++) {
-        Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
-    }
-
-    //Blockly.Arduino.addSetup('serial_' + serialId, 'Serial.begin(9600);', false);
-
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-
-/**
- * Code generator for block for setting the serial com speed.
- * Arduino code: setup{ Serial.begin(X); }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code.
- */
-Blockly.Arduino['serial_read_char'] = function (block) {
-    var serialId = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('SERIAL_ID'),
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-
-    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
-    for (var i = 0; i < serialPins.length; i++) {
-        Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
-    }
-    var code = serialId + '.read()';
-
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-
-/**
- * Code generator for block for setting the serial com speed.
- * Arduino code: setup{ Serial.begin(X); }
- * @param {!Blockly.Block} block Block to generate the code from.
- * @return {array} Completed code.
- */
-Blockly.Arduino['serial_read_string'] = function (block) {
-    var serialId = Blockly.Arduino.variableDB_.getName(
-        block.getFieldValue('SERIAL_ID'),
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-
-    var serialPins = Blockly.Arduino.Boards.selected.serialPins[serialId];
-    for (var i = 0; i < serialPins.length; i++) {
-        Blockly.Arduino.reservePin(block, serialPins[i][1],
-            Blockly.Arduino.pinTypes.SERIAL, 'SERIAL ' + serialPins[i][0]);
-    }
-
-    var func = [];
-    func.push('String ' + Blockly.Arduino.DEF_FUNC_NAME + '(HardwareSerial *serial) {');
-    func.push('  String content = "";');
-    func.push('  content += (char)serial->read();');
-    func.push('  return content;');
-    func.push('}');
-    var funcName = Blockly.Arduino.addFunction(
-        'getSerialChar', func.join('\n'));
-
-    /*var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
-        Blockly.Arduino.ORDER_NONE) || '""';*/
-    var code = funcName + '(&' + serialId + ')';
-
-    //Blockly.Arduino.addSetup('serial_' + serialId, 'Serial.begin(9600);', false);
-
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-
-/**
- * Code generator for block for setting the serial com speed.
- * Arduino code: setup{ Serial.begin(X); }
- * @param {!Blockly.Block} block Block to generate the code from.
  * @return {null} Completed code.
  */
 Blockly.Arduino['bluetooth'] = function (block) {
@@ -202,6 +194,27 @@ Blockly.Arduino['bluetooth'] = function (block) {
  */
 Blockly.Arduino['bluetooth_available'] = function () {
     var code = 'BT.available()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code.
+ */
+Blockly.Arduino['bluetooth_read_string'] = function (block) {
+    var func = [];
+    func.push('String ' + Blockly.Arduino.DEF_FUNC_NAME + '(SoftwareSerial *serial) {');
+    func.push('  String content = "";');
+    func.push('  content += (char)serial->read();');
+    func.push('  return content;');
+    func.push('}');
+    var funcName = Blockly.Arduino.addFunction(
+        'getSoftwareSerialChar', func.join('\n'));
+
+    var code = funcName + '(&BT)';
+
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -229,6 +242,44 @@ Blockly.Arduino['bluetooth_print'] = function (block) {
     } else {
         code = 'BT.print(' + content + ');\n';
     }
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['bluetooth_print_hex'] = function (block) {
+    var decimal = block.getFieldValue('STAT');
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code;
+    if (new_line) {
+        code = 'BT.println(' + content + ', ' + decimal + ');\n';
+    } else {
+        code = 'BT.print(' + content + ', ' + decimal + ');\n';
+    }
+
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['bluetooth_write'] = function (block) {
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code = 'BT.write(' + content + ');\n';
+
     return code;
 };
 
@@ -307,7 +358,13 @@ Blockly.Arduino['softwareserial_available'] = function (block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['softwareserial_read'] = function (block) {
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code.
+ */
+Blockly.Arduino['softwareserial_read_string'] = function (block) {
     var serialId = Blockly.Arduino.variableDB_.getName(
         block.getFieldValue('SERIAL_ID'),
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
@@ -321,13 +378,22 @@ Blockly.Arduino['softwareserial_read'] = function (block) {
     var funcName = Blockly.Arduino.addFunction(
         'getSoftwareSerialChar', func.join('\n'));
 
-    /*var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
-        Blockly.Arduino.ORDER_NONE) || '""';*/
     var code = funcName + '(&' + serialId + ')';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino['softwareserial_read_char'] = function (block) {
+    var serialId = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('SERIAL_ID'),
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    /*var msg = Blockly.Arduino.valueToCode(block, 'TEXT',
+        Blockly.Arduino.ORDER_NONE) || '""';*/
+    var code = serialId + '.read()';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
 Blockly.Arduino['softwareserial_print'] = function (block) {
     var serialId = Blockly.Arduino.variableDB_.getName(
@@ -340,6 +406,50 @@ Blockly.Arduino['softwareserial_print'] = function (block) {
     var code = newline ?
         (serialId + '.println(' + content + ');\n') :
         (serialId + '.print(' + content + ');\n');
+
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['softwareserial_print_hex'] = function (block) {
+    var serialId = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('SERIAL_ID'),
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var decimal = block.getFieldValue('STAT');
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code;
+    if (new_line) {
+        code = serialId + '.println(' + content + ', ' + decimal + ');\n';
+    } else {
+        code = serialId + '.print(' + content + ', ' + decimal + ');\n';
+    }
+
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['softwareserial_write'] = function (block) {
+    var serialId = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('SERIAL_ID'),
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    var new_line = (block.getFieldValue('NEW_LINE') === 'TRUE');
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code = serialId + '.write(' + content + ');\n';
 
     return code;
 };

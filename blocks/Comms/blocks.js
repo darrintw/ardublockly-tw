@@ -28,16 +28,18 @@ Blockly.Blocks['serial_setup'] = {
         this.setHelpUrl('https://arduino.cc/en/Serial/Begin');
         this.setColour(Blockly.Blocks.comms.HUE);
         this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_SERIAL_SETUP)
             .appendField(
                 new Blockly.FieldDropdown(
-                    Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID')
+                    Blockly.Arduino.Boards.selected.serial), 'SERIAL_ID');
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_SERIAL_SPEED)
             .appendField(
                 new Blockly.FieldDropdown(
-                    Blockly.Arduino.Boards.selected.serialSpeed), 'SPEED')
-            .appendField(Blockly.Msg.ARD_SERIAL_BPS);
-        this.setInputsInline(true);
+                    Blockly.Arduino.Boards.selected.serialSpeed), 'SPEED');
+        this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARD_SERIAL_SETUP_TIP);
@@ -47,9 +49,11 @@ Blockly.Blocks['serial_setup'] = {
      * @return {?string} Serial instance name.
      * @this Blockly.Block
      */
+    /*
     getSerialSetupInstance: function () {
         return this.getFieldValue('SERIAL_ID');
     },
+    */
     /**
      * Updates the content of the the serial related fields.
      * @this Blockly.Block
@@ -61,6 +65,103 @@ Blockly.Blocks['serial_setup'] = {
             this, 'SPEED', 'serialSpeed');
     }
 };
+
+Blockly.Blocks['serial_available'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_SERIAL_AVAILABLE_MSG,
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "SERIAL_ID",
+                    "options": Blockly.Arduino.Boards.selected.serial
+                }
+            ],
+            "output": Blockly.Types.BOOLEAN.output,
+            "colour": Blockly.Blocks.comms.HUE,
+            "tooltip": Blockly.Msg.ARD_SERIAL_AVAILABLE_TIP,
+            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
+        });
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    },
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
+
+Blockly.Blocks['serial_read_string'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_SERIAL_READ_STRING_MSG,
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "SERIAL_ID",
+                    "options": Blockly.Arduino.Boards.selected.serial
+                }
+            ],
+            "output": Blockly.Types.STRING.output,
+            "colour": Blockly.Blocks.comms.HUE,
+            "tooltip": Blockly.Msg.ARD_SERIAL_READ_STRING_TIP,
+            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
+        });
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType:
+        function () {
+            return Blockly.Types.STRING;
+        },
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
+
+
+Blockly.Blocks['serial_read_char'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_SERIAL_READ_CHAR_MSG,
+            "args0": [
+                {
+                    "type": "field_dropdown",
+                    "name": "SERIAL_ID",
+                    "options": Blockly.Arduino.Boards.selected.serial
+                }
+            ],
+            "output": Blockly.Types.STRING.output,
+            "colour": Blockly.Blocks.comms.HUE,
+            "tooltip": Blockly.Msg.ARD_SERIAL_READ_CHAR_TIP,
+            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
+        });
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType:
+        function () {
+            return Blockly.Types.CHARACTER;
+        },
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
+
 
 Blockly.Blocks['serial_print'] = {
     /**
@@ -193,104 +294,6 @@ Blockly.Blocks['serial_write'] = {
     }
 };
 
-Blockly.Blocks['serial_available'] = {
-    /**
-     * Block for creating a write to serial com function.
-     * @this Blockly.Block
-     */
-    init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_SERIAL_AVAILABLE_MSG,
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "SERIAL_ID",
-                    "options": Blockly.Arduino.Boards.selected.serial
-                }
-            ],
-            "output": Blockly.Types.BOOLEAN.output,
-            "colour": Blockly.Blocks.comms.HUE,
-            "tooltip": Blockly.Msg.ARD_SERIAL_AVAILABLE_TIP,
-            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
-        });
-    },
-    /** @return {!string} Type of the block, text length always an integer. */
-    getBlockType: function () {
-        return Blockly.Types.NUMBER;
-    },
-    updateFields: function () {
-        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
-            this, 'SERIAL_ID', 'serial');
-    }
-};
-
-
-Blockly.Blocks['serial_read_string'] = {
-    /**
-     * Block for creating a write to serial com function.
-     * @this Blockly.Block
-     */
-    init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_SERIAL_READ_STRING_MSG,
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "SERIAL_ID",
-                    "options": Blockly.Arduino.Boards.selected.serial
-                }
-            ],
-            "output": Blockly.Types.STRING.output,
-            "colour": Blockly.Blocks.comms.HUE,
-            "tooltip": Blockly.Msg.ARD_SERIAL_READ_STRING_TIP,
-            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
-        });
-    },
-    /** @return {!string} Type of the block, text length always an integer. */
-    getBlockType:
-        function () {
-            return Blockly.Types.STRING;
-        },
-    updateFields: function () {
-        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
-            this, 'SERIAL_ID', 'serial');
-    }
-};
-
-
-Blockly.Blocks['serial_read_char'] = {
-    /**
-     * Block for creating a write to serial com function.
-     * @this Blockly.Block
-     */
-    init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_SERIAL_READ_CHAR_MSG,
-            "args0": [
-                {
-                    "type": "field_dropdown",
-                    "name": "SERIAL_ID",
-                    "options": Blockly.Arduino.Boards.selected.serial
-                }
-            ],
-            "output": Blockly.Types.STRING.output,
-            "colour": Blockly.Blocks.comms.HUE,
-            "tooltip": Blockly.Msg.ARD_SERIAL_READ_CHAR_TIP,
-            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
-        });
-    },
-    /** @return {!string} Type of the block, text length always an integer. */
-    getBlockType:
-        function () {
-            return Blockly.Types.CHARACTER;
-        },
-    updateFields: function () {
-        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
-            this, 'SERIAL_ID', 'serial');
-    }
-};
-
-
 Blockly.Blocks['bluetooth'] = {
     /**
      * Block for creating a write to serial com function.
@@ -337,6 +340,25 @@ Blockly.Blocks['bluetooth_available'] = {
     }
 };
 
+Blockly.Blocks['bluetooth_read_string'] = {
+    /**
+     * Block for bluetooth read data.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SERIAL_BLE_READ_STRING_MSG);
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Blocks.comms.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
+    }
+}
+
 Blockly.Blocks['bluetooth_read'] = {
     /**
      * Block for bluetooth read data.
@@ -377,6 +399,63 @@ Blockly.Blocks['bluetooth_print'] = {
     }
 };
 
+Blockly.Blocks['bluetooth_print_hex'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.comms.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SERIAL_BLE_WRITE_MSG);
+        this.appendValueInput("CONTENT", Number);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox('TRUE'), 'NEW_LINE')
+            .appendField(Blockly.Msg.ARD_SERIAL_PRINT_NEWLINE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.ARD_MATH_HEX, "HEX"],
+                [Blockly.Msg.ARD_MATH_BIN, "BIN"],
+                [Blockly.Msg.ARD_MATH_OCT, "OCT"],
+                [Blockly.Msg.ARD_MATH_DEC, "DEC"]
+            ]), "STAT");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_PRINT_HEX_TOOLTIP);
+    },
+    /**
+     * Updates the content of the the serial related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
+
+Blockly.Blocks['bluetooth_write'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl('https://www.arduino.cc/en/Serial/write');
+        this.setColour(Blockly.Blocks.comms.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SERIAL_BLE_WRITE);
+        this.appendValueInput('CONTENT');
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_WRITE_TIP);
+    },
+    /**
+     * Updates the content of the the serial related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
+    }
+};
+
 var at_command_list = [["版本", "VERSION"], ["更名", "NAME"], ["MAC位址", "ADDR"]];
 
 Blockly.Blocks['bluetooth_at_command'] = {
@@ -392,7 +471,7 @@ Blockly.Blocks['bluetooth_at_command'] = {
         this.setTooltip("");
         this.setHelpUrl("");
     },
-     /** @return {!string} Type of the block, text length always an integer. */
+    /** @return {!string} Type of the block, text length always an integer. */
     getBlockType: function () {
         return Blockly.Types.STRING;
     }
@@ -444,6 +523,87 @@ Blockly.Blocks['softwareserial_setup'] = {
     }
 };
 
+Blockly.Blocks['softwareserial_available'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_SOFTWARESERIAL_AVAILABLE_MSG,
+            "args0": [
+                {
+                    "type": "field_variable",
+                    "name": "SERIAL_ID",
+                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
+                }
+            ],
+            "output": Blockly.Types.NUMBER.output,
+            "colour": Blockly.Blocks.comms.HUE,
+            "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_AVAILABLE_TIP,
+            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
+        });
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    }
+};
+
+Blockly.Blocks['softwareserial_read_string'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_SOFTWARESERIAL_READ_STRING_MSG,
+            "args0": [
+                {
+                    "type": "field_variable",
+                    "name": "SERIAL_ID",
+                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
+                }
+            ],
+            "output": Blockly.Types.STRING.output,
+            "colour": Blockly.Blocks.comms.HUE,
+            "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_READ_STRING_TIP,
+            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
+        });
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
+    }
+};
+
+Blockly.Blocks['softwareserial_read_char'] = {
+    /**
+     * Block for creating a write to serial com function.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.jsonInit({
+            "message0": Blockly.Msg.ARD_SOFTWARESERIAL_READ_MSG,
+            "args0": [
+                {
+                    "type": "field_variable",
+                    "name": "SERIAL_ID",
+                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
+                }
+            ],
+            "output": Blockly.Types.STRING.output,
+            "colour": Blockly.Blocks.comms.HUE,
+            "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_READ_TIP,
+            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
+        });
+    },
+    /** @return {!string} Type of the block, text length always an integer. */
+    getBlockType: function () {
+        return Blockly.Types.STRING;
+    }
+};
+
 Blockly.Blocks['softwareserial_print'] = {
     /**
      * Block for creating a write to serial com function.
@@ -478,56 +638,63 @@ Blockly.Blocks['softwareserial_print'] = {
     }
 };
 
-Blockly.Blocks['softwareserial_available'] = {
+Blockly.Blocks['softwareserial_print_hex'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.comms.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SOFTWARESERIAL)
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'SERIAL_ID')
+            .appendField(Blockly.Msg.ARD_SERIAL_PRINT);
+        this.appendValueInput("CONTENT", Number);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox('TRUE'), 'NEW_LINE')
+            .appendField(Blockly.Msg.ARD_SERIAL_PRINT_NEWLINE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.ARD_MATH_HEX, "HEX"],
+                [Blockly.Msg.ARD_MATH_BIN, "BIN"],
+                [Blockly.Msg.ARD_MATH_OCT, "OCT"],
+                [Blockly.Msg.ARD_MATH_DEC, "DEC"]
+            ]), "STAT");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_PRINT_HEX_TOOLTIP);
+    },
     /**
-     * Block for creating a write to serial com function.
+     * Updates the content of the the serial related fields.
      * @this Blockly.Block
      */
-    init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_SOFTWARESERIAL_AVAILABLE_MSG,
-            "args0": [
-                {
-                    "type": "field_variable",
-                    "name": "SERIAL_ID",
-                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
-                }
-            ],
-            "output": Blockly.Types.NUMBER.output,
-            "colour": Blockly.Blocks.comms.HUE,
-            "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_AVAILABLE_TIP,
-            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
-        });
-    },
-    /** @return {!string} Type of the block, text length always an integer. */
-    getBlockType: function () {
-        return Blockly.Types.NUMBER;
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
     }
 };
 
-Blockly.Blocks['softwareserial_read'] = {
+Blockly.Blocks['softwareserial_write'] = {
     /**
      * Block for creating a write to serial com function.
      * @this Blockly.Block
      */
     init: function () {
-        this.jsonInit({
-            "message0": Blockly.Msg.ARD_SOFTWARESERIAL_READ_MSG,
-            "args0": [
-                {
-                    "type": "field_variable",
-                    "name": "SERIAL_ID",
-                    "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
-                }
-            ],
-            "output": Blockly.Types.STRING.output,
-            "colour": Blockly.Blocks.comms.HUE,
-            "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_READ_TIP,
-            "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
-        });
+        this.setHelpUrl('https://www.arduino.cc/en/Serial/write');
+        this.setColour(Blockly.Blocks.comms.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SOFTWARESERIAL)
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'SERIAL_ID')
+            .appendField(Blockly.Msg.ARD_SERIAL_WRITE);
+        this.appendValueInput('CONTENT');
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_PRINT_TIP);
     },
-    /** @return {!string} Type of the block, text length always an integer. */
-    getBlockType: function () {
-        return Blockly.Types.STRING;
+    /**
+     * Updates the content of the the serial related fields.
+     * @this Blockly.Block
+     */
+    updateFields: function () {
+        Blockly.Arduino.Boards.refreshBlockFieldDropdown(
+            this, 'SERIAL_ID', 'serial');
     }
 };
