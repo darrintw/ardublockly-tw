@@ -18,7 +18,8 @@ goog.require('Blockly.Msg.en');
 /// Toolbox category name
 Blockly.Msg.BLOCKS_CATEGORY_COMMS = 'Serial';
 
-/// Ardublockly name
+/// Serial
+Blockly.Msg.BLOCKS_CATEGORY_SERIAL = "Serial";
 Blockly.Msg.ARD_SERIAL_BPS = "bps";
 Blockly.Msg.ARD_SERIAL_PRINT_MSG = "%1 print %2 %3 add new line";
 Blockly.Msg.ARD_SERIAL_PRINT = "send";
@@ -42,6 +43,7 @@ Blockly.Msg.ARD_SERIAL_READ_STRING_MSG = "Read string from serial %1";
 Blockly.Msg.ARD_SERIAL_READ_STRING_TIP = "Read string from software serial port";
 
 //Bluetooth
+Blockly.Msg.BLOCKS_CATEGORY_BLUETOOTH = "Bluetooth";
 Blockly.Msg.ARD_SERIAL_BLUETOOTH = "Bluetooth";
 Blockly.Msg.ARD_SERIAL_TX_PIN = "Rx Pin";
 Blockly.Msg.ARD_SERIAL_RX_PIN = "Tx Pin";
@@ -49,9 +51,12 @@ Blockly.Msg.ARD_SERIAL_BAUDRATE = "Baud Rate";
 Blockly.Msg.ARD_SERIAL_BLE_AVAILABLE_MSG = "characters available from bluetooth?";
 Blockly.Msg.ARD_SERIAL_BLE_READ_MSG = "Get characters from bluetooth";
 Blockly.Msg.ARD_SERIAL_BLE_WRITE_MSG = "Write characters to bluetooth";
+Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_MSG = "Send AT command ";
+Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_AS = " as ";
 
 //SoftwareSerial
-Blockly.Msg.ARD_SOFTWARESERIAL_SETUP_MSG = "Setup software serial port";
+Blockly.Msg.BLOCKS_CATEGORY_SOFTWARESERIAL = "Software serial";
+Blockly.Msg.ARD_SOFTWARESERIAL_SETUP_MSG = "Setup software serial";
 Blockly.Msg.ARD_SOFTWARESERIAL_SETUP_TIP = "Setup software serial port";
 Blockly.Msg.ARD_SOFTWARESERIAL_PRINT_MSG = "Print %2 %3 add newline to software serial %1 ";
 Blockly.Msg.ARD_SOFTWARESERIAL_PRINT_TIP = "Print text to software serial port";

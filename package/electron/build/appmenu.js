@@ -118,6 +118,13 @@ var getFileMenuData = function () {
                         .executeJavaScript('Ardublockly.saveXmlFile()');
                 }
             }, {
+                label: '另存積木圖',
+                accelerator: 'Shift+CmdOrCtrl+p',
+                click: function () {
+                    BrowserWindow.getFocusedWindow().webContents
+                        .executeJavaScript('Ardublockly.downloadScreenshot()');
+                }
+            }, {
                 label: '另存Arduino檔',
                 accelerator: 'Shift+CmdOrCtrl+S',
                 click: function () {

@@ -182,7 +182,25 @@
         <div class="ide_output_wrapper">
         </div>
         <div id="right_panel" class="col s12 m12 l4" style="display: none">
-            <ul class="collapsible z-depth-1" data-collapsible="accordion">
+            <div class="collapsible-header active">
+                <span class="collapsible_logo">{ }</span>
+                <span class="translatable_arduinoSourceCode">Arduino 草稿碼</span>
+            </div>
+            <div class="content" style="position:relative">
+                <pre id="content_arduino" class="content content_arduino_medium"></pre>
+            </div>
+            <div class="hide" id="xml_collapsible_header">
+                <span class="collapsible_logo">&#60; &#62;</span>
+                <span class="translatable_blocksXml">積木 XML 標籤碼</span>
+            </div>
+            <div class="hide" style="position:relative" id="xml_collapsible_body">
+                <a class="btn-floating btn-large waves-effect waves-light arduino_teal z-depth-1-half"
+                   id="button_load_xml"><i class="mdi-action-extension"></i></a>
+                <label for="content_xml"><textarea id="content_xml"
+                                                   class="content content_height_transition content_xml_large"
+                                                   wrap="soft"></textarea></label>
+            </div>
+            <!--ul class="content z-depth-1" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header active">
                         <span class="collapsible_logo">{ }</span>
@@ -192,7 +210,7 @@
                         <pre id="content_arduino" class="content content_height_transition content_arduino_large"></pre>
                     </div>
                 </li>
-                <li>
+                <li class="hide">
                     <div class="collapsible-header" id="xml_collapsible_header">
                         <span class="collapsible_logo">&#60; &#62;</span>
                         <span class="translatable_blocksXml">積木 XML 標籤碼</span>
@@ -205,7 +223,7 @@
                                                            wrap="soft"></textarea></label>
                     </div>
                 </li>
-            </ul>
+            </ul-->
         </div>
     </div>
 </div>

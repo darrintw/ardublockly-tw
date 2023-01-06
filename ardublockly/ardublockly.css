@@ -35,6 +35,9 @@ body {
     user-select: none;
 }
 
+.hide{
+    display: none;
+}
 
 /*********************/
 /*  Arduino Colours  */
@@ -212,6 +215,13 @@ ul.side-nav li.side-menu-end {
     height: -webkit-calc(100vh - 280px); /* WebKit   */
     height: -o-calc(100vh - 280px); /* Opera    */
     height: calc(100vh - 280px); /* Standard */
+}
+
+.content_arduino_medium {
+    height: -moz-calc(100vh - 228px); /* Firefox  */
+    height: -webkit-calc(100vh - 228px); /* WebKit   */
+    height: -o-calc(100vh - 228px); /* Opera    */
+    height: calc(100vh - 228px); /* Standard */
 }
 
 .content_arduino_small {

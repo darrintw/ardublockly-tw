@@ -17,17 +17,6 @@ const tagSrv = '[ArdublocklySrv] ';
 var serverProcess = null;
 
 module.exports.startServer = function () {
-    var oldSpawn = childProcess.spawn;
-
-    function mySpawn() {
-        winston.info('spawn called');
-        winston.info(arguments);
-        var result = oldSpawn.apply(this, arguments);
-        return result;
-    }
-
-    childProcess.spawn = mySpawn;
-
     if (serverProcess === null) {
         var serverExecLocation = projectLocator.getServerExecPath();
         winston.info(tagMgr + 'Command: ' + serverExecLocation +

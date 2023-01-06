@@ -14,6 +14,7 @@ import subprocess
 import sys
 import time
 import psutil
+import winreg
 # local-packages imports
 import six
 # This package modules
@@ -500,16 +501,39 @@ def load_putty_cli():
     exit_code = 0
 
     settings = ServerCompilerSettings()
+    serialPort = settings.get_serial_port_flag()
+    buad = settings.get_baud_rate()
 
-    if not settings.get_serial_port_flag():
+    if not serialPort:
         success = False
         exit_code = 55
         err_out = 'Serial Port configured in Settings not accessible.'
 
     if success:
-        baud = settings.get_baud_rate()
-        cli_command = ['putty.exe', '-serial', settings.get_serial_port_flag(), '-sercfg', baud]
-        # print(cli_command)
+        try:
+            access_registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+            puttyKey = winreg.CreateKey(access_registry, r'SOFTWARE\SimonTatham\PuTTY\Sessions\ardublockly')
+            winreg.SetValueEx(puttyKey, 'Colour0', 0, winreg.REG_SZ, "150, 150, 150")
+            winreg.SetValueEx(puttyKey, 'Colour1', 0, winreg.REG_SZ, "0, 0, 0")
+            winreg.SetValueEx(puttyKey, 'Colour2', 0, winreg.REG_SZ, "255, 255, 255")
+            winreg.SetValueEx(puttyKey, 'Font', 0, winreg.REG_SZ, "Courier New")
+            winreg.SetValueEx(puttyKey, 'FontCharSet', 0, winreg.REG_DWORD, 0)
+            winreg.SetValueEx(puttyKey, 'FontHeight', 0, winreg.REG_DWORD, 20)
+            winreg.SetValueEx(puttyKey, 'FontIsBold', 0, winreg.REG_DWORD, 1)
+            winreg.SetValueEx(puttyKey, 'LocalEcho', 0, winreg.REG_DWORD, 0)
+            winreg.SetValueEx(puttyKey, 'LocalEdit', 0, winreg.REG_DWORD, 0)
+            winreg.SetValueEx(puttyKey, 'Protocol', 0, winreg.REG_SZ, "serial")
+            winreg.SetValueEx(puttyKey, 'SerialLine', 0, winreg.REG_SZ, serialPort)
+            winreg.SetValueEx(puttyKey, 'SerialSpeed', 0, winreg.REG_DWORD, int(buad))
+            winreg.SetValueEx(puttyKey, 'WinNameAlways', 0, winreg.REG_DWORD, 1)
+            winreg.SetValueEx(puttyKey, 'WinTitle', 0, winreg.REG_SZ, serialPort + "(" + buad + ")")
+            winreg.CloseKey(access_registry)
+        except Exception as e:
+            print(e)
+
+        # cli_command = ['putty.exe', '-serial', settings.get_serial_port_flag(), '-sercfg', baud]
+        cli_command = ['putty.exe', '-load', 'ardublockly']
+        print(cli_command)
         print('\nOpen putty...')
         prog_start = subprocess.Popen(cli_command, shell=False)
 
@@ -532,6 +556,13 @@ def kill_putty_cli():
             c.kill()
         prog_pid.kill()
         exit_code = 1
+    except Exception as e:
+        print(e)
+
+    try:
+        access_registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+        winreg.DeleteKey(access_registry, r'SOFTWARE\SimonTatham\PuTTY\Sessions\ardublockly')
+        winreg.CloseKey(access_registry)
     except Exception as e:
         print(e)
 

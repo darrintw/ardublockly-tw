@@ -7,6 +7,7 @@ goog.require('Blockly.Msg');
 Blockly.Msg.BLOCKS_CATEGORY_COMMS = '序列埠';
 
 //Serial
+Blockly.Msg.BLOCKS_CATEGORY_SERIAL = "序列埠";
 Blockly.Msg.ARD_SERIAL_BPS = "位元/秒";
 Blockly.Msg.ARD_SERIAL_PRINT_MSG = "從序列埠 %1 送出 %2 訊息後 %3 換行";
 Blockly.Msg.ARD_SERIAL_PRINT = "送出";
@@ -31,17 +32,19 @@ Blockly.Msg.ARD_SERIAL_READ_STRING_MSG = "從序列埠 %1 讀取字串";
 Blockly.Msg.ARD_SERIAL_READ_STRING_TIP = "從序列埠讀取 1 個字串";
 
 //Bluetooth
-Blockly.Msg.ARD_SERIAL_BLUETOOTH = "藍芽";
+Blockly.Msg.BLOCKS_CATEGORY_BLUETOOTH = "藍牙";
+Blockly.Msg.ARD_SERIAL_BLUETOOTH = "藍牙";
 Blockly.Msg.ARD_SERIAL_TX_PIN = "傳送腳位";
 Blockly.Msg.ARD_SERIAL_RX_PIN = "接收腳位";
 Blockly.Msg.ARD_SERIAL_BAUDRATE = "序列通訊速度";
-Blockly.Msg.ARD_SERIAL_BLE_AVAILABLE_MSG = "藍芽有效資料?";
-Blockly.Msg.ARD_SERIAL_BLE_READ_MSG = "從藍芽讀取字元";
-Blockly.Msg.ARD_SERIAL_BLE_WRITE_MSG = "藍芽送出";
+Blockly.Msg.ARD_SERIAL_BLE_AVAILABLE_MSG = "藍牙有效資料?";
+Blockly.Msg.ARD_SERIAL_BLE_READ_MSG = "從藍牙讀取字元";
+Blockly.Msg.ARD_SERIAL_BLE_WRITE_MSG = "藍牙送出";
 Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_MSG = "送出AT指令 ";
 Blockly.Msg.ARD_SERIAL_BLE_AT_CMD_AS = " 為 ";
 
 //SoftwareSerial
+Blockly.Msg.BLOCKS_CATEGORY_SOFTWARESERIAL = "軟體序列埠";
 Blockly.Msg.ARD_SOFTWARESERIAL_SETUP_MSG = "設定軟體序列埠";
 Blockly.Msg.ARD_SOFTWARESERIAL_SETUP_TIP = "選取軟體序列埠的腳位與傳輸速度";
 Blockly.Msg.ARD_SOFTWARESERIAL_PRINT_MSG = "從軟體序列埠 %1 送出 %2 %3 換行";

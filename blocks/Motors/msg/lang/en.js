@@ -7,6 +7,7 @@ goog.require('Blockly.Msg');
 Blockly.Msg.BLOCKS_CATEGORY_MOTORS = 'Motor';
 
 /// Servo
+Blockly.Msg.BLOCKS_CATEGORY_SERVO = "SERVO";
 Blockly.Msg.ARD_SERVO_VAR = "SERVO variable";
 Blockly.Msg.ARD_SERVO_ATTACH = "attach SERVO from Pin";
 Blockly.Msg.ARD_SERVO_PIN = "Pin";
@@ -26,17 +27,21 @@ Blockly.Msg.ARD_SERVO_READ_TIP = "Read a Servo angle";
 Blockly.Msg.ARD_SERVO_DETACH = "detach SERVO from Pin";
 Blockly.Msg.ARD_SERVO_DETACH_TIP = "";
 
-/// AFMorot
-Blockly.Msg.ARD_AFMOROT = 'L293D Car';
-Blockly.Msg.ARD_AFMOROT_CONTROL = 'Command';
-Blockly.Msg.ARD_AFMOROT_FORWARD = 'Forward';
-Blockly.Msg.ARD_AFMOROT_BACKWARD = 'Backward';
-Blockly.Msg.ARD_AFMOROT_RELEASE = 'Stop';
-Blockly.Msg.ARD_AFMOROT_CHANNEL = 'AFMotor channel';
+/// AFMotor
+Blockly.Msg.BLOCKS_CATEGORY_AFMOTOR = 'L293D Motor';
+
+Blockly.Msg.ARD_AFMOTOR = 'L293D Car';
+Blockly.Msg.ARD_AFMOTOR_CONTROL = 'Command';
+Blockly.Msg.ARD_AFMOTOR_FORWARD = 'Forward';
+Blockly.Msg.ARD_AFMOTOR_BACKWARD = 'Backward';
+Blockly.Msg.ARD_AFMOTOR_RELEASE = 'Stop';
+Blockly.Msg.ARD_AFMOTOR_CHANNEL = 'AFMotor channel';
 Blockly.Msg.ARD_AFMOTOR_SPEED = 'AFMotor speed';
 Blockly.Msg.ARD_AFMOTOR_TIP = "";
 
 /// Stepper
+Blockly.Msg.BLOCKS_CATEGORY_STEPPERMOTOR = 'Stepper Motor';
+
 Blockly.Msg.ARD_STEPPER = 'Stepper';
 Blockly.Msg.ARD_STEPPER_SETUP_4PIN = "Stepper 4pin";
 Blockly.Msg.ARD_STEPPER_PIN1 = "PIN1#";
