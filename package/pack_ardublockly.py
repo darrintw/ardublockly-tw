@@ -221,7 +221,8 @@ def copy_ardublockly_folder():
                   ".ruby-version", "TestTemp_*", "package", ".coverage's", "ardublockly.iml",
                   "ardublockly.log", "run.bat", "run_dev.bat", "ServerCompilerSettings.ini",
                   "pack.bat", "buildBlockly.cmd", "build.bat", "test.py", "update.bat", ".git*",
-                  "sync.ffs_db", "FETCH_HEAD", "*.pack", "start.py", "package_index.json.sig")
+                  "sync.ffs_db", "FETCH_HEAD", "*.pack", "start.py", "package_index.json.sig",
+                  "ardublocklyserver", "closure-library")
     if not os.path.exists(copied_project_dir):
         print(script_tab + "Copying contents of %s" % project_root_dir)
         print(script_tab + "               into %s" % copied_project_dir)
