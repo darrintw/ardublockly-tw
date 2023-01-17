@@ -9,6 +9,7 @@ Ardublockly.LOCALISED_TEXT = {
     save: "儲存",
     open_block: "開啟積木檔",
     save_block: "儲存積木檔",
+    save_block_png: "儲存積木圖",
     save_sketch: "儲存Arduino檔",
     redo: "重作",
     undo: "復原",
