@@ -29,8 +29,8 @@ Blockly.Msg.BLOCKS_PIXETTO_CATEGORY = "Pixetto";
 /// Ardublockly name
 Blockly.Msg.PIXETTO_WARN = "A setup block for %1 must be added to the workspace to use this block!";
 Blockly.Msg.PIXETTO_INITIAL = "Initial Vision Sensor感測器";
-Blockly.Msg.PIXETTO_RX = "RX#";
-Blockly.Msg.PIXETTO_TX = "TX#";
+Blockly.Msg.PIXETTO_RX = "RX(Y)#";
+Blockly.Msg.PIXETTO_TX = "TX(W)#";
 Blockly.Msg.PIXETTO_UVC = "enable UVC mode";
 Blockly.Msg.PIXETTO_UVC_CLOSE = "close";
 Blockly.Msg.PIXETTO_UVC_OPEN = "open";

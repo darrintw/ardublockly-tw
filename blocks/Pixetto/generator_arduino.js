@@ -20,7 +20,7 @@ Blockly.Arduino['pixetto_setup'] = function (block) {
     Blockly.Arduino.addInclude('Pixetto_inc', '#include <Pixetto.h>');
     Blockly.Arduino.addVariable("ss", 'Pixetto ' + pixettoId + '(' + rxPin + ', ' + txPin + ');', true);
 
-    var code = pixettoId + '.begin();\n';
+    var code = pixettoId + '.begin();\n' + 'delay(1000); //等待Pixetto開機，避免Pixetto進入當機模式\n';
 
     return code;
 };
@@ -227,7 +227,7 @@ Blockly.Arduino['pixetto_keypoints_detection'] = function (block) {
         "ss",
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    var code = pixettoId + '.getFuncID() == Pixetto::FUNC_KEYPOINTS_MATCHING && ' +
+    var code = pixettoId + '.getFuncID() == Pixetto::FUNC_KEYPOINTS && ' +
         pixettoId + '.getTypeID() == ' + pixettoKeypoints;
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
