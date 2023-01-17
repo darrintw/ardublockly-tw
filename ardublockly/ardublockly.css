@@ -28,13 +28,15 @@ body {
 
 body {
     background-color: #eeeeee;
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
+    -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
+.hide{
+    display: none;
+}
 
 /*********************/
 /*  Arduino Colours  */
@@ -87,7 +89,7 @@ body {
         right: 0;
         left: 0;
         top: 0;
-        margin-bottom: 0px;
+        margin-bottom: 0;
         z-index: 997;
     }
 }
@@ -95,8 +97,8 @@ body {
 /* Side nav Logo */
 ul.side-nav li.logo {
     text-align: center;
-    margin: 0px !important;
-    padding: 0px 0px !important;
+    margin: 0 !important;
+    padding: 0 0 !important;
     border: none !important;
     height: 145px;
     background-color: transparent;
@@ -108,7 +110,7 @@ ul.side-nav li.logo:hover {
 
 ul.side-nav li.side-menu-end {
     background-color: #eeeeee;
-    border-radius: 0px 0px 25px 0px;
+    border-radius: 0 0 25px 0;
     border-left: 4px solid #ffffff;
     border-bottom: 4px solid #dddddd;
     border-right: 4px solid #dddddd;
@@ -134,7 +136,7 @@ ul.side-nav li.side-menu-end {
 }
 
 #blocks_panel {
-    padding: 0px;
+    padding: 0;
     position: relative !important;
     min-height: 480px;
 }
@@ -142,14 +144,12 @@ ul.side-nav li.side-menu-end {
 .blocks_panel_large {
     height: -moz-calc(100vh - 190px); /* Firefox  */
     height: -webkit-calc(100vh - 190px); /* WebKit   */
-    height: -o-calc(100vh - 190px); /* Opera    */
     height: calc(100vh - 190px); /* Standard */
 }
 
 .blocks_panel_small {
     height: -moz-calc(100vh - 350px); /* Firefox  */
     height: -webkit-calc(100vh - 350px); /* WebKit   */
-    height: -o-calc(100vh - 350px); /* Opera    */
     height: calc(100vh - 350px); /* Standard */
 }
 
@@ -159,7 +159,6 @@ ul.side-nav li.side-menu-end {
     min-height: 480px;
     height: -moz-calc(100vh - 190px); /* Firefox  */
     height: -webkit-calc(100vh - 190px); /* WebKit   */
-    height: -o-calc(100vh - 190px); /* Opera    */
     height: calc(100vh - 190px); /* Standard */
 }
 
@@ -167,25 +166,24 @@ ul.side-nav li.side-menu-end {
     resize: none;
     outline: none;
     border: none;
-    padding: 0px 5px;
+    padding: 0 5px;
     font-family: monospace;
     font-size: large;
+    /*font-size: large;*/
     overflow: scroll;
-    font-style: 0.9em !important;
+    /*font-style: 0.9em !important;*/
     min-height: 384px;
 }
 
 .content_xml_large {
     height: -moz-calc(100vh - 286px); /* Firefox  */
     height: -webkit-calc(100vh - 286px); /* WebKit   */
-    height: -o-calc(100vh - 286px); /* Opera    */
     height: calc(100vh - 286px); /* Standard */
 }
 
 .content_xml_small {
     height: -moz-calc(100vh - 446px); /* Firefox  */
     height: -webkit-calc(100vh - 446px); /* WebKit   */
-    height: -o-calc(100vh - 446px); /* Opera    */
     height: calc(100vh - 446px); /* Standard */
 }
 
@@ -195,12 +193,11 @@ ul.side-nav li.side-menu-end {
     resize: none;
     outline: none;
     border: none;
-    padding: 0px 5px;
+    padding: 0 5px;
     font-size: 0.9rem;
     font-family: "Droid Sans Mono", monospace;
     overflow: auto;
     -moz-user-select: text;
-    -khtml-user-select: text;
     -webkit-user-select: text;
     -ms-user-select: text;
     user-select: text;
@@ -210,14 +207,18 @@ ul.side-nav li.side-menu-end {
 .content_arduino_large {
     height: -moz-calc(100vh - 280px); /* Firefox  */
     height: -webkit-calc(100vh - 280px); /* WebKit   */
-    height: -o-calc(100vh - 280px); /* Opera    */
     height: calc(100vh - 280px); /* Standard */
+}
+
+.content_arduino_medium {
+    height: -moz-calc(100vh - 228px); /* Firefox  */
+    height: -webkit-calc(100vh - 228px); /* WebKit   */
+    height: calc(100vh - 228px); /* Standard */
 }
 
 .content_arduino_small {
     height: -moz-calc(100vh - 440px); /* Firefox  */
     height: -webkit-calc(100vh - 440px); /* WebKit   */
-    height: -o-calc(100vh - 440px); /* Opera    */
     height: calc(100vh - 440px); /* Standard */
 }
 
@@ -234,7 +235,7 @@ ul.side-nav li.side-menu-end {
 }
 
 .ide_output_collapsible {
-    box-shadow: 0 0px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-left: 0;
     border-right: 0;
 }
@@ -288,14 +289,14 @@ ul.side-nav li.side-menu-end {
     resize: none;
     outline: none;
     border: none;
-    padding: 0px 5px;
+    padding: 0 5px;
     font-family: monospace;
     overflow: auto;
-    font-style: 0.2em !important;
+    font-size: 0.2em !important;
+    /*font-style: 0.2em !important;*/
     min-height: 200px;
     max-height: 200px;
     -moz-user-select: text;
-    -khtml-user-select: text;
     -webkit-user-select: text;
     -ms-user-select: text;
     user-select: text;
@@ -307,13 +308,13 @@ ul.side-nav li.side-menu-end {
 #content_ide_output .arduino_dialog_success {
     color: #00979C; /* arduino light teal */
     font-size: 1.2rem;
-    margin: 16px 0px 8px 0px;
+    margin: 16px 0 8px 0;
 }
 
 #content_ide_output .arduino_dialog_failure {
     color: #E47128; /* arduino orange */
     font-size: 1.2rem;
-    margin: 16px 0px 8px 0px;
+    margin: 16px 0 8px 0;
 }
 
 #content_ide_output .arduino_dialog_out {
@@ -366,8 +367,8 @@ ul.side-nav li.side-menu-end {
 
 #button_ide_large {
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     width: 55px;
     height: 55px;
 }
@@ -474,7 +475,7 @@ ul.side-nav li.side-menu-end {
 .button_toggle_toolbox_off {
     position: absolute;
     margin: 0 !important;
-    padding: 0px !important;
+    padding: 0 !important;
     left: 12px;
     top: 8px;
     text-align: center;
@@ -488,8 +489,8 @@ ul.side-nav li.side-menu-end {
 /*****************************/
 .ide_loader {
     position: absolute !important;
-    right: 0px !important;
-    top: 0px !important;
+    right: 0 !important;
+    top: 0 !important;
     width: 55px !important;
     height: 55px !important;
     z-index: 5;
@@ -551,12 +552,12 @@ ul.side-nav li.side-menu-end {
 /************************/
 /* Large modal section blocks */
 .modal_section {
-    margin: 24px 0px;
+    margin: 24px 0;
     width: 100%;
 }
 
 .modal_example {
-    margin: 24px 0px;
+    margin: 24px 0;
     font-size: xx-large;
     width: 100%;
 }
@@ -606,7 +607,7 @@ ul.side-nav li.side-menu-end {
 
 /* Footer buttons padding */
 .modal_right_button {
-    margin: 0px 0px 0px 48px !important;
+    margin: 0 0 0 48px !important;
 }
 
 /* Small modal responsive design */
@@ -669,7 +670,7 @@ ul.side-nav li.side-menu-end {
     line-height: 64px;
     height: 3rem !important;
     font-size: 1.5rem !important;
-    border-bottom: 0px solid #EEE !important;
+    border-bottom: 0 solid #EEE !important;
     font-style: italic;
     color: whitesmoke;
 }
@@ -744,14 +745,13 @@ ul.side-nav li.side-menu-end {
 
 /* Toolbox */
 .blocklyToolboxDiv {
-    border-color: #e0e0e0 !important;
-    border-width: 0px 1px 0px 0px !important;
-    -webkit-border-radius: 0px 4px 4px 0px !important;
-    -moz-border-radius: 4px 4px 0px 0px !important;
-    border-radius: 0px 4px 4px 0px !important;
-    border: none !important;
-    margin: 0px !important;
-    padding: 0px 0px 0px 0px !important;
+    -webkit-border-radius: 0 4px 4px 0 !important;
+    -moz-border-radius: 4px 4px 0 0 !important;
+    border-radius: 0 4px 4px 0 !important;
+    border: 0 none #e0e0e0 !important;
+    border-right-width: 1px !important;
+    margin: 0 !important;
+    padding: 0 0 0 0 !important;
     background: rgba(98, 174, 178, .2) !important; /* Arduino Light Teal */
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -762,11 +762,10 @@ ul.side-nav li.side-menu-end {
 .blocklyTreeRoot {
     background: none !important;
     border: none !important;
-    margin: 36px 0px 0px 0px !important;
-    padding: 0px 1px !important;
+    margin: 36px 0 0 0 !important;
+    padding: 0 1px !important;
     height: -moz-calc(100% - 37px); /* Firefox  */
     height: -webkit-calc(100% - 37px); /* WebKit   */
-    height: -o-calc(100% - 37px); /* Opera    */
     height: calc(100% - 37px); /* Standard */
     overflow-x: hidden;
     overflow-y: auto;
@@ -775,8 +774,8 @@ ul.side-nav li.side-menu-end {
 .blocklyTreeRow {
     background: none !important;
     border: none !important;
-    margin: 0px 0px !important;
-    padding: 7px 16px 7px 0px !important;
+    margin: 0 0 !important;
+    padding: 7px 16px 7px 0 !important;
     box-sizing: content-box !important;
 }
 
@@ -792,17 +791,17 @@ ul.side-nav li.side-menu-end {
 }
 
 .blocklyTreeSeparator {
-    padding: 0px !important;
-    margin: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* Toolbox second column with blocks*/
 .blocklyFlyoutBackground {
     fill: #DEEEEF !important;
     fill-opacity: 0.7 !important;
-    -webkit-border-radius: 0px 4px 4px 0px !important;
-    -moz-border-radius: 0px 4px 4px 0px !important;
-    border-radius: 0px 4px 4px 0px !important;
+    -webkit-border-radius: 0 4px 4px 0 !important;
+    -moz-border-radius: 0 4px 4px 0 !important;
+    border-radius: 0 4px 4px 0 !important;
 }
 
 /* Blockly scrollbars */
@@ -812,7 +811,7 @@ ul.side-nav li.side-menu-end {
 }
 
 .blocklyScrollbarBackground {
-    stroke-width: 0px !important;
+    stroke-width: 0 !important;
     fill: none !important;
 }
 
@@ -854,7 +853,7 @@ ul.side-nav li.side-menu-end {
 /* Maximize horizontal space for mobile */
 @media only screen and (min-width: 0px) and (max-width: 600px) {
     body {
-        padding-top: 0px;
+        padding-top: 0;
     }
 
     /* Expand to all visible horizontal space */
@@ -866,7 +865,7 @@ ul.side-nav li.side-menu-end {
 
     nav {
         margin: 0 !important;
-        padding: 0px 12px !important;
+        padding: 0 12px !important;
     }
 
     /* remove space between cards and navigation bar */
@@ -877,7 +876,7 @@ ul.side-nav li.side-menu-end {
 
 /* Increase the text size of the side menu */
 ul.side-nav {
-    padding: 0px !important;
+    padding: 0 !important;
     line-height: 64px !important;
 }
 

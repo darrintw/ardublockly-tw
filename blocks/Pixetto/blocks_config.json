@@ -9,8 +9,8 @@
   "toolbox": [
     "<category>",
     "  <block type=\"pixetto_setup\">",
-    "    <field name=\"PIXETTO_RX\">A5</field>",
-    "    <field name=\"PIXETTO_TX\">A4</field>",
+    "    <field name=\"PIXETTO_RX\">A4</field>",
+    "    <field name=\"PIXETTO_TX\">A5</field>",
     "  </block>",
     "  <block type=\"pixetto_function\"></block>",
     "  <block type=\"pixetto_detected\"></block>",

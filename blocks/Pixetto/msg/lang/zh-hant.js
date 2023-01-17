@@ -10,8 +10,8 @@ Blockly.Msg.BLOCKS_CATEGORY_PIXETTO = "Pixetto";
 /// Ardublockly name
 Blockly.Msg.PIXETTO_WARN = "要先設定 %1 後才能正確使用!";
 Blockly.Msg.PIXETTO_INITIAL = "初始化視覺感測器";
-Blockly.Msg.PIXETTO_RX = "接收腳位";
-Blockly.Msg.PIXETTO_TX = "傳送腳位";
+Blockly.Msg.PIXETTO_RX = "接收(黃)腳位";
+Blockly.Msg.PIXETTO_TX = "傳送(白)腳位";
 Blockly.Msg.PIXETTO_UVC = "開啟 UVC 模式";
 Blockly.Msg.PIXETTO_UVC_CLOSE = "關閉";
 Blockly.Msg.PIXETTO_UVC_OPEN = "開啟";

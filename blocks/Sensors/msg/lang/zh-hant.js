@@ -16,7 +16,7 @@ Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH = "英吋";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE = "超聲波回傳距離";
 
 /// TRTC5000
-Blockly.Msg.BLOCKS_CATEGORY_TCRT5000 = "紅外線光感測器";
+Blockly.Msg.BLOCKS_CATEGORY_TCRT5000 = "紅外線測器(TCRT5000)";
 Blockly.Msg.ARD_TRTC5000_FROM = "從";
 Blockly.Msg.ARD_TRTC5000_READ = "讀取 紅外線光感測器 的數值 \u207B";
 Blockly.Msg.ARD_TRTC5000_TIP = 'TRTC5000專用，數值為1023(白)~0(黑)';
