@@ -326,7 +326,8 @@ Blockly.Blocks['pixetto_function'] = {
             [Blockly.Msg.PIXETTO_FLD, 'FUNC_LANES_DETECTION'],
             [Blockly.Msg.PIXETTO_FED, 'FUNC_EQUATION_DETECTION'],
             [Blockly.Msg.PIXETTO_FSC, 'FUNC_SIMPLE_CLASSIFIER'],
-            [Blockly.Msg.PIXETTO_FVC, 'FUNC_VOICE_COMMAND']
+            [Blockly.Msg.PIXETTO_FVC, 'FUNC_VOICE_COMMAND'],
+            [Blockly.Msg.PIXETTO_FEE, '18'],
         ],
             this.appendDummyInput()
                 .appendField(Blockly.Msg.PIXETTO_FUNC)
@@ -373,7 +374,8 @@ Blockly.Blocks['pixetto_now_function'] = {
             [Blockly.Msg.PIXETTO_FLD, 'FUNC_LANES_DETECTION'],
             [Blockly.Msg.PIXETTO_FED, 'FUNC_EQUATION_DETECTION'],
             [Blockly.Msg.PIXETTO_FSC, 'FUNC_SIMPLE_CLASSIFIER'],
-            [Blockly.Msg.PIXETTO_FVC, 'FUNC_VOICE_COMMAND']
+            [Blockly.Msg.PIXETTO_FVC, 'FUNC_VOICE_COMMAND'],
+            [Blockly.Msg.PIXETTO_FEE, '18'],
         ],
             this.appendDummyInput()
                 .appendField(Blockly.Msg.PIXETTO_NOW_FUNC)
