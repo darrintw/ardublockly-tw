@@ -66,8 +66,9 @@ Blockly.Arduino['pixetto_function'] = function (block) {
     var pixettoId = Blockly.Arduino.variableDB_.getName(
         "ss",
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-
-    var code = pixettoId + '.enableFunc(Pixetto::' + pixettoFunc + ');\n';
+    if (pixettoFunc != '18')
+        pixettoFunc = 'Pixetto::' + pixettoFunc;
+    var code = pixettoId + '.enableFunc(' + pixettoFunc + ');\n';
 
     return code;
 };
@@ -89,7 +90,9 @@ Blockly.Arduino['pixetto_now_function'] = function (block) {
     var pixettoId = Blockly.Arduino.variableDB_.getName(
         "ss",
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-    var code = pixettoId + '.getFuncID() == Pixetto::' + pixettoFunc;
+    if (pixettoFunc != '18')
+        pixettoFunc = 'Pixetto::' + pixettoFunc;
+    var code = pixettoId + '.getFuncID() == ' + pixettoFunc;
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
