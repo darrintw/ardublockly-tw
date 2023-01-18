@@ -16,6 +16,8 @@ import sys
 import codecs
 # local-packages imports
 import configparser
+from typing import Any
+
 # This package modules
 import ardublocklyserver.serialport
 
@@ -66,6 +68,8 @@ class ServerCompilerSettings(object):
                            '4800': '4800 baud',
                            '9600': '9600 baud',
                            '19200': '19200 baud',
+                           '28800': '28800 baud',
+                           '38400': '38400 baud',
                            '57600': '57600 baud',
                            '115200': '115200 baud'}
 
@@ -193,7 +197,7 @@ class ServerCompilerSettings(object):
 
         It only accepts letters, numbers, underscores and dashes.
         """
-        if re.match("^[\w\d_-]*$", new_sketch_name):
+        if re.match("^[\w_-]*$", new_sketch_name):
             self.__sketch_name = new_sketch_name
             print('Sketch name set to:\n\t%s' % self.__sketch_name)
             self.save_settings()
@@ -219,7 +223,7 @@ class ServerCompilerSettings(object):
 
         It only accepts letters, numbers, underscores and dashes.
         """
-        if re.match("^[\w\d_-]*$", new_sketch_name):
+        if re.match("^[\w_-]*$", new_sketch_name):
             self.__sketch_name = new_sketch_name
         else:
             print('Settings file Sketch name contains invalid characters:'
@@ -826,9 +830,10 @@ class ServerCompilerSettings(object):
             settings_dict['load_delay'] = \
                 settings_parser.get('Ardublockly', 'load_delay')
             print('Settings loaded from:\n\t%s' % self.__settings_path)
-        except Exception:
+        except Exception as e:
             print('Settings file corrupted or not found in:\n\t%s'
                   % self.__settings_path)
+            print('Error message:', e)
             settings_dict = None
         return settings_dict
 

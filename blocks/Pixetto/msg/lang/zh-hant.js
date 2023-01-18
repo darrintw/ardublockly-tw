@@ -86,6 +86,7 @@ Blockly.Msg.PIXETTO_NUM_DETECTION = "手寫數字 辨識到";
 Blockly.Msg.PIXETTO_LATTER_DETECTION = "手寫字母 辨識到";
 Blockly.Msg.PIXETTO_CLOUD_DETECTION = "遠端運算 辨識到";
 Blockly.Msg.PIXETTO_CLASSIFIER_DETECTION = "簡易分類器 辨識到";
+Blockly.Msg.PIXETTO_EQUATION_EXPRESSION = "辨識資料儲存到";
 Blockly.Msg.PIXETTO_VOICE_DETECTION = "語音命令 辨識到";
 Blockly.Msg.PIXETTO_VOICE_HELLO = "你好";
 Blockly.Msg.PIXETTO_VOICE_THANKS = "謝謝";

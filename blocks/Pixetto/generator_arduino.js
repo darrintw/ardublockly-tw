@@ -310,6 +310,22 @@ Blockly.Arduino['pixetto_classifier_detection'] = function (block) {
 };
 
 /** . */
+Blockly.Arduino['pixetto_equation_expression'] = function (block) {
+    var pixettoEquationExp = block.getFieldValue('PIXETTO_EQUATION_EXP');
+    var pixettoEquationExpId = Blockly.Arduino.variableDB_.getName(
+        pixettoEquationExp,
+        Blockly.Variables.NAME_TYPE);
+    var pixettoId = Blockly.Arduino.variableDB_.getName(
+        "ss",
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.addVariable(pixettoEquationExp, 'char ' + pixettoEquationExpId + '[16];', true);
+    var code = pixettoId + '.getEquationExpr(' + pixettoEquationExp + ', sizeof(' + pixettoEquationExp + '));\n';
+
+    return code;
+};
+
+/** . */
 Blockly.Arduino['pixetto_voice_detection'] = function (block) {
     var pixettoVoice = block.getFieldValue('PIXETTO_VOICE_SELECTOR');
     var pixettoId = Blockly.Arduino.variableDB_.getName(

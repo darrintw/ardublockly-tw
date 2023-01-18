@@ -276,12 +276,10 @@ def copy_ardublockly_folder():
         shutil.copyfile(copied_project_dir + "\\Arduino\\portable\\preferences.bak",
                         copied_project_dir + "\\Arduino\\portable\\preferences.txt")
 
-        '''
         print(script_tab + "Reset Arduino digistump index %s\\Arduino\\portable\\package_digistump_index.json"
               % copied_project_dir)
         shutil.copyfile(copied_project_dir + "\\Arduino\\portable\\package_digistump_index.json.bak",
                         copied_project_dir + "\\Arduino\\portable\\package_digistump_index.json")
-        '''
         
         try:
             with open(shell_location, "w") as bash_file:

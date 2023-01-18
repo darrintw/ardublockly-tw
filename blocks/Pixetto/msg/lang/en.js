@@ -86,6 +86,7 @@ Blockly.Msg.PIXETTO_NUM_DETECTION = "handwritten digits detects";
 Blockly.Msg.PIXETTO_LATTER_DETECTION = "handwritten latters detects";
 Blockly.Msg.PIXETTO_CLOUD_DETECTION = "remote computing detects";
 Blockly.Msg.PIXETTO_CLASSIFIER_DETECTION = "simple classifier detects";
+Blockly.Msg.PIXETTO_EQUATION_EXPRESSION = "equation expression save to";
 Blockly.Msg.PIXETTO_VOICE_DETECTION = "voice command detects";
 Blockly.Msg.PIXETTO_VOICE_HELLO = "Hello";
 Blockly.Msg.PIXETTO_VOICE_THANKS = "Thanks";

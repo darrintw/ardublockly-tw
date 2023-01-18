@@ -638,6 +638,21 @@ Blockly.Blocks['pixetto_classifier_detection'] = {
     }
 };
 
+Blockly.Blocks['pixetto_equation_expression'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.PIXETTO_EQUATION_EXPRESSION)
+            .appendField(new Blockly.FieldVariable('temp'), 'PIXETTO_EQUATION_EXP');
+        this.setInputsInline(true);
+        this.setOutput(false, null);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.pixetto.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['pixetto_voice_detection'] = {
     init: function () {
         voicelist = [
