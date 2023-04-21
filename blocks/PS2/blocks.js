@@ -52,6 +52,10 @@ Blockly.Blocks["PS2_read"] = {
             .appendField(Blockly.Msg.ARD_PS2)
             .appendField(new Blockly.FieldVariable('ps2x'), 'VAR')
             .appendField(Blockly.Msg.ARD_PS2_START_READ);
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_ERROR_CODE)
+            .appendField(new Blockly.FieldVariable('ps2_error_code'), 'VAR_ERROR');
         this.setColour(Blockly.Blocks.PS2.HUE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
