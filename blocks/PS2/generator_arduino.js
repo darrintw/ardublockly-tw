@@ -50,7 +50,11 @@ Blockly.Arduino["PS2_read"] = function (block) {
     var ps2Id = Blockly.Arduino.variableDB_.getName(
         ps2Name,
         Blockly.Variables.NAME_TYPE);
-    return ps2Id + ".read_gamepad(false, 0);\n";
+    var ps2ErrorCode = block.getFieldValue('VAR_ERROR');
+    var ps2ErrorCodeId = Blockly.Arduino.variableDB_.getName(
+        ps2ErrorCode,
+        Blockly.Variables.NAME_TYPE);
+    return ps2ErrorCodeId + ' = ' + ps2Id + ".read_gamepad(false, 0);\n";
 }
 
 //
