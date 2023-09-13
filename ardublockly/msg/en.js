@@ -144,9 +144,9 @@ Ardublockly.LOCALISED_TEXT = {
     catOutput: "Output",
     catInputOutput: "Input/Output",
     catTime: "Time",
-    /*
     catTone: "Buzzer",
     catMotors: "Motors",
+    catMotorDriverBoard: "MotorDriverBoard",
     catPS2: "PS2",
     catRTC: "Clock",
     catComms: "Comms",
@@ -154,7 +154,7 @@ Ardublockly.LOCALISED_TEXT = {
     catI2CSensors: "I2C Sensors",
     catSDCard: "SD Card",
     catWS2812Leds: "WS2812 LED Strip",
-    catI2CLCD: "I2C LCD Display",
+    catLCDLED: "LCD/LED",
     catLEDMatrix: "MAX7219 LED Matrix Display",
-    catPixetto: "Pixetto Sensor感測器",*/
+    catPixetto: "Pixetto Sensor",
 };

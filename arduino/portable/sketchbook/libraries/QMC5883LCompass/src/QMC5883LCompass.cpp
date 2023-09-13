@@ -16,7 +16,7 @@ Supports:
 ===============================================================================================================
 
 v1.0 - June 13, 2019
-Written by MRPrograms 
+Written by MPrograms 
 Github: [https://github.com/mprograms/]
 
 Release under the GNU General Public License v3
@@ -115,6 +115,21 @@ void QMC5883LCompass::setMode(byte mode, byte odr, byte rng, byte osr){
 
 
 /**
+ * Define the magnetic declination for accurate degrees.
+ * https://www.magnetic-declination.com/
+ * 
+ * @example
+ * For: Londrina, PR, Brazil at date 2022-12-05
+ * The magnetic declination is: -19º 43'
+ * 
+ * then: setMagneticDeclination(-19, 43);
+ */
+void QMC5883LCompass::setMagneticDeclination(int degrees, uint8_t minutes) {
+	_magneticDeclinationDegrees = degrees + minutes / 60;
+}
+
+
+/**
 	RESET
 	Reset the chip.
 	
@@ -132,6 +147,54 @@ void QMC5883LCompass::setSmoothing(byte steps, bool adv){
 	_smoothAdvanced = (adv == true) ? true : false;
 }
 
+void QMC5883LCompass::calibrate() {
+	clearCalibration();
+	long calibrationData[3][2] = {{65000, -65000}, {65000, -65000}, {65000, -65000}};
+  	long	x = calibrationData[0][0] = calibrationData[0][1] = getX();
+  	long	y = calibrationData[1][0] = calibrationData[1][1] = getY();
+  	long	z = calibrationData[2][0] = calibrationData[2][1] = getZ();
+
+	unsigned long startTime = millis();
+
+	while((millis() - startTime) < 10000) {
+		read();
+
+  		x = getX();
+  		y = getY();
+  		z = getZ();
+
+		if(x < calibrationData[0][0]) {
+			calibrationData[0][0] = x;
+		}
+		if(x > calibrationData[0][1]) {
+			calibrationData[0][1] = x;
+		}
+
+		if(y < calibrationData[1][0]) {
+			calibrationData[1][0] = y;
+		}
+		if(y > calibrationData[1][1]) {
+			calibrationData[1][1] = y;
+		}
+
+		if(z < calibrationData[2][0]) {
+			calibrationData[2][0] = z;
+		}
+		if(z > calibrationData[2][1]) {
+			calibrationData[2][1] = z;
+		}
+	}
+
+	setCalibration(
+		calibrationData[0][0],
+		calibrationData[0][1],
+		calibrationData[1][0],
+		calibrationData[1][1],
+		calibrationData[2][0],
+		calibrationData[2][1]
+	);
+}
+
 /**
     SET CALIBRATION
 	Set calibration values for more accurate readings
@@ -139,19 +202,53 @@ void QMC5883LCompass::setSmoothing(byte steps, bool adv){
 	@author Claus Näveke - TheNitek [https://github.com/TheNitek]
 	
 	@since v1.1.0
+
+	@deprecated Instead of setCalibration, use the calibration offset and scale methods.
 **/
 void QMC5883LCompass::setCalibration(int x_min, int x_max, int y_min, int y_max, int z_min, int z_max){
-	_calibrationUse = true;
+	setCalibrationOffsets(
+		(x_min + x_max)/2,
+		(y_min + y_max)/2,
+		(z_min + z_max)/2
+	);
 
-	_vCalibration[0][0] = x_min;
-	_vCalibration[0][1] = x_max;
-	_vCalibration[1][0] = y_min;
-	_vCalibration[1][1] = y_max;
-	_vCalibration[2][0] = z_min;
-	_vCalibration[2][1] = z_max;
+	float x_avg_delta = (x_max - x_min)/2;
+	float y_avg_delta = (y_max - y_min)/2;
+	float z_avg_delta = (z_max - z_min)/2;
+
+	float avg_delta = (x_avg_delta + y_avg_delta + z_avg_delta) / 3;
+
+	setCalibrationScales(
+		avg_delta / x_avg_delta,
+		avg_delta / y_avg_delta,
+		avg_delta / z_avg_delta
+	);
 }
 
+void QMC5883LCompass::setCalibrationOffsets(float x_offset, float y_offset, float z_offset) {
+	_offset[0] = x_offset;
+	_offset[1] = y_offset;
+	_offset[2] = z_offset;
+}
 
+void QMC5883LCompass::setCalibrationScales(float x_scale, float y_scale, float z_scale) {
+	_scale[0] = x_scale;
+	_scale[1] = y_scale;
+	_scale[2] = z_scale;
+}
+
+float QMC5883LCompass::getCalibrationOffset(uint8_t index) {
+	return _offset[index];
+}
+
+float QMC5883LCompass::getCalibrationScale(uint8_t index) {
+	return _scale[index];
+}
+
+void QMC5883LCompass::clearCalibration(){
+	setCalibrationOffsets(0., 0., 0.);
+	setCalibrationScales(1., 1., 1.);
+}
 
 /**
 	READ
@@ -169,9 +266,7 @@ void QMC5883LCompass::read(){
 		_vRaw[1] = (int)(int16_t)(Wire.read() | Wire.read() << 8);
 		_vRaw[2] = (int)(int16_t)(Wire.read() | Wire.read() << 8);
 
-		if ( _calibrationUse ) {
-			_applyCalibration();
-		}
+		_applyCalibration();
 		
 		if ( _smoothUse ) {
 			_smoothing();
@@ -196,22 +291,9 @@ void QMC5883LCompass::read(){
 	
 **/
 void QMC5883LCompass::_applyCalibration(){
-	int x_offset = (_vCalibration[0][0] + _vCalibration[0][1])/2;
-	int y_offset = (_vCalibration[1][0] + _vCalibration[1][1])/2;
-	int z_offset = (_vCalibration[2][0] + _vCalibration[2][1])/2;
-	int x_avg_delta = (_vCalibration[0][1] - _vCalibration[0][0])/2;
-	int y_avg_delta = (_vCalibration[1][1] - _vCalibration[1][0])/2;
-	int z_avg_delta = (_vCalibration[2][1] - _vCalibration[2][0])/2;
-
-	int avg_delta = (x_avg_delta + y_avg_delta + z_avg_delta) / 3;
-
-	float x_scale = (float)avg_delta / x_avg_delta;
-	float y_scale = (float)avg_delta / y_avg_delta;
-	float z_scale = (float)avg_delta / z_avg_delta;
-
-	_vCalibrated[0] = (_vRaw[0] - x_offset) * x_scale;
-	_vCalibrated[1] = (_vRaw[1] - y_offset) * y_scale;
-	_vCalibrated[2] = (_vRaw[2] - z_offset) * z_scale;
+	_vCalibrated[0] = (_vRaw[0] - _offset[0]) * _scale[0];
+	_vCalibrated[1] = (_vRaw[1] - _offset[1]) * _scale[1];
+	_vCalibrated[2] = (_vRaw[2] - _offset[2]) * _scale[2];
 }
 
 
@@ -243,7 +325,7 @@ void QMC5883LCompass::_smoothing(){
 		if ( _vTotals[i] != 0 ) {
 			_vTotals[i] = _vTotals[i] - _vHistory[_vScan][i];
 		}
-		_vHistory[_vScan][i] = ( _calibrationUse ) ? _vCalibrated[i] : _vRaw[i];
+		_vHistory[_vScan][i] = _vCalibrated[i];
 		_vTotals[i] = _vTotals[i] + _vHistory[_vScan][i];
 		
 		if ( _smoothAdvanced ) {
@@ -313,10 +395,7 @@ int QMC5883LCompass::_get(int i){
 	if ( _smoothUse ) 
 		return _vSmooth[i];
 	
-	if ( _calibrationUse )
-		return _vCalibrated[i];
-
-	return _vRaw[i];
+	return _vCalibrated[i];
 }
 
 
@@ -324,13 +403,15 @@ int QMC5883LCompass::_get(int i){
 /**
 	GET AZIMUTH
 	Calculate the azimuth (in degrees);
+	Correct the value with magnetic declination if defined. 
 	
 	@since v0.1;
 	@return int azimuth
 **/
 int QMC5883LCompass::getAzimuth(){
-	int a = atan2( getY(), getX() ) * 180.0 / PI;
-	return a < 0 ? 360 + a : a;
+	float heading = atan2( getY(), getX() ) * 180.0 / PI;
+	heading += _magneticDeclinationDegrees;
+	return (int)heading % 360;
 }
 
 
@@ -338,14 +419,16 @@ int QMC5883LCompass::getAzimuth(){
 	GET BEARING
 	Divide the 360 degree circle into 16 equal parts and then return the a value of 0-15
 	based on where the azimuth is currently pointing.
-	
+
+ 
+	@since v1.2.1 - function takes into account negative azimuth values. Credit: https://github.com/prospark
 	@since v1.0.1 - function now requires azimuth parameter.
 	@since v0.2.0 - initial creation
 	
 	@return byte direction of bearing
 */
 byte QMC5883LCompass::getBearing(int azimuth){
-	unsigned long a = azimuth / 22.5;
+	unsigned long a = ( azimuth > -0.5 ) ? azimuth / 22.5 : (azimuth+360)/22.5;
 	unsigned long r = a - (int)a;
 	byte sexdec = 0;	
 	sexdec = ( r >= .5 ) ? ceil(a) : floor(a);

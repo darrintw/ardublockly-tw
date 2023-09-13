@@ -2,6 +2,7 @@
   "categories": {
     "RTC": "RTC/blocks_config.json",
     "Motors": "Motors/blocks_config.json",
+    "MotorDriverBoard": "MotorDriverBoard/blocks_config.json",
     "Comms": "Comms/blocks_config.json",
     "Sensors": "Sensors/blocks_config.json",
     "I2CSensors": "I2CSensors/blocks_config.json",
