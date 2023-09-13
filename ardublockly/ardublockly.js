@@ -301,11 +301,14 @@ Ardublockly.ideSendUpload = function () {
                 Ardublockly.resetIdeOutputContent();
                 Ardublockly.sendCode(true);
             }, 200);
+            /*
+            // reopen putty if putty opened before upload
             setTimeout(function () {
                 if (jsonObj.ide_data.exit_code == 1) {
                     Ardublockly.openSerialMonitor();
                 }
             }, 10000);
+            */
         }
         ArdublocklyServer.cliKillPutty(cb);
     }

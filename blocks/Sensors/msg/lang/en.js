@@ -7,12 +7,13 @@ Blockly.Msg.BLOCKS_CATEGORY_SENSORS = 'Sensor';
 
 /// Ultra Sonic
 Blockly.Msg.BLOCKS_CATEGORY_ULTRASONIC_DISTANCE = "HC-SR04 Ultrasonic Distance sensor";
-Blockly.Msg.ARD_ULTRASONIC_DISTANCE = "Config Ultrasonic(HC-SR04) Pin";
+Blockly.Msg.ARD_ULTRASONIC_DISTANCE_SETUP = "Config Ultrasonic(HC-SR04) Pin";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_TIP = "";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_TRIG = "TRIG Pin";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_ECHO = "ECHO Pin";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_CM = "cm";
 Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH = "inch";
+Blockly.Msg.ARD_ULTRASONIC_DISTANCE = "Ultrasonic return distence";
 
 /// TRTC5000
 Blockly.Msg.BLOCKS_CATEGORY_TCRT5000 = "Reflective Infrared Ssensor";

@@ -17,10 +17,10 @@ goog.require('Blockly.Msg.en');
  */
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_LCDLED = "I2C LCD Display";
+Blockly.Msg.BLOCKS_CATEGORY_LCDLED = "LCD/LED";
 
 /// LCD
-Blockly.Msg.BLOCKS_CATEGORY_I2CLCD = "I2C LCD Display";
+Blockly.Msg.BLOCKS_CATEGORY_I2CLCD = "LCD/LED";
 
 /// Ardublockly name
 Blockly.Msg.ARD_I2CLCD_SCAN = "Scan I2C LCD address";

@@ -538,7 +538,7 @@ Blockly.Blocks['softwareserial_available'] = {
                     "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
                 }
             ],
-            "output": Blockly.Types.NUMBER.output,
+            "output": Blockly.Types.BOOLEAN.output,
             "colour": Blockly.Blocks.comms.HUE,
             "tooltip": Blockly.Msg.ARD_SOFTWARESERIAL_AVAILABLE_TIP,
             "helpUrl": 'https://www.arduino.cc/en/Reference/SoftwareSerialAvailable'
@@ -546,7 +546,7 @@ Blockly.Blocks['softwareserial_available'] = {
     },
     /** @return {!string} Type of the block, text length always an integer. */
     getBlockType: function () {
-        return Blockly.Types.NUMBER;
+        return Blockly.Types.BOOLEAN;
     }
 };
 
