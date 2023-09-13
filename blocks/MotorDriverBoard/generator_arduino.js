@@ -14,14 +14,6 @@ goog.require('Blockly.Arduino');
 
 
 Blockly.Arduino.md_setup = function () {
-    //Blockly.Arduino.definitions_['define_Arduino'] = '#include<Arduino.h>';
-    //Blockly.Arduino.definitions_['define_wire'] = '#include<wire.h>';
-    //Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include<SoftwareSerial.h>';
-    //Blockly.Arduino.definitions_['define_ProtocolParser'] = '#include<ProtocolParser.h>';
-    //Blockly.Arduino.definitions_['define_BluetoothHandle'] = '#include<BluetoothHandle.h>';
-    //Blockly.Arduino.definitions_['define_KeyMap'] = '#include<KeyMap.h>';
-    // Blockly.Arduino.definitions_['define_debug'] = '#include<debug.h>';
-    // var dropdown_version = this.getFieldValue('version');
     Blockly.Arduino.definitions_['define_Emakefun_MotorDriver'] = '#include<Emakefun_MotorDriver.h>\nEmakefun_MotorDriver mMotorDriver = Emakefun_MotorDriver(0x60);\n';
     Blockly.Arduino.setups_['setup_md_setup1'] = 'Serial.begin(9600);\n'
     var code = '';
@@ -328,17 +320,24 @@ Blockly.Arduino.md_getNRF24L01 = function () {
 };
 //����ʮ�߸�ͼ�ο�ת��ΪC���� PS2�ֱ���ʼ��
 Blockly.Arduino.md_PS2init = function () {
-    Blockly.Arduino.definitions_['object10'] = '#include<PS2X_lib.h>\n#include <MsTimer2.h>\n#define PS2_DAT     12\n#define PS2_CMD     11\n#define PS2_SEL     10\n#define PS2_CLK     13\nPS2X ps2x;\nvoid reconnect(){\n  ps2x.reconfig_gamepad();\n  ps2x.read_gamepad();\n}\n'
+    Blockly.Arduino.definitions_['object10'] = '#include<PS2X_lib.h>\n#include <MsTimer2.h>\n#define PS2_DAT     12\n#define PS2_CMD     11\n#define PS2_SEL     10\n#define PS2_CLK     13\nPS2X ps2x;\nvoid reconnect(){\n  ps2x.reconfig_gamepad();\n  ps2x.read_gamepad();\n}\n';
     Blockly.Arduino.setups_['setup_PS2init'] = 'ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, false, false);\n  MsTimer2::set(500, reconnect);\n  MsTimer2::start();'
     var code = '';
     return code;
 };
 
 //
-Blockly.Arduino.md_ps2getvalue = function () {
-    var code = 'ps2x.read_gamepad();\n';
-    return code;
+Blockly.Arduino.md_ps2getvalue = function (block) {
+    var ps2ErrorCode = block.getFieldValue('VAR_ERROR');
+    var ps2ErrorCodeId = Blockly.Arduino.variableDB_.getName(
+        ps2ErrorCode,
+        Blockly.Variables.NAME_TYPE);
+    Blockly.Arduino.addVariable(ps2ErrorCode, 'int ' + ps2ErrorCodeId + ';', true);
+    return ps2ErrorCodeId + " = ps2x.read_gamepad(false, 0);\n";
+    /*var code = 'ps2x.read_gamepad();\n';
+    return code;*/
 };
+
 //����ʮ�˸�ͼ�ο�ת��ΪC���� PS2�������£�������
 Blockly.Arduino.md_WhichPS2KeyPressed = function () {
     var code = 'ps2x.ButtonDataByte()';
@@ -388,14 +387,15 @@ Blockly.Arduino.md_initservo = function () {
 Blockly.Arduino.md_servo = function () {
     var dropdown_Servoports = this.getFieldValue('Servoports');
     var value_angle = Blockly.Arduino.valueToCode(this, 'angle', Blockly.Arduino.ORDER_ATOMIC);
-    var value_speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
-    var code = ' servo' + dropdown_Servoports + '->writeServo(' + value_angle + ', ' + value_speed + ');\n';
+    //var value_speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
+    //var code = ' servo' + dropdown_Servoports + '->writeServo(' + value_angle + ', ' + value_speed + ');\n';
+    var code = 'servo' + dropdown_Servoports + '->writeServo(' + value_angle + ', 10);\n';
     return code;
 };
 
 Blockly.Arduino.md_readservo = function () {
     var dropdown_Servoports = this.getFieldValue('Servoports');
-    var code = ' servo' + dropdown_Servoports + '->readDegrees()';
+    var code = 'servo' + dropdown_Servoports + '->readDegrees()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 //��������ʼ��

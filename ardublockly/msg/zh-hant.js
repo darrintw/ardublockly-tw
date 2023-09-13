@@ -166,7 +166,7 @@ Ardublockly.LOCALISED_TEXT = {
     catTime: "時間",
     catTone: "蜂鳴器",
     catMotors: "馬達",
-    catMotorDriverBoard: "MotorDriverBoard",
+    catMotorDriverBoard: "馬達擴展板",
     catPS2: "PS2搖桿",
     catRTC: "時鐘",
     catComms: "通訊",

@@ -39,7 +39,7 @@ Blockly.Blocks["md_setup"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_SETUP)
+            .appendField(Blockly.MOTORDRIVERBOARD_SETUP);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -51,7 +51,7 @@ Blockly.Blocks["md_setFreq"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
         this.appendValueInput("freq")
-            .appendField(Blockly.MOTORDRIVERBOARD_GPIOFREQ)
+            .appendField(Blockly.MOTORDRIVERBOARD_GPIOFREQ);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
@@ -78,7 +78,7 @@ Blockly.Blocks["md_gpio"] = {
             .appendField(Blockly.MOTORDRIVERBOARD_GPIO)
             .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_GPIO), "mdGpio")
             .appendField(Blockly.MOTORDRIVERBOARD_GPIOMODE)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_GPIOMODE), "mdGpioMode")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_GPIOMODE), "mdGpioMode");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -90,9 +90,9 @@ Blockly.Blocks["md_pwm"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_GPIO)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_GPIO), "mdGpio")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_GPIO), "mdGpio");
         this.appendValueInput("pwm")
-            .appendField(Blockly.MOTORDRIVERBOARD_GPIOPWM)
+            .appendField(Blockly.MOTORDRIVERBOARD_GPIOPWM);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
@@ -110,8 +110,7 @@ Blockly.Blocks["md_initdcmotor"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_INITDCMOTOR)
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_DCPORTS), "DCPorts")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_DCPORTS), "DCPorts");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -157,8 +156,7 @@ Blockly.Blocks["md_stopDCmotor"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_STOPDCMOTOR)
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_DCPORTS), "DCPorts")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_DCPORTS), "DCPorts");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -174,8 +172,7 @@ Blockly.Blocks["md_initENmotor"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_INITENMOTOR)
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_ENPORTS), "ENPorts")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_ENPORTS), "ENPorts");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -224,7 +221,6 @@ Blockly.Blocks["md_initstmotor"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_INITSTMOTOR)
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
             .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_STPORTS), "STPorts")
             .appendField(Blockly.MOTORDRIVERBOARD_STEPS);
         this.appendValueInput("Steps")
@@ -280,8 +276,7 @@ Blockly.Blocks["md_stopstmotor"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_STOPSTMOTOR)
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_STPORTS), "STTPorts")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_STPORTS), "STTPorts");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -293,8 +288,7 @@ Blockly.Blocks["md_initRGB"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_INITRGB)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/hb_ultrasonic.png", 45, 38))
+            .appendField(Blockly.MOTORDRIVERBOARD_INITRGB);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
 
@@ -316,12 +310,11 @@ Blockly.Blocks["md_RGB"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_SETRGB)
-            //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/hb_ultrasonic.png", 45, 38))
             .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_RGBNUMBER), "RGB")
             .appendField(Blockly.MOTORDRIVERBOARD_RGBCOLOUR)
             .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_RGBCOLOR), "RGBCOLOR");
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_RGBBRIGHTNESSS)
+            .appendField(Blockly.MOTORDRIVERBOARD_RGBBRIGHTNESSS);
         this.appendValueInput("brightnesss");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -335,9 +328,8 @@ Blockly.Blocks["md_setColor"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_SETRGB)
-            //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/hb_ultrasonic.png", 45, 38))
             .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_RGBNUMBER), "RGB")
-            .appendField(Blockly.MOTORDRIVERBOARD_RGBCOLOUR)
+            .appendField(Blockly.MOTORDRIVERBOARD_RGBCOLOUR);
         this.appendValueInput("red")
             .appendField(Blockly.MOTORDRIVERBOARD_RED)
             .setCheck(Blockly.Types.NUMBER.checkList)
@@ -378,8 +370,7 @@ Blockly.Blocks["md_initSounds"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
-            .appendField(Blockly.MOTORDRIVERBOARD_INITSOUNDS)
+            .appendField(Blockly.MOTORDRIVERBOARD_INITSOUNDS);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -410,9 +401,8 @@ Blockly.Blocks["md_playSounds"] = {
             [Blockly.MOTORDRIVERBOARD_SOUNDS_DIDI, "19"]];
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            // .appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_MotorDriverBoard.png", 38, 32))
             .appendField(Blockly.MOTORDRIVERBOARD_PLAYSOUNDS)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_SOUNDS), "Sounds")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_SOUNDS), "Sounds");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -423,8 +413,7 @@ Blockly.Blocks["md_initultrasonic"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_INITULTRASONIC)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irreceive.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_INITULTRASONIC);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -435,8 +424,7 @@ Blockly.Blocks["md_readUltrasonicDistance"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_READULTRASONICDISTANCE)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ultrasonic.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_READULTRASONICDISTANCE);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -446,8 +434,7 @@ Blockly.Blocks["md_initirremote"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_INITIRREMOTE)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ultrasonic.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_INITIRREMOTE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -458,9 +445,8 @@ Blockly.Blocks["md_isirremote"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_IFIRREMOTEPRESSED)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ultrasonic.png", 38, 32))
-        this.setOutput(true, Boolean);
+            .appendField(Blockly.MOTORDRIVERBOARD_IFIRREMOTEPRESSED);
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -492,8 +478,7 @@ Blockly.Blocks["md_irKeyPress"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_IRKEYPRESS)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_IRKEY), "Irkeys")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ultrasonic.png", 38, 32))
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_IRKEY), "Irkeys");
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -522,8 +507,7 @@ Blockly.Blocks["md_irKeyPress2"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_IRKEYPRESS2)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_IRKEY2), "Irkeys2")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ultrasonic.png", 38, 32))
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_IRKEY2), "Irkeys2");
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -534,8 +518,7 @@ Blockly.Blocks["md_initnrf24l01"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ultrasonic.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -550,7 +533,7 @@ Blockly.Blocks["md_nrf24l01send"] = {
         this.appendValueInput("address", String)
             .setCheck([String])
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01ADDRESS)
+            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01ADDRESS);
         this.appendValueInput("channel")
             .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01CHANNEL)
             .setCheck(Blockly.Types.NUMBER.checkList)
@@ -574,8 +557,7 @@ Blockly.Blocks["md_nrf24l01rec"] = {
         this.appendValueInput("address2", String)
             .setCheck([String])
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01ADDRESS)
-
+            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01ADDRESS);
         this.appendValueInput("channel2")
             .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01CHANNEL)
             .setCheck(Blockly.Types.NUMBER.checkList)
@@ -608,10 +590,8 @@ Blockly.Blocks["md_nrfissend"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_NRFISSEND)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ps2.png", 38, 32))
-        // .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEY), "PS2Key")
-        this.setOutput(true, Boolean);
+            .appendField(Blockly.MOTORDRIVERBOARD_NRFISSEND);
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -620,10 +600,8 @@ Blockly.Blocks["md_nrfdataradys"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_NRFREADYDATA)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ps2.png", 38, 32))
-        // .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEY), "PS2Key")
-        this.setOutput(true, Boolean);
+            .appendField(Blockly.MOTORDRIVERBOARD_NRFREADYDATA);
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -660,7 +638,7 @@ Blockly.Blocks["md_NRF24L01isnotnull"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01ISNOTNULL)
+            .appendField(Blockly.MOTORDRIVERBOARD_INITNRF24L01ISNOTNULL);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -670,7 +648,7 @@ Blockly.Blocks["md_getNRF24L01"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_GETINITNRF24L01)
+            .appendField(Blockly.MOTORDRIVERBOARD_GETINITNRF24L01);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -680,7 +658,7 @@ Blockly.Blocks["md_PS2init"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_PS2INIT)
+            .appendField(Blockly.MOTORDRIVERBOARD_PS2INIT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -691,7 +669,11 @@ Blockly.Blocks["md_ps2getvalue"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_PS2GETVALUE)
+            .appendField(Blockly.MOTORDRIVERBOARD_PS2GETVALUE);
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARD_PS2_ERROR_CODE)
+            .appendField(new Blockly.FieldVariable('ps2_error_code'), 'VAR_ERROR');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -703,10 +685,8 @@ Blockly.Blocks["md_WhichPS2KeyPressed"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_WHICHPS2KEYPRESSED)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_ps2.png", 38, 32))
-        // .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEY), "PS2Key")
-        this.setOutput(true, Boolean);
+            .appendField(Blockly.MOTORDRIVERBOARD_WHICHPS2KEYPRESSED);
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -734,9 +714,8 @@ Blockly.Blocks["md_ps2keypress"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_PS2KEYPRESS)
-            //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEYS), "PS2keys")
-        this.setOutput(true, Boolean);
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEYS), "PS2keys");
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -763,9 +742,8 @@ Blockly.Blocks["md_ps2keyunpress"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_PS2KEYUNPRESS)
-            //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEYS), "PS2keys")
-        this.setOutput(true, Boolean);
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_PS2KEYS), "PS2keys");
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -780,8 +758,7 @@ Blockly.Blocks["md_ps2getvibrate"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_PS2GETVIBRATE)
-            //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_VIBRATE), "Vibrate")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_VIBRATE), "Vibrate");
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -795,8 +772,7 @@ Blockly.Blocks["md_ps2getvibrate2"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_PS2GETVIBRATE2)
-            //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_VIBRATE2), "Vibrate2")
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_VIBRATE2), "Vibrate2");
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -806,8 +782,7 @@ Blockly.Blocks["md_ps2status"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_PS2STATUS)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_PS2STATUS);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -828,8 +803,7 @@ Blockly.Blocks["md_initservo"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_INITSERVO)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_SERVOPORTS), "Servoports")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_SERVOPORTS), "Servoports");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -845,12 +819,11 @@ Blockly.Blocks["md_servo"] = {
             .appendField(Blockly.MOTORDRIVERBOARD_ANGLE)
             .setCheck(Blockly.Types.NUMBER.checkList)
             .setAlign(Blockly.ALIGN_RIGHT);
-        this.appendValueInput("speed")
+        /*this.appendValueInput("speed")
             .appendField(Blockly.MOTORDRIVERBOARD_SPEED)
             .setCheck(Blockly.Types.NUMBER.checkList)
-            .setAlign(Blockly.ALIGN_RIGHT);
+            .setAlign(Blockly.ALIGN_RIGHT);*/
         this.setInputsInline(true);
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -901,8 +874,7 @@ Blockly.Blocks["md_m4goforward"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4GOFORWARD)
-        this.appendValueInput("m4speed1")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4speed1");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -915,8 +887,7 @@ Blockly.Blocks["md_m4backforward"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4BACKFORWARD)
-        this.appendValueInput("m4speed2")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4speed2");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -929,8 +900,7 @@ Blockly.Blocks["md_m4turnleft"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4TURNLEFT)
-        this.appendValueInput("m4speed3")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4speed3");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -943,8 +913,7 @@ Blockly.Blocks["md_m4turnright"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4TURNRIGHT)
-        this.appendValueInput("m4speed4")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4speed4");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -957,8 +926,7 @@ Blockly.Blocks["md_m4turnlefts"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4TURNLEFTS)
-        this.appendValueInput("m4speed33")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4speed33");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -971,8 +939,7 @@ Blockly.Blocks["md_m4turnrights"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4TURNRIGHTS)
-        this.appendValueInput("m4speed44")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4speed44");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -988,8 +955,7 @@ Blockly.Blocks["md_m4godegree"] = {
         this.appendValueInput("m4godegree")
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_M4GOSPEED)
-        this.appendValueInput("m4gospeed")
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+        this.appendValueInput("m4gospeed");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1002,8 +968,7 @@ Blockly.Blocks["md_m4stop"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_M4STOP)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_M4STOP);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -1014,8 +979,7 @@ Blockly.Blocks["md_bluetoothinit"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHINIT)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHINIT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
@@ -1026,7 +990,6 @@ Blockly.Blocks["md_receivedata"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
             .appendField(Blockly.MOTORDRIVERBOARD_RECEIVEDATA)
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1038,9 +1001,8 @@ Blockly.Blocks["md_receiveddata"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_RECEIVEDDDATA)
-        //.appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        this.setOutput(true, Boolean);
+            .appendField(Blockly.MOTORDRIVERBOARD_RECEIVEDDDATA);
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -1050,7 +1012,6 @@ Blockly.Blocks.md_bluetoothKeyPress = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHPRESS)
-            // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
             .appendField(new Blockly.FieldDropdown(
                 [
                     ["↑", "0x0008"],
@@ -1061,8 +1022,8 @@ Blockly.Blocks.md_bluetoothKeyPress = {
                     ["red", "0x2000"],
                     ["blue", "0x4000"],
                     ["pink", "0x8000"],
-                ]), "BLUETOOTHKEY")
-        this.setOutput(true, Boolean);
+                ]), "BLUETOOTHKEY");
+        this.setOutput(true, "Boolean");
         this.setTooltip('');
     }
 };
@@ -1072,7 +1033,6 @@ Blockly.Blocks["md_bluetoothstyle"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHSTYLE)
-            //.appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.MOTORDRIVERBOARD_BLUETOOTHSTYLE_BUTTONS, "13"],
                 [Blockly.MOTORDRIVERBOARD_BLUETOOTHSTYLE_DIRECTIONS, "5"],
@@ -1087,8 +1047,7 @@ Blockly.Blocks["md_bluetoothgetdegree"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHGETDEGREE)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
+            .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHGETDEGREE);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1098,8 +1057,7 @@ Blockly.Blocks["md_bluetoothgetspeed"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHGETSPEED)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
+            .appendField(Blockly.MOTORDRIVERBOARD_BLUETOOTHGETSPEED);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1109,10 +1067,8 @@ Blockly.Blocks["md_nrfinit"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_NRFINIT)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        this.appendValueInput("nrfadd", String)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_NRFINIT);
+        this.appendValueInput("nrfadd", String);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1124,8 +1080,7 @@ Blockly.Blocks["md_nrfdataready"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_NRFDATAREADY)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
+            .appendField(Blockly.MOTORDRIVERBOARD_NRFDATAREADY);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1136,9 +1091,6 @@ Blockly.Blocks["md_nrfvalue"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_NRFVALUE)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        //this.appendValueInput("nrfadd", String)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1151,9 +1103,6 @@ Blockly.Blocks["md_nrfgetdata"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_NRFGETDATA)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        //this.appendValueInput("nrfadd", String)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1166,7 +1115,6 @@ Blockly.Blocks["md_nrfgetpackage"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_NRFGETPACKAGE)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1177,9 +1125,6 @@ Blockly.Blocks["md_nrfnewob"] = {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MOTORDRIVERBOARD_NRFNEWOB)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        //this.appendValueInput("nrfadd", String)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1197,8 +1142,7 @@ Blockly.Blocks["md_nrfdatafun"] = {
                     [Blockly.MOTORDRIVERBOARD_NRFDIRECTION, "E_ROBOT_CONTROL_DIRECTION"],
                     [Blockly.MOTORDRIVERBOARD_NRFSPEED, "E_ROBOT_CONTROL_SPEED"],
                     [Blockly.MOTORDRIVERBOARD_NRFBUTTON, "E_BUTTON"],
-                ]), "datafun")
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
+                ]), "datafun");
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1217,10 +1161,7 @@ Blockly.Blocks["md_nrfbuttons"] = {
                     [Blockly.MOTORDRIVERBOARD_NRFBUTTONSDOWN, "BT_PAD_DOWN"],
                     [Blockly.MOTORDRIVERBOARD_NRFBUTTONSLEFT, "BT_PAD_LEFT"],
                     [Blockly.MOTORDRIVERBOARD_NRFBUTTONSRIGHT, "BT_PAD_RIGHT"],
-                ]), "nrfbuttons")
-
-
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
+                ]), "nrfbuttons");
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1230,10 +1171,7 @@ Blockly.Blocks["md_nrfgetdegree"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_NRFGETDEGREE)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        //this.appendValueInput("nrfadd", String)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_NRFGETDEGREE);
         this.setOutput(true);
         this.setTooltip('');
     }
@@ -1243,10 +1181,7 @@ Blockly.Blocks["md_nrfgetspeed"] = {
     init: function () {
         this.setColour(Blockly.Blocks.MotorDriverBoard.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MOTORDRIVERBOARD_NRFGETSPEED)
-        // .appendField(new Blockly.FieldImage("../../media/panthertank/pt_bluetooth.png", 45, 38))
-        //this.appendValueInput("nrfadd", String)
-        //.appendField(new Blockly.FieldImage("../../media/MotorDriverBoard/md_irtracking.png", 38, 32))
+            .appendField(Blockly.MOTORDRIVERBOARD_NRFGETSPEED);
         this.setOutput(true);
         this.setTooltip('');
     }
