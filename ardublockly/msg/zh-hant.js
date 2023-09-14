@@ -166,9 +166,8 @@ Ardublockly.LOCALISED_TEXT = {
     catTime: "時間",
     catTone: "蜂鳴器",
     catMotors: "馬達",
-    catMotorDriverBoard: "馬達擴展板",
     catPS2: "PS2搖桿",
-    catRTC: "時鐘",
+    catRTC: "RTC時鐘",
     catComms: "通訊",
     catSensors: "感測器",
     catI2CSensors: "I2C感測器",
@@ -176,5 +175,5 @@ Ardublockly.LOCALISED_TEXT = {
     catWS2812Leds: "WS2812 LED 燈條",
     catLCDLED: "LCD/LED",
     catLEDMatrix: "MAX7219 LED 點矩陣",
-    catPixetto: "Pixetto感測器",
+    catPixetto: "Pixetto",
 };
