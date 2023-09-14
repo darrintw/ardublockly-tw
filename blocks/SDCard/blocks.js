@@ -18,7 +18,7 @@ Blockly.Blocks.SDCard.HUE = 220;
 Blockly.Blocks['SD_initial'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard)
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD)
             .appendField(new Blockly.FieldVariable('sd_card'), "SD_VAR")
             .appendField(Blockly.Msg.ADR_SD_INITIAL);
         this.appendDummyInput()
@@ -37,7 +37,7 @@ Blockly.Blocks['SD_initial'] = {
 Blockly.Blocks['SD_success'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard);
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD);
         this.appendDummyInput()
             .appendField(Blockly.Msg.TEXT_APPEND_TO + Blockly.Msg.ARD_CS_PIN)
             .appendField(new Blockly.FieldVariable('sd_cs_pin'), "CS_VAR");
@@ -54,7 +54,7 @@ Blockly.Blocks['SD_success'] = {
 Blockly.Blocks['SD_exists'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard)
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD)
             .appendField(new Blockly.FieldVariable('sd_card'), "SD_VAR");
         this.appendDummyInput()
             .appendField(Blockly.Msg.TEXT_APPEND_TO + Blockly.Msg.ARD_CS_PIN)
@@ -72,7 +72,7 @@ Blockly.Blocks['SD_exists'] = {
 Blockly.Blocks['SD_read_type'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard)
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD)
             .appendField(new Blockly.FieldVariable('sd_card'), "SD_VAR")
             .appendField(Blockly.Msg.ADR_SD_TYPE);
         this.setPreviousStatement(false, null);
@@ -104,7 +104,7 @@ Blockly.Blocks['SD_type'] = {
 Blockly.Blocks['SD_dir_create'] = {
     init: function () {
         this.appendValueInput("DIR_NAME")
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard)
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD)
             .appendField(Blockly.Msg.ADR_SD_DIRECTORY_CREATE);
         this.setPreviousStatement(false, null);
         this.setNextStatement(false, null);
@@ -118,7 +118,7 @@ Blockly.Blocks['SD_dir_create'] = {
 Blockly.Blocks['SD_dir_delete'] = {
     init: function () {
         this.appendValueInput("DIR_NAME")
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard)
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD)
             .appendField(Blockly.Msg.ADR_SD_DIRECTORY_DELETE);
         this.setPreviousStatement(false, null);
         this.setNextStatement(false, null);
@@ -132,7 +132,7 @@ Blockly.Blocks['SD_dir_delete'] = {
 Blockly.Blocks['SD_remove'] = {
     init: function () {
         this.appendValueInput("FILE_NAME")
-            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCard)
+            .appendField(Blockly.Msg.BLOCKS_CATEGORY_SDCARD)
             .appendField(Blockly.Msg.ADR_SD_FILE_DELETE);
         this.setPreviousStatement(false, null);
         this.setNextStatement(false, null);
