@@ -86,7 +86,7 @@ Ardublockly.LOCALISED_TEXT = {
         "請在[設定]功能選擇 IDE 選項設定",
     arduinoOpErrorIdContext_55: "序列埠不可用<br>" +
         "這個序列埠無法存取<br>" +
-        "請檢查Arduino開發板是否正確的連接PC電腦, 且在[設定]功能選擇使用的序列埠",
+        "請檢查Arduino開發板是否正確的連接PC電腦",
     arduinoOpErrorIdContext_56: "未知的Arduino開發板<br>" +
         "Arduino開發板種類未設定<br>" +
         "請在[設定]功能選擇適當的Arduino開發板",

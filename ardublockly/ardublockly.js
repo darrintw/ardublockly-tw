@@ -9,7 +9,6 @@
 
 /** Create a namespace for the application. */
 var Ardublockly = Ardublockly || {};
-Ardublockly.selectedboard = '';
 
 /** Initialize function for Ardublockly, to be called on page load. */
 Ardublockly.init = function () {
@@ -31,29 +30,47 @@ Ardublockly.init = function () {
     Ardublockly.bindActionFunctions();
     Ardublockly.bindBlocklyEventListeners();
 
+    var jsonBoard = Blockly.Arduino.Boards.boardJson();
+    Ardublockly.setArduinoBoardsHtml(
+        ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
+
     // Hackish way to check if not running locally
     if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
         Ardublockly.initialiseIdeButtons();
         ArdublocklyServer.requestArduinoBoard(function (jsonObj) {
-            Ardublockly.selectedboard = jsonObj['selected'];
-            Ardublockly.changeBlocklyArduinoBoard(
-                jsonObj['selected'].toLowerCase().replace(/ /g, '_'));
+            var board_name = jsonObj['selected'].toLowerCase().replace(/ /g, '_');
+            Ardublockly.changeBlocklyArduinoBoard(board_name);
+            var boardDropdown = document.getElementById('board');
+            var opts = boardDropdown.options.length;
+            for (var i = 0; i < opts; i++) {
+                if (boardDropdown.options[i].value == board_name) {
+                    boardDropdown.options[i].selected = true;
+                    break;
+                }
+            }
         });
         ArdublocklyServer.requestSerialPorts(function (jsonObj) {
             Ardublockly.setSerialPortsHtml(
                 ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
+        ArdublocklyServer.requestBaudRateOptions(function (jsonObj) {
+            Ardublockly.setBaudRateHtml(
+                ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
+        });
         document.getElementById('version_output').hidden = true;
     } else {
+        Ardublockly.setArduinoSimpleBoardsHtml(
+            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
         document.getElementById('ide_buttons_wrapper').hidden = true;
         document.getElementById('button_serial_monitor').hidden = true;
         document.getElementById('ide_output').hidden = true;
+        document.getElementById('serial_port').hidden = true;
+        document.getElementById('baud_rate_setting').hidden = true;
     }
 
     window.oncontextmenu = (e) => {
         e.preventDefault();
     }
-
     Ardublockly.restoreDefault();
 };
 
@@ -172,6 +189,11 @@ Ardublockly.bindActionFunctions = function () {
     serialInputListeners('serial_input');
 };
 
+/** */
+Ardublockly.getSerialInfo = function () {
+
+}
+
 /** Set show time stamp or not in serial monitor. */
 Ardublockly.serialTimeStamp = function () {
     var el = document.getElementById('serial_timestamp');
@@ -187,7 +209,7 @@ Ardublockly.serialStartStop = function () {
     var serialPortValue = elSP.options[elSP.selectedIndex].value;
     var elBRV = document.getElementById('baud_rate_setting');
     var baudRateValue = elBRV.options[elBRV.selectedIndex].value;
-    if (serialPortValue != 'USB') {
+    if (serialPortValue != 'USB' && serialPortValue != '--') {
         if (el.checked) {
             document.getElementById('serial_startstop_label').textContent =
                 Ardublockly.getLocalStr('serial_stop');
@@ -275,7 +297,9 @@ Ardublockly.ideSendUpload = function () {
     }
     var el = document.getElementById('serial_port');
     var serialValue = el.options[el.selectedIndex].value;
-    if (serialValue == "USB") {
+    if (serialValue == "--") {
+        Ardublockly.shortMessage(Ardublockly.getLocalStr('serial_port_error'), 4000);
+    } else if (serialValue == "USB") {
         let confirm = false;
         let cancel = false;
         Ardublockly.alertMessage(
@@ -614,14 +638,15 @@ Ardublockly.openAbout = function () {
  * and opens the Settings modal dialog.
  */
 Ardublockly.openSettings = function () {
-    var jsonBoard = Blockly.Arduino.Boards.boardJson();
+    //var jsonBoard = Blockly.Arduino.Boards.boardJson();
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
         Ardublockly.setArduinoSimpleBoardsHtml(
             ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
     } else {
+        /*
         Ardublockly.setArduinoBoardsHtml(
             ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
-
+        */
         ArdublocklyServer.requestCompilerLocation(function (jsonObj) {
             Ardublockly.setCompilerLocationHtml(
                 ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
@@ -630,15 +655,19 @@ Ardublockly.openSettings = function () {
             Ardublockly.setSketchLocationHtml(
                 ArdublocklyServer.jsonToHtmlTextInput(jsonObj));
         });
+        /*
         ArdublocklyServer.requestSerialPorts(function (jsonObj) {
             Ardublockly.setSerialPortsHtml(
                 ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
+        */
         //Add by darrin for open putty
+        /*
         ArdublocklyServer.requestBaudRateOptions(function (jsonObj) {
             Ardublockly.setBaudRateHtml(
                 ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
+        */
         ArdublocklyServer.requestIdeOptions(function (jsonObj) {
             Ardublockly.setIdeHtml(ArdublocklyServer.jsonToHtmlDropdown(jsonObj));
         });
@@ -713,7 +742,6 @@ Ardublockly.setArduinoSimpleBoardsHtml = function (newEl) {
 Ardublockly.setSimpleBoard = function () {
     var el = document.getElementById('simple_board');
     var boardValue = el.options[el.selectedIndex].value;
-    Ardublockly.selectedboard = boardValue;
     Ardublockly.changeBlocklyArduinoBoard(
         boardValue.toLowerCase().replace(/ /g, '_'));
 };
@@ -747,7 +775,6 @@ Ardublockly.setArduinoBoardsHtml = function (newEl) {
 Ardublockly.setBoard = function () {
     var el = document.getElementById('board');
     var boardValue = el.options[el.selectedIndex].value;
-    Ardublockly.selectedboard = boardValue;
     var jsonBoard = Blockly.Arduino.Boards.boardJson();
     var boardFlag;
     for (var i = 0; i < jsonBoard.options.length; i++) {
@@ -771,7 +798,11 @@ Ardublockly.setBoard = function () {
  * @param newEl
  */
 Ardublockly.setSerialPortsHtml = function (newEl) {
-    if (newEl === null) return Ardublockly.openNotConnectedModal();
+    //if (newEl === null) return Ardublockly.openNotConnectedModal();
+    if (newEl === null) {
+        var serialDropdown = document.getElementById('serial_port');
+        return Ardublockly.shortMessage(Ardublockly.getLocalStr('arduinoOpErrorIdContext_55'), 4000);
+    }
 
     var serialDropdown = document.getElementById('serial_port');
     if (serialDropdown !== null) {

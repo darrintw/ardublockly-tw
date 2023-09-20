@@ -114,11 +114,9 @@ Blockly.Arduino.Boards.profiles.uno = {
         ['11', '11']],
     serial: [['serial', 'Serial']],
     serialPins: {Serial: [['RX', '0'], ['TX', '1']]},
-    serialSpeed: [['300', '300'], ['600', '600'], ['1200', '1200'],
-        ['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
-        ['14400', '14400'], ['19200', '19200'], ['28800', '28800'],
-        ['31250', '31250'], ['38400', '38400'], ['57600', '57600'],
-        ['115200', '115200']],
+    serialSpeed: [['2400', '2400'], ['4800', '4800'], ['9600', '9600'],
+        ['14400', '14400'], ['19200', '19200'], ['28800', '28800'], ['38400', '38400'],
+        ['57600', '57600'], ['115200', '115200']],
     spi: [['SPI', 'SPI']],
     spiPins: {SPI: [['MOSI', '11'], ['MISO', '12'], ['SCK', '13']]},
     spiClockDivide: [['2 (8MHz)', 'SPI_CLOCK_DIV2'],
@@ -167,7 +165,7 @@ Blockly.Arduino.Boards.profiles.nano_168 =
 Blockly.Arduino.Boards.profiles.nano_328old =
     Blockly.Arduino.Boards.duplicateBoardProfile(
         Blockly.Arduino.Boards.profiles.nano_328,
-        'Arduino Nano 328 old bootloader',
+        'Arduino Nano 328(old)',
         'Arduino Nano with ATmega328 and old bootloader board',
         'arduino:avr:nano:cpu=atmega328old');
 

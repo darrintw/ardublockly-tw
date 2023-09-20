@@ -325,7 +325,7 @@ Blockly.WorkspaceSvg.prototype.getCanvas = function () {
 
 /**
  * Get the SVG element that forms the bubble surface.
- * @return {!SVGGElement} SVG element.
+ * @return {SVGElement} SVG element.
  */
 Blockly.WorkspaceSvg.prototype.getBubbleCanvas = function () {
     return this.svgBubbleCanvas_;
@@ -333,7 +333,7 @@ Blockly.WorkspaceSvg.prototype.getBubbleCanvas = function () {
 
 /**
  * Get the SVG element that contains this workspace.
- * @return {!Element} SVG element.
+ * @return {!Element|null} SVG element.
  */
 Blockly.WorkspaceSvg.prototype.getParentSvg = function () {
     if (this.cachedParentSvg_) {

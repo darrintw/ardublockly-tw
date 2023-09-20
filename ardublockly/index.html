@@ -69,12 +69,29 @@
         </a>
         <!-- Horizontal Navbar links only shown on large resolutions -->
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#" id="button_serial_monitor"><span class="translatable_serial_monitor">序列埠監控</span><i
-                    class="mdi-hardware-computer left"></i></a></li>
-            <li><a href="#" id="button_examples"><span class="translatable_examples">範例</span><i
-                    class="mdi-file-folder left"></i></a></li>
-            <li><a href="#" id="button_codeswitch"><span class="translatable_codeswitch">代碼切換</span><i
-                    class="mdi-image-remove-red-eye left"></i></a></li>
+            <li class="no-padding">
+                <select name="setting_baud_rate" id="baud_rate_setting" class="input-field col s12" readonly>
+                    <option value="9600">9600 baud</option>
+                </select>
+                <a href="#" id="button_serial_monitor"><span class="translatable_serial_monitor">序列埠監控</span><i
+                        class="mdi-hardware-computer left"></i></a>
+            </li>
+            <li>　</li>
+            <li class="no-padding">
+                <select name="settings_serial" id="serial_port" class="input-field col s12">
+                    <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
+                </select>
+                <a href="#" id="button_examples"><span class="translatable_examples">範例</span><i
+                        class="mdi-file-folder left"></i></a>
+            </li>
+            <li>　</li>
+            <li class="no-padding">
+                <select name="settings_board" id="board" class="input-field col s12">
+                    <option value="uno" class="translatable_arduinoBoardDefault">開發版未知</option>
+                </select>
+                <a href="#" id="button_codeswitch"><span class="translatable_codeswitch">代碼切換</span><i
+                        class="mdi-image-remove-red-eye left"></i></a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -268,7 +285,7 @@
             <label><span class="translatable_sketchFolder">草稿碼目錄</span></label>
             <label for="settings_sketch_location"><input type="text" id="settings_sketch_location"></label>
         </div>
-        <div class="modal_section">
+        <!--div class="modal_section">
             <label><span class="translatable_arduinoBoard">Arduino開發版</span></label>
             <label for="board">
                 <select name="settings_board" id="board">
@@ -284,14 +301,14 @@
                 </select>
             </label>
         </div>
-        <div class="modal_section" type="hidden">
+        <div class="modal_section">
             <label><span class="translatable_baudrate">鮑率</span></label>
             <label for="baud_rate_setting">
                 <select name="setting_baud_rate" id="baud_rate_setting" readonly>
                     <option value="9600">9600 baud</option>
                 </select>
             </label>
-        </div>
+        </div-->
         <div class="modal_section">
             <label><span class="translatable_defaultIdeButton">預設IDE按鈕</span></label>
             <label for="ide_settings">

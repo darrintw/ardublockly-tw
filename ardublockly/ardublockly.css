@@ -81,7 +81,7 @@ body {
 
 @media only screen and (min-width: 993px) {
     body {
-        padding-top: 100px;
+        padding-top: 128px;
     }
 
     .nav-fixed {
@@ -655,6 +655,7 @@ ul.side-nav li.side-menu-end {
 .sketch_name_wrapper {
     display: inline-block;
     padding-left: 5px;
+    padding-top: 32px;
 }
 
 .sketch_name_icon {
