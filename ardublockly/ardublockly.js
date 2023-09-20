@@ -771,9 +771,9 @@ Ardublockly.setArduinoBoardsHtml = function (newEl) {
  * Sets the Arduino Board type with the selected user input from the drop down.
  */
 Ardublockly.setBoard = function () {
+    var el = document.getElementById('board');
+    var boardValue = el.options[el.selectedIndex].value;
     if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
-        var el = document.getElementById('board');
-        var boardValue = el.options[el.selectedIndex].value;
         var jsonBoard = Blockly.Arduino.Boards.boardJson();
         var boardFlag;
         for (var i = 0; i < jsonBoard.options.length; i++) {
