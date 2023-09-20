@@ -62,8 +62,10 @@ Ardublockly.init = function () {
         document.getElementById('ide_buttons_wrapper').hidden = true;
         document.getElementById('button_serial_monitor').hidden = true;
         document.getElementById('ide_output').hidden = true;
-        document.getElementById('serial_port').hidden = true;
-        document.getElementById('baud_rate_setting').hidden = true;
+        var serialDropdown = document.getElementById('serial_port');
+        serialDropdown.style.visibility = 'hidden';
+        var baudRateDropdown = document.getElementById('baud_rate_setting');
+        baudRateDropdown.style.visibility = 'hidden';
     }
 
     window.oncontextmenu = (e) => {
