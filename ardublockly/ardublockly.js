@@ -640,8 +640,8 @@ Ardublockly.openAbout = function () {
 Ardublockly.openSettings = function () {
     //var jsonBoard = Blockly.Arduino.Boards.boardJson();
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
-        Ardublockly.setArduinoSimpleBoardsHtml(
-            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
+        /*Ardublockly.setArduinoSimpleBoardsHtml(
+            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));*/
     } else {
         /*
         Ardublockly.setArduinoBoardsHtml(
