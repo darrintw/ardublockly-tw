@@ -99,7 +99,7 @@ def load_arduino_cli(sketch_path):
         success = False
         exit_code = 56
         err_out = 'Arduino Board not configured in the Settings.'
-    elif not settings.get_serial_port_flag() and \
+    elif not (settings.get_serial_port_flag() or settings.get_serial_port_flag() == '--') and \
             settings.load_ide_option == 'upload':
         success = False
         exit_code = 55

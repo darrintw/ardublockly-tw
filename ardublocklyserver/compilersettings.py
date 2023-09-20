@@ -499,7 +499,7 @@ class ServerCompilerSettings(object):
     def populate_serial_port_list(self):
         """Populate the serial ports dictionary with the available ports."""
         port_list = ardublocklyserver.serialport.get_port_list()
-        self.__serial_ports = {'USB': 'USB'}
+        self.__serial_ports = {'--': '--', 'USB': 'USB'}
         if port_list:
             port_id = 0
             for item in port_list:

@@ -296,7 +296,7 @@ def copy_ardublockly_folder():
                      "arduino_exec_path = arduino\\arduino_debug.exe\n" + \
                      "arduino_board = uno\n" + \
                      "arduino_board_flag = arduino:avr:uno\n" + \
-                     "arduino_serial_port = none\n" + \
+                     "arduino_serial_port = --\n" + \
                      "\n" + \
                      "[Arduino_Sketch]\n" + \
                      "sketch_name = Sketch_Name\n" + \

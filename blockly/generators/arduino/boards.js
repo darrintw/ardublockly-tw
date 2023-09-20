@@ -165,7 +165,7 @@ Blockly.Arduino.Boards.profiles.nano_168 =
 Blockly.Arduino.Boards.profiles.nano_328old =
     Blockly.Arduino.Boards.duplicateBoardProfile(
         Blockly.Arduino.Boards.profiles.nano_328,
-        'Arduino Nano 328 old bootloader',
+        'Arduino Nano 328(old)',
         'Arduino Nano with ATmega328 and old bootloader board',
         'arduino:avr:nano:cpu=atmega328old');
 
