@@ -59,8 +59,6 @@ Ardublockly.init = function () {
         });
         document.getElementById('version_output').hidden = true;
     } else {
-        Ardublockly.setArduinoSimpleBoardsHtml(
-            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
         document.getElementById('ide_buttons_wrapper').hidden = true;
         document.getElementById('button_serial_monitor').hidden = true;
         document.getElementById('ide_output').hidden = true;
@@ -773,20 +771,22 @@ Ardublockly.setArduinoBoardsHtml = function (newEl) {
  * Sets the Arduino Board type with the selected user input from the drop down.
  */
 Ardublockly.setBoard = function () {
-    var el = document.getElementById('board');
-    var boardValue = el.options[el.selectedIndex].value;
-    var jsonBoard = Blockly.Arduino.Boards.boardJson();
-    var boardFlag;
-    for (var i = 0; i < jsonBoard.options.length; i++) {
-        if (jsonBoard.options[i].value == boardValue) {
-            boardFlag = jsonBoard.options[i].board_flag;
-            break;
+    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+        var el = document.getElementById('board');
+        var boardValue = el.options[el.selectedIndex].value;
+        var jsonBoard = Blockly.Arduino.Boards.boardJson();
+        var boardFlag;
+        for (var i = 0; i < jsonBoard.options.length; i++) {
+            if (jsonBoard.options[i].value == boardValue) {
+                boardFlag = jsonBoard.options[i].board_flag;
+                break;
+            }
         }
+        ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {
+        });
+        ArdublocklyServer.setArduinoBoardFlag(boardFlag, function (jsonObj) {
+        });
     }
-    ArdublocklyServer.setArduinoBoard(boardValue, function (jsonObj) {
-    });
-    ArdublocklyServer.setArduinoBoardFlag(boardFlag, function (jsonObj) {
-    });
     Ardublockly.changeBlocklyArduinoBoard(
         boardValue.toLowerCase().replace(/ /g, '_'));
 };
