@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview Unit tests for Closure's base.js that require debug loading.
+ * @fileoverview Unit tests for Closure's base.js that require debug loading.
  * @suppress {missingRequire}
  */
 

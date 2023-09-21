@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Plain text spell checker implementation.
+ * @fileoverview Plain text spell checker implementation.
  *
  * @see ../demos/plaintextspellchecker.html
  */

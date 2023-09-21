@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Iframe shims, to protect controls on the underlying page
+ * @fileoverview Iframe shims, to protect controls on the underlying page
  * from bleeding through popups.
  */
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Types provided by the full implementation. DO NOT WRITE
+ * @fileoverview Types provided by the full implementation. DO NOT WRITE
  * IMPLEMANTATIONS OF THE INTERFACES PROVIDED HERE. These exist to provide
  * a super type for the native-wrapped impl and the ponyfill impl.
  */

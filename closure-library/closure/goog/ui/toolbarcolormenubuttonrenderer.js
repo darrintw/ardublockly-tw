@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toolbar-style renderer for {@link goog.ui.ColorMenuButton}.
+ * @fileoverview A toolbar-style renderer for {@link goog.ui.ColorMenuButton}.
  */
 
 goog.provide('goog.ui.ToolbarColorMenuButtonRenderer');

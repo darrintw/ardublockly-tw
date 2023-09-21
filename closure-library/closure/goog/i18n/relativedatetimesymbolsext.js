@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Relative date time formatting symbols.
+ * @fileoverview Relative date time formatting symbols.
  *
  * File generated from CLDR ver. 36
  *

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Matcher which maintains a client-side cache on top of some
+ * @fileoverview Matcher which maintains a client-side cache on top of some
  * other matcher.
  */
 

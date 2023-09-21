@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utility functions for supporting Bidi issues.
+ * @fileoverview Utility functions for supporting Bidi issues.
  */
 
 

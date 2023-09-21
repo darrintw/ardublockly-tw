@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of goog.net.NetworkTester.
+ * @fileoverview Definition of goog.net.NetworkTester.
  */
 
 goog.provide('goog.net.NetworkTester');

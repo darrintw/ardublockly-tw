@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Adds a keyboard shortcut for the link command.
+ * @fileoverview Adds a keyboard shortcut for the link command.
  */
 
 goog.provide('goog.editor.plugins.LinkShortcutPlugin');

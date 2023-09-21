@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class that retrieves rich autocomplete matches, represented as
+ * @fileoverview Class that retrieves rich autocomplete matches, represented as
  * a structured list of lists, via an ajax call.  The first element of each
  * sublist is the name of a client-side javascript function that converts the
  * remaining sublist elements into rich rows.

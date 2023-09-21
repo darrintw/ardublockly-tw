@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A wrapper for MockControl that provides mocks and assertions
+ * @fileoverview A wrapper for MockControl that provides mocks and assertions
  * for testing asynchronous code. All assertions will only be verified when
  * $verifyAll is called on the wrapped MockControl.
  *

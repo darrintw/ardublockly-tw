@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Defines the base class for a module. This is used to allow the
+ * @fileoverview Defines the base class for a module. This is used to allow the
  * code to be modularized, giving the benefits of lazy loading and loading on
  * demand.
  */

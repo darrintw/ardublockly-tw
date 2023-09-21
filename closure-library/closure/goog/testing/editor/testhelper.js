@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class that allows for simple text editing tests.
+ * @fileoverview Class that allows for simple text editing tests.
  */
 
 goog.setTestOnly('goog.testing.editor.TestHelper');

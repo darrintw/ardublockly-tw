@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utilties for working with the styles of DOM nodes, and
+ * @fileoverview Utilties for working with the styles of DOM nodes, and
  * related to rich text editing.
  *
  * Many of these are not general enough to go into goog.style, and use

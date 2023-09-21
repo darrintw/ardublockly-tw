@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Event Simulation.
+ * @fileoverview Event Simulation.
  *
  * Utility functions for simulating events at the Closure level. All functions
  * in this package generate events by calling goog.events.fireListeners,

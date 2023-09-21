@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Shared tests for Field and ContentEditableField.
+ * @fileoverview Shared tests for Field and ContentEditableField.
  * Since ContentEditableField switches many of the internal code paths in Field
  * (such as via usesIframe()) it's important to re-run a lot of the same tests.
  */
@@ -75,7 +75,7 @@ class TestPlugin extends Plugin {
 const STRING_KEY = String.fromCharCode(KeyCodes.A).toLowerCase();
 
 /**
- * @return {events.Event} Returns an event for a keyboard shortcut for the
+ * @return {!events.Event} Returns an event for a keyboard shortcut for the
  *     letter 'a'.
  */
 function getBrowserEvent() {

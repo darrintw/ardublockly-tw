@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Cross domain RPC library using the <a
+ * @fileoverview Cross domain RPC library using the <a
  * href="http://go/xd2_design" target="_top">XD2 approach</a>.
  *
  * <h5>Protocol</h5>

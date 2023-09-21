@@ -14,7 +14,7 @@
 // All Rights Reserved.
 
 /**
- * @fileOverview Static functions for writing the contents of an iframe-based
+ * @fileoverview Static functions for writing the contents of an iframe-based
  * editable field. These vary significantly from browser to browser. Uses
  * strings and document.write instead of DOM manipulation, because
  * iframe-loading is a performance bottleneck.

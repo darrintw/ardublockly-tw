@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The renderer interface for {@link goog.ui.DatePicker}.
+ * @fileoverview The renderer interface for {@link goog.ui.DatePicker}.
  *
  * @see ../demos/datepicker.html
  */

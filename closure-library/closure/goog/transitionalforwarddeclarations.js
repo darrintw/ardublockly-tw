@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The forward declarations in this file are here to faciliate
+ * @fileoverview The forward declarations in this file are here to faciliate
  * the removal of "deps.js" from the "base" rule.  These types are
  * included in various extern files.  These rules should be cleaned up
  * so that these declarations aren't necessary.

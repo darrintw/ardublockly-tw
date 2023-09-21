@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class to encapsulate an editable field that blends in with
+ * @fileoverview Class to encapsulate an editable field that blends in with
  * the style of the page. The field can be fixed height, grow with its
  * contents, or have a min height after which it grows to its contents.
  * This is a goog.editor.Field, but with blending and sizing capabilities,

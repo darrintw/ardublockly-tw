@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock filesystem objects. These are all in the same file to
+ * @fileoverview Mock filesystem objects. These are all in the same file to
  * avoid circular dependency issues.
  */
 

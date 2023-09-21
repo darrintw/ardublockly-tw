@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the BrowserTestChannel class.  A
+ * @fileoverview Definition of the BrowserTestChannel class.  A
  * BrowserTestChannel is used during the first part of channel negotiation
  * with the server to create the channel. It helps us determine whether we're
  * behind a buffering proxy. It also runs the logic to see if the channel
@@ -27,12 +27,12 @@ goog.provide('goog.net.BrowserTestChannel');
 
 goog.forwardDeclare('goog.net.BrowserChannel');
 goog.forwardDeclare('goog.net.BrowserChannel.ServerReachability');
-goog.forwardDeclare('goog.net.XhrIo');
 goog.require('goog.json.NativeJsonProcessor');
 goog.require('goog.net.ChannelRequest');
 goog.require('goog.net.ChannelRequest.Error');
 goog.require('goog.net.tmpnetwork');
 goog.require('goog.string.Parser');
+goog.requireType('goog.net.XhrIo');
 
 
 

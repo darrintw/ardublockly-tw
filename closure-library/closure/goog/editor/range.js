@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utilties for working with ranges.
+ * @fileoverview Utilties for working with ranges.
  */
 
 goog.provide('goog.editor.range');

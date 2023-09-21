@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A wrapper for asynchronous message-passing channels that buffer
+ * @fileoverview A wrapper for asynchronous message-passing channels that buffer
  * their output until both ends of the channel are connected.
  */
 

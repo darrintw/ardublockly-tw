@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Messages common to Editor UI components.
+ * @fileoverview Messages common to Editor UI components.
  */
 
 goog.provide('goog.ui.editor.messages');

@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Tool for caching the result of expensive deterministic
+ * @fileoverview Tool for caching the result of expensive deterministic
  * functions.
  *
  * @see http://en.wikipedia.org/wiki/Memoization

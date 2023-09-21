@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class that supports single selection from a dropdown menu,
+ * @fileoverview A class that supports single selection from a dropdown menu,
  * with semantics similar to the native HTML <code>&lt;select&gt;</code>
  * element.
  *

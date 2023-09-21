@@ -1,18 +1,10 @@
-// Copyright 2013 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-/** @fileOverview Unit tests for SafeUrl and its builders. */
+/** @fileoverview Unit tests for SafeUrl and its builders. */
 
 goog.module('goog.html.safeUrlTest');
 goog.setTestOnly();
@@ -123,6 +115,25 @@ testSuite({
     // Maybe not wrong, but we reject nonetheless for simplicity.
     assertBlobTypeIsSafe('image/png;foo=bar&', false);
     assertBlobTypeIsSafe('image/png;foo=%3Cbar', false);
+  },
+
+  testSafeUrlFromMediaSource_createsBlob() {
+    if (!('MediaSource' in goog.global)) {
+      return;
+    }
+    const safeUrl = SafeUrl.fromMediaSource(new MediaSource());
+    const extracted = SafeUrl.unwrap(safeUrl);
+    assertEquals('blob:', extracted.substring(0, 5));
+  },
+
+  testSafeUrlFromMediaSource_rejectsBlobs() {
+    if (!('MediaSource' in goog.global)) {
+      return;
+    }
+    const safeUrl =
+        SafeUrl.fromMediaSource(new Blob([''], {type: 'text/plain'}));
+    const extracted = SafeUrl.unwrap(safeUrl);
+    assertEquals(SafeUrl.INNOCUOUS_STRING, extracted);
   },
 
   testSafeUrlFromFacebookMessengerUrl_fbMessengerShareUrl() {

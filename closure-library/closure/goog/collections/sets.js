@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Set operations for ES6 Sets.
+ * @fileoverview Set operations for ES6 Sets.
  *
  * See design doc at go/closure-es6-set
  */

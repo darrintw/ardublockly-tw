@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock matchers for event related arguments.
+ * @fileoverview Mock matchers for event related arguments.
  */
 
 goog.setTestOnly('goog.testing.events.EventMatcher');

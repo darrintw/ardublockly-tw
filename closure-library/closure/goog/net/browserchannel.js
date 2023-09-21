@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the BrowserChannel class.  A BrowserChannel
+ * @fileoverview Definition of the BrowserChannel class.  A BrowserChannel
  * simulates a bidirectional socket over HTTP. It is the basis of the
  * Gmail Chat IM connections to the server.
  *
@@ -1806,7 +1806,7 @@ goog.net.BrowserChannel.prototype.onRequestData = function(
       } catch (ex) {
         response = null;
       }
-      if (goog.isArray(response) && response.length == 3) {
+      if (Array.isArray(response) && response.length == 3) {
         this.handlePostResponse_(response);
       } else {
         this.channelDebug_.debug('Bad POST response data returned');
@@ -1824,7 +1824,7 @@ goog.net.BrowserChannel.prototype.onRequestData = function(
     }
     if (!goog.string.isEmptyOrWhitespace(responseText)) {
       var response = this.parser_.parse(responseText);
-      goog.asserts.assert(goog.isArray(response));
+      goog.asserts.assert(Array.isArray(response));
       this.onInput_(/** @type {!Array<?>} */ (response));
     }
   }

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Unit tests for goog.testing.i18n.asserts.
+ * @fileoverview Unit tests for goog.testing.i18n.asserts.
  */
 
 goog.module('goog.testing.i18n.assertsTest');

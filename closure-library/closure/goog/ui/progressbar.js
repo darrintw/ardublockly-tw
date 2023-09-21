@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Implementation of a progress bar.
+ * @fileoverview Implementation of a progress bar.
  *
  * @see ../demos/progressbar.html
  */
@@ -127,7 +127,7 @@ goog.ui.ProgressBar.prototype.exitDocument = function() {
 /**
  * This creates the thumb element.
  * @private
- * @return {HTMLDivElement} The created thumb element.
+ * @return {!HTMLDivElement} The created thumb element.
  */
 goog.ui.ProgressBar.prototype.createThumb_ = function() {
   return this.getDomHelper().createDom(

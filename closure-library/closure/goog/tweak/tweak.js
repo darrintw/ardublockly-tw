@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides facilities for creating and querying tweaks.
+ * @fileoverview Provides facilities for creating and querying tweaks.
  * @see http://code.google.com/p/closure-library/wiki/UsingTweaks
  */
 

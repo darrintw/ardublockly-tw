@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A color picker component.  A color picker can compose several
+ * @fileoverview A color picker component.  A color picker can compose several
  * instances of goog.ui.ColorPalette.
  *
  * NOTE: The ColorPicker is in a state of transition towards the common

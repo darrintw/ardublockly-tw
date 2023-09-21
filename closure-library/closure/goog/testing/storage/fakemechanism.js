@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides a fake storage mechanism for testing.
+ * @fileoverview Provides a fake storage mechanism for testing.
  */
 
 goog.provide('goog.testing.storage.FakeMechanism');

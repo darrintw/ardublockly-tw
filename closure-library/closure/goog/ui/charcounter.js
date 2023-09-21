@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Character counter widget implementation.
+ * @fileoverview Character counter widget implementation.
  *
  * @see ../demos/charcounter.html
  */

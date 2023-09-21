@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for {@link goog.ui.MenuHeader}s.
+ * @fileoverview Renderer for {@link goog.ui.MenuHeader}s.
  */
 
 goog.provide('goog.ui.MenuHeaderRenderer');

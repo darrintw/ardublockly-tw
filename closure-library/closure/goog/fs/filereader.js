@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview A wrapper for the HTML5 FileReader object.
+ * @fileoverview A wrapper for the HTML5 FileReader object.
  */
 
 goog.provide('goog.fs.FileReader');

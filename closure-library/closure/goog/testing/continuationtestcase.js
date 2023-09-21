@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Defines test classes for tests that can wait for conditions.
+ * @fileoverview Defines test classes for tests that can wait for conditions.
  *
  * Normal unit tests must complete their test logic within a single function
  * execution. This is ideal for most tests, but makes it difficult to test

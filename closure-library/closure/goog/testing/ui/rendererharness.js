@@ -14,7 +14,7 @@
 // All Rights Reserved
 
 /**
- * @fileOverview A driver for testing renderers.
+ * @fileoverview A driver for testing renderers.
  */
 
 goog.setTestOnly('goog.testing.ui.RendererHarness');

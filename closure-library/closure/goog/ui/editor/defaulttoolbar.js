@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Factory functions for creating a default editing toolbar.
+ * @fileoverview Factory functions for creating a default editing toolbar.
  *
  * @see ../../demos/editor/editor.html
  */

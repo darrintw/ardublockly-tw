@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Contains application code for the XPC demo.
+ * @fileoverview Contains application code for the XPC demo.
  * This script is used in both the container page and the iframe.
  */
 goog.provide('xpcdemo');

@@ -1,20 +1,11 @@
-// Copyright 2007 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// All Rights Reserved.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview Provides utility routines for copying modified
+ * @fileoverview Provides utility routines for copying modified
  * `CSSRule` objects from the parent document into iframes so that any
  * content in the iframe will be styled as if it was inline in the parent
  * document.
@@ -832,7 +823,7 @@ goog.cssom.iframe.style.isTransparentValue_ = function(colorValue) {
  * are not the same for certain properties.
  *
  * @param {Element} element The element whose computed style to return.
- * @return {Object} Object containing style properties and values.
+ * @return {!Object} Object containing style properties and values.
  * @private
  */
 goog.cssom.iframe.style.getComputedStyleObject_ = function(element) {

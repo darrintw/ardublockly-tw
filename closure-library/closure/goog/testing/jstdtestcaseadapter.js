@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Conditionally add "adapter" methods to allow JSTD test cases
+ * @fileoverview Conditionally add "adapter" methods to allow JSTD test cases
  * to run under the Closure Test Runner.  The goal is to allow tests
  * to function regardless of the environment they are running under to allow
  * them to transition to the Closure test runner and allow JSTD runner to be

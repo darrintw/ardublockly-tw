@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview provides a reusable Vimeo video UI component given a public
+ * @fileoverview provides a reusable Vimeo video UI component given a public
  * Vimeo video URL.
  *
  * goog.ui.media.Vimeo is actually a {@link goog.ui.ControlRenderer}, a

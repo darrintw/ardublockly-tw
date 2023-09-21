@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Editor plugin to handle tab keys in lists to indent and
+ * @fileoverview Editor plugin to handle tab keys in lists to indent and
  * outdent.
  */
 

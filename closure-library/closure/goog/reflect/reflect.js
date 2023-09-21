@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Useful compiler idioms.
+ * @fileoverview Useful compiler idioms.
  */
 
 goog.provide('goog.reflect');

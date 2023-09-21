@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Functions for manipulating message channels.
+ * @fileoverview Functions for manipulating message channels.
  */
 
 goog.provide('goog.messaging');

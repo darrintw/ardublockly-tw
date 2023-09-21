@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Defines the goog.module.ModuleInfo class.
+ * @fileoverview Defines the goog.module.ModuleInfo class.
  */
 
 goog.provide('goog.module.ModuleInfo');

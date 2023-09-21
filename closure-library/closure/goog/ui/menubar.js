@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A base menu bar factory. Can be bound to an existing
+ * @fileoverview A base menu bar factory. Can be bound to an existing
  * HTML structure or can generate its own DOM.
  *
  * To decorate, the menu bar should be bound to an element containing children

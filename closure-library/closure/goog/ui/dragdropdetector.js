@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Detects images dragged and dropped on to the window.
+ * @fileoverview Detects images dragged and dropped on to the window.
  */
 
 goog.provide('goog.ui.DragDropDetector');

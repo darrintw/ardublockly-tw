@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock MessageChannel implementation that can receive fake
+ * @fileoverview Mock MessageChannel implementation that can receive fake
  * messages and test that the right messages are sent.
  */
 

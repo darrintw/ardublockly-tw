@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for {@link goog.ui.MenuSeparator}s.
+ * @fileoverview Renderer for {@link goog.ui.MenuSeparator}s.
  */
 
 goog.provide('goog.ui.MenuSeparatorRenderer');

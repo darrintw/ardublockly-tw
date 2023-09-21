@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Common CSS class name constants.
+ * @fileoverview Common CSS class name constants.
  */
 
 goog.provide('goog.ui.INLINE_BLOCK_CLASSNAME');

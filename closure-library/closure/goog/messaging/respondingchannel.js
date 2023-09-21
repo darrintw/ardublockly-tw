@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of goog.messaging.RespondingChannel, which wraps a
+ * @fileoverview Definition of goog.messaging.RespondingChannel, which wraps a
  * MessageChannel and allows the user to get the response from the services.
  */
 

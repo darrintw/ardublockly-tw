@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Performance timer.
+ * @fileoverview Performance timer.
  *
  * {@see goog.testing.benchmark} for an easy way to use this functionality.
  */

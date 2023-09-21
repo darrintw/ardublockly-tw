@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The default Protobuf stream parser.
+ * @fileoverview The default Protobuf stream parser.
  *
  * The default Protobuf parser decodes the input stream (binary) under the
  * following rules:

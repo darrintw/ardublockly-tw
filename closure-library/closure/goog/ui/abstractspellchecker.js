@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Abstract base class for spell checker implementations.
+ * @fileoverview Abstract base class for spell checker implementations.
  *
  * The spell checker supports two modes - synchronous and asynchronous.
  *

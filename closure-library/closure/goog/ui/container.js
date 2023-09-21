@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for containers that host {@link goog.ui.Control}s,
+ * @fileoverview Base class for containers that host {@link goog.ui.Control}s,
  * such as menus and toolbars.  Provides default keyboard and mouse event
  * handling and child management, based on a generalized version of
  * {@link goog.ui.Menu}.
@@ -989,7 +989,7 @@ goog.ui.Container.prototype.updateHighlightedIndex_ = function(
  * @param {boolean=} opt_unrender Whether to call `exitDocument` on the
  *     removed control, and detach its DOM from the document (defaults to
  *     false).
- * @return {goog.ui.Control} The removed control, if any.
+ * @return {?goog.ui.Control} The removed control, if any.
  * @override
  */
 goog.ui.Container.prototype.removeChild = function(control, opt_unrender) {

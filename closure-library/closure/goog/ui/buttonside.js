@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Enum for button side constants. In its own file so as to not
+ * @fileoverview Enum for button side constants. In its own file so as to not
  * cause a circular dependency with {@link goog.ui.ButtonRenderer}.
  */
 

@@ -1,19 +1,11 @@
-// Copyright 2013 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview The API spec for the WebChannel messaging library.
+ * @fileoverview The API spec for the WebChannel messaging library.
  *
  * Similar to HTML5 WebSocket and Closure BrowserChannel, WebChannel
  * offers an abstraction for point-to-point socket-like communication between
@@ -127,9 +119,6 @@ goog.net.WebChannel.FailureRecovery = function() {};
  * (as configured by the server) to send XHRs with the CORS withCredentials
  * bit set to true.
  *
- * testUrl: the test URL for detecting connectivity during the initial
- * handshake. This parameter defaults to "/<channel_url>/test".
- *
  * sendRawJson: whether to bypass v8 encoding of client-sent messages.
  * This defaults to false now due to legacy servers. New applications should
  * always configure this option to true.
@@ -145,11 +134,6 @@ goog.net.WebChannel.FailureRecovery = function() {};
  * httpHeadersOverwriteParam: the URL parameter name to allow custom HTTP
  * headers to be overwritten as a URL param to bypass CORS preflight.
  * goog.net.rpc.HttpCors is used to encode the HTTP headers.
- *
- * backgroundChannelTest: whether to run the channel test (detecting networking
- * conditions) as a background process so the OPEN event will be fired sooner
- * to reduce the initial handshake delay. This option defaults to true.
- * The actual background channel test is not fully implemented.
  *
  * forceLongPolling: whether to force long-polling from client to server.
  * This defaults to false. Long-polling may be necessary when a (MITM) proxy

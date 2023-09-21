@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Event observer.
+ * @fileoverview Event observer.
  *
  * Provides an event observer that holds onto events that it handles.  This
  * can be used in unit testing to verify an event target's events --

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of MenuBarRenderer decorator, a static call into
+ * @fileoverview Definition of MenuBarRenderer decorator, a static call into
  * the goog.ui.registry.
  *
  * @see ../demos/menubar.html

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Tree-like drilldown components for HTML tables.
+ * @fileoverview Tree-like drilldown components for HTML tables.
  *
  * This component supports expanding and collapsing groups of rows in
  * HTML tables.  The behavior is like typical Tree widgets, but tables

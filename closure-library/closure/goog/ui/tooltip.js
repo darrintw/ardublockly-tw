@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Tooltip widget implementation.
+ * @fileoverview Tooltip widget implementation.
  *
  * @see ../demos/tooltip.html
  */

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Handles applying header styles to text.
+ * @fileoverview Handles applying header styles to text.
  */
 
 goog.provide('goog.editor.plugins.HeaderFormatter');

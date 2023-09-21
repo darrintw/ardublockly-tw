@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the ChannelRequest class. The ChannelRequest
+ * @fileoverview Definition of the ChannelRequest class. The ChannelRequest
  * object encapsulates the logic for making a single request, either for the
  * forward channel, back channel, or test channel, to the server. It contains
  * the logic for the three types of transports we use in the BrowserChannel:
@@ -26,11 +26,9 @@
 goog.provide('goog.net.ChannelRequest');
 goog.provide('goog.net.ChannelRequest.Error');
 
-goog.forwardDeclare('goog.Uri');
 goog.forwardDeclare('goog.net.BrowserChannel');
 goog.forwardDeclare('goog.net.BrowserTestChannel');
 goog.forwardDeclare('goog.net.ChannelDebug');
-goog.forwardDeclare('goog.net.XhrIo');
 goog.require('goog.Timer');
 goog.require('goog.async.Throttle');
 goog.require('goog.dom.TagName');
@@ -45,6 +43,8 @@ goog.require('goog.object');
 goog.require('goog.string');
 goog.require('goog.string.Const');
 goog.require('goog.userAgent');
+goog.requireType('goog.Uri');
+goog.requireType('goog.net.XhrIo');
 
 // TODO(nnaze): This file depends on goog.net.BrowserChannel and vice versa (a
 // circular dependency).  Usages of BrowserChannel are marked as

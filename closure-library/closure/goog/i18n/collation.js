@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview Contains helper functions for performing locale-sensitive
+ * @fileoverview Contains helper functions for performing locale-sensitive
  *     collation.
  */
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Generic queue for writing unit tests.
+ * @fileoverview Generic queue for writing unit tests.
  */
 
 goog.setTestOnly('goog.testing.TestQueue');

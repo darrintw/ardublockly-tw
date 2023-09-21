@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This module simplifies testing code which uses stateful
+ * @fileoverview This module simplifies testing code which uses stateful
  * singletons. `goog.testing.singleton.reset` resets all instances, so
  * next time when `getInstance` is called, a new instance is created.
  * It's recommended to reset the singletons in `tearDown` to prevent

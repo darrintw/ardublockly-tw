@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A utility to load JavaScript files via DOM script tags.
+ * @fileoverview A utility to load JavaScript files via DOM script tags.
  * Refactored from goog.net.Jsonp. Works cross-domain.
  */
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the PopupBase class.
+ * @fileoverview Definition of the PopupBase class.
  */
 
 goog.provide('goog.ui.PopupBase');

@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview A wrapper for the HTML5 FileError object.
+ * @fileoverview A wrapper for the HTML5 FileError object.
  */
 
 

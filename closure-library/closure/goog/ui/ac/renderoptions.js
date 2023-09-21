@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Options for rendering matches.
+ * @fileoverview Options for rendering matches.
  */
 
 goog.provide('goog.ui.ac.RenderOptions');

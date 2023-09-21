@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Currency code map.
+ * @fileoverview Currency code map.
  */
 
 

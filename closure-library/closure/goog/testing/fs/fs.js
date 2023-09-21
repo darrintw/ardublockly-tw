@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock implementations of the Closure HTML5 FileSystem wrapper
+ * @fileoverview Mock implementations of the Closure HTML5 FileSystem wrapper
  * classes. These implementations are designed to be usable in any browser, so
  * they use none of the native FileSystem-related objects.
  */
@@ -156,7 +156,7 @@ goog.testing.fs.blobToString = function(blob, opt_encoding) {
  * @param {!goog.testing.fs.Blob} testBlob The blob to slice.
  * @param {number} start Index of the starting byte.
  * @param {number=} opt_end Index of the ending byte.
- * @return {goog.testing.fs.Blob} The new blob or null if not supported.
+ * @return {!goog.testing.fs.Blob} The new blob or null if not supported.
  */
 goog.testing.fs.sliceBlob = function(testBlob, start, opt_end) {
   return testBlob.slice(start, opt_end);
@@ -178,9 +178,10 @@ goog.testing.fs.install = function(stubs) {
   stubs.replace(fs, 'getPersistent', goog.testing.fs.getPersistent);
   stubs.replace(fs, 'createObjectUrl', goog.testing.fs.createObjectUrl);
   stubs.replace(fs, 'revokeObjectUrl', goog.testing.fs.revokeObjectUrl);
-  stubs.replace(fs, 'getBlob', goog.testing.fs.getBlob);
-  stubs.replace(
-      fs, 'getBlobWithProperties', goog.testing.fs.getBlobWithProperties);
   stubs.replace(fs, 'blobToString', goog.testing.fs.blobToString);
   stubs.replace(fs, 'browserSupportsObjectUrls', function() { return true; });
+  var fsBlob = goog.getObjectByName('goog.fs.blob');
+  stubs.replace(fsBlob, 'getBlob', goog.testing.fs.getBlob);
+  stubs.replace(
+      fsBlob, 'getBlobWithProperties', goog.testing.fs.getBlobWithProperties);
 };

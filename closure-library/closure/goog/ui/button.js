@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A button control. This implementation extends {@link
+ * @fileoverview A button control. This implementation extends {@link
  * goog.ui.Control}.
  *
  * @see ../demos/button.html

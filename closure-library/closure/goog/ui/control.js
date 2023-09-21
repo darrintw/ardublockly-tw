@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for UI controls such as buttons, menus, menu items,
+ * @fileoverview Base class for UI controls such as buttons, menus, menu items,
  * toolbar buttons, etc.  The implementation is based on a generalized version
  * of {@link goog.ui.MenuItem}.
  * TODO(attila):  If the renderer framework works well, pull it into Component.
@@ -731,7 +731,7 @@ goog.ui.Control.prototype.getCaption = function() {
   }
   var caption = (typeof content === 'string') ?
       content :
-      goog.isArray(content) ?
+      Array.isArray(content) ?
       goog.array.map(content, goog.dom.getRawTextContent).join('') :
       goog.dom.getTextContent(/** @type {!Node} */ (content));
   return goog.string.collapseBreakingSpaces(caption);

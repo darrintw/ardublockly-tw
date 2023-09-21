@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Plugin that enables table editing.
+ * @fileoverview Plugin that enables table editing.
  *
  * @see ../../demos/editor/tableeditor.html
  */

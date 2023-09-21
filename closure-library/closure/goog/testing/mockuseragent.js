@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview MockUserAgent overrides goog.userAgent.getUserAgentString()
+ * @fileoverview MockUserAgent overrides goog.userAgent.getUserAgentString()
  *     depending on a specified configuration.
  */
 

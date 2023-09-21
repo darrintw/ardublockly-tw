@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Message/plural format library with locale support.
+ * @fileoverview Message/plural format library with locale support.
  *
  * Message format grammar:
  *

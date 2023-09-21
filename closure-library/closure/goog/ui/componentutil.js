@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Static utility methods for UI components.
+ * @fileoverview Static utility methods for UI components.
  */
 
 goog.provide('goog.ui.ComponentUtil');

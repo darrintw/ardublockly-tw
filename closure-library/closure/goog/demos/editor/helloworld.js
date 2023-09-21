@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A simple plugin that inserts 'Hello World!' on command. This
+ * @fileoverview A simple plugin that inserts 'Hello World!' on command. This
  * plugin is intended to be an example of a very simple plugin for plugin
  * developers.
  *

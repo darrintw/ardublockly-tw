@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A table for showing the results of performance testing.
+ * @fileoverview A table for showing the results of performance testing.
  *
  * {@see goog.testing.benchmark} for an easy way to use this functionality.
  */
@@ -106,7 +106,7 @@ goog.testing.PerformanceTable.prototype.initRoot_ = function() {
 
 
 /**
- * @return {Element} The body of the table.
+ * @return {!Element} The body of the table.
  * @private
  */
 goog.testing.PerformanceTable.prototype.getTableBody_ = function() {

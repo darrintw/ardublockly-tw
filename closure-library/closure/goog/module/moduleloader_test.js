@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @fileOverview Tests for ModuleLoader. */
+/** @fileoverview Tests for ModuleLoader. */
 
 goog.module('goog.module.ModuleLoaderTest');
 goog.setTestOnly();

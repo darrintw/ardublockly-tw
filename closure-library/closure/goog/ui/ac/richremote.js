@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Factory class to create a rich autocomplete that will match
+ * @fileoverview Factory class to create a rich autocomplete that will match
  * from an array of data provided via ajax.  The server returns a complex data
  * structure that is used with client-side javascript functions to render the
  * results.

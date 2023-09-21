@@ -62,6 +62,7 @@ Ardublockly.init = function () {
         document.getElementById('ide_buttons_wrapper').hidden = true;
         document.getElementById('button_serial_monitor').hidden = true;
         document.getElementById('ide_output').hidden = true;
+        document.getElementById('settings_board').hidden = true;
         document.getElementById('setting_baud_rate').hidden = true;
         document.getElementById('settings_serial').hidden = true;
     }
@@ -638,8 +639,8 @@ Ardublockly.openAbout = function () {
 Ardublockly.openSettings = function () {
     //var jsonBoard = Blockly.Arduino.Boards.boardJson();
     if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
-        /*Ardublockly.setArduinoSimpleBoardsHtml(
-            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));*/
+        Ardublockly.setArduinoSimpleBoardsHtml(
+            ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
     } else {
         /*
         Ardublockly.setArduinoBoardsHtml(

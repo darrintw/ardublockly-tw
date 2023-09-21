@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An interface for asynchronous message-passing channels.
+ * @fileoverview An interface for asynchronous message-passing channels.
  *
  * This interface is useful for writing code in a message-passing style that's
  * independent of the underlying communication medium. It's also useful for

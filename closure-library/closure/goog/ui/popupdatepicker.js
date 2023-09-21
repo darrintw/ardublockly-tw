@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Popup Date Picker implementation.  Pairs a goog.ui.DatePicker
+ * @fileoverview Popup Date Picker implementation.  Pairs a goog.ui.DatePicker
  * with a goog.ui.Popup allowing the DatePicker to be attached to elements.
  *
  * @see ../demos/popupdatepicker.html

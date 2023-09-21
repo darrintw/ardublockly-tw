@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Displays and edits the value of a cookie.
+ * @fileoverview Displays and edits the value of a cookie.
  * Intended only for debugging.
  */
 goog.provide('goog.ui.CookieEditor');

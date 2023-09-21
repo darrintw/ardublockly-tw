@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A wrapper around a goog.editor.Field
+ * @fileoverview A wrapper around a goog.editor.Field
  * that listens to mouse events on the specified un-editable field, and makes
  * the field editable if the user clicks on it. Clients are still responsible
  * for determining when to make the field un-editable again.

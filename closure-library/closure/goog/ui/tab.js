@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A tab control, designed to be used in {@link goog.ui.TabBar}s.
+ * @fileoverview A tab control, designed to be used in {@link goog.ui.TabBar}s.
  *
  * @see ../demos/tabbar.html
  */

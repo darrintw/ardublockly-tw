@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Constants for HTTP status codes.
+ * @fileoverview Constants for HTTP status codes.
  */
 
 goog.provide('goog.net.HttpStatus');

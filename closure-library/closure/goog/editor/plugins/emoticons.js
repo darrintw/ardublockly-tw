@@ -14,7 +14,7 @@
 // All Rights Reserved
 
 /**
- * @fileOverview Plugin for generating emoticons.
+ * @fileoverview Plugin for generating emoticons.
  */
 
 goog.provide('goog.editor.plugins.Emoticons');

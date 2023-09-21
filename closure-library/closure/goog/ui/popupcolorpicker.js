@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Popup Color Picker implementation.  This is intended to be
+ * @fileoverview Popup Color Picker implementation.  This is intended to be
  * less general than goog.ui.ColorPicker and presents a default set of colors
  * that CCC apps currently use in their color pickers.
  *

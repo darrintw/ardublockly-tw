@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for {@link goog.ui.TriStateMenuItem}s.
+ * @fileoverview Renderer for {@link goog.ui.TriStateMenuItem}s.
  */
 
 goog.provide('goog.ui.TriStateMenuItemRenderer');

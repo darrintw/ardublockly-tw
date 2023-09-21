@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview SpriteInfo implementation. This is a simple wrapper class to
+ * @fileoverview SpriteInfo implementation. This is a simple wrapper class to
  * hold CSS metadata needed for sprited emoji.
  *
  * @see ../demos/popupemojipicker.html or emojipicker_test.html for examples

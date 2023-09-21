@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Progressive Emoji Palette renderer implementation.
+ * @fileoverview Progressive Emoji Palette renderer implementation.
  */
 
 goog.provide('goog.ui.emoji.ProgressiveEmojiPaletteRenderer');

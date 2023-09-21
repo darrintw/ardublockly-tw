@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides the base goog.ui.Control and goog.ui.ControlRenderer
+ * @fileoverview Provides the base goog.ui.Control and goog.ui.ControlRenderer
  * for media types, as well as a media model consistent with the Yahoo Media RSS
  * specification {@link http://search.yahoo.com/mrss/}.
  *

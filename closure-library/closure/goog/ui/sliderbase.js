@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Implementation of a basic slider control.
+ * @fileoverview Implementation of a basic slider control.
  *
  * Models a control that allows to select a sub-range within a given
  * range of values using two thumbs.  The underlying range is modeled

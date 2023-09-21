@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Concrete implementation of the goog.fs.FileSystem interface
+ * @fileoverview Concrete implementation of the goog.fs.FileSystem interface
  *     using an HTML FileSystem object.
  */
 goog.provide('goog.fs.FileSystemImpl');

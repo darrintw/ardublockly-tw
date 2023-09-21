@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Number formatting symbols.
+ * @fileoverview Number formatting symbols.
  *
  * File generated from CLDR ver. 36
  *

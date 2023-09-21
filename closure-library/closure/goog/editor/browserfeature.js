@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Trogedit constants for browser features and quirks that should
+ * @fileoverview Trogedit constants for browser features and quirks that should
  * be used by the rich text editor.
  */
 

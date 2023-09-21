@@ -14,7 +14,7 @@
 // All Rights Reserved.
 
 /**
- * @fileOverview Aliases `goog.editor.PluginImpl`.
+ * @fileoverview Aliases `goog.editor.PluginImpl`.
  *
  * This is done to create a target for `goog.editor.PluginImpl` that also pulls
  * in `goog.editor.Field` without creating a cycle. Doing so allows downstream

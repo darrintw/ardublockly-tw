@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Date picker implementation.
+ * @fileoverview Date picker implementation.
  *
  * @see ../demos/datepicker.html
  */

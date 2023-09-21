@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Ordinal rules.
+ * @fileoverview Ordinal rules.
  *
  *
  * File generated from CLDR ver. 36

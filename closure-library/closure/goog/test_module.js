@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A test file for testing goog.module.
+ * @fileoverview A test file for testing goog.module.
  * @suppress {unusedLocalVariables}
  */
 

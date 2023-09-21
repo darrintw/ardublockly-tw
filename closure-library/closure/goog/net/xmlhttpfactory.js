@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Interface for a factory for creating XMLHttpRequest objects
+ * @fileoverview Interface for a factory for creating XMLHttpRequest objects
  * and metadata about them.
  */
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the MenuBase class.
+ * @fileoverview Definition of the MenuBase class.
  */
 
 goog.provide('goog.ui.MenuBase');

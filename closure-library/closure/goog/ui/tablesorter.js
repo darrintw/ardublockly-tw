@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A table sorting decorator.
+ * @fileoverview A table sorting decorator.
  *
  * @see ../demos/tablesorter.html
  */

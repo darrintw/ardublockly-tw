@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the goog.ui.tree.BaseNode class.
+ * @fileoverview Definition of the goog.ui.tree.BaseNode class.
  *
  *
  * This is a based on the webfx tree control. It since been updated to add

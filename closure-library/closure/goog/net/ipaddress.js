@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This file contains classes to handle IPv4 and IPv6 addresses.
+ * @fileoverview This file contains classes to handle IPv4 and IPv6 addresses.
  * This implementation is mostly based on Google's project:
  * http://code.google.com/p/ipaddr-py/.
  */

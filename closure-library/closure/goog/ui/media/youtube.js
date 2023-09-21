@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview provides a reusable youtube UI component given a youtube data
+ * @fileoverview provides a reusable youtube UI component given a youtube data
  * model.
  *
  * goog.ui.media.Youtube is actually a {@link goog.ui.ControlRenderer}, a

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An HSV (hue/saturation/value) color palette/picker
+ * @fileoverview An HSV (hue/saturation/value) color palette/picker
  * implementation. Inspired by examples like
  * http://johndyer.name/lab/colorpicker/ and the author's initial work. This
  * control allows for more control in picking colors than a simple swatch-based

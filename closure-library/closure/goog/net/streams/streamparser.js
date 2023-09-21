@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview the private interface for implementing parsers responsible
+ * @fileoverview the private interface for implementing parsers responsible
  * for decoding the input stream (e.g. an HTTP body) to objects per their
  * specified content-types, e.g. JSON, Protobuf.
  *

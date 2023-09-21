@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A test file for testing goog.module.
+ * @fileoverview A test file for testing goog.module.
  */
 
 goog.module('goog.test_module_dep');

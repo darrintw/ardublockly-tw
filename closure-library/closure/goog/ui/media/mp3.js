@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview provides a reusable mp3 UI component given a mp3 URL.
+ * @fileoverview provides a reusable mp3 UI component given a mp3 URL.
  *
  * goog.ui.media.Mp3 is actually a {@link goog.ui.ControlRenderer}, a stateless
  * class - that could/should be used as a Singleton with the static method

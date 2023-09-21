@@ -17,7 +17,7 @@
  */
 
 /**
- * @fileOverview Utility to generate Closure Dependency files that are used
+ * @fileoverview Utility to generate Closure Dependency files that are used
  * when using Closure Library's debug code loader in a web browser.
  */
 

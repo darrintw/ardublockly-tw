@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Idle Timer.
+ * @fileoverview Idle Timer.
  *
  * Keeps track of transitions between active and idle. This class is built on
  * top of ActivityMonitor. Whenever an active user becomes idle, this class

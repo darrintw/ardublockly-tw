@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview the XHR stream reader implements a low-level stream
+ * @fileoverview the XHR stream reader implements a low-level stream
  * reader for handling a streamed XHR response body. The reader takes a
  * StreamParser which may support JSON or any other formats as confirmed by
  * the Content-Type of the response. The reader may be used as polyfill for

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Tabbed pane with style and functionality specific to
+ * @fileoverview Tabbed pane with style and functionality specific to
  * Editor dialogs.
  */
 

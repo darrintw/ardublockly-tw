@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Low level handling of XMLHttpRequest.
+ * @fileoverview Low level handling of XMLHttpRequest.
  */
 
 goog.provide('goog.net.DefaultXmlHttpFactory');

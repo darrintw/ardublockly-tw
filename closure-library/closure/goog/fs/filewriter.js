@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview A wrapper for the HTML5 FileWriter object.
+ * @fileoverview A wrapper for the HTML5 FileWriter object.
  *
  * When adding or modifying functionality in this namespace, be sure to update
  * the mock counterparts in goog.testing.fs.

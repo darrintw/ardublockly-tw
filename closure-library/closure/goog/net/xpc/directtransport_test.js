@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @fileOverview Tests the direct transport. */
+/** @fileoverview Tests the direct transport. */
 
 goog.module('goog.net.xpc.DirectTransportTest');
 goog.setTestOnly();

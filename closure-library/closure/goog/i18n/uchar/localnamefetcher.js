@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Object which fetches Unicode codepoint names that are locally
+ * @fileoverview Object which fetches Unicode codepoint names that are locally
  * stored in a bundled database. Currently, only invisible characters are
  * covered by this database. See the goog.i18n.uChar.RemoteNameFetcher class for
  * a remote database option.

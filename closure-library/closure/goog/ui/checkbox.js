@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Tristate checkbox widget.
+ * @fileoverview Tristate checkbox widget.
  *
  * @see ../demos/checkbox.html
  */

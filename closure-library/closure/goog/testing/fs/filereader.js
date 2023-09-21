@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock FileReader object.
+ * @fileoverview Mock FileReader object.
  */
 
 goog.setTestOnly('goog.testing.fs.FileReader');

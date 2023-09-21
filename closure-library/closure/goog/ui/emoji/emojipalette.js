@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Emoji Palette implementation. This provides a UI widget for
+ * @fileoverview Emoji Palette implementation. This provides a UI widget for
  * choosing an emoji from a palette of possible choices. EmojiPalettes are
  * contained within EmojiPickers.
  *

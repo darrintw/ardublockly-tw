@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview tmpnetwork.js contains some temporary networking functions
+ * @fileoverview tmpnetwork.js contains some temporary networking functions
  * for browserchannel which will be moved at a later date.
  */
 

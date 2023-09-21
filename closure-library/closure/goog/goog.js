@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview ES6 module that exports symbols from base.js so that ES6
+ * @fileoverview ES6 module that exports symbols from base.js so that ES6
  * modules do not need to use globals and so that is clear if a project is using
  * Closure's base.js file. It is also a subset of properties in base.js, meaning
  * it should be clearer what should not be used in ES6 modules

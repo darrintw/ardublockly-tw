@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the WebSocket class.  A WebSocket provides a
+ * @fileoverview Definition of the WebSocket class.  A WebSocket provides a
  * bi-directional, full-duplex communications channel, over a single TCP socket.
  *
  * See http://dev.w3.org/html5/websockets/

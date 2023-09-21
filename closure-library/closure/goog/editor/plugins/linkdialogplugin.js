@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A plugin for the LinkDialog.
+ * @fileoverview A plugin for the LinkDialog.
  */
 
 goog.provide('goog.editor.plugins.LinkDialogPlugin');

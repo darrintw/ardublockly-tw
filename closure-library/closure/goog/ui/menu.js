@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A base menu class that supports key and mouse events. The menu
+ * @fileoverview A base menu class that supports key and mouse events. The menu
  * can be bound to an existing HTML structure or can generate its own DOM.
  *
  * To decorate, the menu should be bound to an element containing children

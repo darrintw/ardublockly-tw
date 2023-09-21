@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Provides some utility methods for calling delegate lists with
+ * @fileoverview Provides some utility methods for calling delegate lists with
  * common "calling conventions".
  *
  * @see goog.delegate.DelegateRegistry

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toggle button control.  Extends {@link goog.ui.Button} by
+ * @fileoverview A toggle button control.  Extends {@link goog.ui.Button} by
  * providing checkbox-like semantics.
  */
 

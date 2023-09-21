@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition for goog.tweak.Registry.
+ * @fileoverview Definition for goog.tweak.Registry.
  * Most clients should not use this class directly, but instead use the API
  * defined in tweak.js. One possible use case for directly using TweakRegistry
  * is to register tweaks that are not known at compile time.

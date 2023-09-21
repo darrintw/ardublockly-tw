@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Functions for dealing with date/time formatting.
+ * @fileoverview Functions for dealing with date/time formatting.
  */
 
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toolbar select control.
+ * @fileoverview A toolbar select control.
  */
 
 goog.provide('goog.ui.ToolbarSelect');

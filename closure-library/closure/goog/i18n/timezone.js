@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Functions to provide timezone information for use with
+ * @fileoverview Functions to provide timezone information for use with
  * date/time format.
  */
 

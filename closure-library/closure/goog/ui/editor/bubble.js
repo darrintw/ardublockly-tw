@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Bubble component - handles display, hiding, etc. of the
+ * @fileoverview Bubble component - handles display, hiding, etc. of the
  * actual bubble UI.
  *
  * This is used exclusively by code within the editor package, and should not

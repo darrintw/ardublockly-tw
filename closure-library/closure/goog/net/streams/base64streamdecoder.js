@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A base64 stream decoder.
+ * @fileoverview A base64 stream decoder.
  *
  * Base64 encoding bytes in the buffer will be decoded and delivered in a batch.
  * - Decodes input string in 4-character groups.

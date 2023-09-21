@@ -14,7 +14,7 @@
 // All Rights Reserved
 
 /**
- * @fileOverview Test #2 of jsloader.
+ * @fileoverview Test #2 of jsloader.
  */
 
 goog.provide('goog.net.testdata.jsloader_test2');

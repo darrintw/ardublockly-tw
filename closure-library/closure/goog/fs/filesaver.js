@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview A wrapper for the HTML5 FileSaver object.
+ * @fileoverview A wrapper for the HTML5 FileSaver object.
  */
 
 goog.provide('goog.fs.FileSaver');

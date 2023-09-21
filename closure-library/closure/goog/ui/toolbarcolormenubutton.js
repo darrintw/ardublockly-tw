@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toolbar color menu button control.
+ * @fileoverview A toolbar color menu button control.
  */
 
 goog.provide('goog.ui.ToolbarColorMenuButton');

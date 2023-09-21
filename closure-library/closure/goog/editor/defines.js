@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Text editor constants for compile time feature selection.
+ * @fileoverview Text editor constants for compile time feature selection.
  */
 
 goog.provide('goog.editor.defines');

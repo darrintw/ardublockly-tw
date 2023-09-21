@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides the namesspace for client-side communication
+ * @fileoverview Provides the namesspace for client-side communication
  * between pages originating from different domains (it works also
  * with pages from the same domain, but doing that is kinda
  * pointless).

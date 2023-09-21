@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the Bubble class.
+ * @fileoverview Definition of the Bubble class.
  *
  *
  * @see ../demos/bubble.html

@@ -1,19 +1,11 @@
-// Copyright 2008 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview Simple utilities for dealing with URI strings.
+ * @fileoverview Simple utilities for dealing with URI strings.
  *
  * This is intended to be a lightweight alternative to constructing goog.Uri
  * objects.  Whereas goog.Uri adds several kilobytes to the binary regardless
@@ -181,25 +173,31 @@ goog.uri.utils.buildFromEncodedParts = function(
  *    $6 = <undefined>       query without ?
  *    $7 = Related           fragment without #
  * </pre>
+ *
+ * TODO(user): separate out the authority terminating characters once this
+ * file is moved to ES6.
  * @type {!RegExp}
  * @private
  */
 goog.uri.utils.splitRe_ = new RegExp(
-    '^' +
+    '^' +  // Anchor against the entire string.
     '(?:' +
     '([^:/?#.]+)' +  // scheme - ignore special characters
                      // used by other URL parts such as :,
                      // ?, /, #, and .
     ':)?' +
     '(?://' +
-    '(?:([^/?#]*)@)?' +  // userInfo
-    '([^/#?]*?)' +       // domain
-    '(?::([0-9]+))?' +   // port
-    '(?=[/\\\\#?]|$)' +  // authority-terminating character
+    '(?:([^\\\\/?#]*)@)?' +  // userInfo
+    '([^\\\\/?#]*?)' +       // domain
+    '(?::([0-9]+))?' +       // port
+    '(?=[\\\\/?#]|$)' +      // authority-terminating character.
     ')?' +
     '([^?#]+)?' +          // path
     '(?:\\?([^#]*))?' +    // query
-    '(?:#([\\s\\S]*))?' +  // fragment
+    '(?:#([\\s\\S]*))?' +  // fragment. Can't use '.*' with 's' flag as Firefox
+                           // doesn't support the flag, and can't use an
+                           // "everything set" ([^]) as IE10 doesn't match any
+                           // characters with it.
     '$');
 
 
@@ -669,7 +667,7 @@ goog.uri.utils.appendQueryDataToUri_ = function(uri, queryData) {
  */
 goog.uri.utils.appendKeyValuePairs_ = function(key, value, pairs) {
   goog.asserts.assertString(key);
-  if (goog.isArray(value)) {
+  if (Array.isArray(value)) {
     // Convince the compiler it's an array.
     goog.asserts.assertArray(value);
     for (var j = 0; j < value.length; j++) {

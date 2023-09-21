@@ -1,19 +1,11 @@
-// Copyright 2014 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview This event wrapper will dispatch an event when the user uses
+ * @fileoverview This event wrapper will dispatch an event when the user uses
  * the wheel on an element. The event provides details of the unit type (pixel /
  * line / page) and deltas in those units in up to 3 dimensions. Additionally,
  * simplified pixel deltas are provided for code that doesn't need to handle the

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Factory class to create a simple autocomplete that will match
+ * @fileoverview Factory class to create a simple autocomplete that will match
  * from an array of data provided via ajax.
  *
  * @see ../../demos/autocompleteremote.html

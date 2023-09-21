@@ -15,7 +15,7 @@
 // The original file lives here: http://go/cross_domain_channel.js
 
 /**
- * @fileOverview Implements a cross-domain communication channel. A
+ * @fileoverview Implements a cross-domain communication channel. A
  * typical web page is prevented by browser security from sending
  * request, such as a XMLHttpRequest, to other servers than the ones
  * from which it came. The Jsonp class provides a workaround by

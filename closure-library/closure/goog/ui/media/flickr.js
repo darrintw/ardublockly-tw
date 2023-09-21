@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview provides a reusable FlickrSet photo UI component given a public
+ * @fileoverview provides a reusable FlickrSet photo UI component given a public
  * FlickrSetModel.
  *
  * goog.ui.media.FlickrSet is actually a {@link goog.ui.ControlRenderer}, a

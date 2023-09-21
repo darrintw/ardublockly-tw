@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Error codes shared between goog.net.IframeIo and
+ * @fileoverview Error codes shared between goog.net.IframeIo and
  * goog.net.XhrIo.
  */
 

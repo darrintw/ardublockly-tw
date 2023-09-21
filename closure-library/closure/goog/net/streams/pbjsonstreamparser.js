@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A stream parser of StreamBody message in Protobuf-JSON format.
+ * @fileoverview A stream parser of StreamBody message in Protobuf-JSON format.
  *
  * 1. StreamBody proto message is defined as following:
  *

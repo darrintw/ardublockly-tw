@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Tests for goog.ui.MockActivityMonitorTest.
+ * @fileoverview Tests for goog.ui.MockActivityMonitorTest.
  */
 
 /** @suppress {extraProvide} */

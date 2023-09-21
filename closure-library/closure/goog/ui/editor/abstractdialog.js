@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Wrapper around {@link goog.ui.Dialog}, to provide
+ * @fileoverview Wrapper around {@link goog.ui.Dialog}, to provide
  * dialogs that are smarter about interacting with a rich text editor.
  */
 

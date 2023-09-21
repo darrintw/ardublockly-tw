@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class for managing the interactions between an
+ * @fileoverview Class for managing the interactions between an
  * auto-complete object and a text-input or textarea.
  *
  * IME note:

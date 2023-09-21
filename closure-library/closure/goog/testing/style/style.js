@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utilities for inspecting page layout. This is a port of
+ * @fileoverview Utilities for inspecting page layout. This is a port of
  *     http://go/layoutbot.java
  *     See {@link http://go/layouttesting}.
  */

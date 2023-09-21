@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Contains the iframe polling transport.
+ * @fileoverview Contains the iframe polling transport.
  */
 
 

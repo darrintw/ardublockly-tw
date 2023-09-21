@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Image loader utility class.  Useful when an application needs
+ * @fileoverview Image loader utility class.  Useful when an application needs
  * to preload multiple images, for example so they can be sized.
  */
 

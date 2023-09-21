@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Additional asserts for testing ControlRenderers.
+ * @fileoverview Additional asserts for testing ControlRenderers.
  */
 
 goog.setTestOnly('goog.testing.ui.rendererasserts');

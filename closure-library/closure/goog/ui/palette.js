@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A palette control.  A palette is a grid that the user can
+ * @fileoverview A palette control.  A palette is a grid that the user can
  * highlight or select via the keyboard or the mouse.
  *
  * @see ../demos/palette.html

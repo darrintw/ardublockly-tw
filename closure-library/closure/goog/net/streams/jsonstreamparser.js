@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview the default JSON stream parser.
+ * @fileoverview the default JSON stream parser.
  *
  * The default JSON parser decodes the input stream (string) under the
  * following rules:

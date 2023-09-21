@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class for representing a separator, with renderers for both
+ * @fileoverview A class for representing a separator, with renderers for both
  * horizontal (menu) and vertical (toolbar) separators.
  */
 

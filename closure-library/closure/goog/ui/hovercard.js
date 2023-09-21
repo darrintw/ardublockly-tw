@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Show hovercards with a delay after the mouse moves over an
+ * @fileoverview Show hovercards with a delay after the mouse moves over an
  * element of a specified type and with a specific attribute.
  *
  * @see ../demos/hovercard.html

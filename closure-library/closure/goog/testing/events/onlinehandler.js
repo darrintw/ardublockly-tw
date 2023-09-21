@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview NetworkStatusMonitor test double.
+ * @fileoverview NetworkStatusMonitor test double.
  */
 
 goog.setTestOnly('goog.testing.events.OnlineHandler');

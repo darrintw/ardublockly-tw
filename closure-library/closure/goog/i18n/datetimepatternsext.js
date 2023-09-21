@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Extended date/time patterns.
+ * @fileoverview Extended date/time patterns.
  *
  * File generated from CLDR ver. 36
  *

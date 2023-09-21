@@ -25,7 +25,7 @@ const events = goog.require('goog.events');
 const jsunit = goog.require('goog.testing.jsunit');
 
 /**
- * @fileOverview This test file uses the ContinuationTestCase to test itself,
+ * @fileoverview This test file uses the ContinuationTestCase to test itself,
  * which is a little confusing. It's also difficult to write a truly effective
  * test, since testing a failure causes an actual failure in the test runner.
  * All tests have been manually verified using a sophisticated combination of
@@ -53,14 +53,14 @@ function installMockClock() {
 }
 
 /**
- * @return {ContinuationTestCase.Step} A generic step in a continuation test.
+ * @return {!ContinuationTestCase.Step} A generic step in a continuation test.
  */
 function getSampleStep() {
   return new ContinuationTestCase.Step('test', () => {});
 }
 
 /**
- * @return {ContinuationTestCase.ContinuationTest} A simple continuation test
+ * @return {!ContinuationTestCase.ContinuationTest} A simple continuation test
  *     with generic setUp, test, and tearDown functions.
  */
 function getSampleTest() {

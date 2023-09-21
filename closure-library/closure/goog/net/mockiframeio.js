@@ -13,15 +13,15 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock of IframeIo for unit testing.
+ * @fileoverview Mock of IframeIo for unit testing.
  */
 
 goog.provide('goog.net.MockIFrameIo');
-goog.forwardDeclare('goog.testing.TestQueue');
 goog.require('goog.events.EventTarget');
 goog.require('goog.net.ErrorCode');
 goog.require('goog.net.EventType');
 goog.require('goog.net.IframeIo');
+goog.requireType('goog.testing.TestQueue');
 
 
 
@@ -244,7 +244,7 @@ goog.net.MockIFrameIo.prototype.getResponseText = function() {
 /**
  * Parses the content as JSON. This is a safe parse and may throw an error
  * if the response is malformed.
- * @return {Object} The parsed content.
+ * @return {!Object} The parsed content.
  */
 goog.net.MockIFrameIo.prototype.getResponseJson = function() {
   return /** @type {!Object} */ (JSON.parse(this.lastContent_));

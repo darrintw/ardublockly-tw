@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Datastructure: Hash Map.
+ * @fileoverview Datastructure: Hash Map.
  *
  * This file provides a goog.structs.Map interface based on native Map.
  */

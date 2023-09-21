@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the goog.ui.tree.TreeControl class, which
+ * @fileoverview Definition of the goog.ui.tree.TreeControl class, which
  * provides a way to view a hierarchical set of data.
  *
  *

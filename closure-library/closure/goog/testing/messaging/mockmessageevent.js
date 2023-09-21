@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A simple mock class for imitating HTML5 MessageEvents.
+ * @fileoverview A simple mock class for imitating HTML5 MessageEvents.
  */
 
 goog.setTestOnly('goog.testing.messaging.MockMessageEvent');

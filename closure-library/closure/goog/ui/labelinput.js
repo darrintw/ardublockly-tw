@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This behavior is applied to a text input and it shows a text
+ * @fileoverview This behavior is applied to a text input and it shows a text
  * message inside the element if the user hasn't entered any text.
  *
  * This uses the HTML5 placeholder attribute where it is supported.

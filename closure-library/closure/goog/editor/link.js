@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A utility class for managing editable links.
+ * @fileoverview A utility class for managing editable links.
  */
 
 goog.provide('goog.editor.Link');

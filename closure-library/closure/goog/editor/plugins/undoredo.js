@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview Code for handling edit history (undo/redo).
+ * @fileoverview Code for handling edit history (undo/redo).
  */
 
 

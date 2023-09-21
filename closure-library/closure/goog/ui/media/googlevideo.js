@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview provides a reusable GoogleVideo UI component given a public
+ * @fileoverview provides a reusable GoogleVideo UI component given a public
  * GoogleVideo video URL.
  *
  * goog.ui.media.GoogleVideo is actually a {@link goog.ui.ControlRenderer}, a

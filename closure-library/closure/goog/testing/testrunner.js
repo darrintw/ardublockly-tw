@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The test runner is a singleton object that is used to execute
+ * @fileoverview The test runner is a singleton object that is used to execute
  * a goog.testing.TestCases, display the results, and expose the results to
  * Selenium for automation.  If a TestCase hasn't been registered with the
  * runner by the time window.onload occurs, the testRunner will try to auto-

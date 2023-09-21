@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Rich text spell checker implementation.
+ * @fileoverview Rich text spell checker implementation.
  *
  * @see ../demos/richtextspellchecker.html
  */

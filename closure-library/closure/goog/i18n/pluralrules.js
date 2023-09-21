@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Plural rules.
+ * @fileoverview Plural rules.
  *
  *
  * File generated from CLDR ver. 36

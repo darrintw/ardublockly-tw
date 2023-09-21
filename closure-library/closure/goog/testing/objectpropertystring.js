@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Helper for passing property names as string literals in
+ * @fileoverview Helper for passing property names as string literals in
  * compiled test code.
  */
 

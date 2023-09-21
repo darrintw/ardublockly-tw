@@ -14,7 +14,7 @@
 goog.module('goog.i18n.LocaleFeature');
 
 /**
- * @fileOverview Provides flag for using ECMAScript 402 features vs.
+ * @fileoverview Provides flag for using ECMAScript 402 features vs.
  * native JavaScript Closure implementations for I18N purposes.
  */
 

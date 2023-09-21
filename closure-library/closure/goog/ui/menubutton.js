@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A menu button control.
+ * @fileoverview A menu button control.
  *
  * @see ../demos/menubutton.html
  */

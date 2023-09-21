@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A menu class for showing popups.  A single popup can be
+ * @fileoverview A menu class for showing popups.  A single popup can be
  * attached to multiple anchor points.  The menu will try to reposition itself
  * if it goes outside the viewport.
  *
