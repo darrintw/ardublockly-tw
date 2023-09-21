@@ -35,7 +35,7 @@ Ardublockly.init = function () {
         ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
 
     // Hackish way to check if not running locally
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (document.location.hostname === 'localhost' && document.location.hostname === '127.0.0.1') {
         Ardublockly.initialiseIdeButtons();
         ArdublocklyServer.requestArduinoBoard(function (jsonObj) {
             var board_name = jsonObj['selected'].toLowerCase().replace(/ /g, '_');
@@ -59,7 +59,12 @@ Ardublockly.init = function () {
         });
         document.getElementById('version_output').hidden = true;
     } else {
-        document.getElementsByClassName('sketch_name_wrapper')[0].style.padding.top = 0;
+        //top, right, bottom, left
+        document.getElementsByClassName('sketch_name_wrapper')[0].style.paddingTop = "0px";
+        document.querySelector('.nav-wrapper').style.lineHeight = "64px";
+        document.querySelector('.nav-wrapper').Height = "64px";
+        document.getElementsByClassName('navbar-fixed').Height = "64px";
+        document.body.style.paddingTop = "80px";
         document.getElementById('ide_buttons_wrapper').hidden = true;
         document.getElementById('button_serial_monitor').hidden = true;
         document.getElementById('ide_output').hidden = true;
