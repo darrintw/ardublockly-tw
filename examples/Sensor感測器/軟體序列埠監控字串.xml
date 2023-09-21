@@ -1,0 +1,68 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="179" y="78">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="v)U^d?4%1dk~TBa,=Z9x">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="softwareserial_setup" id="8BHv]q};9Ko,#4,kb4Hc">
+            <field name="SERIAL_ID">canmv</field>
+            <field name="RX_PIN">A4</field>
+            <field name="TX_PIN">A5</field>
+            <field name="BAUDRATE">9600</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="`OWol@_fLrjYC}@};pnr">
+        <field name="VAR">rec</field>
+        <value name="VALUE">
+          <block type="text" id="xA/g?Z=%RmlkxOGE{0sv">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="r:S9EdL,I~fJC`iQR:_6">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="softwareserial_available" id="]YVW1gcx,n%*0geC!N/Y">
+                <field name="SERIAL_ID">canmv</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="text_append" id="i87U-hnRJOt8;2EjfT}=">
+                <field name="VAR">rec</field>
+                <value name="TEXT">
+                  <block type="softwareserial_read_string" id="u9EWEy4ec.EX{|Pinwg4">
+                    <field name="SERIAL_ID">canmv</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="serial_print" id="+3TNi_m.5thKq*w)z+mq">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="variables_get" id="d1E=(u,t@O]ys6BM9%aZ">
+                    <field name="VAR">rec</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="I]qj|jlTX.;5,oi,wgNm">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="3i.+8+U~!,xk.Yk-P75*">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

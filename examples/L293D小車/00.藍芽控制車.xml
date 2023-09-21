@@ -238,14 +238,87 @@
                     <mutation name="orig"></mutation>
                   </block>
                 </statement>
+                <next>
+                  <block type="variables_set" id="2K)/[;xvuUOIExYY-r}z">
+                    <field name="VAR">nocmdcount</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="b{rMGIktgs+d:gHr|:SK">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
               </block>
             </next>
           </block>
         </statement>
+        <next>
+          <block type="time_delay" id="LM[w=|CidBCg6/=d)s9Z">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="zp|=S^[6/LsE9YCu22tG">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="0fwJ}U.KO+,H!zdtNn7/">
+                <field name="VAR">nocmdcount</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="tict+eSI]Zs06ZqDeR.S">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="i[1w*tnJ+ZyCTlH=sGzp">
+                        <field name="VAR">nocmdcount</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="NVk@M*+aacnoIygxSqgn">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="[r[G]wt}:s^.MJ5^zX7!">
+                    <value name="IF0">
+                      <block type="logic_compare" id=",z9B=FP-KwQgjPU+l6R7">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="#!v{%IVuX!q{`wie?XGa">
+                            <field name="VAR">nocmdcount</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="m;#5aNY6%x?c7L8=Zj-u">
+                            <field name="NUM">3</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="EOZTHh=+e0%HMt=9]Eb7">
+                        <field name="VAR">nocmdcount</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="X;rhzqbS{5K^c6(,K81=">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="procedures_callnoreturn" id="o*HB=.L~-%/mxKr(z[Vr">
+                            <mutation name="stop"></mutation>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="B_USv)(qcLQejur1)C~1" x="0" y="972">
+  <block type="procedures_defnoreturn" id="B_USv)(qcLQejur1)C~1" x="0" y="1173">
     <field name="NAME">orig</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -269,7 +342,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="|Rq5Ka`2sFAW`:f,!ohm" x="0" y="1112">
+  <block type="procedures_defnoreturn" id="|Rq5Ka`2sFAW`:f,!ohm" x="0" y="1313">
     <field name="NAME">up</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -293,7 +366,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="Kac!t-by3G!D%swLn[/9" x="0" y="1226">
+  <block type="procedures_defnoreturn" id="Kac!t-by3G!D%swLn[/9" x="0" y="1427">
     <field name="NAME">down</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -317,7 +390,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="Coy}FPY{d2,XdY~vWYWC" x="0" y="1340">
+  <block type="procedures_defnoreturn" id="Coy}FPY{d2,XdY~vWYWC" x="0" y="1541">
     <field name="NAME">open</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -341,7 +414,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="cZbJ0.5gc1zc*}6GwnH," x="0" y="1454">
+  <block type="procedures_defnoreturn" id="cZbJ0.5gc1zc*}6GwnH," x="0" y="1655">
     <field name="NAME">close</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -365,7 +438,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="O,m#NL3?]q.xWo:heD?T" x="0" y="1568">
+  <block type="procedures_defnoreturn" id="O,m#NL3?]q.xWo:heD?T" x="0" y="1769">
     <field name="NAME">forward</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -383,7 +456,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="RpW8UQ-st:7U|,G/.`rC" x="0" y="1686">
+  <block type="procedures_defnoreturn" id="RpW8UQ-st:7U|,G/.`rC" x="0" y="1887">
     <field name="NAME">backward</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -401,7 +474,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="K)Xr;5*U_3MK4vJ^4/qb" x="0" y="1804">
+  <block type="procedures_defnoreturn" id="K)Xr;5*U_3MK4vJ^4/qb" x="0" y="2005">
     <field name="NAME">stop</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -419,7 +492,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="QZb8GK5)QwUM3:APrP|4" x="0" y="1922">
+  <block type="procedures_defnoreturn" id="QZb8GK5)QwUM3:APrP|4" x="0" y="2123">
     <field name="NAME">left_turn_0</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -437,7 +510,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="#fIAY(]~UMK/PQ,w@Hs=" x="0" y="2040">
+  <block type="procedures_defnoreturn" id="#fIAY(]~UMK/PQ,w@Hs=" x="0" y="2241">
     <field name="NAME">right_turn_0</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -455,7 +528,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="TS1(4aGA_Z@4KWnZIbZe" x="0" y="2158">
+  <block type="procedures_defnoreturn" id="TS1(4aGA_Z@4KWnZIbZe" x="0" y="2359">
     <field name="NAME">left_turn_1</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -473,7 +546,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="vweCnBB;RO[k62Oh0tn|" x="0" y="2276">
+  <block type="procedures_defnoreturn" id="vweCnBB;RO[k62Oh0tn|" x="0" y="2477">
     <field name="NAME">right_turn_1</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -491,7 +564,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="XohV,3O-Irc@,.!YtA9U" x="0" y="2394">
+  <block type="procedures_defnoreturn" id="XohV,3O-Irc@,.!YtA9U" x="0" y="2595">
     <field name="NAME">left_turn_2</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -509,7 +582,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="m}OMnqqP1PfkPP;AkL|k" x="0" y="2512">
+  <block type="procedures_defnoreturn" id="m}OMnqqP1PfkPP;AkL|k" x="0" y="2713">
     <field name="NAME">right_turn_2</field>
     <comment pinned="false" h="80" w="160">描述此函數...</comment>
     <statement name="STACK">
@@ -526,5 +599,19 @@
         </next>
       </block>
     </statement>
+  </block>
+  <block type="variables_init" id="qTiul^3.M(.z:MlE=7;e" x="0" y="2831">
+    <field name="VAR">nocmdcount</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="variables_set_type" id="ttQR~e;9p[z2vbgQsfaW">
+        <field name="VARIABLE_SETTYPE_TYPE">LARGE_NUMBER</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="math_number" id="jAw{iX2B`H.riiA|x3|q">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </value>
   </block>
 </xml>
