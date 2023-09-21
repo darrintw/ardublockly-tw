@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class for managing the editor toolbar.
+ * @fileoverview A class for managing the editor toolbar.
  *
  * @see ../../demos/editor/editor.html
  */

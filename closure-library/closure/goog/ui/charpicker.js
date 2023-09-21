@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Character Picker widget for picking any Unicode character.
+ * @fileoverview Character Picker widget for picking any Unicode character.
  *
  * @see ../demos/charpicker.html
  */

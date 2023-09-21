@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utility for making the browser submit a hidden form, which can
+ * @fileoverview Utility for making the browser submit a hidden form, which can
  * be used to effect a POST from JavaScript.
  */
 

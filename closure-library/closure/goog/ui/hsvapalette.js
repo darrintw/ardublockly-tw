@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An HSVA (hue/saturation/value/alpha) color palette/picker
+ * @fileoverview An HSVA (hue/saturation/value/alpha) color palette/picker
  * implementation.
  * Without the styles from the demo css file, only a hex color label and input
  * field show up.

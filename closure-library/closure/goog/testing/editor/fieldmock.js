@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock of goog.editor.field.
+ * @fileoverview Mock of goog.editor.field.
  */
 
 goog.setTestOnly('goog.testing.editor.FieldMock');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A menu item class that supports selection state.
+ * @fileoverview A menu item class that supports selection state.
  */
 
 goog.provide('goog.ui.Option');

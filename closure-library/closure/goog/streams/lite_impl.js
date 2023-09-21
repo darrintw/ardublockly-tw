@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A lite polyfill of the ReadableStream native API with a subset
+ * @fileoverview A lite polyfill of the ReadableStream native API with a subset
  * of methods supported.
  */
 goog.module('goog.streams.liteImpl');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for container renderers.
+ * @fileoverview Base class for container renderers.
  */
 
 goog.provide('goog.ui.ContainerRenderer');

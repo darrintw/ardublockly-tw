@@ -1,19 +1,11 @@
-// Copyright 2013 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview The SafeUrl type and its builders.
+ * @fileoverview The SafeUrl type and its builders.
  *
  * TODO(xtof): Link to document stating type contract.
  */
@@ -126,7 +118,7 @@ goog.html.SafeUrl.prototype.implementsGoogStringTypedString = true;
 
 
 /**
- * Returns this SafeUrl's value a string.
+ * Returns this SafeUrl's value as a string.
  *
  * IMPORTANT: In code where it is security relevant that an object's type is
  * indeed `SafeUrl`, use `goog.html.SafeUrl.unwrap` instead of this
@@ -290,8 +282,23 @@ goog.html.SafeUrl.isSafeMimeType = function(mimeType) {
  *   as a SafeUrl.
  */
 goog.html.SafeUrl.fromBlob = function(blob) {
-  var url = goog.html.SAFE_MIME_TYPE_PATTERN_.test(blob.type) ?
+  var url = goog.html.SafeUrl.isSafeMimeType(blob.type) ?
       goog.fs.url.createObjectUrl(blob) :
+      goog.html.SafeUrl.INNOCUOUS_STRING;
+  return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(url);
+};
+
+
+/**
+ * Creates a SafeUrl wrapping a blob URL created for a MediaSource.
+ * @param {!MediaSource} mediaSource
+ * @return {!goog.html.SafeUrl} The blob URL.
+ */
+goog.html.SafeUrl.fromMediaSource = function(mediaSource) {
+  goog.asserts.assert(
+      'MediaSource' in goog.global, 'No support for MediaSource');
+  const url = mediaSource instanceof MediaSource ?
+      goog.fs.url.createObjectUrl(mediaSource) :
       goog.html.SafeUrl.INNOCUOUS_STRING;
   return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(url);
 };
@@ -325,7 +332,7 @@ goog.html.SafeUrl.fromDataUrl = function(dataUrl) {
   // of the page with the link. It seems unlikely that both of these will
   // happen, particularly in not really old IEs.
   var match = filteredDataUrl.match(goog.html.DATA_URL_PATTERN_);
-  var valid = match && goog.html.SAFE_MIME_TYPE_PATTERN_.test(match[1]);
+  var valid = match && goog.html.SafeUrl.isSafeMimeType(match[1]);
   return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(
       valid ? filteredDataUrl : goog.html.SafeUrl.INNOCUOUS_STRING);
 };

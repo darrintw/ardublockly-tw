@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This file defines a strict mock implementation.
+ * @fileoverview This file defines a strict mock implementation.
  */
 
 goog.setTestOnly('goog.testing.StrictMock');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utility for sharding tests.
+ * @fileoverview Utility for sharding tests.
  *
  * Usage instructions:
  * <ol>

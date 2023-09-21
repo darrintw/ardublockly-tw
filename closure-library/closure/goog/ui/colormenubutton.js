@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A color menu button.  Extends {@link goog.ui.MenuButton} by
+ * @fileoverview A color menu button.  Extends {@link goog.ui.MenuButton} by
  * showing the currently selected color in the button caption.
  */
 

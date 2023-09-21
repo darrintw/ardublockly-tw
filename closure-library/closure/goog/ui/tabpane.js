@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview TabPane widget implementation.
+ * @fileoverview TabPane widget implementation.
  */
 
 goog.provide('goog.ui.TabPane');

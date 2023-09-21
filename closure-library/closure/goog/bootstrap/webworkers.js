@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A bootstrap for dynamically requiring Closure within an HTML5
+ * @fileoverview A bootstrap for dynamically requiring Closure within an HTML5
  * Web Worker context. To use this, first set CLOSURE_BASE_PATH to the directory
  * containing base.js (relative to the main script), then use importScripts to
  * load this file and base.js (in that order). After this you can use

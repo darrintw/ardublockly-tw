@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Rounded corner tab renderer for {@link goog.ui.Tab}s.
+ * @fileoverview Rounded corner tab renderer for {@link goog.ui.Tab}s.
  */
 
 goog.provide('goog.ui.RoundedTabRenderer');

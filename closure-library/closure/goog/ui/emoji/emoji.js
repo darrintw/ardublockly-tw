@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Emoji implementation.
+ * @fileoverview Emoji implementation.
  */
 
 goog.provide('goog.ui.emoji.Emoji');

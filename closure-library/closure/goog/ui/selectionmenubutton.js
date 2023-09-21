@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A customized MenuButton for selection of items among lists.
+ * @fileoverview A customized MenuButton for selection of items among lists.
  * Menu contains 'select all' and 'select none' MenuItems for selecting all and
  * no items by default. Other MenuItems can be added by user.
  *

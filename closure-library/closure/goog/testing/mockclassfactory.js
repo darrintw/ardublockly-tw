@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This file defines a factory that can be used to mock and
+ * @fileoverview This file defines a factory that can be used to mock and
  * replace an entire class.  This allows for mocks to be used effectively with
  * "new" instead of having to inject all instances.  Essentially, a given class
  * is replaced with a proxy to either a loose or strict mock.  Proxies locate

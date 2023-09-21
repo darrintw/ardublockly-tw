@@ -14,7 +14,7 @@
 // All Rights Reserved.
 
 /**
- * @fileOverview Class to encapsulate an editable field.  Always uses an
+ * @fileoverview Class to encapsulate an editable field.  Always uses an
  * iframe to contain the editable area, never inherits the style of the
  * surrounding page, and is always a fixed height.
  *

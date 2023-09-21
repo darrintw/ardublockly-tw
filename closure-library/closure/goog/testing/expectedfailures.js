@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Helper class to allow for expected unit test failures.
+ * @fileoverview Helper class to allow for expected unit test failures.
  */
 
 goog.setTestOnly('goog.testing.ExpectedFailures');

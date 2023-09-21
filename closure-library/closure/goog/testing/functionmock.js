@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Enable mocking of functions not attached to objects
+ * @fileoverview Enable mocking of functions not attached to objects
  * whether they be global / top-level or anonymous methods / closures.
  *
  * See the unit tests for usage.

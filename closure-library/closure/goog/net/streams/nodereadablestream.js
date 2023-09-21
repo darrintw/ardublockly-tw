@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview the API spec for the closure polyfill of Node stream.Readable.
+ * @fileoverview the API spec for the closure polyfill of Node stream.Readable.
  *
  * Node streams API is specified at https://nodejs.org/api/stream.html
  *

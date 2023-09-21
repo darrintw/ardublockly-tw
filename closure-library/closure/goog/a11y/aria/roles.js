@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview The file contains generated enumerations for ARIA roles
+ * @fileoverview The file contains generated enumerations for ARIA roles
  * as defined by W3C ARIA standard: http://www.w3.org/TR/wai-aria/.
  *
  * This is auto-generated code. Do not manually edit! For more details

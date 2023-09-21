@@ -14,7 +14,7 @@
 // All Rights Reserved.
 
 /**
- * @fileOverview Plugin to handle Remove Formatting.
+ * @fileoverview Plugin to handle Remove Formatting.
  */
 
 goog.provide('goog.editor.plugins.RemoveFormatting');

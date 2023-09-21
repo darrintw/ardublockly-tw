@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview  Class for splitting two areas with draggable control for
+ * @fileoverview  Class for splitting two areas with draggable control for
  * changing size.
  *
  * The DOM that is created (or that can be decorated) looks like this:
@@ -348,7 +348,7 @@ goog.ui.SplitPane.prototype.canDecorate = function(element) {
  * @param {Element} rootElement The root element from which to retrieve the
  *     element to be decorated.
  * @param {string} className The target class name.
- * @return {Element} The element to decorate.
+ * @return {!Element} The element to decorate.
  * @private
  */
 goog.ui.SplitPane.prototype.getElementToDecorate_ = function(

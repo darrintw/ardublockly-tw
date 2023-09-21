@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Default renderer for {@link goog.ui.Checkbox}s.
+ * @fileoverview Default renderer for {@link goog.ui.Checkbox}s.
  */
 
 goog.provide('goog.ui.CheckboxRenderer');

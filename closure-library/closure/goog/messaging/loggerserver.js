@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This class listens on a message channel for logger commands and
+ * @fileoverview This class listens on a message channel for logger commands and
  * logs them on the local page. This is useful when dealing with message
  * channels to contexts that don't have access to their own logging facilities.
  */

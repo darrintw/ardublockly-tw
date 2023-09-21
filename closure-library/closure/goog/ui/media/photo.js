@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview provides a reusable photo UI component that renders photos that
+ * @fileoverview provides a reusable photo UI component that renders photos that
  * contains metadata (such as captions, description, thumbnail/high resolution
  * versions, etc).
  *

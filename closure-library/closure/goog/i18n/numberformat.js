@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Number format/parse library with locale support.
+ * @fileoverview Number format/parse library with locale support.
  */
 
 

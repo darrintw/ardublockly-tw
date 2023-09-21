@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Common test functions for tweak unit tests.
+ * @fileoverview Common test functions for tweak unit tests.
  *
  * @package
  */

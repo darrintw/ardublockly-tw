@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of goog.ui.MockActivityMonitor.
+ * @fileoverview Definition of goog.ui.MockActivityMonitor.
  */
 
 goog.provide('goog.ui.MockActivityMonitor');

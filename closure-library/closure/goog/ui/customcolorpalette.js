@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A color palette with a button for adding additional colors
+ * @fileoverview A color palette with a button for adding additional colors
  * manually.
  */
 

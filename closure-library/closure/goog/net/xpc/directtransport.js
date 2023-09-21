@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides an implementation of a transport that can call methods
+ * @fileoverview Provides an implementation of a transport that can call methods
  * directly on a frame. Useful if you want to use XPC for crossdomain messaging
  * (using another transport), or same domain messaging (using this transport).
  */

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Functions to style text.
+ * @fileoverview Functions to style text.
  */
 
 goog.provide('goog.editor.plugins.BasicTextFormatter');

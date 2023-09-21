@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Editor plugin to handle tab keys not in lists to add 4 spaces.
+ * @fileoverview Editor plugin to handle tab keys not in lists to add 4 spaces.
  */
 
 goog.provide('goog.editor.plugins.SpacesTabHandler');

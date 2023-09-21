@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the goog.ui.ItemEvent class.
+ * @fileoverview Definition of the goog.ui.ItemEvent class.
  */
 
 goog.provide('goog.ui.ItemEvent');

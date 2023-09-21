@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Implementation of XmlHttpFactory which allows construction from
+ * @fileoverview Implementation of XmlHttpFactory which allows construction from
  * simple factory methods.
  */
 

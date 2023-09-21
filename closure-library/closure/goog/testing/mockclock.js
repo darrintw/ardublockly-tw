@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock Clock implementation for working with setTimeout,
+ * @fileoverview Mock Clock implementation for working with setTimeout,
  * setInterval, clearTimeout and clearInterval within unit tests.
  *
  * Derived from jsUnitMockTimeout.js, contributed to JsUnit by
@@ -355,9 +355,13 @@ goog.testing.MockClock.prototype.tick = function(opt_millis) {
   if (typeof opt_millis != 'number') {
     opt_millis = 1;
   }
+  if (opt_millis < 0) {
+    throw new Error(
+        'Time cannot go backwards (cannot tick by ' + opt_millis + ')');
+  }
   var endTime = this.nowMillis_ + opt_millis;
   this.runFunctionsWithinRange_(endTime);
-  this.nowMillis_ = endTime;
+  this.nowMillis_ = Math.max(this.nowMillis_, endTime);
   return endTime;
 };
 

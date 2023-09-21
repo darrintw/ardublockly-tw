@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Similar functionality of {@link goog.ui.MenuButtonRenderer},
+ * @fileoverview Similar functionality of {@link goog.ui.MenuButtonRenderer},
  * but inherits from {@link goog.ui.FlatButtonRenderer} instead of
  * {@link goog.ui.CustomButtonRenderer}. This creates a simpler menu button
  * that will look more like a traditional <select> menu.
@@ -161,7 +161,7 @@ goog.ui.FlatMenuButtonRenderer.prototype.decorate = function(button, element) {
  * @param {goog.ui.ControlContent} content Text caption or DOM structure to wrap
  *     in a box.
  * @param {goog.dom.DomHelper} dom DOM helper, used for document interaction.
- * @return {Element} Caption element.
+ * @return {!Element} Caption element.
  */
 goog.ui.FlatMenuButtonRenderer.prototype.createCaption = function(
     content, dom) {

@@ -1,19 +1,11 @@
-// Copyright 2013 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview Transitional utilities to unsafely trust random strings as
+ * @fileoverview Transitional utilities to unsafely trust random strings as
  * goog.html types. Intended for temporary use when upgrading a library that
  * used to accept plain strings to use safe types, but where it's not
  * practical to transitively update callers.
@@ -78,7 +70,7 @@ goog.require('goog.html.TrustedResourceUrl');
  * Performs an "unchecked conversion" from string to SafeHtml for legacy API
  * purposes.
  *
- * Please read fileOverview documentation before using.
+ * Please read fileoverview documentation before using.
  *
  * @param {string} html A string to be converted to SafeHtml.
  * @return {!goog.html.SafeHtml} The value of html, wrapped in a SafeHtml
@@ -95,7 +87,7 @@ goog.html.legacyconversions.safeHtmlFromString = function(html) {
  * Performs an "unchecked conversion" from string to SafeScript for legacy API
  * purposes.
  *
- * Please read fileOverview documentation before using.
+ * Please read fileoverview documentation before using.
  *
  * @param {string} script A string to be converted to SafeScript.
  * @return {!goog.html.SafeScript} The value of script, wrapped in a SafeScript
@@ -112,7 +104,7 @@ goog.html.legacyconversions.safeScriptFromString = function(script) {
  * Performs an "unchecked conversion" from string to SafeStyle for legacy API
  * purposes.
  *
- * Please read fileOverview documentation before using.
+ * Please read fileoverview documentation before using.
  *
  * @param {string} style A string to be converted to SafeStyle.
  * @return {!goog.html.SafeStyle} The value of style, wrapped in a SafeStyle
@@ -129,7 +121,7 @@ goog.html.legacyconversions.safeStyleFromString = function(style) {
  * Performs an "unchecked conversion" from string to SafeStyleSheet for legacy
  * API purposes.
  *
- * Please read fileOverview documentation before using.
+ * Please read fileoverview documentation before using.
  *
  * @param {string} styleSheet A string to be converted to SafeStyleSheet.
  * @return {!goog.html.SafeStyleSheet} The value of style sheet, wrapped in
@@ -146,7 +138,7 @@ goog.html.legacyconversions.safeStyleSheetFromString = function(styleSheet) {
  * Performs an "unchecked conversion" from string to SafeUrl for legacy API
  * purposes.
  *
- * Please read fileOverview documentation before using.
+ * Please read fileoverview documentation before using.
  *
  * @param {string} url A string to be converted to SafeUrl.
  * @return {!goog.html.SafeUrl} The value of url, wrapped in a SafeUrl
@@ -162,7 +154,7 @@ goog.html.legacyconversions.safeUrlFromString = function(url) {
  * Performs an "unchecked conversion" from string to TrustedResourceUrl for
  * legacy API purposes.
  *
- * Please read fileOverview documentation before using.
+ * Please read fileoverview documentation before using.
  *
  * @param {string} url A string to be converted to TrustedResourceUrl.
  * @return {!goog.html.TrustedResourceUrl} The value of url, wrapped in a

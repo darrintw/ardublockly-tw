@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Matchers to be used with the mock utilities.  They allow for
+ * @fileoverview Matchers to be used with the mock utilities.  They allow for
  * flexible matching by type.  Custom matchers can be created by passing a
  * matcher function into an ArgumentMatcher instance.
  *
@@ -31,10 +31,10 @@ goog.provide('goog.testing.mockmatchers.RegexpMatch');
 goog.provide('goog.testing.mockmatchers.SaveArgument');
 goog.provide('goog.testing.mockmatchers.TypeOf');
 
-goog.forwardDeclare('goog.testing.MockExpectation');
 goog.require('goog.array');
 goog.require('goog.dom');
-goog.require('goog.testing.asserts');  // circular
+goog.require('goog.testing.asserts');
+goog.requireType('goog.testing.MockExpectation');
 
 
 

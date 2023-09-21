@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Wrappers for the HTML5 File API. These wrappers closely mirror
+ * @fileoverview Wrappers for the HTML5 File API. These wrappers closely mirror
  * the underlying APIs, but use Closure-style events and Deferred return values.
  * Their existence also makes it possible to mock the FileSystem API for testing
  * in browsers that don't support it natively.

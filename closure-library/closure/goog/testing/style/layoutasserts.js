@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A utility class for making layout assertions. This is a port
+ * @fileoverview A utility class for making layout assertions. This is a port
  * of http://go/layoutbot.java
  * See {@link http://go/layouttesting}.
  */

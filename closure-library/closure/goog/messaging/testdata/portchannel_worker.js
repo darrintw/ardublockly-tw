@@ -4,7 +4,7 @@
 // See the COPYING file for details.
 
 /**
- * @fileOverview A web worker for integration testing the PortChannel class.
+ * @fileoverview A web worker for integration testing the PortChannel class.
  *
  * @nocompile
  */

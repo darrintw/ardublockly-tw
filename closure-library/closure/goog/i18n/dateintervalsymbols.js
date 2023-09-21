@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Date interval formatting symbols for all locales.
+ * @fileoverview Date interval formatting symbols for all locales.
  *
  * File generated from CLDR ver. 36
  *

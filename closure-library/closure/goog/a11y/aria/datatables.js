@@ -15,7 +15,7 @@
 
 
 /**
- * @fileOverview The file contains data tables generated from the ARIA
+ * @fileoverview The file contains data tables generated from the ARIA
  * standard schema http://www.w3.org/TR/wai-aria/.
  *
  * This is auto-generated code. Do not manually edit!

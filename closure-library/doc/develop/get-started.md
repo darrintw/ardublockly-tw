@@ -32,7 +32,7 @@ following contents:
 
 ```js
 /**
- * @fileOverview Closure getting started tutorial code example.
+ * @fileoverview Closure getting started tutorial code example.
  */
 goog.require('goog.dom');
 

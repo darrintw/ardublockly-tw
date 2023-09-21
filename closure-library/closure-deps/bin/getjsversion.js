@@ -17,7 +17,7 @@
  */
 
 /**
- * @fileOverview Reads JS from stdin and then outputs the language version of
+ * @fileoverview Reads JS from stdin and then outputs the language version of
  * the given JS (e.g. "es6").
  */
 

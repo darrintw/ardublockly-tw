@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Protocol buffer serializer.
+ * @fileoverview Protocol buffer serializer.
  */
 
 

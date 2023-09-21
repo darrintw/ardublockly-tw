@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This file defines base classes used for creating mocks in
+ * @fileoverview This file defines base classes used for creating mocks in
  * JavaScript. The API was inspired by EasyMock.
  *
  * The basic API is:

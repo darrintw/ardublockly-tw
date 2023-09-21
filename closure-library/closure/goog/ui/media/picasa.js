@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview provides a reusable picasa album UI component given a public
+ * @fileoverview provides a reusable picasa album UI component given a public
  * picasa album URL.
  *
  * TODO(goto): implement the javascript viewer, for users without flash. Get it

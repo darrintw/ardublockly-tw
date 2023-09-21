@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview Component for generating chart PNGs using Google Chart Server.
+ * @fileoverview Component for generating chart PNGs using Google Chart Server.
  *
  * @deprecated Google Chart Images service (the server-side component of this
  *     class) has been deprecated. See

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Creates a pool of XhrIo objects to use. This allows multiple
+ * @fileoverview Creates a pool of XhrIo objects to use. This allows multiple
  * XhrIo objects to be grouped together and requests will use next available
  * XhrIo object.
  */

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The default base64-encoded Protobuf stream parser.
+ * @fileoverview The default base64-encoded Protobuf stream parser.
  *
  * A composed parser that first applies base64 stream decoding (see
  * {@link goog.net.streams.Base64StreamDecoder}) followed by Protobuf stream

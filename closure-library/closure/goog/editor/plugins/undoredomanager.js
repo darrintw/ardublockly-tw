@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Code for managing series of undo-redo actions in the form of
+ * @fileoverview Code for managing series of undo-redo actions in the form of
  * {@link goog.editor.plugins.UndoRedoState}s.
  */
 

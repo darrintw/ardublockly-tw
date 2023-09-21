@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This file contain classes that add support for cross-domain XHR
+ * @fileoverview This file contain classes that add support for cross-domain XHR
  * requests (see http://www.w3.org/TR/cors/). Most modern browsers are able to
  * use a regular XMLHttpRequest for that, but IE 8 use XDomainRequest object
  * instead. This file provides an adapter from this object to a goog.net.XhrLike

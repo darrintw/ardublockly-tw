@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Common events for the network classes.
+ * @fileoverview Common events for the network classes.
  */
 
 

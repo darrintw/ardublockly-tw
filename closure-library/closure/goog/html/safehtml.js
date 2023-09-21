@@ -1,20 +1,12 @@
-// Copyright 2013 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 
 /**
- * @fileOverview The SafeHtml type and its builders.
+ * @fileoverview The SafeHtml type and its builders.
  *
  * TODO(xtof): Link to document stating type contract.
  */
@@ -330,6 +322,22 @@ goog.html.SafeHtml.htmlEscapePreservingNewlinesAndSpaces = function(
  * @deprecated Use goog.html.SafeHtml.htmlEscape.
  */
 goog.html.SafeHtml.from = goog.html.SafeHtml.htmlEscape;
+
+
+/**
+ * Converts an arbitrary string into an HTML comment by HTML-escaping the
+ * contents and embedding the result between HTML comment markers.
+ *
+ * Escaping is needed because Internet Explorer supports conditional comments
+ * and so may render HTML markup within comments.
+ *
+ * @param {string} text
+ * @return {!goog.html.SafeHtml}
+ */
+goog.html.SafeHtml.comment = function(text) {
+  return goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
+      '<!--' + goog.string.internal.htmlEscape(text) + '-->', null);
+};
 
 
 /**
@@ -844,7 +852,7 @@ goog.html.SafeHtml.join = function(separator, parts) {
    *     !Array<!goog.html.SafeHtml.TextOrHtml_>} argument
    */
   var addArgument = function(argument) {
-    if (goog.isArray(argument)) {
+    if (Array.isArray(argument)) {
       goog.array.forEach(argument, addArgument);
     } else {
       var html = goog.html.SafeHtml.htmlEscape(argument);
@@ -959,7 +967,7 @@ goog.html.SafeHtml.createSafeHtmlTagSecurityPrivateDoNotAccessOrElse = function(
   var content = opt_content;
   if (content == null) {
     content = [];
-  } else if (!goog.isArray(content)) {
+  } else if (!Array.isArray(content)) {
     content = [content];
   }
 

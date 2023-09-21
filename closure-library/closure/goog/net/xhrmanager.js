@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Manages a pool of XhrIo's. This handles all the details of
+ * @fileoverview Manages a pool of XhrIo's. This handles all the details of
  * dealing with the XhrPool and provides a simple interface for sending requests
  * and managing events.
  *

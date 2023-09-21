@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview Utilities for adding, removing and setting ARIA roles and
+ * @fileoverview Utilities for adding, removing and setting ARIA roles and
  * states as defined by W3C ARIA standard: http://www.w3.org/TR/wai-aria/
  * All modern browsers have some form of ARIA support, so no browser checks are
  * performed when adding ARIA to components.
@@ -139,7 +139,7 @@ goog.a11y.aria.removeRole = function(element) {
  * for the state attribute.
  */
 goog.a11y.aria.setState = function(element, stateName, value) {
-  if (goog.isArray(value)) {
+  if (Array.isArray(value)) {
     value = value.join(' ');
   }
   var attrStateName = goog.a11y.aria.getAriaAttributeName_(stateName);

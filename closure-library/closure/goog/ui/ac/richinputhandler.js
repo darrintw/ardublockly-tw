@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class for managing the interactions between a rich autocomplete
+ * @fileoverview Class for managing the interactions between a rich autocomplete
  * object and a text-input or textarea.
  */
 

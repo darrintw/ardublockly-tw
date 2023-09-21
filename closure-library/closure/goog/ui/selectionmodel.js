@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Single-selection model implemenation.
+ * @fileoverview Single-selection model implemenation.
  *
  * TODO(attila): Add keyboard & mouse event hooks?
  * TODO(attila): Add multiple selection?

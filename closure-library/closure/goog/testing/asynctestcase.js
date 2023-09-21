@@ -14,7 +14,7 @@
 // All Rights Reserved.
 
 /**
- * @fileOverview A class representing a set of test functions that use
+ * @fileoverview A class representing a set of test functions that use
  * asynchronous functions that cannot be meaningfully mocked.
  *
  * To create a Google-compatible JsUnit test using this test case, put the

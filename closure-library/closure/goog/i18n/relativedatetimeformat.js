@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview RelativeDateTimeFormat provides methods to format simple
+ * @fileoverview RelativeDateTimeFormat provides methods to format simple
  * relative dates and times into a string in a user friendly way and a locale
  * sensitive manner. Numeric quantities are supported with negative values
  * indicating the past, zero meaning now, and positive for the future. Specific

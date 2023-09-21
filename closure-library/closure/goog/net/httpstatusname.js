@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Names for HTTP status codes
+ * @fileoverview Names for HTTP status codes
  */
 
 goog.provide('goog.net.HttpStatusName');

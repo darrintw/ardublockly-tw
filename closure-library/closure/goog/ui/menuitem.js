@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class for representing items in menus.
+ * @fileoverview A class for representing items in menus.
  * @see goog.ui.Menu
  *
  * @see ../demos/menuitem.html
@@ -185,7 +185,7 @@ goog.ui.MenuItem.prototype.setCheckableInternal_ = function(checkable) {
  */
 goog.ui.MenuItem.prototype.getCaption = function() {
   var content = this.getContent();
-  if (goog.isArray(content)) {
+  if (Array.isArray(content)) {
     var acceleratorClass = goog.ui.MenuItem.ACCELERATOR_CLASS;
     var mnemonicWrapClass = goog.ui.MenuItem.MNEMONIC_WRAPPER_CLASS_;
     var caption =
@@ -218,7 +218,7 @@ goog.ui.MenuItem.prototype.getCaption = function() {
 goog.ui.MenuItem.prototype.getAccelerator = function() {
   var dom = this.getDomHelper();
   var content = this.getContent();
-  if (goog.isArray(content)) {
+  if (Array.isArray(content)) {
     var acceleratorEl = goog.array.find(content, function(e) {
       return goog.dom.classlist.contains(
           /** @type {!Element} */ (e), goog.ui.MenuItem.ACCELERATOR_CLASS);

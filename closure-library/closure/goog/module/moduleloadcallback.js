@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A simple callback mechanism for notification about module
+ * @fileoverview A simple callback mechanism for notification about module
  * loads. Should be considered package-private to goog.module.
  */
 

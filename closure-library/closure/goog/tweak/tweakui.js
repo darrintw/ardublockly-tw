@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A UI for editing tweak settings / clicking tweak actions.
+ * @fileoverview A UI for editing tweak settings / clicking tweak actions.
  */
 
 goog.provide('goog.tweak.EntriesPanel');

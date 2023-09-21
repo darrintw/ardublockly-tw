@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class for showing simple modal dialog boxes.
+ * @fileoverview Class for showing simple modal dialog boxes.
  *
  * TODO(user):
  *   * Standardize CSS class names with other components

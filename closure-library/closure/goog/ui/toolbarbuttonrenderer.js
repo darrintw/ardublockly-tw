@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for toolbar buttons.
+ * @fileoverview Renderer for toolbar buttons.
  */
 
 goog.provide('goog.ui.ToolbarButtonRenderer');

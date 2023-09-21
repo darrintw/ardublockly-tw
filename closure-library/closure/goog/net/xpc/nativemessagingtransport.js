@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Contains the class which uses native messaging
+ * @fileoverview Contains the class which uses native messaging
  * facilities for cross domain communication.
  */
 

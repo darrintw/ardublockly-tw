@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definitions for all tweak entries.
+ * @fileoverview Definitions for all tweak entries.
  * The class hierarchy is as follows (abstract entries are denoted with a *):
  * BaseEntry(id, description) *
  *   -> ButtonAction(buttons in the UI)

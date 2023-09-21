@@ -14,7 +14,7 @@
 
 
 /**
- * @fileOverview The file contains generated enumerations for ARIA states
+ * @fileoverview The file contains generated enumerations for ARIA states
  * and properties as defined by W3C ARIA standard:
  * http://www.w3.org/TR/wai-aria/.
  *

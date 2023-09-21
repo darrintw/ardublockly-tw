@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview MockRandom provides a mechanism for specifying a stream of
+ * @fileoverview MockRandom provides a mechanism for specifying a stream of
  * numbers to expect from calls to Math.random().
  */
 
@@ -116,7 +116,7 @@ goog.testing.MockRandom.prototype.hasMoreValues = function() {
  * @param {!Array<number>|number} values Number or array of numbers to inject.
  */
 goog.testing.MockRandom.prototype.inject = function(values) {
-  if (goog.isArray(values)) {
+  if (Array.isArray(values)) {
     this.sequence_ = values.concat(this.sequence_);
   } else {
     this.sequence_.splice(0, 0, values);

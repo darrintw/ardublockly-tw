@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The module loader for loading modules across the network.
+ * @fileoverview The module loader for loading modules across the network.
  *
  * Browsers do not guarantee that scripts appended to the document
  * are executed in the order they are added. For production mode, we use

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The default renderer for a goog.dom.DimensionPicker.  A
+ * @fileoverview The default renderer for a goog.dom.DimensionPicker.  A
  * dimension picker allows the user to visually select a row and column count.
  * It looks like a palette but in order to minimize DOM load it is rendered.
  * using CSS background tiling instead of as a grid of nodes.

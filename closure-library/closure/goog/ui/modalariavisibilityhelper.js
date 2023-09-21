@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Helper object used by modal elements to control aria
+ * @fileoverview Helper object used by modal elements to control aria
  * visibility of the rest of the page.
  */
 

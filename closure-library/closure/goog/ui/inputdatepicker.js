@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Input Date Picker implementation.  Pairs a
+ * @fileoverview Input Date Picker implementation.  Pairs a
  * goog.ui.PopupDatePicker with an input element and handles the input from
  * either.
  *

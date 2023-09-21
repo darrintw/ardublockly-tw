@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Testing utilities for editor specific DOM related tests.
+ * @fileoverview Testing utilities for editor specific DOM related tests.
  */
 
 goog.setTestOnly('goog.testing.editor.dom');

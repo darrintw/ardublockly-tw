@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides a function that decorates an element based on its CSS
+ * @fileoverview Provides a function that decorates an element based on its CSS
  * class name.
  */
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @fileOverview Unit tests for Closure's base.js's goog.module support. */
+/** @fileoverview Unit tests for Closure's base.js's goog.module support. */
 
 goog.module('goog.baseModuleTest');
 goog.setTestOnly();

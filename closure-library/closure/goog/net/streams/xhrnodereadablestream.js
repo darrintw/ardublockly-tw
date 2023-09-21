@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview adaptor of XhrStreamReader to the NodeReadableStream interface.
+ * @fileoverview adaptor of XhrStreamReader to the NodeReadableStream interface.
  */
 
 goog.provide('goog.net.streams.XhrNodeReadableStream');

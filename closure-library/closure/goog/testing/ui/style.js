@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Tools for testing Closure renderers against static markup
+ * @fileoverview Tools for testing Closure renderers against static markup
  * spec pages.
  */
 

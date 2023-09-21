@@ -143,7 +143,7 @@ function bar() {
 
 _TEST_BASE_SOURCE = """
 /**
- * @fileOverview The base file.
+ * @fileoverview The base file.
  * @provideGoog
  */
 
@@ -152,7 +152,7 @@ var goog = goog || {};
 
 _TEST_BAD_BASE_SOURCE = """
 /**
- * @fileOverview The base file.
+ * @fileoverview The base file.
  * @provideGoog
  */
 

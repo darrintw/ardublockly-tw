@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Commands that the editor can execute.
+ * @fileoverview Commands that the editor can execute.
  * @see ../demos/editor/editor.html
  */
 goog.provide('goog.editor.Command');

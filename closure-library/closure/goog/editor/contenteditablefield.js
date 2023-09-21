@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class to encapsulate an editable field that blends into the
+ * @fileoverview Class to encapsulate an editable field that blends into the
  * style of the page and never uses an iframe.  The field's height can be
  * controlled by CSS styles like min-height, max-height, and overflow.  This is
  * a goog.editor.Field, but overrides everything iframe related to use

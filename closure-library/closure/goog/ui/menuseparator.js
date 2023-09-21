@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class for representing menu separators.
+ * @fileoverview A class for representing menu separators.
  * @see goog.ui.Menu
  */
 

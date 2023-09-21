@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides CORS support for HTTP based RPC requests.
+ * @fileoverview Provides CORS support for HTTP based RPC requests.
  *
  * As part of net.rpc package, CORS features provided by this class
  * depend on the server support. Please check related specs to decide how

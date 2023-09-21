@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Functions for encoding strings according to MIME
+ * @fileoverview Functions for encoding strings according to MIME
  * standards, especially RFC 1522.
  */
 goog.provide('goog.i18n.mime');

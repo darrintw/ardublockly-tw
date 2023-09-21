@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A plugin that fills the field with lorem ipsum text when it's
+ * @fileoverview A plugin that fills the field with lorem ipsum text when it's
  * empty and does not have the focus. Applies to both editable and uneditable
  * fields.
  */

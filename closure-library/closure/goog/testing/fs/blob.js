@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock blob object.
+ * @fileoverview Mock blob object.
  */
 
 goog.setTestOnly('goog.testing.fs.Blob');

@@ -1,19 +1,11 @@
-// Copyright 2012 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
- * @fileOverview Provides a mocking framework in Closure to make unit tests easy
+ * @fileoverview Provides a mocking framework in Closure to make unit tests easy
  * to write and understand. The methods provided here can be used to replace
  * implementations of existing objects with 'mock' objects to abstract out
  * external services and dependencies thereby isolating the code under test.
@@ -188,7 +180,7 @@ goog.labs.mock.formatMethodCall_ = function(methodName, opt_args) {
       return '<function ' + funcName + '>';
     } else {
       var isObjectWithClass = goog.isObject(arg) && !goog.isFunction(arg) &&
-          !goog.isArray(arg) && arg.constructor != Object;
+          !Array.isArray(arg) && arg.constructor != Object;
 
       if (isObjectWithClass) {
         return arg.toString();

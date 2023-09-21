@@ -1,20 +1,12 @@
-// Copyright 2011 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 
 /**
- * @fileOverview Constants used by the WebGL rendering, including all of the
+ * @fileoverview Constants used by the WebGL rendering, including all of the
  * constants used from the WebGL context.  For example, instead of using
  * context.ARRAY_BUFFER, your code can use
  * goog.webgl.ARRAY_BUFFER. The benefits for doing this include allowing

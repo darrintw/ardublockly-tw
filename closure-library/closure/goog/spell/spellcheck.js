@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Support class for spell checker components.
+ * @fileoverview Support class for spell checker components.
  */
 
 goog.provide('goog.spell.SpellCheck');

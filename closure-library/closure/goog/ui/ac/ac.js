@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utility methods supporting the autocomplete package.
+ * @fileoverview Utility methods supporting the autocomplete package.
  *
  * @see ../../demos/autocomplete-basic.html
  */

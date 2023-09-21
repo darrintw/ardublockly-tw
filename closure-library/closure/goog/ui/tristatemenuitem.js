@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A menu item class that supports three state checkbox semantics.
+ * @fileoverview A menu item class that supports three state checkbox semantics.
  */
 
 goog.provide('goog.ui.TriStateMenuItem');

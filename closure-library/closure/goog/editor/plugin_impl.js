@@ -14,7 +14,7 @@
 // All Rights Reserved.
 
 /**
- * @fileOverview Abstract API for TrogEdit plugins.
+ * @fileoverview Abstract API for TrogEdit plugins.
  *
  * @see ../demos/editor/editor.html
  */

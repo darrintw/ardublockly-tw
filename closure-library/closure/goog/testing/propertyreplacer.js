@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Helper class for creating stubs for testing.
+ * @fileoverview Helper class for creating stubs for testing.
  */
 
 goog.setTestOnly('goog.testing.PropertyReplacer');

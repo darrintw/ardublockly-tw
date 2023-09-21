@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock filesystem object.
+ * @fileoverview Mock filesystem object.
  */
 
 goog.setTestOnly('goog.testing.fs.FileSystem');

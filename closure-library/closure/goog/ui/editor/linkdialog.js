@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A dialog for editing/creating a link.
+ * @fileoverview A dialog for editing/creating a link.
  */
 
 goog.provide('goog.ui.editor.LinkDialog');

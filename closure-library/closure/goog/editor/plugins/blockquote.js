@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview goog.editor plugin to handle splitting block quotes.
+ * @fileoverview goog.editor plugin to handle splitting block quotes.
  */
 
 goog.provide('goog.editor.plugins.Blockquote');

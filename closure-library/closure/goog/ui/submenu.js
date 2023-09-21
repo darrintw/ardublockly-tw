@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class representing menu items that open a submenu.
+ * @fileoverview A class representing menu items that open a submenu.
  * @see goog.ui.Menu
  *
  * @see ../demos/submenus.html

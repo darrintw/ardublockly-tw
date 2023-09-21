@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A native implementation of the ponyfill.
+ * @fileoverview A native implementation of the ponyfill.
  */
 goog.module('goog.streams.fullNativeImpl');
 

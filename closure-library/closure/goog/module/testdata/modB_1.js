@@ -14,7 +14,7 @@
 // All Rights Reserved
 
 /**
- * @fileOverview File #1 of module B.
+ * @fileoverview File #1 of module B.
  */
 
 goog.provide('goog.module.testdata.modB_1');

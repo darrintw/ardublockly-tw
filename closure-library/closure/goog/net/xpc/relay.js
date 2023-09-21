@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Standalone script to be included in the relay-document
+ * @fileoverview Standalone script to be included in the relay-document
  * used by goog.net.xpc.IframeRelayTransport. This script will decode the
  * fragment identifier, determine the target window object and deliver
  * the data to it.

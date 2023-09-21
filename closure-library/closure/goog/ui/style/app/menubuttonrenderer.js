@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for {@link goog.ui.style.app.MenuButton}s and
+ * @fileoverview Renderer for {@link goog.ui.style.app.MenuButton}s and
  * subclasses.
  */
 
@@ -60,7 +60,7 @@ goog.ui.style.app.MenuButtonRenderer.CSS_CLASS =
  * Array of arrays of CSS classes that we want composite classes added and
  * removed for in IE6 and lower as a workaround for lack of multi-class CSS
  * selector support.
- * @type {Array<Array<string>>}
+ * @type {!Array<Array<string>>}
  */
 goog.ui.style.app.MenuButtonRenderer.IE6_CLASS_COMBINATIONS = [
   [
@@ -185,7 +185,7 @@ goog.ui.style.app.MenuButtonRenderer.prototype.decorate = function(
  * @param {goog.ui.ControlContent} content Text caption or DOM structure to wrap
  *     in a box.
  * @param {goog.dom.DomHelper} dom DOM helper, used for document interaction.
- * @return {Element} Pseudo-rounded-corner box containing the content.
+ * @return {!Element} Pseudo-rounded-corner box containing the content.
  * @override
  */
 goog.ui.style.app.MenuButtonRenderer.prototype.createButton = function(
@@ -209,7 +209,7 @@ goog.ui.style.app.MenuButtonRenderer.prototype.setContent = function(
  * Inserts dropdown element as last child of existing content.
  * @param {goog.ui.ControlContent} content Text caption or DOM structure.
  * @param {goog.dom.DomHelper} dom DOM helper, used for document ineraction.
- * @return {Array<Node>} DOM structure to be set as the button's content.
+ * @return {!Array<Node>} DOM structure to be set as the button's content.
  */
 goog.ui.style.app.MenuButtonRenderer.prototype.createContentWithDropdown =
     function(content, dom) {
@@ -226,7 +226,7 @@ goog.ui.style.app.MenuButtonRenderer.prototype.createContentWithDropdown =
  *    <div class="goog-menu-button-dropdown"> </div>
  *
  * @param {goog.dom.DomHelper} dom DOM helper, used for document interaction.
- * @return {Element} Dropdown element.
+ * @return {!Element} Dropdown element.
  */
 goog.ui.style.app.MenuButtonRenderer.prototype.createDropdown = function(dom) {
   return dom.createDom(

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Object which fetches Unicode codepoint names from a remote data
+ * @fileoverview Object which fetches Unicode codepoint names from a remote data
  * source. This data source should accept two parameters:
  * <ol>
  * <li>c - the list of codepoints in hexadecimal format

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the AttachableMenu class.
+ * @fileoverview Definition of the AttachableMenu class.
  */
 
 goog.provide('goog.ui.AttachableMenu');

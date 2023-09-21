@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Definition of the goog.i18n.CharNameFetcher interface. This
+ * @fileoverview Definition of the goog.i18n.CharNameFetcher interface. This
  * interface is used to retrieve individual character names.
  */
 

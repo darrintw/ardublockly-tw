@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock ProgressEvent object.
+ * @fileoverview Mock ProgressEvent object.
  */
 
 goog.setTestOnly('goog.testing.fs.ProgressEvent');

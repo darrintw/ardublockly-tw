@@ -4,7 +4,7 @@
 // See the COPYING file for details.
 
 /**
- * @fileOverview A web worker for integration testing the PortPool class.
+ * @fileoverview A web worker for integration testing the PortPool class.
  *
  * @nocompile
  */

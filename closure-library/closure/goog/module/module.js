@@ -14,7 +14,7 @@
 
 /**
  *
- * @fileOverview This class supports the dynamic loading of compiled
+ * @fileoverview This class supports the dynamic loading of compiled
  * javascript modules at runtime, as described in the designdoc.
  *
  *   <http://go/js_modules_design>

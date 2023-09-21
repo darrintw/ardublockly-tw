@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Implementation of a range model. This is an implementation of
+ * @fileoverview Implementation of a range model. This is an implementation of
  * the BoundedRangeModel as described by Java at
  * http://java.sun.com/javase/6/docs/api/javax/swing/BoundedRangeModel.html.
  *

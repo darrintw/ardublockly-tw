@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Defines used by streams.
+ * @fileoverview Defines used by streams.
  */
 goog.module('goog.streams.defines');
 

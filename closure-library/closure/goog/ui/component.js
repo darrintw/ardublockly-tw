@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Abstract class for all UI components. This defines the standard
+ * @fileoverview Abstract class for all UI components. This defines the standard
  * design pattern that all UI components should follow.
  *
  * @see ../demos/samplecomponent.html
@@ -1242,7 +1242,7 @@ goog.ui.Component.prototype.indexOfChild = function(child) {
  *    or the child component itself.
  * @param {boolean=} opt_unrender If true, calls `exitDocument` on the
  *    removed child component, and detaches its DOM from the document.
- * @return {goog.ui.Component} The removed component, if any.
+ * @return {?goog.ui.Component} The removed component, if any.
  */
 goog.ui.Component.prototype.removeChild = function(child, opt_unrender) {
   if (child) {

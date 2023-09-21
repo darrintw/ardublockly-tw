@@ -9,7 +9,7 @@
  */
 
 /**
- * @fileOverview Class for tracking multiple asynchronous operations and
+ * @fileoverview Class for tracking multiple asynchronous operations and
  * handling the results. The DeferredList object here is patterned after the
  * DeferredList object in the Twisted python networking framework.
  *

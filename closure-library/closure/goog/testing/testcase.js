@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class representing a set of test functions to be run.
+ * @fileoverview A class representing a set of test functions to be run.
  *
  * Testing code should not have dependencies outside of goog.testing so as to
  * reduce the chance of masking missing dependencies.

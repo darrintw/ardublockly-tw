@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Mock FileWriter object.
+ * @fileoverview Mock FileWriter object.
  */
 
 goog.setTestOnly('goog.testing.fs.FileWriter');

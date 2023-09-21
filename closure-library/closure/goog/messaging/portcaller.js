@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The leaf node of a {@link goog.messaging.PortNetwork}. Callers
+ * @fileoverview The leaf node of a {@link goog.messaging.PortNetwork}. Callers
  * connect to the operator, and request connections with other contexts from it.
  */
 

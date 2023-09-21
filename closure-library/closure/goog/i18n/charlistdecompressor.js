@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The decompressor for Base88 compressed character lists.
+ * @fileoverview The decompressor for Base88 compressed character lists.
  *
  * The compression is by base 88 encoding the delta between two adjacent
  * characters in ths list. The deltas can be positive or negative. Also, there

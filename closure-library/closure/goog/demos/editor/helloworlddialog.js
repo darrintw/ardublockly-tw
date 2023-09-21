@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An example of how to write a dialog to be opened by a plugin.
+ * @fileoverview An example of how to write a dialog to be opened by a plugin.
  */
 
 
@@ -138,7 +138,7 @@ goog.demos.editor.HelloWorldDialog.prototype.input_;
 
 /**
  * Creates the DOM structure that makes up the dialog's content area.
- * @return {Element} The DOM structure that makes up the dialog's content area.
+ * @return {!Element} The DOM structure that makes up the dialog's content area.
  * @private
  */
 goog.demos.editor.HelloWorldDialog.prototype.createContent_ = function() {

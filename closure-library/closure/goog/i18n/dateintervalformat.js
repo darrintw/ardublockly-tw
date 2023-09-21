@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview DateIntervalFormat provides methods to format a date interval
+ * @fileoverview DateIntervalFormat provides methods to format a date interval
  * into a string in a user friendly way and a locale sensitive manner.
  *
  * Similar to the ICU4J class com/ibm/icu/text/DateIntervalFormat:

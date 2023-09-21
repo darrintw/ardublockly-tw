@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A MockControl holds a set of mocks for a particular test.
+ * @fileoverview A MockControl holds a set of mocks for a particular test.
  * It consolidates calls to $replay, $verify, and $tearDown, which simplifies
  * the test and helps avoid omissions.
  *

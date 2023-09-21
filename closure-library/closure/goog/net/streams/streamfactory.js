@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview the factory for creating stream objects.
+ * @fileoverview the factory for creating stream objects.
  */
 
 goog.provide('goog.net.streams.createXhrNodeReadableStream');

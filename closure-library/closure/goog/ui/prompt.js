@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview DHTML prompt to replace javascript's prompt().
+ * @fileoverview DHTML prompt to replace javascript's prompt().
  *
  * @see ../demos/prompt.html
  */

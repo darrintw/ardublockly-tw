@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utilties to handle focusing related to rich text editing.
+ * @fileoverview Utilties to handle focusing related to rich text editing.
  */
 
 goog.provide('goog.editor.focus');

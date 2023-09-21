@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides a JS storage class implementing the HTML5 Storage
+ * @fileoverview Provides a JS storage class implementing the HTML5 Storage
  * interface.
  */
 

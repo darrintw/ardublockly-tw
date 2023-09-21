@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toolbar separator control.
+ * @fileoverview A toolbar separator control.
  */
 
 goog.provide('goog.ui.ToolbarSeparator');

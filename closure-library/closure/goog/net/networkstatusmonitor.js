@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for objects monitoring and exposing runtime
+ * @fileoverview Base class for objects monitoring and exposing runtime
  * network status information.
  */
 

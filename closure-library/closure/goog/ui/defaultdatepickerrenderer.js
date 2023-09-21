@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The default renderer for {@link goog.ui.DatePicker}.
+ * @fileoverview The default renderer for {@link goog.ui.DatePicker}.
  *
  * @see ../demos/datepicker.html
  */

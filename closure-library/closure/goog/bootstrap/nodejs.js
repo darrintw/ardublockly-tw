@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A nodejs script for dynamically requiring Closure within
+ * @fileoverview A nodejs script for dynamically requiring Closure within
  * nodejs.
  *
  * Example of usage:

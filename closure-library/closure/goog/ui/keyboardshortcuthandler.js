@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Generic keyboard shortcut handler.
+ * @fileoverview Generic keyboard shortcut handler.
  *
  * @see ../demos/keyboardshortcuts.html
  */
@@ -560,7 +560,7 @@ goog.ui.KeyboardShortcutHandler.prototype.interpretStrokes_ = function(
     // Build strokes array from arguments list or from array.
   } else {
     var strokesArgs = args, i = initialIndex;
-    if (goog.isArray(args[initialIndex])) {
+    if (Array.isArray(args[initialIndex])) {
       strokesArgs = args[initialIndex];
       i = 0;
     }
@@ -967,7 +967,7 @@ goog.ui.KeyboardShortcutHandler.unsetShortcut_ = function(tree, strokes) {
  * @param {!goog.ui.KeyboardShortcutHandler.SequenceTree_} tree The
  *     stroke sequence tree to find the node in.
  * @param {Array<string>} stroke Stroke to find.
- * @return {goog.ui.KeyboardShortcutHandler.SequenceNode_|undefined} Node matching stroke.
+ * @return {!goog.ui.KeyboardShortcutHandler.SequenceNode_|undefined} Node matching stroke.
  * @private
  */
 goog.ui.KeyboardShortcutHandler.prototype.getNode_ = function(tree, stroke) {
@@ -1016,7 +1016,7 @@ goog.ui.KeyboardShortcutHandler.prototype.checkShortcut_ = function(
  * @param {string} keyName Key name.
  * @param {number} keyCode Numeric key code.
  * @param {number} modifiers Required modifiers.
- * @return {Array<string>} An array of strings identifying the key/modifier
+ * @return {!Array<string>} An array of strings identifying the key/modifier
  *     combinations.
  * @private
  */

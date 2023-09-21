@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toolbar toggle button control.
+ * @fileoverview A toolbar toggle button control.
  */
 
 goog.provide('goog.ui.ToolbarToggleButton');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview LooseMock of goog.dom.AbstractRange.
+ * @fileoverview LooseMock of goog.dom.AbstractRange.
  */
 
 goog.setTestOnly('goog.testing.MockRange');

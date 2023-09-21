@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Provides the base media model consistent with the Yahoo Media
+ * @fileoverview Provides the base media model consistent with the Yahoo Media
  * RSS specification {@link http://search.yahoo.com/mrss/}.
  */
 

@@ -69,26 +69,32 @@
         </a>
         <!-- Horizontal Navbar links only shown on large resolutions -->
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li class="no-padding">
-                <select name="setting_baud_rate" id="baud_rate_setting" class="input-field col s12" readonly>
-                    <option value="9600">9600 baud</option>
-                </select>
+            <li>
+                <div id="setting_baud_rate">
+                    <select name="setting_baud_rate" id="baud_rate_setting" class="input-field col s12" readonly>
+                        <option value="9600">9600 baud</option>
+                    </select>
+                </div>
                 <a href="#" id="button_serial_monitor"><span class="translatable_serial_monitor">序列埠監控</span><i
                         class="mdi-hardware-computer left"></i></a>
             </li>
             <li>　</li>
-            <li class="no-padding">
-                <select name="settings_serial" id="serial_port" class="input-field col s12">
-                    <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
-                </select>
+            <li>
+                <div id="settings_serial">
+                    <select name="settings_serial" id="serial_port" class="input-field col s12">
+                        <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
+                    </select>
+                </div>
                 <a href="#" id="button_examples"><span class="translatable_examples">範例</span><i
                         class="mdi-file-folder left"></i></a>
             </li>
             <li>　</li>
-            <li class="no-padding">
-                <select name="settings_board" id="board" class="input-field col s12">
-                    <option value="uno" class="translatable_arduinoBoardDefault">開發版未知</option>
-                </select>
+            <li>
+                <div id="settings_board">
+                    <select name="settings_board" id="board" class="input-field col s12">
+                        <option value="uno" class="translatable_arduinoBoardDefault">開發版未知</option>
+                    </select>
+                </div>
                 <a href="#" id="button_codeswitch"><span class="translatable_codeswitch">代碼切換</span><i
                         class="mdi-image-remove-red-eye left"></i></a>
             </li>

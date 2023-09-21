@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class that retrieves autocomplete matches via an ajax call.
+ * @fileoverview Class that retrieves autocomplete matches via an ajax call.
  */
 
 goog.provide('goog.ui.ac.RemoteArrayMatcher');

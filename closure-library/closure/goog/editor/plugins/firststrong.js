@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A plugin to enable the First Strong Bidi algorithm.  The First
+ * @fileoverview A plugin to enable the First Strong Bidi algorithm.  The First
  * Strong algorithm as a heuristic used to automatically set paragraph direction
  * depending on its content.
  *

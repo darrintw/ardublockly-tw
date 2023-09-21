@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A slider implementation that allows to select a value within a
+ * @fileoverview A slider implementation that allows to select a value within a
  * range by dragging a thumb. The selected value is exposed through getValue().
  *
  * To decorate, the slider should be bound to an element with the class name

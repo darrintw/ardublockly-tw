@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A combo box control that allows user input with
+ * @fileoverview A combo box control that allows user input with
  * auto-suggestion from a limited set of options.
  *
  * @see ../demos/combobox.html

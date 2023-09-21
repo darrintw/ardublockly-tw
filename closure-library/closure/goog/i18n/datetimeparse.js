@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Date/Time parsing library with locale support.
+ * @fileoverview Date/Time parsing library with locale support.
  */
 
 

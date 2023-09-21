@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A dimension picker control.  A dimension picker allows the
+ * @fileoverview A dimension picker control.  A dimension picker allows the
  * user to visually select a row and column count.
  *
  * @see ../demos/dimensionpicker.html

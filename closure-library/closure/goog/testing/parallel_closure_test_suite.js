@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Parallel closure_test_suite test file. This test is not
+ * @fileoverview Parallel closure_test_suite test file. This test is not
  * intended to be ran or depended on directly.
  *
  */

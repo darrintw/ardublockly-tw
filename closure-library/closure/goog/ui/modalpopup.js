@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Class for showing simple modal popup.
+ * @fileoverview Class for showing simple modal popup.
  */
 
 goog.provide('goog.ui.ModalPopup');

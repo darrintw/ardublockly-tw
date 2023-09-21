@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Animated zippy widget implementation.
+ * @fileoverview Animated zippy widget implementation.
  *
  * @see ../demos/zippy.html
  */

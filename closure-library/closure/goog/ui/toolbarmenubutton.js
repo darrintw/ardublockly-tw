@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A toolbar menu button control.
+ * @fileoverview A toolbar menu button control.
  */
 
 goog.provide('goog.ui.ToolbarMenuButton');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Component for an input field with bidi direction automatic
+ * @fileoverview Component for an input field with bidi direction automatic
  * detection. The input element directionality is automatically set according
  * to the contents (value) of the element.
  *

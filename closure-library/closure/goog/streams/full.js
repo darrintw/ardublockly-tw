@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A full ponyfill of the ReadableStream native API.
+ * @fileoverview A full ponyfill of the ReadableStream native API.
  */
 goog.module('goog.streams.full');
 

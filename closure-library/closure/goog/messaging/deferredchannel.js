@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A MessageChannel decorator that wraps a deferred MessageChannel
+ * @fileoverview A MessageChannel decorator that wraps a deferred MessageChannel
  * and enqueues messages and service registrations until that channel exists.
  */
 

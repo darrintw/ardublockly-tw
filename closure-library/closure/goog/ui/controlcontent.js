@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Type declaration for control content.
+ * @fileoverview Type declaration for control content.
  */
 goog.provide('goog.ui.ControlContent');
 

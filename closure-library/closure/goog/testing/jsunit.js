@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Utilities for working with JsUnit.  Writes out the JsUnit file
+ * @fileoverview Utilities for working with JsUnit.  Writes out the JsUnit file
  * that needs to be included in every unit test.
  *
  * Testing code should not have dependencies outside of goog.testing so as to

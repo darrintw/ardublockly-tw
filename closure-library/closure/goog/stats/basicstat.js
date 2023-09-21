@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview A basic statistics tracker.
+ * @fileoverview A basic statistics tracker.
  */
 
 goog.provide('goog.stats.BasicStat');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Date/time formatting symbols for all locales.
+ * @fileoverview Date/time formatting symbols for all locales.
  *
  * File generated from CLDR ver. 35.1
  *
@@ -9692,8 +9692,8 @@ goog.i18n.DateTimeSymbols_kl = {
   STANDALONESHORTMONTHS: ['jan', 'febr', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sept', 'okt', 'nov', 'dec'],
   WEEKDAYS: ['sapaat', 'ataasinngorneq', 'marlunngorneq', 'pingasunngorneq', 'sisamanngorneq', 'tallimanngorneq', 'arfininngorneq'],
   STANDALONEWEEKDAYS: ['sapaat', 'ataasinngorneq', 'marlunngorneq', 'pingasunngorneq', 'sisamanngorneq', 'tallimanngorneq', 'arfininngorneq'],
-  SHORTWEEKDAYS: ['sap', 'ata', 'mar', 'Pin', 'sis', 'tal', 'arf'],
-  STANDALONESHORTWEEKDAYS: ['sap', 'ata', 'mar', 'Pin', 'sis', 'tal', 'arf'],
+  SHORTWEEKDAYS: ['sap', 'ata', 'mar', 'pin', 'sis', 'tal', 'arf'],
+  STANDALONESHORTWEEKDAYS: ['sap', 'ata', 'mar', 'pin', 'sis', 'tal', 'arf'],
   NARROWWEEKDAYS: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   STANDALONENARROWWEEKDAYS: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   SHORTQUARTERS: ['Q1', 'Q2', 'Q3', 'Q4'],

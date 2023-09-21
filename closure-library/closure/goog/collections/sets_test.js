@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Unit tests for goog.collections.set.
+ * @fileoverview Unit tests for goog.collections.set.
  */
 
 goog.module('goog.collections.setsTest');

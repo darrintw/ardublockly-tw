@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A class for representing menu headers.
+ * @fileoverview A class for representing menu headers.
  * @see goog.ui.Menu
  */
 

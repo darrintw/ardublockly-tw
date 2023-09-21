@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Default renderer for {@link goog.ui.TabBar}s.  Based on the
+ * @fileoverview Default renderer for {@link goog.ui.TabBar}s.  Based on the
  * original `TabPane` code.
  */
 

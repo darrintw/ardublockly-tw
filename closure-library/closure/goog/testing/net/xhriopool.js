@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An XhrIo pool that uses a single mock XHR object for testing.
+ * @fileoverview An XhrIo pool that uses a single mock XHR object for testing.
  */
 
 goog.setTestOnly('goog.testing.net.XhrIoPool');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A content-aware textarea control that grows and shrinks
+ * @fileoverview A content-aware textarea control that grows and shrinks
  * automatically. This implementation extends {@link goog.ui.Control}.
  * This code is inspired by Dojo Dijit's Textarea implementation with
  * modifications to support native (when available) textarea resizing and

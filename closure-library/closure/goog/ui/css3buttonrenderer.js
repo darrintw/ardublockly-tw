@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An alternative imageless button renderer that uses CSS3 rather
+ * @fileoverview An alternative imageless button renderer that uses CSS3 rather
  * than voodoo to render custom buttons with rounded corners and dimensionality
  * (via a subtle flat shadow on the bottom half of the button) without the use
  * of images.

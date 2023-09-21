@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A utility for wrapping a JSTD test object so that any test
+ * @fileoverview A utility for wrapping a JSTD test object so that any test
  * methods are receive a queue that is compatible with JSTD but supports the
  * JsUnit async API of returning a promise in the test method.
  *

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Generic factory functions for creating the building blocks for
+ * @fileoverview Generic factory functions for creating the building blocks for
  * an editor toolbar.
  */
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Collection of utility functions for Unicode character.
+ * @fileoverview Collection of utility functions for Unicode character.
  */
 
 goog.provide('goog.i18n.uChar');

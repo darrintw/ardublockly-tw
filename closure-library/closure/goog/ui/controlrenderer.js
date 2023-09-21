@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for control renderers.
+ * @fileoverview Base class for control renderers.
  * TODO(attila):  If the renderer framework works well, pull it into Component.
  */
 
@@ -667,7 +667,7 @@ goog.ui.ControlRenderer.prototype.setContent = function(element, content) {
                 typeof child === 'string' ? doc.createTextNode(child) : child);
           }
         };
-        if (goog.isArray(content)) {
+        if (Array.isArray(content)) {
           // Array of nodes.
           goog.array.forEach(content, childHandler);
         } else if (goog.isArrayLike(content) && !('nodeType' in content)) {
@@ -721,7 +721,7 @@ goog.ui.ControlRenderer.prototype.getCssClass = function() {
  * method doesn't reference {@link IE6_CLASS_COMBINATIONS} so that it can be
  * compiled out, but subclasses should return their IE6_CLASS_COMBINATIONS
  * static constant instead.
- * @return {Array<Array<string>>} Array of class name combinations.
+ * @return {!Array<Array<string>>} Array of class name combinations.
  */
 goog.ui.ControlRenderer.prototype.getIe6ClassCombinations = function() {
   return [];

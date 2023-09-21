@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Helper class for recording the calls of a function.
+ * @fileoverview Helper class for recording the calls of a function.
  *
  * Example:
  * <pre>

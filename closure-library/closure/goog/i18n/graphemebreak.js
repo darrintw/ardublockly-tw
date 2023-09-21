@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Detect Grapheme Cluster Break in a pair of codepoints. Follows
+ * @fileoverview Detect Grapheme Cluster Break in a pair of codepoints. Follows
  * Unicode 10 UAX#29. Tailoring for Virama × Indic Letters is used.
  *
  * Reference: http://unicode.org/reports/tr29

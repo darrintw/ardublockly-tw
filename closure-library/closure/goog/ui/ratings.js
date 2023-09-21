@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A base ratings widget that allows the user to select a rating,
+ * @fileoverview A base ratings widget that allows the user to select a rating,
  * like "star video" in Google Video. This fires a "change" event when the user
  * selects a rating.
  *

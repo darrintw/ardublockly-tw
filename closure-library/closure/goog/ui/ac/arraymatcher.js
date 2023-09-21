@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Basic class for matching words in an array.
+ * @fileoverview Basic class for matching words in an array.
  */
 
 

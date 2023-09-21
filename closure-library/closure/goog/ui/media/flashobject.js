@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Wrapper on a Flash object embedded in the HTML page.
+ * @fileoverview Wrapper on a Flash object embedded in the HTML page.
  * This class contains routines for writing the HTML to create the Flash object
  * using a goog.ui.Component approach. Tested on Firefox 1.5, 2 and 3, IE6, 7,
  * Konqueror, Chrome and Safari.

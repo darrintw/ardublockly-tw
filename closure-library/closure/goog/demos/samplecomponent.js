@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A simple, sample component.
+ * @fileoverview A simple, sample component.
  */
 goog.provide('goog.demos.SampleComponent');
 

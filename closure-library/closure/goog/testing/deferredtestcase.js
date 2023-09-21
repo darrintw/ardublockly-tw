@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Defines DeferredTestCase class. By calling waitForDeferred(),
+ * @fileoverview Defines DeferredTestCase class. By calling waitForDeferred(),
  * tests in DeferredTestCase can wait for a Deferred object to complete its
  * callbacks before continuing to the next test.
  *

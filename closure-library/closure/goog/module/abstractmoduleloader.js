@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An interface for module loading.
+ * @fileoverview An interface for module loading.
  */
 
 goog.provide('goog.module.AbstractModuleLoader');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview The central node of a {@link goog.messaging.PortNetwork}. The
+ * @fileoverview The central node of a {@link goog.messaging.PortNetwork}. The
  * operator is responsible for providing the two-way communication channels (via
  * {@link MessageChannel}s) between each pair of nodes in the network that need
  * to communicate with one another. Each network should have one and only one

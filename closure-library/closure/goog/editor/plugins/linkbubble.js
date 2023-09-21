@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for bubble plugins.
+ * @fileoverview Base class for bubble plugins.
  */
 
 goog.provide('goog.editor.plugins.LinkBubble');

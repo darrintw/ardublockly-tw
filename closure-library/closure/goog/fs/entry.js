@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileOverview Wrappers for HTML5 Entry objects. These are all in the same
+ * @fileoverview Wrappers for HTML5 Entry objects. These are all in the same
  * file to avoid circular dependency issues.
  *
  * When adding or modifying functionality in this namespace, be sure to update
@@ -16,9 +16,9 @@ goog.provide('goog.fs.DirectoryEntry.Behavior');
 goog.provide('goog.fs.Entry');
 goog.provide('goog.fs.FileEntry');
 
-goog.forwardDeclare('goog.async.Deferred');
-goog.forwardDeclare('goog.fs.FileSystem');
-goog.forwardDeclare('goog.fs.FileWriter');
+goog.requireType('goog.async.Deferred');
+goog.requireType('goog.fs.FileSystem');
+goog.requireType('goog.fs.FileWriter');
 
 
 

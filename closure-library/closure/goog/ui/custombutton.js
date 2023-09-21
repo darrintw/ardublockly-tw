@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview A button rendered via {@link goog.ui.CustomButtonRenderer}.
+ * @fileoverview A button rendered via {@link goog.ui.CustomButtonRenderer}.
  */
 
 goog.provide('goog.ui.CustomButton');

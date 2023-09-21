@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Generator for unique element IDs.
+ * @fileoverview Generator for unique element IDs.
  */
 
 goog.provide('goog.ui.IdGenerator');

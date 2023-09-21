@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Twothumbslider is a slider that allows to select a subrange
+ * @fileoverview Twothumbslider is a slider that allows to select a subrange
  * within a range by dragging two thumbs. The selected sub-range is exposed
  * through getValue() and getExtent().
  *

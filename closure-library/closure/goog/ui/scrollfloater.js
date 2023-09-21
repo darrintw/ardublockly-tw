@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview  Class for making an element detach and float to remain visible
+ * @fileoverview  Class for making an element detach and float to remain visible
  * even when the viewport has been scrolled.
  * <p>
  * The element remains at its normal position in the layout until scrolling
@@ -186,7 +186,7 @@ goog.ui.ScrollFloater.EventType = {
    * Dispatched when the component gets pinned to the bottom of the
    * container element.  This event is cancellable.
    */
-  PIN: 'Pin'
+  PIN: 'pin'
 };
 
 
@@ -391,7 +391,7 @@ goog.ui.ScrollFloater.prototype.handleScroll_ = function(opt_e) {
     var effectiveElementHeight =
         this.originalBounds_.height + this.viewportTopOffset_;
 
-    // If the element extends past the container, we need to Pin it instead.
+    // If the element extends past the container, we need to pin it instead.
     if (this.containerElement_) {
       var containerBottom =
           this.containerBounds_.top + this.containerBounds_.height;

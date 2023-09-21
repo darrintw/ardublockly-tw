@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for {@link goog.ui.Toolbar}s.
+ * @fileoverview Renderer for {@link goog.ui.Toolbar}s.
  */
 
 goog.provide('goog.ui.ToolbarRenderer');

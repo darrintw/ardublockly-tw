@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Popup Emoji Picker implementation. This provides a UI widget
+ * @fileoverview Popup Emoji Picker implementation. This provides a UI widget
  * for choosing an emoji from a grid of possible choices. The widget is a popup,
  * so it is suitable for a toolbar, for instance the TrogEdit toolbar.
  *

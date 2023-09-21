@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An abstract superclass for message channels that handles the
+ * @fileoverview An abstract superclass for message channels that handles the
  * repetitive details of registering and dispatching to services. This is more
  * useful for full-fledged channels than for decorators, since decorators
  * generally delegate service registering anyway.

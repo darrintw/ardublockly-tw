@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An alternative custom button renderer that uses even more CSS
+ * @fileoverview An alternative custom button renderer that uses even more CSS
  * voodoo than the default implementation to render custom buttons with fake
  * rounded corners and dimensionality (via a subtle flat shadow on the bottom
  * half of the button) without the use of images.
@@ -107,7 +107,7 @@ goog.ui.ImagelessButtonRenderer.prototype.getContentElement = function(
  * @param {goog.ui.ControlContent} content Text caption or DOM structure to wrap
  *     in a box.
  * @param {goog.dom.DomHelper} dom DOM helper, used for document interaction.
- * @return {Element} Pseudo-rounded-corner box containing the content.
+ * @return {!Element} Pseudo-rounded-corner box containing the content.
  * @override
  */
 goog.ui.ImagelessButtonRenderer.prototype.createButton = function(

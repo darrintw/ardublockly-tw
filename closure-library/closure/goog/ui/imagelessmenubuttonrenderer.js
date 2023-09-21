@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An alternative custom button renderer that uses even more CSS
+ * @fileoverview An alternative custom button renderer that uses even more CSS
  * voodoo than the default implementation to render custom buttons with fake
  * rounded corners and dimensionality (via a subtle flat shadow on the bottom
  * half of the button) without the use of images.

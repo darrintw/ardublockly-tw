@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Loads a list of URIs in bulk. All requests must be a success
+ * @fileoverview Loads a list of URIs in bulk. All requests must be a success
  * in order for the load to be considered a success.
  */
 

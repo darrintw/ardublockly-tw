@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Table editing support.
+ * @fileoverview Table editing support.
  * This file provides the class goog.editor.Table and two
  * supporting classes, goog.editor.TableRow and
  * goog.editor.TableCell. Together these provide support for

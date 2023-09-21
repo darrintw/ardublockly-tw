@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview This data is generated from an SVG image of a tiger.
+ * @fileoverview This data is generated from an SVG image of a tiger.
  */
 
 

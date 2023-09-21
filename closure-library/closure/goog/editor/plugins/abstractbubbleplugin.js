@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Base class for bubble plugins.
+ * @fileoverview Base class for bubble plugins.
  */
 
 goog.provide('goog.editor.plugins.AbstractBubblePlugin');
@@ -64,6 +64,7 @@ goog.editor.plugins.AbstractBubblePlugin = function() {
    * @protected
    */
   this.eventRegister = new goog.events.EventHandler(this);
+  this.registerDisposable(this.eventRegister);
 
   /**
    * Instance factory function that creates a bubble UI component.  If set to a

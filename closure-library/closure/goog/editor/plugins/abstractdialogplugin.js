@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An abstract superclass for TrogEdit dialog plugins. Each
+ * @fileoverview An abstract superclass for TrogEdit dialog plugins. Each
  * Trogedit dialog has its own plugin.
  */
 

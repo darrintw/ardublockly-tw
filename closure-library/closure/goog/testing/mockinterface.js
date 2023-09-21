@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An interface that all mocks should share.
+ * @fileoverview An interface that all mocks should share.
  */
 
 goog.setTestOnly('goog.testing.MockInterface');

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Renderer for {@link goog.ui.Button}s in App style. This
+ * @fileoverview Renderer for {@link goog.ui.Button}s in App style. This
  * type of button is typically used for an application's "primary action," eg
  * in Gmail, it's "Compose," in Calendar, it's "Create Event".
  */
@@ -56,7 +56,7 @@ goog.ui.style.app.PrimaryActionButtonRenderer.CSS_CLASS =
  * Array of arrays of CSS classes that we want composite classes added and
  * removed for in IE6 and lower as a workaround for lack of multi-class CSS
  * selector support.
- * @type {Array<Array<string>>}
+ * @type {!Array<Array<string>>}
  */
 goog.ui.style.app.PrimaryActionButtonRenderer.IE6_CLASS_COMBINATIONS = [
   ['goog-button-base-disabled', 'goog-primaryactionbutton'],

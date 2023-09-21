@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview An interface for classes that connect a collection of HTML5
+ * @fileoverview An interface for classes that connect a collection of HTML5
  * message-passing entities ({@link MessagePort}s, {@link Worker}s, and
  * {@link Window}s) and allow them to seamlessly communicate with one another.
  *

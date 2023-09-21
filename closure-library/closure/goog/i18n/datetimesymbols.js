@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Date/time formatting symbols for all locales.
+ * @fileoverview Date/time formatting symbols for all locales.
  *
  * File generated from CLDR ver. 36
  *

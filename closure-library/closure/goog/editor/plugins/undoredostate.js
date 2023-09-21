@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Code for an UndoRedoState interface representing an undo and
+ * @fileoverview Code for an UndoRedoState interface representing an undo and
  * redo action for a particular state change. To be used by
  * {@link goog.editor.plugins.UndoRedoManager}.
  */

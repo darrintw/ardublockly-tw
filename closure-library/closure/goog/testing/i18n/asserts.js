@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileOverview Assert functions that account for locale data changes.
+ * @fileoverview Assert functions that account for locale data changes.
  *
  * The locale data gets updated from CLDR (http://cldr.unicode.org/),
  * and CLDR gets an update about twice per year.
