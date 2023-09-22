@@ -59,7 +59,7 @@ Blockly.Msg.ARD_TOOLTIP_STEPPER_MOVE = '設置步進馬達的遞增量';
 Blockly.Msg.BLOCKS_CATEGORY_MOTORDRIVERBOARD = 'PS2馬達擴展板';
 
 /// Ardublockly
-Blockly.Msg.MOTORDRIVERBOARD_SETUP = "初始化,版本";
+Blockly.Msg.MOTORDRIVERBOARD_SETUP = "初始化";
 Blockly.Msg.MOTORDRIVERBOARD_DCMOTOR = "直流電機介面";
 Blockly.Msg.MOTORDRIVERBOARD_DCDIRECTIONS = "方向";
 Blockly.Msg.MOTORDRIVERBOARD_SPEED = "速度";

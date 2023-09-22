@@ -569,8 +569,8 @@ Blockly.Arduino.md_getNRF24L01 = function () {
 };
 //����ʮ�߸�ͼ�ο�ת��ΪC���� PS2�ֱ���ʼ��
 Blockly.Arduino.md_PS2init = function () {
-    Blockly.Arduino.definitions_['object10'] = '#include<PS2X_lib.h>\n#include <MsTimer2.h>\n#define PS2_DAT     12\n#define PS2_CMD     11\n#define PS2_SEL     10\n#define PS2_CLK     13\nPS2X ps2x;\nvoid reconnect(){\n  ps2x.reconfig_gamepad();\n  ps2x.read_gamepad();\n}\n';
-    Blockly.Arduino.setups_['setup_PS2init'] = 'ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, false, false);\n  MsTimer2::set(500, reconnect);\n  MsTimer2::start();'
+    Blockly.Arduino.definitions_['object10'] = '#include<PS2X_lib.h>\n#define PS2_DAT     12\n#define PS2_CMD     11\n#define PS2_SEL     10\n#define PS2_CLK     13\nPS2X ps2x;\n';
+    Blockly.Arduino.setups_['setup_PS2init'] = 'ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, false, false);'
     var code = '';
     return code;
 };

@@ -79,6 +79,12 @@ body {
     z-index: 997 !important;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 992px) {
+    body {
+        padding-top: 0;
+    }
+}
+
 @media only screen and (min-width: 993px) {
     body {
         padding-top: 128px;
@@ -680,9 +686,9 @@ ul.side-nav li.side-menu-end {
     border-bottom: 1px solid #EEE !important;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 600px) {
+@media only screen and (min-width: 0px) and (max-width: 992px) {
     .sketch_name {
-        max-width: 600px;
+        display: none;
     }
 
     /* Remove the "Ardublockly title only leaving the sketch name */
