@@ -358,8 +358,8 @@ Blockly.Blocks["md_setup"] = {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.BLOCKS_CATEGORY_MOTORDRIVERBOARD);
         this.appendDummyInput("")
-            .appendField(Blockly.Msg.MOTORDRIVERBOARD_SETUP)
-            .appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_VERSION), "boardver");
+            .appendField(Blockly.Msg.MOTORDRIVERBOARD_SETUP);
+            //.appendField(new Blockly.FieldDropdown(MOTORDRIVERBOARD_VERSION), "boardver");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
