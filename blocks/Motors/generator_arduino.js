@@ -15,6 +15,7 @@ goog.provide('Blockly.Arduino.Motos');
 
 goog.require('Blockly.Arduino');
 
+/** Servo */
 /**
  * Code generator to attach servo to a arduino Pin (X).
  * Arduino code: #include <Servo.h>
@@ -146,6 +147,120 @@ Blockly.Arduino['servo_detach'] = function (block) {
 
     Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
     Blockly.Arduino.addVariable(servoName, 'Servo ' + servoId + ';', true);
+
+    var code = servoId + '.detach();\n';
+    return code;
+};
+
+/** PWM Servo */
+/**
+ * Code generator to attach servo to a arduino Pin (X).
+ * Arduino code: #include <Servo.h>
+ *               Servo ServoX;
+ *               setup { ServoX.attach(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['pwm_servo_attach'] = function (block) {
+    var pinKey = block.getFieldValue('SERVO_PIN');
+    var servoName = block.getFieldValue('SERVO_NAME');
+    var servoId = Blockly.Arduino.variableDB_.getName(
+        servoName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.reservePin(block, pinKey, Blockly.Arduino.pinTypes.SERVO, 'Servo Write');
+    Blockly.Arduino.addInclude('PWMServo_inc', '#include <PWMServo.h>');
+    Blockly.Arduino.addVariable(servoName, 'PWMServo ' + servoId + ';', true);
+
+    var code = servoId + '.attach(' + pinKey + ');\n';
+
+    return code;
+};
+
+
+/**
+ * Code generator to read an angle value from a servo Pin (X).
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {(string|number)[]} Completed code with order of operation.
+ */
+Blockly.Arduino['pwm_servo_read'] = function (block) {
+    var servoName = block.getFieldValue('SERVO_NAME');
+    var servoId = Blockly.Arduino.variableDB_.getName(
+        servoName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.addInclude('PWMServo_inc', '#include <PWMServo.h>');
+    Blockly.Arduino.addVariable(servoName, 'PWMServo ' + servoId + ';', true);
+
+    var code = servoId + '.read()';
+    return [code, Blockly.Arduino.ORDER_NONE];
+};
+
+/**
+ * Code generator to set an angle (Y) value to a servo Pin (X).
+ * Arduino code: #include <Servo.h>
+ *               Servo servo_X;
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+
+Blockly.Arduino['pwm_servo_write'] = function (block) {
+    var servoName = block.getFieldValue('SERVO_NAME');
+    var servoAngle = Blockly.Arduino.valueToCode(
+        block, 'SERVO_ANGLE', Blockly.Arduino.ORDER_ATOMIC);
+    var servoId = Blockly.Arduino.variableDB_.getName(
+        servoName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.addInclude('PWMServo_inc', '#include <PWMServo.h>');
+    Blockly.Arduino.addVariable(servoName, 'PWMServo ' + servoId + ';', true);
+
+    var code = servoId + '.write(' + servoAngle + ');\n';
+    return code;
+};
+
+/**
+ * Code generator to set an angle (Y) value to a servo Pin (X).
+ * Arduino code: #include <Servo.h>
+ *               Servo servo_X;
+ *               setup { myServoX.attach(X); }
+ *               loop  { myServoX.write(Y);  }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['pwm_servo_write_angle'] = function (block) {
+    var pinKey = block.getFieldValue('SERVO_PIN');
+    var servoAngle = block.getFieldValue('SERVO_ANGLE');
+    var servoName = 'myServo' + pinKey;
+    var servoDelay = block.getFieldValue('SERVO_DELAY');
+    var servoDelayVar = 'pwmservo' + pinKey + 'delaytime';
+
+    Blockly.Arduino.reservePin(
+        block, pinKey, Blockly.Arduino.pinTypes.SERVO, 'Servo Write');
+
+    Blockly.Arduino.addInclude('PWMServo_inc', '#include <PWMServo.h>');
+    Blockly.Arduino.addDeclaration('pwmservo_' + pinKey, 'PWMServo ' + servoName + ';');
+
+    var code = servoName + '.attach(' + pinKey + ');\n' +
+        servoName + '.write(' + servoName + '.read());\n' +
+        servoDelayVar + ' = abs(' + servoName + '.read()-' + servoAngle + ')*' + servoDelay + ';\n' +
+        servoName + '.write(' + servoAngle + ');\n';
+    return code;
+};
+
+/**
+ * Code generator to detach to a servo Pin (X).
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['pwm_servo_detach'] = function (block) {
+    var servoName = block.getFieldValue('SERVO_NAME');
+    var servoId = Blockly.Arduino.variableDB_.getName(
+        servoName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    Blockly.Arduino.addInclude('PWMServo_inc', '#include <PWMServo.h>');
+    Blockly.Arduino.addVariable(servoName, 'PWMServo ' + servoId + ';', true);
 
     var code = servoId + '.detach();\n';
     return code;

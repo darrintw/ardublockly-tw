@@ -103,6 +103,7 @@ var voicelist = [
     [Blockly.Msg.PIXETTO_VOICE_SQUATDOWN, 'VOICE_SquatDown']];
 
 var apriltaglist = [
+    [Blockly.Msg.PIXETTO_APRILTAG_ID, 'APRILTAG_ID'],
     [Blockly.Msg.PIXETTO_VOICE_HELLO, 'APRILTAG_POS_X'],
     [Blockly.Msg.PIXETTO_VOICE_THANKS, 'APRILTAG_POS_Y'],
     [Blockly.Msg.PIXETTO_VOICE_BYE, 'APRILTAG_POS_Z'],
@@ -698,6 +699,7 @@ Blockly.Blocks['pixetto_voice_detection'] = {
 Blockly.Blocks['pixetto_apriltag_detection'] = {
     init: function () {
         apriltaglist = [
+            [Blockly.Msg.PIXETTO_APRILTAG_ID, 'APRILTAG_ID'],
             [Blockly.Msg.PIXETTO_APRILTAG_POS_X, 'APRILTAG_POS_X'],
             [Blockly.Msg.PIXETTO_APRILTAG_POS_Y, 'APRILTAG_POS_Y'],
             [Blockly.Msg.PIXETTO_APRILTAG_POS_Z, 'APRILTAG_POS_Z'],

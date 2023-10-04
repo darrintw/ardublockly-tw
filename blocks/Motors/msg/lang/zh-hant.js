@@ -10,10 +10,11 @@ Blockly.Msg.BLOCKS_CATEGORY_MOTORS = "馬達";
 /// Servo
 Blockly.Msg.BLOCKS_CATEGORY_SERVO = "伺服馬達";
 Blockly.Msg.ARD_SERVO_VAR = "伺服馬達變數";
-Blockly.Msg.ARD_SERVO_ATTACH = "連接伺服馬達";
-Blockly.Msg.ARD_SERVO_PIN = "腳位";
+Blockly.Msg.ARD_SERVO_ATTACH = "設定伺服馬達腳位";
 Blockly.Msg.ARD_SERVO_ATTACH_TIP = "指定伺服馬達名稱與腳位";
+Blockly.Msg.ARD_SERVO_PIN = "腳位";
 Blockly.Msg.ARD_SERVO_WRITE = "伺服馬達";
+Blockly.Msg.ARD_SERVO_WRITE_TIP = "設定伺服馬達旋轉到指定角度";
 Blockly.Msg.ARD_SERVO_WRITE_TO = "旋轉到";
 Blockly.Msg.ARD_SERVO_WRITE_DEG = "度";
 Blockly.Msg.ARD_SERVO_WRITE_DEG_180 = "角度 (0~180)";
@@ -22,12 +23,22 @@ Blockly.Msg.ARD_SERVO_PWM_TO = "設定毫秒";
 Blockly.Msg.ARD_SERVO_PWM_TIP = "設定伺服馬達PWM毫秒";
 Blockly.Msg.ARD_SERVO_DELAY = "每度延遲";
 Blockly.Msg.ARD_SERVO_SECOND = "毫秒";
-Blockly.Msg.ARD_SERVO_WRITE_TIP = "設定伺服馬達旋轉到指定角度";
 Blockly.Msg.ARD_SERVO_READ = "讀取伺服馬達角度";
 Blockly.Msg.ARD_SERVO_READ_TIP = "讀取伺服馬達目前的角度";
-Blockly.Msg.ARD_SERVO_ATTACH = "設定伺服馬達腳位";
 Blockly.Msg.ARD_SERVO_DETACH = "離線伺服馬達";
-Blockly.Msg.ARD_SERVO_DETACH_TIP = "離線伺服馬達確保PWM的8、9腳位可以正常運作";
+Blockly.Msg.ARD_SERVO_DETACH_TIP = "離線伺服馬達確保腳位可以正常運作";
+
+/// PWM Servo
+Blockly.Msg.BLOCKS_CATEGORY_PWMSERVO = "PWM伺服馬達";
+Blockly.Msg.ARD_PWMSERVO_VAR = "PWM Servo變數";
+Blockly.Msg.ARD_PWMSERVO_ATTACH = "設定PWM Servo腳位";
+Blockly.Msg.ARD_PWMSERVO_ATTACH_TIP = "指定PWM Servo名稱與腳位";
+Blockly.Msg.ARD_PWMSERVO_WRITE = "PWM Servo";
+Blockly.Msg.ARD_PWMSERVO_WRITE_TIP = "設定PWM Servo旋轉到指定角度";
+Blockly.Msg.ARD_PWMSERVO_READ = "讀取PWM Servo角度";
+Blockly.Msg.ARD_PWMSERVO_READ_TIP = "讀取PWM Servo目前的角度";
+Blockly.Msg.ARD_PWMSERVO_DETACH = "離線PWM Servo";
+Blockly.Msg.ARD_PWMSERVO_DETACH_TIP = "離線PWM Servo確保腳位可以正常運作";
 
 /// AFMotor
 Blockly.Msg.BLOCKS_CATEGORY_AFMOTOR = 'L293D馬達擴展板';

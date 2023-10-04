@@ -116,6 +116,7 @@ Blockly.Msg.PIXETTO_VOICE_JUMP = "跳一下";
 Blockly.Msg.PIXETTO_VOICE_STANDUP = "起立";
 Blockly.Msg.PIXETTO_VOICE_SQUATDOWN = "蹲下";
 Blockly.Msg.PIXETTO_APRILTAG_DETECTION = "apriltag";
+Blockly.Msg.PIXETTO_APRILTAG_ID = "ID";
 Blockly.Msg.PIXETTO_APRILTAG_POS_X = "X方向座標";
 Blockly.Msg.PIXETTO_APRILTAG_POS_Y = "Y方向座標";
 Blockly.Msg.PIXETTO_APRILTAG_POS_Z = "Z方向座標";

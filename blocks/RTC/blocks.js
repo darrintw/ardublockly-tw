@@ -53,7 +53,6 @@ Blockly.Blocks['DS1302_init'] = {
 }
 
 //DS1307 RTC
-/*
 Blockly.Blocks['DS1307_init'] = {
     init: function () {
         initList();
@@ -78,7 +77,6 @@ Blockly.Blocks['DS1307_init'] = {
         this.setTooltip(Blockly.Msg.ADR_RTC_TOOLTIP_INIT);
     },
 };
- */
 
 //獲取RTC時間
 Blockly.Blocks['RTC_get_rtc'] = {

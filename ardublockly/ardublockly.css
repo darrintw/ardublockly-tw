@@ -82,12 +82,14 @@ body {
 @media only screen and (min-width: 0px) and (max-width: 992px) {
     body {
         padding-top: 0;
+        padding-bottom: 60px;
     }
 }
 
 @media only screen and (min-width: 993px) {
     body {
         padding-top: 128px;
+        padding-bottom: 128px;
     }
 
     .nav-fixed {
