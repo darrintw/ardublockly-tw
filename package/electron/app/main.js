@@ -10,6 +10,7 @@
 
 const electron = require('electron');
 const app = electron.app;
+const shell = electron.shell;
 const BrowserWindow = electron.BrowserWindow;
 
 const appMenu = require('./appmenu.js');

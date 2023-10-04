@@ -923,9 +923,16 @@ Ardublockly.setExamplesHtml = function (jsonObj) {
             index = 1;
             exfiles.forEach(function (files) {
                 Ardublockly.bindClick_('exfile_' + exname + Ardublockly.addZero(index, 2), function () {
-                    var fname = files.substr(0, files.indexOf(".xml"));
-                    Ardublockly.loadServerXmlFile('../' + readExamplesLoc + exname +
-                        "/" + files, fname);
+                    var ext = files.substr(files.length - 4);
+                    if (ext == ".xml") {
+                        var fname = files.substr(0, files.indexOf(".xml"));
+                        Ardublockly.loadServerXmlFile('../' + readExamplesLoc + exname +
+                            "/" + files, fname);
+                    }
+                    /*else if (ext == ".url") {
+                        console.log(files);
+                        //window.open(files);
+                    }*/
                     $('#examples_dialog').modal('close');
                 });
                 index++;

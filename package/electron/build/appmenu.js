@@ -306,15 +306,15 @@ var getHelpMenuData = function () {
         label: '幫助',
         submenu: [
             {
-                label: '快速入門',
+                label: '阿丟部落格',
                 click: function () {
                     shell.openExternal(
-                        'http://localhost:8007/docs/Quick-Start');
+                        'https://sites.google.com/view/ardublocklylearning');
                 }
             }, {
-                label: '手冊',
+                label: '快速使用手冊',
                 click: function () {
-                    shell.openExternal('http://localhost:8007/docs/');
+                    shell.openExternal('https://drive.google.com/open?id=1VFh3OJCPvyYcUR3qm5FQgWk3YgzygKxE');
                 }
             }, {
                 label: '積木工作室',

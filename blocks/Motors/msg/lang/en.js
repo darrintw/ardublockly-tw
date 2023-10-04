@@ -10,9 +10,10 @@ Blockly.Msg.BLOCKS_CATEGORY_MOTORS = 'Motor';
 Blockly.Msg.BLOCKS_CATEGORY_SERVO = "SERVO";
 Blockly.Msg.ARD_SERVO_VAR = "SERVO variable";
 Blockly.Msg.ARD_SERVO_ATTACH = "attach SERVO from Pin";
-Blockly.Msg.ARD_SERVO_PIN = "Pin";
 Blockly.Msg.ARD_SERVO_ATTACH_TIP = "attach servo from arduino Pin";
+Blockly.Msg.ARD_SERVO_PIN = "Pin";
 Blockly.Msg.ARD_SERVO_WRITE = "control SERVO %1";
+Blockly.Msg.ARD_SERVO_WRITE_TIP = "Set a Servo to an specified angle";
 Blockly.Msg.ARD_SERVO_WRITE_TO = "to";
 Blockly.Msg.ARD_SERVO_WRITE_DEG = "degree";
 Blockly.Msg.ARD_SERVO_WRITE_DEG_180 = "Degrees (0~180)";
@@ -21,11 +22,22 @@ Blockly.Msg.ARD_SERVO_PWM_TO = " microseconds";
 Blockly.Msg.ARD_SERVO_PWM_TIP = "Set Servo PWM microseconds";
 Blockly.Msg.ARD_SERVO_DELAY = "every angle delay ";
 Blockly.Msg.ARD_SERVO_SECOND = " micro second";
-Blockly.Msg.ARD_SERVO_WRITE_TIP = "Set a Servo to an specified angle";
 Blockly.Msg.ARD_SERVO_READ = "read SERVO from PIN#";
 Blockly.Msg.ARD_SERVO_READ_TIP = "Read a Servo angle";
 Blockly.Msg.ARD_SERVO_DETACH = "detach SERVO from Pin";
 Blockly.Msg.ARD_SERVO_DETACH_TIP = "";
+
+/// PWM Servo
+Blockly.Msg.BLOCKS_CATEGORY_PWMSERVO = "PWM Servo";
+Blockly.Msg.ARD_PWMSERVO_VAR = "PWM Servo variable";
+Blockly.Msg.ARD_PWMSERVO_ATTACH = "attach PWM Servo from Pin";
+Blockly.Msg.ARD_PWMSERVO_ATTACH_TIP = "attach pwm servo from arduino Pin";
+Blockly.Msg.ARD_PWMSERVO_WRITE = "control PWM Servo %1";
+Blockly.Msg.ARD_PWMSERVO_WRITE_TIP = "Set a PWM Servo to an specified angle";
+Blockly.Msg.ARD_PWMSERVO_READ = "read PWM Servo from PIN#";
+Blockly.Msg.ARD_PWMSERVO_READ_TIP = "Read a PWM Servo angle";
+Blockly.Msg.ARD_PWMSERVO_DETACH = "detach PWM Servo from Pin";
+Blockly.Msg.ARD_PWMSERVO_DETACH_TIP = "";
 
 /// AFMotor
 Blockly.Msg.BLOCKS_CATEGORY_AFMOTOR = 'L293D Motor';

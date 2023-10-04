@@ -14,8 +14,7 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.Motors.HUE = 180;
 
-const afmotor_options = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
-
+/* Servo */
 Blockly.Blocks['servo_attach'] = {
     init: function () {
         this.appendDummyInput()
@@ -91,54 +90,6 @@ Blockly.Blocks['servo_detach'] = {
         this.setColour(Blockly.Blocks.Motors.HUE);
         this.setTooltip(Blockly.Msg.ARD_SERVO_DETACH_TIP);
         this.setHelpUrl("https://www.arduino.cc/en/Reference/ServoDetach");
-    }
-};
-
-
-Blockly.Blocks['servo_attach'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_SERVO_ATTACH)
-            .appendField(new Blockly.FieldVariable("servo"), "SERVO_NAME")
-            .appendField(", " + Blockly.Msg.ARD_SERVO_PIN)
-            .appendField(new Blockly.FieldDropdown(
-                Blockly.Arduino.Boards.selected.digitalPins), 'SERVO_PIN');
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.Motors.HUE);
-        this.setTooltip(Blockly.Msg.ARD_SERVO_ATTACH_TIP);
-        this.setHelpUrl("https://www.arduino.cc/en/Reference/ServoAttach");
-    }
-};
-
-Blockly.Blocks['servo_read'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_SERVO_READ)
-            .appendField(new Blockly.FieldVariable('servo'), 'SERVO_NAME');
-        this.setOutput(true, null);
-        this.setColour(Blockly.Blocks.Motors.HUE);
-        this.setTooltip(Blockly.Msg.ARD_SERVO_READ_TIP);
-        this.setHelpUrl("https://arduino.cc/en/Reference/ServoRead");
-    }
-};
-
-
-Blockly.Blocks['servo_write'] = {
-    init: function () {
-        this.appendValueInput('SERVO_ANGLE')
-            .setCheck(Blockly.Types.NUMBER.checkList)
-            .appendField(Blockly.Msg.ARD_SERVO_WRITE)
-            .appendField(new Blockly.FieldVariable('servo'), 'SERVO_NAME')
-            .appendField(Blockly.Msg.ARD_SERVO_WRITE_TO);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.ARD_SERVO_WRITE_DEG);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setInputsInline(true);
-        this.setColour(Blockly.Blocks.Motors.HUE);
-        this.setTooltip(Blockly.Msg.ARD_SERVO_WRITE_TIP);
-        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
     }
 };
 
@@ -157,6 +108,7 @@ Blockly.Blocks['servo_pwm'] = {
         this.setHelpUrl("https://www.arduino.cc/reference/en/libraries/servo/writemicroseconds/");
     }
 };
+
 Blockly.Blocks['servo_write_angle'] = {
     init: function () {
         this.appendDummyInput()
@@ -175,20 +127,87 @@ Blockly.Blocks['servo_write_angle'] = {
     }
 };
 
-Blockly.Blocks['servo_detach'] = {
+/** PWM Servo */
+Blockly.Blocks['pwm_servo_attach'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("servo"), "SERVO_NAME")
-            .appendField(Blockly.Msg.ARD_SERVO_DETACH);
+            .appendField(Blockly.Msg.ARD_PWMSERVO_ATTACH)
+            .appendField(new Blockly.FieldVariable("pwmservo"), "SERVO_NAME")
+            .appendField(", " + Blockly.Msg.ARD_SERVO_PIN)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.digitalPins), 'SERVO_PIN');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.Motors.HUE);
-        this.setTooltip(Blockly.Msg.ARD_SERVO_DETACH_TIP);
+        this.setTooltip(Blockly.Msg.ARD_PWMSERVO_ATTACH_TIP);
+        this.setHelpUrl("https://www.arduino.cc/en/Reference/ServoAttach");
+    }
+};
+
+Blockly.Blocks['pwm_servo_read'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_PWMSERVO_READ)
+            .appendField(new Blockly.FieldVariable('pwmservo'), 'SERVO_NAME');
+        this.setOutput(true, null);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip(Blockly.Msg.ARD_PWMSERVO_READ_TIP);
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoRead");
+    }
+};
+
+Blockly.Blocks['pwm_servo_write'] = {
+    init: function () {
+        this.appendValueInput('SERVO_ANGLE')
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .appendField(Blockly.Msg.ARD_PWMSERVO_WRITE)
+            .appendField(new Blockly.FieldVariable('pwmservo'), 'SERVO_NAME')
+            .appendField(Blockly.Msg.ARD_SERVO_WRITE_TO);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SERVO_WRITE_DEG);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip(Blockly.Msg.ARD_PWMSERVO_WRITE_TIP);
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
+    }
+};
+
+Blockly.Blocks['pwm_servo_write_angle'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_PWMSERVO_WRITE)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.digitalPins), 'SERVO_PIN');
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SERVO_WRITE_TO)
+            .appendField(new Blockly.FieldAngle(90), "SERVO_ANGLE")
+            .appendField(Blockly.Msg.ARD_SERVO_WRITE_DEG_180);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip(Blockly.Msg.ARD_PWMSERVO_WRITE_TIP);
+        this.setHelpUrl("https://arduino.cc/en/Reference/ServoWrite");
+    }
+};
+
+Blockly.Blocks['pwm_servo_detach'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldVariable("pwmservo"), "SERVO_NAME")
+            .appendField(Blockly.Msg.ARD_PWMSERVO_DETACH);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip(Blockly.Msg.ARD_PWMSERVO_DETACH_TIP);
         this.setHelpUrl("https://www.arduino.cc/en/Reference/ServoDetach");
     }
 };
 
 /* afmotor */
+const afmotor_options = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+
 Blockly.Blocks['afmotor'] = {
     init: function () {
         this.appendDummyInput()

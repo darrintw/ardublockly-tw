@@ -348,7 +348,13 @@ Blockly.Arduino['pixetto_apriltag_detection'] = function (block) {
         "ss",
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    var code = pixettoId + '.getApriltagField(Pixetto::' + pixettoApriltag + ')';
+    var code = "";
+    if (pixettoApriltag == "APRILTAG_ID"){
+        code = pixettoId + '.getTypeID()';
+    }
+    else {
+        code = pixettoId + '.getApriltagField(Pixetto::' + pixettoApriltag + ')';
+    }
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

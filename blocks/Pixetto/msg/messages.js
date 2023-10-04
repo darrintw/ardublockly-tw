@@ -135,6 +135,7 @@ Blockly.Msg.PIXETTO_VOICE_JUMP = "Jump";
 Blockly.Msg.PIXETTO_VOICE_STANDUP = "Stand up";
 Blockly.Msg.PIXETTO_VOICE_SQUATDOWN = "Squat down";
 Blockly.Msg.PIXETTO_APRILTAG_DETECTION = "apriltag";
+Blockly.Msg.PIXETTO_APRILTAG_ID = "ID";
 Blockly.Msg.PIXETTO_APRILTAG_POS_X = "position X";
 Blockly.Msg.PIXETTO_APRILTAG_POS_Y = "position Y";
 Blockly.Msg.PIXETTO_APRILTAG_POS_Z = "position Z";
