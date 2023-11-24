@@ -633,7 +633,7 @@ Blockly.Arduino["display_Matrix_LedArray"] = function (block) {
         code += tmp + ((i != 8) ? ',' : '');
     }
     code += '};';
-    Blockly.Arduino.addVariable(arrayName, 'const byte ' + arrayId + '[8] = ' + code, true);
+    Blockly.Arduino.addVariable(arrayName, 'const byte ' + arrayId + '[8] PROGMEM = ' + code, true);
     return [arrayId, Blockly.Arduino.ORDER_ATOMIC];
 };
 

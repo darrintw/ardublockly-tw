@@ -118,7 +118,7 @@ var getFileMenuData = function () {
                         .executeJavaScript('Ardublockly.saveXmlFile()');
                 }
             }, {
-                label: '另存積木圖',
+                label: '匯出畫面',
                 accelerator: 'Shift+CmdOrCtrl+p',
                 click: function () {
                     BrowserWindow.getFocusedWindow().webContents

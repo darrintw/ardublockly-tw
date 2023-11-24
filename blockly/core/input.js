@@ -132,7 +132,8 @@ Blockly.Input.prototype.appendTitle = function(field, opt_name) {
  */
 Blockly.Input.prototype.removeField = function(name) {
   for (var i = 0, field; field = this.fieldRow[i]; i++) {
-    if (field.name === name) {
+    //if (field.name === name) {
+    if (field.name.localeCompare(name) == 0) {
       field.dispose();
       this.fieldRow.splice(i, 1);
       if (this.sourceBlock_.rendered) {

@@ -150,24 +150,24 @@ ul.side-nav li.side-menu-end {
 }
 
 .blocks_panel_large {
-    height: -moz-calc(100vh - 190px); /* Firefox  */
-    height: -webkit-calc(100vh - 190px); /* WebKit   */
-    height: calc(100vh - 190px); /* Standard */
+    height: -moz-calc(100vh - 213px); /* Firefox  */
+    height: -webkit-calc(100vh - 213px); /* WebKit   */
+    height: calc(100vh - 213px); /* Standard */
 }
 
 .blocks_panel_small {
-    height: -moz-calc(100vh - 350px); /* Firefox  */
-    height: -webkit-calc(100vh - 350px); /* WebKit   */
-    height: calc(100vh - 350px); /* Standard */
+    height: -moz-calc(100vh - 413px); /* Firefox  */
+    height: -webkit-calc(100vh - 413px); /* WebKit   */
+    height: calc(100vh - 413px); /* Standard */
 }
 
 #content_blocks {
     margin: 0;
     padding: 0;
     min-height: 480px;
-    height: -moz-calc(100vh - 190px); /* Firefox  */
-    height: -webkit-calc(100vh - 190px); /* WebKit   */
-    height: calc(100vh - 190px); /* Standard */
+    height: -moz-calc(100vh - 213px); /* Firefox  */
+    height: -webkit-calc(100vh - 213px); /* WebKit   */
+    height: calc(100vh - 213px); /* Standard */
 }
 
 #content_xml {
@@ -213,21 +213,21 @@ ul.side-nav li.side-menu-end {
 }
 
 .content_arduino_large {
-    height: -moz-calc(100vh - 280px); /* Firefox  */
-    height: -webkit-calc(100vh - 280px); /* WebKit   */
-    height: calc(100vh - 280px); /* Standard */
+    height: -moz-calc(100vh - 250px); /* Firefox  */
+    height: -webkit-calc(100vh - 250px); /* WebKit   */
+    height: calc(100vh - 250px); /* Standard */
 }
 
 .content_arduino_medium {
-    height: -moz-calc(100vh - 228px); /* Firefox  */
-    height: -webkit-calc(100vh - 228px); /* WebKit   */
-    height: calc(100vh - 228px); /* Standard */
+    height: -moz-calc(100vh - 250px); /* Firefox  */
+    height: -webkit-calc(100vh - 250px); /* WebKit   */
+    height: calc(100vh - 250px); /* Standard */
 }
 
 .content_arduino_small {
-    height: -moz-calc(100vh - 440px); /* Firefox  */
-    height: -webkit-calc(100vh - 440px); /* WebKit   */
-    height: calc(100vh - 440px); /* Standard */
+    height: -moz-calc(100vh - 450px); /* Firefox  */
+    height: -webkit-calc(100vh - 450px); /* WebKit   */
+    height: calc(100vh - 450px); /* Standard */
 }
 
 /****************/
@@ -773,9 +773,9 @@ ul.side-nav li.side-menu-end {
     border: none !important;
     margin: 36px 0 0 0 !important;
     padding: 0 1px !important;
-    height: -moz-calc(100% - 37px); /* Firefox  */
-    height: -webkit-calc(100% - 37px); /* WebKit   */
-    height: calc(100% - 37px); /* Standard */
+    height: -moz-calc(100% - 40px); /* Firefox  */
+    height: -webkit-calc(100% - 40px); /* WebKit   */
+    height: calc(100% - 40px); /* Standard */
     overflow-x: hidden;
     overflow-y: auto;
 }
