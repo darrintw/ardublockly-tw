@@ -45,7 +45,7 @@
         </value>
         <value name="TO">
           <block type="math_number" id="0,]}Pi.(!N~?0vf),6S=">
-            <field name="NUM">4096</field>
+            <field name="NUM">2048</field>
           </block>
         </value>
         <value name="BY">
@@ -83,7 +83,7 @@
                 </value>
                 <value name="TO">
                   <block type="math_number" id="JoWZ;in%=Az/X?dou2^R">
-                    <field name="NUM">4096</field>
+                    <field name="NUM">2048</field>
                   </block>
                 </value>
                 <value name="BY">
