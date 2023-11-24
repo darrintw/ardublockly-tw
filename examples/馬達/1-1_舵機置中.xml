@@ -1,0 +1,20 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="servo_attach" id="~1tc.DzQ*iz4[zsmJbAA">
+        <field name="SERVO_NAME">servo_9</field>
+        <field name="SERVO_PIN">9</field>
+        <next>
+          <block type="servo_write" id="9pLz^}NM{G_.`ABE]YmK">
+            <field name="SERVO_NAME">servo_9</field>
+            <value name="SERVO_ANGLE">
+              <block type="math_number" id="ZHIt:yy_GE3u/0a(wQM*">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

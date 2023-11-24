@@ -139,5 +139,7 @@ Blockly.Names.prototype.safeName_ = function(name) {
  * @return {boolean} True if names are the same.
  */
 Blockly.Names.equals = function(name1, name2) {
-  return name1.toLowerCase() == name2.toLowerCase();
+  //return name1.toLowerCase() == name2.toLowerCase();
+  //console.log("Name1:" + name1 + " Name2:" + name2 + " compare:" + name1.localeCompare(name2));
+  return name1.localeCompare(name2) == 0;
 };
