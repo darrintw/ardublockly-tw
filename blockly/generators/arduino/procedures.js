@@ -110,6 +110,19 @@ Blockly.Arduino['procedures_callnoreturn'] = function (block) {
 };
 
 /**
+ * Code generator to create a function call with a return value.
+ * Arduino code: loop { functionname() }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {array} Completed code with order of operation.
+ */
+Blockly.Arduino['procedures_callFunction'] = function (block) {
+    var funcName = Blockly.Arduino.variableDB_.getName(
+        block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+    var code = funcName;
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
  * Code generator to create a conditional (X) return value (Y) for a function.
  * Arduino code: if (X) { return Y; }
  * @param {!Blockly.Block} block Block to generate the code from.

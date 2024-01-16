@@ -679,7 +679,6 @@ Blockly.Block.prototype.getVars = function () {
  * @param {string} newName Renamed variable.
  */
 Blockly.Block.prototype.renameVar = function (oldName, newName) {
-    //console.log(this.inputList.length);
     for (var i = 0, input; input = this.inputList[i]; i++) {
         for (var j = 0, field; field = input.fieldRow[j]; j++) {
             if (field instanceof Blockly.FieldVariable &&

@@ -80,6 +80,13 @@ Blockly.Types.ARRAY = new Blockly.Type({
   compatibleTypes: []
 });
 
+/** FUNCTION. */
+Blockly.Types.FUNCTION = new Blockly.Type({
+  typeId: 'Function',
+  typeMsgName: 'ARD_TYPE_FUNCTION',
+  compatibleTypes: []
+});
+
 /** Null indicate there is no type. */
 Blockly.Types.NULL = new Blockly.Type({
   typeId: 'Null',

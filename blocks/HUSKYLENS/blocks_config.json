@@ -1,0 +1,11 @@
+{
+    "categoryName": "HUSKYLENS",
+    "description": "DFRobot HUSKYLENS",
+    "languages": ["en", "zh-hant"],
+    "toolboxName": "HUSKYLENS",
+    "toolbox": [
+        "<category>",
+        "  <block type=\"user_block\"></block>",
+        "</category>"
+    ]
+}

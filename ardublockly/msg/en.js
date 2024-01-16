@@ -155,5 +155,6 @@ Ardublockly.LOCALISED_TEXT = {
     catWS2812Leds: "WS2812 LED Strip",
     catLCDLED: "LCD/LED",
     catLEDMatrix: "MAX7219 LED Matrix Display",
-    catPixetto: "Pixetto Sensor",
+    catPixetto: "Pixetto",
+    catHUSKYLENS: "HUSKYLENS",
 };

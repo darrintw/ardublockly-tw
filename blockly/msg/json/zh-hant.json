@@ -346,6 +346,8 @@
   "PROCEDURES_MUTATORARG_TOOLTIP": "添加函數輸入。",
   "PROCEDURES_HIGHLIGHT_DEF": "反白顯示函式定義",
   "PROCEDURES_CREATE_DO": "建立 '%1'",
+  "PROCEDURES_CALL": "呼叫",
+  "PROCEDURES_CALL_TOOLTIP": "回傳函式名稱讓其他功能可以呼叫",
   "PROCEDURES_IFRETURN_TOOLTIP": "如果值為 真，則返回第二個值。",
   "PROCEDURES_IFRETURN_WARNING": "警告: 此積木僅可在定義函式時使用。"
 }

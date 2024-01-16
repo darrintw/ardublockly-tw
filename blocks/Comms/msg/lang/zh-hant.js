@@ -92,3 +92,18 @@ Blockly.Msg.ARD_PS2_PSS_LX = "左邊搖桿X值";
 Blockly.Msg.ARD_PS2_PSS_LY = "左邊搖桿Y值";
 Blockly.Msg.ARD_PS2_PSS_RX = "右邊搖桿X值";
 Blockly.Msg.ARD_PS2_PSS_RY = "右邊搖桿Y值";
+
+// I2C
+Blockly.Msg.ARD_I2C_INIT = "初始化I2C";
+Blockly.Msg.ARD_I2C_ADDR = "設備地址";
+Blockly.Msg.ARD_I2C_REC_FUNC =" 接收函式為(選填)";
+Blockly.Msg.ARD_I2C_REQ_FUNC =" 請求函式為(選填)";
+Blockly.Msg.ARD_I2C_AVAILABLE_MSG = "I2C有效資料?";
+Blockly.Msg.ARD_I2C_READ_MSG = "I2C讀取";
+Blockly.Msg.ARD_I2C_REQUEST_MSG = "I2C從";
+Blockly.Msg.ARD_I2C_REQUEST = "請求";
+Blockly.Msg.ARD_I2C_BYTE = "位元";
+Blockly.Msg.ARD_I2C_WRITE_MSG = "I2C送出";
+Blockly.Msg.ARD_I2C_WRITE = "I2C寫入";
+Blockly.Msg.ARD_I2C_START_TRANS = "I2C開始傳輸至";
+Blockly.Msg.ARD_I2C_END_TRANS = "I2C結束傳輸";

@@ -126,6 +126,9 @@ Blockly.Blocks['variables_init'] = {
             "helpUrl": Blockly.Msg.VARIABLES_SET_HELPURL
         });
     },
+    contextMenuType_: Blockly.Blocks['variables_get'].contextMenuType_,
+    customContextMenu: Blockly.Blocks['variables_get'].customContextMenu,
+    getBlockType: Blockly.Blocks['variables_get'].getBlockType,
     /**
      * Searches through the nested blocks to find a variable type.
      * @this Blockly.Block
@@ -168,6 +171,9 @@ Blockly.Blocks['variables_declare'] = {
             "helpUrl": Blockly.Msg.VARIABLES_SET_HELPURL
         });
     },
+    contextMenuType_: Blockly.Blocks['variables_get'].contextMenuType_,
+    customContextMenu: Blockly.Blocks['variables_get'].customContextMenu,
+    getBlockType: Blockly.Blocks['variables_get'].getBlockType,
     /**
      * Searches through the nested blocks to find a variable type.
      * @this Blockly.Block
