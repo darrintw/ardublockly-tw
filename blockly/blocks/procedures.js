@@ -333,6 +333,23 @@ Blockly.Blocks['procedures_defnoreturn'] = {
         option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
         options.push(option);
 
+        //add by darrin
+        var option2 = {enabled: true};
+        var name2 = this.getFieldValue('NAME');
+        option2.text = Blockly.Msg.PROCEDURES_CALL + " '" + name2 + "'";
+        var xmlMutation2 = goog.dom.createDom('mutation');
+        xmlMutation2.setAttribute('name', name2);
+        for (var i = 0; i < this.arguments_.length; i++) {
+            var xmlArg2 = goog.dom.createDom('arg');
+            xmlArg2.setAttribute('name', this.arguments_[i]);
+            xmlArg2.setAttribute('type', this.argumentstype_[i]); //add by darrin
+            xmlMutation2.appendChild(xmlArg2);
+        }
+        var xmlBlock2 = goog.dom.createDom('block', null, xmlMutation2);
+        xmlBlock2.setAttribute('type', this.callFunction_);
+        option2.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock2);
+        options.push(option2);
+
         // Add options to create getters for each parameter.
         if (!this.isCollapsed()) {
             for (var i = 0; i < this.arguments_.length; i++) {
@@ -349,7 +366,8 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             }
         }
     },
-    callType_: 'procedures_callnoreturn'
+    callType_: 'procedures_callnoreturn',
+    callFunction_: 'procedures_callFunction'  //add by darrin
 };
 
 Blockly.Blocks['procedures_defreturn'] = {
@@ -361,7 +379,7 @@ Blockly.Blocks['procedures_defreturn'] = {
         var nameField = new Blockly.FieldTextInput(
             Blockly.Msg.PROCEDURES_DEFRETURN_PROCEDURE,
             Blockly.Procedures.rename);
-            nameField.setSpellcheck(false);
+        nameField.setSpellcheck(false);
         this.appendDummyInput()
             .appendField(Blockly.Msg.PROCEDURES_DEFRETURN_TITLE)
             .appendField(nameField, 'NAME')
@@ -403,6 +421,7 @@ Blockly.Blocks['procedures_defreturn'] = {
     renameVar: Blockly.Blocks['procedures_defnoreturn'].renameVar,
     customContextMenu: Blockly.Blocks['procedures_defnoreturn'].customContextMenu,
     callType_: 'procedures_callreturn',
+    callFunction_: Blockly.Blocks['procedures_defnoreturn'].callFunction_, //add by darrin
     getVarType: Blockly.Blocks['procedures_defnoreturn'].getVarType,
     argsTypes: {},
     setArgsType: Blockly.Blocks['procedures_defnoreturn'].setArgsType,
@@ -746,13 +765,63 @@ Blockly.Blocks['procedures_callreturn'] = {
     mutationToDom: Blockly.Blocks['procedures_callnoreturn'].mutationToDom,
     domToMutation: Blockly.Blocks['procedures_callnoreturn'].domToMutation,
     renameVar: Blockly.Blocks['procedures_callnoreturn'].renameVar,
-    customContextMenu:
-    Blockly.Blocks['procedures_callnoreturn'].customContextMenu,
+    customContextMenu: Blockly.Blocks['procedures_callnoreturn'].customContextMenu,
     /** @return {!string} Return value type from the function definition block. */
     getBlockType: function () {
         var defBlock = Blockly.Procedures.getDefinition(this.getProcedureCall(),
             this.workspace);
         return defBlock.getReturnType();
+    }
+};
+
+Blockly.Blocks['procedures_callFunction'] = {
+    /**
+     * Block for calling a procedure with a return value.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendDummyInput('TOPROW')
+            .appendField(Blockly.Msg.PROCEDURES_CALL)
+            .appendField('', 'NAME');
+        this.setOutput(true);
+        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setTooltip(Blockly.Msg.PROCEDURES_CALL_TOOLTIP);
+    },
+    getProcedureCall: Blockly.Blocks['procedures_callnoreturn'].getProcedureCall,
+    /**
+     * Notification that a procedure is renaming.
+     * If the name matches this block's procedure, rename it.
+     * @param {string} oldName Previous name of procedure.
+     * @param {string} newName Renamed procedure.
+     * @this Blockly.Block
+     */
+    renameProcedure: function (oldName, newName) {
+        if (Blockly.Names.equals(oldName, this.getProcedureCall())) {
+            this.setFieldValue(newName, 'NAME');
+        }
+    },
+    /**
+     * Create XML to represent the (non-editable) name and arguments.
+     * @return {!Element} XML storage element.
+     * @this Blockly.Block
+     */
+    mutationToDom: function () {
+        var container = document.createElement('mutation');
+        container.setAttribute('name', this.getProcedureCall());
+        return container;
+    },
+    /**
+     * Parse XML to restore the (non-editable) name and parameters.
+     * @param {!Element} xmlElement XML storage element.
+     * @this Blockly.Block
+     */
+    domToMutation: function (xmlElement) {
+        var name = xmlElement.getAttribute('name');
+        this.renameProcedure(this.getProcedureCall(), name);
+    },
+    /** @return {!string} Return value type from the function definition block. */
+    getBlockType: function () {
+        return Blockly.Types.FUNCTION;
     }
 };
 

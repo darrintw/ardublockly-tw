@@ -530,3 +530,72 @@ Blockly.Arduino["PS2_stk"] = function (block) {
     var code = ps2Id + ".Analog(" + stk + ")";
     return [code, Blockly.Arduino.ORDER_NONE];
 };
+
+//
+Blockly.Arduino["I2C_init"] = function (block) {
+    Blockly.Arduino.addInclude("Wire_inc", "#include <Wire.h>")
+    var i2c_addr = block.getFieldValue('I2C_ADDR');
+    var i2c_rec_func = Blockly.Arduino.valueToCode(block, 'REC_FUNCTION', Blockly.Arduino.ORDER_NONE);
+    var i2c_req_func = Blockly.Arduino.valueToCode(block, 'REQ_FUNCTION', Blockly.Arduino.ORDER_NONE);
+    var code = "Wire.begin(" + i2c_addr + ");\n" +
+        "Wire.setClock(100000);\n";
+    if (i2c_rec_func != "")
+        code = code + "Wire.onReceive(" + i2c_rec_func + ");\n";
+    if (i2c_req_func != "")
+        code = code + "Wire.onRequest(" + i2c_req_func + ");\n";
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @return {(string|number)[]} Completed code.
+ */
+Blockly.Arduino['I2C_available'] = function () {
+    var code = 'Wire.available()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['I2C_read'] = function () {
+    var code = 'Wire.read()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//
+Blockly.Arduino["I2C_requestFrom"] = function (block) {
+    var i2c_addr = block.getFieldValue('I2C_ADDR');
+    var i2c_byte = block.getFieldValue('I2C_BYTE');
+    var code = "Wire.requestFrom(" + i2c_addr + ", " + i2c_byte + ");\n";
+    return code;
+};
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['I2C_write'] = function (block) {
+    var content = Blockly.Arduino.valueToCode(
+        block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code = 'Wire.write(' + content + ');\n';
+    return code;
+};
+
+Blockly.Arduino["I2C_beginTrans"] = function (block) {
+    var i2c_addr = block.getFieldValue('I2C_ADDR');
+    var code = "Wire.beginTransmission(" + i2c_addr + ");\n";
+    return code;
+};
+
+
+/**
+ * Code generator of block for writing to the serial com.
+ * Arduino code: loop { Serial.print(X); }
+ * @return {(string)} Completed code.
+ */
+Blockly.Arduino['I2C_endTrans'] = function () {
+    var code = 'Wire.endTransmission();\n';
+    return code;
+};

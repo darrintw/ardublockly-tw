@@ -88,3 +88,18 @@ Blockly.Msg.ARD_PS2_PSS_LX = "Left X value";
 Blockly.Msg.ARD_PS2_PSS_LY = "Left Y value";
 Blockly.Msg.ARD_PS2_PSS_RX = "Right X value";
 Blockly.Msg.ARD_PS2_PSS_RY = "Right Y value";
+
+// I2C
+Blockly.Msg.ARD_I2C_INIT = "Initial I2C";
+Blockly.Msg.ARD_I2C_ADDR = " address ";
+Blockly.Msg.ARD_I2C_REC_FUNC =" Receive Function(option)";
+Blockly.Msg.ARD_I2C_REQ_FUNC =" Request FUnction(option)";
+Blockly.Msg.ARD_I2C_AVAILABLE_MSG = "I2C available?";
+Blockly.Msg.ARD_I2C_READ_MSG = "I2C read";
+Blockly.Msg.ARD_I2C_REQUEST_MSG = "I2C request";
+Blockly.Msg.ARD_I2C_REQUEST = " from";
+Blockly.Msg.ARD_I2C_BYTE = " byte";
+Blockly.Msg.ARD_I2C_WRITE_MSG = "I2C write";
+Blockly.Msg.ARD_I2C_WRITE = "I2C write";
+Blockly.Msg.ARD_I2C_START_TRANS = "I2C start transmission";
+Blockly.Msg.ARD_I2C_END_TRANS = "I2C end transmission";

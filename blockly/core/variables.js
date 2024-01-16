@@ -85,7 +85,6 @@ Blockly.Variables.renameVariable = function (oldName, newName, workspace) {
     // Iterate through every block.
     for (var i = 0; i < blocks.length; i++) {
         if (blocks[i].getRootBlock() != blocks[i]) {
-            //console.log(blocks[i]);
             blocks[i].renameVar(oldName, newName);
         }
     }
