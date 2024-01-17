@@ -159,8 +159,8 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="text_append"></block>' +
     '    <block type="text_length"></block>' +
     '    <block type="text_isEmpty"></block>' +
-    '    <block type="text_indexOf"></block>' +
     '    <block type="text_getSubstring"></block>' +
+    '    <block type="text_toint"></block>' +
     '  </category>' +
     '  <sep></sep>' +
     '  <category id="catTime" name="Time">' +

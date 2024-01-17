@@ -825,11 +825,11 @@ Blockly.Blocks["I2C_init"] = {
         this.appendValueInput("REC_FUNCTION")
             .setAlign(Blockly.ALIGN_RIGHT)
             .setCheck(Blockly.Types.FUNCTION.checkList)
-            .appendField(Blockly.Msg.ARD_I2C_FUNC);
+            .appendField(Blockly.Msg.ARD_I2C_REC_FUNC);
         this.appendValueInput("REQ_FUNCTION")
             .setAlign(Blockly.ALIGN_RIGHT)
             .setCheck(Blockly.Types.FUNCTION.checkList)
-            .appendField(Blockly.Msg.ARD_I2C_FUNC);
+            .appendField(Blockly.Msg.ARD_I2C_REQ_FUNC);
         this.setInputsInline(false);
         this.setColour(Blockly.Blocks.comms.HUE);
         this.setPreviousStatement(true, null);
