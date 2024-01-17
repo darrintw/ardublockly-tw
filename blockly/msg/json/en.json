@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2024-01-16 09:40:45.834000",
+		"lastupdated": "2024-01-18 00:01:01.363000",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -251,6 +251,7 @@
 	"TEXT_GET_SUBSTRING_START_FROM_END": "get substring from letter # from end",
 	"TEXT_GET_SUBSTRING_START_FIRST": "get substring from first letter",
 	"TEXT_GET_SUBSTRING_END_FROM_START": "to letter #",
+	"TEXT_GET_SUBSTRING_LENGTH": "length",
 	"TEXT_GET_SUBSTRING_END_FROM_END": "to letter # from end",
 	"TEXT_GET_SUBSTRING_END_LAST": "to last letter",
 	"TEXT_GET_SUBSTRING_TAIL": "",

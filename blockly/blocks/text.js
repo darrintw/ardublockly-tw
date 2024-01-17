@@ -489,11 +489,10 @@ Blockly.Blocks['text_getSubstring'] = {
     init: function () {
         this['WHERE_OPTIONS_1'] =
             [[Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_START, 'FROM_START'],
-                [Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_END, 'FROM_END'],
                 [Blockly.Msg.TEXT_GET_SUBSTRING_START_FIRST, 'FIRST']];
         this['WHERE_OPTIONS_2'] =
-            [[Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_START, 'FROM_START'],
-                [Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_END, 'FROM_END'],
+            [[Blockly.Msg.TEXT_GET_SUBSTRING_LENGTH, 'LENGTH'],
+                [Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_START, 'FROM_START'],
                 [Blockly.Msg.TEXT_GET_SUBSTRING_END_LAST, 'LAST']];
         this.setHelpUrl(Blockly.Msg.TEXT_GET_SUBSTRING_HELPURL);
         this.setColour(Blockly.Blocks.texts.HUE);
@@ -567,7 +566,7 @@ Blockly.Blocks['text_getSubstring'] = {
         }
         var menu = new Blockly.FieldDropdown(this['WHERE_OPTIONS_' + n],
             function (value) {
-                var newAt = (value == 'FROM_START') || (value == 'FROM_END');
+                var newAt = (value == 'FROM_START') || (value == 'FROM_END') || (value == 'LENGTH');
                 // The 'isAt' variable is available due to this function being a closure.
                 if (newAt != isAt) {
                     var block = this.sourceBlock_;
@@ -772,5 +771,22 @@ Blockly.Blocks['string_hex'] = {
     /** Assigns a type to the block, prompt always returns a string. */
     getBlockType: function () {
         return Blockly.Types.STRING;
+    }
+};
+
+Blockly.Blocks['text_toint'] = {
+    init: function () {
+        this.appendValueInput("TEXT")
+            .appendField(Blockly.Msg.VARIABLES_TYPE_STRING);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.VARIABLES_AS + Blockly.Msg.VARIABLES_TYPE_NUMBER);
+        this.setOutput(true, null);
+        this.setInputsInline(true);
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.setTooltip('');
+    },
+    /** Assigns a type to the block, prompt always returns a string. */
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
     }
 };

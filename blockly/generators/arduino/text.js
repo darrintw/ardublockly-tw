@@ -245,33 +245,40 @@ Blockly.Arduino['text_prompt_ext'] = function (block) {
     return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };
 
-
-/* ***************************************************************** *
- * The rest of the blocks have been left unimplemented, as they have *
- * been removed from the toolbox and not used for Arduino code.      *
- * ***************************************************************** */
-Blockly.Arduino['text_endString'] = function (block) {
-    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
-};
-
-Blockly.Arduino['text_indexOf'] = function (block) {
-    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
-};
-
-Blockly.Arduino['text_charAt'] = function (block) {
-    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
-};
-
 Blockly.Arduino['text_getSubstring'] = function (block) {
-    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
+    var str= Blockly.Arduino.valueToCode(
+        block, 'STRING', Blockly.Arduino.ORDER_ATOMIC) || '""';
+    var start_at= Blockly.Arduino.valueToCode(
+        block, 'AT1', Blockly.Arduino.ORDER_ATOMIC) || '""';
+    var end_at= Blockly.Arduino.valueToCode(
+        block, 'AT2', Blockly.Arduino.ORDER_ATOMIC) || '""';
+    var opt1 = block.getFieldValue('WHERE1');
+    var opt2 = block.getFieldValue('WHERE2');
+    var strout = '';
+
+    if (opt1 == 'FIRST'){
+        start_at = '0';
+    }
+    if (opt2 == 'FROM_START') {
+        strout = str + '.substring(' + start_at + ', ' + end_at + ')';
+    }
+    else if (opt2 == 'LENGTH') {
+        strout = str + '.substring(' + start_at + ', ' + (parseInt(start_at) + parseInt(end_at)) + ')';
+    }
+    else if (opt2 == 'LAST') {
+        strout = str + '.substring(' + start_at + ')';
+    }
+    var code = strout;
+    return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };
 
-Blockly.Arduino['text_changeCase'] = function (block) {
-    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
-};
+Blockly.Arduino['text_toint'] = function (block) {
+    var content = Blockly.Arduino.valueToCode(
+        block, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || '""';
 
-Blockly.Arduino['text_prompt'] = function (block) {
-    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
+    var code = content + '.toInt()';
+
+    return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };
 
 Blockly.Arduino['string_hex'] = function (block) {
@@ -282,4 +289,28 @@ Blockly.Arduino['string_hex'] = function (block) {
     var code = 'String(' + content + ', ' + decimal + ')';
 
     return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
+/* ***************************************************************** *
+ * The rest of the blocks have been left unimplemented, as they have *
+ * been removed from the toolbox and not used for Arduino code.      *
+ * ***************************************************************** */
+Blockly.Arduino['text_endString'] = function (block) {
+    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
+Blockly.Arduino['text_charAt'] = function (block) {
+    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
+Blockly.Arduino['text_indexOf'] = function (block) {
+    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
+Blockly.Arduino['text_changeCase'] = function (block) {
+    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
+Blockly.Arduino['text_prompt'] = function (block) {
+    return ['', Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };

@@ -349,6 +349,7 @@ Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_START = "到 字元 #";
 Blockly.Msg.TEXT_GET_SUBSTRING_END_LAST = "到 最後一個字元";
 Blockly.Msg.TEXT_GET_SUBSTRING_HELPURL = "https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text";  // untranslated
 Blockly.Msg.TEXT_GET_SUBSTRING_INPUT_IN_TEXT = "自字串";
+Blockly.Msg.TEXT_GET_SUBSTRING_LENGTH = "長度";
 Blockly.Msg.TEXT_GET_SUBSTRING_START_FIRST = "取得一段字串 自 第一個字元";
 Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_END = "取得一段字串自 #";
 Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_START = "取得一段字串自 #";

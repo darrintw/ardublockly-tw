@@ -349,6 +349,7 @@ Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_START = "to letter #";
 Blockly.Msg.TEXT_GET_SUBSTRING_END_LAST = "to last letter";
 Blockly.Msg.TEXT_GET_SUBSTRING_HELPURL = "https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text";
 Blockly.Msg.TEXT_GET_SUBSTRING_INPUT_IN_TEXT = "in text";
+Blockly.Msg.TEXT_GET_SUBSTRING_LENGTH = "length";
 Blockly.Msg.TEXT_GET_SUBSTRING_START_FIRST = "get substring from first letter";
 Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_END = "get substring from letter # from end";
 Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_START = "get substring from letter #";

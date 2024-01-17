@@ -700,6 +700,13 @@ Blockly.Msg.TEXT_GET_SUBSTRING_START_FIRST = 'get substring from first letter';
 /// https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text].
 /// [[File:Blockly-get-substring.png]]
 Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_START = 'to letter #';
+/// dropdown - Indicates that the following number specifies the position (relative to
+/// the start position) of the end of the region of text that should be obtained from the
+/// preceding piece of text.  See
+/// [https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text
+/// https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text].
+/// [[File:Blockly-get-substring.png]]
+Blockly.Msg.TEXT_GET_SUBSTRING_LENGTH = 'length';
 /// dropdown - Indicates that the following number specifies the position (relative to the
 /// end position) of the end of the region of text that should be obtained from the preceding
 /// piece of text.  See
