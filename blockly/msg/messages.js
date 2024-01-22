@@ -182,9 +182,9 @@ Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_WHILE = 'While a value is true, then do 
 /// tooltip - See [https://github.com/google/blockly/wiki/Loops#repeat-until https://github.com/google/blockly/wiki/Loops#repeat-until].
 Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL = 'While a value is false, then do some statements.';
 /// block text - Repeat
-Blockly.Msg.CONTROLS_TIME_LOOP = "Repeat";
+Blockly.Msg.CONTROLS_TIME_LOOP = 'Repeat';
 /// block text - Repeat seconds
-Blockly.Msg.CONTROLS_TIME_SEC = "second";
+Blockly.Msg.CONTROLS_TIME_SEC = 'second';
 
 /// url - Describes 'for loops' in computer programs.  Consider using your language's translation of [https://en.wikipedia.org/wiki/For_loop https://en.wikipedia.org/wiki/For_loop], if present.
 Blockly.Msg.CONTROLS_FOR_HELPURL = 'https://github.com/google/blockly/wiki/Loops#count-with';
