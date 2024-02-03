@@ -50,8 +50,12 @@ Blockly.Msg.ARD_TYPE_NUMBER = 'Number';
 Blockly.Msg.ARD_TYPE_LONG = 'Large Number';
 /// Arduino Types - Decimal number C type floating point
 Blockly.Msg.ARD_TYPE_DECIMAL = 'Decimal';
+/// Arduino Types - Decimal number C type floating point
+Blockly.Msg.ARD_TYPE_BYTE = 'Byte';
 /// Arduino Types - Array
 Blockly.Msg.ARD_TYPE_ARRAY = 'Array';
+/// Arduino Types - Function type
+Blockly.Msg.ARD_TYPE_FUNCTION = 'Function';
 /// Arduino Types - Null C type void
 Blockly.Msg.ARD_TYPE_NULL = 'Null';
 /// Arduino Types - Undefined type
@@ -93,7 +97,7 @@ Blockly.Msg.ARD_VAR_AS = 'as';
 /// Arduino
 Blockly.Msg.ARD_VAR_AS_TIP = 'Sets a value to a specific type';
 /// Arduino
-Blockly.Msg.VARIABLES_INIT = 'initialize %1 to %2, %3 const';
+Blockly.Msg.VARIABLES_INIT = 'initialize %1 to %2, %3, %4 const';
 /// Arduino
 Blockly.Msg.VARIABLES_INIT_TOOLTIP = 'assign an initial value for a variable.';
 /// Arduino

@@ -1,0 +1,95 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="8x5xN%R58!dFKu!2/ZGg" x="0" y="0">
+    <field name="VAR">本機位址</field>
+    <field name="VARIABLE_TYPE">NUMBER</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="4+Kkg53bC3F93b5R,Dn5">
+        <field name="NUM">8</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="FX3G,W}ePM}^N=P)vTp1" x="0" y="64">
+    <field name="VAR">從端位址</field>
+    <field name="VARIABLE_TYPE">NUMBER</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="EUlYmJh4t}Kg5rEtDcsm">
+        <field name="NUM">9</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="128">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="B^vkw;ArQM9KeaZ`7tjZ">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="I2C_init" id="fj+}iVjvqUd]P9/})_oA">
+            <value name="I2C_ADDR">
+              <block type="variables_get" id="g4)g;ig~TM1jue4VCvoH">
+                <field name="VAR">本機位址</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="I2C_requestFrom" id="(Lvm!9{cobfD7XMikvLg">
+        <value name="I2C_ADDR">
+          <block type="variables_get" id="F@sXHA=XSQf.]hvCD~.5">
+            <field name="VAR">從端位址</field>
+          </block>
+        </value>
+        <value name="I2C_BYTE">
+          <block type="math_number" id="!o#y.tQ||6un?z2w]XC_">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="2m!3E#VOor@`5C`*AO9+">
+            <field name="VAR">接收內容</field>
+            <value name="VALUE">
+              <block type="text" id=".b=BFcA4m)G(2S7u]YfL">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="9N8vzbjO[b[xaH.upd5S">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="I2C_available" id="1WMh7S+g38[(}=`)Uvj*"></block>
+                </value>
+                <statement name="DO">
+                  <block type="text_append" id="aTzGfg4DY+D(_I_X0,rc">
+                    <field name="VAR">接收內容</field>
+                    <value name="TEXT">
+                      <block type="variables_set_type" id="TgUK3EDuM{KShu1NWZTA">
+                        <field name="VARIABLE_SETTYPE_TYPE">CHARACTER</field>
+                        <value name="VARIABLE_SETTYPE_INPUT">
+                          <block type="I2C_read" id="%a*LLWs)F-Cxfs/jYUsP"></block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="serial_print" id="8jaWd#?`8Lo|g3cT{j~R">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="variables_get" id="pVI+,|uBN9#Q1F:KE%:0">
+                        <field name="VAR">接收內容</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

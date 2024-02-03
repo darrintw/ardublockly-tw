@@ -243,6 +243,9 @@ Blockly.Workspace.prototype.undo = function (redo) {
     for (var i = 0, event; event = events[i]; i++) {
         event.run(redo);
     }
+    if (!redo) {
+        Ardublockly.sketchNameSet("Sketch_Name");
+    }
     Blockly.Events.recordUndo = true;
 };
 

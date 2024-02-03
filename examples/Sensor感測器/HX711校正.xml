@@ -1,15 +1,11 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="variables_init" id="e)Ypnae)SJfA^37/lOQ7" x="31" y="43">
     <field name="VAR">sample_weight</field>
+    <field name="VARIABLE_TYPE">NUMBER</field>
     <field name="CONST">TRUE</field>
     <value name="VALUE">
-      <block type="variables_set_type" id="q68m1juD)9rcyyN,!fBC">
-        <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
-        <value name="VARIABLE_SETTYPE_INPUT">
-          <block type="math_number" id="~HFJ1Q~V:0Mv^,Rkv_@F">
-            <field name="NUM">150</field>
-          </block>
-        </value>
+      <block type="math_number" id="~HFJ1Q~V:0Mv^,Rkv_@F">
+        <field name="NUM">150</field>
       </block>
     </value>
   </block>

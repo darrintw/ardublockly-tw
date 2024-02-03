@@ -94,6 +94,7 @@ Blockly.Msg.ARD_PS2_PSS_RX = "右邊搖桿X值";
 Blockly.Msg.ARD_PS2_PSS_RY = "右邊搖桿Y值";
 
 // I2C
+Blockly.Msg.ARD_I2C_SCAN = "掃描I2C設備";
 Blockly.Msg.ARD_I2C_INIT = "初始化I2C";
 Blockly.Msg.ARD_I2C_ADDR = "設備地址";
 Blockly.Msg.ARD_I2C_REC_FUNC =" 接收函式為(選填)";

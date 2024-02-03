@@ -138,9 +138,7 @@ Ardublockly.TOOLBOX_XML =
     '        </value>' +
     '      </block>' +
     '      <block type="variables_init">' +
-    '        <value name="VALUE">' +
-    '          <block type="variables_set_type"></block>' +
-    '        </value>' +
+    '        <value name="VALUE"></value>' +
     '      </block>' +
     '      <block type="variables_declare"></block>' +
     '      <block type="variables_set_type"></block>' +
