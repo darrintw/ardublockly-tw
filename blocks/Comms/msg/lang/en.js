@@ -90,6 +90,7 @@ Blockly.Msg.ARD_PS2_PSS_RX = "Right X value";
 Blockly.Msg.ARD_PS2_PSS_RY = "Right Y value";
 
 // I2C
+Blockly.Msg.ARD_I2C_SCAN = "Scan I2C devices";
 Blockly.Msg.ARD_I2C_INIT = "Initial I2C";
 Blockly.Msg.ARD_I2C_ADDR = " address ";
 Blockly.Msg.ARD_I2C_REC_FUNC =" Receive Function(option)";

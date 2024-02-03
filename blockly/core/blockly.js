@@ -316,6 +316,7 @@ Blockly.onKeyDown_ = function (e) {
             // 'z' for undo 'Z' is for redo.
             Blockly.hideChaff();
             Blockly.mainWorkspace.undo(e.shiftKey);
+
         }
     }
     if (deleteBlock) {

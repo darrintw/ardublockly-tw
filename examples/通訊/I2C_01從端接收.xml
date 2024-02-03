@@ -1,0 +1,83 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="8x5xN%R58!dFKu!2/ZGg" x="0" y="0">
+    <field name="VAR">本機位址</field>
+    <field name="VARIABLE_TYPE">NUMBER</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="4+Kkg53bC3F93b5R,Dn5">
+        <field name="NUM">8</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="64">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="B^vkw;ArQM9KeaZ`7tjZ">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="I2C_init" id="fj+}iVjvqUd]P9/})_oA">
+            <value name="I2C_ADDR">
+              <block type="variables_get" id="}Rk.H1VSM6ILg{4bm5x|">
+                <field name="VAR">本機位址</field>
+              </block>
+            </value>
+            <value name="REC_FUNCTION">
+              <block type="procedures_callFunction" id="BNZ:wGPm`!F6HWytKu(d">
+                <mutation name="本機接收函式"></mutation>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="6LncT:P*3Fq68H56@~|Z" x="0" y="307">
+    <mutation>
+      <arg name="nbyte" vartype="NUMBER"></arg>
+    </mutation>
+    <field name="NAME">本機接收函式</field>
+    <comment pinned="false" h="80" w="160">描述此函數...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="/6O9RSncIYr#;.2f(5EX">
+        <field name="VAR">接收內容</field>
+        <value name="VALUE">
+          <block type="text" id="[u-:WIDDC-u*NW8O197I">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="TYDxLC=8meq[TnzasAAK">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="I2C_available" id="y#*#p]=U`|LoetfUdU+Q"></block>
+            </value>
+            <statement name="DO">
+              <block type="text_append" id=")Th3JVaDOidr)[VQ|NAc">
+                <field name="VAR">接收內容</field>
+                <value name="TEXT">
+                  <block type="variables_set_type" id="]Oo/}wMg]lr|qlY=Z|[b">
+                    <field name="VARIABLE_SETTYPE_TYPE">CHARACTER</field>
+                    <value name="VARIABLE_SETTYPE_INPUT">
+                      <block type="I2C_read" id="I%;mLo/h!bEMRxKp-hbB"></block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="serial_print" id=",F{H8*T+uJ{)kG-r0Z)s">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="variables_get" id="8YhavqmlfAqy]5`eby~p">
+                    <field name="VAR">接收內容</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

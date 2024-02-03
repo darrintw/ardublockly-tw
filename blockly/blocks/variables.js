@@ -112,6 +112,11 @@ Blockly.Blocks['variables_init'] = {
                     "variable": Blockly.Msg.VARIABLES_DEFAULT_NAME
                 },
                 {
+                    "type": "field_dropdown",
+                    "name": "VARIABLE_TYPE",
+                    "options": Blockly.Types.getValidTypeArray()
+                },
+                {
                     "type": "input_value",
                     "name": "VALUE"
                 },

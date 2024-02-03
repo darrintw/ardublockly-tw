@@ -1,0 +1,133 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="~;2`pmH*:+F77hSGeD?Z" x="0" y="0">
+    <field name="VAR">傳送資料</field>
+    <field name="VARIABLE_TYPE">BYTE</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="FqA1rTC?K3h+tL-0?]Vz">
+        <field name="NUM">33</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="7e4wT~44F}v1[co,xp1X" x="0" y="64">
+    <field name="VAR">設備位址</field>
+    <field name="VARIABLE_TYPE">BYTE</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="mf;eX_^UJzZj!siy%kBn">
+        <field name="NUM">8</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="Nl6^AQa_GyfpR3;Ub,XU" x="0" y="128">
+    <field name="VAR">從端位址</field>
+    <field name="VARIABLE_TYPE">BYTE</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="r7`u,F[KWKmNEBel!cAv">
+        <field name="NUM">9</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="192">
+    <statement name="SETUP_FUNC">
+      <block type="I2C_init" id="fj+}iVjvqUd]P9/})_oA">
+        <value name="I2C_ADDR">
+          <block type="variables_get" id="5!6UJq8d=D.^88dE2b|v">
+            <field name="VAR">設備位址</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="I2C_beginTrans" id="#LmYlq~JgLa2([}t]eQu">
+        <value name="I2C_ADDR">
+          <block type="variables_get" id="?]s}Smy5=soLAhbXHs~F">
+            <field name="VAR">從端位址</field>
+          </block>
+        </value>
+        <next>
+          <block type="I2C_write" id="]#vzH-!7LR]`L#M;5Uv5">
+            <value name="CONTENT">
+              <block type="text" id="+0Nq^Ou*Nw^w4O}e]xe-">
+                <field name="TEXT">Content is </field>
+              </block>
+            </value>
+            <next>
+              <block type="I2C_write" id="l9MiQ96RwT`TOQKpL3d/">
+                <value name="CONTENT">
+                  <block type="variables_get" id="AQdILL/Z2Ct{2QjvH6f.">
+                    <field name="VAR">傳送資料</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="I2C_endTrans" id="^320hiLZ!lCyZ#?ZrQ96">
+                    <next>
+                      <block type="controls_if" id="z_J;SQD:1*A@FaX%S/e-">
+                        <mutation else="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="70Up6aNc|}eBEyWRf[d`">
+                            <field name="OP">LTE</field>
+                            <value name="A">
+                              <block type="variables_get" id="XY=a87X7GIEmk-aq3[v9">
+                                <field name="VAR">傳送資料</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="8b;vCZ[VMi2Vh]`KIqy8">
+                                <field name="NUM">127</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="BTDT/#6T(L7yW)e@[YZ4">
+                            <field name="VAR">傳送資料</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="Gu{9N:T=`09(WR3dg54Z">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <block type="variables_get" id="QH:L]g}2!jVAZZyyaPbJ">
+                                    <field name="VAR">傳送資料</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="jt@@c}Hx{9%14HxcXU*K">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="variables_set" id="rXHsF~V48Ls^v3MO_o3D">
+                            <field name="VAR">變數</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="3U-N;.A}{ZFNMaFtHOG:">
+                                <field name="NUM">33</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="XNo1;`eK^?,T:/7rr-%/">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id=":Q)X9:y~=938:}..4HeH">
+                                <field name="NUM">500</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

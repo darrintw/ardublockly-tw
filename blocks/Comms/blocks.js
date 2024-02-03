@@ -815,13 +815,24 @@ Blockly.Blocks["PS2_stk"] = {
 };
 
 //I2C
-Blockly.Blocks["I2C_init"] = {
+Blockly.Blocks['I2C_scan'] = {
     init: function () {
         this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_I2C_SCAN);
+        this.setColour(Blockly.Blocks.comms.HUE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks["I2C_init"] = {
+    init: function () {
+        this.appendValueInput("I2C_ADDR")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_I2C_INIT)
-            .appendField(Blockly.Msg.ARD_I2C_ADDR)
-            .appendField(new Blockly.FieldTextInput("8"), "I2C_ADDR");
+            .appendField(Blockly.Msg.ARD_I2C_ADDR);
         this.appendValueInput("REC_FUNCTION")
             .setAlign(Blockly.ALIGN_RIGHT)
             .setCheck(Blockly.Types.FUNCTION.checkList)
@@ -882,12 +893,12 @@ Blockly.Blocks['I2C_requestFrom'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.appendDummyInput()
+        this.appendValueInput("I2C_ADDR")
             .appendField(Blockly.Msg.ARD_I2C_REQUEST_MSG)
-            .appendField(Blockly.Msg.ARD_I2C_ADDR)
-            .appendField(new Blockly.FieldTextInput("8"), "I2C_ADDR")
-            .appendField(Blockly.Msg.ARD_I2C_REQUEST)
-            .appendField(new Blockly.FieldNumber(7), "I2C_BYTE")
+            .appendField(Blockly.Msg.ARD_I2C_ADDR);
+        this.appendValueInput("I2C_BYTE")
+            .appendField(Blockly.Msg.ARD_I2C_REQUEST);
+        this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2C_BYTE);
         this.setInputsInline(true);
         this.setColour(Blockly.Blocks.comms.HUE);
@@ -915,7 +926,6 @@ Blockly.Blocks['I2C_write'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.ARD_SERIAL_WRITE_TIP);
     },
 };
 
@@ -923,8 +933,8 @@ Blockly.Blocks["I2C_beginTrans"] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_I2C_START_TRANS)
-            .appendField(Blockly.Msg.ARD_I2C_ADDR)
-            .appendField(new Blockly.FieldTextInput(""), "I2C_ADDR");
+            .appendField(Blockly.Msg.ARD_I2C_ADDR);
+        this.appendValueInput("I2C_ADDR");
         this.setInputsInline(true);
         this.setColour(Blockly.Blocks.comms.HUE);
         this.setPreviousStatement(true, null);

@@ -531,10 +531,74 @@ Blockly.Arduino["PS2_stk"] = function (block) {
     return [code, Blockly.Arduino.ORDER_NONE];
 };
 
-//
+//I2C
+/**
+ * Code generator for block for setting the serial com speed.
+ * Arduino code: setup{ Serial.begin(X); }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['I2C_scan'] = function (block) {
+    Blockly.Arduino.addInclude("Wire_inc", "#include <Wire.h>")
+    var setup = 'Wire.begin();\n' +
+        '  Serial.begin(9600);\n' +
+        '  while (!Serial);\n' +
+        '  Serial.println("\\nI2C 掃描器");\n' +
+        '  Serial.print("SDA腳位: ");\n' +
+        '  Serial.println(SDA);\n' +
+        '  Serial.print("SCL腳位: ");\n' +
+        '  Serial.println(SCL);';
+    Blockly.Arduino.addSetup("I2CSCAN", setup, true);
+    var code = '  byte error, address;\n' +
+        '  int nDevices;\n' +
+        '\n' +
+        '  Serial.println("掃描中...");\n' +
+        '\n' +
+        '  nDevices = 0;\n' +
+        '  for (address = 1; address < 127; address++ )\n' +
+        '  {\n' +
+        '    /*\n' +
+        '      使用 Wire.endTransmission(addreee)確認在該位址是否有資料\n' +
+        '    */\n' +
+        '    Wire.beginTransmission(address);\n' +
+        '    error = Wire.endTransmission();\n' +
+        '\n' +
+        '    if (error == 0)\n' +
+        '    {\n' +
+        '      Serial.print("在 0x");\n' +
+        '      if (address < 16)\n' +
+        '        Serial.print("0");\n' +
+        '      Serial.print(address, HEX);\n' +
+        '      Serial.println(" 找到I2C設備！");\n' +
+        '\n' +
+        '      nDevices++;\n' +
+        '    }\n' +
+        '    else if (error == 4)\n' +
+        '    {\n' +
+        '      Serial.print("0x");\n' +
+        '      if (address < 16)\n' +
+        '        Serial.print("0");\n' +
+        '      Serial.print(address, HEX);\n' +
+        '      Serial.println(" 發生未知錯誤");\n' +
+        '    }\n' +
+        '  }\n' +
+        '  if (nDevices == 0)\n' +
+        '  {\n' +
+        '    Serial.println("未找到任何I2C設備\\n");\n' +
+        '  }\n' +
+        '  else\n' +
+        '  {\n' +
+        '    Serial.println("完成\\n");\n' +
+        '  }\n' +
+        '\n' +
+        '  delay(5000); // 每5秒掃描一次';
+    return code;
+};
+
 Blockly.Arduino["I2C_init"] = function (block) {
     Blockly.Arduino.addInclude("Wire_inc", "#include <Wire.h>")
-    var i2c_addr = block.getFieldValue('I2C_ADDR');
+    var i2c_addr = Blockly.Arduino.valueToCode(
+        block, 'I2C_ADDR', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var i2c_rec_func = Blockly.Arduino.valueToCode(block, 'REC_FUNCTION', Blockly.Arduino.ORDER_NONE);
     var i2c_req_func = Blockly.Arduino.valueToCode(block, 'REQ_FUNCTION', Blockly.Arduino.ORDER_NONE);
     var code = "Wire.begin(" + i2c_addr + ");\n" +
@@ -563,8 +627,10 @@ Blockly.Arduino['I2C_read'] = function () {
 
 //
 Blockly.Arduino["I2C_requestFrom"] = function (block) {
-    var i2c_addr = block.getFieldValue('I2C_ADDR');
-    var i2c_byte = block.getFieldValue('I2C_BYTE');
+    var i2c_addr = Blockly.Arduino.valueToCode(
+        block, 'I2C_ADDR', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var i2c_byte = Blockly.Arduino.valueToCode(
+        block, 'I2C_BYTE', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var code = "Wire.requestFrom(" + i2c_addr + ", " + i2c_byte + ");\n";
     return code;
 };
@@ -584,7 +650,8 @@ Blockly.Arduino['I2C_write'] = function (block) {
 };
 
 Blockly.Arduino["I2C_beginTrans"] = function (block) {
-    var i2c_addr = block.getFieldValue('I2C_ADDR');
+    var i2c_addr = Blockly.Arduino.valueToCode(
+        block, 'I2C_ADDR', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var code = "Wire.beginTransmission(" + i2c_addr + ");\n";
     return code;
 };

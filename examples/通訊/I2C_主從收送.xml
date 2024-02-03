@@ -1,0 +1,324 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_init" id="vthvJBBSJXP}W9HykQ4+" x="0" y="0">
+    <field name="VAR">傳送內容</field>
+    <field name="VARIABLE_TYPE">BYTE</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="Iu6n@4~V(W;{7rX[qa{}">
+        <field name="NUM">33</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="8x5xN%R58!dFKu!2/ZGg" x="0" y="64">
+    <field name="VAR">本機位址</field>
+    <field name="VARIABLE_TYPE">NUMBER</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="4+Kkg53bC3F93b5R,Dn5">
+        <field name="NUM">8</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_init" id="FX3G,W}ePM}^N=P)vTp1" x="0" y="128">
+    <field name="VAR">從端位址</field>
+    <field name="VARIABLE_TYPE">NUMBER</field>
+    <field name="CONST">FALSE</field>
+    <value name="VALUE">
+      <block type="math_number" id="EUlYmJh4t}Kg5rEtDcsm">
+        <field name="NUM">9</field>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="0" y="192">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="%mh1KKL~ra-!__A[9z]?">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="I2C_init" id="fj+}iVjvqUd]P9/})_oA">
+            <value name="I2C_ADDR">
+              <block type="variables_get" id="d^D568+H,`tZ@^2Hab8I">
+                <field name="VAR">本機位址</field>
+              </block>
+            </value>
+            <value name="REC_FUNCTION">
+              <block type="procedures_callFunction" id="VvJ`LmikwcE9]7txruV=">
+                <mutation name="本機接收函式"></mutation>
+              </block>
+            </value>
+            <value name="REQ_FUNCTION">
+              <block type="procedures_callFunction" id="BNZ:wGPm`!F6HWytKu(d">
+                <mutation name="本機回應函式"></mutation>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="{2~=gW,-CAY[6!T|~f=9">
+        <mutation name="主端傳送"></mutation>
+        <next>
+          <block type="controls_if" id="ACfRkE+f[F/+^#8Okf]|">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="(a~3U=UH^L)/`oU_8NF~">
+                <field name="OP">LTE</field>
+                <value name="A">
+                  <block type="variables_get" id="UZsWT4152_)dH)HXdsS^">
+                    <field name="VAR">傳送內容</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="rI|A.-Rsq#KYE/0d.m/S">
+                    <field name="NUM">127</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="BTDT/#6T(L7yW)e@[YZ4">
+                <field name="VAR">傳送內容</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="Gu{9N:T=`09(WR3dg54Z">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="QH:L]g}2!jVAZZyyaPbJ">
+                        <field name="VAR">傳送內容</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="jt@@c}Hx{9%14HxcXU*K">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set" id="/qb1/M)6U!K1.Qqu|*y5">
+                <field name="VAR">傳送內容</field>
+                <value name="VALUE">
+                  <block type="math_number" id="!-XkshVl4N/CUcYUIH,l">
+                    <field name="NUM">33</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="time_delay" id="XNo1;`eK^?,T:/7rr-%/">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id=":Q)X9:y~=938:}..4HeH">
+                    <field name="NUM">500</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="*1pmWDYnHg(9[;g#%)S#">
+                    <mutation name="主端讀取"></mutation>
+                    <next>
+                      <block type="time_delay" id="LJu_8ZnHG*sPigR^I:b;">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="XNe]UR7~*-y*2=k|z,Ig">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Qyce|aIB+}5Yv:l79ZC(" x="0" y="665">
+    <field name="NAME">主端讀取</field>
+    <comment pinned="false" h="80" w="160">描述此函數...</comment>
+    <statement name="STACK">
+      <block type="I2C_requestFrom" id=".R_QOaadkO|rV#)VGcB%">
+        <value name="I2C_ADDR">
+          <block type="variables_get" id="y4Lt1(+aBXZt|xObOyb9">
+            <field name="VAR">從端位址</field>
+          </block>
+        </value>
+        <value name="I2C_BYTE">
+          <block type="math_number" id="sRsJZr1p#%qT,ifKX]fL">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="2m!3E#VOor@`5C`*AO9+">
+            <field name="VAR">接收內容</field>
+            <value name="VALUE">
+              <block type="text" id=".b=BFcA4m)G(2S7u]YfL">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="9N8vzbjO[b[xaH.upd5S">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="I2C_available" id="1WMh7S+g38[(}=`)Uvj*"></block>
+                </value>
+                <statement name="DO">
+                  <block type="text_append" id="aTzGfg4DY+D(_I_X0,rc">
+                    <field name="VAR">接收內容</field>
+                    <value name="TEXT">
+                      <block type="variables_set_type" id="TgUK3EDuM{KShu1NWZTA">
+                        <field name="VARIABLE_SETTYPE_TYPE">CHARACTER</field>
+                        <value name="VARIABLE_SETTYPE_INPUT">
+                          <block type="I2C_read" id="%a*LLWs)F-Cxfs/jYUsP"></block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="serial_print" id="P8T7I/CF|XL8_iAXptpY">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text_join" id="[VF,}Z-(QCG^zXBX|VfO">
+                        <mutation items="4"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="-;4?wYwDbU+=L:[b:f5!">
+                            <field name="TEXT">Master request from </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="qq?Ec|?yD[=MdY;MO@cy">
+                            <field name="VAR">從端位址</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="y0af5rr^.1)Ss`~e3+S^">
+                            <field name="TEXT">:</field>
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="variables_get" id="pVI+,|uBN9#Q1F:KE%:0">
+                            <field name="VAR">接收內容</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id=";i]^Y5Mc}r~.[KWhXg]N" x="0" y="984">
+    <field name="NAME">主端傳送</field>
+    <comment pinned="false" h="80" w="160">主端廣播命令</comment>
+    <statement name="STACK">
+      <block type="I2C_beginTrans" id="#LmYlq~JgLa2([}t]eQu">
+        <value name="I2C_ADDR">
+          <block type="variables_get" id="qsXA!?8bP^MhW{:IQD-u">
+            <field name="VAR">從端位址</field>
+          </block>
+        </value>
+        <next>
+          <block type="I2C_write" id="]#vzH-!7LR]`L#M;5Uv5">
+            <value name="CONTENT">
+              <block type="text" id="+0Nq^Ou*Nw^w4O}e]xe-">
+                <field name="TEXT">Content is </field>
+              </block>
+            </value>
+            <next>
+              <block type="I2C_write" id="l9MiQ96RwT`TOQKpL3d/">
+                <value name="CONTENT">
+                  <block type="variables_get" id="AQdILL/Z2Ct{2QjvH6f.">
+                    <field name="VAR">傳送內容</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="I2C_endTrans" id="^320hiLZ!lCyZ#?ZrQ96"></block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="6LncT:P*3Fq68H56@~|Z" x="0" y="1187">
+    <field name="NAME">本機回應函式</field>
+    <comment pinned="false" h="80" w="160">從端收到訊息後回覆給主端</comment>
+    <statement name="STACK">
+      <block type="I2C_write" id="rBN@MjN3ithJ7eRv{m!m">
+        <value name="CONTENT">
+          <block type="text" id="3GAqtjrj!c0f)c5)zUI_">
+            <field name="TEXT">received</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="-s[!xccj-AIIy]h7GBGq" x="0" y="1290">
+    <mutation>
+      <arg name="nbyte" vartype="NUMBER"></arg>
+    </mutation>
+    <field name="NAME">本機接收函式</field>
+    <comment pinned="false" h="80" w="160">從端接收訊息</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="/6O9RSncIYr#;.2f(5EX">
+        <field name="VAR">接收內容</field>
+        <value name="VALUE">
+          <block type="text" id="[u-:WIDDC-u*NW8O197I">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="TYDxLC=8meq[TnzasAAK">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="I2C_available" id="y#*#p]=U`|LoetfUdU+Q"></block>
+            </value>
+            <statement name="DO">
+              <block type="text_append" id=")Th3JVaDOidr)[VQ|NAc">
+                <field name="VAR">接收內容</field>
+                <value name="TEXT">
+                  <block type="variables_set_type" id="]Oo/}wMg]lr|qlY=Z|[b">
+                    <field name="VARIABLE_SETTYPE_TYPE">CHARACTER</field>
+                    <value name="VARIABLE_SETTYPE_INPUT">
+                      <block type="I2C_read" id="I%;mLo/h!bEMRxKp-hbB"></block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="serial_print" id="iNmp~MBw))#)1%{]|f(d">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">FALSE</field>
+                <value name="CONTENT">
+                  <block type="text" id="{J~E,IWPJJoXM`JOgeoj">
+                    <field name="TEXT">Slave receive:</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id=",F{H8*T+uJ{)kG-r0Z)s">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="variables_get" id="8YhavqmlfAqy]5`eby~p">
+                        <field name="VAR">接收內容</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
