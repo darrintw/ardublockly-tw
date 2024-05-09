@@ -607,7 +607,8 @@ Blockly.Arduino["I2C_init"] = function (block) {
         code = code + "Wire.onReceive(" + i2c_rec_func + ");\n";
     if (i2c_req_func != "")
         code = code + "Wire.onRequest(" + i2c_req_func + ");\n";
-    return code;
+    Blockly.Arduino.addSetup("Wire_begin", code, true);
+    return '';
 };
 
 /**

@@ -349,7 +349,7 @@ Blockly.Arduino['pixetto_apriltag_detection'] = function (block) {
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
     var code = "";
-    if (pixettoApriltag == "APRILTAG_ID"){
+    if (pixettoApriltag == "APRILTAG_ID") {
         code = pixettoId + '.getTypeID()';
     }
     else {

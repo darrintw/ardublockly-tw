@@ -78,8 +78,8 @@ Blockly.Arduino.ORDER_LOGICAL_AND = 11;   // &&
 Blockly.Arduino.ORDER_LOGICAL_OR = 12;    // ||
 Blockly.Arduino.ORDER_CONDITIONAL = 13;   // expr ? expr : expr
 Blockly.Arduino.ORDER_ASSIGNMENT = 14;    // = *= /= ~/= %= += -= <<= >>= &= ^= |=
-Blockly.Arduino.ORDER_COMMA = 17;            // ,
-Blockly.Arduino.ORDER_NONE = 99;             // (...)
+Blockly.Arduino.ORDER_COMMA = 17;         // ,
+Blockly.Arduino.ORDER_NONE = 99;          // (...)
 
 
 /**
