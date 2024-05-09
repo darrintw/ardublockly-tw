@@ -53,7 +53,7 @@ class ServerCompilerSettings(object):
                        'Nano 168': 'arduino:avr:nano:cpu=atmega168',
                        'Mega': 'arduino:avr:mega',
                        'LinkIt 7697': 'LinkIt:linkit_rtos:linkit_7697',
-                       'digistump:avr:digispark-tiny'}
+                       'ATTinyCore:avr:attinyx5micr'}
     '''
     # Class dictionary to contain the computer COM ports, dynamic content
     __serial_ports = {'port0': 'COM1'}

@@ -4,6 +4,7 @@
     "Comms": "Comms/blocks_config.json",
     "Sensors": "Sensors/blocks_config.json",
     "Pixetto": "Pixetto/blocks_config.json",
+    "HUSKYLENS": "HUSKYLENS/blocks_config.json",
     "LCDLED": "LCDLED/blocks_config.json",
     "RTC": "RTC/blocks_config.json",
     "SDCard": "SDCard/blocks_config.json"

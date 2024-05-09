@@ -33,7 +33,7 @@ Blockly.Blocks['ultrasonic_distance'] = {
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_ULTRASONIC_DISTANCE)
             .appendField(new Blockly.FieldDropdown([[Blockly.Msg.ARD_ULTRASONIC_DISTANCE_CM, "cm"],
-                    [Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH, "inch"]]),
+            [Blockly.Msg.ARD_ULTRASONIC_DISTANCE_INCH, "inch"]]),
                 "DISTANCE_UNIT");
         this.setOutput(true, "Number");
         this.setColour(Blockly.Blocks.sensors.HUE);
@@ -657,12 +657,12 @@ Blockly.Blocks["I2C_QMC5883L_SMOOTHING"] = {
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_I2C_QMC5883L_STEPS)
             .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"],
-                ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]), 'STEPS');
+            ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]), 'STEPS');
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARD_I2C_QMC5883L_ADVANCED)
             .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "TRUE"],
-                [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "FALSE"]]), 'ADVANCED');
+            [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "FALSE"]]), 'ADVANCED');
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

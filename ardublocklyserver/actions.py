@@ -16,7 +16,7 @@ import time
 import psutil
 import winreg
 # local-packages imports
-import six
+# import six
 # This package modules
 from os import listdir
 from os.path import isfile, isdir, join
@@ -148,14 +148,16 @@ def load_arduino_cli(sketch_path):
             std_out, err_out = process.communicate()
             # fix chinese traditional encoding for arduino version less than 1.8.9, modify by darrin 20190317
             # print('Arduino env code:', locale.getpreferredencoding(), '\n')
+            '''
             if locale.getpreferredencoding() == 'cp950':
                 std_out = std_out.decode('big5', 'ignore')
                 err_out = err_out.decode('big5', 'ignore')
             else:
-                # std_out = std_out.decode('utf-8', 'ignore')
-                # err_out = err_out.decode('utf-8', 'ignore')
-                std_out = six.u(std_out)
-                err_out = six.u(err_out)
+            '''
+            std_out = std_out.decode('utf-8', 'ignore')
+            err_out = err_out.decode('utf-8', 'ignore')
+            # std_out = six.u(std_out)
+            # err_out = six.u(err_out)
             exit_code = process.returncode
             print('Arduino Error output:\n%s' % err_out)
             print('Arduino output:\n%s' % std_out)

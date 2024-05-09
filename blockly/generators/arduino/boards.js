@@ -352,7 +352,8 @@ Blockly.Arduino.Boards.profiles.linkit_7697 = {
 Blockly.Arduino.Boards.profiles.attiny85 = {
     name: 'Digispark Attiny85',
     description: 'Digispark Attiny85',
-    compilerFlag: 'digistump:avr:digispark-tiny',
+    //compilerFlag: 'digistump:avr:digispark-tiny',
+    compilerFlag: 'ATTinyCore:avr:attinyx5micr',
     analogPins: [['P2', '2'], ['P3', '3'], ['P4', '4'], ['P5', '5']],
     digitalPins: [['P0', '0'], ['P1', '1'], ['P2', '2'], ['P3', '3'],
         ['P4', '4'], ['P5', '5']],
