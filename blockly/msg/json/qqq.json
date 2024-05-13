@@ -61,6 +61,7 @@
 	"CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL": "tooltip - See [https://github.com/google/blockly/wiki/Loops#repeat-until https://github.com/google/blockly/wiki/Loops#repeat-until].",
 	"CONTROLS_TIME_LOOP": "block text - Repeat",
 	"CONTROLS_TIME_SEC": "block text - Repeat seconds",
+	"CONTROLS_REPEAT_TIME_LOOP": "block text - Repeat",
 	"CONTROLS_FOR_HELPURL": "url - Describes 'for loops' in computer programs.  Consider using your language's translation of [https://en.wikipedia.org/wiki/For_loop https://en.wikipedia.org/wiki/For_loop], if present.",
 	"CONTROLS_FOR_TOOLTIP": "tooltip - See [https://github.com/google/blockly/wiki/Loops#count-with https://github.com/google/blockly/wiki/Loops#count-with].\n\nParameters:\n* %1 - the name of the loop variable.",
 	"CONTROLS_FOR_TITLE": "block text - Repeatedly counts a variable (%1) starting with a (usually lower) number in a range (%2), ending with a (usually higher) number in a range (%3), and counting the iterations by a number of steps (%4).  As in [https://github.com/google/blockly/wiki/Loops#count-with https://github.com/google/blockly/wiki/Loops#count-with]. [[File:Blockly-count-with.png]]",

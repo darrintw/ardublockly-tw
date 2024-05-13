@@ -96,7 +96,7 @@ Blockly.Arduino['controls_time_loop'] = function (block) {
     var time = Blockly.Arduino.valueToCode(block, 'LOOP_SEC', Blockly.Arduino.ORDER_ATOMIC) || '10';
     var dec = 'unsigned long duration_time_diff;';
     Blockly.Arduino.addVariable('var_ctloop', dec, true);
-    var argument0 = '!(millis() - duration_time_diff >= ' + time * 1000 + ')';
+    var argument0 = '!(millis() - duration_time_diff >= (' + time + ' * 1000))';
     var branch = Blockly.Arduino.statementToCode(block, 'DO');
     branch = Blockly.Arduino.addLoopTrap(branch, block.id);
     var code = 'duration_time_diff = millis();\n';

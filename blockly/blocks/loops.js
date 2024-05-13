@@ -129,7 +129,7 @@ Blockly.Blocks['controls_time_loop'] = {
      */
     init: function () {
         this.appendValueInput("LOOP_SEC")
-            .setCheck(Blockly.Types.NUMBER.output)
+            .setCheck(Blockly.Types.NUMBER.checkList)
             .appendField(Blockly.Msg.CONTROLS_TIME_LOOP);
         this.appendDummyInput()
             .appendField(Blockly.Msg.CONTROLS_TIME_SEC);

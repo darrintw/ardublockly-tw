@@ -50,7 +50,9 @@ Blockly.Msg.ARD_TYPE_NUMBER = 'Number';
 Blockly.Msg.ARD_TYPE_LONG = 'Large Number';
 /// Arduino Types - Decimal number C type floating point
 Blockly.Msg.ARD_TYPE_DECIMAL = 'Decimal';
-/// Arduino Types - Decimal number C type floating point
+/// Arduino Types - Unsigned long number C type Unsigned long integer
+Blockly.Msg.ARD_TYPE_UNSIGNED_LONG = 'Unsigned Long Number';
+/// Arduino Types - Byte
 Blockly.Msg.ARD_TYPE_BYTE = 'Byte';
 /// Arduino Types - Array
 Blockly.Msg.ARD_TYPE_ARRAY = 'Array';

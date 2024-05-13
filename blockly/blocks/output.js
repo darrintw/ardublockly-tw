@@ -122,7 +122,7 @@ Blockly.Blocks['io_analogwrite'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.pwmPins), 'PIN')
             .appendField(Blockly.Msg.ARD_WRITE_TO)
             //.appendField(new Blockly.FieldTextInput("100"), "DEFNUM")
-            .setCheck(Blockly.Types.NUMBER.output);
+            .setCheck(Blockly.Types.NUMBER.checkList);
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -153,7 +153,7 @@ Blockly.Blocks['io_analogwrite_var'] = {
         this.appendValueInput('PIN');
         this.appendValueInput('NUM')
             .appendField(Blockly.Msg.ARD_WRITE_TO)
-            .setCheck(Blockly.Types.NUMBER.output);
+            .setCheck(Blockly.Types.NUMBER.checkList);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

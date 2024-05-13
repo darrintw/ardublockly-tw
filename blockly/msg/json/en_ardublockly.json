@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "darrin",
-		"lastupdated": "2024-02-03 14:54:10.036000",
+		"lastupdated": "2024-05-13 20:58:05.642000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -13,6 +13,7 @@
 	"ARD_TYPE_NUMBER": "Number",
 	"ARD_TYPE_LONG": "Large Number",
 	"ARD_TYPE_DECIMAL": "Decimal",
+	"ARD_TYPE_UNSIGNED_LONG": "Unsigned Long Number",
 	"ARD_TYPE_BYTE": "Byte",
 	"ARD_TYPE_ARRAY": "Array",
 	"ARD_TYPE_FUNCTION": "Function",
