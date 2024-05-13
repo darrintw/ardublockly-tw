@@ -309,7 +309,7 @@ var getHelpMenuData = function () {
                 label: '阿丟部落格',
                 click: function () {
                     shell.openExternal(
-                        'https://sites.google.com/view/ardublocklylearning');
+                        'https://ardublog.ymtech.education/');
                 }
             }, {
                 label: '快速使用手冊',
