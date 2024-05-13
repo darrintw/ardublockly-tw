@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2024-01-22 12:38:45.671000",
+		"lastupdated": "2024-05-13 22:10:09.250000",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -67,6 +67,7 @@
 	"CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL": "While a value is false, then do some statements.",
 	"CONTROLS_TIME_LOOP": "Repeat",
 	"CONTROLS_TIME_SEC": "second",
+	"CONTROLS_REPEAT_TIME_LOOP": "Repeat %1 second",
 	"CONTROLS_FOR_HELPURL": "https://github.com/google/blockly/wiki/Loops#count-with",
 	"CONTROLS_FOR_TOOLTIP": "Have the variable '%1' take on the values from the start number to the end number, counting by the specified interval, and do the specified blocks.",
 	"CONTROLS_FOR_TITLE": "count with %1 from %2 to %3 by %4",

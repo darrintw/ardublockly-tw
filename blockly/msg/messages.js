@@ -185,6 +185,8 @@ Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL = 'While a value is false, then do
 Blockly.Msg.CONTROLS_TIME_LOOP = 'Repeat';
 /// block text - Repeat seconds
 Blockly.Msg.CONTROLS_TIME_SEC = 'second';
+/// block text - Repeat
+Blockly.Msg.CONTROLS_REPEAT_TIME_LOOP = 'Repeat %1 second';
 
 /// url - Describes 'for loops' in computer programs.  Consider using your language's translation of [https://en.wikipedia.org/wiki/For_loop https://en.wikipedia.org/wiki/For_loop], if present.
 Blockly.Msg.CONTROLS_FOR_HELPURL = 'https://github.com/google/blockly/wiki/Loops#count-with';

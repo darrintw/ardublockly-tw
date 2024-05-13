@@ -13,6 +13,7 @@
   "ARD_TYPE_NUMBER": "整數",
   "ARD_TYPE_LONG": "長整數",
   "ARD_TYPE_DECIMAL": "浮點數",
+  "ARD_TYPE_UNSIGNED_LONG": "無號長整數",
   "ARD_TYPE_BYTE": "位元組",
   "ARD_TYPE_ARRAY": "陣列",
   "ARD_TYPE_FUNCTION": "函式",
