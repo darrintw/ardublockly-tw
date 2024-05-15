@@ -8,8 +8,8 @@
     "cacheControl" : {
       "maxAge" : 300,
       "mustRevalidate" : false,
-      "noStore" : false,
-      "noCache" : false
+      "noCache" : false,
+      "noStore" : false
     },
     "expires" : "2024-05-03T09:31:54.412"
   }, {
@@ -21,8 +21,8 @@
     "cacheControl" : {
       "maxAge" : -1,
       "mustRevalidate" : false,
-      "noStore" : false,
-      "noCache" : false
+      "noCache" : false,
+      "noStore" : false
     },
     "expires" : "2024-05-06T08:47:48.433"
   }, {
@@ -34,8 +34,8 @@
     "cacheControl" : {
       "maxAge" : -1,
       "mustRevalidate" : false,
-      "noStore" : false,
-      "noCache" : false
+      "noCache" : false,
+      "noStore" : false
     },
     "expires" : "2024-05-06T08:47:49.682"
   } ]

@@ -23,11 +23,11 @@ Blockly.Arduino['io_output'] = function (block) {
     Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Digital Write');
 
-    var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+    var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);\n';
+    //Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
 
-    var code = '';
-    return code;
+    //var code = '';
+    return pinSetupCode;
 };
 
 /**
@@ -47,11 +47,11 @@ Blockly.Arduino['io_output_var'] = function (block) {
 
     //Blockly.Arduino.addVariable(pinName, 'int ' + pinId + ';', true);
 
-    var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_' + pinId, pinSetupCode, false);
+    var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);\n';
+    //Blockly.Arduino.addSetup('io_' + pinId, pinSetupCode, false);
 
-    var code = '';
-    return code;
+    //var code = '';
+    return pinSetupCode;
 };
 
 /**
@@ -97,7 +97,7 @@ Blockly.Arduino['io_digitalwrite_var'] = function (block) {
         block, 'STATE', Blockly.Arduino.ORDER_ATOMIC) || 'LOW';
 
     var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_digital_' + pinId, pinSetupCode, false);
+    //Blockly.Arduino.addSetup('io_digital_' + pinId, pinSetupCode, false);
 
     var code = 'digitalWrite(' + pinId + ', ' + stateOutput + ');\n';
     return code;
@@ -176,7 +176,7 @@ Blockly.Arduino['io_analogwrite_var'] = function (block) {
         block, 'NUM', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_analog' + pinId, pinSetupCode, false);
+    //Blockly.Arduino.addSetup('io_analog' + pinId, pinSetupCode, false);
 
     var code = 'analogWrite(' + pinId + ', ' + stateOutput + ');\n';
     return code;
