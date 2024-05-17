@@ -287,21 +287,35 @@ Ardublockly.TOOLBOX_XML =
     '        </block>' +
     '      </value>' +
     '    </block>' +
-    /*
     '    <block type="io_tone">' +
-    '      <field name="TONEPIN">0</field>' +
-    '      <value name="FREQUENCY">' +
+    '      <field name="TONEPIN">2</field>' +
+    '      <field name="NOTE">C</field>' +
+    '      <field name="TONE">5</field>' +
+    '      <field name="TEMPO">1</field>' +
+    '      <value name="TIME">' +
     '        <block type="math_number">' +
-    '          <field name="NUM">220</field>' +
+    '          <field name="NUM">250</field>' +
     '        </block>' +
     '      </value>' +
     '    </block>' +
-    '    <block type="io_notone"></block>' +
-    */
+    '    <block type="io_tone_var">' +
+    '      <field name="NOTE">C</field>' +
+    '      <field name="TONE">5</field>' +
+    '      <field name="TEMPO">1</field>' +
+    '      <value name="TIME">' +
+    '        <block type="math_number">' +
+    '          <field name="NUM">250</field>' +
+    '        </block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="io_notone">' +
+    '      <field name="TONEPIN">2</field>' +
+    '    </block>' +
+    '    <block type="io_notone_var"></block>' +
     '    <block type="io_play_tone"></block>' +
     '    <block type="io_single_tone">' +
     '      <field name="NOTE">C</field>' +
-    '      <field name="TONE">1</field>' +
+    '      <field name="TONE">5</field>' +
     '      <field name="TEMPO">1</field>' +
     '    </block>' +
     '    <block type="io_multi_tone">' +

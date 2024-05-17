@@ -23,11 +23,11 @@ Blockly.Arduino['io_output'] = function (block) {
     Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Digital Write');
 
-    var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+    var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);\n';
+    //Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
 
-    var code = '';
-    return code;
+    //var code = '';
+    return pinSetupCode;
 };
 
 /**
@@ -47,11 +47,11 @@ Blockly.Arduino['io_output_var'] = function (block) {
 
     //Blockly.Arduino.addVariable(pinName, 'int ' + pinId + ';', true);
 
-    var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_' + pinId, pinSetupCode, false);
+    var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);\n';
+    //Blockly.Arduino.addSetup('io_' + pinId, pinSetupCode, false);
 
-    var code = '';
-    return code;
+    //var code = '';
+    return pinSetupCode;
 };
 
 /**
@@ -97,7 +97,7 @@ Blockly.Arduino['io_digitalwrite_var'] = function (block) {
         block, 'STATE', Blockly.Arduino.ORDER_ATOMIC) || 'LOW';
 
     var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_digital_' + pinId, pinSetupCode, false);
+    //Blockly.Arduino.addSetup('io_digital_' + pinId, pinSetupCode, false);
 
     var code = 'digitalWrite(' + pinId + ', ' + stateOutput + ');\n';
     return code;
@@ -176,7 +176,7 @@ Blockly.Arduino['io_analogwrite_var'] = function (block) {
         block, 'NUM', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     var pinSetupCode = 'pinMode(' + pinId + ', OUTPUT);';
-    Blockly.Arduino.addSetup('io_analog' + pinId, pinSetupCode, false);
+    //Blockly.Arduino.addSetup('io_analog' + pinId, pinSetupCode, false);
 
     var code = 'analogWrite(' + pinId + ', ' + stateOutput + ');\n';
     return code;
@@ -190,15 +190,57 @@ Blockly.Arduino['io_analogwrite_var'] = function (block) {
  * @return {string} Completed code with order of operation.
  */
 Blockly.Arduino['io_tone'] = function (block) {
-    var pin = block.getFieldValue('TONEPIN');
-    var freq = Blockly.Arduino.valueToCode(block, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.addInclude('HashMap_inc', '#include <Pitches.h>');
+    var pin = block.getFieldValue("TONEPIN");
     Blockly.Arduino.reservePin(
         block, pin, Blockly.Arduino.pinTypes.OUTPUT, 'Tone pin');
+
+    var toneInit = 'initToneMap();';
+    Blockly.Arduino.addSetup('io_tone_init' + 'io_tone_init', toneInit, false);
 
     var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);\n';
     Blockly.Arduino.addSetup('io_tone_' + pin, pinSetupCode, false);
 
-    var code = 'tone(' + pin + ',' + freq + ');\n';
+    var toneTime = Blockly.Arduino.valueToCode(
+        block, 'TIME', Blockly.Arduino.ORDER_ATOMIC) || '250';
+
+    var note = block.getFieldValue("NOTE");
+    var tone = block.getFieldValue("TONE");
+    var tempo = block.getFieldValue("TEMPO");
+    if (note == "0") {
+        tone = "0";
+    }
+    var code = 'tone(' + pin + ', tonehashMap.valueFor("' + note + tone + '"), ' + toneTime + ');\n';
+    return code;
+};
+
+/**
+ * Function for turning the tone library on on a given pin (X).
+ * Arduino code: setup { pinMode(X, OUTPUT) }
+ *               loop  { tone(X, frequency) }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code with order of operation.
+ */
+Blockly.Arduino['io_tone_var'] = function (block) {
+    Blockly.Arduino.addInclude('HashMap_inc', '#include <Pitches.h>');
+    var toneName = block.getFieldValue("TONEPIN");
+    var toneId = Blockly.Arduino.variableDB_.getName(
+        toneName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    var toneInit = 'initToneMap();';
+    Blockly.Arduino.addSetup('io_tone_init' + 'io_tone_init', toneInit, false);
+
+    var toneTime = Blockly.Arduino.valueToCode(
+        block, 'TIME', Blockly.Arduino.ORDER_ATOMIC) || '250';
+
+    var note = block.getFieldValue("NOTE");
+    var tone = block.getFieldValue("TONE");
+    var tempo = block.getFieldValue("TEMPO");
+    if (note == "0") {
+        tone = "0";
+    }
+    var code = 'tone(' + toneName + ', tonehashMap.valueFor("' + note + tone + '"), ' + toneTime + ');\n';
     return code;
 };
 
@@ -218,6 +260,26 @@ Blockly.Arduino['io_notone'] = function (block) {
     Blockly.Arduino.addSetup('io_tone_' + pin, pinSetupCode, false);
 
     var code = 'noTone(' + pin + ');\n';
+    return code;
+};
+
+/**
+ * Function for .
+ * Arduino code: setup {  }
+ *               loop  {  }
+ * @param {!Blockly.Block} block Block to generate the code from.
+ * @return {string} Completed code.
+ */
+Blockly.Arduino['io_notone_var'] = function (block) {
+    var toneName = block.getFieldValue("TONEPIN");
+    var toneId = Blockly.Arduino.variableDB_.getName(
+        toneName,
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+
+    /*var pinSetupCode = 'pinMode(' + toneId + ', OUTPUT);\n';
+    Blockly.Arduino.addSetup('io_tone_' + toneId, pinSetupCode, false);*/
+
+    var code = 'noTone(' + toneId + ');\n';
     return code;
 };
 
@@ -337,8 +399,10 @@ Blockly.Arduino['io_play_tone'] = function (block) {
         toneName,
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
 
-    var pinSetupCode = 'initToneMap();\n' +
-        '  pinMode(' + toneId + ', OUTPUT);\n';
+    var toneInit = 'initToneMap();';
+    Blockly.Arduino.addSetup('io_tone_init' + 'io_tone_init', toneInit, false);
+
+    var pinSetupCode = 'pinMode(' + toneId + ', OUTPUT);\n';
     Blockly.Arduino.addSetup('io_tone_' + toneId, pinSetupCode, false);
 
     var toneSpeed = block.getFieldValue("SPEED");
