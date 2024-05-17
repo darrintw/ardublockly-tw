@@ -7,36 +7,36 @@
     "createdAt" : "2024-05-03T09:26:54.412",
     "cacheControl" : {
       "maxAge" : 300,
+      "noStore" : false,
       "mustRevalidate" : false,
-      "noCache" : false,
-      "noStore" : false
+      "noCache" : false
     },
     "expires" : "2024-05-03T09:31:54.412"
   }, {
     "remoteURL" : "https://downloads.arduino.cc/libraries/library_index.json.gz",
     "localPath" : "D:\\Tools\\Ardublockly-dev\\ardublockly\\arduino\\portable\\cache\\downloads.arduino.cc\\libraries\\library_index.json.gz",
-    "eTag" : "2dc0376eb3296c55b967593ef8428a90",
-    "md5" : "MD5:2dc0376eb3296c55b967593ef8428a90",
-    "createdAt" : "2024-05-06T08:47:49.433",
+    "eTag" : "f99517ca5ab93467878d9e9a267a4367",
+    "md5" : "MD5:f99517ca5ab93467878d9e9a267a4367",
+    "createdAt" : "2024-05-16T12:30:06.775",
     "cacheControl" : {
       "maxAge" : -1,
+      "noStore" : false,
       "mustRevalidate" : false,
-      "noCache" : false,
-      "noStore" : false
+      "noCache" : false
     },
-    "expires" : "2024-05-06T08:47:48.433"
+    "expires" : "2024-05-16T12:30:05.775"
   }, {
     "remoteURL" : "https://downloads.arduino.cc/libraries/library_index.json.sig",
     "localPath" : "D:\\Tools\\Ardublockly-dev\\ardublockly\\arduino\\portable\\cache\\downloads.arduino.cc\\libraries\\library_index.json.sig",
-    "eTag" : "5404ffe74757425655cd61233bdfbba0",
-    "md5" : "MD5:5404ffe74757425655cd61233bdfbba0",
-    "createdAt" : "2024-05-06T08:47:50.682",
+    "eTag" : "ee829efa325692a534cdbea0c717d968",
+    "md5" : "MD5:ee829efa325692a534cdbea0c717d968",
+    "createdAt" : "2024-05-16T12:30:08.038",
     "cacheControl" : {
       "maxAge" : -1,
+      "noStore" : false,
       "mustRevalidate" : false,
-      "noCache" : false,
-      "noStore" : false
+      "noCache" : false
     },
-    "expires" : "2024-05-06T08:47:49.682"
+    "expires" : "2024-05-16T12:30:07.038"
   } ]
 }

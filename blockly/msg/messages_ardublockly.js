@@ -198,6 +198,8 @@ Blockly.Msg.ARD_NOTE = 'Note';
 /// Arduino
 Blockly.Msg.ARD_TONE = 'Tone';
 /// Arduino
+Blockly.Msg.ARD_TONE_PITCH = 'Pitch';
+/// Arduino
 Blockly.Msg.ARD_TEMPO = 'Tempo';
 /// Arduino
 Blockly.Msg.ARD_NOTONE_PIN = 'No tone PIN#';

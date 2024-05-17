@@ -164,6 +164,12 @@ Blockly.Blocks['io_analogwrite_var'] = {
     }
 };
 
+var note = [["0", "0"], ["C", "C"], ["CS", "CS"], ["D", "D"], ["DS", "DS"], ["E", "E"], ["F", "F"], ["G", "G"], ["GS", "GS"], ["A", "A"], ["AS", "AS"], ["B", "B"]];
+
+var tone = [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]];
+
+var tempo = [["1", "1"], ["2", "2"], ["4", "4"], ["8", "8"], ["16", "16"]];
+
 Blockly.Blocks['io_tone'] = {
     /**
      * Block for
@@ -173,30 +179,47 @@ Blockly.Blocks['io_tone'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_SETTONE)
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "TONEPIN");
-        this.appendValueInput("FREQUENCY")
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_NOTE)
+            .appendField(new Blockly.FieldDropdown(note), "NOTE")
+            .appendField(Blockly.Msg.ARD_TONE_PITCH)
+            .appendField(new Blockly.FieldDropdown(tone), "TONE")
+        this.appendValueInput("TIME")
             .setCheck(Blockly.Types.NUMBER.checkList)
-            .appendField(Blockly.Msg.ARD_TONEFREQ);
+            .appendField(Blockly.Msg.ARD_TIME_MS);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(Blockly.Blocks.output.HUE);
         this.setTooltip(Blockly.Msg.ARD_TONE_TIP);
         this.setHelpUrl('https://www.arduino.cc/en/Reference/tone');
-    }, /**
-     * Called whenever anything on the workspace changes.
-     * It checks frequency values and sets a warning if out of range.
+    }
+};
+
+Blockly.Blocks['io_tone_var'] = {
+    /**
+     * Block for
      * @this Blockly.Block
      */
-    onchange: function (event) {
-        if (!this.workspace || event.type == Blockly.Events.MOVE || event.type == Blockly.Events.UI) {
-            return;  // Block deleted or irrelevant event
-        }
-        var freq = Blockly.Arduino.valueToCode(this, "FREQUENCY", Blockly.Arduino.ORDER_ATOMIC)
-        if (freq < 31 || freq > 65535) {
-            this.setWarningText(Blockly.Msg.ARD_TONE_WARNING, 'io_tone');
-        } else {
-            this.setWarningText(null, 'io_tone');
-        }
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_SETTONE)
+            .appendField(Blockly.Msg.ARD_TONE_USE)
+            .appendField(new Blockly.FieldVariable("buzzer"), "TONEPIN")
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_NOTE)
+            .appendField(new Blockly.FieldDropdown(note), "NOTE")
+            .appendField(Blockly.Msg.ARD_TONE_PITCH)
+            .appendField(new Blockly.FieldDropdown(tone), "TONE")
+        this.appendValueInput("TIME")
+            .setCheck(Blockly.Types.NUMBER.checkList)
+            .appendField(Blockly.Msg.ARD_TIME_MS);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.setTooltip(Blockly.Msg.ARD_TONE_TIP);
+        this.setHelpUrl('https://www.arduino.cc/en/Reference/tone');
     }
 };
 
@@ -217,11 +240,23 @@ Blockly.Blocks['io_notone'] = {
     }
 };
 
-var note = [["0", "0"], ["C", "C"], ["CS", "CS"], ["D", "D"], ["DS", "DS"], ["E", "E"], ["F", "F"], ["G", "G"], ["GS", "GS"], ["A", "A"], ["AS", "AS"], ["B", "B"]];
-
-var tone = [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]];
-
-var tempo = [["1", "1"], ["2", "2"], ["4", "4"], ["8", "8"], ["16", "16"]];
+Blockly.Blocks['io_notone_var'] = {
+    /**
+     * Block for
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.ARD_NOTONE)
+            .appendField(Blockly.Msg.ARD_TONE_USE)
+            .appendField(new Blockly.FieldVariable("buzzer"), "TONEPIN")
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour(Blockly.Blocks.output.HUE);
+        this.setTooltip(Blockly.Msg.ARD_NOTONE_TIP);
+        this.setHelpUrl('https://www.arduino.cc/en/Reference/noTone');
+    }
+};
 
 Blockly.Blocks['io_play_tone'] = {
     /**
@@ -261,7 +296,7 @@ Blockly.Blocks['io_single_tone'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_NOTE)
             .appendField(new Blockly.FieldDropdown(note), "NOTE")
-            .appendField(Blockly.Msg.ARD_TONE)
+            .appendField(Blockly.Msg.ARD_TONE_PITCH)
             .appendField(new Blockly.FieldDropdown(tone), "TONE")
             .appendField(Blockly.Msg.ARD_TEMPO)
             .appendField(new Blockly.FieldDropdown(tempo), "TEMPO");

@@ -132,6 +132,7 @@
   "ARD_TONE_PLAY": " 播放, 速度 ",
   "ARD_NOTE": "音符",
   "ARD_TONE": "音調",
+  "ARD_TONE_PITCH": "音高",
   "ARD_TEMPO": "節奏",
   "ARD_NOTONE": "關閉音調 腳位#",
   "ARD_NOTONE_PIN": "沒有音調 腳位#",

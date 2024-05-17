@@ -79,6 +79,7 @@
 	"ARD_TONE_PLAY": " play, speed ",
 	"ARD_NOTE": "Note",
 	"ARD_TONE": "Tone",
+	"ARD_TONE_PITCH": "Pitch",
 	"ARD_TEMPO": "Tempo",
 	"ARD_NOTONE_PIN": "No tone PIN#",
 	"ARD_NOTONE_PIN_TIP": "Stop generating a tone on a Pin",
