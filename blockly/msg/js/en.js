@@ -493,6 +493,7 @@ Blockly.Msg.ARD_TONEFREQ = "at frequency";
 Blockly.Msg.ARD_TONE_FREQ = "frequency";
 Blockly.Msg.ARD_TONE_PIN = "Tone PIN#";
 Blockly.Msg.ARD_TONE_PIN_TIP = "Generate audio tones on a Pin";
+Blockly.Msg.ARD_TONE_PITCH = "Pitch";
 Blockly.Msg.ARD_TONE_PLAY = " play, speed ";
 Blockly.Msg.ARD_TONE_TIP = "Sets tone on Pin to specified frequency within range 31 - 4987";
 Blockly.Msg.ARD_TONE_USE = "Use ";

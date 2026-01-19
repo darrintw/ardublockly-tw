@@ -73,6 +73,7 @@
 	"ARD_TONE_PLAY": "Arduino",
 	"ARD_NOTE": "Arduino",
 	"ARD_TONE": "Arduino",
+	"ARD_TONE_PITCH": "Arduino",
 	"ARD_TEMPO": "Arduino",
 	"ARD_NOTONE_PIN": "Arduino",
 	"ARD_NOTONE_PIN_TIP": "Arduino",

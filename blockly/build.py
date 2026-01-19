@@ -439,8 +439,8 @@ def gen_blocks():
 
     # Remove Blockly.Blocks to be compatible with Blockly.
     remove = ["var Blockly={Blocks:{}};", "Blockly.Types={};"]
-    do_compile_online(params, target_filename, filenames, remove)
-    # do_compile(params, target_filename, filenames, remove)
+    # do_compile_online(params, target_filename, filenames, remove)
+    do_compile(params, target_filename, filenames, remove)
 
 
 def gen_generator(language):
@@ -469,8 +469,8 @@ def gen_generator(language):
 
     # Remove Blockly.Generator to be compatible with Blockly.
     remove = ["var Blockly={Generator:{}};", "Blockly.StaticTyping={};"]
-    do_compile_online(params, target_filename, filenames, remove)
-    # do_compile(params, target_filename, filenames, remove)
+    # do_compile_online(params, target_filename, filenames, remove)
+    do_compile(params, target_filename, filenames, remove)
 
 
 class Gen_compressed(threading.Thread):
@@ -511,8 +511,8 @@ class Gen_compressed(threading.Thread):
             params.append(("js_code", "".join(f.readlines())))
             f.close()
         remove = []
-        do_compile_online(params, target_filename, filenames, remove)
-        # do_compile(params, target_filename, filenames, remove)
+        # do_compile_online(params, target_filename, filenames, remove)
+        do_compile(params, target_filename, filenames, remove)
 
 
 def _rebuild(srcs, dests):

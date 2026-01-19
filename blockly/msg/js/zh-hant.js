@@ -493,6 +493,7 @@ Blockly.Msg.ARD_TONEFREQ = "頻率";
 Blockly.Msg.ARD_TONE_FREQ = "頻率";
 Blockly.Msg.ARD_TONE_PIN = "播放音調 腳位#";
 Blockly.Msg.ARD_TONE_PIN_TIP = "在選擇的腳位播放音調";
+Blockly.Msg.ARD_TONE_PITCH = "音高";
 Blockly.Msg.ARD_TONE_PLAY = " 播放, 速度 ";
 Blockly.Msg.ARD_TONE_TIP = "產生頻率範圍 31 - 4987 的音調";
 Blockly.Msg.ARD_TONE_USE = "用";
