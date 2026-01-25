@@ -5,7 +5,7 @@ goog.require('Blockly.Msg.zh.hant');
 goog.require('Blockly.Msg');
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_USER = 'Huskylens';
+Blockly.Msg.BLOCKS_CATEGORY_HUSKYLENS = 'Huskylens';
 
 /// Ardublockly name
 Blockly.Msg.HL_INITIAL_SERIAL = '初始化Huskylens(序列)';

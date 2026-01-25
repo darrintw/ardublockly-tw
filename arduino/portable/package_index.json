@@ -12,6 +12,119 @@
         {
           "name": "Arduino AVR Boards",
           "architecture": "avr",
+          "version": "1.8.7",
+          "category": "Arduino",
+          "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.7.tar.bz2",
+          "archiveFileName": "avr-1.8.7.tar.bz2",
+          "checksum": "SHA-256:6ae7000b1b6c004c4a208d6d924a8046b417580e4a10cfd3f88930b6660a51db",
+          "size": "7161883",
+          "help": {
+            "online": "https://www.arduino.cc/en/Reference/HomePage"
+          },
+          "boards": [
+            {
+              "name": "Arduino Yún"
+            },
+            {
+              "name": "Arduino UNO"
+            },
+            {
+              "name": "Arduino UNO Mini"
+            },
+            {
+              "name": "Arduino UNO WiFi"
+            },
+            {
+              "name": "Arduino Diecimila"
+            },
+            {
+              "name": "Arduino Nano"
+            },
+            {
+              "name": "Arduino Mega"
+            },
+            {
+              "name": "Arduino Mega ADK"
+            },
+            {
+              "name": "Arduino Leonardo"
+            },
+            {
+              "name": "Arduino Leonardo Ethernet"
+            },
+            {
+              "name": "Arduino Micro"
+            },
+            {
+              "name": "Arduino Esplora"
+            },
+            {
+              "name": "Arduino Mini"
+            },
+            {
+              "name": "Arduino Ethernet"
+            },
+            {
+              "name": "Arduino Fio"
+            },
+            {
+              "name": "Arduino BT"
+            },
+            {
+              "name": "Arduino LilyPad USB"
+            },
+            {
+              "name": "Arduino LilyPad"
+            },
+            {
+              "name": "Arduino Pro"
+            },
+            {
+              "name": "Arduino ATMegaNG"
+            },
+            {
+              "name": "Arduino Robot Control"
+            },
+            {
+              "name": "Arduino Robot Motor"
+            },
+            {
+              "name": "Arduino Gemma"
+            },
+            {
+              "name": "Adafruit Circuit Playground"
+            },
+            {
+              "name": "Arduino Yún Mini"
+            },
+            {
+              "name": "Arduino Industrial 101"
+            },
+            {
+              "name": "Linino One"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arduinoOTA",
+              "version": "1.3.0"
+            },
+            {
+              "packager": "arduino",
+              "name": "avr-gcc",
+              "version": "7.3.0-atmel3.6.1-arduino7"
+            },
+            {
+              "packager": "arduino",
+              "name": "avrdude",
+              "version": "8.0.0-arduino1"
+            }
+          ]
+        },
+        {
+          "name": "Arduino AVR Boards",
+          "architecture": "avr",
           "version": "1.8.6",
           "category": "Arduino",
           "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2",
@@ -3151,6 +3264,51 @@
         {
           "name": "Arduino Mbed OS Edge Boards",
           "architecture": "mbed_edge",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-edge-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-edge-4.5.0.tar.bz2",
+          "checksum": "SHA-256:91be2964dad92d909368e6b61ceb598a73b6a4bc3f374a573ec9cf7806174cde",
+          "size": "6150000",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Arduino Edge Control"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.9.1-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "rp2040tools",
+              "version": "1.0.6"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Edge Boards",
+          "architecture": "mbed_edge",
           "version": "4.4.1",
           "category": "Arduino",
           "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-edge-4.4.1.tar.bz2",
@@ -4521,6 +4679,46 @@
         {
           "name": "Arduino Mbed OS Giga Boards",
           "architecture": "mbed_giga",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-giga-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-giga-4.5.0.tar.bz2",
+          "checksum": "SHA-256:2f8221a7fac12408801f3fdbf5da6ade404475ba9241ad6f209afef60e2239ee",
+          "size": "16628484",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Arduino Giga"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "imgtool",
+              "version": "1.8.0-arduino.2"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Giga Boards",
+          "architecture": "mbed_giga",
           "version": "4.4.1",
           "category": "Arduino",
           "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-giga-4.4.1.tar.bz2",
@@ -5035,6 +5233,57 @@
               "packager": "arduino",
               "name": "openocd",
               "version": "0.11.0-arduino2"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Nano Boards",
+          "architecture": "mbed_nano",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-nano-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-nano-4.5.0.tar.bz2",
+          "checksum": "SHA-256:5c62c3355076391fed667bcb43138cffb93d61dfe72f5b335760a306a7e40335",
+          "size": "7311962",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Arduino Nano 33 BLE"
+            },
+            {
+              "name": "Arduino Nano 33 BLE Sense"
+            },
+            {
+              "name": "Arduino Nano RP2040 Connect"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.9.1-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "rp2040tools",
+              "version": "1.0.6"
             }
           ]
         },
@@ -6591,6 +6840,57 @@
         {
           "name": "Arduino Mbed OS Nicla Boards",
           "architecture": "mbed_nicla",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-nicla-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-nicla-4.5.0.tar.bz2",
+          "checksum": "SHA-256:48e376257d5f3b16ba637510bf82ddc55f4eb31b1437aba8e716d1acd04fc62e",
+          "size": "20708876",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Nicla Sense ME"
+            },
+            {
+              "name": "Nicla Voice"
+            },
+            {
+              "name": "Nicla Vision"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.9.1-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "rp2040tools",
+              "version": "1.0.6"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Nicla Boards",
+          "architecture": "mbed_nicla",
           "version": "4.4.1",
           "category": "Arduino",
           "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-nicla-4.4.1.tar.bz2",
@@ -7943,6 +8243,46 @@
         {
           "name": "Arduino Mbed OS Opta Boards",
           "architecture": "mbed_opta",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-opta-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-opta-4.5.0.tar.bz2",
+          "checksum": "SHA-256:26b20f92f64d9780abe0b362d67675ddd70acba04e26ffde65ed2ba7f0337a23",
+          "size": "16489256",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Arduino Finder Opta"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "imgtool",
+              "version": "1.8.0-arduino.2"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Opta Boards",
+          "architecture": "mbed_opta",
           "version": "4.4.1",
           "category": "Arduino",
           "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-opta-4.4.1.tar.bz2",
@@ -8558,6 +8898,54 @@
             }
           ],
           "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "imgtool",
+              "version": "1.8.0-arduino.2"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Portenta Boards",
+          "architecture": "mbed_portenta",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-portenta-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-portenta-4.5.0.tar.bz2",
+          "checksum": "SHA-256:53438c3707f14c0d4ee7c556bfdc420beeb9073e1c45ddbfa7ffa0ceba1276ec",
+          "size": "21831591",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Arduino Portenta H7"
+            },
+            {
+              "name": "Arduino Portenta X8"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "adb",
+              "version": "32.0.0"
+            },
             {
               "packager": "arduino",
               "name": "arm-none-eabi-gcc",
@@ -9884,6 +10272,51 @@
               "packager": "arduino",
               "name": "openocd",
               "version": "0.11.0-arduino1"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS RP2040 Boards",
+          "architecture": "mbed_rp2040",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-RP2040-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-RP2040-4.5.0.tar.bz2",
+          "checksum": "SHA-256:ef61c2705b2e0922e2329cad116f870287765d9d8507f6f6c4b7650310f4da22",
+          "size": "4779929",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Raspberry Pi Pico"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.9.1-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "rp2040tools",
+              "version": "1.0.6"
             }
           ]
         },
@@ -11254,6 +11687,51 @@
               "packager": "arduino",
               "name": "rp2040tools",
               "version": "1.0.2"
+            }
+          ]
+        },
+        {
+          "name": "Arduino Mbed OS Stella Boards",
+          "architecture": "mbed_stella",
+          "version": "4.5.0",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-stella-4.5.0.tar.bz2",
+          "archiveFileName": "ArduinoCore-mbed-stella-4.5.0.tar.bz2",
+          "checksum": "SHA-256:eaec272f86a2ac651fb085476bbc99e05fcf2f6bb81c7289f43028abaa5522be",
+          "size": "6154392",
+          "help": {
+            "online": "https://github.com/arduino/ArduinoCore-mbed/issues"
+          },
+          "boards": [
+            {
+              "name": "Arduino Stella"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "7-2017q4"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.9.1-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "dfu-util",
+              "version": "0.10.0-arduino1"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.11.0-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "rp2040tools",
+              "version": "1.0.6"
             }
           ]
         },
@@ -18977,6 +19455,54 @@
               "archiveFileName": "avr-gcc-4.8.1-arduino2-x86_64-pc-linux-gnu.tar.bz2",
               "checksum": "SHA-256:24a931877bee5f36dc00a88877219a6d2f6a1fb7abb989fd04556b8432d2e14e",
               "size": "27152002"
+            }
+          ]
+        },
+        {
+          "name": "avrdude",
+          "version": "8.0.0-arduino1",
+          "systems": [
+            {
+              "host": "aarch64-linux-gnu",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_ARM64.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_Linux_ARM64.tar.gz",
+              "checksum": "SHA-256:031f212bdcb77e2ea13895f07ab4a0c254963f8f1bbd3b8797d3363a6a2e95e3",
+              "size": "1565761"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_ARMv6.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_Linux_ARMv6.tar.gz",
+              "checksum": "SHA-256:66ae53dac08b2db2f065d7b6b2f60ff62d2a85907613c7b2988fdd1922950b5d",
+              "size": "1441658"
+            },
+            {
+              "host": "i686-linux-gnu",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_32bit.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_Linux_32bit.tar.gz",
+              "checksum": "SHA-256:622358355a17cb400060cffbe1f8fc2fd9cea2ee883ab1b7766fd8219e0fc0f9",
+              "size": "1452068"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Windows_32bit.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_Windows_32bit.tar.gz",
+              "checksum": "SHA-256:833aa1a66a8e70cd597fcfdbd7e559a91a00eca1d7aa3be2ce9bcadf7ccb987c",
+              "size": "1890359"
+            },
+            {
+              "host": "x86_64-apple-darwin12",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_macOS_64bit.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_macOS_64bit.tar.gz",
+              "checksum": "SHA-256:8a36cf441a3ce21622eb30b40f0b71d27864b30ea851cb795ae654ee10e2c132",
+              "size": "1173108"
+            },
+            {
+              "host": "x86_64-linux-gnu",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_64bit.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:1d2edadb07e070fcd016e8c802e961e30bfa606c2db63625c930526e7044aaa6",
+              "size": "1476932"
             }
           ]
         },
@@ -34024,11 +34550,32 @@
           "version": "0.12.0-arduino1-static",
           "systems": [
             {
+              "host": "aarch64-linux-gnu",
+              "url": "https://downloads.arduino.cc/tools/openocd-0.12.0-arduino1-static-aarch64-linux-gnu.tar.bz2",
+              "archiveFileName": "openocd-0.12.0-arduino1-static-aarch64-linux-gnu.tar.bz2",
+              "checksum": "SHA-256:d6d78fb9f422647a7606213925f037593e5dbd6ad4d6670c3a54ab9ec1cc0cd1",
+              "size": "7156521"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "https://downloads.arduino.cc/tools/openoc:d-0.12.0-arduino1-static-arm-linux-gnueabihf.tar.bz2",
+              "archiveFileName": "openocd-0.12.0-arduino1-static-arm-linux-gnueabihf.tar.bz2",
+              "checksum": "SHA-256:b05a8d42e2f2efa545aaecf9a8f6c56ee40a6346df19b8458bd17c0d974d715a",
+              "size": "7082042"
+            },
+            {
               "host": "i686-mingw32",
               "url": "https://downloads.arduino.cc/tools/openocd-0.12.0-arduino1-static-i686-w64-mingw32.tar.bz2",
               "archiveFileName": "openocd-0.12.0-arduino1-static-i686-w64-mingw32.tar.bz2",
               "checksum": "SHA-256:91ef6e8c9abdbcf8c97040b7045a620280716ab542629c2310e44b855475f807",
               "size": "2352177"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "https://downloads.arduino.cc/tools/openocd-0.12.0-arduino1-static-i686-ubuntu16.04-linux-gnu.tar.bz2",
+              "archiveFileName": "openocd-0.12.0-arduino1-static-i686-ubuntu16.04-linux-gnu.tar.bz2",
+              "checksum": "SHA-256:2b2702ba564cdd1ed72593631ecb54cf3dd27f16bf0d39b0d6a0152cfde6f6db",
+              "size": "6790799"
             },
             {
               "host": "x86_64-apple-darwin",

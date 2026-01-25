@@ -8,65 +8,59 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.HUSKYLENS');
+goog.provide('Blockly.Blocks.HUSKYLENS2');
 
 goog.require('Blockly.Blocks');
 
 goog.require('Blockly.Types');
 
-Blockly.Blocks.HUSKYLENS.HUE = 180;
+Blockly.Blocks.HUSKYLENS2.HUE = 180;
 
 /* User define block */
-Blockly.Blocks['huskylens_serial'] = {
+Blockly.Blocks['huskylens2_serial'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_INITIAL_SERIAL);
+      .appendField(Blockly.Msg.HL2_INITIAL_SERIAL);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_RX)
-      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "HL_RX");
+      .appendField(Blockly.Msg.HL2_RX)
+      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "HL2_RX");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_TX)
-      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "HL_TX");
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_RETURN + Blockly.Msg.HL_VARIABLE)
-      .appendField(new Blockly.FieldVariable("huskylens_result"), "HL_RESULT_NAME");
+      .appendField(Blockly.Msg.HL2_TX)
+      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "HL2_TX");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
     this.setTooltip("");
     this.setHelpUrl("");
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_i2c'] = {
+Blockly.Blocks['huskylens2_i2c'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_INITIAL_I2C);
+      .appendField(Blockly.Msg.HL2_INITIAL_I2C);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_SDA);
+      .appendField(Blockly.Msg.HL2_SDA);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_SCL);
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_RETURN + Blockly.Msg.HL_VARIABLE)
-      .appendField(new Blockly.FieldVariable("huskylens_result"), "HL_RESULT_NAME");
+      .appendField(Blockly.Msg.HL2_SCL);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
     this.setTooltip("");
     this.setHelpUrl("");
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_begin'] = {
+Blockly.Blocks['huskylens2_begin'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_BEGIN)
-      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL_I2C, "I2C"], [Blockly.Msg.HL_SERIAL, "SERIAL"]]), "HUSKYLENS_CONNTYPE")
-      .appendField(Blockly.Msg.HL_SUCCESSED);
+      .appendField(Blockly.Msg.HL2_BEGIN)
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL2_I2C, "I2C"], [Blockly.Msg.HL2_SERIAL, "SERIAL"]]), "HUSKYLENS2_CONNTYPE")
+      .appendField(Blockly.Msg.HL2_SUCCESSED);
     this.setOutput(true, "Boolean");
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   },
   /** @return {!string} Type of the block, text length always an integer. */
   getBlockType: function () {
@@ -75,134 +69,133 @@ Blockly.Blocks['huskylens_begin'] = {
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_request'] = {
+Blockly.Blocks['huskylens2_getresult'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_HAVE + Blockly.Msg.HL_RETURN);
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_HAVE + Blockly.Msg.HL2_RETURN);
     this.setOutput(true, "Boolean");
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_requestby'] = {
+Blockly.Blocks['huskylens2_getresultby'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_HAVE)
-      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL_BLOCK, "BLOCK"], [Blockly.Msg.HL_ARROW, "ARROW"]]), "COMMAND_TYPE")
-      .appendField(Blockly.Msg.HL_OF + Blockly.Msg.HL_RETURN);
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_HAVE)
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL2_BLOCK, "BLOCK"], [Blockly.Msg.HL2_ARROW, "ARROW"]]), "COMMAND_TYPE")
+      .appendField(Blockly.Msg.HL2_OF + Blockly.Msg.HL2_RETURN);
     this.setOutput(true, "Boolean");
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_requestbyid'] = {
+Blockly.Blocks['huskylens2_getresultbyid'] = {
   init: function () {
     this.appendValueInput("OBJECT_ID")
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_HAVE)
-      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL_BLOCK, "BLOCK"], [Blockly.Msg.HL_ARROW, "ARROW"]]), "COMMAND_TYPE")
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_HAVE)
       .appendField("ID");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_OF + Blockly.Msg.HL_RETURN);
+      .appendField(Blockly.Msg.HL2_OF + Blockly.Msg.HL2_RETURN);
     this.setOutput(true, "Boolean");
     this.setInputsInline(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_request_learned'] = {
+Blockly.Blocks['huskylens2_getresult_learned'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_HAVE + Blockly.Msg.HL_LEARNED + Blockly.Msg.HL_OF + Blockly.Msg.HL_RETURN);
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_HAVE + Blockly.Msg.HL2_LEARNED + Blockly.Msg.HL2_OF + Blockly.Msg.HL2_RETURN);
     this.setOutput(true, "Boolean");
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
     this.setOutput(true, "Boolean");
     this.setInputsInline(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_request_learnedby'] = {
+Blockly.Blocks['huskylens2_getresult_learnedby'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_HAVE + Blockly.Msg.HL_LEARNED)
-      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL_BLOCK, "BLOCK"], [Blockly.Msg.HL_ARROW, "ARROW"]]), "COMMAND_TYPE")
-      .appendField(Blockly.Msg.HL_OF + Blockly.Msg.HL_RETURN);
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_HAVE + Blockly.Msg.HL2_LEARNED)
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL2_BLOCK, "BLOCK"], [Blockly.Msg.HL2_ARROW, "ARROW"]]), "COMMAND_TYPE")
+      .appendField(Blockly.Msg.HL2_OF + Blockly.Msg.HL2_RETURN);
     this.setOutput(true, "Boolean");
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_learned'] = {
+Blockly.Blocks['huskylens2_learned'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_LEARNED);
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_LEARNED);
     this.setOutput(true, "Boolean");
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_learnedbyid'] = {
+Blockly.Blocks['huskylens2_learnedbyid'] = {
   init: function () {
     this.appendValueInput("OBJECT_ID")
-      .appendField(Blockly.Msg.HL_IS + Blockly.Msg.HL_LEARNED)
+      .appendField(Blockly.Msg.HL2_IS + Blockly.Msg.HL2_LEARNED)
       .appendField("ID");
     this.setOutput(true, "Boolean");
     this.setInputsInline(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_available'] = {
+Blockly.Blocks['huskylens2_available'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_DETECTED);
+      .appendField(Blockly.Msg.HL2_DETECTED);
     this.setOutput(true, ["Number", "Boolean"]);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_get_result'] = {
+Blockly.Blocks['huskylens2_get_result'] = {
   init: function () {
     var blockresultlist = [
-      ['X' + Blockly.Msg.HL_CENTER, 'xCenter'],
-      ['Y' + Blockly.Msg.HL_CENTER, 'yCenter'],
-      [Blockly.Msg.HL_WIDTH, 'width'],
-      [Blockly.Msg.HL_HEIGHT, 'height'],
-      ['ID', 'ID']
+      ['ID', 'id'],
+      [Blockly.Msg.HL2_NAME, 'name'],
+      [Blockly.Msg.HL2_NUM, 'number'],
+      ['X' + Blockly.Msg.HL2_CENTER, 'xCenter'],
+      ['Y' + Blockly.Msg.HL2_CENTER, 'yCenter'],
+      [Blockly.Msg.HL2_WIDTH, 'width'],
+      [Blockly.Msg.HL2_HEIGHT, 'height']
     ];
+    /*
     this.appendDummyInput()
-    .appendField(Blockly.Msg.HL_FROM)
-      .appendField(new Blockly.FieldVariable("huskylens_result"), "HL_RESULT_NAME");
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_GET)
-      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL_BLOCK, 'BLOCK'], [Blockly.Msg.HL_ARROW, 'ARROW']]), 'COMMAND_TYPE');
+      .appendField(Blockly.Msg.HL2_GET)
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HL2_BLOCK, 'BLOCK'], [Blockly.Msg.HL2_ARROW, 'ARROW']]), 'COMMAND_TYPE');*/
     this.appendDummyInput('RESULT_INPUT')
-      .appendField(Blockly.Msg.HL_CONTANT)
+      .appendField(Blockly.Msg.HL2_GET + Blockly.Msg.HL2_RESULT + Blockly.Msg.HL2_CONTANT)
       .appendField(new Blockly.FieldDropdown(blockresultlist), 'RESULT_DATA');
     this.setOutput(true, null);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   },
   onchange: function (event) {
     var blockresultlist = [
-      ['X' + Blockly.Msg.HL_CENTER, 'xCenter'],
-      ['Y' + Blockly.Msg.HL_CENTER, 'yCenter'],
-      [Blockly.Msg.HL_WIDTH, 'width'],
-      [Blockly.Msg.HL_HEIGHT, 'height'],
+      ['X' + Blockly.Msg.HL2_CENTER, 'xCenter'],
+      ['Y' + Blockly.Msg.HL2_CENTER, 'yCenter'],
+      [Blockly.Msg.HL2_WIDTH, 'width'],
+      [Blockly.Msg.HL2_HEIGHT, 'height'],
       ['ID', 'ID']
     ];
     var arrowresultlist = [
-      ['X' + Blockly.Msg.HL_ORIGIN, 'xOrigin'],
-      ['Y' + Blockly.Msg.HL_ORIGIN, 'yOrigin'],
-      ['X' + Blockly.Msg.HL_TARGET, 'xTarget'],
-      ['Y' + Blockly.Msg.HL_TARGET, 'yTarget'],
+      ['X' + Blockly.Msg.HL2_ORIGIN, 'xOrigin'],
+      ['Y' + Blockly.Msg.HL2_ORIGIN, 'yOrigin'],
+      ['X' + Blockly.Msg.HL2_TARGET, 'xTarget'],
+      ['Y' + Blockly.Msg.HL2_TARGET, 'yTarget'],
       ['ID', 'ID']
     ];
     if (event.blockId === this.id) {
@@ -213,11 +206,11 @@ Blockly.Blocks['huskylens_get_result'] = {
           }
           if (event.newValue == 'BLOCK') {
             this.appendDummyInput('RESULT_INPUT')
-              .appendField(Blockly.Msg.HL_CONTANT)
+              .appendField(Blockly.Msg.HL2_CONTANT)
               .appendField(new Blockly.FieldDropdown(blockresultlist), 'RESULT_DATA');
           } else if (event.newValue == 'ARROW') {
             this.appendDummyInput('RESULT_INPUT')
-              .appendField(Blockly.Msg.HL_CONTANT)
+              .appendField(Blockly.Msg.HL2_CONTANT)
               .appendField(new Blockly.FieldDropdown(arrowresultlist), 'RESULT_DATA');
           }
         }
@@ -227,95 +220,94 @@ Blockly.Blocks['huskylens_get_result'] = {
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_get'] = {
+Blockly.Blocks['huskylens2_get'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_GET + Blockly.Msg.HL_RETURN + Blockly.Msg.HL_TO)
-      .appendField(new Blockly.FieldVariable("huskylens_result"), "HL_RESULT_NAME");
+      .appendField(Blockly.Msg.HL2_GET + Blockly.Msg.HL2_RETURN + Blockly.Msg.HL2_TO);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_getbyindex'] = {
+Blockly.Blocks['huskylens2_getbyindex'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_getbyid'] = {
+Blockly.Blocks['huskylens2_getbyid'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_show_text'] = {
+Blockly.Blocks['huskylens2_show_text'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_count'] = {
+Blockly.Blocks['huskylens2_count'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_countby'] = {
+Blockly.Blocks['huskylens2_countby'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_countbyid'] = {
+Blockly.Blocks['huskylens2_countbyid'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.ADR_USER_MSG);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
   }
 };
 
 /* User define block */
-Blockly.Blocks['huskylens_algorithm'] = {
+Blockly.Blocks['huskylens2_algorithm'] = {
   init: function () {
     funclist = [
-      [Blockly.Msg.HL_ALGORITHM_FACE_RECOGNITION, 'FACE_RECOGNITION'],
-      [Blockly.Msg.HL_ALGORITHM_OBJECT_TRACKING, 'OBJECT_TRACKING'],
-      [Blockly.Msg.HL_ALGORITHM_OBJECT_RECOGNITION, 'OBJECT_RECOGNITION'],
-      [Blockly.Msg.HL_ALGORITHM_LINE_TRACKING, 'LINE_TRACKING'],
-      [Blockly.Msg.HL_ALGORITHM_COLOR_RECOGNITION, 'COLOR_RECOGNITION'],
-      [Blockly.Msg.HL_ALGORITHM_TAG_RECOGNITION, 'TAG_RECOGNITION'],
-      [Blockly.Msg.HL_ALGORITHM_OBJECT_CLASSIFICATION, 'OBJECT_CLASSIFICATION']
+      [Blockly.Msg.HL2_ALGORITHM_FACE_RECOGNITION, 'ALGORITHM_FACE_RECOGNITION'],
+      [Blockly.Msg.HL2_ALGORITHM_OBJECT_TRACKING, 'ALGORITHM_OBJECT_TRACKING'],
+      [Blockly.Msg.HL2_ALGORITHM_OBJECT_RECOGNITION, 'ALGORITHM_OBJECT_RECOGNITION'],
+      [Blockly.Msg.HL2_ALGORITHM_LINE_TRACKING, 'LINE_TRALGORITHM_LINE_TRACKINGACKING'],
+      [Blockly.Msg.HL2_ALGORITHM_COLOR_RECOGNITION, 'ALGORITHM_COLOR_RECOGNITION'],
+      [Blockly.Msg.HL2_ALGORITHM_TAG_RECOGNITION, 'ALGORITHM_TAG_RECOGNITION'],
+      [Blockly.Msg.HL2_ALGORITHM_OBJECT_CLASSIFICATION, 'ALGORITHM_OBJECT_CLASSIFICATION']
     ];
     this.appendDummyInput()
-      .appendField(Blockly.Msg.HL_CHANGE + Blockly.Msg.HL_ALGORITHM)
-      .appendField(new Blockly.FieldDropdown(funclist), "HL_FUNC_SELECTOR");
+      .appendField(Blockly.Msg.HL2_CHANGE + Blockly.Msg.HL2_ALGORITHM)
+      .appendField(new Blockly.FieldDropdown(funclist), "HL2_FUNC_SELECTOR");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.HUSKYLENS.HUE);
+    this.setColour(Blockly.Blocks.HUSKYLENS2.HUE);
     this.setTooltip("");
     this.setHelpUrl("");
   }
