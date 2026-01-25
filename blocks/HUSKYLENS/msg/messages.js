@@ -17,7 +17,7 @@ goog.require('Blockly.Msg.en');
  */
 
 /// Toolbox category name
-Blockly.Msg.BLOCKS_CATEGORY_USER = 'Huskylens';
+Blockly.Msg.BLOCKS_CATEGORY_HUSKYLENS = 'Huskylens';
 
 /// Ardublockly name
 Blockly.Msg.HL_INITIAL_SERIAL = 'Initial Huskylens(serial)';

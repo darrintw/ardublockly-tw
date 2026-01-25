@@ -157,4 +157,5 @@ Ardublockly.LOCALISED_TEXT = {
     catLEDMatrix: "MAX7219 LED Matrix Display",
     catPixetto: "Pixetto",
     catHUSKYLENS: "HUSKYLENS",
+    catHUSKYLENS2: "HUSKYLENS2",
 };
