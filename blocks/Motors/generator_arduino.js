@@ -316,7 +316,7 @@ Blockly.Arduino['afmotor_var'] = function (block) {
         block, 'afmotor_speed', Blockly.Arduino.ORDER_ATOMIC) || 255;
 
     Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
-    Blockly.Arduino.addVariable('AFMotor_declar_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
+    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
 
     var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
         motorName + '.run(' + afmotor_control + ');\n';
