@@ -1,0 +1,85 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="ktpZZ[MLPv){QyhJlicP">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="huskylens2_i2c" id="YjY)5QK-v}Bw6|x-BXKk">
+            <next>
+              <block type="controls_whileUntil" id="BPxDc;4)3|GBbnd-Rq1?">
+                <field name="MODE">UNTIL</field>
+                <value name="BOOL">
+                  <block type="huskylens2_begin" id=".8n:gsxf)vdj8h#?`]/S">
+                    <field name="HUSKYLENS2_CONNTYPE">I2C</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="serial_print" id="]+We0uN?;@_eU:XgJkFf">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text" id=";QB3v+nt4kvq0:RE:l3N">
+                        <field name="TEXT">waitting huskylens2</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="huskylens2_algorithm" id="FYeBIik2;Wr1Hr;X^Vum">
+                    <field name="HL2_FUNC_SELECTOR">ALGORITHM_COLOR_RECOGNITION</field>
+                    <next>
+                      <block type="serial_print" id="eplW~%IWt3JVcOU-iZQ5">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="`V.gk4CE~^%LX^_mnA;`">
+                            <field name="TEXT">color mode</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="KgL3`sPGY-Z~GW:W*X]7">
+        <value name="IF0">
+          <block type="huskylens2_getresult" id="@Cm4`gtUnQ28*ouPnGSF"></block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="UT9|hbPGS)6I{[(dP#X.">
+            <value name="IF0">
+              <block type="huskylens2_available" id="9nTQ^296DGF(drDdflO_"></block>
+            </value>
+            <statement name="DO0">
+              <block type="serial_print" id="Pc3AuD7rX@Ouo()NLDQ]">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="huskylens2_get_result" id="mo;(46OcB6L)rL2+4icX">
+                    <field name="RESULT_DATA">id</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="time_delay" id="@nF7s8z;ZHvEblw;-7?3">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="ZhV_8YU(#b9b{Ag#0z]#">
+                <field name="NUM">100</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

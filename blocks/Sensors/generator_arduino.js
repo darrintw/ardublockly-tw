@@ -32,16 +32,18 @@ Blockly.Arduino['ultrasonic_distance'] = function (block) {
     }
     var udName = 'ultrasonic_distance_' + dUnit;
 
-    Blockly.Arduino.addSetup(udName + '_' + trigPin + '_setup_trig', 'pinMode(' + trigPin + ', OUTPUT);', true);
-    Blockly.Arduino.addSetup(udName + '_' + echoPin + '_setup_echo', 'pinMode(' + echoPin + ', INPUT);', true);
+    //Blockly.Arduino.addSetup(udName + '_' + trigPin + '_setup_trig', 'pinMode(' + trigPin + ', OUTPUT);', true);
+    //Blockly.Arduino.addSetup(udName + '_' + echoPin + '_setup_echo', 'pinMode(' + echoPin + ', INPUT);', true);
 
     var fCode = 'float ' + udName + '(int trigPin, int echoPin){\n' +
+        '  pinMode(trigPin, OUTPUT);\n' +
         '  digitalWrite(trigPin, LOW);\n' +
         '  digitalWrite(echoPin, LOW);\n' +
         '  delayMicroseconds(5);\n' +
         '  digitalWrite(trigPin, HIGH);\n' +
         '  delayMicroseconds(10);\n' +
         '  digitalWrite(trigPin, LOW);\n' +
+        '  pinMode(echoPin, INPUT);\n' +
         '  unsigned long sonic_duration = pulseIn(echoPin, HIGH);\n' +
         '  float distance_' + dUnit + ' = ' + comm + ';\n\n' +
         '  return distance_' + dUnit + ';\n' +
