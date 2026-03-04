@@ -24,7 +24,7 @@ Blockly.Arduino['io_input'] = function (block) {
         block, pin, Blockly.Arduino.pinTypes.INPUT, 'Digital Read');
 
     var pinSetupCode = 'pinMode(' + pin + ', INPUT);\n';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, true);
+    //Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, true);
 
     return pinSetupCode;
 };
@@ -58,7 +58,7 @@ Blockly.Arduino['io_input_pullup'] = function (block) {
         block, pin, Blockly.Arduino.pinTypes.INPUT, 'Digital Read');
 
     var pinSetupCode = 'pinMode(' + pin + ', INPUT_PULLUP);\n';
-    Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, true);
+    //Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, true);
 
     return pinSetupCode;
 };

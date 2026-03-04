@@ -125,7 +125,7 @@ Blockly.Arduino['servo_write_angle'] = function (block) {
         block, pinKey, Blockly.Arduino.pinTypes.SERVO, 'Servo Write');
 
     Blockly.Arduino.addInclude('Servo_inc', '#include <Servo.h>');
-    Blockly.Arduino.addDeclaration('servo_' + pinKey, 'Servo ' + servoName + ';');
+    Blockly.Arduino.addVariable('servo_' + pinKey, 'Servo ' + servoName + ';', true);
 
     var code = servoName + '.attach(' + pinKey + ');\n' +
         servoName + '.write(' + servoName + '.read());\n' +
@@ -239,7 +239,7 @@ Blockly.Arduino['pwm_servo_write_angle'] = function (block) {
         block, pinKey, Blockly.Arduino.pinTypes.SERVO, 'Servo Write');
 
     Blockly.Arduino.addInclude('PWMServo_inc', '#include <PWMServo.h>');
-    Blockly.Arduino.addDeclaration('pwmservo_' + pinKey, 'PWMServo ' + servoName + ';');
+    Blockly.Arduino.addVariable('pwmservo_' + pinKey, 'PWMServo ' + servoName + ';', true);
 
     var code = servoName + '.attach(' + pinKey + ');\n' +
         servoName + '.write(' + servoName + '.read());\n' +
@@ -287,7 +287,7 @@ Blockly.Arduino['afmotor'] = function (block) {
     var afmotor_speed = block.getFieldValue('afmotor_speed');
 
     Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
-    Blockly.Arduino.addDeclaration('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
+    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
 
     var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
         motorName + '.run(' + afmotor_control + ');\n';
@@ -316,7 +316,7 @@ Blockly.Arduino['afmotor_var'] = function (block) {
         block, 'afmotor_speed', Blockly.Arduino.ORDER_ATOMIC) || 255;
 
     Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
-    Blockly.Arduino.addDeclaration('AFMotor_declar_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');');
+    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
 
     var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
         motorName + '.run(' + afmotor_control + ');\n';
@@ -584,6 +584,7 @@ Blockly.Arduino.md_initirremote = function () {
     var code = '';
     return code;
 };
+
 //if irremote pressed
 Blockly.Arduino.md_isirremote = function () {
     //Blockly.Arduino.definitions_['define_KeyMap'] = '#include<KeyMap.h>\n#include<IRremote.h>\nEmakefun_Sensor *ir = mMotorDriver.getSensor(E_IR);\n';
@@ -592,6 +593,7 @@ Blockly.Arduino.md_isirremote = function () {
     var code = 'irKeyCode = ir.getCode()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
 //����ʮһ��ͼ�ο�ת��ΪC���� ����ң�ذ���������������boolean��
 Blockly.Arduino.md_irKeyPress = function () {
     var dropdown_Irkeys = this.getFieldValue('Irkeys');
@@ -614,6 +616,7 @@ Blockly.Arduino.md_initnrf24l01 = function () {
     var code = '';
     return code;
 };
+
 //����ʮ����ͼ�ο�ת��ΪC���� NRF24L01�������ݵ�ַvalue ����value
 Blockly.Arduino.md_nrf24l01send = function () {
 
@@ -626,6 +629,7 @@ Blockly.Arduino.md_nrf24l01send = function () {
     var code = '';
     return code;
 };
+
 //��������
 Blockly.Arduino.md_nrf24l01rec = function () {
 
@@ -638,6 +642,7 @@ Blockly.Arduino.md_nrf24l01rec = function () {
     var code = '';
     return code;
 };
+
 //nrfadd��������
 Blockly.Arduino.md_nrf24l01senddatass = function () {
     var value_nrfdatass = Blockly.Arduino.valueToCode(this, 'nrfdatass', Blockly.Arduino.ORDER_ATOMIC);
@@ -646,6 +651,7 @@ Blockly.Arduino.md_nrf24l01senddatass = function () {
     var code = 'Mirf.send(' + value_nrfdatass + '); \n';
     return code;
 };
+
 //��������
 Blockly.Arduino.md_nrfissend = function () {
     var code = 'Mirf.isSending()';
@@ -664,6 +670,7 @@ Blockly.Arduino.md_nrfrecdatas = function () {
     var code = 'Mirf.getData(' + value_md_nrfdatasss + '); \n';
     return code;
 };
+
 //����ʮ�ĸ�ͼ�ο�ת��ΪC���� NRF24L01�������ݵ�ַvalue
 Blockly.Arduino.md_nrf24l01receive = function () {
     var value_address = Blockly.Arduino.valueToCode(this, 'address', Blockly.Arduino.ORDER_ATOMIC);
@@ -762,6 +769,7 @@ Blockly.Arduino.md_readservo = function () {
     var code = 'servo' + dropdown_Servoports + '->readDegrees()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
 //��������ʼ��
 Blockly.Arduino.md_m4init = function () {
     var dropdown_M4Ports1 = this.getFieldValue('M4Ports1');
