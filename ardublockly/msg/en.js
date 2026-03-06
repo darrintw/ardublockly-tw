@@ -122,6 +122,14 @@ Ardublockly.LOCALISED_TEXT = {
     openingSketch: "Opening Sketch in the Arduino IDE...",
     openSketch: "Open Sketch in IDE",
     notImplemented: "Function not yet implemented",
+    saveBeforeLoadTitle: "Block changes",
+    saveBeforeLoad: "Save blocks before loading new file?<br>Press cancel to ignore loading",
+    /* Screenshot */
+    screenshotGenerating: "Generating screenshot...",
+    screenshotSaveError: "Failed to save screenshot",
+    screenshotSaveSuccess: "Screenshot saved to ",
+    screenshotPartialError: "Some screenshots failed to save",
+    screenshotGenerationError: "Failed to generate screenshot",
     /* Prompts */
     ok: "OK",
     okay: "Okay",

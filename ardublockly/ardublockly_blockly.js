@@ -100,8 +100,7 @@ Ardublockly.loadXmlBlockFile = function (xmlFile, cbSuccess, cbError) {
     var requestCb = function () {
         if (request.readyState === 4) {
             if (request.status === 200) {
-                var success = Ardublockly.replaceBlocksfromXml(request.responseText);
-                cbSuccess(success);
+                cbSuccess(request.responseText);
             } else {
                 cbError();
             }
@@ -130,6 +129,7 @@ Ardublockly.replaceBlocksfromXml = function (blocksXml) {
         return false;
     }
     Ardublockly.workspace.clear();
+    Ardublockly.workspace.clearUndo();
     var success = false;
     if (xmlDom) {
         success = Ardublockly.loadBlocksfromXmlDom(xmlDom);
@@ -147,6 +147,9 @@ Ardublockly.loadBlocksfromXmlDom = function (blocksXmlDom) {
         Blockly.Xml.domToWorkspace(blocksXmlDom, Ardublockly.workspace);
     } catch (e) {
         return false;
+    }
+    if (Ardublockly.workspace.undoStack_.length > 8000) {
+        Ardublockly.shortMessage('Undo steps are too many, please save and open new file.', 5000);
     }
     return true;
 };
@@ -453,6 +456,11 @@ Ardublockly.svgToPng_ = function (data, width, height, callback) {
     var img = new Image();
 
     var pixelDensity = 10;
+    // Limit canvas size to prevent browser memory issues
+    var maxCanvasSize = 8192;
+    if (width * pixelDensity > maxCanvasSize || height * pixelDensity > maxCanvasSize) {
+        pixelDensity = Math.min(maxCanvasSize / width, maxCanvasSize / height, pixelDensity);
+    }
     canvas.width = width * pixelDensity;
     canvas.height = height * pixelDensity;
     img.onload = function () {
@@ -462,7 +470,7 @@ Ardublockly.svgToPng_ = function (data, width, height, callback) {
             var dataUri = canvas.toDataURL('image/png');
             callback(dataUri);
         } catch (err) {
-            console.warn('Error converting the workspace svg to a png');
+            console.warn('Error converting the workspace svg to a png', err);
             callback('');
         }
     };
@@ -470,9 +478,167 @@ Ardublockly.svgToPng_ = function (data, width, height, callback) {
 }
 
 /**
+ * Create a PNG screenshot for Electron by saving directly to file, splitting large images into tiles.
+ * @param {!Blockly.WorkspaceSvg} workspace The Blockly workspace.
+ */
+Ardublockly.workspaceToPngForElectron_ = function (workspace) {
+    // Show progress message
+    Ardublockly.shortMessage(Ardublockly.getLocalStr('screenshotGenerating'), 2000);
+
+    // Select directory first
+    const { dialog } = require('@electron/remote');
+    dialog.showOpenDialog({
+        properties: ['openDirectory']
+    }).then(result => {
+        if (result.canceled) return;
+
+        const selectedDir = result.filePaths[0];
+        const fs = require('@electron/remote').require('fs');
+        const path = require('@electron/remote').require('path');
+
+        try {
+            // Go through all text areas and set their value.
+            var textAreas = document.getElementsByTagName("textarea");
+            for (var i = 0; i < textAreas.length; i++) {
+                textAreas[i].innerHTML = textAreas[i].value;
+            }
+
+            var bBox = workspace.getBlocksBoundingBox();
+            var x = bBox.x || bBox.left;
+            var y = bBox.y || bBox.top;
+            var width = bBox.width || bBox.right - x;
+            var height = bBox.height || bBox.bottom - y;
+
+            var pixelDensity = 10;
+            // Limit total pixels to prevent memory issues
+            var maxTotalPixels = 4096 * 4096; // ~16M pixels
+            if (width * height * pixelDensity * pixelDensity > maxTotalPixels) {
+                pixelDensity = Math.sqrt(maxTotalPixels / (width * height));
+                pixelDensity = Math.max(1, Math.floor(pixelDensity));
+            }
+
+            var maxTileSize = 4096; // Max size per tile in pixels
+            var tileWidth = Math.min(width * pixelDensity, maxTileSize);
+            var tileHeight = Math.min(height * pixelDensity, maxTileSize);
+            var cols = Math.ceil((width * pixelDensity) / maxTileSize);
+            var rows = Math.ceil((height * pixelDensity) / maxTileSize);
+
+            var blockCanvas = workspace.getCanvas();
+            var clone = blockCanvas.cloneNode(true);
+            clone.removeAttribute('transform');
+
+            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            svg.appendChild(clone);
+            svg.setAttribute('viewBox', x + ' ' + y + ' ' + width + ' ' + height);
+
+            svg.setAttribute('class', 'blocklySvg ' +
+                (workspace.options.renderer || 'geras') + '-renderer ' +
+                (workspace.getTheme ? workspace.getTheme().name + '-theme' : ''));
+            svg.setAttribute('width', width);
+            svg.setAttribute('height', height);
+            svg.setAttribute("style", 'background-color: transparent');
+
+            var css = [].slice.call(document.head.querySelectorAll('style'))
+                .filter(function (el) {
+                    return /\.blocklySvg/.test(el.innerText) ||
+                        (el.id.indexOf('blockly-') === 0);
+                }).map(function (el) {
+                    return el.innerText;
+                }).join('\n');
+            var style = document.createElement('style');
+            style.innerHTML = css;
+            svg.insertBefore(style, svg.firstChild);
+
+            var svgAsXML = (new XMLSerializer).serializeToString(svg);
+            svgAsXML = svgAsXML.replace(/&nbsp/g, '&#160');
+            var data = 'data:image/svg+xml,' + encodeURIComponent(svgAsXML);
+
+            var canvas = document.createElement("canvas");
+            var context = canvas.getContext("2d");
+            var img = new Image();
+
+            canvas.width = width * pixelDensity;
+            canvas.height = height * pixelDensity;
+            img.onload = function () {
+                try {
+                    context.drawImage(img, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+
+                    var totalTiles = cols * rows;
+                    var savedTiles = 0;
+
+                    if (cols === 1 && rows === 1) {
+                        // Single tile
+                        canvas.toBlob(function(blob) {
+                            saveBlob(blob, path.join(selectedDir, 'screenshot.png'));
+                        }, 'image/png');
+                    } else {
+                        // Multiple tiles
+                        for (let row = 0; row < rows; row++) {
+                            for (let col = 0; col < cols; col++) {
+                                var tileCanvas = document.createElement("canvas");
+                                var tileContext = tileCanvas.getContext("2d");
+                                tileCanvas.width = tileWidth;
+                                tileCanvas.height = tileHeight;
+
+                                var sx = col * maxTileSize;
+                                var sy = row * maxTileSize;
+                                var sw = Math.min(maxTileSize, canvas.width - sx);
+                                var sh = Math.min(maxTileSize, canvas.height - sy);
+
+                                tileContext.drawImage(canvas, sx, sy, sw, sh, 0, 0, sw, sh);
+
+                                tileCanvas.toBlob(function(blob) {
+                                    var filename = 'screenshot_' + row + '_' + col + '.png';
+                                    saveBlob(blob, path.join(selectedDir, filename));
+                                }, 'image/png');
+                            }
+                        }
+                    }
+
+                    function saveBlob(blob, filePath) {
+                        if (blob) {
+                            var reader = new FileReader();
+                            reader.onload = function() {
+                                var buffer = Buffer.from(reader.result);
+                                fs.writeFile(filePath, buffer, (err) => {
+                                    if (err) {
+                                        console.error('Error saving screenshot:', err);
+                                        Ardublockly.shortMessage(Ardublockly.getLocalStr('screenshotSaveError'), 4000);
+                                    } else {
+                                        savedTiles++;
+                                        if (savedTiles === totalTiles) {
+                                            Ardublockly.shortMessage(Ardublockly.getLocalStr('screenshotSaveSuccess') + selectedDir, 4000);
+                                        }
+                                    }
+                                });
+                            };
+                            reader.readAsArrayBuffer(blob);
+                        } else {
+                            console.warn('Failed to create PNG blob');
+                            savedTiles++;
+                            if (savedTiles === totalTiles) {
+                                Ardublockly.shortMessage(Ardublockly.getLocalStr('screenshotPartialError'), 4000);
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error processing screenshot:', e);
+                    Ardublockly.shortMessage(Ardublockly.getLocalStr('screenshotGenerationError'), 4000);
+                }
+            };
+            img.src = data;
+        } catch (e) {
+            console.error('Error in screenshot generation:', e);
+            Ardublockly.shortMessage(Ardublockly.getLocalStr('screenshotGenerationError'), 4000);
+        }
+    });
+};
+
+/**
  * Create an SVG of the blocks on the workspace.
  * @param {!Blockly.WorkspaceSvg} workspace The workspace.
- * @param {!Function} callback Callback.
+ * @param {!Function} callback Callback. 
  */
 Ardublockly.workspaceToSvg_ = function (workspace, callback, customCss) {
 
@@ -527,13 +693,19 @@ Ardublockly.workspaceToSvg_ = function (workspace, callback, customCss) {
  * @param {!Blockly.WorkspaceSvg} workspace The Blockly workspace.
  */
 Ardublockly.downloadScreenshot = function () {
-    Ardublockly.workspaceToSvg_(Ardublockly.workspace, function (datauri) {
-        var a = document.createElement('a');
-        a.download = 'screenshot.png';
-        a.target = '_self';
-        a.href = datauri;
-        document.body.appendChild(a);
-        a.click();
-        a.parentNode.removeChild(a);
-    });
+    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+        // Electron version: save directly to file to avoid size limits
+        Ardublockly.workspaceToPngForElectron_(Ardublockly.workspace);
+    } else {
+        // Browser version: use data URI
+        Ardublockly.workspaceToSvg_(Ardublockly.workspace, function (datauri) {
+            var a = document.createElement('a');
+            a.download = 'screenshot.png';
+            a.target = '_self';
+            a.href = datauri;
+            document.body.appendChild(a);
+            a.click();
+            a.parentNode.removeChild(a);
+        });
+    }
 };
