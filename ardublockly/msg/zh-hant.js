@@ -142,6 +142,15 @@ Ardublockly.LOCALISED_TEXT = {
     openingSketch: "正在Arduino IDE開啟草稿碼...",
     openSketch: "在IDE開啟草稿碼",
     notImplemented: "功能尚未實作",
+    saveBeforeLoadTitle: "積木變更",
+    saveBeforeLoad: "載入新檔案前建議先存檔。是否繼續？<br>按下取消不載入新檔案",
+    /* 截圖 */
+    screenshotGenerating: "正在生成截圖...",
+    screenshotSaveError: "儲存截圖失敗",
+    screenshotSaveSuccess: "截圖已儲存到 ",
+    screenshotPartialError: "部分截圖儲存失敗",
+    screenshotGenerationError: "截圖生成失敗",
+
     /* Prompts */
     ok: "確定",
     okay: "確定",

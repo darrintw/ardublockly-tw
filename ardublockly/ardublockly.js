@@ -79,6 +79,12 @@ Ardublockly.init = function () {
     window.oncontextmenu = (e) => {
         e.preventDefault();
     }
+
+    // Clean up timers when page unloads
+    window.addEventListener('beforeunload', function() {
+        Ardublockly.stopSerialPortRefreshTimer();
+    });
+
     Ardublockly.restoreDefault();
 };
 
@@ -410,16 +416,32 @@ Ardublockly.changeIdeButtons = function (value) {
 Ardublockly.loadServerXmlFile = function (xmlFile, filename) {
     var loadXmlFileAccepted = function () {
         // loadXmlBlockFile loads the file asynchronously and needs a callback
-        var loadXmlCb = function (success) {
-            if (success) {
-                Ardublockly.renderContent();
-                Ardublockly.sketchNameSet(filename);
-            } else {
+        var loadXmlCb = function (xmlText) {
+            var loadNewFile = function() {
+                var success = Ardublockly.replaceBlocksfromXml(xmlText);
+                if (success) {
+                    Ardublockly.renderContent();
+                    Ardublockly.sketchNameSet(filename);
+                } else {
+                    Ardublockly.alertMessage(
+                        Ardublockly.getLocalStr('invalidXmlTitle'),
+                        Ardublockly.getLocalStr('invalidXmlBody'),
+                        false);
+                    Ardublockly.restoreDefault();
+                }
+            };
+            if (Ardublockly.workspace.getAllBlocks().length > 0) {
                 Ardublockly.alertMessage(
-                    Ardublockly.getLocalStr('invalidXmlTitle'),
-                    Ardublockly.getLocalStr('invalidXmlBody'),
-                    false);
-                Ardublockly.restoreDefault();
+                    Ardublockly.getLocalStr('saveBeforeLoadTitle'),
+                    Ardublockly.getLocalStr('saveBeforeLoad'),
+                    true,
+                    loadNewFile,
+                    function() {
+                        // 取消，不載入
+                    }
+                );
+            } else {
+                loadNewFile();
             }
         };
         var connectionErrorCb = function () {
@@ -457,51 +479,120 @@ Ardublockly.codeSwitch = function () {
  * Blockly workspace.
  */
 Ardublockly.loadUserXmlFile = function () {
-    // Create File Reader event listener function
-    var parseInputXMLFile = function (e) {
-        var xmlFile = e.target.files[0];
-        if (xmlFile !== undefined) {
-            var filename = xmlFile.name;
-            var extensionPosition = filename.lastIndexOf('.');
-            if (extensionPosition !== -1) {
-                filename = filename.substr(0, extensionPosition);
+    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+        // Electron version
+        const { dialog } = require('@electron/remote');
+        dialog.showOpenDialog({
+            properties: ['openFile'],
+            filters: [{ name: 'XML Files', extensions: ['xml'] }]
+        }).then(result => {
+            if (!result.canceled && result.filePaths.length > 0) {
+                const filePath = result.filePaths[0];
+                const fs = require('fs');
+                fs.readFile(filePath, 'utf8', (err, data) => {
+                    if (err) {
+                        Ardublockly.alertMessage(
+                            Ardublockly.getLocalStr('invalidXmlTitle'),
+                            Ardublockly.getLocalStr('invalidXmlBody'),
+                            false);
+                        return;
+                    }
+                    var filename = require('path').basename(filePath, '.xml');
+                    var loadNewFile = function() {
+                        var success = Ardublockly.replaceBlocksfromXml(data);
+                        if (success) {
+                            Ardublockly.renderContent();
+                            Ardublockly.sketchNameSet(filename);
+                        } else {
+                            Ardublockly.alertMessage(
+                                Ardublockly.getLocalStr('invalidXmlTitle'),
+                                Ardublockly.getLocalStr('invalidXmlBody'),
+                                false);
+                            Ardublockly.restoreDefault();
+                        }
+                    };
+                    if (Ardublockly.workspace.getAllBlocks().length > 0) {
+                        Ardublockly.alertMessage(
+                            Ardublockly.getLocalStr('saveBeforeLoadTitle'),
+                            Ardublockly.getLocalStr('saveBeforeLoad'),
+                            true,
+                            loadNewFile,
+                            function() {
+                                // 取消，不載入
+                            }
+                        );
+                    } else {
+                        loadNewFile();
+                    }
+                });
             }
-
-            var reader = new FileReader();
-            reader.onload = function () {
-                var success = Ardublockly.replaceBlocksfromXml(reader.result);
-                if (success) {
-                    Ardublockly.renderContent();
-                    Ardublockly.sketchNameSet(filename);
-                } else {
-                    Ardublockly.alertMessage(
-                        Ardublockly.getLocalStr('invalidXmlTitle'),
-                        Ardublockly.getLocalStr('invalidXmlBody'),
-                        false);
-                    Ardublockly.restoreDefault();
+        }).catch(err => {
+            console.error('Error opening file dialog:', err);
+        });
+    } else {
+        // Browser version
+        // Create File Reader event listener function
+        var parseInputXMLFile = function (e) {
+            var xmlFile = e.target.files[0];
+            if (xmlFile !== undefined) {
+                var filename = xmlFile.name;
+                var extensionPosition = filename.lastIndexOf('.');
+                if (extensionPosition !== -1) {
+                    filename = filename.substr(0, extensionPosition);
                 }
-            };
-            reader.readAsText(xmlFile);
+
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var loadNewFile = function() {
+                        var success = Ardublockly.replaceBlocksfromXml(reader.result);
+                        if (success) {
+                            Ardublockly.renderContent();
+                            Ardublockly.sketchNameSet(filename);
+                        } else {
+                            Ardublockly.alertMessage(
+                                Ardublockly.getLocalStr('invalidXmlTitle'),
+                                Ardublockly.getLocalStr('invalidXmlBody'),
+                                false);
+                            Ardublockly.restoreDefault();
+                        }
+                    };
+                    if (Ardublockly.workspace.getAllBlocks().length > 0) {
+                        Ardublockly.alertMessage(
+                            Ardublockly.getLocalStr('saveBeforeLoadTitle'),
+                            Ardublockly.getLocalStr('saveBeforeLoad'),
+                            true,
+                            loadNewFile,
+                            function() {
+                                // 取消，不載入
+                            }
+                        );
+                    } else {
+                        loadNewFile();
+                    }
+                };
+                reader.readAsText(xmlFile);
+            }
+        };
+
+        // Create once invisible browse button with event listener, and click it
+        var selectFile = document.getElementById('select_file');
+        if (selectFile === null) {
+            var selectFileDom = document.createElement('INPUT');
+            selectFileDom.type = 'file';
+            selectFileDom.accept = '.xml';
+            selectFileDom.id = 'select_file';
+
+            var selectFileWrapperDom = document.createElement('DIV');
+            selectFileWrapperDom.id = 'select_file_wrapper';
+            selectFileWrapperDom.style.display = 'none';
+            selectFileWrapperDom.appendChild(selectFileDom);
+
+            document.body.appendChild(selectFileWrapperDom);
+            selectFile = document.getElementById('select_file');
+            selectFile.addEventListener('change', parseInputXMLFile, false);
         }
-    };
-
-    // Create once invisible browse button with event listener, and click it
-    var selectFile = document.getElementById('select_file');
-    if (selectFile === null) {
-        var selectFileDom = document.createElement('INPUT');
-        selectFileDom.type = 'file';
-        selectFileDom.id = 'select_file';
-
-        var selectFileWrapperDom = document.createElement('DIV');
-        selectFileWrapperDom.id = 'select_file_wrapper';
-        selectFileWrapperDom.style.display = 'none';
-        selectFileWrapperDom.appendChild(selectFileDom);
-
-        document.body.appendChild(selectFileWrapperDom);
-        selectFile = document.getElementById('select_file');
-        selectFile.addEventListener('change', parseInputXMLFile, false);
+        selectFile.click();
     }
-    selectFile.click();
 };
 
 /**
@@ -509,9 +600,11 @@ Ardublockly.loadUserXmlFile = function () {
  * prompts the users to save it into their local file system.
  */
 Ardublockly.saveXmlFile = function () {
-    Ardublockly.saveTextFileAs(
-        document.getElementById('sketch_name').value + '.xml', 'xml',
-        Ardublockly.generateXml());
+    var filename = document.getElementById('sketch_name').value;
+    if (!filename.toLowerCase().endsWith('.xml')) {
+        filename += '.xml';
+    }
+    Ardublockly.saveTextFileAs(filename, 'xml', Ardublockly.generateXml());
 };
 
 /**
@@ -520,9 +613,11 @@ Ardublockly.saveXmlFile = function () {
  * system.
  */
 Ardublockly.saveSketchFile = function () {
-    Ardublockly.saveTextFileAs(
-        document.getElementById('sketch_name').value + '.ino', 'ino',
-        Ardublockly.generateArduino());
+    var filename = document.getElementById('sketch_name').value;
+    if (!filename.toLowerCase().endsWith('.ino')) {
+        filename += '.ino';
+    }
+    Ardublockly.saveTextFileAs(filename, 'ino', Ardublockly.generateArduino());
 };
 
 /**
@@ -533,8 +628,66 @@ Ardublockly.saveSketchFile = function () {
  * @param {!string} content Text data to be saved in to the file.
  */
 Ardublockly.saveTextFileAs = function (fileName, ext, content) {
-    var blob = new Blob([content], {type: 'text/' + ext + ';charset=utf-8'});
-    saveAs(blob, fileName);
+    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+        const { dialog } = require('@electron/remote');
+        if (ext === 'ino') {
+            // For Arduino sketches, select a directory and save .ino file inside it
+            dialog.showOpenDialog({
+                properties: ['openDirectory', 'createDirectory']
+            }).then(result => {
+                if (!result.canceled) {
+                    const selectedDir = result.filePaths[0];
+                    const path = require('@electron/remote').require('path');
+                    const fs = require('@electron/remote').require('fs');
+                    const dirName = path.basename(selectedDir);
+                    const inoPath = path.join(selectedDir, dirName + '.ino');
+                    const exists = fs.existsSync(inoPath);
+                    if (exists) {
+                        dialog.showMessageBox({
+                            type: 'question',
+                            buttons: ['Yes', 'No'],
+                            title: 'Confirm Overwrite',
+                            message: 'The file ' + dirName + '.ino already exists. Do you want to overwrite it?'
+                        }).then(response => {
+                            if (response.response === 0) { // Yes
+                                fs.writeFile(inoPath, content, (err) => {
+                                    if (err) console.error(err);
+                                    document.getElementById('sketch_name').value = dirName;
+                                });
+                            }
+                        });
+                    } else {
+                        fs.writeFile(inoPath, content, (err) => {
+                            if (err) console.error(err);
+                            document.getElementById('sketch_name').value = dirName;
+                        });
+                    }
+                }
+            });
+        } else {
+            // For XML files, use save dialog
+            const filters = [{ name: 'XML Files', extensions: ['xml'] }];
+            dialog.showSaveDialog({
+                defaultPath: fileName,
+                filters: filters
+            }).then(result => {
+                if (!result.canceled) {
+                    const fs = require('@electron/remote').require('fs');
+                    fs.writeFile(result.filePath, content, (err) => {
+                        if (err) console.error(err);
+                        // 設置 sketch_name 為文件名（不含附檔名）
+                        const path = require('@electron/remote').require('path');
+                        const baseName = path.basename(result.filePath, '.' + ext);
+                        document.getElementById('sketch_name').value = baseName;
+                    });
+                }
+            });
+        }
+    } else {
+        // 使用 saveAs for browser
+        var blob = new Blob([content], {type: 'text/' + ext + ';charset=utf-8'});
+        saveAs(blob, fileName);
+    }
 };
 
 /**
@@ -802,6 +955,96 @@ Ardublockly.setBoard = function () {
 };
 
 /**
+ * Starts periodic refresh of serial ports list.
+ */
+Ardublockly.startSerialPortRefreshTimer = function () {
+    // Clear any existing timer
+    if (Ardublockly.serialPortRefreshTimer) {
+        clearInterval(Ardublockly.serialPortRefreshTimer);
+    }
+
+    // Set up timer to refresh every 5 seconds
+    Ardublockly.serialPortRefreshTimer = setInterval(function () {
+        Ardublockly.refreshSerialPortsSilently();
+    }, 5000);
+};
+
+/**
+ * Stops the periodic refresh of serial ports list.
+ */
+Ardublockly.stopSerialPortRefreshTimer = function () {
+    if (Ardublockly.serialPortRefreshTimer) {
+        clearInterval(Ardublockly.serialPortRefreshTimer);
+        Ardublockly.serialPortRefreshTimer = null;
+    }
+};
+
+/**
+ * Silently refreshes the Serial Port list from the server without disrupting UI.
+ * Preserves the currently selected port if it still exists, otherwise selects the first option.
+ */
+Ardublockly.refreshSerialPortsSilently = function () {
+    // Prevent multiple simultaneous refreshes
+    if (Ardublockly.isRefreshingSerialPorts) {
+        return;
+    }
+    Ardublockly.isRefreshingSerialPorts = true;
+
+    var el = document.getElementById('serial_port');
+    if (el === null) {
+        Ardublockly.isRefreshingSerialPorts = false;
+        return;
+    }
+
+    // Remember the currently selected value
+    var currentlySelected = el.options[el.selectedIndex].value;
+
+    // Request the latest serial ports from server
+    ArdublocklyServer.requestSerialPorts(function (jsonObj) {
+        if (jsonObj === null || jsonObj.errors) {
+            console.error('Failed to refresh serial ports');
+            Ardublockly.isRefreshingSerialPorts = false;
+            return;
+        }
+
+        // Check if the list has actually changed
+        var currentOptions = Array.from(el.options).map(option => option.value);
+        var newOptions = jsonObj.options.map(option => option.value);
+
+        // Only update if the options have changed
+        var optionsChanged = currentOptions.length !== newOptions.length ||
+            !currentOptions.every((value, index) => value === newOptions[index]);
+
+        if (!optionsChanged) {
+            Ardublockly.isRefreshingSerialPorts = false;
+            return;
+        }
+
+        // Check if the previously selected port still exists in the new list
+        var selectedStillExists = false;
+        for (var i = 0; i < jsonObj.options.length; i++) {
+            if (jsonObj.options[i].value === currentlySelected) {
+                selectedStillExists = true;
+                break;
+            }
+        }
+
+        // Set the selected value appropriately
+        if (selectedStillExists) {
+            jsonObj.selected = currentlySelected;
+        } else if (jsonObj.options.length > 0) {
+            // If the previously selected option doesn't exist, select the first one
+            jsonObj.selected = jsonObj.options[0].value;
+        }
+
+        // Update the dropdown with the new list
+        var newEl = ArdublocklyServer.jsonToHtmlDropdown(jsonObj);
+        Ardublockly.setSerialPortsHtml(newEl);
+        Ardublockly.isRefreshingSerialPorts = false;
+    });
+};
+
+/**
  * Replaces the Serial Port form data with a new HTMl element.
  * Ensures there is a change listener to call 'setSerialPort' function
  * @return {void} Might exit early if response is null.
@@ -816,6 +1059,9 @@ Ardublockly.setSerialPortsHtml = function (newEl) {
 
     var serialDropdown = document.getElementById('serial_port');
     if (serialDropdown !== null) {
+        // Stop the refresh timer while updating
+        Ardublockly.stopSerialPortRefreshTimer();
+
         // Restarting the select elements built by materialize
         $('select').material_select('destroy');
         newEl.name = 'settings_serial';
@@ -824,6 +1070,9 @@ Ardublockly.setSerialPortsHtml = function (newEl) {
         serialDropdown.parentNode.replaceChild(newEl, serialDropdown);
         // Refresh the materialize select menus
         $('select').material_select();
+
+        // Restart the refresh timer
+        Ardublockly.startSerialPortRefreshTimer();
     }
 };
 
