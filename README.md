@@ -56,6 +56,24 @@ This will work on Windows, Linux (including ARM) and Mac OS X, with Python >2.7 
 3. Configure Ardublockly to locate the Arduino IDE [following these instructions][6].
 
 
+## Developer setup
+If you are working on this repository locally, run the hook install script after cloning to enable automatic `build_number` updates on `git commit`.
+
+Windows:
+
+```
+install-git-hooks.bat
+```
+
+macOS / Linux:
+
+```
+./install-git-hooks.sh
+```
+
+This sets Git to use the repository-local `.githooks` folder for hooks.
+
+
 ## Online Demos
 A demo of the latest release of Ardublockly main interface can be found in the following two links (to load the code into an Arduino it requires the full Ardublockly application to be downloaded and run on your computer):
 

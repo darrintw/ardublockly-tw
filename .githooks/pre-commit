@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+set -e
+
+HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+if command -v py >/dev/null 2>&1; then
+  exec py "$HOOK_DIR/pre-commit.py" "$@"
+elif command -v python >/dev/null 2>&1; then
+  exec python "$HOOK_DIR/pre-commit.py" "$@"
+else
+  echo "Error: no Python interpreter found. Install Python or use the py launcher." >&2
+  exit 1
+fi
