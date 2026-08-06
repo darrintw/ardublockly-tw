@@ -73,6 +73,20 @@ macOS / Linux:
 
 This sets Git to use the repository-local `.githooks` folder for hooks.
 
+### GitHub Pages sync
+This repository uses a GitHub Actions workflow to keep the `gh-pages` branch updated from `master` after a successful push.
+
+When you push to `master`, the workflow copies the following folders into `gh-pages`, commits any changes, and pushes `gh-pages` back to the remote:
+
+* `ardublockly`
+* `blockly`
+* `blocls`
+* `closure-library`
+* `examples`
+* `docs`
+
+The workflow file is located at `.github/workflows/sync-gh-pages.yml`.
+
 
 ## Online Demos
 A demo of the latest release of Ardublockly main interface can be found in the following two links (to load the code into an Arduino it requires the full Ardublockly application to be downloaded and run on your computer):

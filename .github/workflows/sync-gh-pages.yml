@@ -1,0 +1,44 @@
+name: Sync gh-pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync selected directories to gh-pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git worktree add gh-pages-worktree gh-pages
+
+          for path in ardublockly blockly blocls closure-library examples docs; do
+            rm -rf "gh-pages-worktree/$path"
+            if [ -d "$path" ]; then
+              mkdir -p "gh-pages-worktree"
+              cp -R "$path" "gh-pages-worktree/"
+            fi
+          done
+
+          cd gh-pages-worktree
+          git add ardublockly blockly blocls closure-library examples docs
+
+          if git diff --cached --quiet; then
+            echo 'No changes to commit on gh-pages.'
+          else
+            git commit -m 'Update gh-pages content from master'
+            git push origin gh-pages
+          fi
+
+      - name: Clean up worktree
+        if: always()
+        run: |
+          git worktree remove gh-pages-worktree --force
