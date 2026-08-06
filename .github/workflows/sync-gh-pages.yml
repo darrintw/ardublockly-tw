@@ -29,7 +29,7 @@ jobs:
           done
 
           cd gh-pages-worktree
-          git add ardublockly blockly blocls closure-library examples docs
+          git add ardublockly blockly blocks closure-library examples docs
 
           if git diff --cached --quiet; then
             echo 'No changes to commit on gh-pages.'
