@@ -20,7 +20,7 @@ jobs:
 
           git worktree add gh-pages-worktree gh-pages
 
-          for path in ardublockly blockly blocls closure-library examples docs; do
+          for path in ardublockly blockly blocks closure-library examples docs; do
             rm -rf "gh-pages-worktree/$path"
             if [ -d "$path" ]; then
               mkdir -p "gh-pages-worktree"
