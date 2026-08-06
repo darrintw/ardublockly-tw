@@ -10,3 +10,4 @@ ArdublocklySketch/*.*
 ardublockly.log
 ServerCompilerSettings.ini
 sync.ffs_db
+__pycache__
