@@ -1,0 +1,50 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" deletable="false" x="179" y="78">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="v)U^d?4%1dk~TBa,=Z9x">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="softwareserial_setup" id="8BHv]q};9Ko,#4,kb4Hc">
+            <field name="SERIAL_ID">軟體Serial</field>
+            <field name="RX_PIN">A4</field>
+            <field name="TX_PIN">A5</field>
+            <field name="BAUDRATE">9600</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_whileUntil" id="A.{LfHAdz0dENWR;s?%W">
+        <field name="MODE">WHILE</field>
+        <value name="BOOL">
+          <block type="softwareserial_available" id="]YVW1gcx,n%*0geC!N/Y">
+            <field name="SERIAL_ID">軟體Serial</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="serial_print" id="T3OP1l6W+IJ3T:}u8E67">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">FALSE</field>
+            <value name="CONTENT">
+              <block type="softwareserial_read_string" id="ae#=E2i`HiP[s|I_(|mV">
+                <field name="SERIAL_ID">變數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="serial_print" id="abmkkv8F4uP?2S^29z/^">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="text" id="jE,uDIw%.-z5kEkmX/Ba">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

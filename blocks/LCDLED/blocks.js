@@ -738,7 +738,7 @@ Blockly.Blocks["Matrix_char_upper"] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARD_MAX7219_CHAR_UPPER)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(new Blockly.FieldDropdown(char_upper_list), "char_upper");
+            .appendField(new Blockly.FieldDropdown(char_upper_list), "char_upper_");
         this.setOutput(true);
         this.setInputsInline(false);
         this.setColour(Blockly.Blocks.LEDMatrix.HUE);

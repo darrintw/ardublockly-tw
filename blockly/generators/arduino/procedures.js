@@ -21,6 +21,7 @@ goog.require('Blockly.Arduino');
  * @return {null} There is no code added to loop.
  */
 Blockly.Arduino['procedures_defreturn'] = function (block) {
+    var originalFunctionName = block.getFieldValue('NAME');
     var funcName = Blockly.Arduino.variableDB_.getName(
         block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
     var branch = Blockly.Arduino.statementToCode(block, 'STACK');
@@ -57,7 +58,7 @@ Blockly.Arduino['procedures_defreturn'] = function (block) {
     returnType = Blockly.Arduino.getArduinoType_(returnType);
 
     // Construct code
-    var code = returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
+    var code = '// ' + originalFunctionName + '\n' + returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
         branch + returnValue + '}';
     code = Blockly.Arduino.scrub_(block, code);
     Blockly.Arduino.userFunctions_[funcName] = code;
