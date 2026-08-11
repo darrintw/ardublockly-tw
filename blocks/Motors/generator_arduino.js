@@ -15,6 +15,65 @@ goog.provide('Blockly.Arduino.Motos');
 
 goog.require('Blockly.Arduino');
 
+/** L293D Motor Shield*/
+/** afmotor*/
+Blockly.Arduino['afmotor'] = function (block) {
+    var afmotor_control = block.getFieldValue('afmotor_control');
+    var afmotor_channel = block.getFieldValue('afmotor_channel');
+    var motorName = 'motor_dc_' + afmotor_channel;
+    var feqName;
+    switch (parseInt(afmotor_channel)) {
+        case 1:
+        case 2:
+            feqName = 'MOTOR12_64KHZ';
+            break;
+        case 3:
+        case 4:
+            feqName = 'MOTOR34_64KHZ';
+            break;
+        default:
+            feqName = '';
+    }
+    var afmotor_speed = block.getFieldValue('afmotor_speed');
+
+    Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
+    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
+
+    var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
+        motorName + '.run(' + afmotor_control + ');\n';
+    return code;
+};
+
+/** afmotor variable*/
+Blockly.Arduino['afmotor_var'] = function (block) {
+    var afmotor_control = block.getFieldValue('afmotor_control');
+    var afmotor_channel = block.getFieldValue('afmotor_channel');
+    var motorName = 'motor_dc_' + afmotor_channel;
+    var feqName;
+    switch (parseInt(afmotor_channel)) {
+        case 1:
+        case 2:
+            feqName = 'MOTOR12_64KHZ';
+            break;
+        case 3:
+        case 4:
+            feqName = 'MOTOR34_64KHZ';
+            break;
+        default:
+            feqName = '';
+    }
+    var afmotor_speed = Blockly.Arduino.valueToCode(
+        block, 'afmotor_speed', Blockly.Arduino.ORDER_ATOMIC) || 255;
+
+    Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
+    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
+
+    var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
+        motorName + '.run(' + afmotor_control + ');\n';
+    return code;
+};
+
+
 /** Servo */
 /**
  * Code generator to attach servo to a arduino Pin (X).
@@ -263,63 +322,6 @@ Blockly.Arduino['pwm_servo_detach'] = function (block) {
     Blockly.Arduino.addVariable(servoName, 'PWMServo ' + servoId + ';', true);
 
     var code = servoId + '.detach();\n';
-    return code;
-};
-
-/** afmotor*/
-Blockly.Arduino['afmotor'] = function (block) {
-    var afmotor_control = block.getFieldValue('afmotor_control');
-    var afmotor_channel = block.getFieldValue('afmotor_channel');
-    var motorName = 'motor_dc_' + afmotor_channel;
-    var feqName;
-    switch (parseInt(afmotor_channel)) {
-        case 1:
-        case 2:
-            feqName = 'MOTOR12_64KHZ';
-            break;
-        case 3:
-        case 4:
-            feqName = 'MOTOR34_64KHZ';
-            break;
-        default:
-            feqName = '';
-    }
-    var afmotor_speed = block.getFieldValue('afmotor_speed');
-
-    Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
-    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
-
-    var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
-        motorName + '.run(' + afmotor_control + ');\n';
-    return code;
-};
-
-/** afmotor*/
-Blockly.Arduino['afmotor_var'] = function (block) {
-    var afmotor_control = block.getFieldValue('afmotor_control');
-    var afmotor_channel = block.getFieldValue('afmotor_channel');
-    var motorName = 'motor_dc_' + afmotor_channel;
-    var feqName;
-    switch (parseInt(afmotor_channel)) {
-        case 1:
-        case 2:
-            feqName = 'MOTOR12_64KHZ';
-            break;
-        case 3:
-        case 4:
-            feqName = 'MOTOR34_64KHZ';
-            break;
-        default:
-            feqName = '';
-    }
-    var afmotor_speed = Blockly.Arduino.valueToCode(
-        block, 'afmotor_speed', Blockly.Arduino.ORDER_ATOMIC) || 255;
-
-    Blockly.Arduino.addInclude('AFMotor_inc', '#include <AFMotor.h>');
-    Blockly.Arduino.addVariable('AF_DCMotor_' + afmotor_channel, 'AF_DCMotor ' + motorName + '(' + afmotor_channel + ', ' + feqName + ');', true);
-
-    var code = motorName + '.setSpeed(' + afmotor_speed + ');\n' +
-        motorName + '.run(' + afmotor_control + ');\n';
     return code;
 };
 
@@ -932,15 +934,110 @@ Blockly.Arduino.md_nrfgetspeed = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+/** PID */
+/** PID Initialization*/
+Blockly.Arduino['PID_Init'] = function (block) {
+    var pid_error_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_error_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
+    Blockly.Arduino.addVariable('pid_variable_' + pid_error_Id, 'float ' + pid_error_Id + ' = 0;', true);     
+    var pid_last_error_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_last_error_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
+    Blockly.Arduino.addVariable('pid_variable_' + pid_last_error_Id, 'float ' + pid_last_error_Id + ' = 0;', true); 
+    var pid_l_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_l_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
+    Blockly.Arduino.addVariable('pid_variable_' + pid_l_speed_Id, 'int ' + pid_l_speed_Id + ' = 0;', true); 
+    var pid_r_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_r_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
+    Blockly.Arduino.addVariable('pid_variable_' + pid_r_speed_Id, 'int ' + pid_r_speed_Id + ' = 255;', true);        
+    var pid_p = block.getFieldValue('PID_P');
+    var pid_p_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_p_value_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
+    Blockly.Arduino.addVariable('pid_variable_' + pid_p_Id, 'float ' + pid_p_Id + ' = ' + pid_p + ';', true);    
+    var pid_i = block.getFieldValue('PID_I');
+    var pid_i_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_i_value_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_i_Id, 'float ' + pid_i_Id + ' = ' + pid_i + ';', true);
+    var pid_d = block.getFieldValue('PID_D');
+    var pid_d_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_d_value_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_d_Id, 'float ' + pid_d_Id + ' = ' + pid_d + ';', true);
+    var pid_base_speed = block.getFieldValue('PID_BASE_SPEED');
+    var pid_base_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_base_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_base_speed_Id, 'int ' + pid_base_speed_Id + ' = ' + pid_base_speed + ';', true);
+    var pid_max_speed = block.getFieldValue('PID_MAX_SPEED');
+    var pid_max_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_max_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_max_speed_Id, 'int ' + pid_max_speed_Id + ' = ' + pid_max_speed + ';', true);
+    var pid_pin_1_Key = block.getFieldValue('PID_1');
+    Blockly.Arduino.reservePin(block, pid_pin_1_Key, Blockly.Arduino.pinTypes.pid, 'pid_pin_1');
+    Blockly.Arduino.addVariable('pid_variable_' + pid_max_speed_Id, 'int ' + pid_max_speed_Id + ' = ' + pid_max_speed + ';', true);
+    var pid_pin_2_Key = block.getFieldValue('PID_2');
+    Blockly.Arduino.reservePin(block, pid_pin_2_Key, Blockly.Arduino.pinTypes.pid, 'pid_pin_2');
 
-/** PID*/
-Blockly.Arduino['PID'] = function (block) {
-    var code = '';
-    return code;
+    var fCode = 'void pid_move_func() {\n' +
+            '   // 讀取感測器數值並標準化 (1023 為黑, 0 為白) \n' + 
+            '   int sensorL = 1023 - analogRead(' + pid_pin_1_Key + ');\n' +
+            '   int sensorR = 1023 - analogRead(' + pid_pin_2_Key + ');\n\n' +
+            '   // 計算誤差 (Error)\n  ' +
+            pid_error_Id + ' = sensorL - sensorR; \n\n' +
+            '   // PID 核心計算\n' +
+            '   float derivative = ' + pid_error_Id + ' - ' + pid_last_error_Id + ';\n' +
+            '   float turn = (' + pid_p_Id + ' * ' + pid_error_Id + ') + (' + pid_d_Id + ' * derivative);\n    ' +
+            pid_last_error_Id + ' = ' + pid_error_Id + ';\n\n' +
+            '   // 速度分配 (差速轉向)\n' +
+            '   // 當 error > 0 (偏左)，左輪應減速，右輪應加速\n   ' +
+            pid_l_speed_Id + ' = baseSpeed - (int)turn;\n   ' +
+            pid_r_speed_Id + ' = baseSpeed + (int)turn;\n' +
+            '}\n';
+    Blockly.Arduino.addFunction('pid_move_func', fCode);            
+    return '';
 };
 
 /** PID var*/
-Blockly.Arduino['PID_var'] = function (block) {
+Blockly.Arduino['PID_Init_var'] = function (block) {
+    var pid_l_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_l_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
+    Blockly.Arduino.addVariable('pid_variable_' + pid_l_speed_Id, 'int ' + pid_l_speed_Id + ' = 255;', true); 
+    var pid_r_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_r_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
+    Blockly.Arduino.addVariable('pid_variable_' + pid_r_speed_Id, 'int ' + pid_r_speed_Id + ' = 255;', true);        
+    var pid_p = block.getFieldValue('PID_P');
+    var pid_p_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_p_value_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
+    Blockly.Arduino.addVariable('pid_variable_' + pid_p_Id, 'float ' + pid_p_Id + ' = ' + pid_p + ';', true);    
+    var pid_i = block.getFieldValue('PID_I');
+    var pid_i_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_i_value_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_i_Id, 'float ' + pid_i_Id + ' = ' + pid_i + ';', true);
+    var pid_d = block.getFieldValue('PID_D');
+    var pid_d_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_d_value_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_d_Id, 'float ' + pid_d_Id + ' = ' + pid_d + ';', true);
+    var pid_base_speed = block.getFieldValue('PID_BASE_SPEED');
+    var pid_base_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_base_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_base_speed_Id, 'int ' + pid_base_speed_Id + ' = ' + pid_base_speed + ';', true);
+    var pid_max_speed = block.getFieldValue('PID_MAX_SPEED');
+    var pid_max_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_max_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_max_speed_Id, 'int ' + pid_max_speed_Id + ' = ' + pid_max_speed + ';', true);
     var code = '';
     return code;
 };
@@ -961,13 +1058,21 @@ Blockly.Arduino['pid_move'] = function (block) {
 };
 
 /** PID left speed*/
-Blockly.Arduino['pid_l_speed'] = function (block) {  
-    var code = 'pid_l_speed_8723';
+Blockly.Arduino['pid_l_speed'] = function (block) {
+    var pid_l_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_l_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
+    Blockly.Arduino.addVariable('pid_variable_' + pid_l_speed_Id, 'int ' + pid_l_speed_Id + ' = 255;', true); 
+    var code = pid_l_speed_Id;
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 /** PID right speed*/
 Blockly.Arduino['pid_r_speed'] = function (block) {
-    var code = 'pid_r_speed_8723';
+    var pid_r_speed_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_r_speed_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
+    Blockly.Arduino.addVariable('pid_variable_' + pid_r_speed_Id, 'int ' + pid_r_speed_Id + ' = 255;', true);
+    var code = pid_r_speed_Id;
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
