@@ -1667,8 +1667,9 @@ Blockly.Blocks["md_nrfgetspeed"] = {
     }
 };
 
-/* PID */
-Blockly.Blocks['PID'] = {
+/** PID */
+/** PID Initialization*/
+Blockly.Blocks['PID_Init'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MOTOR_PID)
@@ -1679,14 +1680,19 @@ Blockly.Blocks['PID'] = {
             .appendField(Blockly.Msg.MOTOR_PID_D)
             .appendField(new Blockly.FieldNumber('1'), "PID_D");
         this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_SPEED)
+            .appendField(Blockly.Msg.MOTOR_PID_BASE_SPEED)
+            .appendField(new Blockly.FieldNumber('255'), "PID_BASE_SPEED")
+            .appendField(Blockly.Msg.MOTOR_PID_MAX_SPEED)
+            .appendField(new Blockly.FieldNumber('255'), "PID_MAX_SPEED");
+        this.appendDummyInput()
             .appendField(Blockly.Msg.MOTOR_PID_SENSOR)
-            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.MOTOR_PID_1)
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.analogPins), 'PID_1')
             .appendField(Blockly.Msg.MOTOR_PID_2)
             .appendField(new Blockly.FieldDropdown(
-                Blockly.Arduino.Boards.selected.analogPins), "PID_2");        
+                Blockly.Arduino.Boards.selected.analogPins), "PID_2");                 
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1696,8 +1702,8 @@ Blockly.Blocks['PID'] = {
     }
 };
 
-/* PID Var */
-Blockly.Blocks['PID_var'] = {
+/** PID Var */
+Blockly.Blocks['PID_Init_var'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.MOTOR_PID);
@@ -1710,6 +1716,14 @@ Blockly.Blocks['PID_var'] = {
         this.appendValueInput("PID_D", Number)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.MOTOR_PID_D);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_SPEED);
+        this.appendValueInput("PID_BASE_SPEED", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_BASE_SPEED);
+        this.appendValueInput("PID_MAX_SPEED", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_MAX_SPEED);
         this.appendDummyInput()
             .appendField(Blockly.Msg.MOTOR_PID_SENSOR);
         this.appendValueInput("PID_1", Number)
