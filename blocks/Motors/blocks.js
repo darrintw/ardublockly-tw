@@ -1666,3 +1666,110 @@ Blockly.Blocks["md_nrfgetspeed"] = {
         this.setTooltip('');
     }
 };
+
+/* PID */
+Blockly.Blocks['PID'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID)
+            .appendField(Blockly.Msg.MOTOR_PID_P)
+            .appendField(new Blockly.FieldNumber('1'), "PID_P")
+            .appendField(Blockly.Msg.MOTOR_PID_I)
+            .appendField(new Blockly.FieldNumber('1'), "PID_I")
+            .appendField(Blockly.Msg.MOTOR_PID_D)
+            .appendField(new Blockly.FieldNumber('1'), "PID_D");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_SENSOR)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_1)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.analogPins), 'PID_1')
+            .appendField(Blockly.Msg.MOTOR_PID_2)
+            .appendField(new Blockly.FieldDropdown(
+                Blockly.Arduino.Boards.selected.analogPins), "PID_2");        
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("https://learn.adafruit.com/adafruit-arduino-lesson-15-dc-motor-reversing/lm293d");
+    }
+};
+
+/* PID Var */
+Blockly.Blocks['PID_var'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID);
+        this.appendValueInput("PID_P", Number)
+            .setAlign(Blockly.ALIGN_RIGHT) 
+            .appendField(Blockly.Msg.MOTOR_PID_P);
+        this.appendValueInput("PID_I", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_I);
+        this.appendValueInput("PID_D", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_D);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_SENSOR);
+        this.appendValueInput("PID_1", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_1);
+        this.appendValueInput("PID_2", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_2);                                                 
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.Motors.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("https://learn.adafruit.com/adafruit-arduino-lesson-15-dc-motor-reversing/lm293d");
+    }
+};
+
+Blockly.Blocks['pid_move_function'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_MOVE + Blockly.Msg.ARD_TYPE_FUNCTION);
+        this.appendStatementInput("PID_MOVE");
+        this.setPreviousStatement(null, null);
+        this.setNextStatement(null, null);     
+        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['pid_move'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_MOVE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);     
+        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['pid_l_speed'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_L_SPEED);
+        this.setOutput(true, null);
+        this.setColour(Blockly.Blocks.variables.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['pid_r_speed'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_R_SPEED);
+        this.setOutput(true, null);
+        this.setColour(Blockly.Blocks.variables.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
