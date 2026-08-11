@@ -931,3 +931,43 @@ Blockly.Arduino.md_nrfgetspeed = function () {
     var code = 'mProtocol->GetRobotSpeed()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+
+/** PID*/
+Blockly.Arduino['PID'] = function (block) {
+    var code = '';
+    return code;
+};
+
+/** PID var*/
+Blockly.Arduino['PID_var'] = function (block) {
+    var code = '';
+    return code;
+};
+
+/** PID Move Function*/
+Blockly.Arduino['pid_move_function'] = function (block) {
+    var branch = Blockly.Arduino.statementToCode(block, 'PID_MOVE');   
+    var code = '// PID Move Func\nvoid pid_move_func() {\n' + branch + '\n}';
+    code = Blockly.Arduino.scrub_(block, code);
+    Blockly.Arduino.userFunctions_['pid_move_func'] = code;
+    return null;
+};
+
+/** PID Move*/
+Blockly.Arduino['pid_move'] = function (block) {               
+    var code = 'pid_move_func();\n';
+    return code;
+};
+
+/** PID left speed*/
+Blockly.Arduino['pid_l_speed'] = function (block) {  
+    var code = 'pid_l_speed_8723';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/** PID right speed*/
+Blockly.Arduino['pid_r_speed'] = function (block) {
+    var code = 'pid_r_speed_8723';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

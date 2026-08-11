@@ -279,3 +279,22 @@ Blockly.Msg.MOTORDRIVERBOARD_GPIOHIGH = "High";
 Blockly.Msg.MOTORDRIVERBOARD_GPIOLOW = "Low";
 Blockly.Msg.MOTORDRIVERBOARD_GPIOPWM = "Output PWM value(0-4096)";
 Blockly.Msg.MOTORDRIVERBOARD_GPIOFREQ = "Seet IO frequence(1-1600HZ)";
+
+// MOTOR PID
+Blockly.Msg.BLOCKS_CATEGORY_PID = 'PID Control';
+Blockly.Msg.MOTOR_PID = 'PID setup';
+Blockly.Msg.MOTOR_PID_MOVE = "PID following";
+Blockly.Msg.MOTOR_PID_P = "P Value";
+Blockly.Msg.MOTOR_PID_I = "I Value";
+Blockly.Msg.MOTOR_PID_D = "D Value";
+Blockly.Msg.MOTOR_PID_SENSOR = "Line Follower Sensor";
+Blockly.Msg.MOTOR_PID_1 = "No 1";
+Blockly.Msg.MOTOR_PID_2 = "No 2";
+Blockly.Msg.MOTOR_PID_3 = "No 3";
+Blockly.Msg.MOTOR_PID_4 = "No 4";
+Blockly.Msg.MOTOR_PID_5 = "No 5";
+Blockly.Msg.MOTOR_PID_6 = "No 6";
+Blockly.Msg.MOTOR_PID_7 = "No 7";
+Blockly.Msg.MOTOR_PID_8 = "No 8";
+Blockly.Msg.MOTOR_PID_L_SPEED = "PID Left wheel speed";
+Blockly.Msg.MOTOR_PID_R_SPEED = "PID Right wheel speed";

@@ -277,3 +277,22 @@ Blockly.Msg.MOTORDRIVERBOARD_GPIOHIGH = "高";
 Blockly.Msg.MOTORDRIVERBOARD_GPIOLOW = "低";
 Blockly.Msg.MOTORDRIVERBOARD_GPIOPWM = "輸出PWM的值(0-4096)";
 Blockly.Msg.MOTORDRIVERBOARD_GPIOFREQ = "設置IO的輸出頻率(1-1600HZ)";
+
+// MOTOR PID
+Blockly.Msg.BLOCKS_CATEGORY_PID = 'PID 控制';
+Blockly.Msg.MOTOR_PID = 'PID 設定';
+Blockly.Msg.MOTOR_PID_MOVE = "PID 循跡";
+Blockly.Msg.MOTOR_PID_P = "P值";
+Blockly.Msg.MOTOR_PID_I = "I值";
+Blockly.Msg.MOTOR_PID_D = "D值";
+Blockly.Msg.MOTOR_PID_SENSOR = "循跡感測器";
+Blockly.Msg.MOTOR_PID_1 = "1號";
+Blockly.Msg.MOTOR_PID_2 = "2號";
+Blockly.Msg.MOTOR_PID_3 = "3號";
+Blockly.Msg.MOTOR_PID_4 = "4號";
+Blockly.Msg.MOTOR_PID_5 = "5號";
+Blockly.Msg.MOTOR_PID_6 = "6號";
+Blockly.Msg.MOTOR_PID_7 = "7號";
+Blockly.Msg.MOTOR_PID_8 = "8號";
+Blockly.Msg.MOTOR_PID_L_SPEED = "PID 左輪速度";
+Blockly.Msg.MOTOR_PID_R_SPEED = "PID 右輪速度";
