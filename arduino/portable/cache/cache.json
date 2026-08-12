@@ -7,36 +7,36 @@
     "createdAt" : "2024-05-03T09:26:54.412",
     "cacheControl" : {
       "maxAge" : 300,
-      "noCache" : false,
+      "mustRevalidate" : false,
       "noStore" : false,
-      "mustRevalidate" : false
+      "noCache" : false
     },
     "expires" : "2024-05-03T09:31:54.412"
   }, {
     "remoteURL" : "https://downloads.arduino.cc/libraries/library_index.json.gz",
-    "localPath" : "D:\\Tools\\Ardublockly-dev\\ardublockly\\arduino\\portable\\cache\\downloads.arduino.cc\\libraries\\library_index.json.gz",
-    "eTag" : "83b6351882d85b0e564211319d95d473",
-    "md5" : "MD5:83b6351882d85b0e564211319d95d473",
-    "createdAt" : "2026-08-12T10:24:28.455",
+    "localPath" : "D:\\Tools\\ardublockly-dev\\ardublockly\\arduino\\portable\\cache\\downloads.arduino.cc\\libraries\\library_index.json.gz",
+    "eTag" : "a0294dd25929145a9dfb7f3c41bcfac0",
+    "md5" : "MD5:a0294dd25929145a9dfb7f3c41bcfac0",
+    "createdAt" : "2026-08-12T14:35:14.358",
     "cacheControl" : {
       "maxAge" : -1,
-      "noCache" : false,
+      "mustRevalidate" : false,
       "noStore" : false,
-      "mustRevalidate" : false
+      "noCache" : false
     },
-    "expires" : "2026-08-12T10:24:27.455"
+    "expires" : "2026-08-12T14:35:13.358"
   }, {
     "remoteURL" : "https://downloads.arduino.cc/libraries/library_index.json.sig",
-    "localPath" : "D:\\Tools\\Ardublockly-dev\\ardublockly\\arduino\\portable\\cache\\downloads.arduino.cc\\libraries\\library_index.json.sig",
-    "eTag" : "7698f1d6c5e300c37584f48e706a879a",
-    "md5" : "MD5:7698f1d6c5e300c37584f48e706a879a",
-    "createdAt" : "2026-08-12T10:24:29.04",
+    "localPath" : "D:\\Tools\\ardublockly-dev\\ardublockly\\arduino\\portable\\cache\\downloads.arduino.cc\\libraries\\library_index.json.sig",
+    "eTag" : "26857bfcc41241ec8f5500635ef65260",
+    "md5" : "MD5:26857bfcc41241ec8f5500635ef65260",
+    "createdAt" : "2026-08-12T14:35:14.85",
     "cacheControl" : {
       "maxAge" : -1,
-      "noCache" : false,
+      "mustRevalidate" : false,
       "noStore" : false,
-      "mustRevalidate" : false
+      "noCache" : false
     },
-    "expires" : "2026-08-12T10:24:28.040"
+    "expires" : "2026-08-12T14:35:13.850"
   } ]
 }
