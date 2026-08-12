@@ -940,121 +940,177 @@ Blockly.Arduino['PID_Init'] = function (block) {
     var pid_error_Id = Blockly.Arduino.variableDB_.getName(
         'pid_error_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
-    Blockly.Arduino.addVariable('pid_variable_' + pid_error_Id, 'float ' + pid_error_Id + ' = 0;', true);     
+    Blockly.Arduino.addVariable('pid_variable_' + pid_error_Id, 'float ' + pid_error_Id + ' = 0;', true);
+
     var pid_last_error_Id = Blockly.Arduino.variableDB_.getName(
         'pid_last_error_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
-    Blockly.Arduino.addVariable('pid_variable_' + pid_last_error_Id, 'float ' + pid_last_error_Id + ' = 0;', true); 
+    Blockly.Arduino.addVariable('pid_variable_' + pid_last_error_Id, 'float ' + pid_last_error_Id + ' = 0;', true);
+
     var pid_l_speed_Id = Blockly.Arduino.variableDB_.getName(
         'pid_l_speed_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
     Blockly.Arduino.addVariable('pid_variable_' + pid_l_speed_Id, 'int ' + pid_l_speed_Id + ' = 0;', true); 
+
     var pid_r_speed_Id = Blockly.Arduino.variableDB_.getName(
         'pid_r_speed_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
-    Blockly.Arduino.addVariable('pid_variable_' + pid_r_speed_Id, 'int ' + pid_r_speed_Id + ' = 255;', true);        
+    Blockly.Arduino.addVariable('pid_variable_' + pid_r_speed_Id, 'int ' + pid_r_speed_Id + ' = 255;', true);
+
     var pid_p = block.getFieldValue('PID_P');
     var pid_p_Id = Blockly.Arduino.variableDB_.getName(
         'pid_p_value_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
-    Blockly.Arduino.addVariable('pid_variable_' + pid_p_Id, 'float ' + pid_p_Id + ' = ' + pid_p + ';', true);    
+    Blockly.Arduino.addVariable('pid_variable_' + pid_p_Id, 'float ' + pid_p_Id + ' = ' + pid_p + ';', true);
+
     var pid_i = block.getFieldValue('PID_I');
     var pid_i_Id = Blockly.Arduino.variableDB_.getName(
         'pid_i_value_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     Blockly.Arduino.addVariable('pid_variable_' + pid_i_Id, 'float ' + pid_i_Id + ' = ' + pid_i + ';', true);
+
     var pid_d = block.getFieldValue('PID_D');
     var pid_d_Id = Blockly.Arduino.variableDB_.getName(
         'pid_d_value_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     Blockly.Arduino.addVariable('pid_variable_' + pid_d_Id, 'float ' + pid_d_Id + ' = ' + pid_d + ';', true);
+
     var pid_base_speed = block.getFieldValue('PID_BASE_SPEED');
     var pid_base_speed_Id = Blockly.Arduino.variableDB_.getName(
         'pid_base_speed_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     Blockly.Arduino.addVariable('pid_variable_' + pid_base_speed_Id, 'int ' + pid_base_speed_Id + ' = ' + pid_base_speed + ';', true);
+
     var pid_max_speed = block.getFieldValue('PID_MAX_SPEED');
     var pid_max_speed_Id = Blockly.Arduino.variableDB_.getName(
         'pid_max_speed_8723',
         Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
     Blockly.Arduino.addVariable('pid_variable_' + pid_max_speed_Id, 'int ' + pid_max_speed_Id + ' = ' + pid_max_speed + ';', true);
+
+    var pid_threshold = block.getFieldValue('PID_THRESHOLD');
+    var pid_threshold_Id = Blockly.Arduino.variableDB_.getName(
+        'pid_threshold_8723',
+        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
+    Blockly.Arduino.addVariable('pid_variable_' + pid_threshold_Id, 'int ' + pid_threshold_Id + ' = ' + pid_threshold + ';', true);
+
     var pid_pin_1_Key = block.getFieldValue('PID_1');
     Blockly.Arduino.reservePin(block, pid_pin_1_Key, Blockly.Arduino.pinTypes.pid, 'pid_pin_1');
-    Blockly.Arduino.addVariable('pid_variable_' + pid_max_speed_Id, 'int ' + pid_max_speed_Id + ' = ' + pid_max_speed + ';', true);
+
     var pid_pin_2_Key = block.getFieldValue('PID_2');
     Blockly.Arduino.reservePin(block, pid_pin_2_Key, Blockly.Arduino.pinTypes.pid, 'pid_pin_2');
 
-    var fCode = 'void pid_move_func() {\n' +
-            '   // 讀取感測器數值並標準化 (1023 為黑, 0 為白) \n' + 
+    var fCode = 'void pid_calculate(bool stopAtLine) {\n' +
+            '   // 1. 讀取感測器數值並標準化 (1023 為黑, 0 為白) \n' + 
             '   int sensorL = 1023 - analogRead(' + pid_pin_1_Key + ');\n' +
             '   int sensorR = 1023 - analogRead(' + pid_pin_2_Key + ');\n\n' +
-            '   // 計算誤差 (Error)\n  ' +
-            pid_error_Id + ' = sensorL - sensorR; \n\n' +
-            '   // PID 核心計算\n' +
+            '   // 2. 計算誤差 (Error)\n' +
+            '   ' + pid_error_Id + ' = sensorL - sensorR; \n\n' +
+            '   // 3. 特殊情況處理：完全出軌 (雙邊都偵測到白底)\n' +
+            '   if (sensorL < ' + pid_threshold_Id + ' && sensorR < ' + pid_threshold_Id + ') {\n' +
+            '       // 執行出軌補償：向最後一次看到線的方向旋轉\n' +
+            '       if (' + pid_last_error_Id + ' > 0) { \n' +
+            '           // 剛才偏左，現在消失了 -> 急右轉找線\n' +
+            '           ' + pid_l_speed_Id + ' = -100;\n' +
+            '           ' + pid_r_speed_Id + ' = 150;\n' +
+            '           pid_right_turn_func();\n' +
+            '       } else { \n' + 
+            '           // 剛才偏右，現在消失了 -> 急左轉找線\n' +
+            '           ' + pid_l_speed_Id + ' = 150;\n' +
+            '           ' + pid_r_speed_Id + ' = -100;\n' +
+            '           pid_left_turn_func();\n' +
+            '       }\n' +
+            '       return; // 跳過本次 PID 計算\n' +
+            '   }\n\n' +
+            '   // 4. 特殊情況處理：遇到橫線 (雙邊都偵測到黑線)\n' +
+            '   if (sensorL >= ' + pid_threshold_Id + ' && sensorR >= ' + pid_threshold_Id + ') {\n' +
+            '       // 如果需要在橫線處停止\n' +
+            '       if (stopAtLine) {\n' +
+            '           ' + pid_l_speed_Id + ' = 0;\n' +
+            '           ' + pid_r_speed_Id + ' = 0;\n' +
+            '           pid_stop_func();\n' +
+            '           return;\n' +
+            '       }\n' +
+            '       // 若不停止，則繼續前進 (error = 0)\n' +
+            '       ' + pid_error_Id + ' = 0; \n' +
+            '   }\n\n' +            
+            '   // 5. PID 核心計算\n' +
             '   float derivative = ' + pid_error_Id + ' - ' + pid_last_error_Id + ';\n' +
-            '   float turn = (' + pid_p_Id + ' * ' + pid_error_Id + ') + (' + pid_d_Id + ' * derivative);\n    ' +
-            pid_last_error_Id + ' = ' + pid_error_Id + ';\n\n' +
-            '   // 速度分配 (差速轉向)\n' +
-            '   // 當 error > 0 (偏左)，左輪應減速，右輪應加速\n   ' +
-            pid_l_speed_Id + ' = baseSpeed - (int)turn;\n   ' +
-            pid_r_speed_Id + ' = baseSpeed + (int)turn;\n' +
-            '}\n';
-    Blockly.Arduino.addFunction('pid_move_func', fCode);            
+            '   float turn = (' + pid_p_Id + ' * ' + pid_error_Id + ') + (' + pid_d_Id + ' * derivative);\n' +
+            '   ' + pid_last_error_Id + ' = ' + pid_error_Id + ';\n\n' +
+            '   // 6. 速度分配 (差速轉向)\n' +
+            '   // 當 error > 0 (偏左)，左輪應減速，右輪應加速\n' +
+            '   ' + pid_l_speed_Id + ' = ' + pid_base_speed_Id + ' - (int)turn;\n' +
+            '   ' + pid_r_speed_Id + ' = ' + pid_base_speed_Id + ' + (int)turn;\n\n' +
+            '   // 7. 限制速度範圍\n' +
+            '   int lSpd = constrain(' + pid_l_speed_Id + ', -' + pid_max_speed_Id + ', ' + pid_max_speed_Id + ');\n' +
+            '   int rSpd = constrain(' + pid_r_speed_Id + ', -' + pid_max_speed_Id + ', ' + pid_max_speed_Id + ');\n\n' + 
+            '   // 8. 依據速度判斷要怎麼走\n' +
+            '   if (lSpd >= 0 && rSpd >= 0) { // 前進\n' +
+            '       pid_forward_func();\n' +
+            '   } else if (lSpd < 0 && rSpd >= 0) { // 左轉\n' +
+            '       ' + pid_l_speed_Id + ' = abs(lSpd);\n' +
+            '       pid_left_turn_func();\n' +
+            '   } else if (lSpd >= 0 && rSpd < 0) { // 右轉\n' +
+            '       ' + pid_r_speed_Id + ' = abs(rSpd);\n' +
+            '       pid_right_turn_func();\n' +
+            '   } else { // 停止\n' +
+            '       pid_stop_func();\n' +
+            '   }\n' +         
+            '}';
+    Blockly.Arduino.addFunction('pid_calculate', fCode);            
     return '';
 };
 
 /** PID var*/
 Blockly.Arduino['PID_Init_var'] = function (block) {
-    var pid_l_speed_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_l_speed_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);  
-    Blockly.Arduino.addVariable('pid_variable_' + pid_l_speed_Id, 'int ' + pid_l_speed_Id + ' = 255;', true); 
-    var pid_r_speed_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_r_speed_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
-    Blockly.Arduino.addVariable('pid_variable_' + pid_r_speed_Id, 'int ' + pid_r_speed_Id + ' = 255;', true);        
-    var pid_p = block.getFieldValue('PID_P');
-    var pid_p_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_p_value_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);      
-    Blockly.Arduino.addVariable('pid_variable_' + pid_p_Id, 'float ' + pid_p_Id + ' = ' + pid_p + ';', true);    
-    var pid_i = block.getFieldValue('PID_I');
-    var pid_i_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_i_value_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-    Blockly.Arduino.addVariable('pid_variable_' + pid_i_Id, 'float ' + pid_i_Id + ' = ' + pid_i + ';', true);
-    var pid_d = block.getFieldValue('PID_D');
-    var pid_d_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_d_value_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-    Blockly.Arduino.addVariable('pid_variable_' + pid_d_Id, 'float ' + pid_d_Id + ' = ' + pid_d + ';', true);
-    var pid_base_speed = block.getFieldValue('PID_BASE_SPEED');
-    var pid_base_speed_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_base_speed_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-    Blockly.Arduino.addVariable('pid_variable_' + pid_base_speed_Id, 'int ' + pid_base_speed_Id + ' = ' + pid_base_speed + ';', true);
-    var pid_max_speed = block.getFieldValue('PID_MAX_SPEED');
-    var pid_max_speed_Id = Blockly.Arduino.variableDB_.getName(
-        'pid_max_speed_8723',
-        Blockly.Variables.NAME_TYPE/*blocklyArray_NAME_TYPE*/);
-    Blockly.Arduino.addVariable('pid_variable_' + pid_max_speed_Id, 'int ' + pid_max_speed_Id + ' = ' + pid_max_speed + ';', true);
     var code = '';
     return code;
 };
 
 /** PID Move Function*/
-Blockly.Arduino['pid_move_function'] = function (block) {
-    var branch = Blockly.Arduino.statementToCode(block, 'PID_MOVE');   
-    var code = '// PID Move Func\nvoid pid_move_func() {\n' + branch + '\n}';
+Blockly.Arduino['pid_move_function'] = function (block) { 
+    var code = 'pid_calculate(false);\n';
+    return code;
+};
+
+/** PID forward Function*/
+Blockly.Arduino['pid_forward_func'] = function (block) {
+    var branch = Blockly.Arduino.statementToCode(block, 'PID_FORWARD_FUNC');   
+    var code = '// PID Move Func\nvoid pid_forward_func() {\n' +
+               branch + '\n}';
     code = Blockly.Arduino.scrub_(block, code);
-    Blockly.Arduino.userFunctions_['pid_move_func'] = code;
+    Blockly.Arduino.userFunctions_['pid_forward_func'] = code;
     return null;
 };
 
-/** PID Move*/
-Blockly.Arduino['pid_move'] = function (block) {               
-    var code = 'pid_move_func();\n';
-    return code;
+/** PID left turn Function*/
+Blockly.Arduino['pid_left_turn_func'] = function (block) {
+    var branch = Blockly.Arduino.statementToCode(block, 'PID_LEFT_TURN_FUNC');   
+    var code = '// PID Move Func\nvoid pid_left_turn_func() {\n' +
+               branch + '\n}';
+    code = Blockly.Arduino.scrub_(block, code);
+    Blockly.Arduino.userFunctions_['pid_left_turn_func'] = code;
+    return null;
+};
+
+/** PID right turn Function*/
+Blockly.Arduino['pid_right_turn_func'] = function (block) {
+    var branch = Blockly.Arduino.statementToCode(block, 'PID_RIGHT_TURN_FUNC');   
+    var code = '// PID Move Func\nvoid pid_right_turn_func() {\n' +
+               branch + '\n}';
+    code = Blockly.Arduino.scrub_(block, code);
+    Blockly.Arduino.userFunctions_['pid_right_turn_func'] = code;
+    return null;
+};
+
+/** PID stop Function*/
+Blockly.Arduino['pid_stop_func'] = function (block) {
+    var branch = Blockly.Arduino.statementToCode(block, 'PID_STOP_FUNC');   
+    var code = '// PID Move Func\nvoid pid_stop_func() {\n' +
+               branch + '\n}';
+    code = Blockly.Arduino.scrub_(block, code);
+    Blockly.Arduino.userFunctions_['pid_stop_func'] = code;
+    return null;
 };
 
 /** PID left speed*/

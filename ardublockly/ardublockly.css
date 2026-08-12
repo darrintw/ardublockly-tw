@@ -256,7 +256,8 @@ ul.side-nav li.side-menu-end {
     border-bottom: 1px solid #ddd;
     background-color: #006468;
     color: #ffffff;
-    -moz-transition: background-color 0.6s ease-in;;
+    transition: background-color 0.6s ease-in;
+    -moz-transition: background-color 0.6s ease-in;
     -o-transition: background-color 0.6s ease-in;
     -webkit-transition: background-color 0.6s ease-in;
 }
@@ -272,7 +273,8 @@ ul.side-nav li.side-menu-end {
 .ide_output_header_normal {
     background-color: #006468;
     color: #ffffff;
-    -moz-transition: background-color 0.6s ease-in;;
+    transition: background-color 0.6s ease-in;
+    -moz-transition: background-color 0.6s ease-in;
     -o-transition: background-color 0.6s ease-in;
     -webkit-transition: background-color 0.6s ease-in;
 }
@@ -280,7 +282,8 @@ ul.side-nav li.side-menu-end {
 .ide_output_header_highlight {
     background-color: #62AEB2;
     color: #ffffff;
-    -moz-transition: background-color 0.6s ease-in;;
+    transition: background-color 0.6s ease-in;
+    -moz-transition: background-color 0.6s ease-in;
     -o-transition: background-color 0.6s ease-in;
     -webkit-transition: background-color 0.6s ease-in;
 }
@@ -288,7 +291,8 @@ ul.side-nav li.side-menu-end {
 .ide_output_header_error {
     background-color: #E47128;
     color: #ffffff;
-    -moz-transition: background-color 0.6s ease-in;;
+    transition: background-color 0.6s ease-in;
+    -moz-transition: background-color 0.6s ease-in;
     -o-transition: background-color 0.6s ease-in;
     -webkit-transition: background-color 0.6s ease-in;
 }
@@ -596,9 +600,6 @@ ul.side-nav li.side-menu-end {
     padding-top: 25px;
 }
 
-.arduino_dialog_out {
-}
-
 .arduino_dialog_out_error {
     color: #E47128; /* arduino orange */
     padding-top: 25px;
@@ -794,9 +795,6 @@ ul.side-nav li.side-menu-end {
 
 .blocklyTreeRow:not(.blocklyTreeSelected):hover {
     background-color: rgba(255, 204, 51, 1) !important; /* arduino yellow */
-}
-
-.blocklyTreeLabel {
 }
 
 .blocklyTreeSeparator {

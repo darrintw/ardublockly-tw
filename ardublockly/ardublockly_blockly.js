@@ -478,6 +478,84 @@ Ardublockly.svgToPng_ = function (data, width, height, callback) {
 }
 
 /**
+ * Returns safe bounds for workspace export across Blockly versions.
+ * @param {!Blockly.WorkspaceSvg} workspace The Blockly workspace.
+ * @return {{x:number,y:number,width:number,height:number}} Export bounds.
+ */
+Ardublockly.getWorkspaceExportBounds_ = function (workspace) {
+    var toNumber = function (value) {
+        return (typeof value === 'number' && isFinite(value)) ? value : null;
+    };
+
+    var bounds = {
+        x: 0,
+        y: 0,
+        width: 1,
+        height: 1
+    };
+
+    var bBox = workspace.getBlocksBoundingBox ? workspace.getBlocksBoundingBox() : null;
+    if (bBox) {
+        var x = toNumber(bBox.x);
+        if (x === null) x = toNumber(bBox.left);
+
+        var y = toNumber(bBox.y);
+        if (y === null) y = toNumber(bBox.top);
+
+        var width = toNumber(bBox.width);
+        if (width === null) {
+            var right = toNumber(bBox.right);
+            if (right !== null && x !== null) {
+                width = right - x;
+            }
+        }
+
+        var height = toNumber(bBox.height);
+        if (height === null) {
+            var bottom = toNumber(bBox.bottom);
+            if (bottom !== null && y !== null) {
+                height = bottom - y;
+            }
+        }
+
+        if (x !== null && y !== null && width !== null && height !== null &&
+            width > 0 && height > 0) {
+            bounds.x = x;
+            bounds.y = y;
+            bounds.width = width;
+            bounds.height = height;
+            return bounds;
+        }
+    }
+
+    var metrics = workspace.getMetrics ? workspace.getMetrics() : null;
+    if (metrics) {
+        var mx = toNumber(metrics.contentLeft);
+        if (mx === null) mx = toNumber(metrics.viewLeft);
+        if (mx === null) mx = 0;
+
+        var my = toNumber(metrics.contentTop);
+        if (my === null) my = toNumber(metrics.viewTop);
+        if (my === null) my = 0;
+
+        var mWidth = toNumber(metrics.contentWidth);
+        if (mWidth === null) mWidth = toNumber(metrics.viewWidth);
+        if (mWidth === null || mWidth <= 0) mWidth = 1;
+
+        var mHeight = toNumber(metrics.contentHeight);
+        if (mHeight === null) mHeight = toNumber(metrics.viewHeight);
+        if (mHeight === null || mHeight <= 0) mHeight = 1;
+
+        bounds.x = mx;
+        bounds.y = my;
+        bounds.width = mWidth;
+        bounds.height = mHeight;
+    }
+
+    return bounds;
+};
+
+/**
  * Create a PNG screenshot for Electron by saving directly to file, splitting large images into tiles.
  * @param {!Blockly.WorkspaceSvg} workspace The Blockly workspace.
  */
@@ -503,11 +581,11 @@ Ardublockly.workspaceToPngForElectron_ = function (workspace) {
                 textAreas[i].innerHTML = textAreas[i].value;
             }
 
-            var bBox = workspace.getBlocksBoundingBox();
-            var x = bBox.x || bBox.left;
-            var y = bBox.y || bBox.top;
-            var width = bBox.width || bBox.right - x;
-            var height = bBox.height || bBox.bottom - y;
+            var bounds = Ardublockly.getWorkspaceExportBounds_(workspace);
+            var x = bounds.x;
+            var y = bounds.y;
+            var width = bounds.width;
+            var height = bounds.height;
 
             var pixelDensity = 10;
             // Limit total pixels to prevent memory issues
@@ -648,11 +726,11 @@ Ardublockly.workspaceToSvg_ = function (workspace, callback, customCss) {
         textAreas[i].innerHTML = textAreas[i].value;
     }
 
-    var bBox = workspace.getBlocksBoundingBox();
-    var x = bBox.x || bBox.left;
-    var y = bBox.y || bBox.top;
-    var width = bBox.width || bBox.right - x;
-    var height = bBox.height || bBox.bottom - y;
+    var bounds = Ardublockly.getWorkspaceExportBounds_(workspace);
+    var x = bounds.x;
+    var y = bounds.y;
+    var width = bounds.width;
+    var height = bounds.height;
 
     var blockCanvas = workspace.getCanvas();
     var clone = blockCanvas.cloneNode(true);
@@ -693,7 +771,7 @@ Ardublockly.workspaceToSvg_ = function (workspace, callback, customCss) {
  * @param {!Blockly.WorkspaceSvg} workspace The Blockly workspace.
  */
 Ardublockly.downloadScreenshot = function () {
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (typeof Ardublockly.isElectron === 'function' && Ardublockly.isElectron()) {
         // Electron version: save directly to file to avoid size limits
         Ardublockly.workspaceToPngForElectron_(Ardublockly.workspace);
     } else {
