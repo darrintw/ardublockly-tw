@@ -285,11 +285,11 @@
     <div class="modal-content">
         <h4><span class="translatable_settings">設定</span></h4>
         <div class="modal_section">
-            <label><span class="translatable_compilerLocation">編譯器位置</span></label>
+            <label for="settings_compiler_location"><span class="translatable_compilerLocation">編譯器位置</span></label>
             <label for="settings_compiler_location"><input type="text" id="settings_compiler_location"></label>
         </div>
         <div class="modal_section">
-            <label><span class="translatable_sketchFolder">草稿碼目錄</span></label>
+            <label for="settings_sketch_location"><span class="translatable_sketchFolder">草稿碼目錄</span></label>
             <label for="settings_sketch_location"><input type="text" id="settings_sketch_location"></label>
         </div>
         <!--div class="modal_section">
@@ -301,7 +301,7 @@
             </label>
         </div>
         <div class="modal_section">
-            <label><span class="translatable_comPort">序列埠</span></label>
+            <label for="serial_port"><span class="translatable_comPort">序列埠</span></label>
             <label for="serial_port">
                 <select name="settings_serial" id="serial_port">
                     <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
@@ -309,7 +309,7 @@
             </label>
         </div>
         <div class="modal_section">
-            <label><span class="translatable_baudrate">鮑率</span></label>
+            <label for="baud_rate_setting"><span class="translatable_baudrate">鮑率</span></label>
             <label for="baud_rate_setting">
                 <select name="setting_baud_rate" id="baud_rate_setting" readonly>
                     <option value="9600">9600 baud</option>
@@ -317,7 +317,7 @@
             </label>
         </div-->
         <div class="modal_section">
-            <label><span class="translatable_defaultIdeButton">預設IDE按鈕</span></label>
+            <label for="ide_settings"><span class="translatable_defaultIdeButton">預設IDE按鈕</span></label>
             <label for="ide_settings">
                 <select name="settings_ide" id="ide_settings">
                     <option value="upload" class="translatable_defaultIdeButtonDefault">IDE 選項設定未知</option>
@@ -325,11 +325,11 @@
             </label>
         </div>
         <div class="modal_section">
-            <label><span class="translatable_language">介面語言</span></label>
+            <label for="language"><span class="translatable_language">介面語言</span></label>
             <label for="language"><select name="settings_language" id="language"></select></label>
         </div>
         <div class="modal_section" type="hidden">
-            <label><span class="translatable_loaddelay">載入額外積木延遲毫秒</span></label>
+            <label for="settings_load_delay"><span class="translatable_loaddelay">載入額外積木延遲毫秒</span></label>
             <label for="settings_load_delay"><input type="text" id="settings_load_delay"></label>
         </div>
     </div>
@@ -343,15 +343,15 @@
     <div class="modal-content">
         <h4><span class="translatable_settings">設定</span></h4>
         <div class="modal_section">
-            <label><span class="translatable_arduinoBoard">Arduino開發版</span></label>
-            <label for="board">
+            <label for="simple_board"><span class="translatable_arduinoBoard">Arduino開發版</span></label>
+            <label for="simple_board">
                 <select name="settings_simple_board" id="simple_board">
                     <option value="uno" class="translatable_arduinoBoardDefault">Arduino 開發版未知</option>
                 </select>
             </label>
         </div>
         <div class="modal_section">
-            <label><span class="translatable_language">介面語言</span></label>
+            <label for="simple_language"><span class="translatable_language">介面語言</span></label>
             <label for="simple_language"><select name="settings_simple_language" id="simple_language"></select></label>
         </div>
     </div>
@@ -392,28 +392,22 @@
         <table style="width: 100%;">
             <tr>
                 <td style="width: 200px">
-                    <label for="serial_value_setting">
-                        <label><span class="translatable_comPort">序列埠</span></label>
-                        <select name="settings_serial_value" id="serial_value_setting">
-                            <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
-                        </select>
-                    </label>
+                    <label for="serial_value_setting"><span class="translatable_comPort">序列埠</span></label>
+                    <select name="settings_serial_value" id="serial_value_setting">
+                        <option value="COMX" class="translatable_comPortDefault">序列埠未知</option>
+                    </select>
                 </td>
                 <td style="width: 200px">
-                    <label><span class="translatable_baudrate">鮑率</span></label>
-                    <label for="baud_rate_value_setting">
-                        <select name="setting_baud_rate_value" id="baud_rate_value_setting" readonly>
-                            <option value="9600">9600 baud</option>
-                        </select>
-                    </label>
+                    <label for="baud_rate_value_setting"><span class="translatable_baudrate">鮑率</span></label>
+                    <select name="setting_baud_rate_value" id="baud_rate_value_setting" readonly>
+                        <option value="9600">9600 baud</option>
+                    </select>
                 </td>
                 <td style="width: 150px">
-                    <label for="end_of_line_setting">
-                        <label><span class="translatable_endofline">序列埠</span></label>
-                        <select name="setting_end_of_line" id="end_of_line_setting" readonly>
-                            <option value="nlcr" class="comPortNLCR">NL & CR</option>
-                        </select>
-                    </label>
+                    <label for="end_of_line_setting"><span class="translatable_endofline">序列埠</span></label>
+                    <select name="setting_end_of_line" id="end_of_line_setting" readonly>
+                        <option value="nlcr" class="comPortNLCR">NL & CR</option>
+                    </select>
                 </td>
                 <td style="width: 5px"></td>
                 <td style="width: 100px">

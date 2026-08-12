@@ -10,6 +10,20 @@
 /** Create a namespace for the application. */
 var Ardublockly = Ardublockly || {};
 
+/** @return {boolean} True when running on localhost/127.0.0.1. */
+Ardublockly.isLocalHost = function () {
+    return document.location.hostname === 'localhost' ||
+        document.location.hostname === '127.0.0.1';
+};
+
+/** @return {boolean} True when Electron renderer can use require(). */
+Ardublockly.isElectron = function () {
+    return typeof require === 'function' &&
+        typeof process !== 'undefined' &&
+        process.versions !== undefined &&
+        process.versions.electron !== undefined;
+};
+
 /** Initialize function for Ardublockly, to be called on page load. */
 Ardublockly.init = function () {
     /*var abc = getBroswer();
@@ -35,7 +49,7 @@ Ardublockly.init = function () {
         ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
 
     // Hackish way to check if not running locally
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (Ardublockly.isLocalHost()) {
         Ardublockly.initialiseIdeButtons();
         ArdublocklyServer.requestArduinoBoard(function (jsonObj) {
             var board_name = jsonObj['selected'].toLowerCase().replace(/ /g, '_');
@@ -479,7 +493,7 @@ Ardublockly.codeSwitch = function () {
  * Blockly workspace.
  */
 Ardublockly.loadUserXmlFile = function () {
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (Ardublockly.isElectron()) {
         // Electron version
         const { dialog } = require('@electron/remote');
         dialog.showOpenDialog({
@@ -628,7 +642,7 @@ Ardublockly.saveSketchFile = function () {
  * @param {!string} content Text data to be saved in to the file.
  */
 Ardublockly.saveTextFileAs = function (fileName, ext, content) {
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (Ardublockly.isElectron()) {
         const { dialog } = require('@electron/remote');
         if (ext === 'ino') {
             // For Arduino sketches, select a directory and save .ino file inside it
@@ -695,22 +709,24 @@ Ardublockly.saveTextFileAs = function (fileName, ext, content) {
  * and opens the Examples list dialog.
  */
 Ardublockly.openExamples = function () {
-    if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+    if (!Ardublockly.isLocalHost()) {
         ArdublocklyServer.requestExamplesList('./examples.json', function (jsonObj) {
             Ardublockly.setExamplesHtml(jsonObj);
         });
     } else {
         ArdublocklyServer.requestExamplesList('/exampleslist', function (jsonObj) {
-            try {
-                var fs = require("@electron/remote").require('fs');
-                var data = JSON.stringify(jsonObj);
-                fs.writeFile("./ardublockly/examples.json", data, function (err) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            } catch (e) {
-                console.log(e);
+            if (Ardublockly.isElectron()) {
+                try {
+                    var fs = require("@electron/remote").require('fs');
+                    var data = JSON.stringify(jsonObj);
+                    fs.writeFile("./ardublockly/examples.json", data, function (err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
             }
             Ardublockly.setExamplesHtml(jsonObj);
         });
@@ -722,7 +738,7 @@ Ardublockly.openExamples = function () {
  */
 
 Ardublockly.openSerialMonitor = function () {
-    if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+    if (!Ardublockly.isLocalHost()) {
         Ardublockly.openNotConnectedModal();
     } else {
         var el = document.getElementById('serial_port');
@@ -753,7 +769,7 @@ Ardublockly.openSerialMonitor = function () {
  */
 /*
 Ardublockly.openSerialMonitor = function () {
-    if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+    if (!Ardublockly.isLocalHost()) {
         Ardublockly.openNotConnectedModal();
     } else {
         ArdublocklyServer.requestSerialPorts(function (jsonObj) {
@@ -800,7 +816,7 @@ Ardublockly.openAbout = function () {
  */
 Ardublockly.openSettings = function () {
     var jsonBoard = Blockly.Arduino.Boards.boardJson();
-    if (document.location.hostname !== 'localhost' && document.location.hostname !== '127.0.0.1') {
+    if (!Ardublockly.isLocalHost()) {
         Ardublockly.setArduinoSimpleBoardsHtml(
             ArdublocklyServer.jsonToHtmlDropdown(jsonBoard));
     } else {
@@ -936,7 +952,7 @@ Ardublockly.setArduinoBoardsHtml = function (newEl) {
 Ardublockly.setBoard = function () {
     var el = document.getElementById('board');
     var boardValue = el.options[el.selectedIndex].value;
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (Ardublockly.isLocalHost()) {
         var jsonBoard = Blockly.Arduino.Boards.boardJson();
         var boardFlag;
         for (var i = 0; i < jsonBoard.options.length; i++) {
@@ -1611,7 +1627,7 @@ Ardublockly.addExtraCategories = function () {
     ArdublocklyServer.getJson('../blocks/blocks_data.json', jsonDataCb);
 
     var load_delay = 1000;
-    if (document.location.hostname === 'localhost' || document.location.hostname === '127.0.0.1') {
+    if (Ardublockly.isLocalHost()) {
         ArdublocklyServer.requestLoadDelayOptions(function (jsonObj) {
             if (!jsonObj.errors) {
                 load_delay = jsonObj.selected || '1000';

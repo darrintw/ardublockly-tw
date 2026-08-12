@@ -1672,7 +1672,10 @@ Blockly.Blocks["md_nrfgetspeed"] = {
 Blockly.Blocks['PID_Init'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MOTOR_PID)
+            .setAlign(Blockly.ALIGN_LEFT) 
+            .appendField(Blockly.Msg.MOTOR_PID);
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.MOTOR_PID_P)
             .appendField(new Blockly.FieldNumber('1'), "PID_P")
             .appendField(Blockly.Msg.MOTOR_PID_I)
@@ -1680,19 +1683,29 @@ Blockly.Blocks['PID_Init'] = {
             .appendField(Blockly.Msg.MOTOR_PID_D)
             .appendField(new Blockly.FieldNumber('1'), "PID_D");
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MOTOR_PID_SPEED)
+            .setAlign(Blockly.ALIGN_LEFT)
+            .appendField(Blockly.Msg.MOTOR_PID_SPEED);            
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.MOTOR_PID_BASE_SPEED)
             .appendField(new Blockly.FieldNumber('255'), "PID_BASE_SPEED")
             .appendField(Blockly.Msg.MOTOR_PID_MAX_SPEED)
             .appendField(new Blockly.FieldNumber('255'), "PID_MAX_SPEED");
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MOTOR_PID_SENSOR)
+            .setAlign(Blockly.ALIGN_LEFT)
+            .appendField(Blockly.Msg.MOTOR_PID_SENSOR);                    
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.MOTOR_PID_1)
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Arduino.Boards.selected.analogPins), 'PID_1')
             .appendField(Blockly.Msg.MOTOR_PID_2)
             .appendField(new Blockly.FieldDropdown(
-                Blockly.Arduino.Boards.selected.analogPins), "PID_2");                 
+                Blockly.Arduino.Boards.selected.analogPins), "PID_2");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)                
+            .appendField(Blockly.Msg.MOTOR_PID_THRESHOLD)
+            .appendField(new Blockly.FieldNumber('512'), "PID_THRESHOLD");                                
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -1724,6 +1737,9 @@ Blockly.Blocks['PID_Init_var'] = {
         this.appendValueInput("PID_MAX_SPEED", Number)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.MOTOR_PID_MAX_SPEED);
+        this.appendValueInput("PID_THRESHOLD", Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.MOTOR_PID_THRESHOLD);
         this.appendDummyInput()
             .appendField(Blockly.Msg.MOTOR_PID_SENSOR);
         this.appendValueInput("PID_1", Number)
@@ -1744,8 +1760,20 @@ Blockly.Blocks['PID_Init_var'] = {
 Blockly.Blocks['pid_move_function'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MOTOR_PID_MOVE + Blockly.Msg.ARD_TYPE_FUNCTION);
-        this.appendStatementInput("PID_MOVE");
+            .appendField(Blockly.Msg.MOTOR_PID_MOVE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);     
+        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['pid_forward_func'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_FORWARD + Blockly.Msg.ARD_TYPE_FUNCTION);
+        this.appendStatementInput("PID_FORWARD_FUNC");
         this.setPreviousStatement(null, null);
         this.setNextStatement(null, null);     
         this.setColour(Blockly.Blocks.procedures.HUE);
@@ -1754,12 +1782,39 @@ Blockly.Blocks['pid_move_function'] = {
     }
 };
 
-Blockly.Blocks['pid_move'] = {
+Blockly.Blocks['pid_left_turn_func'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.MOTOR_PID_MOVE);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);     
+            .appendField(Blockly.Msg.MOTOR_PID_LEFT_TURN + Blockly.Msg.ARD_TYPE_FUNCTION);
+        this.appendStatementInput("PID_LEFT_TURN_FUNC");
+        this.setPreviousStatement(null, null);
+        this.setNextStatement(null, null);     
+        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['pid_right_turn_func'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_RIGHT_TURN + Blockly.Msg.ARD_TYPE_FUNCTION);
+        this.appendStatementInput("PID_RIGHT_TURN_FUNC");
+        this.setPreviousStatement(null, null);
+        this.setNextStatement(null, null);     
+        this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['pid_stop_func'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MOTOR_PID_STOP + Blockly.Msg.ARD_TYPE_FUNCTION);
+        this.appendStatementInput("PID_STOP_FUNC");
+        this.setPreviousStatement(null, null);
+        this.setNextStatement(null, null);     
         this.setColour(Blockly.Blocks.procedures.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
